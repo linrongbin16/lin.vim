@@ -12,9 +12,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/Mark--Karkat'
-"Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
-"Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 "Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'tpope/vim-repeat'
@@ -25,11 +25,9 @@ Plugin 'Shougo/vimfiler.vim'
 "Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-markdown'
 
-
 " 2. Color Theme
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-
 
 " 3 Programming Tools
 Plugin 'vim-scripts/a.vim'
