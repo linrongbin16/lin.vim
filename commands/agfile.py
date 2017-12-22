@@ -10,9 +10,9 @@ cmdname = sys.argv[0]
 
 def helpmsg():
     print("Brief:")
-    print("    count [text] of current directory recursively")
+    print("    list files which contain [text] of current directory recursively")
     print("Usage:")
-    print("    %s [text]" % cmdname)
+    print("    %s [text]" % (cmdname))
     print("Try again")
     print("")
 
@@ -32,4 +32,4 @@ if len(sys.argv) <= 1:
     exit(1)
 
 ignore = "~/.vim/commands/ag.ignore"
-os.system("ag -c --smart-case --depth -1 -p %s \"%s\" ." % (ignore, all_param()))
+os.system("ag -l --smart-case --depth -1 -p %s \"%s\" ." % (ignore, all_param()))

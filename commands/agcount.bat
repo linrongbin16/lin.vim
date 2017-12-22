@@ -1,1 +1,2 @@
-python agcount.py $@
+@echo off
+python agcount.py %*
