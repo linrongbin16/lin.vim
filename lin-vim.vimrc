@@ -9,6 +9,7 @@ source ~/.vim/vimplugins/plugin/ctags.vim
 source ~/.vim/vimplugins/plugin/cscope.vim
 source ~/.vim/vimplugins/plugin/ag.vim
 source ~/.vim/vimplugins/plugin/youcompleteme.vim
+source ~/.vim/vimplugins/plugin/javacomplete2.vim
 source ~/.vim/vimplugins/plugin/ultisnips.vim
 source ~/.vim/vimplugins/plugin/DoxygenToolkit.vim
 source ~/.vim/vimplugins/plugin/vim-airline.vim

@@ -45,7 +45,7 @@ Plugin 'w0rp/ale'
 " 4     c++/python
 Plugin 'Valloric/YouCompleteMe'
 " 4     java
-" Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'artur-shaik/vim-javacomplete2'
 " 4     html/css
 Plugin 'mattn/emmet-vim'
 Plugin 'ap/vim-css-color'

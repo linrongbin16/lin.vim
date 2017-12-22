@@ -1,24 +1,23 @@
-#! /usr/bin/env bash
+#! /usr/bin/env python
 
-cmdname=${0##*/}
+import sys
+import os
 
-helpmsg() {
-    echo "Brief:"
-    echo "    count [text] of current directory recursively"
-    echo "Usage:"
-    echo "    $cmdname [text]"
-    echo "Try again"
-    echo ""
-}
+cmdname = sys.argv[0]
 
+def helpmsg():
+    print("Brief:")
+    print("    count [text] of current directory recursively")
+    print("Usage:")
+    print("    %s [text]" % cmdname)
+    print("Try again")
+    print("")
 
 # error 1: miss repository parameter
-if [[ $# -lt 1 ]]; then
-    helpmsg
-    exit 1
-fi
+if len(sys.argv) <= 1:
+    helpmsg()
+    exit(1)
 
-text=$@
-ignore=~/.vim/commands/.ignore
-
-ag -c --smart-case --depth -1 -p $ignore "$text" .
+text = sys.argv[1]
+ignore = "~/.vim/commands/.ignore"
+os.system("ag -c --smart-case --depth -1 -p %s \"%s\" ." % (ignore, text))
