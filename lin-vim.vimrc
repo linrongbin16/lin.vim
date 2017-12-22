@@ -29,4 +29,4 @@ source ~/.vim/vimplugins/filetype/python.vim
 source ~/.vim/vimplugins/filetype/json.vim
 
 "" ---- basic configure ----
-source ~/.vim/basic.vim
+source ~/.vim/basic.vimrc

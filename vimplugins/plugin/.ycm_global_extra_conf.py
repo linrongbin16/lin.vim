@@ -109,7 +109,10 @@ flags = [
 './tests/gmock',
 '-isystem',
 './tests/gmock/include',
-
+'-isystem',
+'C:\Program Files\TDM-GCC\\x86_64-w64-mingw32\include',
+'-isystem',
+'C:\Program Files (x86)\Microsoft Visual Studio\\2017\Community\VC\Tools\MSVC\\14.12.25827\include',
 ]
 
 
