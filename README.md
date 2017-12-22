@@ -11,26 +11,17 @@
 
 lin-vim is a distribution of vim configurations, plugins and commands for Vim, Gvim.
 
-Project is forked from [spf13-vim](https://github.com/spf13/spf13-vim), while completely different from the origin one.
-
 It is for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
 # Installation
 
-### Windows Dependencies
+### Windows Support
 
-1. [vim-for-windows](https://tuxproject.de/projects/vim/)
-2. [python27](https://www.python.org/downloads/release/python-2714/)
-3. [git](https://git-scm.com/)
-5. [CMake](https://cmake.org/download/)
-6. [Visual Studio Community](https://www.visualstudio.com/)
-
-### Installing lin-vim
+Since Windows 10 support Ubuntu Subsystem Environment, just install lin-vim as ubuntu do.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
-On Windows, make sure that `python`, `gvim`, `vim`, `git`, `cmake` is available in *CMD*, manually add `C:\Users\username\.vim\commands` to `%PATH%`, add `%HOME%` variable.
 
 # A highly optimized .vimrc config file
 
