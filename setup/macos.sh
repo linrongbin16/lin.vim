@@ -18,19 +18,16 @@ brew update
 brew upgrade
 
 brew install curl wget clang gcc g++ autoconf automake cmake
-brew install golang golang-go golang-src -y
-brew install python python3 gperftools jemalloc glog -y
-brew install libevent boost openssh openssl cryptopp leveldb -y
+brew install python python3 openssh openssl cryptopp
 
 # tools
 brew tap caskroom/versions
 brew cask install java8
 brew install git vim macvim zsh maven gradle
 brew install cscope the_silver_searcher ctags
-brew install nodejs npm bc unzip unrar
+brew install nodejs npm bc unzip unrar mariadb
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted
-brew install mariadb redis mongodb
 
 # Variable 
 
@@ -38,16 +35,10 @@ mkdir -p ~/.ssh
 mkdir -p ~/devops
 mkdir -p ~/devops/practice
 mkdir -p ~/devops/project
-mkdir -p ~/devops/go
-mkdir -p ~/devops/go/src
-mkdir -p ~/devops/go/bin
-mkdir -p ~/devops/go/pkg
 echo "alias vim=/usr/local/bin/vim" >> $DEVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $DEVIMRC
 echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $DEVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $DEVIMRC
-echo "export GOPATH=~/devops/go" >> $DEVIMRC
-echo "export PATH=\$PATH:\$GOPATH/bin" >> $DEVIMRC
 if [[ -d /Library/Java/JavaVirtualMachines ]]; then
     jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
     if [[ "${jdkhome:0:3}" == "jdk" ]]; then
@@ -76,7 +67,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim +silent! +PluginInstall! +qall
 cd ~/.vim/bundle/YouCompleteMe
-python install.py --clang-completer --gocode-completer --tern-completer
+python install.py --clang-completer --tern-completer
 
 if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

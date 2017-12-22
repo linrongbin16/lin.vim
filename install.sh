@@ -30,5 +30,5 @@ elif [[ $(uname) == "FreeBSD" ]]; then
 elif [[ $(uname) == "Darwin" ]]; then
     bash ~/.vim/setup/macos.sh
 else
-    bash ~/.vim/setup/mingw32.sh
+	echo "[lin-vim] Windows not support"
 fi
