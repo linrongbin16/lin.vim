@@ -31,15 +31,9 @@ On Windows, lin-vim depend on the MingW32 Msys environment of Git.
 
 # A highly optimized .vimrc config file
 
-The .vimrc file is suited to programming. It is extremely well organized and folds in sections.
-Each section is labeled and each option is commented.
-
-It fixes many of the inconveniences of vanilla vim including
+The .vimrc file is suited to programming.
 
  * A single config can be used across Windows, Mac and linux
- * Eliminates swap and backup files from littering directories, preferring to store in a central location.
- * Fixes common typos like :W, :Q, etc
- * Setup a solid set of settings for Formatting (change to meet your needs)
  * Setup the interface to take advantage of vim's features including
    * omnicomplete
    * line numbers
