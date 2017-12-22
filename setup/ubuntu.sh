@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] install ubuntu"
-
+echo "[lin-vim] Install for Ubuntu"
 
 # Prepare Environment
-
 DEVIMRC=~/.devimrc
 touch $DEVIMRC
 
 ## Software
-
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
@@ -19,21 +16,48 @@ sudo apt-get install git vim vim-gtk curl wget zsh apport unzip unrar sysstat -y
 sudo apt-get install gcc g++ autoconf automake cmake bc -y
 sudo apt-get install openssh-server libssl-dev libcrypto++-dev -y
 sudo apt-get install default-jdk maven gradle mariadb-client mariadb-server -y
+sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
+sudo apt-get install nodejs npm libnss3-tools -y
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python python-dev python-pip -y
 sudo apt-get install python3 python3-dev python3-pip -y
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL requests Scrapy Twisted
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL requests Scrapy Twisted
-sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
-sudo apt-get install nodejs npm libnss3-tools -y
-sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 sudo service ssh start
 sudo service mysql start
 
-# Variable 
+# Vim Plugins
+mkdir -p ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+cp ~/.vim/lin-vim.vimrc ~/.vimrc
+vim +silent! +PluginInstall! +qall
+cd ~/.vim/bundle/YouCompleteMe
+python install.py --clang-completer --tern-completer
 
+# Oh-My-Zsh
+if [ ! -d ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+else
+    echo "[lin-vim] oh-my-zsh already installed"
+fi
+cp ~/.zshrc ~/.zshrc.old
+sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
+mv ~/.zshrc.temp.$$ ~/.zshrc
+
+# Powerline-Fonts
+if [[ ! -d ~/.vim/.powerline-fonts ]]; then
+    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
+else
+    cd ~/.vim/.powerline-fonts
+    git pull origin master
+fi
+cd ~/.vim/.powerline-fonts
+./install.sh
+
+# Variable 
 mkdir -p ~/.ssh
 mkdir -p ~/devops
 mkdir -p ~/devops/practice
@@ -50,33 +74,3 @@ source $DEVIMRC 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
 
-# Vim Plugins
-
-mkdir -p ~/.vim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/.vim/lin-vim.vimrc ~/.vimrc
-vim +silent! +PluginInstall! +qall
-cd ~/.vim/bundle/YouCompleteMe
-python install.py --clang-completer --tern-completer
-
-# Oh-my-zsh
-
-if [ ! -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-    echo "[lin-vim] oh-my-zsh already installed"
-fi
-cp ~/.zshrc ~/.zshrc.old
-sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
-mv ~/.zshrc.temp.$$ ~/.zshrc
-
-# Powerline-Fonts
-
-if [[ ! -d ~/.vim/.powerline-fonts ]]; then
-    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
-else
-    cd ~/.vim/.powerline-fonts
-    git pull origin master
-fi
-cd ~/.vim/.powerline-fonts
-./install.sh

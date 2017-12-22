@@ -15,9 +15,19 @@ It is for anyone intending to use VIM for development running equally well on Wi
 
 # Installation
 
-### Windows Support
+### Windows Installation
 
-Since Windows 10 support a Ubuntu Subsystem Environment, just install lin-vim as ubuntu.
+Windows need these software as dependencies. Make sure they're available in `%PATH%`:
+1. [Git]()
+2. [Vim for Windows]()
+3. [Visual Studio]()
+4. [CMake]()
+
+```bash
+    git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim && cd %HOMEPATH%/.vim && cmd install.bat
+```
+
+### Linux, UNIX, MacOS Installation
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
