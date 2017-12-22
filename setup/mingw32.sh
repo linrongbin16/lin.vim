@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[devim] install Windows-MINGW32"
+echo "[lin-vim] install Windows-MINGW32"
 
 
 # Prepare Environment
@@ -27,7 +27,7 @@ source ~/.bashrc 1>/dev/null 2>&1
 
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/.vim/lin-vim.vimrc ~/_vimrc
+cp ~/.vim/lin-vim-win32.vimrc ~/_vimrc
 vim +silent! +PluginInstall! +qall
 cd ~/.vim/bundle/YouCompleteMe
 python install.py --clang-completer --gocode-completer --tern-completer

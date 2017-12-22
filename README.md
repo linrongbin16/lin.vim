@@ -17,11 +17,12 @@ On Windows, lin-vim depend on the MingW32 Msys environment of Git.
 
 ### Windows Dependencies
 
-*Requires*
-1. [vim for windows](https://tuxproject.de/projects/vim/)
+1. [vim-for-windows](https://tuxproject.de/projects/vim/)
 2. [python27](https://www.python.org/downloads/release/python-2714/)
 3. [git](https://git-scm.com/)
 4. [TDM-GCC](http://tdm-gcc.tdragon.net/download)
+5. [CMake](https://cmake.org/download/)
+6. [Visual Studio Community](https://www.visualstudio.com/)
 
 ### Installing lin-vim
 

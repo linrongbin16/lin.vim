@@ -54,7 +54,7 @@ fi
 
 ipaddr="$(hostip $hostname)"
 
-echo -n "[devim] unset host-ip: '$ipaddr  $hostname', yes? "
+echo -n "[lin-vim] unset host-ip: '$ipaddr  $hostname', yes? "
 makesure
 
 sudo touch $zh_hosts

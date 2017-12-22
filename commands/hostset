@@ -47,7 +47,7 @@ if ! hostip $hostname 1>/dev/null 2>&1; then
     exit 1
 fi
 
-echo -n "[devim] set host-ip: '$ipaddr   $hostname', yes? "
+echo -n "[lin-vim] set host-ip: '$ipaddr   $hostname', yes? "
 makesure
 sudo chmod +w,o+w /etc/hosts
 sudo echo "$ipaddr  $hostname" >> /etc/hosts

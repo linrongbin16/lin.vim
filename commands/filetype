@@ -23,7 +23,7 @@ backup="$PWD.old"
 while [[ -d $backup ]]; do
     backup="$backup.old"
 done
-echo "[devim] replace $oldtype with $newtype in $PWD, backup is $backup"
+echo "[lin-vim] replace $oldtype with $newtype in $PWD, backup is $backup"
 cp -rf $PWD $backup
 
 file_type_dir() {

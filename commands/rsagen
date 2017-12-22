@@ -45,7 +45,7 @@ if [[ ! -d ~/.ssh ]]; then
 fi
 
 if [[ -f ~/.ssh/id_rsa || -f ~/.ssh/id_rsa.pub ]]; then
-    echo -n "[devim] id_rsa or id_rs.pub already exist, overwrite? "
+    echo -n "[lin-vim] id_rsa or id_rs.pub already exist, overwrite? "
     makesure
     if [[ -f ~/.ssh/id_rsa ]]; then
         mv ~/.ssh/id_rsa ~/.ssh/id_rsa.bak
@@ -60,10 +60,10 @@ touch ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 chmod 700 -R ~/.ssh
 
-echo "[devim] generate id_rsa for \"$myemail\", type ENTER if you don't need passphrase"
+echo "[lin-vim] generate id_rsa for \"$myemail\", type ENTER if you don't need passphrase"
 ssh-keygen -t rsa -b 4096 -C "$myemail"
 echo ""
-echo "[devim] your ~/.ssh/id_rsa.pub:"
+echo "[lin-vim] your ~/.ssh/id_rsa.pub:"
 cat ~/.ssh/id_rsa.pub
 
 

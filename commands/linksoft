@@ -21,7 +21,7 @@ sourcefile="$1"
 targetfile="$2"
 
 if [[ -x "$targetfile" ]]; then
-    echo "[devim] backup '$targetfile' to '$targetfile.old'"
+    echo "[lin-vim] backup '$targetfile' to '$targetfile.old'"
     mv "$targetfile" "$targetfile.old"
 fi
 

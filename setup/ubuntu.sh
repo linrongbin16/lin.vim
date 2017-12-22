@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[devim] install ubuntu"
+echo "[lin-vim] install ubuntu"
 
 
 # Prepare Environment
@@ -80,7 +80,7 @@ source ~/.bashrc 1>/dev/null 2>&1
 
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/.vim/devim.vim ~/.vimrc
+cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim +silent! +PluginInstall! +qall
 cd ~/.vim/bundle/YouCompleteMe
 python install.py --clang-completer --gocode-completer --tern-completer
@@ -90,7 +90,7 @@ python install.py --clang-completer --gocode-completer --tern-completer
 if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 else
-    echo "[devim] oh-my-zsh already installed"
+    echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
 sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$

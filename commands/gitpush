@@ -48,8 +48,8 @@ if ! git status 1>/dev/null 2>&1; then
 fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
-echo "[devim] git push on branch: '$branch', comment: '$comment', path: '$PWD'"
-echo -n "[devim] yes? "
+echo "[lin-vim] git push on branch: '$branch', comment: '$comment', path: '$PWD'"
+echo -n "[lin-vim] yes? "
 makesure
 
 git pull origin $branch

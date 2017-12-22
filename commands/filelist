@@ -29,4 +29,4 @@ else
         count=$(echo -e "$count + 1" | bc)
     done
 fi
-echo "[devim] count: $count"
+echo "[lin-vim] file count: $count"

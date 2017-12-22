@@ -51,8 +51,9 @@ if [[ $ispid -eq 1 ]]; then
     oneproc=$(echo -e $procline | awk '{print $2}')
     procpid=$proc
     if [[ "$oneproc" == "$proc" || $oneproc -eq $proc ]]; then
-        echo -n "[devim] kill process - $procline, yes? "
+        echo -n "[lin-vim] kill process - $procline, yes? "
         makesure
+        sudo kill -9 $procpid
     fi
 else
     procline=$(ps aux | grep $proc | head -n 1)
@@ -66,5 +67,6 @@ else
     if [[ ${procname1} == ${proc} || ${procname2} == ${proc} ]]; then
         echo -n "[devim] kill process - $procline, yes? "
         makesure
+        sudo kill -9 $procpid
     fi
 fi

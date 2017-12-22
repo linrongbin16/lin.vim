@@ -41,7 +41,7 @@ make_cscope_files() {
     list_file_dir .
 }
 
-echo "[devim] generate cscope.out at $PWD"
+echo "[lin-vim] generate cscope.out at $PWD"
 origdir=$PWD
 make_cscope_files .
 cd $origdir

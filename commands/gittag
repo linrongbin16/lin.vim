@@ -58,12 +58,12 @@ fi
 
 git pull --tags
 if [[ $comment ]]; then
-    echo "[devim] git annotated tag: '$tagname', comment: '$comment', path: '$PWD'"
+    echo "[lin-vim] git annotated tag: '$tagname', comment: '$comment', path: '$PWD'"
     lighttag=0
 else
-    echo "[devim] git light tag: '$tagname', path: '$PWD'"
+    echo "[lin-vim] git light tag: '$tagname', path: '$PWD'"
 fi
-echo -n "[devim] yes? "
+echo -n "[lin-vim] yes? "
 makesure
 
 if [[ $lighttag -eq 1 || "$lighttag" == "1" ]]; then

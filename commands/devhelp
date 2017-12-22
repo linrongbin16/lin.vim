@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg() {
     echo "Brief:"
-    echo "    1. overview devim commands"
+    echo "    1. overview commands"
     echo "    2. get help of specified command [type]"
     echo "Usage:"
     echo "    1. $cmdname"

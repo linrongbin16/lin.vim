@@ -22,7 +22,7 @@ if [[ $(uname) == "Linux" ]]; then
     elif cat /etc/*release | grep ^NAME | grep Knoppix 1>/dev/null 2>&1; then
         bash ~/.vim/setup/kanoppix.sh
     else
-        echo "[devim] OS not detected, cannot setup"
+        echo "[lin-vim] OS not detected, cannot setup"
         exit 1;
     fi
 elif [[ $(uname) == "FreeBSD" ]]; then

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[devim] install macOS"
+echo "[lin-vim] install macOS"
 
 
 # Prepare Environment
@@ -54,10 +54,10 @@ if [[ -d /Library/Java/JavaVirtualMachines ]]; then
         sudo echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $DEVIMRC
         sudo echo "export PATH=\$JAVA_HOME:\$PATH" >> $DEVIMRC
     else
-        echo "[devim] WARNING: no \$JAVA_HOME is found"
+        echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
     fi
 else
-    echo "[devim] WARNING: no \$JAVA_HOME is found"
+    echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
 fi
 echo "alias l=\"ls -la\"" >> $DEVIMRC
 echo "alias ll=\"ls -l\"" >> $DEVIMRC
@@ -73,7 +73,7 @@ source ~/.bashrc 1>/dev/null 2>&1
 
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/.vim/devim.vim ~/.vimrc
+cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim +silent! +PluginInstall! +qall
 cd ~/.vim/bundle/YouCompleteMe
 python install.py --clang-completer --gocode-completer --tern-completer
@@ -81,7 +81,7 @@ python install.py --clang-completer --gocode-completer --tern-completer
 if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 else
-    echo "[devim] oh-my-zsh already installed"
+    echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
 sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$

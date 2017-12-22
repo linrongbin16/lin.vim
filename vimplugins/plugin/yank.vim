@@ -1,2 +1,2 @@
-vnoremap zy :w! ~/.devimyanks<CR>
-nnoremap zp :r ~/.devimyanks<CR>
+vnoremap zy :w! ~/.vimyanks<CR>
+nnoremap zp :r ~/.vimyanks<CR>

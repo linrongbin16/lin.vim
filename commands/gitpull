@@ -24,6 +24,6 @@ if ! git status 1>/dev/null 2>&1; then
 fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
-echo "[devim] git pull on branch: '$branch', path: '$PWD'"
+echo "[lin-vim] git pull on branch: '$branch', path: '$PWD'"
 git pull origin $branch
 git pull --tags

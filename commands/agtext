@@ -18,6 +18,6 @@ if [[ $# -lt 1 ]]; then
 fi
 
 text=$@
-ignore=/usr/local/bin/devim/commands/.ignore
+ignore=~/.vim/commands/.ignore
 
 ag --smart-case --depth -1 -p $ignore "$text" .

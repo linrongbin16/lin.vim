@@ -43,5 +43,5 @@ make_ctags() {
     fi
 }
 
-echo "[devim] generate tags for $lang language at $PWD"
+echo "[lin-vim] generate tags for $lang language at $PWD"
 make_ctags .

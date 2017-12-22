@@ -30,7 +30,7 @@ while [[ ! -d ".git" ]]; do
     cd ..
 done
 
-echo "[devim] update $PWD/.gitignore"
+echo "[lin-vim] update $PWD/.gitignore"
 touch .gitignore
 echo "" >> .gitignore
 
