@@ -7,7 +7,7 @@ def helpmsg():
     print("Brief:")
     print("    find [text] of current directory recursively")
     print("Usage:")
-    print("    $cmdname [text]")
+    print("    %s [text]" % (cmdname))
     echo "Try again"
     echo ""
 
