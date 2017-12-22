@@ -46,7 +46,6 @@ install_manifest.txt
 *.la
 *.a
 *.lib
-*.exe
 *.out
 *.app
 *.xcuserdata
@@ -85,7 +84,6 @@ install_manifest.txt
 *.la
 *.a
 *.lib
-*.exe
 *.out
 *.app
 *.xcuserdata

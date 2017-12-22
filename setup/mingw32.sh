@@ -27,7 +27,7 @@ source ~/.bashrc 1>/dev/null 2>&1
 
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/.vim/devim.vim ~/.vimrc
+cp ~/.vim/lin-vim.vimrc ~/_vimrc
 vim +silent! +PluginInstall! +qall
 cd ~/.vim/bundle/YouCompleteMe
 python install.py --clang-completer --gocode-completer --tern-completer
