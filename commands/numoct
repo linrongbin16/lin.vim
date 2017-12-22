@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "help: transform decimal number and octal number"
+    echo "usage: $cmdname [number] [option=to]"
+    echo "option:"
+    echo "  to/t    from decimal to octal"
+    echo "  from/f  from octal to decimal"
+    echo "try again"
+}
+
+# error 1: no parameter
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+number=$1
+decto=1
+
+if [[ $# -gt 1 ]]; then
+    param=$2
+    if [[ $param == "from" || $param == "FROM" || $param == "F" || $param == "f" ]]; then
+        decto=0
+    fi
+fi
+
+if [[ $decto -eq 1 || "$decto" == "1" ]]; then
+    echo "ibase=10;obase=8; $number" | bc
+else
+    echo "ibase=8;obase=12; $number" | bc
+fi

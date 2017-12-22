@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg () {
+    echo "Brief:"
+    echo "    set git global user and email"
+    echo "Usage:"
+    echo "    $cmdname [username] [email]"
+    echo "Try again"
+    echo ""
+}
+
+
+if [[ $# -lt 2 ]]; then
+    echo "error: missing parameters"
+    helpmsg
+    exit 1
+fi
+
+username="$1"
+useremail="$2"
+
+git config --global user.name "$username"
+git config --global user.email "$useremail"

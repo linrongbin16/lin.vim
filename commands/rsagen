@@ -1,0 +1,91 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+confirm=0
+
+helpmsg() {
+    echo "Brief:"
+    echo "    generate ~/.ssh/id_rsa, ~/.ssh/id_rsa.pub for [useremail]"
+    echo "Usage:"
+    echo "    $cmdname [useremail]"
+    echo "Try again"
+    echo ""
+}
+
+makesure() {
+    read yes
+    confirm=0
+    if [[ $yes == "yes" ]]; then
+        confirm=1
+    fi
+    if [[ $yes == "Yes" ]]; then
+        confirm=1
+    fi
+    if [[ $yes == "Y" ]]; then
+        confirm=1
+    fi
+    if [[ $yes == "y" ]]; then
+        confirm=1
+    fi
+    if [[ $confirm -eq 0 || "$confirm" == "0" ]]; then
+        echo "error: user not confirm"
+        exit 1
+    fi
+}
+
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+myemail=$1
+
+# overwrite id_rsa id_rsa.pub
+if [[ ! -d ~/.ssh ]]; then
+    mkdir -p ~/.ssh
+fi
+
+if [[ -f ~/.ssh/id_rsa || -f ~/.ssh/id_rsa.pub ]]; then
+    echo -n "[devim] id_rsa or id_rs.pub already exist, overwrite? "
+    makesure
+    if [[ -f ~/.ssh/id_rsa ]]; then
+        mv ~/.ssh/id_rsa ~/.ssh/id_rsa.bak
+    fi
+    if [[ -f ~/.ssh/id_rsa.pub ]]; then
+        mv ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub.bak
+    fi
+fi
+
+touch ~/.ssh/known_hosts
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 -R ~/.ssh
+
+echo "[devim] generate id_rsa for \"$myemail\", type ENTER if you don't need passphrase"
+ssh-keygen -t rsa -b 4096 -C "$myemail"
+echo ""
+echo "[devim] your ~/.ssh/id_rsa.pub:"
+cat ~/.ssh/id_rsa.pub
+
+
+# (1) 为github创建免密码登录
+# $ ssh-keygen -t rsa -b 4096 -C “myemail@gmail.com”
+#  Generating public/private rsa key pair.
+#  Enter file in which to save the key (~/.ssh/id_rsa):
+#  Enter passphrase (empty for no passphrase):
+#  Enter same passphrase again:
+# 生成的公钥为~/.ssh/id_rsa.pub，私钥为~/.ssh/id_rsa
+# Mac上将id_rsa.pub保存到剪贴板
+# $ pbcopy < ~/.ssh/id_rsa.pub
+# Linux上将id_rsa.pub保存到剪贴板
+# $ xclip -sel clip < ~/.ssh/id_rsa.pub
+# Win上将id_rsa.pub保存到剪贴板
+# $ clip < ~/.ssh/id_rsa.pub
+# 将公钥保存到github账户的new key，注意key的title用设备名，即可免密码登录账户。
+# 参考https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+
+# (2) 为linux创建免密码登录
+# 使用(1)中创建的id_rsa.pub和id_rsa，将id_rsa.pub上传到linux服务器的对应账户的~/.ssh中，执行：
+# cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+# chmod 600 ~/.ssh/authorized_keys
+# chmod 700 -R ~/.ssh
+# 测试ssh登录不需要密码: ssh localhost

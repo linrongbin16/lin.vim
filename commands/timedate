@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "Brief:"
+    echo "    transform [utc]-timestamp(seconds) to readable datetime"
+    echo "Usage:"
+    echo "    $cmdname [utc]"
+    echo "Try again"
+    echo ""
+}
+
+# error: missing parameter
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+utc=$1
+
+date -r "$utc" "+%Y-%m-%d %H:%M:%S"

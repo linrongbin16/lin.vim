@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "help: ssh login with zsh"
+    echo "usage: $cmdname [hostname/ipaddress]"
+    echo "try again"
+}
+
+# error 1: no host name
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+hostname=$1
+
+echo "[zhvimrc] ssh to $username@$hostname"
+ssh $username@$hostname -t zsh

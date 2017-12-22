@@ -1,0 +1,70 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "Brief:"
+    echo "    1. kill process by [name]"
+    echo "    2. kill process by [pid]"
+    echo "Usage:"
+    echo "    1. $cmdname [name]"
+    echo "    2. $cmdname [pid]"
+    echo "Try again"
+    echo ""
+}
+
+makesure() {
+    read yes
+    confirm=0
+    if [[ $yes == "yes" ]]; then
+        confirm=1
+    fi
+    if [[ $yes == "Yes" ]]; then
+        confirm=1
+    fi
+    if [[ $yes == "Y" ]]; then
+        confirm=1
+    fi
+    if [[ $yes == "y" ]]; then
+        confirm=1
+    fi
+    if [[ $confirm -eq 0 || "$confirm" == "0" ]]; then
+        echo "error: user not confirm"
+        exit 1
+    fi
+}
+
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+proc=$1
+ispid=0
+
+if [[ $proc =~ ^[0-9]+$ ]]; then
+    ispid=1
+fi
+
+if [[ $ispid -eq 1 ]]; then
+    procline=$(ps aux | grep $proc | head -n 1)
+    oneproc=$(echo -e $procline | awk '{print $2}')
+    procpid=$proc
+    if [[ "$oneproc" == "$proc" || $oneproc -eq $proc ]]; then
+        echo -n "[devim] kill process - $procline, yes? "
+        makesure
+    fi
+else
+    procline=$(ps aux | grep $proc | head -n 1)
+    procpid=$(echo -e $procline | awk '{print $2}')
+    procname1=$(echo -e $procline | awk '{print $11}')
+    procname2=$(echo -e $procline | awk '{print $12}')
+    procname1=${procname1%.*}
+    procname2=${procname2%.*}
+    procname1=${procname1##*/}
+    procname2=${procname2##*/}
+    if [[ ${procname1} == ${proc} || ${procname2} == ${proc} ]]; then
+        echo -n "[devim] kill process - $procline, yes? "
+        makesure
+    fi
+fi

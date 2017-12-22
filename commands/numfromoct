@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "Brief:"
+    echo "    transform [number] from 2-binary to 8-octal"
+    echo "Usage:"
+    echo "    $cmdname [number]"
+    echo "Try again"
+    echo ""
+}
+
+# error 1: no parameter
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+number=$1
+echo "ibase=8;obase=12; $number" | bc
