@@ -16,7 +16,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/vimfiler.vim', { 'on': [] } | call plug#load('vimfiler.vim')
 "Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'MD'] }
 
