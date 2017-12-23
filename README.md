@@ -17,15 +17,19 @@ It is for anyone intending to use VIM for development running equally well on Wi
 
 ### Windows Installation
 
-Windows need these software as dependencies. Make sure they're available in `%PATH%`:
-1. [git](https://git-scm.com/), curl
-2. [vim for Windows](https://tuxproject.de/projects/vim/)
-3. [Visual Studio](https://www.visualstudio.com/)
-4. [cmake](https://cmake.org/)
-5. [node](https://nodejs.org/), npm
+Install lin-vim on Windows mannually:
+1. Install [Git](https://git-scm.com/), **Use Git from Windows Command Prompt**, this will enable UNIX command on *CMD*, include *Curl* and *Git*.
+2. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *GVim* to *PATH* mannually.
+3. Install [CMake](https://cmake.org/), choose *Add CMake to PATH for ALL Users*.
+4. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
+5. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
+6. Install [Visual Studio](), it's recommended that use previous version since *YouCompleteMe* need time supporting the Newest VS.
+7. Add `%HOMEPATH%\.vim\commands` to PATH.
 
 ```bash
-    git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim && cd %HOMEPATH%/.vim && cmd install.bat
+    git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
+    cd %HOMEPATH%/.vim
+    install.bat
 ```
 
 Mannually install *guifonts/WINMONACO.TTF* font for *GVim*.

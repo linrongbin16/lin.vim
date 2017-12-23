@@ -1,7 +1,4 @@
-"" ------------------- Vimrc for Developer -------------------
-
-
-"" ---- plugin configure ----
+"" lin-vim
 source ~/.vim/settings/vim-plug.vim
 source ~/.vim/settings/cscope_maps.vim
 source ~/.vim/settings/vim-gitgutter.vim
