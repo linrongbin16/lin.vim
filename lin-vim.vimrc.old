@@ -2,7 +2,7 @@
 
 
 "" ---- plugin configure ----
-source ~/.vim/vimplugins/plugin/vim-plug.vim
+source ~/.vim/vimplugins/plugin/vundle.vim
 source ~/.vim/vimplugins/plugin/cscope_maps.vim
 source ~/.vim/vimplugins/plugin/vim-gitgutter.vim
 source ~/.vim/vimplugins/plugin/ctags.vim

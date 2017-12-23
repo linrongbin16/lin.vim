@@ -89,3 +89,5 @@ install_manifest.txt
 *.xcuserdata
 *.powerline-fonts
 .powerline-fonts
+autoload
+plugged
