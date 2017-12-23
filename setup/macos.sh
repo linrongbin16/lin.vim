@@ -40,7 +40,8 @@ else
     echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
-sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
+cp ~/.vim/setup/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme/
+sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"lin-agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
 mv ~/.zshrc.temp.$$ ~/.zshrc
 
 # Powerline-Fonts
