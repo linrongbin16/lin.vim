@@ -5,19 +5,21 @@ import sys
 import os
 
 
-cmdname = sys.argv[0]
+CMD_NAME = sys.argv[0]
 
 
 def helpmsg():
+    '''print command message'''
     print("Brief:")
     print("    count [text] of current directory recursively")
     print("Usage:")
-    print("    %s [text]" % cmdname)
+    print("    %s [text]" % CMD_NAME)
     print("Try again")
     print("")
 
 
 def all_param():
+    '''prepare all parameters'''
     text = ""
     for i in xrange(len(sys.argv)-1):
         text = text + sys.argv[i+1]
