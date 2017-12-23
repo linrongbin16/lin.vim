@@ -9,7 +9,7 @@
 
 
 
-lin-vim is a distribution of vim configurations, plugins and commands for Vim, Gvim.
+Lin-Vim is a distribution of Vim and DevTools.
 
 It is for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
@@ -18,20 +18,26 @@ It is for anyone intending to use VIM for development running equally well on Wi
 ### Windows Installation
 
 Windows need these software as dependencies. Make sure they're available in `%PATH%`:
-1. [Git]()
-2. [Vim for Windows]()
-3. [Visual Studio]()
-4. [CMake]()
+1. [git](https://git-scm.com/), curl
+2. [vim for Windows](https://tuxproject.de/projects/vim/)
+3. [Visual Studio](https://www.visualstudio.com/)
+4. [cmake](https://cmake.org/)
+5. [node](https://nodejs.org/), npm
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim && cd %HOMEPATH%/.vim && cmd install.bat
 ```
+
+Mannually install *guifonts/WINMONACO.TTF* font for *GVim*.
 
 ### Linux, UNIX, MacOS Installation
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
+
+Mannually install *guifonts/Monaco.ttf* and *guifonts/Monaco-for-Powerline.tty* font.
+Choose *Fonts -> Monaco-Powerline* to support *Oh-My-Zsh Theme Agnoster*.
 
 # A highly optimized .vimrc config file
 

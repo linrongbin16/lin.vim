@@ -24,8 +24,10 @@ brew install nodejs npm bc unzip unrar mariadb
 brew tap caskroom/versions
 brew cask install java8
 brew install python python3
-sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted
+sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted autopep8
+sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted autopep8
+npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-beautify remark-cli
+
 
 # Vim Plugin
 mkdir -p ~/.vim/bundle

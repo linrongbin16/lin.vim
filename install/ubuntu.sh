@@ -15,7 +15,7 @@ sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 sudo apt-get install build-essential net-tools sysstat -y
 sudo apt-get install git vim vim-gtk curl wget zsh apport unzip unrar -y
-sudo apt-get install gcc g++ autoconf automake cmake bc -y
+sudo apt-get install gcc g++ autoconf automake cmake bc clang-format -y
 sudo apt-get install openssh-server libssl-dev libcrypto++-dev -y
 sudo apt-get install default-jdk maven gradle mariadb-client mariadb-server -y
 sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
@@ -23,8 +23,9 @@ sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python python-dev python-pip -y
 sudo apt-get install python3 python3-dev python3-pip -y
-sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL requests Scrapy Twisted
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL requests Scrapy Twisted
+sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
+sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
+npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-beautify remark-cli
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y

@@ -21,8 +21,8 @@ def helpmsg():
 def all_param():
     '''prepare all parameters'''
     text = ""
-    for i in xrange(len(sys.argv)-1):
-        text = text + sys.argv[i+1]
+    for i in xrange(len(sys.argv) - 1):
+        text = text + sys.argv[i + 1]
         if i != len(sys.argv) - 1:
             text = text + " "
     return text
