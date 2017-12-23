@@ -61,7 +61,7 @@ Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
 Plug 'shawncplus/phpcomplete.vim', { 'for': ['php'] }
 " 4     haskell
-Plug 'neovimhaskell/haskell-vim', { 'for', ['hs']}
+Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
 " 4     rust
 "Plug 'rust-lang/rust.vim'
 "Plug 'phildawes/racer'
