@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" 1. Tools
 "Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'godlygeek/tabular'
@@ -15,6 +14,7 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-repeat'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
+
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', { 'on': [] } | call plug#load('vimfiler.vim')
 "Plug 'scrooloose/nerdtree'
@@ -31,6 +31,7 @@ Plug 'honza/vim-snippets'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
+
 
 " 4 Programming Languages
 " 4     bash shell

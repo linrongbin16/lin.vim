@@ -33,7 +33,7 @@ mkdir -p ~/.vim/bundle
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim +silent! +PlugInstall! +qall
-cd ~/.vim/bundle/YouCompleteMe
+cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --tern-completer
 
 # Oh-My-Zsh

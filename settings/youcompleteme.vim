@@ -6,7 +6,7 @@ let g:ycm_filetype_blacklist = {
 \}
 let g:ycm_path_to_python_interpreter='python'
 let g:ycm_python_binary_path='python'
-let g:ycm_global_ycm_extra_conf='~/.vim/vimplugins/plugin/.ycm_global_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/settings/.ycm_global_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_complete_in_strings=1
 let g:ycm_complete_in_comments=1

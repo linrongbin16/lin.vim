@@ -7,5 +7,5 @@ git clone https://github.com/VundleVim/Vundle.vim.git %HOMEPATH%\.vim\bundle\Vun
 curl -fLo %HOMEPATH%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp %HOMEPATH%/.vim/lin-vim-win32.vimrc %HOMEPATH%\_vimrc
 vim +silent! +PlugInstall! +qall
-cd %HOMEPATH%\.vim\bundle\YouCompleteMe
+cd %HOMEPATH%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer
