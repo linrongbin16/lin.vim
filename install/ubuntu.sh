@@ -68,7 +68,6 @@ mkdir -p ~/devops/practice
 mkdir -p ~/devops/project
 echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> $DEVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $DEVIMRC
-echo "export PATH=\$PATH:\$GOPATH/bin" >> $DEVIMRC
 echo "alias l=\"ls -la\"" >> $DEVIMRC
 echo "alias ll=\"ls -l\"" >> $DEVIMRC
 echo "ulimit -c unlimited" >> $DEVIMRC
