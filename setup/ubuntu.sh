@@ -5,14 +5,16 @@ echo "[lin-vim] Install for Ubuntu"
 # Prepare Environment
 DEVIMRC=~/.devimrc
 touch $DEVIMRC
+touch ~/.zshrc
+touch ~/.bashrc
 
 ## Software
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-sudo apt-get install build-essential net-tools -y
-sudo apt-get install git vim vim-gtk curl wget zsh apport unzip unrar sysstat -y
+sudo apt-get install build-essential net-tools sysstat -y
+sudo apt-get install git vim vim-gtk curl wget zsh apport unzip unrar -y
 sudo apt-get install gcc g++ autoconf automake cmake bc -y
 sudo apt-get install openssh-server libssl-dev libcrypto++-dev -y
 sudo apt-get install default-jdk maven gradle mariadb-client mariadb-server -y
@@ -44,12 +46,10 @@ else
     echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
-cp ~/.vim/setup/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme/
-sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"lin-agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
+sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
 mv ~/.zshrc.temp.$$ ~/.zshrc
 
 # Powerline-Fonts
-if 0; then
 if [[ ! -d ~/.vim/.powerline-fonts ]]; then
     git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
 else
@@ -58,7 +58,6 @@ else
 fi
 cd ~/.vim/.powerline-fonts
 ./install.sh
-fi
 
 # Variable 
 mkdir -p ~/.ssh

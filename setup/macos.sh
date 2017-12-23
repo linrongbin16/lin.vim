@@ -7,6 +7,8 @@ echo "[lin-vim] Install for MacOS"
 
 DEVIMRC=~/.devimrc
 touch $DEVIMRC
+touch ~/.zshrc
+touch ~/.bashrc
 
 # Software
 if ! type "brew" > /dev/null; then
@@ -40,8 +42,7 @@ else
     echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
-cp ~/.vim/setup/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme/
-sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"lin-agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
+sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
 mv ~/.zshrc.temp.$$ ~/.zshrc
 
 # Powerline-Fonts
