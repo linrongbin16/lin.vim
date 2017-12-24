@@ -109,9 +109,9 @@ if has("gui_running")
 endif
 "gvim下字体
 if has("win32")
-    set guifont=FreeMono:h10
-    set guifont=Courier\ New:h10
-    set guifont=Monaco:h10
+    set guifont=FreeMono:h11
+    set guifont=Courier\ New:h11
+    set guifont=Monaco:h11
 elseif has("mac")
     set guifont=Monaco:h14
     "set guifont=Apple\ Color\ Emoji:h14

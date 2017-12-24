@@ -35,6 +35,7 @@ Plug 'Chiel92/vim-autoformat'
 if has("win32")
     Plug 'davidhalter/jedi-vim'
     Plug 'ervandew/supertab'
+    Plug 'Shougo/neocomplete.vim'
 else
     Plug 'Valloric/YouCompleteMe'
 endif

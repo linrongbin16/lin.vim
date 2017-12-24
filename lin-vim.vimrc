@@ -19,7 +19,9 @@ source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/ale.vim
 source $HOME/.vim/settings/vim-gutentags.vim
 source $HOME/.vim/settings/yank.vim
-" source $HOME/.vim/settings/close_hidden_buffer.vim
+source $HOME/.vim/settings/neocomplete.vim
+source $HOME/.vim/settings/jedi-vim.vim
+source $HOME/.vim/settings/close_hidden_buffer.vim
 source $HOME/.vim/settings/cpp.vim
 source $HOME/.vim/settings/python.vim
 source $HOME/.vim/settings/json.vim
