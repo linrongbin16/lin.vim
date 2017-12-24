@@ -36,6 +36,3 @@ endfunction
 
 nmap <F8> :VimFilerExplorer<cr>:call AdjustVimFilerWidth()<cr>
 nmap <Leader>vf :VimFilerExplorer<cr>:call AdjustVimFilerWidth()<cr>
-
-"" open vimfiler when start
-" autocmd VimEnter * if !argc() | VimFiler | endif

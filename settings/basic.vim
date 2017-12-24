@@ -87,12 +87,7 @@ source $VIMRUNTIME/menu.vim
 "win下gvim处理Consle输出乱码
 language messages en_US.utf-8
 
-"Ctrl+hjkl在不同窗口下移动光标
-"与neosnippet快捷键冲突
-" nmap <C-H> <C-w>h
-" nmap <C-J> <C-w>j
-" nmap <C-K> <C-w>k
-" nmap <C-L> <C-w>l
+" fix bug
 map Q <Nop>
 
 "不要设置completeopt=preview
@@ -154,7 +149,7 @@ set foldenable
 set foldmethod=indent
 set foldnestmax=10
 set foldlevel=10
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR> 
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 "语法高亮
 syntax on
 syntax enable
