@@ -1,2 +1,2 @@
 @echo off
-python agfile.py %*
+python %HOMEPATH%\.vim\commands\agfile.py %*
