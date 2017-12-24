@@ -104,8 +104,8 @@ set completeopt=menu
 set number
 set numberwidth=5
 if has("gui_running")
-    set lines=99999
-    set columns=220
+    set lines=45
+    set columns=160
 endif
 "gvim下字体
 if has("win32")
