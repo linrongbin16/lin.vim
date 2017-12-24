@@ -36,6 +36,7 @@ if has("win32")
     Plug 'davidhalter/jedi-vim'
     Plug 'ervandew/supertab'
     Plug 'Shougo/neocomplete.vim'
+    Plug 'Rip-Rip/clang_complete'
 else
     Plug 'Valloric/YouCompleteMe'
 endif

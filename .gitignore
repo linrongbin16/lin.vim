@@ -45,3 +45,4 @@ install_manifest.txt
 .powerline-fonts
 autoload
 plugged
+*.exe
