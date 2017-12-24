@@ -9,7 +9,7 @@
 
 
 
-Lin-Vim is a distribution of Vim and DevTools.
+lin-vim is a distribution of Vim and DevTools.
 
 It is for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
