@@ -1,6 +1,6 @@
 set nocompatible
 filetype off
-let &runtimepath.=',~/.vim/bundle/ale'
+let &runtimepath.=',~/.vim/plugged/ale'
 filetype plugin on
 
 let g:ale_sign_error = '>>'

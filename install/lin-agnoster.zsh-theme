@@ -31,7 +31,7 @@ if [[ -z "$PRIMARY_FG" ]]; then
 fi
 
 # Characters
-SEGMENT_SEPARATOR="►"
+SEGMENT_SEPARATOR=">"
 PLUSMINUS="*"
 BRANCH="$"
 DETACHED="÷"
