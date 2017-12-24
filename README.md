@@ -31,9 +31,9 @@ Install lin-vim on Windows mannually:
 3. Install [CMake](https://cmake.org/), choose *Add CMake to PATH for ALL Users*.
 4. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
 5. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
-6. Install [Visual Studio](https://www.visualstudio.com/), it's recommended that use a previous version since *YouCompleteMe* need time supporting the Newest VS.
 7. Add `%HOMEPATH%\.vim\commands` to PATH mannually.
-8. Mannually install *WINMONACO.TTF* and *Monaco-for-Powerline.tty* font in *guifonts*. It's highly suggested that use [Cmder](http://cmder.net/) with *Monaco-for-Powerline.tty* instead original *CMD*.
+8. Mannually install *WINMONACO.TTF*, It's highly suggested that use [Cmder](http://cmder.net/) with *WINMONACO.TTF* instead original *CMD*.
+9. Install [Lua](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` that match the *Vim* built lua version.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim

@@ -54,6 +54,7 @@ Plug 'mxw/vim-jsx', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'posva/vim-vue', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'burnettk/vim-angular', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 " python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " golang
