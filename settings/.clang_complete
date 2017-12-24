@@ -1,0 +1,5 @@
+-std=c++11
+-I./
+-I../
+-I/usr/include
+-I/usr/include/c++/*/

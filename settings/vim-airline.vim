@@ -1,2 +1,1 @@
-" ---- AirLine ----
-let g:airline#extension#tabline#enabled = 1
+"let g:airline#extension#tabline#enabled = 1
