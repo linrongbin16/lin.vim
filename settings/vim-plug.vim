@@ -32,7 +32,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 " c++/python
-Plug 'Valloric/YouCompleteMe'
+if has("win32")
+    Plug 'davidhalter/jedi-vim'
+    Plug 'ervandew/supertab'
+else
+    Plug 'Valloric/YouCompleteMe'
+endif
 " java
 Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java', 'Java'] }
 " html/css
