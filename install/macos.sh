@@ -20,17 +20,15 @@ brew install curl wget clang gcc g++ autoconf automake cmake
 brew install openssh openssl cryptopp
 brew install git vim macvim zsh maven gradle
 brew install cscope the_silver_searcher ctags
-brew install nodejs npm bc unzip unrar mariadb
+brew install nodejs npm bc unzip unrar
 brew tap caskroom/versions
 brew cask install java8
-brew install python python3
-sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted autopep8
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests Scrapy Twisted autopep8
+brew install python
+sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8
 npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-beautify remark-cli
 
-
 # Vim Plugin
-mkdir -p ~/.vim/bundle
+# mkdir -p ~/.vim/bundle
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
@@ -45,6 +43,7 @@ else
     echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
+cp ~/.vim/install/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme
 sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
 mv ~/.zshrc.temp.$$ ~/.zshrc
 
@@ -59,6 +58,8 @@ cd ~/.vim/.powerline-fonts
 ./install.sh
 
 # Variable 
+cd ~/.vim/commands
+chmod +x *
 mkdir -p ~/.ssh
 mkdir -p ~/devops
 mkdir -p ~/devops/practice

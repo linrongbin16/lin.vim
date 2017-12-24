@@ -31,16 +31,13 @@ if [[ -z "$PRIMARY_FG" ]]; then
 fi
 
 # Characters
-SEGMENT_SEPARATOR=""
-# SEGMENT_SEPARATOR="▶"
-# SEGMENT_SEPARATOR=">"
-PLUSMINUS="±"
-BRANCH="⬆"
-DETACHED="⇨"
+SEGMENT_SEPARATOR="►"
+PLUSMINUS="*"
+BRANCH="$"
+DETACHED="÷"
 CROSS="✗"
-LIGHTNING="↯"
-GEAR="⚙"
-GEARBAK="⛭"
+LIGHTNING="z"
+GEAR="⛭"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,

@@ -9,31 +9,27 @@ touch ~/.zshrc
 touch ~/.bashrc
 
 ## Software
+sudo add-apt-repository ppa:jonathonf/vim -y
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-sudo apt-get install build-essential net-tools sysstat -y
 sudo apt-get install git vim vim-gtk curl wget zsh apport unzip unrar -y
 sudo apt-get install gcc g++ autoconf automake cmake bc clang-format -y
-sudo apt-get install openssh-server libssl-dev libcrypto++-dev -y
-sudo apt-get install default-jdk maven gradle mariadb-client mariadb-server -y
+sudo apt-get install libssl-dev libcrypto++-dev -y
+sudo apt-get install default-jdk maven gradle -y
 sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
 sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python python-dev python-pip -y
-sudo apt-get install python3 python3-dev python3-pip -y
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
 npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-beautify remark-cli
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-sudo service ssh start
-sudo service mysql start
 
 # Vim Plugins
-mkdir -p ~/.vim/bundle
+# mkdir -p ~/.vim/bundle
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
@@ -48,6 +44,7 @@ else
     echo "[lin-vim] oh-my-zsh already installed"
 fi
 cp ~/.zshrc ~/.zshrc.old
+cp ~/.vim/install/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme
 sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
 mv ~/.zshrc.temp.$$ ~/.zshrc
 
@@ -62,6 +59,8 @@ cd ~/.vim/.powerline-fonts
 ./install.sh
 
 # Variable 
+cd ~/.vim/commands
+chmod +x *
 mkdir -p ~/.ssh
 mkdir -p ~/devops
 mkdir -p ~/devops/practice
@@ -76,4 +75,3 @@ echo "source $DEVIMRC" >> ~/.bashrc
 source $DEVIMRC 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
-
