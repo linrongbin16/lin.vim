@@ -65,18 +65,14 @@ Plugin 'solarnz/thrift.vim'
 " 4     php
 Plugin 'StanAngeloff/php.vim'
 Plugin 'shawncplus/phpcomplete.vim'
-" 4     cocoa/objective-c
-"Plugin 'msanders/cocoa.vim'
 " 4     haskell
 Plugin 'neovimhaskell/haskell-vim'
-" 4     idris
-"Plugin 'idris-hackers/idris-vim'
 " 4     rust
-"Plugin 'rust-lang/rust.vim'
-"Plugin 'phildawes/racer'
+Plugin 'rust-lang/rust.vim'
+Plugin 'phildawes/racer'
 " 4     ruby
-"Plugin 'vim-ruby/vim-ruby'
-"Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
 " 4     scala
 Plugin 'derekwyatt/vim-scala'
 " 4     maven

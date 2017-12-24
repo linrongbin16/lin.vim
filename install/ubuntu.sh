@@ -34,7 +34,7 @@ cp ~/.vim/lin-vim.vimrc ~/.vimrc
 # vim +silent! +PlugInstall +qall
 vim -c "source ~/.vim/settings/vim-plug.vim" -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --tern-completer
+python install.py --clang-completer --js-completer
 
 # Oh-My-Zsh
 if [ ! -d ~/.oh-my-zsh ]; then

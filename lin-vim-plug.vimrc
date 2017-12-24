@@ -1,8 +1,8 @@
 "" lin-vim
-source ~/.vim/settings/vundle.vim
-source ~/.vim/settings/cscope_maps.vim
-source ~/.vim/settings/vim-gitgutter.vim
-source ~/.vim/settings/ctags.vim
+source $HOME/.vim/settings/vim-plug.vim
+source $HOME/.vim/settings/cscope_maps.vim
+source $HOME/.vim/settings/vim-gitgutter.vim
+source $HOME/.vim/settings/ctags.vim
 source ~/.vim/settings/cscope.vim
 source ~/.vim/settings/ag.vim
 source ~/.vim/settings/youcompleteme.vim
@@ -19,7 +19,7 @@ source ~/.vim/settings/python-syntax.vim
 source ~/.vim/settings/ale.vim
 source ~/.vim/settings/vim-gutentags.vim
 source ~/.vim/settings/yank.vim
-source ~/.vim/settings/close_hidden_buffer.vim
+" source ~/.vim/settings/close_hidden_buffer.vim
 source ~/.vim/settings/cpp.vim
 source ~/.vim/settings/python.vim
 source ~/.vim/settings/json.vim
