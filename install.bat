@@ -5,4 +5,5 @@ echo ""
 
 cd %HOMEPATH%\.vim
 git pull origin master
-install\win32.bat
+cd install
+win32.bat

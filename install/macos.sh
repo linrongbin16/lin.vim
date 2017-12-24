@@ -30,7 +30,8 @@ npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-bea
 # Vim Plugin
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
-vim +silent! +PlugInstall! +qall
+# vim +silent! +PlugInstall! +qall
+vim -c "source ~/.vim/settings/vim-plug.vim" -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --tern-completer
 
