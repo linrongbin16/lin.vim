@@ -16,5 +16,5 @@ if len(sys.argv) <= 1:
 
 ignore = "~/.vim/commands/ag.ignore"
 if sys.platform[0:3] == "win":
-    ignore = "%HOMEPATH%\\.vim\\commands\\ag.ignore"
+    ignore = "C:\\%HOMEPATH%\\.vim\\commands\\ag.ignore"
 os.system("ag -l --smart-case --depth -1 -p %s \"%s\" ." % (ignore, util.get_parameter()))
