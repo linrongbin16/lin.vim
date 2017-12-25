@@ -3,12 +3,13 @@
 set runtimepath+=$HOME/.vim
 
 set nocompatible
+
+" windows
 set fileformats=unix,dos,mac
 if has("gui_running")
     source $VIMRUNTIME/mswin.vim
     behave mswin
 endif
-
 if has("win32")
     "source $VIMRUNTIME/vimrc_example.vim
     source $VIMRUNTIME/mswin.vim
@@ -39,74 +40,28 @@ if has("win32")
     endfunction
 endif
 
-"显示命令
+" display
 set showcmd
 set hlsearch
-"退格键能够换行
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set wrap
-"共享剪贴板
 set clipboard+=unnamed 
-"当文件被改动时自动载入
-set autoread
-set autowrite
-set ruler
-set magic
-"可以使用鼠标
-set mouse=a 
-set selection=exclusive 
-set selectmode=mouse,key 
-"括号匹配
-set showmatch
-"大小写敏感
-set noignorecase
-set laststatus=2 
-"侦测文件类型
-filetype on
-"允许插件
-filetype plugin on
-filetype indent on
-set nobackup
-set noswapfile
-set nowritebackup
-
-"vim程序内部的编码
-set encoding=utf-8 
-"vim打开的文件自身的编码 
-"若该编码与encoding不一致则vim将文件所用的编码转化为自身的encoding
-set fileencoding=utf-8
-"打开文件时vim按照该列表中的编码顺序进行解码 若匹配成功就用该编码进行解码
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
-"终端使用的文本编码 即当vim把文本内容输出到终端时使用的编码
-"该编码应该指定为vim所在的操作系统的终端的编码 linux为utf-8 windows下为gbk
-set termencoding=utf-8
-
-"win下gvim处理菜单及右键菜单乱码
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-"win下gvim处理Consle输出乱码
-language messages en_US.utf-8
-
-" fix bug
-map Q <Nop>
-
-"不要设置completeopt=preview
-"代码补全时不要出现额外的窗口
-set completeopt=menu
-
-
-"行号
 set number
 set numberwidth=5
 if has("gui_running")
-    set lines=45
+    set lines=40
     set columns=160
+    "gvim工具栏
+    set guioptions-=T
+    "gvim菜单栏
+    " set guioptions-=m
 endif
-"gvim下字体
+
+" fonts
 if has("win32")
-    set guifont=FreeMono:h11
-    set guifont=Courier\ New:h11
-    set guifont=Monaco:h11
+    set guifont=FreeMono:h10
+    set guifont=Courier\ New:h10
+    set guifont=Monaco:h10
 elseif has("mac")
     set guifont=Monaco:h14
     "set guifont=Apple\ Color\ Emoji:h14
@@ -115,58 +70,86 @@ else
     set guifont=Courier\ New\ 10
     set guifont=Monaco\ 11
 endif
-"gvim工具栏
-set guioptions-=T
-"gvim菜单栏
-" set guioptions-=m
-"光标移动到buffer的顶部和底部时保持1行距离
-set scrolloff=1
-
-"禁止声音
-"不响警铃
-set noerrorbells
-set novisualbell
-"关闭visual bell
-set visualbell t_vb=  
-"关闭beep
-au GuiEnter * set t_vb= 
-
-"缩进
-set cindent
-set smartindent
-set autoindent
-
-"space=4
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
-"space=2
-"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-
-
-"空格折叠
-set foldenable
-set foldmethod=indent
-set foldnestmax=50
-set foldlevel=50
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
-"语法高亮
-syntax on
-syntax enable
-
-" whitespace/tab/endline
-" set list
+" white space char
 set list listchars=tab:>-,trail:.,extends:>
-
 set modifiable
 set cursorline
+"set nocursorline
+" cursor position
+set scrolloff=1
 set ttyfast
 set lazyredraw
 set nocursorcolumn
-"set nocursorline
 set norelativenumber
 syntax sync minlines=256
 
+
+" sound
+set noerrorbells
+set novisualbell
+
+
+" file writing
+set autoread
+set autowrite
+set ruler
+set magic
+set showmatch
 " auto reload vimrc
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+
+" encoding
+set encoding=utf-8 
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
+set termencoding=utf-8
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+language messages en_US.utf-8
+
+" mouse
+set mouse=a 
+set selection=exclusive 
+set selectmode=mouse,key 
+
+" plugins
+set noignorecase
+set laststatus=2 
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+syntax enable
+set nobackup
+set noswapfile
+set nowritebackup
+
+" fix bug
+map Q <Nop>
+
+" no more window
+set completeopt=menu
+
+
+" indent
+set cindent
+set smartindent
+set autoindent
+
+
+"tab space
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
+"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+
+
+" fold code
+set foldenable
+set foldmethod=indent
+set foldnestmax=50
+set foldlevel=50
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
+
