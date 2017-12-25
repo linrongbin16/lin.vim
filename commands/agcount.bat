@@ -1,2 +1,2 @@
 @echo off
-python %HOMEPATH%\.vim\commands\agcount.py %*
+python C:\%HOMEPATH%\.vim\commands\agcount.py %*

@@ -2,36 +2,19 @@
 #-*- coding:utf-8 -*-
 
 import sys
+sys.path.append('.')
 import os
-
-
-cmdname = sys.argv[0]
-
-
-def helpmsg():
-    print("Brief:")
-    print("    list files which contain [text] of current directory recursively")
-    print("Usage:")
-    print("    %s [text]" % (cmdname))
-    print("Try again")
-    print("")
-
-
-def get_parameter():
-    text = ""
-    for i in xrange(len(sys.argv)-1):
-        text = text + sys.argv[i+1]
-        if i != len(sys.argv) - 1:
-            text = text + " "
-    return text
+import util
 
 
 # error 1: miss repository parameter
 if len(sys.argv) <= 1:
-    helpmsg()
+    util.helpmsg(
+            "list files which contain [text] of current directory recursively",
+            "%s [text]" % sys.argv[0])
     exit(1)
 
 ignore = "~/.vim/commands/ag.ignore"
 if sys.platform[0:3] == "win":
     ignore = "%HOMEPATH%\\.vim\\commands\\ag.ignore"
-os.system("ag -l --smart-case --depth -1 -p %s \"%s\" ." % (ignore, get_parameter()))
+os.system("ag -l --smart-case --depth -1 -p %s \"%s\" ." % (ignore, util.get_parameter()))
