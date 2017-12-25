@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+@echo off
 echo "[lin-vim] installing Lin Rongbin's Vim Distribution"
 echo ""
 

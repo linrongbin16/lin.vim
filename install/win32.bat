@@ -1,3 +1,4 @@
+@echo off
 echo "[lin-vim] Install for Windows"
 
 rem Vim Plugins

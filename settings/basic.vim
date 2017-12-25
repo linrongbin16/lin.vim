@@ -115,12 +115,14 @@ else
     set guifont=Courier\ New\ 10
     set guifont=Monaco\ 11
 endif
-"gvim下隐藏工具栏
+"gvim工具栏
 set guioptions-=T
-"gvim隐藏菜单栏
+"gvim菜单栏
 " set guioptions-=m
 "光标移动到buffer的顶部和底部时保持1行距离
 set scrolloff=1
+
+"禁止声音
 "不响警铃
 set noerrorbells
 set novisualbell
@@ -134,21 +136,17 @@ set cindent
 set smartindent
 set autoindent
 
-"(1)space=4
+"space=4
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
-"(2)space=2
-"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-"(3)tab=4
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab noexpandtab smarttab
-"(3)tab=2
+"space=2
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 
 "空格折叠
 set foldenable
 set foldmethod=indent
-set foldnestmax=10
-set foldlevel=10
+set foldnestmax=50
+set foldlevel=50
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 "语法高亮
 syntax on
@@ -163,11 +161,11 @@ set cursorline
 set ttyfast
 set lazyredraw
 set nocursorcolumn
-set nocursorline
+"set nocursorline
 set norelativenumber
 syntax sync minlines=256
 
-" auto reload vimrc configure
+" auto reload vimrc
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
