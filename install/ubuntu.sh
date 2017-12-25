@@ -23,7 +23,7 @@ sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python python-dev python-pip -y
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
-npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-beautify remark-cli
+npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
@@ -58,7 +58,7 @@ fi
 cd ~/.vim/.powerline-fonts
 ./install.sh
 
-# Variable 
+# Variable
 cd ~/.vim/commands
 chmod +x *
 mkdir -p ~/.ssh

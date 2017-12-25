@@ -25,7 +25,7 @@ brew tap caskroom/versions
 brew cask install java8
 brew install python
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8
-npm install -g js-beautify standard eslint xo typescript-formatter sass ruby-beautify remark-cli
+npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 
 # Vim Plugin
 curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
