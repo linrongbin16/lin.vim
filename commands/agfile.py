@@ -17,7 +17,7 @@ def helpmsg():
     print("")
 
 
-def all_param():
+def get_parameter():
     text = ""
     for i in xrange(len(sys.argv)-1):
         text = text + sys.argv[i+1]
@@ -32,4 +32,6 @@ if len(sys.argv) <= 1:
     exit(1)
 
 ignore = "~/.vim/commands/ag.ignore"
-os.system("ag -l --smart-case --depth -1 -p %s \"%s\" ." % (ignore, all_param()))
+if sys.platform[0:3] == "win":
+    ignore = "%HOMEPATH%\\.vim\\commands\\ag.ignore"
+os.system("ag -l --smart-case --depth -1 -p %s \"%s\" ." % (ignore, get_parameter()))

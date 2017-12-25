@@ -4,19 +4,18 @@
 import sys
 import os
 
-cmdname = sys.argv[0]
 
 def helpmsg():
-    '''echo help message'''
+    """echo help message"""
     print("Brief:")
     print("    find [text] of current directory recursively")
     print("Usage:")
-    print("    %s [text]" % (cmdname))
+    print("    %s [text]" % (sys.argv[0]))
     print("Try again")
     print("")
 
 def get_parameter():
-    '''get all parameters'''
+    """get all parameters"""
     text = ""
     for i in xrange(len(sys.argv) - 1):
         text = text + sys.argv[i + 1]
@@ -29,5 +28,7 @@ if len(sys.argv) <= 1:
     helpmsg()
     exit(1)
 
-ignore = "~/.vim/commands/.ignore"
+ignore = "~/.vim/commands/ag.ignore"
+if sys.platform[0:3] == "win":
+    ignore = "%HOMEPATH%\\.vim\\commands\\ag.ignore"
 os.system("ag --smart-case --depth -1 -p %s \"%s\" ." % (ignore, get_parameter()))
