@@ -1,6 +1,5 @@
-#! /usr/bin/env bash
-
-cmdname=${0##*/}
+#! /usr/bin/env python
+#-*- coding:utf-8 -*-
 
 helpmsg() {
     echo "Brief:"
@@ -12,8 +11,6 @@ helpmsg() {
     echo "Try again"
     echo ""
 }
-
-zh_hosts=/etc/hosts
 
 if [[ $# -lt 1 ]]; then
     while IFS='' read -r oneline || [[ -n "$oneline" ]]; do

@@ -16,13 +16,13 @@ if len(sys.argv) != 3:
                 "2. $cmdname [ip] [hostname] [comment]" % util.command_name()])
     exit(1)
 
-ipaddr = str(sys.argv[1])
-hostname = str(sys.argv[2])
+hostname = str(sys.argv[1])
+ipaddr = str(sys.argv[2])
 # if util.execute("hostip %s" % hostname) == ipaddr:
 # print("error: $hostname already exist, use 'hostunset $hostname' to remove it first")
 # exit(1)
 
 if sys.platform[:3] == "win":
-    os.system("echo %s\t%s >> C:\\Windows\\System32\\Drivers\\etc\\hosts" % (ipaddr, hostname))
+    os.system("echo add {}\t{} | %HOMEPATH%\\.vim\\commands\\detail\\hosts.exe /Q".format(hostname, ipaddr))
 else:
-    os.system("echo %s\t%s >> /etc/hosts" % (ipaddr, hostname))
+    os.system("echo {}\t{} >> /etc/hosts".format(ipaddr, hostname))
