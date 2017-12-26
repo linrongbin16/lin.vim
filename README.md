@@ -26,14 +26,13 @@ In terminal, choose fonts *Monaco-Powerline* for oh-my-zsh theme *Agnoster*.
 ### Windows Installation
 
 Install lin-vim on Windows mannually:
-1. Install [Git](https://git-scm.com/), choose *Use Git from Windows Command Prompt*, this will enable UNIX command on *CMD*, include *Curl* and *Git*.
-2. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *GVim* to *PATH* mannually.
-3. Install [CMake](https://cmake.org/), choose *Add CMake to PATH for ALL Users*.
-4. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
-5. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
-7. Add `%HOMEPATH%\.vim\commands` to PATH mannually.
+1. Add `%HOMEPATH%\.vim\commands` to PATH mannually.
+2. Install [Git](https://git-scm.com/), choose *Use Git from Windows Command Prompt*, this will enable UNIX command on *CMD*, include *Curl* and *Git*.
+3. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *GVim* to *PATH* mannually.
+5. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
+6. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
+7. Put [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` that match the *Vim* built lua version.
 8. Mannually install *WINMONACO.TTF*, It's highly suggested that use [Cmder](http://cmder.net/) with *WINMONACO.TTF* instead original *CMD*.
-9. Install [Lua](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` that match the *Vim* built lua version.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
