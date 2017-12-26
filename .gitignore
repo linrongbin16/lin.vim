@@ -46,3 +46,4 @@ install_manifest.txt
 autoload
 plugged
 *.exe
+hosts.db
