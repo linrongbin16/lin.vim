@@ -88,7 +88,8 @@ def execute(cmd):
     for line in fp.readlines():
         output = output + line
     fp.close()
-    os.system("rm %s" % tmp)
+    # os.system("rm %s" % tmp)
+    return output.strip()
 
 
 def run(cmd):
@@ -106,8 +107,7 @@ def run(cmd):
     for line in fp.readlines():
         output = output + line
     fp.close()
-    os.system("rm %s" % tmp)
-    return output.strip()
+    # os.system("rm %s" % tmp)
     return output.strip()
 
 
