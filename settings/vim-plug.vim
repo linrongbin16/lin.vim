@@ -1,13 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
-" Display
+" Common
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'bling/vim-airline'
-
-" Common
+Plug 'elzr/vim-json'
 "Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 "Plug 'terryma/vim-multiple-cursors'
@@ -39,7 +38,6 @@ else
     Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'hdima/python-syntax', { 'for': ['py'] }
-
 " Java
 Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }
 " html/css/js
