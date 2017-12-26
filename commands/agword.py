@@ -14,7 +14,4 @@ if len(sys.argv) <= 1:
         "%s [word]" % util.command_name())
     exit(1)
 
-ignore = "~/.vim/commands/.ignore"
-if sys.platform[:3] == "win":
-    ignore = "C:\\%HOMEPATH%\\.vim\\commands\\.ignore"
-os.system("ag -w --smart-case --depth -1 -p %s \"%s\" ." % (ignore, util.get_parameter()))
+os.system("ag -w --smart-case --depth -1 -p %s \"%s\" ." % (util.ag_ignore, util.get_parameter()))
