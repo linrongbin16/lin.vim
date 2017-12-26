@@ -111,6 +111,7 @@ def run(cmd):
     return output.strip()
 
 
+"""
 def run_as_admin_for_win(cmdLine):
     assert os.name == 'nt'
     # import win32api
@@ -143,3 +144,4 @@ def run_as_admin_for_win(cmdLine):
     obj = win32event.WaitForSingleObject(procHandle, win32event.INFINITE)
     rc = win32process.GetExitCodeProcess(procHandle)
     return rc
+"""
