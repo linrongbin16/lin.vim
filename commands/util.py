@@ -2,8 +2,10 @@
 #-*- coding:utf-8 -*-
 
 import sys
-import os
 sys.path.append('.')
+import os
+import traceback
+import types
 
 
 def command_name():
@@ -26,10 +28,10 @@ def helpmsg(briefs, usages):
         assert len(briefs) == len(usages)
         print("Brief:")
         for i in xrange(len(briefs)):
-            print("    %d. %s" % (i + 1, briefs[i]))
+            print("    %s" % briefs[i])
         print("Usage:")
         for i in xrange(len(usages)):
-            print("    %d. %s" % (i + 1, usages[i]))
+            print("    %s" % usages[i])
         print("Try again")
         print("")
     else:
@@ -87,4 +89,57 @@ def execute(cmd):
         output = output + line
     fp.close()
     os.system("rm %s" % tmp)
+
+
+def run(cmd):
+    tmp = ".util.%d.tmp" % os.getpid()
+    assert isinstance(cmd, str) or isinstance(cmd, list)
+    if isinstance(cmd, str):
+        os.system("%s > %s" % (cmd, tmp))
+    else:
+        cmds = ""
+        for i in cmd:
+            cmds = cmds + i + " "
+        os.system("%s > %s" % (cmds, tmp))
+    fp = open(tmp, "r")
+    output = ""
+    for line in fp.readlines():
+        output = output + line
+    fp.close()
+    os.system("rm %s" % tmp)
     return output.strip()
+    return output.strip()
+
+
+def run_as_admin_for_win(cmdLine):
+    assert os.name == 'nt'
+    # import win32api
+    import win32con
+    import win32event
+    import win32process
+    from win32com.shell.shell import ShellExecuteEx
+    from win32com.shell import shellcon
+    assert isinstance(cmdLine, list)
+    cmd = '"%s"' % cmdLine[0]
+    # TODO: isn't there a function or something we can call to massage command line params?
+    params = " ".join(['"%s"' % (x,) for x in cmdLine[1:]])
+    showCmd = win32con.SW_SHOWNORMAL
+    lpVerb = 'runas'  # causes UAC elevation prompt.
+
+    print("Running cmd: %s, params: %s" % (cmd, params))
+
+    # ShellExecute() doesn't seem to allow us to fetch the PID or handle
+    # of the process, so we can't get anything useful from it. Therefore
+    # the more complex ShellExecuteEx() must be used.
+
+    # procHandle = win32api.ShellExecute(0, lpVerb, cmd, params, cmdDir, showCmd)
+
+    procInfo = ShellExecuteEx(nShow=showCmd,
+                              fMask=shellcon.SEE_MASK_NOCLOSEPROCESS,
+                              lpVerb=lpVerb,
+                              lpFile=cmd,
+                              lpParameters=params)
+    procHandle = procInfo['hProcess']
+    obj = win32event.WaitForSingleObject(procHandle, win32event.INFINITE)
+    rc = win32process.GetExitCodeProcess(procHandle)
+    return rc
