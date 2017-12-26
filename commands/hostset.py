@@ -22,7 +22,4 @@ ipaddr = str(sys.argv[2])
 # print("error: $hostname already exist, use 'hostunset $hostname' to remove it first")
 # exit(1)
 
-if sys.platform[:3] == "win":
-    os.system("echo add {}\t{} | %HOMEPATH%\\.vim\\commands\\detail\\hosts.exe /Q".format(hostname, ipaddr))
-else:
-    os.system("echo {}\t{} >> /etc/hosts".format(ipaddr, hostname))
+os.system("echo {}\t{} >> /etc/hosts".format(ipaddr, hostname))
