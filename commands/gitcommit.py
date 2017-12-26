@@ -23,8 +23,8 @@ if len(sys.argv) <= 2:
     exit(1)
 
 comment = util.get_parameter()
-branch = util.execute(" git status | head -n 1 | awk '{print $3}' ")
-print("[lin-vim] git commit on branch: '%s', comment: '%s', path: '%s' " % (branch, comment, os.getcwd()))
-util.makesure("[lin-vim] yes?")
-os.system(" git add -A . ")
-os.system(" git commit -m \"%s\" " % comment)
+branch = util.run("git status | head -n 1 | awk '{print $3}'")
+print("[lin-vim] git commit on branch: '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
+util.makesure("[lin-vim] yes? ")
+os.system("git add -A . ")
+os.system("git commit -m \"%s\" " % comment)

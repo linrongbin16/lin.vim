@@ -18,8 +18,9 @@ if len(sys.argv) != 3:
 
 hostname = str(sys.argv[1])
 ipaddr = str(sys.argv[2])
-# if util.execute("hostip %s" % hostname) == ipaddr:
-# print("error: $hostname already exist, use 'hostunset $hostname' to remove it first")
-# exit(1)
+
+if util.run("hostip {}".format(hostname)) == ipaddr:
+    print("error: {} already exist, use 'hostunset {}' to remove it first".format(hostname, hostname))
+    exit(1)
 
 os.system("echo {}\t{} >> /etc/hosts".format(ipaddr, hostname))

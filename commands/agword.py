@@ -11,7 +11,7 @@ import util
 if len(sys.argv) <= 1:
     util.helpmsg(
         "find [word] of current directory recursively",
-        "%s [word]" % util.command_name())
+        "{} [word]".format(util.command_name()))
     exit(1)
 
-os.system("ag -w --smart-case --depth -1 -p %s \"%s\" ." % (util.ag_ignore, util.get_parameter()))
+os.system("ag -w --smart-case --depth -1 -p {} \"{}\" .".format(util.ag_ignore, util.get_parameter()))

@@ -10,8 +10,8 @@ import util
 # error 1: git comment is a must
 if len(sys.argv) <= 2:
     util.helpmsg(
-            "git add and commit on current branch with [comment]",
-            "%s [comment]" % sys.argv[0])
+            "git add current branch",
+            util.command_name())
     exit(1)
 
 os.system("git add -A .")
