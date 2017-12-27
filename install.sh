@@ -30,5 +30,5 @@ elif [[ $(uname) == "FreeBSD" ]]; then
 elif [[ $(uname) == "Darwin" ]]; then
     bash ~/.vim/install/macos.sh
 else
-	echo "[lin-vim] Please try 'cmd install.bat'"
+    echo "[lin-vim] Please try 'cmd install.bat'"
 fi

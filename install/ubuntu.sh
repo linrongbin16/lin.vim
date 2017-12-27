@@ -8,6 +8,7 @@ touch $DEVIMRC
 touch ~/.zshrc
 touch ~/.bashrc
 
+
 ## Software
 sudo add-apt-repository ppa:jonathonf/vim -y
 sudo apt-get update -y
