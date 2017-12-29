@@ -7,7 +7,6 @@ echo "[lin-vim] Install for MacOS"
 
 DEVIMRC=~/.devimrc
 touch $DEVIMRC
-touch ~/.zshrc
 touch ~/.bashrc
 
 # Software
@@ -18,7 +17,7 @@ brew update
 brew upgrade
 brew install curl wget clang gcc g++ autoconf automake cmake
 brew install openssh openssl cryptopp
-brew install git vim macvim zsh maven gradle
+brew install git vim macvim fish maven gradle
 brew install cscope the_silver_searcher ctags
 brew install nodejs npm bc unzip unrar
 brew tap caskroom/versions
@@ -68,9 +67,7 @@ fi
 echo "alias l=\"ls -la\"" >> $DEVIMRC
 echo "alias ll=\"ls -l\"" >> $DEVIMRC
 echo "ulimit -c unlimited" >> $DEVIMRC
-echo "source $DEVIMRC" >> ~/.zshrc
 echo "source $DEVIMRC" >> ~/.bashrc
 source $DEVIMRC 1>/dev/null 2>&1
-source ~/.zshrc 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
 

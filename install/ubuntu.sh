@@ -5,7 +5,6 @@ echo "[lin-vim] Install for Ubuntu"
 # Prepare Environment
 DEVIMRC=~/.devimrc
 touch $DEVIMRC
-touch ~/.zshrc
 touch ~/.bashrc
 
 
@@ -19,7 +18,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-sudo apt-get install git vim vim-gtk curl wget zsh apport unzip unrar -y
+sudo apt-get install git vim vim-gtk curl wget fish apport unzip unrar -y
 sudo apt-get install gcc g++ autoconf automake cmake bc clang-format -y
 sudo apt-get install libssl-dev libcrypto++-dev -y
 sudo apt-get install default-jdk maven gradle -y
@@ -62,8 +61,6 @@ echo "export PATH=\$PATH:~/.vim/commands" >> $DEVIMRC
 echo "alias l=\"ls -la\"" >> $DEVIMRC
 echo "alias ll=\"ls -l\"" >> $DEVIMRC
 echo "ulimit -c unlimited" >> $DEVIMRC
-echo "source $DEVIMRC" >> ~/.zshrc
 echo "source $DEVIMRC" >> ~/.bashrc
 source $DEVIMRC 1>/dev/null 2>&1
-source ~/.zshrc 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
