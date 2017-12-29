@@ -1,3 +1,21 @@
 #! /usr/bin/env bash
 
-python ~/.vim/commands/hostip.py $@
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "Brief:"
+    echo "    find ip by [host]"
+    echo "Usage:"
+    echo "    $cmdname [host]"
+    echo "Try again"
+    echo ""
+}
+
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+hostname="$(echo -e "$1" | sed 's/^ *//g' | sed 's/ *$//g')"
+grep "$hostname" /etc/hosts | awk '{print $2}'

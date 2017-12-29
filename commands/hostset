@@ -1,3 +1,29 @@
 #! /usr/bin/env bash
 
-python ~/.vim/commands/hostset.py $@
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "Brief:"
+    echo "    1. set [ip]-[host] mapping, replace old mapping if exist",
+    echo "    2. set [ip]-[host] mapping with [comment], replace old mapping if exist"],
+    echo "Usage:"
+    echo "    1. $cmdname [ip] [hostname]"
+    echo "    2. $cmdname [ip] [hostname] [comment]"
+    echo "Try again"
+    echo ""
+}
+
+if [[ $# -ne 2 ]]; then
+    helpmsg
+    exit 1
+fi
+
+hostname="$(echo -e "$1" | sed 's/^ *//g' | sed 's/ *$//g')"
+ipaddr="$(echo -e "$2" | sed 's/^ *//g' | sed 's/ *$//g')"
+
+if hostip $hostname >/dev/null 2>&1; then
+    echo "error: $hostname already exist, use 'hostunset $hostname' remove it before set"
+    exit 1
+
+sudo echo $ipaddr  $hostname >> /etc/hosts

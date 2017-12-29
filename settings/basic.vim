@@ -144,6 +144,8 @@ set autoindent
 "tab space
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+" tab 4 space length
+"set tabstop=4 softtabstop=4 shiftwidth=4
 
 
 " fold code

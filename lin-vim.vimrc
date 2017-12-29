@@ -6,7 +6,6 @@ source $HOME/.vim/settings/ag.vim
 source $HOME/.vim/settings/ale.vim
 source $HOME/.vim/settings/clang_complete.vim
 source $HOME/.vim/settings/close_hidden_buffer.vim
-source $HOME/.vim/settings/cpp.vim
 source $HOME/.vim/settings/color_theme.vim
 source $HOME/.vim/settings/cscope.vim
 source $HOME/.vim/settings/cscope_maps.vim
@@ -15,11 +14,9 @@ source $HOME/.vim/settings/emmet.vim
 source $HOME/.vim/settings/haskell-vim.vim
 source $HOME/.vim/settings/indentline.vim
 source $HOME/.vim/settings/jedi-vim.vim
-source $HOME/.vim/settings/json.vim
 source $HOME/.vim/settings/neocomplete.vim
 source $HOME/.vim/settings/nerdtree.vim
 source $HOME/.vim/settings/python-syntax.vim
-source $HOME/.vim/settings/python.vim
 source $HOME/.vim/settings/racer.vim
 source $HOME/.vim/settings/supertab.vim
 "source $HOME/.vim/settings/tagbar.vim
@@ -36,4 +33,9 @@ source $HOME/.vim/settings/vimfiler.vim
 source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/youcompleteme.vim
 
+
 source $HOME/.vim/settings/basic.vim
+source $HOME/.vim/settings/cpp.vim
+source $HOME/.vim/settings/python.vim
+source $HOME/.vim/settings/json.vim
+source $HOME/.vim/settings/txt.vim

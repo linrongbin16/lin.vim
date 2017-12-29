@@ -13,7 +13,7 @@ helpmsg() {
     echo ""
 }
 
-zh_hosts=/etc/hosts
+hosts_db=/etc/hosts
 
 if [[ $# -lt 1 ]]; then
     while IFS='' read -r oneline || [[ -n "$oneline" ]]; do
@@ -21,12 +21,12 @@ if [[ $# -lt 1 ]]; then
         if [[ -n "$oneline" && ${oneline:0:1} != '#' ]]; then
             echo "$oneline"
         fi
-    done < "$zh_hosts"
+    done < "$hosts_db"
     echo ""
 else
     for i in $@; do
         i="$(echo -e "$i" | sed 's/^ *//g' | sed 's/ *$//g')"
-        grep "$i" $zh_hosts
+        grep "$i" $hosts_db
         echo ""
     done
 fi
