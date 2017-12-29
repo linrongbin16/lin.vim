@@ -28,13 +28,13 @@ sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python python-dev python-pip -y
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
-npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
+sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 
 # Vim Plugins
-curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sudo curl -fLo /usr/share/vim/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
@@ -42,26 +42,13 @@ vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --js-completer
 
-# Oh-My-Zsh
-if [ ! -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-    echo "[lin-vim] oh-my-zsh already installed"
-fi
-cp ~/.zshrc ~/.zshrc.old
-cp ~/.vim/install/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme
-sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
-mv ~/.zshrc.temp.$$ ~/.zshrc
-
-# Powerline-Fonts
-if [[ ! -d ~/.vim/.powerline-fonts ]]; then
-    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
-else
-    cd ~/.vim/.powerline-fonts
-    git pull origin master
-fi
-cd ~/.vim/.powerline-fonts
-./install.sh
+# Install Monaco
+font_dir="$HOME/.local/share/fonts"
+mkdir -p $font_dir
+cd ~/.vim/guifonts
+find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
+eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
+fc-cache -f $font_dir
 
 # Variable
 cd ~/.vim/commands

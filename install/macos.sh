@@ -35,26 +35,13 @@ vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --js-completer
 
-# Oh-My-Zsh
-if [ ! -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-    echo "[lin-vim] oh-my-zsh already installed"
-fi
-cp ~/.zshrc ~/.zshrc.old
-cp ~/.vim/install/lin-agnoster.zsh-theme ~/.oh-my-zsh/theme
-sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g' ~/.zshrc > ~/.zshrc.temp.$$
-mv ~/.zshrc.temp.$$ ~/.zshrc
-
-# Powerline-Fonts
-if [[ ! -d ~/.vim/.powerline-fonts ]]; then
-    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
-else
-    cd ~/.vim/.powerline-fonts
-    git pull origin master
-fi
-cd ~/.vim/.powerline-fonts
-./install.sh
+# Install Monaco
+font_dir="$HOME/Library/Fonts"
+mkdir -p $font_dir
+cd ~/.vim/guifonts
+find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
+eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
+fc-cache -f $font_dir
 
 # Variable 
 cd ~/.vim/commands
