@@ -33,9 +33,5 @@ source $HOME/.vim/settings/vimfiler.vim
 source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/youcompleteme.vim
 
-
 source $HOME/.vim/settings/basic.vim
-source $HOME/.vim/settings/cpp.vim
-source $HOME/.vim/settings/python.vim
-source $HOME/.vim/settings/json.vim
-source $HOME/.vim/settings/txt.vim
+source $HOME/.vim/settings/indent.vim
