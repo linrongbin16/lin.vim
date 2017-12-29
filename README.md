@@ -21,7 +21,7 @@ It is for anyone intending to use VIM for development running equally well on Wi
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
-In terminal, choose fonts *Monaco-Powerline* for oh-my-zsh theme *Agnoster*.
+In Terminals like *ITerm2*, *Gnome Terminal*, choose fonts *Monaco-Powerline* with Oh-My-Zsh theme *agnoster*.
 
 ### Windows Installation
 
@@ -32,7 +32,7 @@ Install lin-vim on Windows mannually:
 5. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
 6. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
 7. Put [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` that match the *Vim* built lua version.
-8. Mannually install *WINMONACO.TTF*, It's highly suggested that use [Cmder](http://cmder.net/) with *WINMONACO.TTF* instead original *CMD*.
+8. Mannually install *WINMONACO.TTF*, It's highly suggested that use [Cmder](http://cmder.net/) with *WINMONACO.TTF* instead of original *CMD*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
