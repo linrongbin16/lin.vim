@@ -1,2 +1,23 @@
 #! /usr/bin/env bash
-python ~/.vim/commands/agword.py $@
+
+cmdname=${0##*/}
+
+helpmsg () {
+    echo "Brief:"
+    echo "    find [word] of current directory recursively"
+    echo "Usage:"
+    echo "    $cmdname [word]"
+    echo "Try again"
+    echo ""
+}
+
+# error 1: miss repository parameter
+if [[ $# -lt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+text=$@
+ignore=~/.vim/commands/ag.ignore
+
+ag -w --smart-case --depth -1 -p $ignore "$text" .

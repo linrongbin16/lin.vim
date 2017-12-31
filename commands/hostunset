@@ -40,6 +40,9 @@ fi
 
 zh_hosts="/etc/hosts"
 zh_hosts_new="$zh_hosts.new"
+while [[ -f $zh_hosts_new ]]; do
+    zh_hosts_new="$zh_hosts_new.new"
+done
 zh_hosts_old="$zh_hosts.old"
 
 hostname="$(echo -e "$1" | sed 's/^ *//g' | sed 's/ *$//g')"

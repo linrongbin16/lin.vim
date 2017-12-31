@@ -1,2 +1,94 @@
 #! /usr/bin/env bash
-python ~/.vim/commands/devhelp.py $@
+
+cmdname=${0##*/}
+
+helpmsg() {
+    echo "Brief:"
+    echo "    1. overview commands"
+    echo "    2. get help of specified command [type]"
+    echo "Usage:"
+    echo "    1. $cmdname"
+    echo "    2. $cmdname [type]"
+    echo "Try again"
+    echo ""
+}
+
+CMD_HOME=~/.vim/commands
+
+fmtprint1() {
+    cmdname="$1"
+    prefix="$2"
+    echo "$cmdname"
+    for i in $(ls $CMD_HOME); do
+        temp=$(echo -e "$i" | cut -c1-${#prefix})
+        if [[ "$temp" == "$prefix" && "${i: -2}" != "sh" && "${i: -3}" != "old" && "${i:0:1}" != "." ]]; then
+            echo "    $i"
+        fi
+    done
+}
+
+fmtprint2() {
+    cmdname="$1"
+    prefix1="$2"
+    prefix2="$3"
+    echo "$cmdname"
+    for i in $(ls $CMD_HOME); do
+        temp1=$(echo -e "$i" | cut -c1-${#prefix1})
+        temp2=$(echo -e "$i" | cut -c1-${#prefix2})
+        if [[ "${i: -3}" != "dat" ]]; then
+            if [[ "$temp1" == "$prefix1" || "$temp2" == "$prefix2" ]]; then
+                echo "    $i"
+            fi
+        fi
+    done
+}
+
+
+if [[ $# -lt 1 ]]; then
+    echo "Type:"
+    echo "    git:         git operation"
+    echo "    host:        host-ip mapping"
+    echo "    process:     process operation"
+    echo "    ssh:         ssh operation"
+    echo "    tar:         compress/extract file operation"
+    echo "    ag:          better text search based on 'the-silversearcher-ag'"
+    echo "    ip:          ip address tools"
+    echo "    file:        file operation"
+    echo "    datetime:    datetime operation"
+    echo "    math:        math calculation"
+    echo "    number:      translate number between binary, octal, decimal, heximal"
+    echo "    project:     create database for source code, based on 'cscope' and 'ctags'"
+    echo "Detail:"
+    echo "    type '$cmdname type' for more detail"
+    echo ""
+elif [[ $# -eq 1 ]]; then
+    if [[ "$1" == "git" ]]; then
+        fmtprint1 "git operation:" "git"
+    elif [[ "$1" == "host" ]]; then
+        fmtprint1 "host-ip mapping:" "host"
+    elif [[ "$1" == "process" ]]; then
+        fmtprint1 "process operation:" "proc"
+    elif [[ "$1" == "ssh" ]]; then
+        fmtprint2 "ssh operation:" "ssh" "rsa"
+    elif [[ "$1" == "tar" ]]; then
+        fmtprint1 "compress/extract file operation:" "tar"
+    elif [[ "$1" == "ag" ]]; then
+        fmtprint1 "better text search based on 'the-silversearcher-ag':" "ag"
+    elif [[ "$1" == "ip" ]]; then
+        fmtprint1 "ip address tools:" "ip"
+    elif [[ "$1" == "file" ]]; then
+        fmtprint1 "file operation:" "file"
+    elif [[ "$1" == "datetime" ]]; then
+        fmtprint1 "datetime operation:" "time"
+    elif [[ "$1" == "math" ]]; then
+        fmtprint1 "math calculation:" "math"
+    elif [[ "$1" == "number" ]]; then
+        fmtprint1 "translate number between binary, octal, decimal, heximal:" "num"
+    elif [[ "$1" == "project" ]]; then
+        fmtprint1 "create database for source code, based on 'cscope' and 'ctags':" "proj"
+    fi
+    echo ""
+else
+    helpmsg
+    exit 1
+fi

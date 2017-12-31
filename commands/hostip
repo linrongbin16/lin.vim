@@ -1,6 +1,5 @@
 #! /usr/bin/env bash
 
-
 cmdname=${0##*/}
 
 helpmsg() {
@@ -18,4 +17,4 @@ if [[ $# -lt 1 ]]; then
 fi
 
 hostname="$(echo -e "$1" | sed 's/^ *//g' | sed 's/ *$//g')"
-grep "$hostname" /etc/hosts | awk '{print $2}'
+grep "$hostname" /etc/hosts | awk '{print $1}'
