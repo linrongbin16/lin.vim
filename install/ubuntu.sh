@@ -3,8 +3,8 @@
 echo "[lin-vim] Install for Ubuntu"
 
 # Prepare Environment
-DEVIMRC=~/.devimrc
-touch $DEVIMRC
+LINVIMRC=~/.linvimrc
+touch $LINVIMRC
 touch ~/.bashrc
 
 
@@ -21,7 +21,7 @@ sudo apt-get autoremove -y
 sudo apt-get install git vim vim-gtk curl wget fish apport unzip unrar -y
 sudo apt-get install gcc g++ autoconf automake cmake bc clang-format -y
 sudo apt-get install libssl-dev libcrypto++-dev -y
-sudo apt-get install default-jdk maven gradle -y
+sudo apt-get install default-jdk maven gradle golang-go golang-src golang -y
 sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
 sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -39,7 +39,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --js-completer
+python install.py --clang-completer --go-completer --js-completer
 
 # Install Monaco
 font_dir="$HOME/.local/share/fonts"
@@ -56,11 +56,11 @@ mkdir -p ~/.ssh
 mkdir -p ~/devops
 mkdir -p ~/devops/practice
 mkdir -p ~/devops/project
-echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> $DEVIMRC
-echo "export PATH=\$PATH:~/.vim/commands" >> $DEVIMRC
-echo "alias l=\"ls -la\"" >> $DEVIMRC
-echo "alias ll=\"ls -l\"" >> $DEVIMRC
-echo "ulimit -c unlimited" >> $DEVIMRC
-echo "source $DEVIMRC" >> ~/.bashrc
-source $DEVIMRC 1>/dev/null 2>&1
+echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> $LINVIMRC
+echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
+echo "alias l=\"ls -la\"" >> $LINVIMRC
+echo "alias ll=\"ls -l\"" >> $LINVIMRC
+echo "ulimit -c unlimited" >> $LINVIMRC
+echo "source $LINVIMRC" >> ~/.bashrc
+source $LINVIMRC 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1

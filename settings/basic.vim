@@ -54,7 +54,7 @@ if has("gui_running")
     "gvim工具栏
     set guioptions-=T
     "gvim菜单栏
-    " set guioptions-=m
+    set guioptions-=m
 endif
 
 " fonts

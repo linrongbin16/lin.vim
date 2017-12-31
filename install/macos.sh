@@ -5,8 +5,8 @@ echo "[lin-vim] Install for MacOS"
 
 # Prepare Environment
 
-DEVIMRC=~/.devimrc
-touch $DEVIMRC
+LINVIMRC=~/.linvimrc
+touch $LINVIMRC
 touch ~/.bashrc
 
 # Software
@@ -19,7 +19,7 @@ brew install curl wget clang gcc g++ autoconf automake cmake
 brew install openssh openssl cryptopp
 brew install git vim macvim fish maven gradle
 brew install cscope the_silver_searcher ctags
-brew install nodejs npm bc unzip unrar
+brew install nodejs npm bc unzip unrar golang
 brew tap caskroom/versions
 brew cask install java8
 brew install python
@@ -32,7 +32,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --js-completer
+python install.py --clang-completer --go-completer --js-completer
 
 # Install Monaco
 font_dir="$HOME/Library/Fonts"
@@ -49,25 +49,25 @@ mkdir -p ~/.ssh
 mkdir -p ~/devops
 mkdir -p ~/devops/practice
 mkdir -p ~/devops/project
-echo "alias vim=/usr/local/bin/vim" >> $DEVIMRC
-echo "setopt HIST_IGNORE_ALL_DUPS" >> $DEVIMRC
-echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $DEVIMRC
-echo "export PATH=\$PATH:~/.vim/commands" >> $DEVIMRC
+echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
+echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
+echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC
+echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 if [[ -d /Library/Java/JavaVirtualMachines ]]; then
     jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
     if [[ "${jdkhome:0:3}" == "jdk" ]]; then
-        sudo echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $DEVIMRC
-        sudo echo "export PATH=\$JAVA_HOME:\$PATH" >> $DEVIMRC
+        sudo echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $LINVIMRC
+        sudo echo "export PATH=\$JAVA_HOME:\$PATH" >> $LINVIMRC
     else
         echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
     fi
 else
     echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
 fi
-echo "alias l=\"ls -la\"" >> $DEVIMRC
-echo "alias ll=\"ls -l\"" >> $DEVIMRC
-echo "ulimit -c unlimited" >> $DEVIMRC
-echo "source $DEVIMRC" >> ~/.bashrc
-source $DEVIMRC 1>/dev/null 2>&1
+echo "alias l=\"ls -la\"" >> $LINVIMRC
+echo "alias ll=\"ls -l\"" >> $LINVIMRC
+echo "ulimit -c unlimited" >> $LINVIMRC
+echo "source $LINVIMRC" >> ~/.bashrc
+source $LINVIMRC 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
 
