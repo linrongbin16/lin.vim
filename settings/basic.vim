@@ -68,7 +68,7 @@ elseif has("mac")
 else
     set guifont=Courier\ 10\ Pitch\ 10
     set guifont=Courier\ New\ 10
-    set guifont=Monaco\ 11
+    set guifont=Monaco\ 10
 endif
 " white space char
 set list listchars=tab:>-,trail:.,extends:>
