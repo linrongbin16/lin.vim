@@ -70,4 +70,7 @@ echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 source $LINVIMRC 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
-
+if [[ -f ~/.zshrc ]]; then
+    echo "source $LINVIMRC" >> ~/.zshrc
+    source ~/.zshrc 1>/dev/null 2>&1
+fi
