@@ -64,6 +64,7 @@ echo "[lin-vim] generate id_rsa for \"$myemail\", type ENTER if you don't need p
 ssh-keygen -t rsa -b 4096 -C "$myemail"
 chmod 600 ~/.ssh/id_rsa
 chmod 644 ~/.ssh/id_rsa.pub
+ssh-add ~/.ssh/id_rsa
 echo ""
 echo "[lin-vim] your ~/.ssh/id_rsa.pub:"
 cat ~/.ssh/id_rsa.pub
