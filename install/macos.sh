@@ -46,9 +46,9 @@ fc-cache -f $font_dir
 cd ~/.vim/commands
 chmod +x *
 mkdir -p ~/.ssh
-mkdir -p ~/devops
-mkdir -p ~/devops/practice
-mkdir -p ~/devops/project
+mkdir -p ~/workspace
+mkdir -p ~/workspace/practice
+mkdir -p ~/workspace/project
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC

@@ -53,9 +53,9 @@ fc-cache -f $font_dir
 cd ~/.vim/commands
 chmod +x *
 mkdir -p ~/.ssh
-mkdir -p ~/devops
-mkdir -p ~/devops/practice
-mkdir -p ~/devops/project
+mkdir -p ~/workspace
+mkdir -p ~/workspace/practice
+mkdir -p ~/workspace/project
 echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> $LINVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
