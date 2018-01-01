@@ -17,7 +17,7 @@ brew update
 brew upgrade
 brew install curl wget clang gcc g++ autoconf automake cmake
 brew install openssh openssl cryptopp
-brew install git vim macvim fish maven gradle
+brew install git vim macvim
 brew install cscope the_silver_searcher ctags
 brew install nodejs npm bc unzip unrar golang
 brew tap caskroom/versions
