@@ -4,7 +4,7 @@ echo "[lin-vim] installing Lin Rongbin's Vim Distribution"
 echo ""
 
 cd ~/.vim
-git pull origin master
+git pull
 
 if [[ $(uname) == "Linux" ]]; then
     if cat /etc/*release | grep ^NAME | grep CentOS 1>/dev/null 2>&1; then

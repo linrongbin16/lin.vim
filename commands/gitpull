@@ -25,5 +25,5 @@ fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
 echo "[lin-vim] git pull on branch: '$branch', path: '$PWD'"
-git pull origin $branch
+git pull
 git pull --tags

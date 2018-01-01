@@ -53,7 +53,7 @@ echo -n "[lin-vim] yes? "
 makesure
 
 cd $(gitroot)
-git pull origin $branch
+git pull
 git add -A .
 git commit -m "$comment"
-git push origin $branch
+git push
