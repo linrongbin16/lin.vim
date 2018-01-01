@@ -52,6 +52,7 @@ echo "[lin-vim] git push on branch: '$branch', comment: '$comment', path: '$PWD'
 echo -n "[lin-vim] yes? "
 makesure
 
+cd $(gitroot)
 git pull origin $branch
 git add -A .
 git commit -m "$comment"

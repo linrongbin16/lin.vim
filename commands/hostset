@@ -4,11 +4,11 @@ cmdname=${0##*/}
 
 helpmsg() {
     echo "Brief:"
-    echo "    1. set [ip]-[host] mapping, replace old mapping if exist"
-    echo "    2. set [ip]-[host] mapping with [comment], replace old mapping if exist"
+    echo "    1. set [host]-[ip] mapping, replace old mapping if exist"
+    echo "    2. set [host]-[ip] mapping with [comment], replace old mapping if exist"
     echo "Usage:"
-    echo "    1. $cmdname [ip] [hostname]"
-    echo "    2. $cmdname [ip] [hostname] [comment]"
+    echo "    1. $cmdname [host] [ip]"
+    echo "    2. $cmdname [host] [ip] [comment]"
     echo "Try again"
     echo ""
 }
@@ -39,15 +39,15 @@ if [[ $# -ne 2 ]]; then
     exit 1
 fi
 
-ipaddr="$1"
-hostname="$2"
+hostname="$1"
+ipaddr="$2"
+
+echo -n "[lin-vim] set host-ip: '$ipaddr $hostname', yes? "
+makesure
 
 if ! hostip $hostname 1>/dev/null 2>&1; then
-    echo "error: $hostname already exist, use 'hostunset $hostname' to remove it first"
-    exit 1
+    echo "info: $hostname already exist, replace it"
+    hostunset $hostname
 fi
-
-echo -n "[lin-vim] set host-ip: '$ipaddr   $hostname', yes? "
-makesure
 sudo chmod +w,o+w /etc/hosts
-sudo echo "$ipaddr  $hostname" >> /etc/hosts
+sudo echo "$ipaddr\t$hostname" >> /etc/hosts

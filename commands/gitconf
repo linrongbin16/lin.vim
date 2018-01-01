@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    set git global user and email"
+    echo "    git config global with [username] and [email]"
     echo "Usage:"
     echo "    $cmdname [username] [email]"
     echo "Try again"
@@ -23,3 +23,4 @@ useremail="$2"
 
 git config --global user.name "$username"
 git config --global user.email "$useremail"
+git config --global core.fileMode false

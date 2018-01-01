@@ -1,13 +1,12 @@
 #! /usr/bin/env bash
 
 cmdname=${0##*/}
-confirm=0
 
 helpmsg() {
     echo "Brief:"
-    echo "    generate ~/.ssh/id_rsa, ~/.ssh/id_rsa.pub for [useremail]"
+    echo "    generate ~/.ssh/id_rsa, ~/.ssh/id_rsa.pub for [email]"
     echo "Usage:"
-    echo "    $cmdname [useremail]"
+    echo "    $cmdname [email]"
     echo "Try again"
     echo ""
 }

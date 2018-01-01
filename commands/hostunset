@@ -38,12 +38,12 @@ if [[ $# -lt 1 ]]; then
     exit 1
 fi
 
-zh_hosts="/etc/hosts"
-zh_hosts_new="$zh_hosts.new"
-while [[ -f $zh_hosts_new ]]; do
-    zh_hosts_new="$zh_hosts_new.new"
+hosts="/etc/hosts"
+hosts_new="$hosts.new"
+while [[ -f $hosts_new ]]; do
+    hosts_new="$hosts_new.new"
 done
-zh_hosts_old="$zh_hosts.old"
+hosts_old="$hosts.old"
 
 hostname="$(echo -e "$1" | sed 's/^ *//g' | sed 's/ *$//g')"
 
@@ -54,18 +54,18 @@ fi
 
 ipaddr="$(hostip $hostname)"
 
-echo -n "[lin-vim] unset host-ip: '$ipaddr  $hostname', yes? "
+echo -n "[lin-vim] unset host-ip: '$ipaddr $hostname', yes? "
 makesure
 
-sudo touch $zh_hosts
-sudo touch $zh_hosts_new
-sudo chmod +w,o+w $zh_hosts_new
+sudo touch $hosts
+sudo touch $hosts_new
+sudo chmod +w,o+w $hosts_new
 while IFS='' read -r oneline || [[ -n "$oneline" ]]; do
     onehost="$(echo -e "$oneline" | awk '{print $2}' | sed 's/^ *//g' | sed 's/ *$//g')"
     if [[ ${onehost} != ${hostname} ]]; then
-        sudo echo "$oneline" >> $zh_hosts_new
+        sudo echo "$oneline" >> $hosts_new
     fi
-done < "$zh_hosts"
+done < "$hosts"
 
-sudo cp $zh_hosts $zh_hosts_old
-sudo mv $zh_hosts_new $zh_hosts
+sudo cp $hosts $hosts_old
+sudo mv $hosts_new $hosts

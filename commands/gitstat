@@ -23,4 +23,5 @@ if ! git status 1>/dev/null 2>&1; then
     exit 1
 fi
 
+cd $(gitroot)
 git status

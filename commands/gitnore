@@ -26,13 +26,15 @@ fi
 branch=$(git status | head -n 1 | awk '{print $3}')
 git pull origin $branch
 
-while [[ ! -d ".git" ]]; do
-    cd ..
-done
+cd $(gitroot)
 
 echo "[lin-vim] update $PWD/.gitignore"
 touch .gitignore
-echo "" >> .gitignore
+
+# gitnore start
+echo "#" >> .gitignore
+echo "# [lin-vim] gitnore" >> .gitignore
+echo "#" >> .gitignore
 
 # project files
 echo "*.idea" >> .gitignore
@@ -48,8 +50,6 @@ echo "cscope.po.out" >> .gitignore
 echo "cscope.files" >> .gitignore
 echo "ncscope.out" >> .gitignore
 echo ".ycm_extra_conf.py" >> .gitignore
-echo "__pycache__" >> .gitignore
-echo "*.pyc" >> .gitignore
 echo "CMakeCache.txt" >> .gitignore
 echo "CMakeFiles" >> .gitignore
 echo "cmake_install.cmake" >> .gitignore
@@ -57,8 +57,15 @@ echo "install_manifest.txt" >> .gitignore
 echo ".vscode" >> .gitignore
 echo "*.vscode" >> .gitignore
 echo "*.vsproj" >> .gitignore
+echo "*.gradle" >> .gitignore
+echo ".gradle" >> .gitignore
+echo "*.m2" >> .gitignore
+echo ".m2" >> .gitignore
+echo "MANIFEST.MF" >> .gitignore
+echo "Manifest.mf" >> .gitignore
+echo "manifest.mf" >> .gitignore
 
-# macos files
+# macOS filesystem
 echo ".DS_Store" >> .gitignore
 echo "*/.DS_Store" >> .gitignore
 
@@ -86,17 +93,10 @@ echo "*.exe" >> .gitignore
 echo "*.out" >> .gitignore
 echo "*.app" >> .gitignore
 echo "*.xcuserdata" >> .gitignore
-
-# java bin
+echo "__pycache__" >> .gitignore
+echo "*.pyc" >> .gitignore
 echo "*.jar" >> .gitignore
 echo "*.class" >> .gitignore
-echo "*.gradle" >> .gitignore
-echo ".gradle" >> .gitignore
-echo "*.m2" >> .gitignore
-echo ".m2" >> .gitignore
-echo "MANIFEST.MF" >> .gitignore
-echo "Manifest.mf" >> .gitignore
-echo "manifest.mf" >> .gitignore
 
 # log files
 echo "*.log" >> .gitignore
