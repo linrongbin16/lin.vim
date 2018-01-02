@@ -19,5 +19,5 @@ autocmd BufNewFile,BufRead,FileReadPre *.hh :setlocal tabstop=2 softtabstop=2 sh
 autocmd BufNewFile,BufRead,FileReadPre *.cc :setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 " TXT
-autocmd FileType txt setlocal set tabstop=4 softtabstop=4 shiftwidth=4
-autocmd BufNewFile,BufRead,FileReadPre *.txt :setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd FileType txt setlocal set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab nosmarttab
+autocmd BufNewFile,BufRead,FileReadPre *.txt :setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab nosmarttab
