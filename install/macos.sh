@@ -16,7 +16,7 @@ fi
 brew update
 brew upgrade
 brew install curl wget clang gcc g++ autoconf automake cmake
-brew install openssh openssl cryptopp
+brew install openssh openssl cryptopp zsh
 brew install git vim macvim
 brew install cscope the_silver_searcher ctags
 brew install nodejs npm bc unzip unrar golang
@@ -41,6 +41,17 @@ cd ~/.vim/guifonts
 find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
 eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
 fc-cache -f $font_dir
+
+# Install Oh-My-Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install Powerline-Fonts
+if [[ -d ~/.vim/.powerline-fonts ]]; then
+    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
+fi
+cd ~/.vim/.powerline-fonts
+./install.sh
+
 
 # Variable 
 cd ~/.vim/commands

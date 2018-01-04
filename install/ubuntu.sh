@@ -18,7 +18,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-sudo apt-get install git vim vim-gtk curl wget apport unzip unrar -y
+sudo apt-get install git vim vim-gtk curl wget apport unzip unrar zsh -y
 sudo apt-get install gcc g++ autoconf automake cmake bc clang-format -y
 sudo apt-get install libssl-dev libcrypto++-dev -y
 sudo apt-get install default-jdk golang-go golang-src golang -y
@@ -48,6 +48,16 @@ cd ~/.vim/guifonts
 find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
 eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
 fc-cache -f $font_dir
+
+# Install Oh-My-Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install Powerline-Fonts
+if [[ -d ~/.vim/.powerline-fonts ]]; then
+    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
+fi
+cd ~/.vim/.powerline-fonts
+./install.sh
 
 # Variable
 cd ~/.vim/commands
