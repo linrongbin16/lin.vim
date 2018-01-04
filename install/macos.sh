@@ -45,14 +45,6 @@ fc-cache -f $font_dir
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# Install Powerline-Fonts
-if [[ -d ~/.vim/.powerline-fonts ]]; then
-    git clone https://github.com/powerline/fonts.git --depth=1 ~/.vim/.powerline-fonts
-fi
-cd ~/.vim/.powerline-fonts
-./install.sh
-
-
 # Variable 
 cd ~/.vim/commands
 chmod +x *
