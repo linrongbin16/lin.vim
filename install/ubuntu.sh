@@ -6,6 +6,7 @@ echo "[lin-vim] Install for Ubuntu"
 LINVIMRC=~/.linvimrc
 touch $LINVIMRC
 touch ~/.bashrc
+touch ~/.zshrc
 
 
 ## Software
@@ -59,15 +60,14 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
-echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> $LINVIMRC
+echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $LINVIMRC
+echo "export CLASSPATH=.;$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 source $LINVIMRC 1>/dev/null 2>&1
 echo "source $LINVIMRC" >> ~/.bashrc
+echo "source $LINVIMRC" >> ~/.zshrc
 source ~/.bashrc 1>/dev/null 2>&1
-if [[ -f ~/.zshrc ]]; then
-    echo "source $LINVIMRC" >> ~/.zshrc
-    source ~/.zshrc 1>/dev/null 2>&1
-fi
+source ~/.zshrc 1>/dev/null 2>&1

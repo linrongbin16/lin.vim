@@ -8,6 +8,7 @@ echo "[lin-vim] Install for MacOS"
 LINVIMRC=~/.linvimrc
 touch $LINVIMRC
 touch ~/.bashrc
+touch ~/.zshrc
 
 # Software
 if ! type "brew" > /dev/null; then
@@ -71,9 +72,7 @@ echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
+echo "source $LINVIMRC" >> ~/.zshrc
 source $LINVIMRC 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
-if [[ -f ~/.zshrc ]]; then
-    echo "source $LINVIMRC" >> ~/.zshrc
-    source ~/.zshrc 1>/dev/null 2>&1
-fi
+source ~/.zshrc 1>/dev/null 2>&1
