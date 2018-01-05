@@ -49,7 +49,7 @@ set clipboard+=unnamed
 set number
 set numberwidth=5
 if has("gui_running")
-    set lines=40
+    set lines=50
     set columns=160
     "gvim工具栏
     set guioptions-=T

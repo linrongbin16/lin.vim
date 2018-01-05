@@ -6,7 +6,7 @@ helpmsg () {
     echo "Brief:"
     echo "    extract *.rar, *.zip, *.tar.gz, *.jar etc"
     echo "Usage:"
-    echo "    $cmdname [file]..."
+    echo "    $cmdname [file]"
     echo "Try again"
     echo ""
 }

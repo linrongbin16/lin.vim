@@ -30,4 +30,4 @@ if [[ $ipaddr =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
         result=0
     fi
 fi
-echo "$result"
+echo $result

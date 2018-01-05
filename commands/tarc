@@ -5,16 +5,10 @@ cmdname=${0##*/}
 helpmsg () {
     echo "Brief:"
     echo "    1. compress current directory"
-    echo "    2. compress [file/directory]..."
-    echo "    3. compress [file/directory] [tar.gz]"
-    echo "    4. compress [file/directory] [rar]"
-    echo "    5. compress [file/directory] [zip]"
+    echo "    2. compress [file/directory]"
     echo "Usage:"
     echo "    1. $cmdname"
-    echo "    2. $cmdname [file/directory]..."
-    echo "    3. $cmdname [file/directory] [tar.gz]"
-    echo "    4. $cmdname [file/directory] [rar]"
-    echo "    5. $cmdname [file/directory] [zip]"
+    echo "    2. $cmdname [file/directory]"
     echo "Try again"
     echo ""
 }
