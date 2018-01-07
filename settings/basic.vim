@@ -50,7 +50,7 @@ set number
 set numberwidth=5
 if has("gui_running")
     set lines=50
-    set columns=160
+    set columns=180
     "gvim工具栏
     set guioptions-=T
     "gvim菜单栏
