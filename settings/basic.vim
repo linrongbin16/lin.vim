@@ -45,7 +45,7 @@ set showcmd
 set hlsearch
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set wrap
-set clipboard+=unnamed 
+set clipboard+=unnamed
 set number
 set numberwidth=5
 if has("gui_running")
@@ -73,7 +73,9 @@ endif
 " white space char
 set list listchars=tab:>-,trail:.,extends:>
 set modifiable
-set cursorline
+if has("gui_running")
+    set cursorline
+endif
 "set nocursorline
 " cursor position
 set scrolloff=1
@@ -112,9 +114,9 @@ source $VIMRUNTIME/menu.vim
 language messages en_US.utf-8
 
 " mouse
-set mouse=a 
-set selection=exclusive 
-set selectmode=mouse,key 
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
 
 " plugins
 set noignorecase
@@ -154,4 +156,3 @@ set foldmethod=indent
 set foldnestmax=50
 set foldlevel=50
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
-
