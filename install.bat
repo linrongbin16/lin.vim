@@ -1,6 +1,6 @@
 @echo off
-echo "[lin-vim] installing Lin Rongbin's Vim Distribution"
-echo ""
+echo [lin-vim] installing Lin Rongbin's Vim Distribution
+echo.
 
 cd %HOMEPATH%\.vim
 git pull origin master
