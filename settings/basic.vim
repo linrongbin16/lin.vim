@@ -73,9 +73,7 @@ endif
 " white space char
 set list listchars=tab:>-,trail:.,extends:>
 set modifiable
-if has("gui_running")
-    set cursorline
-endif
+set cursorline
 "set nocursorline
 " cursor position
 set scrolloff=1
