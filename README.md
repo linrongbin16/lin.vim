@@ -27,11 +27,12 @@ Optionally choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-
 
 Install on Windows mannually:
 1. Add `%HOMEPATH%\.vim\commands` to *PATH*.
-2. Install [Git](https://git-scm.com/) with *Use Git from Windows Command Prompt*, since we reply on UNIX command.
+2. Install [Git](https://git-scm.com/), during setup choose *Use Git from Windows Command Prompt* since we reply on UNIX command.
+3. Install [7-zip](http://www.7-zip.org/).
 3. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
-5. Install [NodeJs](https://nodejs.org/) with *Add Nodejs to PATH for ALL Users*
-6. Install [Python27](https://www.python.org/downloads/release/python-2714/) with *Add python to PATH for ALL Users*.
-7. Install [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` which match the *Vim* built lua version.
+5. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
+6. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
+7. Install [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands`, who's version match the *Vim* built lua version.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
