@@ -10,8 +10,7 @@ curl -fLo %HOMEPATH%\vimfiles\autoload\plug.vim --create-dirs https://raw.github
 curl -fLo %HOMEPATH%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp %HOMEPATH%\.vim\lin-vim.vimrc %HOMEPATH%\_vimrc
 vim -c "PlugInstall" -c "qall"
+cd %HOMEPATH%\.vim\plugged\YouCompleteMe
+python install.py --clang-completer --go-completer --js-completer
 
 mkdir -p %HOMEPATH%\.ssh
-mkdir -p %HOMEPATH%\devops
-mkdir -p %HOMEPATH%\devops\practice
-mkdir -p %HOMEPATH%\devops\project
