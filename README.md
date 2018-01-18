@@ -21,7 +21,7 @@ It is for anyone intending to use VIM for development running equally well on Wi
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
-Optionally choose fonts *Monaco-Powerline* for *ITerm2*, *Gnome Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
+Optionally choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
 
 ### Windows Installation
 
@@ -39,7 +39,7 @@ Install on Windows mannually:
     install.bat
 ```
 
-Optionally install *WINMONACO.TTF*, *Monaco-Powerline.ttf*, [Cmder](http://cmder.net/), choose fonts *Monaco-Powerline* for *Cmder* in order to enable Oh-My-Zsh theme *agnoster*.
+Optionally install *WINMONACO.TTF*, *Monaco-Powerline.ttf*, [Cmder](http://cmder.net/) or [ConEmu](http://conemu.github.io), choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
 
 # A highly optimized .vimrc config file
 
