@@ -26,15 +26,15 @@ Optionally choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-
 ### Windows Installation
 
 Install on Windows mannually:
-1. Add `%HOMEPATH%\.vim\commands` to *PATH*.
-2. Install [Git](https://git-scm.com/), during setup choose *Use Git from Windows Command Prompt* since we reply on UNIX command.
-3. Install [7-zip](http://www.7-zip.org/).
-4. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
-5. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
+1. Install [Git](https://git-scm.com/), during setup choose *Use Git from Windows Command Prompt* since we reply on UNIX command.
+2. Install [7-zip](http://www.7-zip.org/).
+3. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
+4. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
 5. Install [Visual Studio](https://www.visualstudio.com/), during setup choose *VC++*.
-7. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
-8. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
-9. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*, setup *GOPATH=%HOMEPATH%/go*, *add %GOPATH%/bin to PATH*, *add %GOROOT%/bin to PATH*.
+6. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
+7. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
+8. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*.
+9. Add `GOPATH=%HOMEPATH%/go`, Add `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
