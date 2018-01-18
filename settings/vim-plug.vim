@@ -1,3 +1,8 @@
+if has('win32') || has('win64')
+    " Make windows use ~/.vim too, I don't want to use _vimfiles
+    set runtimepath^=~/.vim
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Common
@@ -37,6 +42,7 @@ if has('win32') || matchstr(system('uname -a'), 'Microsoft') != '' || matchstr(s
 else
     Plug 'Valloric/YouCompleteMe'
 endif
+Plug 'Valloric/YouCompleteMe'
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Java
 Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }
