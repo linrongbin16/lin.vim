@@ -29,10 +29,11 @@ Install on Windows mannually:
 1. Add `%HOMEPATH%\.vim\commands` to *PATH*.
 2. Install [Git](https://git-scm.com/), during setup choose *Use Git from Windows Command Prompt* since we reply on UNIX command.
 3. Install [7-zip](http://www.7-zip.org/).
-3. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
-5. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
-6. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
-7. Install [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands`, who's version match the *Vim* built lua version.
+4. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
+5. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
+7. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
+8. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
+9. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim

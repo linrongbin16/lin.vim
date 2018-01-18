@@ -28,6 +28,8 @@
 #
 # For more information, please refer to <http://unlicense.org/>
 
+from distutils.sysconfig import get_python_inc
+import platform
 import os
 import ycm_core
 
@@ -38,7 +40,6 @@ flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
-'-Wc++98-compat',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
@@ -46,25 +47,16 @@ flags = [
 # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
 # source code needs it.
 '-DUSE_CLANG_COMPLETER',
-# THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
-# language to use when compiling headers. So it will guess. Badly. So C++
-# headers will be compiled as C headers. You don't want that so ALWAYS specify
-# a "-std=<something>".
-# For a C project, you would set this to something like 'c99' instead of
-# 'c++11'.
-'-std=c++11',
-# ...and the same thing goes for the magic -x option which specifies the
-# language that the files to be compiled are written in. This is mostly
-# relevant for c++ headers.
+# THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
+# use when compiling headers. So it will guess. Badly. So C++ headers will be
+# compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c++',
 '-isystem',
 '../BoostParts',
 '-isystem',
-# This path will only work on OS X, but extra paths that don't exist are not
-# harmful
-'/System/Library/Frameworks/Python.framework/Headers',
+get_python_inc(),
 '-isystem',
 '../llvm/include',
 '-isystem',
@@ -72,25 +64,7 @@ flags = [
 '-I',
 '.',
 '-I',
-'./include',
-'-I',
 './ClangCompleter',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/include/c++/2',
-'-isystem',
-'/usr/include/c++/3',
-'-isystem',
-'/usr/include/c++/4',
-'-isystem',
-'/usr/include/c++/5',
-'-isystem',
-'/usr/include/c++/6'
-'-isystem',
-'/usr/include/c++/7'
-'-isystem',
-'/usr/include/x86_64-linux-gnu',
 '-isystem',
 './tests/gmock/gtest',
 '-isystem',
@@ -100,10 +74,60 @@ flags = [
 '-isystem',
 './tests/gmock/include',
 '-isystem',
-'C:\Program Files\TDM-GCC\\x86_64-w64-mingw32\include',
-'-isystem',
-'C:\Program Files (x86)\Microsoft Visual Studio\\2017\Community\VC\Tools\MSVC\\14.12.25827\include',
+'./benchmarks/benchmark/include',
 ]
+
+# Windows MinGW header
+windows_header = [
+'-I C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\7.2.0\\include',
+]
+
+# Linux, Unix header
+linux_header = [
+'-I/usr/include',
+'-I/usr/lib',
+'-I/usr/include/c++',
+'-I/usr/include/c++/2',
+'-I/usr/include/c++/3',
+'-I/usr/include/c++/4',
+'-I/usr/include/c++/5',
+'-I/usr/include/c++/6'
+'-I/usr/include/c++/7'
+'-I/usr/include/c++/8'
+'-I/usr/include/c++/9'
+'-I/usr/include/x86_64-linux-gnu',
+]
+
+# User header
+user_header = [
+'-I./src',
+'-I./include',
+'-I../include',
+'-I../../include',
+'-I../../../include',
+'-I../../../../include',
+'-I../../../../../include',
+'-I../../../../../../include',
+'-I.',
+'-I..',
+'-I../..',
+'-I../../..',
+'-I../../../..',
+'-I../../../../..',
+'-I../../../../../..',
+]
+
+if platform.system() == 'Windows':
+    flags.extend(windows_header)
+else:
+    flags.extend(linux_header)
+flags.extend(user_header)
+
+# Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
+# which is required for compiling the standard library, and to 'c++11' for older
+# versions.
+if platform.system() != 'Windows':
+  flags.append( '-std=c++11' )
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
@@ -127,35 +151,6 @@ SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
 def DirectoryOfThisScript():
   return os.path.dirname( os.path.abspath( __file__ ) )
-
-
-def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
-  if not working_directory:
-    return list( flags )
-  new_flags = []
-  make_next_absolute = False
-  path_flags = [ '-isystem', '-I', '-iquote', '--sysroot=' ]
-  for flag in flags:
-    new_flag = flag
-
-    if make_next_absolute:
-      make_next_absolute = False
-      if not flag.startswith( '/' ):
-        new_flag = os.path.join( working_directory, flag )
-
-    for path_flag in path_flags:
-      if flag == path_flag:
-        make_next_absolute = True
-        break
-
-      if flag.startswith( path_flag ):
-        path = flag[ len( path_flag ): ]
-        new_flag = path_flag + os.path.join( working_directory, path )
-        break
-
-    if new_flag:
-      new_flags.append( new_flag )
-  return new_flags
 
 
 def IsHeaderFile( filename ):
@@ -182,22 +177,29 @@ def GetCompilationInfoForFile( filename ):
 
 
 def FlagsForFile( filename, **kwargs ):
-  if database:
-    # Bear in mind that compilation_info.compiler_flags_ does NOT return a
-    # python list, but a "list-like" StringVec object
-    compilation_info = GetCompilationInfoForFile( filename )
-    if not compilation_info:
-      return None
+  if not database:
+    return {
+      'flags': flags,
+      'include_paths_relative_to_dir': DirectoryOfThisScript()
+    }
 
-    final_flags = MakeRelativePathsInFlagsAbsolute(
-      compilation_info.compiler_flags_,
-      compilation_info.compiler_working_dir_ )
+  compilation_info = GetCompilationInfoForFile( filename )
+  if not compilation_info:
+    return None
 
-  else:
-    relative_to = DirectoryOfThisScript()
-    final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )
+  # Bear in mind that compilation_info.compiler_flags_ does NOT return a
+  # python list, but a "list-like" StringVec object.
+  final_flags = list( compilation_info.compiler_flags_ )
+
+  # NOTE: This is just for YouCompleteMe; it's highly likely that your project
+  # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
+  # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
+  try:
+    final_flags.remove( '-stdlib=libc++' )
+  except ValueError:
+    pass
 
   return {
     'flags': final_flags,
-    'do_cache': True
+    'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
   }
