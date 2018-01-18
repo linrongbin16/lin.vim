@@ -33,7 +33,7 @@ Install on Windows mannually:
 5. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
 7. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
 8. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
-9. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*.
+9. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*, setup *GOPATH=%HOMEPATH%/go*, *add %GOPATH%/bin to PATH*, *add %GOROOT%/bin to PATH*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim

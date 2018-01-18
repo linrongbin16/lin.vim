@@ -60,24 +60,28 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
+mkdir -p ~/go/src
+mkdir -p ~/go/bin
+mkdir -p ~/go/pkg
 if [[ -d /usr/lib/jvm ]]; then
     javahome=$(ls /usr/lib/jvm | grep openjdk | grep java | tail -n 1)
     if [[ "${javahome:0:4}" == "java" ]]; then
         echo "export JAVA_HOME=/usr/lib/jvm/$javahome" >> $LINVIMRC
-        echo "export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
+        echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
     else
         echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
     fi
 else
     echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
 fi
-echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $LINVIMRC
-echo "export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
+echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
+echo "export GOPATH=~/go" >> $LINVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
+echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
+echo "export PATH=\$PATH:\$GOROOT/bin" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
-source $LINVIMRC 1>/dev/null 2>&1
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
 source ~/.bashrc 1>/dev/null 2>&1
