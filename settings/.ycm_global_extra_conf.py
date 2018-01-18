@@ -80,6 +80,8 @@ get_python_inc(),
 # Windows MinGW header
 windows_header = [
 '-I C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\7.2.0\\include',
+# '-I C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.12.25827\\include',
+# '-I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt',
 ]
 
 # Linux, Unix header
