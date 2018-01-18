@@ -21,18 +21,17 @@ It is for anyone intending to use VIM for development running equally well on Wi
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
-In Terminals like *ITerm2*, *Gnome Terminal*, choose fonts *Monaco-Powerline* with Oh-My-Zsh theme *agnoster*.
+Optionally choose fonts *Monaco-Powerline* for *ITerm2*, *Gnome Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
 
 ### Windows Installation
 
-Install lin-vim on Windows mannually:
-1. Add `%HOMEPATH%\.vim\commands` to PATH mannually.
-2. Install [Git](https://git-scm.com/), choose *Use Git from Windows Command Prompt*, this will enable UNIX command on *CMD*, include *Curl* and *Git*.
-3. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *GVim* to *PATH* mannually.
-5. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
-6. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
-7. Put [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` that match the *Vim* built lua version.
-8. Mannually install *WINMONACO.TTF*, It's highly suggested that use [Cmder](http://cmder.net/) with *WINMONACO.TTF* instead of original *CMD*.
+Install on Windows mannually:
+1. Add `%HOMEPATH%\.vim\commands` to *PATH*.
+2. Install [Git](https://git-scm.com/) with *Use Git from Windows Command Prompt*, since we reply on UNIX command.
+3. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
+5. Install [NodeJs](https://nodejs.org/) with *Add Nodejs to PATH for ALL Users*
+6. Install [Python27](https://www.python.org/downloads/release/python-2714/) with *Add python to PATH for ALL Users*.
+7. Install [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` which match the *Vim* built lua version.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
@@ -40,6 +39,7 @@ Install lin-vim on Windows mannually:
     install.bat
 ```
 
+Optionally install *WINMONACO.TTF*, *Monaco-Powerline.ttf*, [Cmder](http://cmder.net/), choose fonts *Monaco-Powerline* for *Cmder* in order to enable Oh-My-Zsh theme *agnoster*.
 
 # A highly optimized .vimrc config file
 
