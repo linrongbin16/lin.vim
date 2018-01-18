@@ -31,6 +31,7 @@ Install on Windows mannually:
 3. Install [7-zip](http://www.7-zip.org/).
 4. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
 5. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
+5. Install [Visual Studio](https://www.visualstudio.com/), during setup choose *VC++*.
 7. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
 8. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
 9. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*, setup *GOPATH=%HOMEPATH%/go*, *add %GOPATH%/bin to PATH*, *add %GOROOT%/bin to PATH*.
