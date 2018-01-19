@@ -78,7 +78,6 @@ if [[ -d /usr/lib/jvm ]]; then
 else
     echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
 fi
-echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
 echo "export GOPATH=~/go" >> $LINVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC

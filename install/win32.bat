@@ -1,12 +1,6 @@
 @ECHO OFF
 ECHO [lin-vim] Install for Windows
 
-go.exe /? 2 > NULL
-IF %ERRORLEVEL%==9009 (
-    ECHO [lin-vim] Golang Not Found
-    EXIT /B
-)
-
 pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
 npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 
