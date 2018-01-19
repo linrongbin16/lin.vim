@@ -34,7 +34,6 @@ sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 
 # Vim Plugins
-sudo curl -fLo /usr/share/vim/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
