@@ -3,16 +3,22 @@
 cmdname=${0##*/}
 
 helpmsg () {
-    echo "Brief:"
-    echo "    git add"
+    echo "Brief: Git Repository Commands"
+    echo "    1. push"
+    echo "    2. pull"
+    echo "    3. in"
+    echo "    4. root"
     echo "Usage:"
-    echo "    $cmdname"
+    echo "    1. $cmdname push"
+    echo "    2. $cmdname pull"
+    echo "    3. $cmdname in"
+    echo "    4. $cmdname root"
     echo "Try again"
     echo ""
 }
 
 # error 1: git comment is a must
-if [ $# -gt 1 ]; then
+if [[ $# -gt 1 ]]; then
     helpmsg
     exit 1
 fi

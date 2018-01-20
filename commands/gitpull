@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git pull on current branch"
+    echo "    git pull"
     echo "Usage:"
     echo "    $cmdname"
     echo "Try again"
@@ -24,6 +24,6 @@ if ! git status 1>/dev/null 2>&1; then
 fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
-echo "[lin-vim] git pull on branch: '$branch', path: '$PWD'"
+echo "[lin-vim] git pull at: '$PWD'"
 git pull
 git pull --tags

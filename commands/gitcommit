@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git add and commit on current branch"
+    echo "    git commit with [comment]"
     echo "Usage:"
     echo "    $cmdname [comment]"
     echo "Try again"

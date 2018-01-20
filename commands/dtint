@@ -13,20 +13,27 @@ helpmsg() {
     echo ""
 }
 
-if [[ $# -lt 1 ]]; then
+if [ $# -eq 1 ]; then
+    if [ "$1" == "--help" || "$1" == "-h" ]; then
+        helpmsg
+        exit 1
+    fi
+fi
+
+if [ $# -lt 1 ]; then
     helpmsg
     exit 1
 fi
 
-if [[ $# -gt 2 ]]; then
+if [ $# -gt 2 ]; then
     helpmsg
     exit 1
 fi
 
 datetime="$@"
 
-#if [[ $(uname) == "Darwin" ]]; then
-    #if [[ $# -lt 2 ]]; then
+#if [ $(uname) == "Darwin" ]; then
+    #if [ $# -lt 2 ]; then
         #date -f "yyyy-mm-dd" "$datetime" "+%s"
     #else
         #date -f "yyyy-mm-dd HH:MM:ss" "$datetime" "+%s"

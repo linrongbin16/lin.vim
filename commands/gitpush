@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git add, commit and push on current branch"
+    echo "    git commit and push with [comment]"
     echo "Usage:"
     echo "    $cmdname [comment]"
     echo "Try again"
@@ -48,7 +48,7 @@ if ! git status 1>/dev/null 2>&1; then
 fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
-echo "[lin-vim] git push on branch: '$branch', comment: '$comment', path: '$PWD'"
+echo "[lin-vim] git push with comment: '$comment', path: '$PWD'"
 echo -n "[lin-vim] yes? "
 makesure
 

@@ -4,20 +4,20 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git add"
+    echo "    config git [username]"
     echo "Usage:"
-    echo "    $cmdname"
+    echo "    $cmdname [username]"
     echo "Try again"
     echo ""
 }
 
-# error 1: git comment is a must
-if [ $# -gt 1 ]; then
+# error: username is a must
+if [ $# -lt 1 ]; then
     helpmsg
     exit 1
 fi
 
-# error 2: not a git repository
+# error: not a git repository
 if ! git status 1>/dev/null 2>&1; then
     echo "error: git repository not exist"
     helpmsg
@@ -25,4 +25,4 @@ if ! git status 1>/dev/null 2>&1; then
 fi
 
 cd $(gitroot)
-git add -A .
+git config --global user.name "$1"

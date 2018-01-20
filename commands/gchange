@@ -1,0 +1,61 @@
+#! /usr/bin/env bash
+
+set -e
+
+cmdname=${0##*/}
+
+helpmsg () {
+    echo "Brief: Git Change Commands"
+    echo "    1. add change"
+    echo "    2. unadd change"
+    echo "    3. disgard all changes"
+    echo "    4. commit with [comment]"
+    echo "    5. uncommit"
+    echo "    5. push with [comment]"
+    echo "    6. pull with [comment]"
+    echo "    7. root"
+    echo "Usage:"
+    echo "    1. $cmdname add"
+    echo "    2. $cmdname commit [comment]"
+    echo "    3. $cmdname push [comment]"
+    echo "    4. $cmdname pull"
+    echo "Try again"
+    echo ""
+}
+
+# error 1: git comment is a must
+if [[ $# -gt 1 ]]; then
+    helpmsg
+    exit 1
+fi
+
+# error 2: not a git repository
+if ! git status 1>/dev/null 2>&1; then
+    echo "error: git repository not exist"
+    helpmsg
+    exit 1
+fi
+
+cd $(gitroot)
+
+case $1 in
+    add)
+        shift
+        gitadd $@
+        ;;
+    commit)
+        shift
+        gitcommit $@
+        ;;
+    push)
+        shift
+        gitpush $@
+        ;;
+    pull)
+        shift
+        gitpull $@
+        ;;
+    *)
+        helpmsg
+        exit 1
+esac

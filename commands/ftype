@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    rename file type from [oldtype] to [newtype]"
+    echo "    rename all files type from [oldtype] to [newtype] in currenty directory"
     echo "Usage:"
     echo "    $cmdname [oldtype] [newtype]"
     echo "Try again"

@@ -13,8 +13,15 @@ helpmsg () {
     echo ""
 }
 
+if [ $# -eq 1 ]; then
+    if [ "$1" == "--help" || "$1" == "-h" ]; then
+        helpmsg
+        exit 1
+    fi
+fi
+
 count=0
-if [[ $# -lt 1 ]]; then
+if [ $# -lt 1 ]; then
     # no name specified, list all
     for i in $(find . -type f -not -path "*.svn/*" -not -path "*.git/*" -not -path "*.svn" -not -path "*.git"); do
         len=$(echo -e "${#i} - 2" | bc)
@@ -29,4 +36,3 @@ else
         count=$(echo -e "$count + 1" | bc)
     done
 fi
-echo "[lin-vim] file count: $count"
