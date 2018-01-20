@@ -33,10 +33,14 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 
-# Vim Plugins
-sudo curl -fLo /usr/share/vim/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# Git Config
+git config --global core.filemode false
+git config --global push.default simple
+git config --global pull.default simple
+git config --global core.editor vim
 
+# Vim Plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
@@ -60,13 +64,27 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
-echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $LINVIMRC
-echo "export CLASSPATH=.;$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
+mkdir -p ~/go/src
+mkdir -p ~/go/bin
+mkdir -p ~/go/pkg
+if [[ -d /usr/lib/jvm ]]; then
+    javahome=$(ls /usr/lib/jvm | grep openjdk | grep java | tail -n 1)
+    if [[ "${javahome:0:4}" == "java" ]]; then
+        echo "export JAVA_HOME=/usr/lib/jvm/$javahome" >> $LINVIMRC
+        echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
+    else
+        echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
+    fi
+else
+    echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
+fi
+echo "export GOPATH=~/go" >> $LINVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
+echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
+echo "export PATH=\$PATH:\$GOROOT/bin" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
-source $LINVIMRC 1>/dev/null 2>&1
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
 source ~/.bashrc 1>/dev/null 2>&1

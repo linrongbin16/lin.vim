@@ -27,8 +27,13 @@ brew install python
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 
+# Git Config
+git config --global core.filemode false
+git config --global push.default simple
+git config --global pull.default simple
+git config --global core.editor vim
+
 # Vim Plugin
-curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
@@ -53,6 +58,9 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
+mkdir -p ~/go/bin
+mkdir -p ~/go/src
+mkdir -p ~/go/pkg
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC
@@ -60,8 +68,8 @@ echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 if [[ -d /Library/Java/JavaVirtualMachines ]]; then
     jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
     if [[ "${jdkhome:0:3}" == "jdk" ]]; then
-        sudo echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $LINVIMRC
-        sudo echo "export PATH=\$JAVA_HOME:\$PATH" >> $LINVIMRC
+        echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $LINVIMRC
+        echo "export PATH=\$JAVA_HOME:\$PATH" >> $LINVIMRC
     else
         echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
     fi
@@ -70,9 +78,10 @@ else
 fi
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
+echo "export GOPATH=~/go" >> $LINVIMRC
+echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
-source $LINVIMRC 1>/dev/null 2>&1
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

@@ -21,18 +21,20 @@ It is for anyone intending to use VIM for development running equally well on Wi
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
-In Terminals like *ITerm2*, *Gnome Terminal*, choose fonts *Monaco-Powerline* with Oh-My-Zsh theme *agnoster*.
+Optionally choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
 
 ### Windows Installation
 
-Install lin-vim on Windows mannually:
-1. Add `%HOMEPATH%\.vim\commands` to PATH mannually.
-2. Install [Git](https://git-scm.com/), choose *Use Git from Windows Command Prompt*, this will enable UNIX command on *CMD*, include *Curl* and *Git*.
-3. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *GVim* to *PATH* mannually.
-5. Install [NodeJs](https://nodejs.org/), choose *Add Node to PATH for ALL Users*
-6. Install [Python27](https://www.python.org/downloads/release/python-2714/), choose *Add python to PATH for ALL Users*.
-7. Put [liblua5.x.dll](http://luabinaries.sourceforge.net/download.html) to `%HOMEPATH%\.vim\commands` that match the *Vim* built lua version.
-8. Mannually install *WINMONACO.TTF*, It's highly suggested that use [Cmder](http://cmder.net/) with *WINMONACO.TTF* instead of original *CMD*.
+Install on Windows mannually:
+1. Install [Git](https://git-scm.com/), during setup choose *Use Git from Windows Command Prompt* since we reply on UNIX command.
+2. Install [7-zip](http://www.7-zip.org/).
+3. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose *Add python to PATH for ALL Users*.
+4. Install [Vim for Windows](https://tuxproject.de/projects/vim/), add *gvim.exe* to *PATH*.
+5. Install [Visual Studio](https://www.visualstudio.com/), during setup choose *VC++*.
+6. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
+7. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
+8. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*.
+9. Add `GOPATH=%HOMEPATH%/go`, Add `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
@@ -40,6 +42,7 @@ Install lin-vim on Windows mannually:
     install.bat
 ```
 
+Optionally install *WINMONACO.TTF*, *Monaco-Powerline.ttf*, [Cmder](http://cmder.net/) or [ConEmu](http://conemu.github.io), choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
 
 # A highly optimized .vimrc config file
 

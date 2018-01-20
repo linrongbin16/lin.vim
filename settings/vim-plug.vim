@@ -1,3 +1,9 @@
+if has('win32') || has('win64')
+    " Make windows use ~/.vim too, I don't want to use _vimfiles
+    set runtimepath^=~/.vim
+endif
+
+source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
 " Common
@@ -29,14 +35,7 @@ Plug 'Chiel92/vim-autoformat'
 
 " C++ Python
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
-if has('win32') || matchstr(system('uname -a'), 'Microsoft') != '' || matchstr(system('uname -a'), 'Windows') != ''
-    Plug 'davidhalter/jedi-vim', { 'for': ['py'] }
-    Plug 'ervandew/supertab'
-    Plug 'Shougo/neocomplete.vim'
-    Plug 'Rip-Rip/clang_complete', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'H', 'hh', 'HH', 'hxx'] }
-else
-    Plug 'Valloric/YouCompleteMe'
-endif
+Plug 'Valloric/YouCompleteMe'
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Java
 Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }

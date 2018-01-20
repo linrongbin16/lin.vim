@@ -12,14 +12,15 @@ source $HOME/.vim/settings/ctags.vim
 source $HOME/.vim/settings/emmet.vim
 source $HOME/.vim/settings/haskell-vim.vim
 source $HOME/.vim/settings/indentline.vim
-if has('win32') || matchstr(system('uname -a'), 'Microsoft') != '' || matchstr(system('uname -a'), 'Windows') != ''
-    source $HOME/.vim/settings/jedi-vim.vim
-    source $HOME/.vim/settings/neocomplete.vim
-    source $HOME/.vim/settings/clang_complete.vim
-    source $HOME/.vim/settings/supertab.vim
-else
-    source $HOME/.vim/settings/youcompleteme.vim
-endif
+"if has('win32') || matchstr(system('uname -a'), 'Microsoft') != '' || matchstr(system('uname -a'), 'Windows') != ''
+    "source $HOME/.vim/settings/jedi-vim.vim
+    "source $HOME/.vim/settings/neocomplete.vim
+    "source $HOME/.vim/settings/clang_complete.vim
+    "source $HOME/.vim/settings/supertab.vim
+"else
+    "source $HOME/.vim/settings/youcompleteme.vim
+"endif
+source $HOME/.vim/settings/youcompleteme.vim
 source $HOME/.vim/settings/nerdtree.vim
 source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/racer.vim
