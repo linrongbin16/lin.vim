@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg () {
+    echo "Brief:"
+    echo "    1. delete current branch and switch to master"
+    echo "    2. delete current branch and switch to [other] branch"
+    echo "Usage:"
+    echo "    1. $cmdname"
+    echo "    2. $cmdname [other]"
+    echo "Try again"
+    echo ""
+}
+
+# error: missing branch name
+if [ $# -gt 1 ]; then
+    helpmsg
+    exit 1
+fi
+
+# error: not a git repository
+if ! git status 1>/dev/null 2>&1; then
+    echo "error: git repository not exist"
+    helpmsg
+    exit 1
+fi
+
+if [ $# -eq 1 ]; then
+    git checkout master
+else
+    other=$1
+    git checkout -b $other
+fi

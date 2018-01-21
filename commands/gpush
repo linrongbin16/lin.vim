@@ -53,7 +53,7 @@ else
     echo -n "[lin-vim] yes? "
     makesure
 
-    cd $(gitroot)
+    cd $(groot)
     git pull
     git add -A .
     git commit -m "$comment"

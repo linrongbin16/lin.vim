@@ -52,6 +52,6 @@ echo "[lin-vim] git commit on branch: '$branch', comment: '$comment', path: '$PW
 echo -n "[devim] yes? "
 makesure
 
-cd $(gitroot)
+cd $(groot)
 git add -A .
 git commit -m "$comment"

@@ -26,7 +26,7 @@ fi
 branch=$(git status | head -n 1 | awk '{print $3}')
 git pull
 
-cd $(gitroot)
+cd $(groot)
 
 echo "[lin-vim] update $PWD/.gitignore"
 touch .gitignore
