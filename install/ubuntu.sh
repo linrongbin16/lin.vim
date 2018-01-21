@@ -41,10 +41,12 @@ git config --global core.editor vim
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --go-completer --js-completer
+rm -rf ~/vimfiles
 
 # Install Monaco
 font_dir="$HOME/.local/share/fonts"
