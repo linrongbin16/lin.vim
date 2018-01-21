@@ -12,8 +12,7 @@ helpmsg () {
 }
 
 
-if [[ $# -gt 1 ]]; then
-    echo "error: missing parameters"
+if [ $# -gt 1 ]; then
     helpmsg
     exit 1
 fi

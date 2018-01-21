@@ -4,23 +4,19 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git config global with [username] and [email]"
+    echo "    git normal config"
     echo "Usage:"
-    echo "    $cmdname [username] [email]"
+    echo "    $cmdname"
     echo "Try again"
     echo ""
 }
 
-
-if [[ $# -lt 2 ]]; then
-    echo "error: missing parameters"
+if [ $# -gt 1 ]; then
     helpmsg
     exit 1
 fi
 
-username="$1"
-useremail="$2"
-
-git config --global user.name "$username"
-git config --global user.email "$useremail"
 git config --global core.fileMode false
+git config --global core.longpaths true
+git config core.fileMode false
+git config core.longpaths false

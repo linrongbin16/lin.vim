@@ -6,7 +6,8 @@ echo ""
 cd ~/.vim
 git pull
 
-if [[ $(uname) == "Linux" ]]; then
+if [ $(uname) == "Linux" ]
+then
     if cat /etc/*release | grep ^NAME | grep CentOS 1>/dev/null 2>&1; then
         bash ~/.vim/install/centos.sh
     elif cat /etc/*release | grep ^NAME | grep Red 1>/dev/null 2>&1; then
@@ -25,9 +26,11 @@ if [[ $(uname) == "Linux" ]]; then
         echo "[lin-vim] OS not detected, cannot install"
         exit 1;
     fi
-elif [[ $(uname) == "FreeBSD" ]]; then
+elif [ $(uname) == "FreeBSD" ]
+then
     bash ~/.vim/install/bsd.sh
-elif [[ $(uname) == "Darwin" ]]; then
+elif [ $(uname) == "Darwin" ]
+then
     bash ~/.vim/install/macos.sh
 else
     echo "[lin-vim] Please try 'cmd install.bat'"

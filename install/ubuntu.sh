@@ -10,7 +10,7 @@ touch ~/.zshrc
 
 
 ## Software
-if [[ "$(whoami)" == "root" ]]; then
+if [ "$(whoami)" == "root" ]; then
     apt-get update -y
     apt-get install sudo -y
 fi
@@ -67,9 +67,9 @@ mkdir -p ~/workspace/project
 mkdir -p ~/go/src
 mkdir -p ~/go/bin
 mkdir -p ~/go/pkg
-if [[ -d /usr/lib/jvm ]]; then
+if [ -d /usr/lib/jvm ]; then
     javahome=$(ls /usr/lib/jvm | grep openjdk | grep java | tail -n 1)
-    if [[ "${javahome:0:4}" == "java" ]]; then
+    if [ "${javahome:0:4}" == "java" ]; then
         echo "export JAVA_HOME=/usr/lib/jvm/$javahome" >> $LINVIMRC
         echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
     else

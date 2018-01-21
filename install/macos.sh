@@ -65,9 +65,9 @@ echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC
 echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
-if [[ -d /Library/Java/JavaVirtualMachines ]]; then
+if [ -d /Library/Java/JavaVirtualMachines ]; then
     jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
-    if [[ "${jdkhome:0:3}" == "jdk" ]]; then
+    if [ "${jdkhome:0:3}" == "jdk" ]; then
         echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $LINVIMRC
         echo "export PATH=\$JAVA_HOME:\$PATH" >> $LINVIMRC
     else
