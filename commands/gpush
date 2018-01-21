@@ -34,6 +34,16 @@ makesure() {
     fi
 }
 
+
+# error 2: not a git repository
+if ! git status 1>/dev/null 2>&1; then
+    echo "error: git repository not exist"
+    helpmsg
+    exit 1
+fi
+
+branch=$(git status | head -n 1 | awk '{print $3}')
+
 # error 1: git comment is a must
 if [[ $# -lt 1 ]]; then
     echo "[lin-vim] git push on '$branch', path: '$PWD'"
@@ -41,14 +51,6 @@ if [[ $# -lt 1 ]]; then
 else
     comment="$@"
 
-    # error 2: not a git repository
-    if ! git status 1>/dev/null 2>&1; then
-        echo "error: git repository not exist"
-        helpmsg
-        exit 1
-    fi
-
-    branch=$(git status | head -n 1 | awk '{print $3}')
     echo "[lin-vim] git push on '$branch', comment: '$comment', path: '$PWD'"
     echo -n "[lin-vim] yes? "
     makesure
