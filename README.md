@@ -37,8 +37,8 @@ Install on Windows mannually:
 9. Add `GOPATH=%HOMEPATH%/go`, Add `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
 
 ```bash
-    git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%/.vim
-    cd %HOMEPATH%/.vim
+    git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%\.vim
+    cd %HOMEPATH%\.vim
     install.bat
 ```
 
@@ -47,24 +47,32 @@ Optionally install *WINMONACO.TTF*, *Monaco-Powerline.ttf*, [Cmder](http://cmder
 # A highly optimized .vimrc config file
 
 The .vimrc file is suited to programming.
-* A basic config can be used across Windows, Mac and linux.
-* Completion Engine based on YouCompleteMe, JavaComplete2, UltiSnip, etc.
+* Used across Windows, Mac and linux.
+* Completion Engine based on YouCompleteMe, UltiSnip, JavaComplete2, Ctags.
 * Configured plugins.
 
 # Plugins
 
-lin-vim contains a curated set of popular vim plugins, colors, snippets and syntaxes. Great care has been made to ensure that these plugins play well together and have optimal configuration.
+lin-vim contains a tons of popular plugins, colors, snippets and syntaxes. These plugins are highly configured and work well together.
 
-* [Vundle](https://github.com/gmarik/vundle)
-* [NERDCommenter](https://github.com/scrooloose/nerdcommenter)
-* [NERDTree](https://github.com/scrooloose/nerdtree)
+* [vim-plug](https://github.com/junegunn/vim-plug)
+* [Ag](https://github.com/rking/ag.vim)
+* [Asynchronous Lint Engine](https://github.com/w0rp/ale)
 * [ctrlp](https://github.com/kien/ctrlp.vim)
 * [solarized](https://github.com/altercation/vim-colors-solarized)
 * [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 * [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
-* [Airline](https://github.com/bling/vim-airline)
+* [airline](https://github.com/bling/vim-airline)
 * [Powerline Fonts](https://github.com/Lokaltog/powerline-fonts)
+* [ClangComplete](https://github.com/Rip-Rip/clang_complete)
+* [CscopeMaps](http://cscope.sourceforge.net/cscope_maps.vim)
+* [DoxygenToolkit](https://github.com/vim-scripts/DoxygenToolkit.vim)
+* [emmet-vim](https://github.com/mattn/emmet-vim)
+* [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
+* [indentline](https://github.com/Yggdroot/indentLine)
+* [nerdtree](https://github.com/scrooloose/nerdtree)
+* etc
 
 # Fork me on GitHub
 
-I'm always happy to take pull requests from others. Go ahead and fork me.
+Happy to take pull requests. Go ahead and fork me.
