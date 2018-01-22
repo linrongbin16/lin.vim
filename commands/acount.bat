@@ -12,7 +12,7 @@ if %argCount% LSS 1 (
     echo     %cmdName% [text]
     echo Try again
     echo.
-    exit /B 1
+    EXIT /B 1
 )
 
 set text=%*

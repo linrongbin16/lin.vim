@@ -4,9 +4,19 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    update '.gitignore'"
+    echo "    1. '.gitignore' for All"
+    echo "    2. '.gitignore' for C and CXX"
+    echo "    3. '.gitignore' for Java"
+    echo "    4. '.gitignore' for PHP"
+    echo "    5. '.gitignore' for JavaScript"
+    echo "    6. '.gitignore' for Golang"
     echo "Usage:"
-    echo "    $cmdname"
+    echo "    1. $cmdname"
+    echo "    2. $cmdname cxx"
+    echo "    3. $cmdname java"
+    echo "    4. $cmdname php"
+    echo "    5. $cmdname js"
+    echo "    6. $cmdname go"
     echo "Try again"
     echo ""
 }

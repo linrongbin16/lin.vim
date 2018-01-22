@@ -4,14 +4,14 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git config [email]"
+    echo "    config git [username]"
     echo "Usage:"
-    echo "    $cmdname [email]"
+    echo "    $cmdname [username]"
     echo "Try again"
     echo ""
 }
 
-# error: email is a must
+# error: username is a must
 if [ $# -lt 1 ]; then
     helpmsg
     exit 1
@@ -24,5 +24,5 @@ if ! git status 1>/dev/null 2>&1; then
     exit 1
 fi
 
-cd $(groot)
-git config --global user.email "$1"
+cd $(gitroot)
+git config --global user.name "$1"
