@@ -1,25 +1,29 @@
 @ECHO OFF
 
-set cmdName=%0
-set argCount=0
-for %%x in (%*) do set /A argCount+=1
+SET cmdName=%0
+SET argCount=0
+FOR %%x IN (%*) DO SET /A argCount+=1
 
-# error 1: git comment is a must
-if [ $# -gt 1 ]; then
-    helpmsg
-    exit 1
-fi
+REM error: git comment is a must
+IF %argCount% LSS 1 (
+    CALL :helpmsg
+    EXIT /B 1
+)
 
-# error 2: not a git repository
-IF ! git status 2 > NULL; then
-    ECHO error: git repository not exist
-    ECHO Brief:
-    ECHO     git add
-    ECHO Usage:
-    ECHO     %cmdName%
-    ECHO Try again
-    ECHO.
-    EXIT /B
+REM error: not a git repository
+IF ! git status 2 > NULL (
+    CALL :helpmsg
+    EXIT /B 1
+)
 
-groot
+groot.bat
 git add -A .
+
+:helpmsg
+ECHO Brief:
+ECHO     count [text] of current directory recursively
+ECHO Usage:
+ECHO     %cmdName% [text]
+ECHO Try again
+ECHO.
+EXIT /B 0

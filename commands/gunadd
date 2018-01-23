@@ -1,0 +1,36 @@
+#! /usr/bin/env bash
+
+cmdname=${0##*/}
+
+helpmsg () {
+    echo "Brief:"
+    echo "    1. git unadd everything"
+    echo "    2. git unadd [file/directory]"
+    echo "Usage:"
+    echo "    1. $cmdname"
+    echo "    2. $cmdname [file/directory]"
+    echo "Try again"
+    echo ""
+}
+
+# error: git comment is a must
+if [ $# -gt 1 ]; then
+    helpmsg
+    exit 1
+fi
+
+# error: not a git repository
+if ! git status 1>/dev/null 2>&1; then
+    echo "error: git repository not exist"
+    helpmsg
+    exit 1
+fi
+
+if [ $# -eq 0 ]; then
+    cd $(groot)
+    for i in $(git ls-files -m); do
+        git checkout $i
+    done
+else
+    git checkout $target
+fi

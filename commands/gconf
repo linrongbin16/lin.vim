@@ -20,3 +20,7 @@ git config --global core.fileMode false
 git config --global core.longpaths true
 git config core.fileMode false
 git config core.longpaths false
+git config --global push.default simple
+git config --global pull.default simple
+git config push.default simple
+git config pull.default simple

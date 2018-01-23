@@ -14,26 +14,26 @@ helpmsg () {
 makesure() {
     read yes
     confirm=0
-    if [[ $yes == "yes" ]]; then
+    if [ $yes == "yes" ]; then
         confirm=1
     fi
-    if [[ $yes == "Yes" ]]; then
+    if [ $yes == "Yes" ]; then
         confirm=1
     fi
-    if [[ $yes == "Y" ]]; then
+    if [ $yes == "Y" ]; then
         confirm=1
     fi
-    if [[ $yes == "y" ]]; then
+    if [ $yes == "y" ]; then
         confirm=1
     fi
-    if [[ $confirm -eq 0 || "$confirm" == "0" ]]; then
+    if [ $confirm -eq 0 || "$confirm" == "0" ]; then
         echo "error: user not confirm"
         exit 1
     fi
 }
 
 # error 1: git comment is a must
-if [[ $# -lt 1 ]]; then
+if [ $# -lt 1 ]; then
     helpmsg
     exit 1
 fi
