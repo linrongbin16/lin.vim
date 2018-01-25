@@ -1,6 +1,6 @@
-#! /usr/bin/env bash
+@ECHO OFF
 
-cmdname=${0##*/}
+SET cmdName=${0##*/}
 
 helpmsg () {
     echo "Brief:"

@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+@ECHO OFF
 
 cmdname=${0##*/}
 

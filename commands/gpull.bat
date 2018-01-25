@@ -1,29 +1,33 @@
-#! /usr/bin/env bash
+@ECHO OFF
 
-cmdname=${0##*/}
+SET cmdName=%0
+SET argCount=0
+FOR %%x IN (%*) DO SET /A argCount+=1
 
-helpmsg () {
-    echo "Brief:"
-    echo "    git pull"
-    echo "Usage:"
-    echo "    $cmdname"
-    echo "Try again"
-    echo ""
-}
+REM error: git comment is a must
+IF %argCount% GTR 1 (
+    CALL :helpmsg
+    EXIT /B 1
+)
 
-if [[ $# -gt 1 ]]; then
-    helpmsg
-    exit 1
-fi
+REM error: not a git repository
+IF ! git status 2 > NULL (
+    ECHO error: git repository not exist
+    CALL :helpmsg
+    EXIT /B 1
+)
 
-# error 1: not a directory
-if ! git status 1>/dev/null 2>&1; then
-    echo "error: git repository not exist"
-    helpmsg
-    exit 1
-fi
+SET branch=$(sh -c "git status | head -n 1 | awk '{print $3}'")
 
-branch=$(git status | head -n 1 | awk '{print $3}')
-echo "[lin-vim] git pull on '$branch', path: '$PWD'"
+ECHO [lin-vim] git pull on '%branch%', path: '%PWD%'
 git pull
 git pull --tags
+
+:helpmsg
+ECHO Brief:
+ECHO     git pull
+ECHO Usage:
+ECHO     %cmdName%
+ECHO Try again
+ECHO
+EXIT /B 0
