@@ -1,3 +1,3 @@
 @ECHO OFF
 cd %HOMEPATH%\.vim\commands
-sh afile %*
+sh cmdhelp %*

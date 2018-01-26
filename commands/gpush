@@ -35,7 +35,7 @@ makesure() {
 }
 
 
-# error 2: not a git repository
+# error: not a git repository
 if ! git status 1>/dev/null 2>&1; then
     echo "error: git repository not exist"
     helpmsg
@@ -44,7 +44,7 @@ fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
 
-# error 1: git comment is a must
+# error: missing comment parameter
 if [[ $# -lt 1 ]]; then
     echo "[lin-vim] git push on '$branch', path: '$PWD'"
     git pull

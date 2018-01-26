@@ -32,7 +32,7 @@ makesure() {
     fi
 }
 
-# error 1: git comment is a must
+# error: missing comment parameter
 if [ $# -lt 1 ]; then
     helpmsg
     exit 1
@@ -40,7 +40,7 @@ fi
 
 comment="$@"
 
-# error 2: not a git repository
+# error: not a git repository
 if ! git status 1>/dev/null 2>&1; then
     echo "error: git repository not exist"
     helpmsg

@@ -11,7 +11,7 @@ helpmsg () {
     echo ""
 }
 
-# error: username is a must
+# error: missing username parameter
 if [ $# -lt 1 ]; then
     helpmsg
     exit 1

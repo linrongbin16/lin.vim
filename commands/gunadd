@@ -13,7 +13,6 @@ helpmsg () {
     echo ""
 }
 
-# error: git comment is a must
 if [ $# -gt 1 ]; then
     helpmsg
     exit 1

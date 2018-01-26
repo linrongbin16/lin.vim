@@ -33,7 +33,7 @@ makesure() {
     fi
 }
 
-# error: miss parameters
+# error: miss tag parameter
 if [[ $# -lt 1 ]]; then
     echo "error: miss parameter tag"
     helpmsg

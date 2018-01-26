@@ -18,7 +18,7 @@ if [ $# -eq 1 ]; then
     fi
 fi
 
-# error 1: miss repository parameter
+# error: miss text parameter
 if [ $# -lt 1 ]; then
     helpmsg
     exit 1
