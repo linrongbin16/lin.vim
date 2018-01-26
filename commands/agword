@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env sh
 
 cmdname=${0##*/}
 
@@ -12,7 +12,7 @@ helpmsg () {
 }
 
 # error 1: miss repository parameter
-if [[ $# -lt 1 ]]; then
+if [ $# -lt 1 ]; then
     helpmsg
     exit 1
 fi
