@@ -2,7 +2,7 @@
 
 cmdname=${0##*/}
 
-helpmsg () {
+helpmsg() {
     echo "Brief: Git branch commands"
     echo "    1. new [branch]"
     echo "    2. delete [branch] and switch to master"
@@ -19,7 +19,7 @@ helpmsg () {
 }
 
 # error: missing comment parameter
-if [[ $# -gt 1 ]]; then
+if [ $# -gt 1 ]; then
     helpmsg
     exit 1
 fi

@@ -21,12 +21,12 @@ helpmsg () {
     echo ""
 }
 
-if [[ $# -gt 1 ]]; then
+if [ $# -gt 1 ]; then
     helpmsg
     exit 1
 fi
 
-# error: repository not exist
+# error: not a git repository
 if ! git status 1>/dev/null 2>&1; then
     echo "error: git repository not exist"
     helpmsg
@@ -37,76 +37,85 @@ branch=$(git status | head -n 1 | awk '{print $3}')
 git pull
 
 cd $(groot)
-
 echo "[lin-vim] update $PWD/.gitignore"
 touch .gitignore
 
-# gitnore start
-echo "#" >> .gitignore
-echo "# [lin-vim] gitnore" >> .gitignore
-echo "#" >> .gitignore
+ignore_for_common() {
+    ignorefile=$1
+    echo "#" >> $ignorefile
+    echo "# [lin-vim] gomit" >> $ignorefile
+    echo "#" >> $ignorefile
+    echo ".idea" >> $ignorefile
+    echo ".idea/*" >> $ignorefile
+    echo "*.iml" >> $ignorefile
+    echo ".svn" >> $ignorefile
+    echo ".svn/*" >> $ignorefile
+    echo ".hg" >> $ignorefile
+    echo ".hg/*" >> $ignorefile
+    echo "tags" >> $ignorefile
+    echo "cscope.out" >> $ignorefile
+    echo "cscope.in.out" >> $ignorefile
+    echo "cscope.po.out" >> $ignorefile
+    echo "cscope.files" >> $ignorefile
+    echo "ncscope.out" >> $ignorefile
+    echo ".ycm_extra_conf.py" >> $ignorefile
+    echo ".vscode" >> $ignorefile
+    echo ".vscode/*" >> $ignorefile
+    echo "*.vsproj" >> $ignorefile
+    echo "*.vsproj/*" >> $ignorefile
+    # macOS filesystem
+    echo ".DS_Store" >> .gitignore
+    echo "*/.DS_Store" >> .gitignore
+    echo "*.xcuserdata" >> .gitignore
+    echo "*.log" >> .gitignore
+}
 
-# project files
-echo "*.idea" >> .gitignore
-echo ".idea" >> .gitignore
-echo "*.iml" >> .gitignore
-echo "cmake-build-debug" >> .gitignore
-echo "*.svn" >> .gitignore
-echo ".svn" >> .gitignore
-echo "tags" >> .gitignore
-echo "cscope.out" >> .gitignore
-echo "cscope.in.out" >> .gitignore
-echo "cscope.po.out" >> .gitignore
-echo "cscope.files" >> .gitignore
-echo "ncscope.out" >> .gitignore
-echo ".ycm_extra_conf.py" >> .gitignore
-echo "CMakeCache.txt" >> .gitignore
-echo "CMakeFiles" >> .gitignore
-echo "cmake_install.cmake" >> .gitignore
-echo "install_manifest.txt" >> .gitignore
-echo ".vscode" >> .gitignore
-echo "*.vscode" >> .gitignore
-echo "*.vsproj" >> .gitignore
-echo "*.gradle" >> .gitignore
-echo ".gradle" >> .gitignore
-echo "*.m2" >> .gitignore
-echo ".m2" >> .gitignore
-echo "MANIFEST.MF" >> .gitignore
-echo "Manifest.mf" >> .gitignore
-echo "manifest.mf" >> .gitignore
+ignore_for_cxx() {
+    ignorefile=$1
+    echo "cmake-build-debug" >> $ignorefile
+    echo "CMakeCache.txt" >> $ignorefile
+    echo "CMakeFiles" >> $ignorefile
+    echo "cmake_install.cmake" >> $ignorefile
+    echo "install_manifest.txt" >> $ignorefile
+    echo "*.slo" >> $ignorefile
+    echo "*.lo" >> $ignorefile
+    echo "*.o" >> $ignorefile
+    echo "*.obj" >> $ignorefile
+    echo "*.pro.user" >> $ignorefile
+    echo "*.so" >> $ignorefile
+    echo "*.so.*" >> $ignorefile
+    echo "*.dylib" >> $ignorefile
+    echo "*.dylib.*" >> $ignorefile
+    echo "*.dll" >> $ignorefile
+    echo "*.dll.*" >> $ignorefile
+    echo "*.swp" >> $ignorefile
+    echo "*.lai" >> $ignorefile
+    echo "*.la" >> $ignorefile
+    echo "*.a" >> $ignorefile
+    echo "*.a.*" >> $ignorefile
+    echo "*.lib" >> $ignorefile
+    echo "*.lib.*" >> $ignorefile
+    echo "*.rdb" >> $ignorefile
+    echo "*.exe" >> $ignorefile
+    echo "*.out" >> $ignorefile
+    echo "*.app" >> $ignorefile
+}
 
-# macOS filesystem
-echo ".DS_Store" >> .gitignore
-echo "*/.DS_Store" >> .gitignore
+ignore_for_java() {
+    ignorefile=$1
+    echo ".gradle" >> $ignorefile
+    echo ".gradle/*" >> $ignorefile
+    echo ".m2" >> $ignorefile
+    echo ".m2/*" >> $ignorefile
+    echo "MANIFEST.MF" >> $ignorefile
+    echo "Manifest.mf" >> $ignorefile
+    echo "manifest.mf" >> $ignorefile
+    echo "*.jar" >> .gitignore
+    echo "*.class" >> .gitignore
+}
 
-# bin files
-echo "*.slo" >> .gitignore
-echo "*.lo" >> .gitignore
-echo "*.o" >> .gitignore
-echo "*.obj" >> .gitignore
-echo "*.pro.user" >> .gitignore
-echo "*.so" >> .gitignore
-echo "*.so.*" >> .gitignore
-echo "*.dylib" >> .gitignore
-echo "*.dylib.*" >> .gitignore
-echo "*.dll" >> .gitignore
-echo "*.dll.*" >> .gitignore
-echo "*.swp" >> .gitignore
-echo "*.lai" >> .gitignore
-echo "*.la" >> .gitignore
-echo "*.a" >> .gitignore
-echo "*.a.*" >> .gitignore
-echo "*.lib" >> .gitignore
-echo "*.lib.*" >> .gitignore
-echo "*.rdb" >> .gitignore
-echo "*.exe" >> .gitignore
-echo "*.out" >> .gitignore
-echo "*.app" >> .gitignore
-echo "*.xcuserdata" >> .gitignore
-echo "__pycache__" >> .gitignore
-echo "*.pyc" >> .gitignore
-echo "*.jar" >> .gitignore
-echo "*.class" >> .gitignore
-
-# log files
-echo "*.log" >> .gitignore
+ignore_for_python() {
+    ignorefile=$1
+    echo "__pycache__" >> .gitignore
+    echo "*.pyc" >> .gitignore
+}
