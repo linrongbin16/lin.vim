@@ -14,10 +14,10 @@ helpmsg () {
 }
 
 
-if [[ $# -lt 1 ]]; then
+if [ $# -lt 1 ]; then
     curdir=$(pwd)
     gzfile="$curdir.tar.gz"
-    if [[ -f $gzfile ]]; then
+    if [ -f $gzfile ]; then
         mv $gzfile "$gzfile.old"
     fi
     cd ..
@@ -25,7 +25,7 @@ if [[ $# -lt 1 ]]; then
 else
     for i in $@; do
         gzfile="$i.tar.gz"
-        if [[ -f $gzfile ]]; then
+        if [ -f $gzfile ]; then
             mv $gzfile "$gzfile.old"
         fi
         tar -zcvf "$gzfile" "$i"

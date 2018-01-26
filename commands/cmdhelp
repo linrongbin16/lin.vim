@@ -13,6 +13,13 @@ helpmsg() {
     echo ""
 }
 
+if [ $# -eq 1 ]; then
+    if [ "$1" == "--help" || "$1" == "-h" ]; then
+        helpmsg
+        exit 1
+    fi
+fi
+
 CMD_HOME=~/.vim/commands
 
 fmtprint1() {

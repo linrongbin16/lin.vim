@@ -16,19 +16,19 @@ helpmsg () {
 makesure() {
     read yes
     confirm=0
-    if [[ $yes == "yes" ]]; then
+    if [ $yes == "yes" ]; then
         confirm=1
     fi
-    if [[ $yes == "Yes" ]]; then
+    if [ $yes == "Yes" ]; then
         confirm=1
     fi
-    if [[ $yes == "Y" ]]; then
+    if [ $yes == "Y" ]; then
         confirm=1
     fi
-    if [[ $yes == "y" ]]; then
+    if [ $yes == "y" ]; then
         confirm=1
     fi
-    if [[ $confirm -eq 0 || "$confirm" == "0" ]]; then
+    if [ $confirm -eq 0 || "$confirm" == "0" ]; then
         echo "error: user not confirm"
         exit 1
     fi
@@ -45,7 +45,7 @@ fi
 branch=$(git status | head -n 1 | awk '{print $3}')
 
 # error: missing comment parameter
-if [[ $# -lt 1 ]]; then
+if [ $# -lt 1 ]; then
     echo "[lin-vim] git push on '$branch', path: '$PWD'"
     git pull
     git push

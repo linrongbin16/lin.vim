@@ -4,9 +4,9 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git commit with [comment]"
+    echo "    git discard everything"
     echo "Usage:"
-    echo "    $cmdname [comment]"
+    echo "    $cmdname"
     echo "Try again"
     echo ""
 }
@@ -32,10 +32,11 @@ makesure() {
     fi
 }
 
-# error: missing comment parameter
-if [ $# -lt 1 ]; then
-    helpmsg
-    exit 1
+if [ $# -eq 1 ]; then
+    if [ "$1" == "--help" || "$1" == "-h" ]; then
+        helpmsg
+        exit 1
+    fi
 fi
 
 comment="$@"
@@ -48,10 +49,12 @@ if ! git status 1>/dev/null 2>&1; then
 fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
-echo "[lin-vim] git commit on branch: '$branch', comment: '$comment', path: '$PWD'"
+echo "[lin-vim] git discard all working copy on: '$branch', path: '$PWD'"
 echo -n "[lin-vim] yes? "
 makesure
 
 cd $(groot)
-git add -A .
-git commit -m "$comment"
+for i in $(glistmodifies); do
+    git checkout $i
+done
+

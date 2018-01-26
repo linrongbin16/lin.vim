@@ -49,7 +49,7 @@ fi
 
 branch=$(git status | head -n 1 | awk '{print $3}')
 echo "[lin-vim] git commit on branch: '$branch', comment: '$comment', path: '$PWD'"
-echo -n "[lin-vim] yes? "
+echo -n "[devim] yes? "
 makesure
 
 cd $(groot)

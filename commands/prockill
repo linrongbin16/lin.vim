@@ -65,7 +65,7 @@ else
     procname1=${procname1##*/}
     procname2=${procname2##*/}
     if [[ ${procname1} == ${proc} || ${procname2} == ${proc} ]]; then
-        echo -n "[devim] kill process - $procline, yes? "
+        echo -n "[lin-vim] kill process - $procline, yes? "
         makesure
         sudo kill -9 $procpid
     fi

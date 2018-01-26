@@ -19,24 +19,24 @@ helpmsg() {
 }
 
 lang="any"
-if [[ $# -ge 1 ]]; then
+if [ $# -ge 1 ]; then
     lang=$1
 fi
 
 make_ctags() {
     curdir=$1
     cd $curdir
-    if [[ "$lang" == "cpp" || "lang" == "cxx" || "lang" == "c" || "lang" == "c++" || "lang" == "cc" || "lang" == "h" || "lang" == "hpp" || "lang" == "CC" || "lang" == "HH" ]]; then
+    if [ "$lang" == "cpp" || "lang" == "cxx" || "lang" == "c" || "lang" == "c++" || "lang" == "cc" || "lang" == "h" || "lang" == "hpp" || "lang" == "CC" || "lang" == "HH" ]; then
         ctags --languages=c++ --langmap=c++:+.in.x.inl.c.h --c++-kinds=+px --fields=+iaKSz --extra=+qf -R &
-    elif [[ "$lang" == "py" || "$lang" == "python" ]]; then
+    elif [ "$lang" == "py" || "$lang" == "python" ]; then
         ctags --languages=python --langmap=python:+.py3.python.python3 --fields=+iaS --extra=+q -R &
-    elif [[ "$lang" == "php" || "$lang" == "PHP" || "$lang" == "Php" ]]; then
+    elif [ "$lang" == "php" || "$lang" == "PHP" || "$lang" == "Php" ]; then
         ctags --languages=php --langmap=php:+.php3.php4.php5.php6.php7 --fields=+iaS --extra=+q -R &
-    elif [[ "$lang" == "perl" || "$lang" == "pl" ]]; then
+    elif [ "$lang" == "perl" || "$lang" == "pl" ]; then
         ctags --languages=perl --perl-kinds=+px --fields=+iaS --extra=+q -R &
-    elif [[ "$lang" == "java" ]]; then
+    elif [ "$lang" == "java" ]; then
         ctags --languages=java --langmap=java:+.j --java-kinds=+p --fields=+iaS --extra=+q -R &
-    elif [[ "$lang" == "javascript" || "$lang" == "js" ]]; then
+    elif [ "$lang" == "javascript" || "$lang" == "js" ]; then
         ctags --languages=javascript --langmap=javascript:+.javascript.html.htm --javascript-kinds=+px --fields=+iaS --extra=+q -R &
     else
         ctags -R &

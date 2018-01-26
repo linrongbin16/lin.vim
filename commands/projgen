@@ -15,25 +15,25 @@ make_project() {
     curdir=$1
     cd $curdir
     while true; do
-        if [[ -d ".git" ]]; then
+        if [ -d ".git" ]; then
             break
         fi
-        if [[ -d ".svn" ]]; then
+        if [ -d ".svn" ]; then
             break
         fi
-        if [[ -d ".idea" ]]; then
+        if [ -d ".idea" ]; then
             break
         fi
-        if [[ -f ".ycm_extra_conf.py" ]]; then
+        if [ -f ".ycm_extra_conf.py" ]; then
             break
         fi
-        if [[ -f "tags" ]]; then
+        if [ -f "tags" ]; then
             break
         fi
-        if [[ -f "cscope.out" ]]; then
+        if [ -f "cscope.out" ]; then
             break
         fi
-        if [[ "$PWD" == "/" ]]; then
+        if [ "$PWD" == "/" ]; then
             cd $curdir
             break
         fi

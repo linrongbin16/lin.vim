@@ -17,13 +17,13 @@ list_file_dir() {
     curdir=$1
     cd $curdir
     for i in $(ls); do
-        if [[ -f $i ]]; then
-            if [[ ${i:0:1} != "." && ${i} != "tags" ]]; then
+        if [ -f $i ]; then
+            if [ ${i:0:1} != "." && ${i} != "tags" ]; then
                 echo "$PWD/$i" >> $cscfile
             fi
         fi
-        if [[ -d $i ]]; then
-            if [[ ${i:0:1} != "." ]]; then
+        if [ -d $i ]; then
+            if [ ${i:0:1} != "." ]; then
                 list_file_dir $i
             fi
         fi
@@ -45,7 +45,7 @@ echo "[lin-vim] generate cscope.out at $PWD"
 origdir=$PWD
 make_cscope_files .
 cd $origdir
-if [[ ! -f $cscfile ]]; then
+if [ ! -f $cscfile ]; then
     helpmsg
     exit 1
 fi

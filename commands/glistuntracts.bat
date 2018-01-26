@@ -4,7 +4,7 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    git add"
+    echo "    git list all modifies"
     echo "Usage:"
     echo "    $cmdname"
     echo "Try again"
@@ -18,12 +18,6 @@ if [ $# -eq 1 ]; then
     fi
 fi
 
-# error: missing comment parameter
-if [ $# -gt 1 ]; then
-    helpmsg
-    exit 1
-fi
-
 # error: not a git repository
 if ! git status 1>/dev/null 2>&1; then
     echo "error: git repository not exist"
@@ -31,5 +25,4 @@ if ! git status 1>/dev/null 2>&1; then
     exit 1
 fi
 
-cd $(groot)
-git add -A .
+git ls-files -m
