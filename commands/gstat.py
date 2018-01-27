@@ -7,8 +7,6 @@ import sys
 import os
 sys.path.append('.')
 import util
-import git
-
 
 msg_list = [
         "Brief:",

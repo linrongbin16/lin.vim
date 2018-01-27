@@ -7,10 +7,7 @@ import sys
 import os
 sys.path.append('.')
 import util
-import git
-import pdb
 
-# pdb.set_trace()
 
 msg_list = [
         "Brief:",

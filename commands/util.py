@@ -6,7 +6,6 @@
 import sys
 import os
 import threading
-import git
 import platform
 
 
