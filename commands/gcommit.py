@@ -22,10 +22,10 @@ msg_list = [
 util.check_help(msg_list)
 util.check_repository()
 
-if len(sys.argv) <= 1:
+if len(sys.argv) != 2:
     util.help_msg(msg_list)
 
-comment = util.merge_args()
+comment = '"' + util.merge_args() + '"'
 
 branch = util.repository_branch()
 print("[lin-vim] git commit on branch: '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
