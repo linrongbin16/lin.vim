@@ -35,7 +35,6 @@ def run(*cmd):
         exe = exe + ' ' + i
     tmp_out = 'lin-vim.tmp_out.pid-%s.tid-%s' % (str(os.getpid()), str(threading.current_thread().ident))
     exe = '%s >%s' % (exe, tmp_out)
-    print("util.run: %s" % exe)
     os.system(exe)
     fp_out = open(tmp_out, 'r')
     result_out = fp_out.readlines()
