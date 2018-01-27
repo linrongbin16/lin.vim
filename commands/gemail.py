@@ -8,14 +8,23 @@ import os
 sys.path.append('.')
 import util
 import git
+import pdb
+
+# pdb.set_trace()
 
 msg_list = [
         "Brief:",
-        "    git add",
+        "    git config [email]",
         "Usage:",
-        "    %s" % util.command_name(),
+        "    %s [email]" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
 util.check_repository()
-os.system('git add -A %s' % util.repository_root())
+
+if len(sys.argv) != 2:
+    util.help_msg(msg_list)
+
+comment = util.merge_args()
+
+os.system('git config --global user.email "%s"' % comment)

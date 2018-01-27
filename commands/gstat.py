@@ -9,13 +9,21 @@ sys.path.append('.')
 import util
 import git
 
+
 msg_list = [
         "Brief:",
-        "    git add",
+        "    git status",
         "Usage:",
         "    %s" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
 util.check_repository()
-os.system('git add -A %s' % util.repository_root())
+
+if len(sys.argv) > 1:
+    util.help_msg(msg_list)
+
+save_dir = os.getcwd()
+os.chdir(util.repository_root())
+os.system('git status')
+os.chdir(save_dir)
