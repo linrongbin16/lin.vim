@@ -15,16 +15,14 @@ helpmsg () {
     echo ""
 }
 
-parameter=
-
-if [ $# -eq 1 ]; then
-    if [ "$1" == "--help" || "$1" == "-h" ]; then
-        helpmsg
-        exit 1
-    fi
+if [ "$1" == "--help" || "$1" == "-h" ]; then
+    helpmsg
+    exit 1
 fi
 
-if [[ $# -ge 1 ]]; then
+parameter=
+
+if [ $# -ge 1 ]; then
     parameter="$1"
 fi
 

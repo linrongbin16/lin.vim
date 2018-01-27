@@ -1,3 +1,3 @@
 @ECHO OFF
-cd %HOMEPATH%\.vim\commands
-sh cmdhelp %*
+REM Copyright 2018-  <linrongbin16@gmail.com>
+python %HOMEPATH%\.vim\commands\cmdhelp.py %*

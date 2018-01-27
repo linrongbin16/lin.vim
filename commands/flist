@@ -13,11 +13,9 @@ helpmsg () {
     echo ""
 }
 
-if [ $# -eq 1 ]; then
-    if [ "$1" == "--help" || "$1" == "-h" ]; then
-        helpmsg
-        exit 1
-    fi
+if [ "$1" == "--help" || "$1" == "-h" ]; then
+    helpmsg
+    exit 1
 fi
 
 count=0

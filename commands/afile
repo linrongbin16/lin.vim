@@ -1,30 +1,3 @@
 #! /usr/bin/env sh
-
-cmdname=${0##*/}
-
-helpmsg() {
-    echo "Brief:"
-    echo "    list files which contain [text] of current directory recursively"
-    echo "Usage:"
-    echo "    $cmdname [text]"
-    echo "Try again"
-    echo ""
-}
-
-if [ $# -eq 1 ]; then
-    if [ "$1" == "--help" || "$1" == "-h" ]; then
-        helpmsg
-        exit 1
-    fi
-fi
-
-# error: missing text parameter
-if [ $# -lt 1 ]; then
-    helpmsg
-    exit 1
-fi
-
-text=$@
-ignore=~/.vim/commands/ag.ignore
-
-ag -l --smart-case --depth -1 -p $ignore "$text" .
+# Copyright 2018-  <linrongbin16@gmail.com>
+python ~/.vim/commands/afile.py $@

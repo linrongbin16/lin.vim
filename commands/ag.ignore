@@ -10,3 +10,6 @@ hostname.dat
 cmake-build-debug
 *.exe
 *.idea
+.svn
+.git
+.hg

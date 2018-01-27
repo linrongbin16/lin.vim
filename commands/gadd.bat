@@ -1,3 +1,3 @@
 @ECHO OFF
-cd %HOMEPATH%\.vim\commands
-sh gadd %*
+REM Copyright 2018-  <linrongbin16@gmail.com>
+python %HOMEPATH%\.vim\commands\gadd.py %*

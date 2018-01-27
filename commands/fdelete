@@ -13,24 +13,22 @@ helpmsg () {
     echo ""
 }
 
-if [ $# -eq 1 ]; then
-    if [ "$1" == "--help" || "$1" == "-h" ]; then
-        helpmsg
-        exit 1
-    fi
+if [ "$1" == "--help" || "$1" == "-h" ]; then
+    helpmsg
+    exit 1
 fi
 
 file_delete_no_suffix_dir() {
     cd $1
     for i in $(ls); do
         ext="${i##*.}"
-        if [[ -f $i ]]; then
-            if [[ -z $ext || $ext == "$i" ]]; then
+        if [ -f $i ]; then
+            if [ -z $ext || $ext == "$i" ]; then
                 echo "remove $PWD/$i"
                 rm "$i"
             fi
         fi
-        if [[ -d $i && ${i:0:1} != '.' ]]; then
+        if [ -d $i && ${i:0:1} != '.' ]; then
             file_delete_no_suffix_dir $i
         fi
     done
@@ -41,13 +39,13 @@ file_delete_suffix_dir() {
     cd $1
     for i in $(ls); do
         ext="${i##*.}"
-        if [[ -f $i ]]; then
-            if [[ $ext == "${pattern}" && $ext != "$i" ]]; then
+        if [ -f $i ]; then
+            if [ $ext == "${pattern}" && $ext != "$i" ]; then
                 echo "remove $PWD/$i"
                 rm "$i"
             fi
         fi
-        if [[ -d $i && ${i:0:1} != '.' ]]; then
+        if [ -d $i && ${i:0:1} != '.' ]; then
             file_delete_suffix_dir $i
         fi
     done
@@ -57,11 +55,11 @@ file_delete_suffix_dir() {
 pattern="${1##*/}"
 
 
-# error 1: miss repository parameter
-if [[ $# -gt 1 ]]; then
+# error: too many parameter
+if [ $# -gt 1 ]; then
     helpmsg
     exit 1
-elif [[ $# -lt 1 ]]; then
+elif [ $# -lt 1 ]; then
     file_delete_no_suffix_dir .
 else
     file_delete_suffix_dir .
