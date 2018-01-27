@@ -4,10 +4,13 @@ cmdname=${0##*/}
 
 helpmsg () {
     echo "Brief:"
-    echo "    make git [tag] with optional [comment]"
+    echo "    1. list git tags"
+    echo "    2. create light git [tag]"
+    echo "    3. create git [tag] with [comment]"
     echo "Usage:"
-    echo "    $cmdname [tag]"
-    echo "    $cmdname [tag] [comment]"
+    echo "    1. $cmdname"
+    echo "    2. $cmdname [tag]"
+    echo "    3. $cmdname [tag] [comment]"
     echo "Try again"
     echo ""
 }
