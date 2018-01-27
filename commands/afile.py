@@ -22,7 +22,4 @@ util.check_help(msg_list)
 if len(sys.argv) < 1:
     util.help_msg(msg_list)
 
-text = util.merge_args()
-ignore = os.path.expanduser('~') + '/.vim/commands/ag.ignore'
-
-util.run('ag', '-l', '--smart-case', '--depth', '-1', '-p', ignore, text, '.')
+util.run('ag', '-l', '--smart-case', '--depth', '-1', '-p', util.ag_ignore(), util.merge_args(), '.')

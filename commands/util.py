@@ -7,6 +7,21 @@ import sys
 import os
 import threading
 import git
+import platform
+
+
+def command_home():
+    if platform.system() == 'Windows':
+        return 'C:\\' + os.path.expanduser('~') + '\\.vim\\commands'
+    else:
+        return os.path.expanduser('~') + '/.vim/commands/'
+
+
+def ag_ignore():
+    if platform.system() == 'Windows':
+        return 'C:\\' + os.path.expanduser('~') + '\\.vim\\commands\\ag.ignore'
+    else:
+        return os.path.expanduser('~') + '/.vim/commands/ag.ignore'
 
 
 def command_name():
@@ -81,12 +96,6 @@ def user_confirm():
     if yes.lower() != "yes" and yes.lower() != "y":
         print("error: user not confirm")
         exit(1)
-
-
-def open_repository():
-    os.chdir(repository_root())
-    repo = git.Repo()
-    return repo
 
 
 def check_repository():

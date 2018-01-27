@@ -1,3 +1,3 @@
 @ECHO OFF
 REM Copyright 2018-  <linrongbin16@gmail.com>
-python %HOMEPATH%\.vim\commands\gcommit.py %*
+python C:\%HOMEPATH%\.vim\commands\gcommit.py %*

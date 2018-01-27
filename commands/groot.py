@@ -7,18 +7,20 @@ import sys
 import os
 sys.path.append('.')
 import util
+import git
+
 
 msg_list = [
         "Brief:",
-        "    find [text] of current directory recursively",
+        "    git repository root directory"
         "Usage:",
-        "    %s [text]" % util.command_name(),
+        "    %s" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
+util.check_repository()
 
-# error: miss text parameter
-if len(sys.argv) < 1:
+if len(sys.argv) > 1:
     util.help_msg(msg_list)
 
-util.run('ag', '--smart-case', '--depth', '-1', '-p', util.ag_ignore(), util.merge_args(), '.')
+print(util.repository_root())
