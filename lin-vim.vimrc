@@ -36,6 +36,6 @@ source $HOME/.vim/settings/vim-javacomplete2.vim
 source $HOME/.vim/settings/vim-markdown.vim
 source $HOME/.vim/settings/vimfiler.vim
 source $HOME/.vim/settings/yank.vim
+source $HOME/.vim/settings/vim-sleuth.vim
 
 source $HOME/.vim/settings/basic.vim
-source $HOME/.vim/settings/indent.vim
