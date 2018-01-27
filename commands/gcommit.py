@@ -25,10 +25,10 @@ util.check_repository()
 if len(sys.argv) != 2:
     util.help_msg(msg_list)
 
-comment = '"' + util.merge_args() + '"'
+comment = util.merge_args()
 
 branch = util.repository_branch()
 print("[lin-vim] git commit on branch: '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
 util.user_confirm()
-util.run('git', 'add', '-A', util.repository_root())
-util.run('git', 'commit', '-m', comment)
+os.system('git add -A %s' % util.repository_root())
+os.system('git commit -m "%s"' % comment)
