@@ -25,6 +25,7 @@ branch = util.repository_branch()
 if len(sys.argv) == 1:
     print("[lin-vim] git push on '%s', path: '%s'" % (branch, os.getcwd()))
     os.system('git push')
+    os.system('git push --tags')
 else:
     comment = util.merge_args()
     print("[lin-vim] git push on '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
@@ -32,3 +33,4 @@ else:
     os.system('git add -A %s' % util.repository_root())
     os.system('git commit -m "%s"' % comment)
     os.system('git push')
+    os.system('git push --tags')

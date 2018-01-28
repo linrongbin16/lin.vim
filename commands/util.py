@@ -57,11 +57,11 @@ def run(*cmd):
     return result_out
 
 
-def merge_args():
+def merge_args(start=1):
     result = ''
     args_len = len(sys.argv)
     for i in xrange(args_len):
-        if i == 0:
+        if i < start:
             continue
         result = result + ' ' + sys.argv[i]
     return result.strip()

@@ -1,3 +1,3 @@
 @ECHO OFF
-cd %HOMEPATH%\.vim\commands
-sh gtag %*
+REM Copyright 2018-  <linrongbin16@gmail.com>
+python C:\%HOMEPATH%\.vim\commands\gtag.py %*

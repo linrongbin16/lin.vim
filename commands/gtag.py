@@ -1,77 +1,42 @@
-#! /usr/bin/env bash
+#! /usr/bin/env python
+#-*- coding:utf-8 -*-
 
-cmdname=${0##*/}
+# Copyright 2018-  <linrongbin16@gmail.com>
 
-helpmsg () {
-    echo "Brief:"
-    echo "    1. list git tags"
-    echo "    2. create light git [tag]"
-    echo "    3. create git [tag] with [comment]"
-    echo "Usage:"
-    echo "    1. $cmdname"
-    echo "    2. $cmdname [tag]"
-    echo "    3. $cmdname [tag] [comment]"
-    echo "Try again"
-    echo ""
-}
+import sys
+import os
+sys.path.append('.')
+import util
 
-makesure() {
-    read yes
-    confirm=0
-    if [[ $yes == "yes" ]]; then
-        confirm=1
-    fi
-    if [[ $yes == "Yes" ]]; then
-        confirm=1
-    fi
-    if [[ $yes == "Y" ]]; then
-        confirm=1
-    fi
-    if [[ $yes == "y" ]]; then
-        confirm=1
-    fi
-    if [[ $confirm -eq 0 || "$confirm" == "0" ]]; then
-        echo "error: user not confirm"
-        exit 1
-    fi
-}
+msg_list = [
+        "Brief:",
+        "    1. list git tags",
+        "    2. create light git [tag]",
+        "    3. create git [tag] with [comment]",
+        "Usage:",
+        "    1. %s" % util.command_name(),
+        "    2. %s [tag]" % util.command_name(),
+        "    3. %s [tag] [comment]" % util.command_name(),
+        "Try again"]
 
-# error: miss tag parameter
-if [[ $# -lt 1 ]]; then
-    echo "error: miss parameter tag"
-    helpmsg
-    exit 1
-fi
+util.check_help(msg_list)
+util.check_repository()
 
-comment=
-lighttag=1
-tagname=$1
+branch = util.repository_branch()
 
-if [[ $# -ge 1 ]]; then
-    shift
-    comment="$@"
-fi
-
-# error: not a git repository
-if ! git status 1>/dev/null 2>&1; then
-    echo "error: not a git repository"
-    helpmsg
-    exit 1
-fi
-
-git pull --tags
-if [[ $comment ]]; then
-    echo "[lin-vim] git annotated tag: '$tagname', comment: '$comment', path: '$PWD'"
-    lighttag=0
-else
-    echo "[lin-vim] git light tag: '$tagname', path: '$PWD'"
-fi
-echo -n "[lin-vim] yes? "
-makesure
-
-if [[ $lighttag -eq 1 || "$lighttag" == "1" ]]; then
-    git tag $tagname
-else
-    git tag -a $tagname -m "$comment"
-fi
-git push --tags
+if len(sys.argv) == 1:
+    os.system('git pull --tags')
+    os.system('git tag')
+elif len(sys.argv) == 2:
+    tag = sys.argv[1]
+    print("[lin-vim] git tag on '%s', tag: '%s', path: '%s'" % (branch, tag, os.getcwd()))
+    util.user_confirm()
+    os.system('git pull --tags')
+    os.system('git tag %s' % tag)
+else:
+    tag = sys.argv[1]
+    comment = util.merge_args(1)
+    print("[lin-vim] git tag on '%s', tag: '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
+    util.user_confirm()
+    os.system('git pull --tags')
+    os.system('git tag -a $tagname -m "%s"' % (tag, comment))
