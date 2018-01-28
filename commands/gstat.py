@@ -21,7 +21,4 @@ util.check_repository()
 if len(sys.argv) > 1:
     util.help_msg(msg_list)
 
-save_dir = os.getcwd()
-os.chdir(util.repository_root())
 os.system('git status')
-os.chdir(save_dir)

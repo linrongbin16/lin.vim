@@ -18,9 +18,5 @@ msg_list = [
 util.check_help(msg_list)
 util.check_repository()
 
-if len(sys.argv) != 2:
-    util.help_msg(msg_list)
-
-comment = util.merge_args()
-
-os.system('git config --global user.email "%s"' % comment)
+email = util.merge_args()
+os.system('git config --global user.email "%s"' % email)

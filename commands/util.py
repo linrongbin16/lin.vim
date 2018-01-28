@@ -83,7 +83,8 @@ def repository_root():
         last_dir = current_dir
         os.chdir('..')
         current_dir = os.getcwd()
-    os.chdir(save_dir)
+    if os.path.exists(save_dir):
+        os.chdir(save_dir)
     if '.git' in os.listdir(current_dir):
         return current_dir
     else:
@@ -106,3 +107,7 @@ def check_repository():
 def repository_branch():
     lines = run('git', 'status')
     return lines[0].split(' ')[2].strip()
+
+
+def repository_modifies():
+    lines = run('git', 'ls-files', '-m')

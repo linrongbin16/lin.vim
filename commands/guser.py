@@ -1,28 +1,22 @@
-#! /usr/bin/env bash
+#! /usr/bin/env python
+#-*- coding:utf-8 -*-
 
-cmdname=${0##*/}
+# Copyright 2018-  <linrongbin16@gmail.com>
 
-helpmsg () {
-    echo "Brief:"
-    echo "    config git [username]"
-    echo "Usage:"
-    echo "    $cmdname [username]"
-    echo "Try again"
-    echo ""
-}
+import sys
+import os
+sys.path.append('.')
+import util
 
-# error: missing username parameter
-if [ $# -lt 1 ]; then
-    helpmsg
-    exit 1
-fi
+msg_list = [
+        "Brief:",
+        "    git config [username]",
+        "Usage:",
+        "    %s [username]" % util.command_name(),
+        "Try again"]
 
-# error: not a git repository
-if ! git status 1>/dev/null 2>&1; then
-    echo "error: git repository not exist"
-    helpmsg
-    exit 1
-fi
+util.check_help(msg_list)
+util.check_repository()
 
-cd $(groot)
-git config --global user.name "$1"
+name = util.merge_args()
+os.system('git config --global user.name "%s"' % name)
