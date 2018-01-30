@@ -11,7 +11,7 @@ import util
 
 msg_list = [
         "Brief:",
-        "    git repository root directory"
+        "    git repository root directory",
         "Usage:",
         "    %s" % util.command_name(),
         "Try again"]

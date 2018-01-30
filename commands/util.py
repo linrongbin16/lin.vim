@@ -9,15 +9,19 @@ import threading
 import platform
 
 
+def is_windows():
+    return platform.system() == 'Windows'
+
+
 def command_home():
-    if platform.system() == 'Windows':
+    if is_windows():
         return 'C:\\' + os.path.expanduser('~') + '\\.vim\\commands'
     else:
         return os.path.expanduser('~') + '/.vim/commands/'
 
 
 def ag_ignore():
-    if platform.system() == 'Windows':
+    if is_windows():
         return 'C:\\' + os.path.expanduser('~') + '\\.vim\\commands\\ag.ignore'
     else:
         return os.path.expanduser('~') + '/.vim/commands/ag.ignore'
@@ -48,7 +52,10 @@ def run(*cmd):
     for i in cmd:
         exe = exe + ' ' + i
     tmp_out = 'lin-vim.tmp_out.pid-%s.tid-%s' % (str(os.getpid()), str(threading.current_thread().ident))
-    exe = '%s >%s' % (exe, tmp_out)
+    if is_windows():
+        exe = '%s >%s 2>nul' % (exe, tmp_out)
+    else:
+        exe = '%s >%s 2>/dev/null' % (exe, tmp_out)
     os.system(exe)
     fp_out = open(tmp_out, 'r')
     result_out = fp_out.readlines()
@@ -67,7 +74,7 @@ def merge_args(start=1):
     return result.strip()
 
 
-def check_help(*msg_list):
+def check_help(msg_list):
     if len(sys.argv) < 2:
         return
     if sys.argv[1] == "--help" or sys.argv[1] == "-h":
@@ -75,18 +82,10 @@ def check_help(*msg_list):
 
 
 def repository_root():
-    save_dir = os.getcwd()
-    current_dir = os.getcwd()
-    last_dir = ''
-    os.chdir(current_dir)
-    while '.git' not in os.listdir(current_dir) and last_dir != current_dir:
-        last_dir = current_dir
-        os.chdir('..')
-        current_dir = os.getcwd()
-    if os.path.exists(save_dir):
-        os.chdir(save_dir)
-    if '.git' in os.listdir(current_dir):
-        return current_dir
+    root = run('git', 'rev-parse', '--show-toplevel')
+    if len(root) > 0:
+        root = root[0]
+        return root.strip()
     else:
         return None
 
