@@ -52,6 +52,7 @@ Plug 'posva/vim-vue', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'burnettk/vim-angular', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'ternjs/tern_for_vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
+Plug 'maksimr/vim-jsbeautify'
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
