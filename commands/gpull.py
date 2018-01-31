@@ -16,12 +16,12 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
 if len(sys.argv) != 1:
     util.help_msg(msg_list)
 
-branch = util.repository_branch()
+branch = util.git_branch()
 print("[lin-vim] git pull on '%s', path: '%s'" % (branch, os.getcwd()))
 os.system('git pull')
 os.system('git pull --tags')

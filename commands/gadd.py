@@ -16,5 +16,5 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
-os.system('git add -A %s' % util.repository_root())
+util.check_git()
+os.system('git add -A %s' % util.git_root())

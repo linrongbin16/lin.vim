@@ -16,7 +16,7 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
 name = util.merge_args()
 os.system('git config --global user.name "%s"' % name)

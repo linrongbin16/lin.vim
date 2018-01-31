@@ -17,15 +17,15 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
 if len(sys.argv) != 2:
     util.help_msg(msg_list)
 
 comment = util.merge_args()
 
-branch = util.repository_branch()
+branch = util.git_branch()
 print("[lin-vim] git commit on branch: '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
 util.user_confirm()
-os.system('git add -A %s' % util.repository_root())
+os.system('git add -A %s' % util.git_root())
 os.system('git commit -m "%s"' % comment)

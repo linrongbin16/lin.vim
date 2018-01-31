@@ -16,7 +16,7 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
 if len(sys.argv) > 1:
     util.help_msg(msg_list)

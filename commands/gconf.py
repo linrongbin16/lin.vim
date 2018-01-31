@@ -21,7 +21,7 @@ os.system('git config --global core.longpaths true')
 os.system('git config --global push.default simple')
 os.system('git config --global pull.default simple')
 
-if util.repository_root() is None:
+if util.git_root() is None:
     os.system('git config core.fileMode false')
     os.system('git config core.longpaths true')
     os.system('git config push.default simple')

@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 # Copyright 2018-  <linrongbin16@gmail.com>
 
@@ -10,24 +10,25 @@ import util
 
 msg_list = [
         "Brief:",
-        "    git discard everything",
+        "    1. git reset to last 1 commit, and push force to remote",
+        "    2. git reset to last [N] commit, and push force to remote",
         "Usage:",
-        "    %s" % util.command_name(),
+        "    1. %s" % util.command_name(),
+        "    2. %s [N]" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
-branch = util.repository_branch()
-print("[lin-vim] git discard all working on '%s', path: '%s'" % (branch, os.getcwd()))
+branch = util.git_branch()
+n = int(sys.argv[1])
+log = util.git_log(n)
+print("[lin-vim] git reset to last '%s' commit on '%s', log '%s', path: '%s'" % (branch, log, os.getcwd()))
 util.user_confirm()
 
 save_dir = os.getcwd()
 
-os.chdir(util.repository_root())
-for i in $(glistmodifies); do
-    git checkout $i
-done
+os.chdir(util.git_root())
 
 if os.path.exists(save_dir):
     os.chdir(save_dir)

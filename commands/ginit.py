@@ -14,7 +14,7 @@ msg_list = [
         "    2. init a git [repository]",
         "Usage:",
         "    1. %s" % util.command_name(),
-        "    2. %s [repository]" % util.command_name(),
+        "    2. %s [git]" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
@@ -27,7 +27,7 @@ elif len(sys.argv) <= 1:
     os.system('touch .gitignore')
     os.system('git add README.md')
     os.system('git add .gitignore')
-    os.system('git commit -m "initialize repository"')
+    os.system('git commit -m "initialize git"')
 else:
     repo = sys.argv[1]
     dot_git = None
@@ -53,4 +53,4 @@ else:
     os.system('touch .gitignore')
     os.system('git add README.md')
     os.system('git add .gitignore')
-    os.system('git commit -m "initialize repository"')
+    os.system('git commit -m "initialize git"')

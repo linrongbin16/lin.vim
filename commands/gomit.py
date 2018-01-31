@@ -110,11 +110,11 @@ def ignore_for_python():
 
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
 save_dir = os.getcwd()
 
-os.chdir(util.repository_root())
+os.chdir(util.git_root())
 fp = None
 if os.path.exists('.gitignore'):
     fp = open('.gitignore', 'a')

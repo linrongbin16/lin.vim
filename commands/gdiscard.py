@@ -16,18 +16,15 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
-branch = util.repository_branch()
+branch = util.git_branch()
 print("[lin-vim] git discard all working on '%s', path: '%s'" % (branch, os.getcwd()))
 util.user_confirm()
 
 save_dir = os.getcwd()
 
-os.chdir(util.repository_root())
-for i in $(glistmodifies); do
-    git checkout $i
-done
+os.chdir(util.git_root())
 
 if os.path.exists(save_dir):
     os.chdir(save_dir)

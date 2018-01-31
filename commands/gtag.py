@@ -20,9 +20,9 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.check_repository()
+util.check_git()
 
-branch = util.repository_branch()
+branch = util.git_branch()
 
 if len(sys.argv) == 1:
     os.system('git pull --tags')

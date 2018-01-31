@@ -81,7 +81,7 @@ def check_help(msg_list):
         help_msg(msg_list)
 
 
-def repository_root():
+def git_root():
     root = run('git', 'rev-parse', '--show-toplevel')
     if len(root) > 0:
         root = root[0]
@@ -97,16 +97,33 @@ def user_confirm():
         exit(1)
 
 
-def check_repository():
-    if repository_root() is None:
-        print("error: not a git repository")
+def check_git():
+    if git_root() is None:
+        print("error: not a git git")
         exit(1)
 
 
-def repository_branch():
+def git_branch():
     lines = run('git', 'status')
     return lines[0].split(' ')[2].strip()
 
 
-def repository_modifies():
-    lines = run('git', 'ls-files', '-m')
+def git_last_log(n):
+    if n <= 0:
+        return None
+    rawlines = run('git', 'log', '-n', '%d' % n)
+    i = 1
+    for eachline in rawlines:
+        if eachline[0:6] == 'commit':
+            if i == n:
+                return eachline.split(' ')[1]
+            i += 1
+    return None
+
+
+def git_list_modifies():
+    return run('git', 'ls-files', '-m')
+
+
+def git_list_untracts():
+    return run('git', 'ls-files', '--others', '--exclude-standard')

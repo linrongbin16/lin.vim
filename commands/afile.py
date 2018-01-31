@@ -22,4 +22,4 @@ util.check_help(msg_list)
 if len(sys.argv) < 1:
     util.help_msg(msg_list)
 
-util.run('ag', '-l', '--smart-case', '--depth', '-1', '-p', util.ag_ignore(), util.merge_args(), '.')
+os.system('ag -l --smart-case --depth -1 -p %s %s .' % (util.ag_ignore(), util.merge_args()))
