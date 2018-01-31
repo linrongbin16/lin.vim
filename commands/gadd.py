@@ -17,4 +17,4 @@ msg_list = [
 
 util.check_help(msg_list)
 util.check_git()
-os.system('git add -A %s' % util.git_root())
+util.run_silent('git add -A %s' % util.git_root())

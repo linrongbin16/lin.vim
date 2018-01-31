@@ -47,6 +47,15 @@ def help_msg(msg_list):
     exit(1)
 
 
+def run_silent(cmd):
+    exe = ''
+    if is_windows():
+        exe = '%s >nul 2>nul' % (cmd)
+    else:
+        exe = '%s >/dev/null 2>/dev/null' % (cmd)
+    os.system(exe)
+
+
 def run(*cmd):
     exe = ''
     for i in cmd:

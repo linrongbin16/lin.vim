@@ -21,4 +21,4 @@ util.check_help(msg_list)
 if len(sys.argv) < 1:
     util.help_msg(msg_list)
 
-os.system('ag -w --smart-case --depth -1 -p %s %s .' % (util.ag_ignore(), util.merge_args()))
+util.run_silent('ag -w --smart-case --depth -1 -p %s %s .' % (util.ag_ignore(), util.merge_args()))

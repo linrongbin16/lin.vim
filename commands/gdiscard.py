@@ -34,12 +34,12 @@ for i in modifies:
     if ignore_pattern.match(i):
         continue
     print('[lin-vim] discard: %s' % i)
-    os.system('git checkout %s' % i)
+    util.run_silent('git checkout %s' % i)
 for i in untracts:
     if ignore_pattern.match(i):
         continue
     print('[lin-vim] remove: %s' % i)
-    os.system('rm %s' % i)
+    util.run_silent('rm %s' % i)
 
 if os.path.exists(save_dir):
     os.chdir(save_dir)
