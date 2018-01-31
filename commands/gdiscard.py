@@ -5,6 +5,7 @@
 
 import sys
 import os
+import re
 sys.path.append('.')
 import util
 
@@ -28,9 +29,16 @@ os.chdir(util.git_root())
 
 modifies = util.git_list_modifies()
 untracts = util.git_list_untracts()
+ignore_pattern = re.compile(r'lin-vim.tmp_out.pid-[0-9]+.tid-[0-9]+')
 for i in modifies:
+    if ignore_pattern.match(i):
+        continue
+    print('[lin-vim] discard: %s' % i)
     os.system('git checkout %s' % i)
 for i in untracts:
+    if ignore_pattern.match(i):
+        continue
+    print('[lin-vim] remove: %s' % i)
     os.system('rm %s' % i)
 
 if os.path.exists(save_dir):
