@@ -23,5 +23,5 @@ if len(sys.argv) != 1:
 
 branch = util.git_branch()
 print("[lin-vim] git pull on '%s', path: '%s'" % (branch, os.getcwd()))
-util.run_silent('git pull')
-util.run_silent('git pull --tags')
+os.system('git pull')
+os.system('git pull --tags')

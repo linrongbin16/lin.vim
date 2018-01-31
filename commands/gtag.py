@@ -26,17 +26,17 @@ branch = util.git_branch()
 
 if len(sys.argv) == 1:
     util.run_silent('git pull --tags')
-    util.run_silent('git tag')
+    os.system('git tag')
 elif len(sys.argv) == 2:
     tag = sys.argv[1]
     print("[lin-vim] git tag on '%s', tag: '%s', path: '%s'" % (branch, tag, os.getcwd()))
     util.user_confirm()
     util.run_silent('git pull --tags')
-    util.run_silent('git tag %s' % tag)
+    os.system('git tag %s' % tag)
 else:
     tag = sys.argv[1]
     comment = util.merge_args(1)
     print("[lin-vim] git tag on '%s', tag: '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
     util.user_confirm()
     util.run_silent('git pull --tags')
-    util.run_silent('git tag -a %s -m "%s"' % (tag, comment))
+    os.system('git tag -a %s -m "%s"' % (tag, comment))

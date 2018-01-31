@@ -19,4 +19,4 @@ util.check_help(msg_list)
 util.check_git()
 
 email = util.merge_args()
-util.run_silent('git config --global user.email "%s"' % email)
+os.system('git config --global user.email "%s"' % email)

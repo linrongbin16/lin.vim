@@ -16,13 +16,13 @@ msg_list = [
         "Try again"]
 
 util.check_help(msg_list)
-util.run_silent('git config --global core.fileMode false')
-util.run_silent('git config --global core.longpaths true')
-util.run_silent('git config --global push.default simple')
-util.run_silent('git config --global pull.default simple')
+os.system('git config --global core.fileMode false')
+os.system('git config --global core.longpaths true')
+os.system('git config --global push.default simple')
+os.system('git config --global pull.default simple')
 
 if util.git_root() is None:
-    util.run_silent('git config core.fileMode false')
-    util.run_silent('git config core.longpaths true')
-    util.run_silent('git config push.default simple')
-    util.run_silent('git config pull.default simple')
+    os.system('git config core.fileMode false')
+    os.system('git config core.longpaths true')
+    os.system('git config push.default simple')
+    os.system('git config pull.default simple')

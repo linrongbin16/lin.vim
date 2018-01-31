@@ -22,12 +22,12 @@ util.check_help(msg_list)
 if len(sys.argv) > 2:
     util.help_msg(msg_list)
 elif len(sys.argv) <= 1:
-    util.run_silent('git init')
-    util.run_silent('touch README.md')
-    util.run_silent('touch .gitignore')
-    util.run_silent('git add README.md')
-    util.run_silent('git add .gitignore')
-    util.run_silent('git commit -m "initialize git"')
+    os.system('git init')
+    os.system('touch README.md')
+    os.system('touch .gitignore')
+    os.system('git add README.md')
+    os.system('git add .gitignore')
+    os.system('git commit -m "initialize git"')
 else:
     repo = sys.argv[1]
     dot_git = None
@@ -46,11 +46,11 @@ else:
         print("error: git repository already exist")
         exit(1)
     if not os.path.exists(repo):
-        util.run_silent('mkdir -p %s' % repo)
+        os.system('mkdir -p %s' % repo)
     os.chdir(repo)
-    util.run_silent('git init')
-    util.run_silent('touch README.md')
-    util.run_silent('touch .gitignore')
-    util.run_silent('git add README.md')
-    util.run_silent('git add .gitignore')
-    util.run_silent('git commit -m "initialize git"')
+    os.system('git init')
+    os.system('touch README.md')
+    os.system('touch .gitignore')
+    os.system('git add README.md')
+    os.system('git add .gitignore')
+    os.system('git commit -m "initialize git"')
