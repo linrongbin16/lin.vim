@@ -26,5 +26,12 @@ save_dir = os.getcwd()
 
 os.chdir(util.git_root())
 
+modifies = util.git_list_modifies()
+untracts = util.git_list_untracts()
+for i in modifies:
+    os.system('git checkout %s' % i)
+for i in untracts:
+    os.system('rm %s' % i)
+
 if os.path.exists(save_dir):
     os.chdir(save_dir)

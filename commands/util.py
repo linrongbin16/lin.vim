@@ -91,7 +91,7 @@ def git_root():
 
 
 def user_confirm():
-    yes = raw_input("yes? ")
+    yes = raw_input("[lin-vim] yes? ")
     if yes.lower() != "yes" and yes.lower() != "y":
         print("error: user not confirm")
         exit(1)
