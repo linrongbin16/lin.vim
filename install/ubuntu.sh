@@ -23,8 +23,7 @@ sudo apt-get autoremove -y
 sudo apt-get install git vim vim-gtk curl wget apport unzip unrar zsh -y
 sudo apt-get install gcc g++ autoconf automake cmake bc clang-format -y
 sudo apt-get install libssl-dev libcrypto++-dev -y
-go_version=1.9
-sudo apt-get install default-jdk golang-$go_version golang-$go_version-src go-$go_version-go go-$go_version-doc -y
+sudo apt-get install default-jdk golang golang-src golang-go golang-doc -y
 sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
 sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
