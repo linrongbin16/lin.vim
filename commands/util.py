@@ -7,6 +7,8 @@ import sys
 import os
 import threading
 import platform
+import datetime
+import time
 
 
 def is_windows():
@@ -136,3 +138,25 @@ def git_list_modifies():
 
 def git_list_untracts():
     return run('git', 'ls-files', '--others', '--exclude-standard')
+
+
+def date_to_second(d):
+    assert isinstance(d, datetime.date)
+    return time.mktime(d.timetuple())
+
+
+def datetime_to_second(dt):
+    assert isinstance(dt, datetime.datetime)
+    return time.mktime(dt.timetuple())
+
+
+def number_to_string(n):
+    if isinstance(n, int) or isinstance(n, long):
+        return str(n)
+    else:
+        n_int = long(n)
+        n_int_float = float(n_int)
+        if n_int_float == n:
+            return str(n_int)
+        else:
+            return str(n)
