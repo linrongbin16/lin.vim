@@ -27,6 +27,7 @@ msg_list = [
         "    6. %s go" % util.command_name(),
         "Try again"]
 
+
 def ignore_for_common(fp):
     ignore_list = [
             '#',
@@ -69,44 +70,55 @@ def ignore_for_cxx(fp):
             "*.slo",
             "*.lo",
             "*.o",
-    "*.obj" >> $ignorefile
-    "*.pro.user" >> $ignorefile
-    "*.so" >> $ignorefile
-    "*.so.*" >> $ignorefile
-    "*.dylib" >> $ignorefile
-    "*.dylib.*" >> $ignorefile
-    "*.dll" >> $ignorefile
-    "*.dll.*" >> $ignorefile
-    "*.swp" >> $ignorefile
-    "*.lai" >> $ignorefile
-    "*.la" >> $ignorefile
-    "*.a" >> $ignorefile
-    "*.a.*" >> $ignorefile
-    "*.lib" >> $ignorefile
-    "*.lib.*" >> $ignorefile
-    "*.rdb" >> $ignorefile
-    "*.exe" >> $ignorefile
-    "*.out" >> $ignorefile
-    "*.app" >> $ignorefile
+            "*.obj",
+            "*.pro.user",
+            "*.so",
+            "*.so.*",
+            "*.dylib",
+            "*.dylib.*",
+            "*.dll",
+            "*.dll.*",
+            "*.swp",
+            "*.lai",
+            "*.la",
+            "*.a",
+            "*.a.*",
+            "*.lib",
+            "*.lib.*",
+            "*.rdb",
+            "*.exe",
+            "*.out",
+            "*.app"
+            ]
+    for i in ignore_list:
+        fp.write(i + os.linesep)
 
 
-def ignore_for_java():
-    ignorefile=$1
-    echo ".gradle" >> $ignorefile
-    echo ".gradle/*" >> $ignorefile
-    echo ".m2" >> $ignorefile
-    echo ".m2/*" >> $ignorefile
-    echo "MANIFEST.MF" >> $ignorefile
-    echo "Manifest.mf" >> $ignorefile
-    echo "manifest.mf" >> $ignorefile
-    echo "*.jar" >> .gitignore
-    echo "*.class" >> .gitignore
+def ignore_for_java(fp):
+    ignore_list = [
+            ".gradle",
+            ".gradle/*",
+            "gradle",
+            "gradle/*",
+            ".m2",
+            ".m2/*",
+            "MANIFEST.MF",
+            "Manifest.mf",
+            "manifest.mf",
+            "*.jar",
+            "*.class"
+            ]
+    for i in ignore_list:
+        fp.write(i + os.linesep)
 
 
-def ignore_for_python():
-    ignorefile=$1
-    echo "__pycache__" >> .gitignore
-    echo "*.pyc" >> .gitignore
+def ignore_for_python(fp):
+    ignore_list = [
+            "__pycache__",
+            "*.pyc"
+            ]
+    for i in ignore_list:
+        fp.write(i + os.linesep)
 
 
 util.check_help(msg_list)
@@ -127,3 +139,9 @@ else:
     lang = util.merge_args()
     if lang == 'cxx' or lang == 'c++' or lang == 'c' or lang == 'cpp' or lang == 'cc':
         ignore_for_cxx(fp)
+    elif lang == 'java':
+        ignore_for_java(fp)
+    elif lang == 'py' or lang == 'python':
+        ignore_for_python(fp)
+    else:
+        print('[lin-vim] Sorry we don\'t support %s' % (lang))
