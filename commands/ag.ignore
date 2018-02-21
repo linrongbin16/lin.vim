@@ -2,6 +2,7 @@ tags
 tags.lock
 tags.temp
 cscope.out
+ncscope.out
 cscope.files
 cscope.in.out
 cscope.po.out
