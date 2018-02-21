@@ -160,3 +160,30 @@ def number_to_string(n):
             return str(n_int)
         else:
             return str(n)
+
+
+def git_remote():
+    branches = run('git', 'branch', '-a')
+    remote_branches = set()
+    for br in branches:
+        b = br.strip()
+        print('b: %s' % (str(b)))
+        if b[:7] == 'remotes':
+            first_slash_pos = None
+            second_slash_pos = None
+            first_slash_pos = b.find('/')
+            if first_slash_pos >= 0:
+                second_slash_pos = b[first_slash_pos + 1:].find('/')
+            rb = b[first_slash_pos + 1: first_slash_pos + second_slash_pos + 1]
+            print('first_slash_pos: %s, second_slash_pos: %s, rb: %s' % (str(first_slash_pos), str(second_slash_pos), str(rb)))
+            remote_branches.add(rb)
+    print('remote_branches: %s' % (str(remote_branches)))
+    return remote_branches
+
+
+def is_empty_str(s):
+    if s is None:
+        return True
+    if len(s.strip()) == 0:
+        return True
+    return False

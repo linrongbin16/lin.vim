@@ -22,15 +22,48 @@ util.check_git()
 
 branch = util.git_branch()
 
+remote = util.git_remote()
+remote_str = ""
+push_one = True
+
+if len(remote) < 1:
+    print("error: remote repository doesn\'t exist")
+    util.help_msg(msg_list)
+
+if len(remote) > 1:
+    for r in remote:
+        remote_str = remote_str + ', ' + str(r)
+    print('[lin-vim] detect multiple git remote repositories: %s' % (remote_str))
+    user_input = raw_input('[lin-vim] which one do you want to push (all if empty)?')
+    if not util.is_empty_str(user_input):
+        remote_str = user_input
+    else:
+        push_one = False
+
+if len(remote) == 1:
+    remote_str = list(remote)[0]
+
+print('remote: %s, remote_str: %s' % (str(remote), str(remote_str)))
+
 if len(sys.argv) == 1:
-    print("[lin-vim] git push on '%s', path: '%s'" % (branch, os.getcwd()))
-    os.system('git push')
-    os.system('git push --tags')
+    print("[lin-vim] git push to '%s', branch: '%s', path: '%s'" % (remote_str, branch, os.getcwd()))
+    if push_one:
+        os.system('git push %s %s' % (remote_str, branch))
+        os.system('git push --tags')
+    else:
+        for r in remote:
+            os.system('git push %s %s' % (r, branch))
+            os.system('git push --tags')
 else:
     comment = util.merge_args()
-    print("[lin-vim] git push on '%s', comment: '%s', path: '%s'" % (branch, comment, os.getcwd()))
+    print("[lin-vim] git push to '%s', branch: '%s', comment: '%s', path: '%s'" % (remote_str, branch, comment, os.getcwd()))
     util.user_confirm()
     os.system('git add -A %s' % util.git_root())
     os.system('git commit -m "%s"' % comment)
-    os.system('git push')
-    os.system('git push --tags')
+    if push_one:
+        os.system('git push %s %s' % (remote_str, branch))
+        os.system('git push --tags')
+    else:
+        for r in remote:
+            os.system('git push %s %s' % (r, branch))
+            os.system('git push --tags')
