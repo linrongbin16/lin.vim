@@ -184,3 +184,7 @@ def is_empty_str(s):
     if len(s.strip()) == 0:
         return True
     return False
+
+
+def git_is_behind():
+    status = run('git', 'status')
