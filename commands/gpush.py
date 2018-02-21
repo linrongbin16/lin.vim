@@ -44,16 +44,18 @@ if len(remote) == 1:
 
 if len(sys.argv) == 1:
     print("[lin-vim] git push to '%s', branch: '%s', path: '%s'" % (remote_str, branch, os.getcwd()))
-    os.system('git pull %s %s' % (remote_str, branch))
-    os.system('git pull --tags')
+    if util.git_is_behind():
+        os.system('git pull %s %s' % (remote_str, branch))
+        os.system('git pull --tags')
     os.system('git push %s %s' % (remote_str, branch))
     os.system('git push --tags')
 else:
     comment = util.merge_args()
     print("[lin-vim] git push to '%s', branch: '%s', comment: '%s', path: '%s'" % (remote_str, branch, comment, os.getcwd()))
     util.user_confirm()
-    os.system('git pull %s %s' % (remote_str, branch))
-    os.system('git pull --tags')
+    if util.git_is_behind():
+        os.system('git pull %s %s' % (remote_str, branch))
+        os.system('git pull --tags')
     os.system('git add -A %s' % util.git_root())
     os.system('git commit -m "%s"' % comment)
     os.system('git push %s %s' % (remote_str, branch))

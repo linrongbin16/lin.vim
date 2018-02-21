@@ -188,3 +188,15 @@ def is_empty_str(s):
 
 def git_is_behind():
     status = run('git', 'status')
+    for s in status:
+        if s.find('Your branch is behind') >= 0:
+            return True
+    return False
+
+
+def git_is_ahead():
+    status = run('git', 'status')
+    for s in status:
+        if s.find('Your branch is ahead') >= 0:
+            return True
+    return False
