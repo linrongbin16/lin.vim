@@ -43,8 +43,6 @@ if len(remote) > 1:
 if len(remote) == 1:
     remote_str = list(remote)[0]
 
-print('remote: %s, remote_str: %s' % (str(remote), str(remote_str)))
-
 if len(sys.argv) == 1:
     print("[lin-vim] git push to '%s', branch: '%s', path: '%s'" % (remote_str, branch, os.getcwd()))
     if push_one:
