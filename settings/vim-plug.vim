@@ -14,15 +14,13 @@ Plug 'tomasr/molokai'
 Plug 'bling/vim-airline'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-sleuth'
-"Plug 'majutsushi/tagbar'
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-"Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim'
@@ -33,13 +31,14 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
+Plug 'ervandew/supertab'
 
 " C++ Python
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
 Plug 'Valloric/YouCompleteMe'
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Java
-Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }
+"Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }
 " html/css/js
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
 Plug 'ap/vim-css-color', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
@@ -48,18 +47,17 @@ Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'j
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
 Plug 'mxw/vim-jsx', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-Plug 'posva/vim-vue', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
+"Plug 'posva/vim-vue', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-Plug 'burnettk/vim-angular', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
+"Plug 'burnettk/vim-angular', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'ternjs/tern_for_vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'maksimr/vim-jsbeautify'
 " Golang
-Plug 'fatih/vim-go', { 'for': ['go'] }
+"Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
-Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
+"Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 " php
 Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
-Plug 'shawncplus/phpcomplete.vim', { 'for': ['php'] }
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
 " rust
