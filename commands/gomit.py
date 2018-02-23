@@ -34,12 +34,8 @@ def ignore_for_common(fp):
             '# [lin-vim] gomit',
             '#',
             '.idea',
-            '.idea/*',
-            '.iml',
             '.svn',
-            '.svn/*',
             '.hg',
-            '.hg/*',
             'tags',
             "cscope.out",
             "cscope.in.out",
@@ -54,10 +50,11 @@ def ignore_for_common(fp):
             ".DS_Store",
             "*/.DS_Store",
             "*.xcuserdata",
-            "*.log"
+            "*.log",
+            "*.iml"
             ]
     for i in ignore_list:
-        fp.write(i + os.linesep)
+        fp.write(i + '\n')
 
 
 def ignore_for_cxx(fp):
@@ -91,7 +88,7 @@ def ignore_for_cxx(fp):
             "*.app"
             ]
     for i in ignore_list:
-        fp.write(i + os.linesep)
+        fp.write(i + '\n')
 
 
 def ignore_for_java(fp):
@@ -109,7 +106,7 @@ def ignore_for_java(fp):
             "*.class"
             ]
     for i in ignore_list:
-        fp.write(i + os.linesep)
+        fp.write(i + '\n')
 
 
 def ignore_for_python(fp):
@@ -118,7 +115,7 @@ def ignore_for_python(fp):
             "*.pyc"
             ]
     for i in ignore_list:
-        fp.write(i + os.linesep)
+        fp.write(i + '\n')
 
 
 util.check_help(msg_list)
