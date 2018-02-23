@@ -110,7 +110,7 @@ def user_confirm():
 
 def check_git():
     if git_root() is None:
-        print("error: not a git git")
+        print("error: not a git repository")
         exit(1)
 
 

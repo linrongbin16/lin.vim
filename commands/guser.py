@@ -20,3 +20,4 @@ util.check_git()
 
 name = util.merge_args()
 os.system('git config --global user.name "%s"' % name)
+os.system('git config user.name "%s"' % name)
