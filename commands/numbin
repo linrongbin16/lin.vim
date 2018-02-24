@@ -1,34 +1,3 @@
 #! /usr/bin/env bash
-
-cmdname=${0##*/}
-
-helpmsg() {
-    echo "Brief:"
-    echo "    transform [number] from 10-decimal to 2-binary"
-    echo "Usage:"
-    echo "    $cmdname [number]"
-    echo "Try again"
-    echo ""
-}
-
-# error 1: no parameter
-if [[ $# -lt 1 ]]; then
-    helpmsg
-    exit 1
-fi
-
-number=$1
-decto=1
-
-if [[ $# -gt 1 ]]; then
-    param=$2
-    if [[ $param == "from" || $param == "FROM" || $param == "F" || $param == "f" ]]; then
-        decto=0
-    fi
-fi
-
-if [[ $decto -eq 1 || "$decto" == "1" ]]; then
-    echo "ibase=10;obase=2; $number" | bc
-else
-    echo "ibase=2;obase=1010; $number" | bc
-fi
+# Copyright 2018 - <linrongbin16@gmail.com>
+python ~/.vim/commands/numbin.py "$@"
