@@ -23,10 +23,8 @@ if len(sys.argv) <= 1:
 
 expression = util.merge_args()
 expression = expression.strip()
-print('expression[0]: %s, expression[1:]: %s' % (expression[0], expression[1:]))
 if expression[0] == '\'':
     expression = expression[1:]
-print('expression[-1]: %s, expression[:-1]: %s' % (expression[-1], expression[:-1]))
 if expression[-1] == '\'':
     expression = expression[:-1]
 
