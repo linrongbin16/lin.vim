@@ -1,20 +1,3 @@
 #! /usr/bin/env bash
-
-cmdname=${0##*/}
-
-helpmsg() {
-    echo "Brief:"
-    echo "    calculate math [expression]"
-    echo "Usage:"
-    echo "    $cmdname [expression]"
-    echo "Try again"
-    echo ""
-}
-
-# error 1: no host name
-if [[ $# -lt 1 ]]; then
-    helpmsg
-    exit 1
-fi
-
-echo "$@" | bc
+# Copyright 2018 - <linrongbin16@gmail.com>
+python ~/.vim/commands/num.py "$@"
