@@ -32,7 +32,6 @@ save_dir = os.getcwd()
 os.chdir(util.git_root())
 os.system('git commit -m "save previous work before reset to git commit %s"' % (commit_number))
 os.system('git reset HEAD~')
-os.system('git add -A .')
 os.system('git commit -m "reset to git commit %s"' % (commit_number))
 print("[lin-vim] reset to '%s' success, use 'gpush -f' overwriting remote repository" % (commit_number))
 if os.path.exists(save_dir):
