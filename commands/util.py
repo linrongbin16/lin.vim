@@ -200,3 +200,8 @@ def git_is_ahead():
         if s.find('Your branch is ahead') >= 0:
             return True
     return False
+
+
+def git_last_commit(n):
+    commits = run('git', 'log', '--pretty=oneline')
+    return commits[n].split(' ')[0]

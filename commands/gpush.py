@@ -12,9 +12,11 @@ msg_list = [
         "Brief:",
         "    1. git push",
         "    2. git add, commit, and push with [comment]",
+        "    3. git push with force",
         "Usage:",
         "    1. %s" % util.command_name(),
         "    2. %s [comment]" % util.command_name(),
+        "    3. %s -f/--force" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
@@ -48,6 +50,13 @@ if len(sys.argv) == 1:
         os.system('git pull %s %s' % (remote_str, branch))
         os.system('git pull --tags')
     os.system('git push %s %s' % (remote_str, branch))
+    os.system('git push --tags')
+elif len(sys.argv) == 2 and (sys.argv[1] == '-f' or sys.argv[1] == '--force'):
+    print("[lin-vim] git push force to '%s', branch: '%s', path: '%s'" % (remote_str, branch, os.getcwd()))
+    if util.git_is_behind():
+        os.system('git pull %s %s' % (remote_str, branch))
+        os.system('git pull --tags')
+    os.system('git push %s %s -f' % (remote_str, branch))
     os.system('git push --tags')
 else:
     comment = util.merge_args()
