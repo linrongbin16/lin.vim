@@ -25,7 +25,7 @@ n = 1
 if len(sys.argv) > 1:
     n = int(sys.argv[1])
 commit_number = util.git_last_commit(n - 1)
-print("[lin-vim] git reset to last '%s' commit '%s', branch: '%s', path: '%s'" % (branch, commit_number, os.getcwd()))
+print("[lin-vim] git reset to last '%s' commit '%s', branch: '%s', path: '%s'" % (n, commit_number, branch, os.getcwd()))
 util.user_confirm()
 
 save_dir = os.getcwd()
