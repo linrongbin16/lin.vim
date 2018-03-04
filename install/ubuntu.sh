@@ -28,7 +28,7 @@ sudo apt-get install cscope silversearcher-ag exuberant-ctags -y
 sudo apt-get install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python python-dev python-pip -y
-sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
+sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8 pathlib
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y

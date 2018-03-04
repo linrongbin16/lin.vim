@@ -10,5 +10,5 @@ cd %HOMEPATH%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer --go-completer --js-completer
 rm -rf %HOMEPATH%\vimfiles
 
-pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8
+pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8 pathlib
 npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
