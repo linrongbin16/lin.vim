@@ -22,9 +22,8 @@ util.check_help(msg_list)
 target = os.getcwd()
 if len(sys.argv) > 1:
     target = util.merge_args()
-    target = os.path.abspath(target)
 
-gzfile = pathlib.Path('%s.tar.gz' % target).name
+gzfile = pathlib.Path('%s.tar.gz' % os.path.abspath(target)).name
 print('gzfile: %s, target: %s' % (gzfile, target))
 if os.path.isfile(gzfile):
     print('mv "%s" "%s.old"' % (gzfile, gzfile))

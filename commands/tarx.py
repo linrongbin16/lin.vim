@@ -9,6 +9,15 @@ sys.path.append('.')
 import util
 import pathlib
 
+
+def backup(filename):
+    if not os.path.exists(filename):
+        return
+    if os.path.exists('%s.old' % (filename)):
+        os.system('rm -rf "%s.old"' % (filename))
+    os.system('mv "%s" "%s.old"' % (filename, filename))
+
+
 msg_list = [
         "Brief:",
         "    extract compressed [file] such as: *.rar, *.zip, *.tar.gz, *.tax, *.jar etc",
@@ -23,60 +32,30 @@ if len(sys.argv) <= 1:
 target = pathlib.Path(util.merge_args())
 basename = target.stem
 extname = target.suffix
-print('target: %s, basename: %s, extname: %s' % (target, basename, extname))
 if target.name.count('.') > 1:
-    extname = target.suffixes.join('')
+    extname = ''.join(target.suffixes)
+    basename = target.name[:len(extname)]
+print('target: %s, basename: %s, extname: %s' % (target, basename, extname))
 
+backup(basename)
 
-gzfile = pathlib.Path('%s.tar.gz' % target).name
-print('gzfile: %s, target: %s' % (gzfile, target))
-if os.path.isfile(gzfile):
-    print('mv "%s" "%s.old"' % (gzfile, gzfile))
-    os.system('mv "%s" "%s.old"' % (gzfile, gzfile))
-print('tar -zcvf "%s" "%s"' % (gzfile, target))
-os.system('tar -zcvf "%s" "%s"' % (gzfile, target))
-
-for i in $@; do
-    extension="${i##*.}"
-    filename="${i%.*}"
-    filenamelen=${#filename}
-    if [[ $extension == "zip" && $filenamelen -gt 0 ]]; then
-        if [[ -d $filename ]]; then
-            mv $filename "$filename.old"
-        fi
-        unzip "$i" -d $filename
-    elif [[ $extension == "gz" || $extension == "tar.gz" || $extension == "tar" ]]; then
-        if [[ -d $filename ]]; then
-            mv $filename "$filename.old"
-        fi
-        tar -zxvf $i
-    elif [[ $extension == "rar" ]]; then
-        if [[ -d $filename ]]; then
-            mv $filename "$filename.old"
-        fi
-        if [[ -d $filename ]]; then
-            mv $filename "$filename.old"
-        fi
-        mkdir $filename
-        mv $i $filename
-        cd $filename
-        unrar x $i
-        mv "$i" ..
-        cd ..
-    elif [[ $extension == "jar" ]];then
-        if [[ -d $filename ]]; then
-            mv $filename "$filename.old"
-        fi
-        mkdir $filename
-        mv $i $filename
-        cd $filename
-        jar xf $i
-        mv $i ..
-        cd ..
-    else
-        if [[ -d $filename ]]; then
-            mv $filename "$filename.old"
-        fi
-        tar -zxvf $i
-    fi
-done
+if extname == '.zip':
+    os.system('unzip "%s" -d "%s"' % (target.name, basename))
+elif extname == '.gz' or extname == '.tar.gz' or extname == '.tar':
+    os.system('tar -zxvf "%s"' % (target.name))
+elif extname == '.rar':
+    os.system('mkdir "%s"' % (basename))
+    os.system('mv "%s" "%s"' % (target.name, basename))
+    os.system('cd "%s"' % (basename))
+    os.system('unrar x "%s"' % (target.name))
+    os.system('mv "%s" ..' % (target.name))
+    os.system('cd ..')
+elif extname == ".jar":
+    os.system('mkdir "%s"' % (basename))
+    os.system('mv "%s" "%s"' % (target.name, basename))
+    os.system('cd "%s"' % (basename))
+    os.system('jar xf "%s"' % (target.name))
+    os.system('mv "%s" ..' % (target.name))
+    os.system('cd ..')
+else:
+    os.system('tar -zxvf "%s"' % (target.name))
