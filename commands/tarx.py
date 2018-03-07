@@ -34,8 +34,7 @@ basename = target.stem
 extname = target.suffix
 if target.name.count('.') > 1:
     extname = ''.join(target.suffixes)
-    basename = target.name[:len(extname)]
-print('target: %s, basename: %s, extname: %s' % (target, basename, extname))
+    basename = target.name[:len(target.name) - len(extname)]
 
 backup(basename)
 

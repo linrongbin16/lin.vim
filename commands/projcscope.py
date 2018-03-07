@@ -1,52 +1,47 @@
-#! /usr/bin/env bash
+#! /usr/bin/env python
+#-*- coding:utf-8 -*-
 
-cmdname=${0##*/}
+# Copyright 2018-  <linrongbin16@gmail.com>
 
-helpmsg() {
-    echo "Brief:"
-    echo "    create cscope.out for project, based on 'cscope'"
-    echo "Usage:"
-    echo "    $cmdname"
-    echo "Try again"
-    echo ""
-}
+import sys
+import os
+sys.path.append('.')
+import util
 
-cscfile="$PWD/cscope.files"
 
-list_file_dir() {
-    curdir=$1
-    cd $curdir
-    for i in $(ls); do
-        if [ -f $i ]; then
-            if [ ${i:0:1} != "." && ${i} != "tags" ]; then
-                echo "$PWD/$i" >> $cscfile
-            fi
-        fi
-        if [ -d $i ]; then
-            if [ ${i:0:1} != "." ]; then
-                list_file_dir $i
-            fi
-        fi
-    done
-    cd ..
-}
+msg_list = [
+        "Brief:",
+        "    create cscope.out for current folder, based on 'cscope'",
+        "Usage:",
+        "    %s" % util.command_name(),
+        "Try again"]
 
-make_cscope_files() {
-    curdir=$1
-    cd $curdir
-    if [ -f $cscfile ]; then
-        rm $cscfile
-    fi
-    touch $cscfile
-    list_file_dir .
-}
+util.check_help(msg_list)
 
-echo "[lin-vim] generate cscope.out at $PWD"
-origdir=$PWD
-make_cscope_files .
-cd $origdir
-if [ ! -f $cscfile ]; then
-    helpmsg
-    exit 1
-fi
-cscope -Rbq -i $cscfile &
+
+def list_directory(fp, folder):
+    os.chdir(folder)
+    for i in os.listdir('.'):
+        if os.path.isfile(i):
+            fp.write('%s\n' % (os.path.abspath(i)))
+        elif os.path.isdir(i):
+            list_directory(fp, i)
+    os.chdir('..')
+
+
+def make_cscope_files(folder):
+    os.chdir(folder)
+    if os.path.exists(cscope_files):
+        os.system('rm %s' % (cscope_files))
+    fp = open(cscope_files, 'w')
+    list_directory(fp, '.')
+
+
+print("[lin-vim] generate cscope.out at %s" % (os.getcwd()))
+cscope_files = "%s/cscope.files" % (os.getcwd())
+if util.is_windows():
+    cscope_files = "%s\\cscope.files" % (os.getcwd())
+save_dir = os.getcwd()
+make_cscope_files('.')
+os.chdir(save_dir)
+os.system('cscope -Rbq -i %s &' % (cscope_files))

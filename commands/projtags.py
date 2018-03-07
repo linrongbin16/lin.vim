@@ -9,6 +9,23 @@ sys.path.append('.')
 import util
 
 
+msg_list = [
+        "Brief:",
+        "    1. generate all language tags for project, need 'ctags'"
+        "    2. generate specified [language] tags for project, need 'ctags'"
+        "Usage:",
+        "    1. %s"
+        "    2. %s [c/cxx/cpp/cc/h/hpp/hh]"
+        "    3. %s [python]"
+        "    4. %s [php]"
+        "    5. %s [perl]"
+        "    6. %s [java]"
+        "    7. %s [js]"
+        "Try again"]
+
+util.check_help(msg_list)
+
+
 def make_cpp():
     os.system('ctags --languages=c++ --langmap=c++:+.in.x.inl.c.h --c++-kinds=+px --fields=+iaKSz --extra=+qf -R &')
 
@@ -21,7 +38,7 @@ def make_php():
     os.system('ctags --languages=php --langmap=php:+.php3.php4.php5.php6.php7 --fields=+iaS --extra=+q -R &')
 
 
-def make_php():
+def make_perl():
     os.system('ctags --languages=perl --perl-kinds=+px --fields=+iaS --extra=+q -R &')
 
 
@@ -51,6 +68,8 @@ def make_ctags(curdir, language):
             'py': make_python,
             'python': make_python,
             'php': make_php,
+            'perl': make_perl,
+            'pl': make_perl,
             'java': make_java,
             'js': make_javascript,
             'javascript': make_javascript,
@@ -60,23 +79,6 @@ def make_ctags(curdir, language):
     maker = maker_mapper[language]
     maker()
 
-
-msg_list = [
-        "Brief:",
-        "    transform [number] to 8-octal",
-        "    1. generate all language tags for project, need 'ctags'"
-        "    2. generate specified [language] tags for project, need 'ctags'"
-        "Usage:",
-        "    1. %s"
-        "    2. %s [c/cxx/cpp/cc/h/hpp/hh]"
-        "    3. %s [python]"
-        "    4. %s [php]"
-        "    5. %s [perl]"
-        "    6. %s [java]"
-        "    7. %s [js]"
-        "Try again"]
-
-util.check_help(msg_list)
 
 target = 'any'
 if len(sys.argv) > 1:
