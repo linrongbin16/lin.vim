@@ -25,7 +25,7 @@ msg_list = [
         "    type '%s type' for more detail" % util.command_name()]
 
 util.check_help(msg_list)
-if len(sys.argv) != 1:
+if len(sys.argv) <= 1:
     util.help_msg(msg_list)
 
 cmd_home = os.path.expanduser('~') + '/.vim/commands'
@@ -33,9 +33,9 @@ cmd_home = os.path.expanduser('~') + '/.vim/commands'
 
 def fmtprint1(cmdname, prefix):
     print(cmdname)
-    for i in os.path.list(cmd_home):
+    for i in os.listdir(cmd_home):
         py_pos = i.find('.py')
-        if py_pos >= 0 and py_pos == len(i) - 3:
+        if py_pos >= 0 and py_pos == len(i) - 3 and i[0:len(prefix)] == prefix:
             print("    %s" % i[:py_pos])
     print("")
 
