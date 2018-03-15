@@ -205,3 +205,40 @@ def git_is_ahead():
 def git_last_commit(n):
     commits = run('git', 'log', '--pretty=oneline')
     return commits[n].split(' ')[0]
+
+
+def trim_quotation(s):
+    s = s.strip()
+    if s[0] == '\"' or s[0] == '\'':
+        s = s[1:]
+    if s[-1] == '\"' or s[-1] == '\'':
+        s = s[:-1]
+    return s
+
+def is_hidden_name(filename):
+    filename = filename.strip()
+    if len(filename) > 1 and filename[0] == '.' and filename[1] != '.':
+        return True
+    return False
+
+
+def get_file_name_suffix(name):
+    if len(name) <= 0:
+        return ''
+    if name[0] == '.':
+        return ''
+    dot_pos = name.find('.')
+    if dot_pos > 0:
+        return name[dot_pos:]
+    return ''
+
+
+def get_file_base_name(name):
+    if len(name) <= 0:
+        return ''
+    if name[0] == '.':
+        return ''
+    dot_pos = name.find('.')
+    if dot_pos > 0:
+        return name[:dot_pos]
+    return name

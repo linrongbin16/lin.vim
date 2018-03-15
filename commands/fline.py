@@ -10,9 +10,6 @@ sys.path.append('.')
 import util
 
 
-pattern = re.compile(r'^$')
-
-
 def line_file(filename):
     count = 0
     fp = open(filename, 'r')
@@ -26,7 +23,9 @@ def line_file(filename):
 def line_suffix(count, directory, target):
     os.chdir(directory)
     for i in os.listdir('.'):
-        if not os.path.isdir(i):
+        if util.is_hidden_name(i):
+            continue
+        if os.path.isdir(i):
             count = line_suffix(count, i, target)
         elif os.path.isfile(i):
             if i.find('.') < 0:
@@ -43,7 +42,9 @@ def line_suffix(count, directory, target):
 def line_all(count, directory):
     os.chdir(directory)
     for i in os.listdir('.'):
-        if not os.path.isdir(i):
+        if util.is_hidden_name(i):
+            continue
+        if os.path.isdir(i):
             count = line_all(count, i)
         elif os.path.isfile(i):
             if i.find('.') >= 0:
@@ -52,6 +53,8 @@ def line_all(count, directory):
     os.chdir('..')
     return count
 
+
+pattern = re.compile(r'^$')
 
 msg_list = [
         "Brief:",
