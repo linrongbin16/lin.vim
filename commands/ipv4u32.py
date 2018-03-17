@@ -11,7 +11,7 @@ import util
 
 msg_list = [
         "Brief:",
-        "    transform ipv4 from [string] to uint32"
+        "    transform ipv4 from [string] to uint32",
         "Usage:",
         "    %s [string]" % util.command_name(),
         "Try again"]

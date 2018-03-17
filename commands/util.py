@@ -9,6 +9,8 @@ import threading
 import platform
 import datetime
 import time
+import re
+import string
 
 
 def is_windows():
@@ -244,6 +246,41 @@ def get_file_base_name(name):
     return name
 
 
+def is_valid_ipv4(ipaddr):
+    try:
+        pattern = re.compile(r'^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$')
+        if not pattern.match(ipaddr):
+            return False
+        ip_splits = ipaddr.split('.')
+        if len(ip_splits) != 4:
+            return False
+        for each_ip in ip_splits:
+            tmp = int(each_ip)
+            if tmp < 0 or tmp > 255:
+                return False
+        return True
+    except Exception as e:
+        return False
+
+
+def is_valid_ipv6(ipaddr):
+    try:
+        pattern = re.compile(r'^[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}$')
+        if not pattern.match(ipaddr):
+            return False
+        ip_splits = ipaddr.split(':')
+        if len(ip_splits) != 8:
+            return False
+        for each_ip in ip_splits:
+            print('each_ip: %s' % (each_ip))
+            if not all(c in string.hexdigits for c in each_ip):
+                print('not hex string')
+                return False
+        return True
+    except Exception as e:
+        return False
+
+
 def ip_string_to_uint32(ipstr):
     ip_split = ipstr.split('.')
     p1 = int(ip_split[0]) * 16777216
@@ -259,3 +296,5 @@ def ip_uint32_to_string(ipint):
     p3 = int(ipint / 256) % 256
     p4 = int(ipint) % 256
     return '%d.%d.%d.%d' % (p1, p2, p3, p4)
+
+

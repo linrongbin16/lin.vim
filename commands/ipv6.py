@@ -11,14 +11,17 @@ import util
 
 msg_list = [
         "Brief:",
-        "    transform an ipv4 [uint32] to string",
+        "    check if [ipv6] address is valid",
         "Usage:",
-        "    %s [uint32]" % util.command_name(),
+        "    %s [ipv6]" % util.command_name(),
         "Try again"]
 
 util.check_help(msg_list)
 if len(sys.argv) <= 1:
     util.help_msg(msg_list)
 
-ipaddr = int(sys.argv[1])
-print(util.ip_uint32_to_string(ipaddr))
+ipaddr = sys.argv[1]
+if util.is_valid_ipv6(ipaddr):
+    print(1)
+else:
+    print(0)
