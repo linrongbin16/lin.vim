@@ -242,3 +242,20 @@ def get_file_base_name(name):
     if dot_pos > 0:
         return name[:dot_pos]
     return name
+
+
+def ip_string_to_uint32(ipstr):
+    ip_split = ipstr.split('.')
+    p1 = int(ip_split[0]) * 16777216
+    p2 = int(ip_split[1]) * 65536
+    p3 = int(ip_split[2]) * 256
+    p4 = int(ip_split[3])
+    return p1 + p2 + p3 + p4
+
+
+def ip_uint32_to_string(ipint):
+    p1 = int(ipint / 16777216) % 256
+    p2 = int(ipint / 65536) % 256
+    p3 = int(ipint / 256) % 256
+    p4 = int(ipint) % 256
+    return '%d.%d.%d.%d' % (p1, p2, p3, p4)
