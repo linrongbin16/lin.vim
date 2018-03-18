@@ -10,7 +10,7 @@ import util
 
 msg_list = [
         "Brief:",
-        "    git add",
+        "    git config",
         "Usage:",
         "    %s" % util.command_name(),
         "Try again"]
