@@ -13,7 +13,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'bling/vim-airline'
 Plug 'elzr/vim-json'
-"Plug 'tpope/vim-sleuth'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'tpope/vim-surround'
@@ -47,27 +46,23 @@ Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'j
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
 Plug 'mxw/vim-jsx', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-"Plug 'posva/vim-vue', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-"Plug 'burnettk/vim-angular', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-Plug 'ternjs/tern_for_vim', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 Plug 'maksimr/vim-jsbeautify'
 " Golang
-"Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
-"Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
+Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 " php
-Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+"Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
 " haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
+"Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
 " rust
-Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
-Plug 'phildawes/racer', { 'for': ['rs'] }
+"Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
+"Plug 'phildawes/racer', { 'for': ['rs'] }
 " ruby
-Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
-Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
+"Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
+"Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 " scala
-Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
+"Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 " markdown
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'MD'] }
 
