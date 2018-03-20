@@ -12,12 +12,8 @@ cscope.po.out
 cscope.files
 .DS_Store
 
-*.idea
 .idea
-*.svn
 .svn
-tags
-*.pyc
 cmake-build-debug
 CMakeCache.txt
 CMakeFiles
@@ -41,7 +37,6 @@ install_manifest.txt
 *.app
 *.xcuserdata
 *.dat
-*.powerline-fonts
 .powerline-fonts
 autoload
 plugged

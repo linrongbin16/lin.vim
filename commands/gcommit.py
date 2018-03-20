@@ -19,7 +19,7 @@ msg_list = [
 util.check_help(msg_list)
 util.check_git()
 
-if len(sys.argv) != 2:
+if len(sys.argv) <= 1:
     util.help_msg(msg_list)
 
 comment = util.merge_args()
