@@ -1,7 +1,6 @@
 " ------------------- Basic Vimrc -------------------"
 
 set runtimepath+=$HOME/.vim
-
 set nocompatible
 
 " windows
@@ -83,11 +82,9 @@ set nocursorcolumn
 set norelativenumber
 syntax sync minlines=256
 
-
 " sound
 set noerrorbells
 set novisualbell
-
 
 " file writing
 set autoread
@@ -100,7 +97,6 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
-
 
 " encoding
 set encoding=utf-8 
@@ -134,19 +130,10 @@ map Q <Nop>
 " no more window
 set completeopt=menu
 
-
 " indent
 set cindent
 set smartindent
 set autoindent
-
-
-"tab space
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
-"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-" tab 4 space length
-"set tabstop=4 softtabstop=4 shiftwidth=4
-
 
 " fold code
 set foldenable
