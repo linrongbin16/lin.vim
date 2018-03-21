@@ -46,7 +46,6 @@ git config --global core.editor vim
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
-source ~/.vim/autoload/plug.vim
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --go-completer --js-completer
