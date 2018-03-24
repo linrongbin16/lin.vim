@@ -27,7 +27,6 @@ branch = util.git_branch()
 remote = util.git_remote()
 remote_str = ""
 
-print("branch: %s, remote: %s" % (branch, remote))
 if len(remote) < 1:
     print("error: remote repository doesn\'t exist")
     util.help_msg(msg_list)
