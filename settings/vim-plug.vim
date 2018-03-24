@@ -54,13 +54,13 @@ Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 " php
 "Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
 " haskell
-"Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
+Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
 " rust
-"Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
-"Plug 'phildawes/racer', { 'for': ['rs'] }
+Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
+Plug 'phildawes/racer', { 'for': ['rs'] }
 " ruby
-"Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
-"Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
+Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
+Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 " scala
 "Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 " markdown
