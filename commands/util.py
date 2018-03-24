@@ -165,18 +165,10 @@ def number_to_string(n):
 
 
 def git_remote():
-    branches = run('git', 'branch', '-a')
+    branches = run('git', 'remote')
     remote_branches = set()
     for br in branches:
-        b = br.strip()
-        if b[:7] == 'remotes':
-            first_slash_pos = None
-            second_slash_pos = None
-            first_slash_pos = b.find('/')
-            if first_slash_pos >= 0:
-                second_slash_pos = b[first_slash_pos + 1:].find('/')
-            rb = b[first_slash_pos + 1: first_slash_pos + second_slash_pos + 1]
-            remote_branches.add(rb)
+        remote_branches.add(br.strip())
     return remote_branches
 
 
