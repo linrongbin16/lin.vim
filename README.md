@@ -21,8 +21,6 @@ It is for anyone intending to use VIM for development running equally well on Wi
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
-Optionally choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
-
 ### Windows Installation
 
 Install on Windows mannually:
@@ -41,8 +39,6 @@ Install on Windows mannually:
     cd %HOMEPATH%\.vim
     install.bat
 ```
-
-Optionally install *WINMONACO.TTF*, *Monaco-Powerline.ttf*, [Cmder](http://cmder.net/) or [ConEmu](http://conemu.github.io), choose fonts *Monaco-Powerline* for *Terminal* in order to enable Oh-My-Zsh theme *agnoster*.
 
 # A highly optimized .vimrc config file
 
@@ -64,7 +60,6 @@ lin-vim contains a tons of popular plugins, colors, snippets and syntaxes. These
 * [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
 * [airline](https://github.com/bling/vim-airline)
 * [Powerline Fonts](https://github.com/Lokaltog/powerline-fonts)
-* [ClangComplete](https://github.com/Rip-Rip/clang_complete)
 * [CscopeMaps](http://cscope.sourceforge.net/cscope_maps.vim)
 * [DoxygenToolkit](https://github.com/vim-scripts/DoxygenToolkit.vim)
 * [emmet-vim](https://github.com/mattn/emmet-vim)
