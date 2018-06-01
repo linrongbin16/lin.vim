@@ -36,10 +36,10 @@ sudo apt-get autoremove -y
 eval `ssh-agent -s`
 
 # Git Config
-git config --global core.filemode false
-git config --global push.default simple
-git config --global pull.default simple
-git config --global core.editor vim
+git config core.filemode false
+git config push.default simple
+git config pull.default simple
+git config core.editor vim
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
