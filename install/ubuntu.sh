@@ -14,8 +14,6 @@ if [ "$(whoami)" == "root" ]; then
     apt-get update -y
     apt-get install sudo -y
 fi
-sudo add-apt-repository ppa:jonathonf/vim -y
-sudo add-apt-repository ppa:gophers/archive -y
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
