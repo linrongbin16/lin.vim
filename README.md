@@ -31,8 +31,7 @@ Install on Windows mannually:
 5. Install [Visual Studio](https://www.visualstudio.com/), during setup choose *VC++*.
 6. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
 7. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
-8. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*.
-9. Add `GOPATH=%HOMEPATH%/go`, Add `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
+8. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*, add `GOPATH=%HOMEPATH%/go`, `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%\.vim
@@ -43,8 +42,9 @@ Install on Windows mannually:
 # A highly optimized .vimrc config file
 
 The .vimrc file is suited to programming.
-* Used across Windows, Mac and linux.
-* Completion Engine based on YouCompleteMe, UltiSnip, JavaComplete2, Ctags.
+* Used across Linux, Windows and Mac.
+* Completion Engine based on YouCompleteMe, UltiSnip, Ctags.
+* Multiple Languages supported.
 * Configured plugins.
 
 # Plugins
@@ -52,20 +52,32 @@ The .vimrc file is suited to programming.
 lin-vim contains a tons of popular plugins, colors, snippets and syntaxes. These plugins are highly configured and work well together.
 
 * [vim-plug](https://github.com/junegunn/vim-plug)
-* [Ag](https://github.com/rking/ag.vim)
-* [Asynchronous Lint Engine](https://github.com/w0rp/ale)
-* [ctrlp](https://github.com/kien/ctrlp.vim)
-* [solarized](https://github.com/altercation/vim-colors-solarized)
-* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-* [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
+* [solarized-color-theme](https://github.com/altercation/vim-colors-solarized)
+* [dracula-color-theme](https://draculatheme.com/vim/)
 * [airline](https://github.com/bling/vim-airline)
-* [Powerline Fonts](https://github.com/Lokaltog/powerline-fonts)
-* [CscopeMaps](http://cscope.sourceforge.net/cscope_maps.vim)
-* [DoxygenToolkit](https://github.com/vim-scripts/DoxygenToolkit.vim)
-* [emmet-vim](https://github.com/mattn/emmet-vim)
-* [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
 * [indentline](https://github.com/Yggdroot/indentLine)
 * [nerdtree](https://github.com/scrooloose/nerdtree)
+* [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+* [Powerline Fonts](https://github.com/Lokaltog/powerline-fonts)
+* [vim-fugitive](https://github.com/tpope/vim-fugitive)
+* [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
+* [DoxygenToolkit](https://github.com/vim-scripts/DoxygenToolkit.vim)
+* [Ag](https://github.com/rking/ag.vim)
+* [ctrlp](https://github.com/kien/ctrlp.vim)
+* [ctags](ctags.sourceforge.net)
+* [cscope](cscope.sourceforge.net)
+* [CscopeMaps](http://cscope.sourceforge.net/cscope_maps.vim)
+* [Asynchronous Lint Engine](https://github.com/w0rp/ale)
+* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+* [UltiSnips](https://github.com/SirVer/ultisnips)
+* [emmet-vim](https://github.com/mattn/emmet-vim)
+* [vim-go](https://github.com/fatih/vim-go)
+* [vim-javacomplete2](https://github.com/artur-shaik/vim-javacomplete2)
+* [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
+* [vim-markdown](https://github.com/plasticboy/vim-markdown)
+* [vim-scala](https://github.com/derekwyatt/vim-scala)
+* [rust.vim](https://github.com/rust-lang/rust)
+* [vim-racer](https://github.com/racer-rust/vim-racer)
 * etc
 
 # Fork me on GitHub

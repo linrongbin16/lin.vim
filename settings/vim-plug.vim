@@ -64,7 +64,7 @@ Plug 'phildawes/racer', { 'for': ['rs'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 " scala
-"Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
+Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 " markdown
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'MD'] }
 
