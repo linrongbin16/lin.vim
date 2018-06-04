@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tomasr/molokai'
 Plug 'bling/vim-airline'
 Plug 'elzr/vim-json'
