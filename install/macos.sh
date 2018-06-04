@@ -28,10 +28,10 @@ sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 
 # Git Config
-git config --global core.filemode false
-git config --global push.default simple
-git config --global pull.default simple
-git config --global core.editor vim
+git config core.filemode false
+git config push.default simple
+git config pull.default simple
+git config core.editor vim
 
 # Vim Plugin
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

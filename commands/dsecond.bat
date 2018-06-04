@@ -1,3 +1,3 @@
 @ECHO OFF
 REM Copyright 2018-  <linrongbin16@gmail.com>
-python C:\%HOMEPATH%\.vim\commands\dateint.py %*
+python C:\%HOMEPATH%\.vim\commands\dsecond.py %*
