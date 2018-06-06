@@ -60,8 +60,6 @@ fc-cache -f $font_dir
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Variable
-cd ~/.vim/commands
-chmod +x *
 mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
@@ -81,8 +79,6 @@ else
     echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
 fi
 echo "export GOPATH=~/go" >> $LINVIMRC
-echo "export LIN_VIM_HOME=~/.vim" >> $LINVIMRC
-echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOROOT/bin" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC

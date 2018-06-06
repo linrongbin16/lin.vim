@@ -52,8 +52,6 @@ fc-cache -f $font_dir
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Variable 
-cd ~/.vim/commands
-chmod +x *
 mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
@@ -64,7 +62,6 @@ mkdir -p ~/go/pkg
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC
-echo "export PATH=\$PATH:~/.vim/commands" >> $LINVIMRC
 if [ -d /Library/Java/JavaVirtualMachines ]; then
     jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
     if [ "${jdkhome:0:3}" == "jdk" ]; then
