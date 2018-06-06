@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] installing Lin Rongbin's Vim Distribution"
-echo ""
-
 cd ~/.vim
 git pull
 
