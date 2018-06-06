@@ -1,3 +1,0 @@
-#! /usr/bin/env bash
-# Copyright 2018 - <linrongbin16@gmail.com>
-python $LIN_VIM_HOME/commands/guser.py $@
