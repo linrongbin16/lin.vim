@@ -61,13 +61,15 @@ if has("win32")
     set guifont=FreeMono:h10
     set guifont=Courier\ New:h10
     set guifont=Monaco:h10
+    set guifont=Hack:h11
 elseif has("mac")
     set guifont=Monaco:h14
-    "set guifont=Apple\ Color\ Emoji:h14
+    set guifont=Hack:h11
 else
     set guifont=Courier\ 10\ Pitch\ 10
     set guifont=Courier\ New\ 10
     set guifont=Monaco\ 10
+    set guifont=Hack:h11
 endif
 " white space char
 set list listchars=tab:>-,trail:.,extends:>
