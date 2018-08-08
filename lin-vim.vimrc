@@ -22,7 +22,6 @@ source $HOME/.vim/settings/vim-easymotion.vim
 source $HOME/.vim/settings/vim-gitgutter.vim
 source $HOME/.vim/settings/vim-go.vim
 source $HOME/.vim/settings/vim-gutentags.vim
-source $HOME/.vim/settings/vim-javacomplete2.vim
 source $HOME/.vim/settings/vim-markdown.vim
 source $HOME/.vim/settings/vimfiler.vim
 source $HOME/.vim/settings/yank.vim
