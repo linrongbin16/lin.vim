@@ -61,22 +61,23 @@ if has("win32")
     set guifont=FreeMono:h10
     set guifont=Courier\ New:h10
     set guifont=Monaco:h10
-    set guifont=Hack:h10
+    set guifont=Hack:h11
 elseif has("mac")
     set guifont=Monaco:h14
-    set guifont=Hack:h10
+    set guifont=Hack:h11
 else
     set guifont=Courier\ 10\ Pitch\ 10
     set guifont=Courier\ New\ 10
     set guifont=Monaco\ 10
-    set guifont=Hack:h10
+    set guifont=Hack:h11
 endif
-" white space char
+
+" show whitespace
 set list listchars=tab:>-,trail:.,extends:>
 set modifiable
 set cursorline
+
 "set nocursorline
-" cursor position
 set scrolloff=1
 set ttyfast
 set lazyredraw
@@ -94,6 +95,7 @@ set autowrite
 set ruler
 set magic
 set showmatch
+
 " auto reload vimrc
 augroup myvimrc
     au!
@@ -116,7 +118,7 @@ set selectmode=mouse,key
 
 " plugins
 set noignorecase
-set laststatus=2 
+set laststatus=2
 filetype on
 filetype plugin on
 filetype indent on
@@ -126,7 +128,7 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-" fix bug
+" fix bug for gvim
 map Q <Nop>
 
 " no more window

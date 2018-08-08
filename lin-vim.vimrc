@@ -15,7 +15,6 @@ source $HOME/.vim/settings/indentline.vim
 source $HOME/.vim/settings/youcompleteme.vim
 source $HOME/.vim/settings/nerdtree.vim
 source $HOME/.vim/settings/python-syntax.vim
-source $HOME/.vim/settings/racer.vim
 source $HOME/.vim/settings/ultisnips.vim
 source $HOME/.vim/settings/vim-airline.vim
 source $HOME/.vim/settings/vim-autoformat.vim
