@@ -1,4 +1,5 @@
-" ---- UltiSnips ----
+"" ---- ultisnips.vim ----
+
 " ctrl-k is key mapping of neosnippet's snippet expand key
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"

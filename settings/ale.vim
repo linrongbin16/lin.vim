@@ -1,3 +1,5 @@
+"" ---- ale.vim ----
+
 set nocompatible
 filetype off
 let &runtimepath.=',~/.vim/plugged/ale'

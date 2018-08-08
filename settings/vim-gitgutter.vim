@@ -1,2 +1,3 @@
-"" ---- gitgutter ----
+"" ---- vim-gitgutter.vim ----
+
 let g:gitgutter_max_signs = 100000

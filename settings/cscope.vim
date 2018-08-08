@@ -1,4 +1,4 @@
-"" ---- cscope ----
+"" ---- cscope.vim ----
 
 set nocscopeverbose
 

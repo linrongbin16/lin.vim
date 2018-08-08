@@ -1,4 +1,5 @@
-"" ---- easymotion ----
+"" ---- easymotion.vim ----
+
 map <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <Leader>f <Plug>(easymotion-bd-f)

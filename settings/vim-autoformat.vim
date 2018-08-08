@@ -1,3 +1,5 @@
+"" ---- vim-autoformat.vim ----
+
 "au BufWrite * :Autoformat
 
 " let g:autoformat_autoindent = 0

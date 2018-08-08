@@ -1,4 +1,5 @@
 "" ---- tagbar ----
+
 nmap <F9> :TagbarToggle<cr>
 let g:tagbar_right=1
 " let g:tagbar_width=40

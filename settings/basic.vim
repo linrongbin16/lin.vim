@@ -1,4 +1,4 @@
-" ------------------- Basic Vimrc -------------------"
+" ------------------- basic.vim -------------------"
 
 set runtimepath+=$HOME/.vim
 set nocompatible

@@ -1,5 +1,6 @@
-"" ---- YouCompleteMe ----
-" disable YCM in some file type
+"" ---- youcompleteme.vim ----
+
+" disable ycm in some file type
 let g:ycm_filetype_blacklist = {
 \  'tagbar' : 1,
 \  'nerdtree' : 1,
