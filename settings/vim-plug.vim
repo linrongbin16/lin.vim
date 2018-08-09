@@ -14,7 +14,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tomasr/molokai'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'elzr/vim-json'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
