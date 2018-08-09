@@ -18,7 +18,7 @@ It is for anyone intending to use VIM for development running equally well on Wi
 ### Linux, UNIX, MacOS Installation
 
 ```bash
-    git clone git@github.com:linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
+    git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
 ### Windows Installation
@@ -34,7 +34,7 @@ Install on Windows mannually:
 8. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*, add `GOPATH=%HOMEPATH%/go`, `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
 
 ```bash
-    git clone git@github.com:linrongbin16/lin-vim %HOMEPATH%\.vim
+    git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%\.vim
     cd %HOMEPATH%\.vim
     install.bat
 ```
