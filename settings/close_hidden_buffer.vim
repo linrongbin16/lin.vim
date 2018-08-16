@@ -1,4 +1,4 @@
-" ------------------- close_hidden_buffer.vim -------------------"
+"" ---- close_hidden_buffer.vim ----
 
 function DelHidBufs()
     let open_buffers = []
