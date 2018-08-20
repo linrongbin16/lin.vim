@@ -42,6 +42,19 @@ git config pull.default simple
 git config core.editor vim
 
 # Maven Gradle
+maven_version=3.5.4
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz
+tar -zxvf apache-maven-${maven_version}-bin.tar.gz
+sudo mkdir -p /opt/maven
+sudo mv apache-maven-${maven_version} /opt/maven
+rm -rf apache-maven-${maven_version}-bin.tar.gz
+gradle_version=4.9
+wget https://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip
+unzip gradle-${gradle_version}-bin.zip -d gradle-${gradle_version}-bin
+sudo mkdir -p /opt/gradle
+sudo mv gradle-${gradle_version}-bin/gradle-${gradle_version} /opt/gradle
+rm -rf gradle-${gradle_version}-bin.zip
+rm -rf gradle-${gradle_version}-bin
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -83,6 +96,8 @@ fi
 echo "export GOPATH=~/go" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOROOT/bin" >> $LINVIMRC
+echo "export PATH=\$PATH:/opt/maven/apache-maven-${maven_version}/bin" >> $LINVIMRC
+echo "export PATH=\$PATH:/opt/gradle/gradle-${gradle_version}/bin" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
