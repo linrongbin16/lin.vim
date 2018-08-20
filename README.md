@@ -32,7 +32,7 @@ Install on Windows mannually:
 6. Install [LLVM](http://releases.llvm.org/download.html), during setup choose *Add LLVM to PATH for ALL Users*.
 7. Install [NodeJs](https://nodejs.org/), during setup choose *Add Nodejs to PATH for ALL Users*
 8. Install [Golang](https://golang.org/), add *Add Go to PATH for ALL Users*, add `GOPATH=%HOMEPATH%/go`, `%GOPATH%/bin`, `%GOROOT%/bin`, `%HOMEPATH%\.vim\commands` to *PATH*.
-9. Install [Jdk](https://golang.org/), [Maven](https://maven.org), [Gradle](https://gradle.org).
+9. Install [JavaSE](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](https://maven.apache.org/download.cgi), [Gradle](https://gradle.org/install/#manually), add *java* *mvn* *gradle* to *PAT*.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%\.vim
