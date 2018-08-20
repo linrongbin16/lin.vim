@@ -39,3 +39,4 @@ install_manifest.txt
 .powerline-fonts
 autoload
 plugged
+.gradle
