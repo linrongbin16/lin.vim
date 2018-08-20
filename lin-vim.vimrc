@@ -28,6 +28,5 @@ source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/vim-jsbeautify.vim
 source $HOME/.vim/settings/supertab.vim
 source $HOME/.vim/settings/vim-gutentags.vim
-source $HOME/.vim/settings/vim-javacomplete2.vim
 
 source $HOME/.vim/settings/basic.vim
