@@ -48,39 +48,6 @@ The .vimrc file is suited to programming.
 * Multiple Languages supported.
 * Configured plugins.
 
-# Plugins
-
-lin-vim contains a tons of popular plugins, colors, snippets and syntaxes. These plugins are highly configured and work well together.
-
-* [vim-plug](https://github.com/junegunn/vim-plug)
-* [solarized-color-theme](https://github.com/altercation/vim-colors-solarized)
-* [dracula-color-theme](https://draculatheme.com/vim/)
-* [airline](https://github.com/bling/vim-airline)
-* [indentline](https://github.com/Yggdroot/indentLine)
-* [nerdtree](https://github.com/scrooloose/nerdtree)
-* [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
-* [Powerline Fonts](https://github.com/Lokaltog/powerline-fonts)
-* [vim-fugitive](https://github.com/tpope/vim-fugitive)
-* [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
-* [DoxygenToolkit](https://github.com/vim-scripts/DoxygenToolkit.vim)
-* [Ag](https://github.com/rking/ag.vim)
-* [ctrlp](https://github.com/kien/ctrlp.vim)
-* [ctags](ctags.sourceforge.net)
-* [cscope](cscope.sourceforge.net)
-* [CscopeMaps](http://cscope.sourceforge.net/cscope_maps.vim)
-* [Asynchronous Lint Engine](https://github.com/w0rp/ale)
-* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-* [UltiSnips](https://github.com/SirVer/ultisnips)
-* [emmet-vim](https://github.com/mattn/emmet-vim)
-* [vim-go](https://github.com/fatih/vim-go)
-* [vim-javacomplete2](https://github.com/artur-shaik/vim-javacomplete2)
-* [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
-* [vim-markdown](https://github.com/plasticboy/vim-markdown)
-* [vim-scala](https://github.com/derekwyatt/vim-scala)
-* [rust.vim](https://github.com/rust-lang/rust)
-* [vim-racer](https://github.com/racer-rust/vim-racer)
-* etc
-
 # Fork me on GitHub
 
 Happy to take pull requests. Go ahead and fork me.
