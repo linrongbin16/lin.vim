@@ -41,6 +41,8 @@ git config push.default simple
 git config pull.default simple
 git config core.editor vim
 
+# Maven Gradle
+
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc

@@ -41,7 +41,7 @@ Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', '
 Plug 'Valloric/YouCompleteMe'
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Java
-"Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }
+Plug 'artur-shaik/vim-javacomplete2', { 'for': ['java'] }
 " html/css/js
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
 Plug 'ap/vim-css-color', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
