@@ -40,3 +40,4 @@ install_manifest.txt
 autoload
 plugged
 .gradle
+.temp
