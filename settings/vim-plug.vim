@@ -35,7 +35,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ervandew/supertab'
-Plug 'Chiel92/vim-autoformat'
 
 " C++ Python Java
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
