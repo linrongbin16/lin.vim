@@ -226,10 +226,10 @@ def FlagsForFile( filename, **kwargs ):
   # NOTE: This is just for YouCompleteMe; it's highly likely that your project
   # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
   # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
-  try:
-    final_flags.remove( '-stdlib=libc++' )
-  except ValueError:
-    pass
+  # try:
+    # final_flags.remove( '-stdlib=libc++' )
+  # except ValueError:
+    # pass
 
   return {
     'flags': final_flags,
