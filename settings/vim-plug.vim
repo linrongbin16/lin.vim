@@ -33,7 +33,8 @@ Plug 'honza/vim-snippets'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
-Plug 'Chiel92/vim-autoformat'
+"Plug 'Chiel92/vim-autoformat'
+Plug 'rhysd/vim-clang-format'
 Plug 'ervandew/supertab'
 
 " C++ Python Java

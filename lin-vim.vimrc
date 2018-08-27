@@ -17,7 +17,6 @@ source $HOME/.vim/settings/nerdtree.vim
 source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/ultisnips.vim
 source $HOME/.vim/settings/vim-airline.vim
-source $HOME/.vim/settings/vim-autoformat.vim
 source $HOME/.vim/settings/vim-easymotion.vim
 source $HOME/.vim/settings/vim-gitgutter.vim
 source $HOME/.vim/settings/vim-go.vim
@@ -28,6 +27,6 @@ source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/vim-jsbeautify.vim
 source $HOME/.vim/settings/supertab.vim
 source $HOME/.vim/settings/vim-gutentags.vim
-source $HOME/.vim/settings/vim-autoformat.vim
+source $HOME/.vim/settings/vim-clang-format.vim
 
 source $HOME/.vim/settings/basic.vim
