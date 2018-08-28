@@ -53,8 +53,6 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
 Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
-" php
-"Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
 " rust
