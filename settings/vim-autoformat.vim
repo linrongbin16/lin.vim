@@ -10,4 +10,5 @@ let g:formatters_hpp = ['clangformat', 'astyle_c']
 let g:formatters_hxx = ['clangformat', 'astyle_c']
 let g:formatters_hh = ['clangformat', 'astyle_c']
 
-au BufWrite * :Autoformat
+" enable for certain file types
+au BufWrite *.c,*.cpp,*.cxx,*.cc,*.h,*.hh,*.hpp,*.hxx,*.java,*.py,*.html,*.json,*.css,*.xml :Autoformat
