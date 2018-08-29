@@ -41,3 +41,5 @@ autoload
 plugged
 .gradle
 .temp
+ctags.exe
+readtags.exe
