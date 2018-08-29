@@ -63,6 +63,7 @@ cd ctags
 ./configure
 make
 sudo make install
+cd ..
 rm -rf universal-ctags
 
 # Vim Plugins
