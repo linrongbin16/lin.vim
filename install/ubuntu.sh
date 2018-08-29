@@ -56,6 +56,15 @@ sudo mv gradle-${gradle_version}-bin/gradle-${gradle_version} /opt/gradle
 rm -rf gradle-${gradle_version}-bin.zip
 rm -rf gradle-${gradle_version}-bin
 
+# Universal Ctags
+git clone https://github.com/universal-ctags/ctags.git universal-ctags
+cd ctags
+./autogen.sh
+./configure
+make
+sudo make install
+rm -rf universal-ctags
+
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
