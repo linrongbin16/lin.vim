@@ -10,7 +10,8 @@ gvim -c "PlugInstall" -c "qall"
 cp %HOMEPATH%\.vim\lin-vim.vimrc %HOMEPATH%\_vimrc
 gvim -c "PlugInstall" -c "qall"
 cd %HOMEPATH%\.vim\plugged\YouCompleteMe
-python install.py --clang-completer --java-completer
+python install.py --clang-completer --go-completer --java-completer
+cd %HOMEPATH%\.vim
 rm -rf %HOMEPATH%\vimfiles
 
 pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8 pathlib
