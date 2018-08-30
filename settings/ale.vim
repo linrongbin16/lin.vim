@@ -30,10 +30,12 @@ let g:ale_python_pylint_options="--init-hook='import sys; sys.path.append(\".\")
 let g:ale_python_pylint_args="--ignore=C0301"
 
 " C/C++
+" clang/clang++
 let g:ale_c_clang_options='-std=c99 -O2 -Wall'
 let g:ale_c_clangcheck_options = ''
 let g:ale_cpp_clang_options='-std=c++14 -O2 -Wall'
 let g:ale_cpp_clangcheck_options=''
+" gcc/g++
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
