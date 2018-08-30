@@ -9,7 +9,7 @@ touch ~/.bashrc
 touch ~/.zshrc
 
 
-## Software
+# Software Dependency
 if [ "$(whoami)" == "root" ]; then
     apt update -y
     apt install sudo -y
@@ -37,9 +37,17 @@ eval `ssh-agent -s`
 
 # Git Config
 git config core.filemode false
+git config core.longpaths true
 git config push.default simple
 git config pull.default simple
 git config core.editor vim
+git config credential.helper store
+git config --global core.filemode false
+git config --global core.longpaths true
+git config --global push.default simple
+git config --global pull.default simple
+git config --global core.editor vim
+git config --global credential.helper store
 
 # Maven Gradle
 maven_version=3.5.4
@@ -68,12 +76,14 @@ rm -rf universal-ctags
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+cp ~/.vim/settings/basic.vim ~/.vimrc
+vim -c "PlugInstall" -c "qall"
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python install.py --clang-completer --go-completer --java-completer
 
-# Install Monaco Font
+# Install GuiFonts
 font_dir="$HOME/.local/share/fonts"
 mkdir -p $font_dir
 cd ~/.vim/guifonts
