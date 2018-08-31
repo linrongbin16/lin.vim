@@ -4,6 +4,9 @@ echo "[lin-vim] Install for Ubuntu"
 
 # Prepare Environment
 LINVIMRC=~/.linvimrc
+if [ -f $LINVIMRC ]; then
+    rm $LINVIMRC
+fi
 touch $LINVIMRC
 touch ~/.bashrc
 touch ~/.zshrc
@@ -98,7 +101,7 @@ fc-cache -f $font_dir
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# Variable
+# Path Variable
 mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
