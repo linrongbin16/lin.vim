@@ -82,8 +82,6 @@ rm -rf universal-ctags
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-cp ~/.vim/settings/basic.vim ~/.vimrc
-vim -c "PlugInstall" -c "qall"
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
