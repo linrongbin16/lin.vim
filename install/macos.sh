@@ -44,20 +44,24 @@ git config --global credential.helper store
 maven_version=3.5.4
 wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz
 tar -zxvf apache-maven-${maven_version}-bin.tar.gz
-sudo mkdir -p /opt/maven
+if [ -d /opt/maven ]; then
+    sudo mkdir -p /opt/maven
+fi
 sudo mv apache-maven-${maven_version} /opt/maven
 rm -rf apache-maven-${maven_version}-bin.tar.gz
 gradle_version=4.9
 wget https://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip
 unzip gradle-${gradle_version}-bin.zip -d gradle-${gradle_version}-bin
-sudo mkdir -p /opt/gradle
+if [ -d /opt/gradle ]; then
+    sudo mkdir -p /opt/gradle
+fi
 sudo mv gradle-${gradle_version}-bin/gradle-${gradle_version} /opt/gradle
 rm -rf gradle-${gradle_version}-bin.zip
 rm -rf gradle-${gradle_version}-bin
 
 # Universal Ctags
 git clone https://github.com/universal-ctags/ctags.git universal-ctags
-cd ctags
+cd universal-ctags
 ./autogen.sh
 ./configure
 make
