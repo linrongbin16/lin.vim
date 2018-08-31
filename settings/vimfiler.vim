@@ -22,16 +22,8 @@ function AdjustVimFilerWidth()
     let tagbar_opened_flag = bufwinnr('__Tagbar__') != -1
     if g:vimfiler_opened_flag == 0
         let g:vimfiler_opened_flag=1
-        " columns with vimfiler can be 130/160
-        "if has("gui_running")
-            "set columns=160
-        "endif
     else
         let g:vimfiler_opened_flag=0
-        " columns with vimfiler can be 90/120
-        "if has("gui_running")
-            "set columns=120
-        "endif
     endif
 endfunction
 

@@ -21,7 +21,7 @@ brew upgrade
 brew install curl wget clang gcc g++ autoconf automake cmake
 brew install openssh openssl cryptopp zsh
 brew install git vim macvim
-brew install cscope the_silver_searcher
+brew install the_silver_searcher
 brew install nodejs npm bc unzip unrar golang
 brew tap caskroom/versions
 brew cask install java8 maven gradle

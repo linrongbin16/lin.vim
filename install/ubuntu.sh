@@ -25,7 +25,7 @@ sudo apt install git vim vim-gtk curl wget apport unzip unrar zsh -y
 sudo apt install gcc g++ autoconf automake cmake bc clang-format -y
 sudo apt install libssl-dev libcrypto++-dev openssh-server -y
 sudo apt install default-jdk golang golang-src golang-go golang-doc -y
-sudo apt install cscope silversearcher-ag -y
+sudo apt install silversearcher-ag -y
 sudo apt install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt install python python-dev python-pip -y
