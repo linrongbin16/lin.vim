@@ -138,7 +138,6 @@ set completeopt=menu
 set cindent
 set smartindent
 set autoindent
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 
 " fold code
 set foldenable
