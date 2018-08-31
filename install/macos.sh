@@ -105,6 +105,7 @@ if [ -d /Library/Java/JavaVirtualMachines ]; then
     jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
     if [ "${jdkhome:0:3}" == "jdk" ]; then
         echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $LINVIMRC
+        echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
         echo "export PATH=\$JAVA_HOME:\$PATH" >> $LINVIMRC
     else
         echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
