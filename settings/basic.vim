@@ -1,9 +1,9 @@
-" ------------------- basic.vim -------------------"
+"" ---- basic.vim ----
 
 set runtimepath+=$HOME/.vim
 set nocompatible
 
-" windows
+" ---- windows ----
 set fileformats=unix,dos,mac
 if has("gui_running")
     source $VIMRUNTIME/mswin.vim
@@ -39,7 +39,7 @@ if has("win32")
     endfunction
 endif
 
-" display
+" ---- display ----
 set showcmd
 set hlsearch
 set backspace=indent,eol,start whichwrap+=<,>,[,]
@@ -48,15 +48,16 @@ set clipboard+=unnamed
 set number
 set numberwidth=5
 if has("gui_running")
-    set lines=60
-    set columns=180
+    "set lines=60
+    "set columns=180
+    au GUIEnter * simalt ~x
     "gvim工具栏
     set guioptions-=T
     "gvim菜单栏
     set guioptions-=m
 endif
 
-" fonts
+" ---- guifonts ----
 if has("win32")
     set guifont=FreeMono:h10
     set guifont=Courier\ New:h10
@@ -134,14 +135,18 @@ map Q <Nop>
 " no more window
 set completeopt=menu
 
-" indent
-set cindent
-set smartindent
-set autoindent
-
 " fold code
 set foldenable
 set foldmethod=indent
 set foldnestmax=50
 set foldlevel=50
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
+
+" ---- indent ----
+" all
+set cindent
+set smartindent
+set autoindent
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
+" C/C++
+autocmd FileType c,cpp,cc,cxx,h,hh,hpp,hxx setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
