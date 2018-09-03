@@ -61,3 +61,8 @@ The .vimrc file is suited to programming.
 # Fork me on GitHub
 
 Happy to take pull requests. Go ahead and fork me.
+
+# Refund
+
+![alipay](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/alipay.jpg)
+
