@@ -88,7 +88,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --go-completer --java-completer --js-completer --cs-completer
+python install.py --clang-completer --go-completer --java-completer --js-completer
 
 # Install GuiFonts
 font_dir="$HOME/.local/share/fonts"
