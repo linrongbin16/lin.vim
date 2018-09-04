@@ -9,7 +9,7 @@ curl -fLo %HOMEPATH%\.vim\autoload\plug.vim --create-dirs https://raw.githubuser
 cp %HOMEPATH%\.vim\lin-vim.vimrc %HOMEPATH%\_vimrc
 vim -c "PlugInstall" -c "qall"
 cd %HOMEPATH%\.vim\plugged\YouCompleteMe
-python install.py --clang-completer --go-completer --java-completer --js-completer
+python install.py --clang-completer --go-completer --java-completer --js-completer --cs-completer
 cd %HOMEPATH%\.vim
 
 npm config set unsafe-perm true
