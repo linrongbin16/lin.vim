@@ -62,7 +62,7 @@ The .vimrc file is suited to programming.
 
 Happy to take pull requests. Go ahead and fork me.
 
-# Refund
+# Refunding
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/linrongbin16/lin-vim/master/alipay.jpg" alt="alipay">
