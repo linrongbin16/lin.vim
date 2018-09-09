@@ -30,7 +30,7 @@ sudo apt install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt install python python-dev python-pip -y
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8 pathlib
-sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
+sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
 sudo apt autoremove -y

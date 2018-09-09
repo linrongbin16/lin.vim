@@ -6,7 +6,7 @@ let g:gutentags_ctags_tagfile = '.tags'
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 " 配置ctags的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q', '--output-format=e-ctags']
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q', '--output-format=e-ctags']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 

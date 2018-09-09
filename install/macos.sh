@@ -27,7 +27,7 @@ brew tap caskroom/versions
 brew cask install java8 maven gradle
 brew install python
 sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8 pathlib
-sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
+sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
 
 # Git Config
 git config core.filemode false

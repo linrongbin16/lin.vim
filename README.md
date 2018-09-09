@@ -13,6 +13,8 @@ lin-vim is a distribution of Vim and DevTools.
 
 It is for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
 
+*Suggest using with [boostscript](https://github.com/linrongbin16/boostscript) Project*
+
 # Installation
 
 ### Linux, UNIX, MacOS Installation
