@@ -41,3 +41,4 @@ autoload
 plugged
 .gradle
 .temp
+.tags
