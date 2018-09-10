@@ -48,7 +48,7 @@ Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'j
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
 Plug 'mxw/vim-jsx', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-Plug 'maksimr/vim-jsbeautify'
+Plug 'maksimr/vim-jsbeautify', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
@@ -64,7 +64,7 @@ Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 " scala
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 " markdown
-Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'MD'] }
+Plug 'tpope/vim-markdown', { 'for': ['md'] }
 
 
 call plug#end()
