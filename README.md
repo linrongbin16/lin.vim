@@ -26,7 +26,7 @@ It is for anyone intending to use VIM for development running equally well on Wi
 ### Windows Installation
 
 Install on Windows mannually:
-1. Install [Git](https://git-scm.com/), during setup choose **Use Git from Windows Command Prompt** since we reply on UNIX command.
+1. Install [Git](https://git-scm.com/), during setup choose **Use Git from Windows Command Prompt** since we rely on UNIX command.
 2. Install [7-zip](http://www.7-zip.org/).
 3. Install [Python27](https://www.python.org/downloads/release/python-2714/), during setup choose **Add python to PATH**.
 4. Install [CMake](https://cmake.org/), during setup choose **Add cmake to PATH**.
