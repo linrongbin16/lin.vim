@@ -16,4 +16,4 @@ python install.py --clang-completer --go-completer --java-completer --js-complet
 REM install node/python plugin
 call npm config set unsafe-perm true
 call npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
-call python -m pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8 pathlib
+call python -m pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf

@@ -26,7 +26,7 @@ brew install nodejs npm bc unzip unrar golang
 brew tap caskroom/versions
 brew cask install java8 maven gradle
 brew install python3
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8 pathlib
+sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
 
 # Git Config

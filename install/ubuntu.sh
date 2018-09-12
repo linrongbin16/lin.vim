@@ -29,7 +29,7 @@ sudo apt install silversearcher-ag -y
 sudo apt install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt install python3 python3-dev python3-pip -y
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib
+sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
