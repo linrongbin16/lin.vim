@@ -1,8 +1,13 @@
 "" ---- you_complete_me.vim ----
 
 let g:ycm_server_log_level = 'info'
-let g:ycm_path_to_python_interpreter='python'
-let g:ycm_python_binary_path='python'
+if has("win32")
+    let g:ycm_path_to_python_interpreter='python'
+    let g:ycm_python_binary_path='python'
+else
+    let g:ycm_path_to_python_interpreter='python3'
+    let g:ycm_python_binary_path='python3'
+endif
 let g:ycm_global_ycm_extra_conf = '~/.vim/settings/.ycm_global_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_complete_in_strings=1

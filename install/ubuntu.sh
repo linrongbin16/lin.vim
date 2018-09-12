@@ -28,8 +28,8 @@ sudo apt install default-jdk golang golang-src golang-go golang-doc -y
 sudo apt install silversearcher-ag -y
 sudo apt install nodejs npm libnss3-tools -y
 sudo ln -s /usr/bin/nodejs /usr/bin/node
-sudo apt install python python-dev python-pip -y
-sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint pyOpenSSL autopep8 pathlib
+sudo apt install python3 python3-dev python3-pip -y
+sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib
 sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
@@ -88,7 +88,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --go-completer --java-completer --js-completer
+python3 install.py --clang-completer --go-completer --java-completer --js-completer
 
 # Install GuiFonts
 font_dir="$HOME/.local/share/fonts"

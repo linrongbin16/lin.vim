@@ -25,8 +25,8 @@ brew install the_silver_searcher
 brew install nodejs npm bc unzip unrar golang
 brew tap caskroom/versions
 brew cask install java8 maven gradle
-brew install python
-sudo pip install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8 pathlib
+brew install python3
+sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint requests autopep8 pathlib
 sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
 
 # Git Config
@@ -77,7 +77,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python install.py --clang-completer --go-completer --java-completer --js-completer
+python3 install.py --clang-completer --go-completer --java-completer --js-completer
 
 # Install GuiFonts
 font_dir="$HOME/Library/Fonts"
