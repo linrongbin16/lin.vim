@@ -35,7 +35,7 @@ Install on Windows mannually:
 7. Install [LLVM](http://releases.llvm.org/download.html) for C/C++, during setup choose **Add LLVM to PATH**.
 8. Install [Golang](https://golang.org/) for Golang, add **Add Go to PATH**, add `GOPATH=%HOMEPATH%/go`, `%GOPATH%/bin`, `%GOROOT%/bin` to **PATH**.
 9. Install [JavaSE](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](https://maven.apache.org/download.cgi), [Gradle](https://gradle.org/install/#manually) for Java, add **java** **mvn** **gradle** to **PATH**, add **CLASSPATH**, **JAVA_HOME** to **PATH**.
-10. Install [NodeJs](https://nodejs.org/) for Javascript, during setup choose **Add Nodejs to PATH**
+10. Install [NodeJs](https://nodejs.org/) for Javascript, during setup choose **Add Nodejs to PATH**.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%\.vim
