@@ -28,15 +28,21 @@ It is for anyone intending to use VIM for development running equally well on Wi
 Install on Windows mannually:
 1. Install [Git](https://git-scm.com/), choose **Use Git from Windows Command Prompt** since we rely on UNIX command.
 2. Install [7-zip](http://www.7-zip.org/).
-3. Install [Python3](https://www.python.org/downloads/), choose **Add python to PATH for ALL User**, **Add %USERPROFILE%\Python\Python37\Scripts to PATH**.
+3. Install [Python3](https://www.python.org/downloads/).
 4. Install [CMake](https://cmake.org/), choose **Add cmake to PATH**.
 5. Install [Vim for Windows](https://tuxproject.de/projects/vim/), **Add gvim.exe to PATH**.
 6. Install [Visual Studio](https://www.visualstudio.com/), choose **VC++**.
 7. Install [LLVM](http://releases.llvm.org/download.html) choose **Add LLVM to PATH**.
-8. Install [Golang](https://golang.org/) add **Add go to PATH**, add `GOPATH=%USERPROFILE%/go`, `%GOPATH%/bin`, `%GOROOT%/bin` to **PATH**.
+8. Install [Golang](https://golang.org/).
 9. Install [JavaSE](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](https://maven.apache.org/download.cgi), [Gradle](https://gradle.org/install/#manually), **add java,** **mvn,** **gradle to PATH**, **add CLASSPATH**, **JAVA_HOME to PATH**.
 10. Install [NodeJs](https://nodejs.org/) choose **Add Node to PATH**.
-11. **Add %USERPROFILE\.vim\bin to PATH** to enable **ag.exe**, **ctags.exe**, **readtags.exe**.
+
+Install Environment Variables:
+* `%PATH%` += `%USERPROFILE%\Python\Python37\Scripts`
+* `%PATH%` += `%GOPATH%\bin`
+* `%PATH%` += `%GOROOT%\bin`
+* `%GOPATH%` = `%USERPROFILE%\go`
+* `%PATH%` += `USERPROFILE%\.vim\bin`
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
