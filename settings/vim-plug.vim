@@ -8,40 +8,50 @@ endif
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
-" Common
+" UI Manager
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
-Plug 'vim-airline/vim-airline'
-Plug 'elzr/vim-json'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-scripts/Mark--Karkat'
-Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-repeat'
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', { 'on': [] } | call plug#load('vimfiler.vim')
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'w0rp/ale'
-Plug 'Chiel92/vim-autoformat'
-Plug 'ervandew/supertab'
 
 " Color Theme
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+" Format Synatax
+Plug 'w0rp/ale'
+Plug 'Chiel92/vim-autoformat'
+
+" Complete Engine
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Keyboard Operation
+Plug 'tpope/vim-repeat'
+Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
+Plug 'vim-scripts/Mark--Karkat'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+
+" Coding Util
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Json
+Plug 'elzr/vim-json'
 " C++ Python Java
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
-Plug 'Valloric/YouCompleteMe'
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " html/css/js
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }

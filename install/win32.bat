@@ -20,10 +20,6 @@ call npm install js-beautify standard eslint xo typescript-formatter sass remark
 call python -m pip install --user pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf urllib3
 
 rem install golang plugin
-mkdir %USERPROFILE%\go
-mkdir %USERPROFILE%\go\src
-mkdir %USERPROFILE%\go\bin
-mkdir %USERPROFILE%\go\pkg
 mkdir %USERPROFILE%\workspace
 mkdir %USERPROFILE%\workspace\practice
 mkdir %USERPROFILE%\workspace\project
