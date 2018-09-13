@@ -37,13 +37,6 @@ Install on Windows mannually:
 9. Install [JavaSE](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](https://maven.apache.org/download.cgi), [Gradle](https://gradle.org/install/#manually), **add java,** **mvn,** **gradle to PATH**, **add CLASSPATH**, **JAVA_HOME to PATH**.
 10. Install [NodeJs](https://nodejs.org/) choose **Add Node to PATH**.
 
-Install Environment Variables:
-* `%PATH%` += `%USERPROFILE%\Python\Python37\Scripts`
-* `%PATH%` += `%GOPATH%\bin`
-* `%PATH%` += `%GOROOT%\bin`
-* `%GOPATH%` = `%USERPROFILE%\go`
-* `%PATH%` += `USERPROFILE%\.vim\bin`
-
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
     cd %USERPROFILE%\.vim

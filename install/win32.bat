@@ -34,7 +34,11 @@ echo.
 echo [boostscript] NOTICE
 echo [boostscript] download `https://github.com/k-takata/the_silver_searcher-win32/releases` x86_64 zip, extract zip and put `ag.exe` to `%%USERPROFILE%%\.vim\bin\`
 echo [boostscript] download `https://github.com/universal-ctags/ctags-win32/releases` x86_64 zip, extract zip and put `ctags.exe`, `readtags.exe` to `%%USERPROFILE%%\.vim\bin\`
+echo [boostscript] download `https://maven.apache.org/download.cgi` apache-maven.zip, extract zip and put to `%%USERPROFILE%%\.vim\bin\maven`
+echo [boostscript] download `https://gradle.org/install/#manually` gradle.zip, extract zip and put folder to `%%USERPROFILE%%\.vim\bin\gradle`
 echo [boostscript] add `%%USERPROFILE%%\.vim\bin` to `%%PATH%%`
+echo [boostscript] add `%%USERPROFILE%%\.vim\bin\maven` to `%%PATH%%`
+echo [boostscript] add `%%USERPROFILE%%\.vim\bin\gradle` to `%%PATH%%`
 echo [boostscript] add `%%APPDATA%%\Python\Python37\Scripts` to `%%PATH%%`
 echo [boostscript] set `%%GOPATH%%` = `%%USERPROFILE%%\go`
 echo [boostscript] add `%%GOPATH%%\bin` to `%%PATH%%`
