@@ -18,7 +18,7 @@ if ! type "brew" > /dev/null; then
 fi
 brew update
 brew upgrade
-brew install curl wget clang gcc g++ autoconf automake cmake
+brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
 brew install openssh openssl cryptopp zsh
 brew install git vim macvim
 brew install the_silver_searcher

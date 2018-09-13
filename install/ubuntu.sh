@@ -22,7 +22,7 @@ sudo apt upgrade -y
 sudo apt dist-upgrade -y
 sudo apt autoremove -y
 sudo apt install git vim vim-gtk curl wget apport unzip unrar zsh -y
-sudo apt install gcc g++ autoconf automake cmake bc clang-format -y
+sudo apt install gcc g++ clang autoconf automake cmake bc clang-format -y
 sudo apt install libssl-dev libcrypto++-dev openssh-server -y
 sudo apt install default-jdk golang golang-src golang-go golang-doc -y
 sudo apt install silversearcher-ag -y

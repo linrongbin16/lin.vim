@@ -37,117 +37,117 @@ import ycm_core
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
-    '-Wall',
-    '-Wextra',
-    '-Werror',
-    '-Wno-long-long',
-    '-Wno-variadic-macros',
-    '-fexceptions',
-    '-DNDEBUG',
-    # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
-    # source code needs it.
-    '-DUSE_CLANG_COMPLETER',
-    # THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
-    # use when compiling headers. So it will guess. Badly. So C++ headers will be
-    # compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
-    # For a C project, you would set this to 'c' instead of 'c++'.
-    '-x',
-    'c++',
-    '-isystem',
-    '../BoostParts',
-    '-isystem',
-    get_python_inc(),
-    '-isystem',
-    '../llvm/include',
-    '-isystem',
-    '../llvm/tools/clang/include',
-    '-I',
-    '.',
-    '-I',
-    './ClangCompleter',
-    '-isystem',
-    './tests/gmock/gtest',
-    '-isystem',
-    './tests/gmock/gtest/include',
-    '-isystem',
-    './tests/gmock',
-    '-isystem',
-    './tests/gmock/include',
-    '-isystem',
-    './benchmarks/benchmark/include',
-]
+        '-Wall',
+        '-Wextra',
+        '-Werror',
+        '-Wno-long-long',
+        '-Wno-variadic-macros',
+        '-fexceptions',
+        '-DNDEBUG',
+        # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
+        # source code needs it.
+        '-DUSE_CLANG_COMPLETER',
+        # THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
+        # use when compiling headers. So it will guess. Badly. So C++ headers will be
+        # compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
+        # For a C project, you would set this to 'c' instead of 'c++'.
+        '-x',
+        'c++',
+        '-isystem',
+        '../BoostParts',
+        '-isystem',
+        get_python_inc(),
+        '-isystem',
+        '../llvm/include',
+        '-isystem',
+        '../llvm/tools/clang/include',
+        '-I',
+        '.',
+        '-I',
+        './ClangCompleter',
+        '-isystem',
+        './tests/gmock/gtest',
+        '-isystem',
+        './tests/gmock/gtest/include',
+        '-isystem',
+        './tests/gmock',
+        '-isystem',
+        './tests/gmock/include',
+        '-isystem',
+        './benchmarks/benchmark/include',
+        ]
 
 # Windows MinGW header
 windows_header = [
-    '-I',
-    'C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\7.2.0\\include',
-    '-I',
-    'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.12.25827\\include',
-    '-I',
-    'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt',
-]
+        '-I',
+        'C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\7.2.0\\include',
+        '-I',
+        'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.12.25827\\include',
+        '-I',
+        'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt',
+        ]
 
 # Linux, Unix header
 linux_header = [
-    '-I',
-    '/usr/include',
-    '-I',
-    '/usr/lib',
-    '-I',
-    '/usr/include/c++',
-    '-I',
-    '/usr/include/c++/2',
-    '-I',
-    '/usr/include/c++/3',
-    '-I',
-    '/usr/include/c++/4',
-    '-I',
-    '/usr/include/c++/5',
-    '-I',
-    '/usr/include/c++/6',
-    '-I',
-    '/usr/include/c++/7',
-    '-I',
-    '/usr/include/c++/8',
-    '-I',
-    '/usr/include/c++/9',
-    '-I',
-    '/usr/include/x86_64-linux-gnu',
-]
+        '-I',
+        '/usr/include',
+        '-I',
+        '/usr/lib',
+        '-I',
+        '/usr/include/c++',
+        '-I',
+        '/usr/include/c++/2',
+        '-I',
+        '/usr/include/c++/3',
+        '-I',
+        '/usr/include/c++/4',
+        '-I',
+        '/usr/include/c++/5',
+        '-I',
+        '/usr/include/c++/6',
+        '-I',
+        '/usr/include/c++/7',
+        '-I',
+        '/usr/include/c++/8',
+        '-I',
+        '/usr/include/c++/9',
+        '-I',
+        '/usr/include/x86_64-linux-gnu',
+        ]
 
 # User header
 user_header = [
-    '-I',
-    './src',
-    '-I',
-    './include',
-    '-I',
-    '../include',
-    '-I',
-    '../../include',
-    '-I',
-    '../../../include',
-    '-I',
-    '../../../../include',
-    '-I',
-    '../../../../../include',
-    '-I',
-    '../../../../../../include',
-    '-I',
-    '.',
-    '-I',
-    '..',
-    '-I',
-    '../..',
-    '-I',
-    '../../..',
-    '-I',
-    '../../../..',
-    '-I',
-    '../../../../..',
-    '-I',
-    '../../../../../..',
-]
+        '-I',
+        './src',
+        '-I',
+        './include',
+        '-I',
+        '../include',
+        '-I',
+        '../../include',
+        '-I',
+        '../../../include',
+        '-I',
+        '../../../../include',
+        '-I',
+        '../../../../../include',
+        '-I',
+        '../../../../../../include',
+        '-I',
+        '.',
+        '-I',
+        '..',
+        '-I',
+        '../..',
+        '-I',
+        '../../..',
+        '-I',
+        '../../../..',
+        '-I',
+        '../../../../..',
+        '-I',
+        '../../../../../..',
+        ]
 
 if platform.system() == 'Windows':
     flags.extend(windows_header)
@@ -202,7 +202,7 @@ def GetCompilationInfoForFile(filename):
             replacement_file = basename + extension
             if os.path.exists(replacement_file):
                 compilation_info = database.GetCompilationInfoForFile(
-                    replacement_file)
+                        replacement_file)
                 if compilation_info.compiler_flags_:
                     return compilation_info
         return None
@@ -212,11 +212,11 @@ def GetCompilationInfoForFile(filename):
 def FlagsForFile(filename, **kwargs):
     if not database:
         return {
-            'flags': flags,
-            'include_paths_relative_to_dir': DirectoryOfThisScript()
-        }
+                'flags': flags,
+                'include_paths_relative_to_dir': DirectoryOfThisScript()
+                }
 
-    compilation_info = GetCompilationInfoForFile(filename)
+        compilation_info = GetCompilationInfoForFile(filename)
     if not compilation_info:
         return None
 
@@ -233,6 +233,6 @@ def FlagsForFile(filename, **kwargs):
     # pass
 
     return {
-        'flags': final_flags,
-        'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
-    }
+            'flags': final_flags,
+            'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
+            }
