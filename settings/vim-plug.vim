@@ -11,9 +11,6 @@ call plug#begin('~/.vim/plugged')
 " Common
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
-Plug 'altercation/vim-colors-solarized'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'elzr/vim-json'
 Plug 'terryma/vim-multiple-cursors'
@@ -35,6 +32,16 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ervandew/supertab'
+
+" Color Theme
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'sonph/onehalf'
+Plug 'jacoborus/tender.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'rakr/vim-two-firewatch'
 
 " C++ Python Java
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
