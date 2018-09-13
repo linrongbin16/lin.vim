@@ -27,27 +27,15 @@ mkdir %USERPROFILE%\go\pkg
 mkdir %USERPROFILE%\workspace
 mkdir %USERPROFILE%\workspace\practice
 mkdir %USERPROFILE%\workspace\project
+cd %USERPROFILE%\.vim
 
-rem install wget.exe
-mkdir %USERPROFILE%\.vim\bin
-cd %USERPROFILE%\.vim\bin
-call python %USERPROFILE%\.vim\install\download.py https://eternallybored.org/misc/wget/1.19.4/64/wget.exe wget.exe
-
-rem install ag.exe
-mkdir temp
-cd temp
-call python %USERPROFILE%\.vim\install\download.py https://github.com/k-takata/the_silver_searcher-win32/releases/download/2018-08-08%2F2.2.0-2-gbd82cd3/ag-2018-08-08_2.2.0-2-gbd82cd3-x64.zip ag.zip
-call python %USERPROFILE%\.vim\install\extract.py ag.zip
-cd ..
-mv temp\ag.exe ..
-
-rem install ctags.exe readtags.exe
-rm -rf temp
-mkdir temp
-cd temp
-call python %USERPROFILE%\.vim\install\download.py https://github.com/universal-ctags/ctags-win32/releases/download/2018-09-12%2F41311ac7/ctags-2018-09-12_41311ac7-x64.zip ctags.zip
-call python %USERPROFILE%\.vim\install\extract.py ctags.zip
-cd ..
-mv temp\ctags.exe ..
-mv temp\readtags.exe ..
-rm -rf temp
+echo.
+echo.
+echo [boostscript] NOTICE
+echo [boostscript] download `https://github.com/k-takata/the_silver_searcher-win32/releases` x86_64 zip, extract zip and put `ag.exe` to `%%USERPROFILE%%\.vim\bin\`
+echo [boostscript] download `https://github.com/universal-ctags/ctags-win32/releases` x86_64 zip, extract zip and put `ctags.exe`, `readtags.exe` to `%%USERPROFILE%%\.vim\bin\`
+echo [boostscript] add `%%USERPROFILE%%\.vim\bin` to `%%PATH%%`
+echo [boostscript] add `%%APPDATA%%\Python\Python37\Scripts` to `%%PATH%%`
+echo [boostscript] set `%%GOPATH%%` = `%%USERPROFILE%%\go`
+echo [boostscript] add `%%GOPATH%%\bin` to `%%PATH%%`
+echo [boostscript] add `%%GOROOT%%\bin` to `%%PATH%%`
