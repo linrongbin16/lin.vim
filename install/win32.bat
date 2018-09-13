@@ -1,16 +1,16 @@
 echo "[lin-vim] Install for Windows"
 
-mkdir %HOMEPATH%\.ssh
+mkdir %USERPROFILE%\.ssh
 
 REM install vim
-git clone https://github.com/linrongbin16/lin-vim %HOMEPATH%\.vim
-cd %HOMEPATH%\.vim
-curl -fLo %HOMEPATH%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
+cd %USERPROFILE%\.vim
+curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 REM install YouCompleteMe
-cp %HOMEPATH%\.vim\lin-vim.vimrc %HOMEPATH%\_vimrc
+cp %USERPROFILE%\.vim\lin-vim.vimrc %USERPROFILE%\_vimrc
 vim -c "PlugInstall" -c "qall"
-cd %HOMEPATH%\.vim\plugged\YouCompleteMe
+cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer --go-completer --java-completer --js-completer
 
 REM install node/python plugin
