@@ -36,3 +36,4 @@ plugged
 .gradle
 .temp
 .tags
+*.exe
