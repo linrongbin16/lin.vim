@@ -38,9 +38,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'jacoborus/tender.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'rakr/vim-two-firewatch'
 
 " C++ Python Java
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
