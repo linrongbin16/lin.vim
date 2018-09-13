@@ -6,7 +6,6 @@ if has("gui_running")
     colorscheme dracula
     colorscheme solarized
     colorscheme molokai
-    colorscheme onehalf
     colorscheme tender
     colorscheme PaperColor
     colorscheme two-firewatch
