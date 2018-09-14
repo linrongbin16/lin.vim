@@ -17,7 +17,7 @@ It is for anyone intending to use VIM for development running equally well on Wi
 
 ![pic2.png](pic2.png)
 
-*Suggest using with [boostscript](https://github.com/linrongbin16/boostscript) Project*
+*Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)*
 
 # Installation
 
