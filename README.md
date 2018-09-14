@@ -38,7 +38,7 @@ Install on Windows mannually:
 6. Install [Visual Studio](https://www.visualstudio.com/), choose **VC++**.
 7. Install [LLVM](http://releases.llvm.org/download.html) choose **Add LLVM to PATH**.
 8. Install [Golang](https://golang.org/).
-9. Install [JavaSE](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](https://maven.apache.org/download.cgi), [Gradle](https://gradle.org/install/#manually), **add java to PATH**, **add CLASSPATH**, **JAVA_HOME to PATH**.
+9. Install [JavaSE](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](https://maven.apache.org/download.cgi), [Gradle](https://gradle.org/install/#manually), **Add java to PATH**, **Add CLASSPATH**, **JAVA_HOME to PATH**.
 10. Install [NodeJs](https://nodejs.org/) choose **Add Node to PATH**.
 
 ```bash
