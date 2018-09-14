@@ -42,9 +42,7 @@ Install on Windows mannually:
 10. Install [NodeJs](https://nodejs.org/) choose **Add Node to PATH**.
 
 ```bash
-    git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
-    cd %USERPROFILE%\.vim
-    install.bat
+    git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim && cd %USERPROFILE%\.vim && install.bat
 ```
 
 # A highly optimized .vimrc config file
