@@ -22,6 +22,17 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'nightsense/carbonized'
+Plug 'arcticicestudio/nord-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'chriskempson/base16-vim'
+Plug 'crusoexia/vim-monokai'
+Plug 'raphamorim/lucario'
+Plug 'rakr/vim-two-firewatch'
 
 " Format Synatax
 Plug 'w0rp/ale'
