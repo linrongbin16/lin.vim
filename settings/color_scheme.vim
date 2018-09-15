@@ -1,8 +1,6 @@
 "" ---- color theme ----
 
 syntax enable
-let g:solarized_termcolors=256
-let g:rehash256=1
 
 " 1) certain color theme
 "if has("gui_running")
