@@ -155,3 +155,5 @@ autocmd FileType c,cpp,cc,cxx,h,hh,hpp,hxx setlocal shiftwidth=2 tabstop=2 softt
 set conceallevel=0
 autocmd BufRead,BufNewFile {*.markdown,*.md,*.mkdn} set filetype=markdown
 autocmd FileType markdown,md,json setlocal conceallevel=0
+nmap <F9> :set conceallevel=0<cr>
+
