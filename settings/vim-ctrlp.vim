@@ -1,7 +1,7 @@
 "" ---- ctrlp ----
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=*/tmp/*,*.swp       " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp     " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
