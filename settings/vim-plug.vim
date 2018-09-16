@@ -23,7 +23,6 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nightsense/carbonized'
-Plug 'arcticicestudio/nord-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
