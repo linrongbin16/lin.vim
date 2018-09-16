@@ -33,8 +33,9 @@ Plug 'crusoexia/vim-monokai'
 Plug 'raphamorim/lucario'
 Plug 'rakr/vim-two-firewatch'
 
-" Format Synatax
-Plug 'w0rp/ale'
+" Synatax
+Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'bat', 'cmd', 'txt', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+" Auto Format
 Plug 'Chiel92/vim-autoformat'
 
 " Complete Engine
@@ -61,17 +62,17 @@ Plug 'airblade/vim-gitgutter'
 " Json
 Plug 'elzr/vim-json'
 " C++ Python Java
-Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'CC', 'cxx', 'cpp', 'h', 'hpp', 'HH', 'hxx', 'hh'] }
+Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " html/css/js
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
-Plug 'ap/vim-css-color', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
-Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json', 'less'] }
-Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
-Plug 'pangloss/vim-javascript', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'css', 'js', 'xml', 'xhtml', 'json'] }
-Plug 'mxw/vim-jsx', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
-Plug 'maksimr/vim-jsbeautify', { 'for': ['js', 'html', 'xml', 'css', 'xhtml', 'json'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
+Plug 'ap/vim-css-color', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
+Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'pangloss/vim-javascript', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'mxw/vim-jsx', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
