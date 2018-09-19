@@ -79,17 +79,17 @@ Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', '
 Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
 Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
-" haskell
+" Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
-" rust
+" Rust
 Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
 Plug 'phildawes/racer', { 'for': ['rs'] }
-" ruby
+" Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
-" scala
+" Scala
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
-" markdown
+" Markdown
 Plug 'plasticboy/vim-markdown', { 'for': ['md'] }
 
 
