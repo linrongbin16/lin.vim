@@ -32,6 +32,9 @@ Plug 'chriskempson/base16-vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'raphamorim/lucario'
 Plug 'rakr/vim-two-firewatch'
+Plug 'kadekillary/subtle_solo'
+Plug 'srcery-colors/srcery-vim'
+Plug 'nightsense/stellarized'
 
 " Synatax
 Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'bat', 'cmd', 'txt', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
