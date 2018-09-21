@@ -11,7 +11,7 @@ syntax enable
 
 
 " 2) pick random color
-let s:mycolor = ['solarized', 'molokai', 'monokai', 'dracula', 'koehler', 'gruvbox', 'torte', 'darkblue', 'desert', 'evening', 'peachpuff', 'carbonized-dark', 'carbonized-light', 'oceanicnext', 'neodark', 'tender', 'solarized8_high', 'base16-default-dark', 'lucario', 'srcery', 'subtle_light', 'stellarized']
+let s:mycolor = ['solarized', 'molokai', 'monokai', 'dracula', 'koehler', 'gruvbox', 'torte', 'darkblue', 'desert', 'evening', 'peachpuff', 'carbonized-light', 'oceanicnext', 'neodark', 'tender', 'solarized8_high', 'base16-default-dark', 'lucario', 'srcery', 'subtle_light']
 if has("gui_running")
     let curcolor = localtime() % 101 % len(s:mycolor)
     if localtime() % 3 == 0
