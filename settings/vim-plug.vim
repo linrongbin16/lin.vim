@@ -22,7 +22,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'nightsense/carbonized'
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
@@ -33,6 +32,12 @@ Plug 'crusoexia/vim-monokai'
 Plug 'raphamorim/lucario'
 Plug 'kadekillary/subtle_solo'
 Plug 'srcery-colors/srcery-vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
+Plug 'w0ng/vim-hybrid'
+Plug 'jnurmine/Zenburn'
 
 " Synatax
 Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'bat', 'cmd', 'txt', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
