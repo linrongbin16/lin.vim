@@ -25,7 +25,6 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhartington/oceanic-next'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'jacoborus/tender.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'chriskempson/base16-vim'
 Plug 'crusoexia/vim-monokai'
