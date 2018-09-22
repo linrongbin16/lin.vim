@@ -21,8 +21,6 @@ let g:ycm_min_num_identifier_candidate_chars=2
 let g:ycm_key_invoke_completion='<c-k>'
 
 " key mappings
-
-nnoremap<F10> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_key_list_select_completion=['<c-n>', '<Down>', '<TAB>' ]
 let g:ycm_key_list_previous_completion=['<c-p>', '<Up>' ]
 
