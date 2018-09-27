@@ -60,27 +60,18 @@ endif
 " ---- guifonts ----
 if has("win32")
     "set guifont=Monaco:h10
-    "set guifont=Fira\ Mono:h10
-    "set guifont=Droid\ Sans\ Mono:h10
-    "set guifont=Inconsolata\ Regular:h11
+    set guifont=Inconsolata:h11
     "set guifont=Hack:h10
-    "set guifont=Andale\ Mono:h10
-    set guifont=Office\ Code\ Pro:h10
+    "set guifont=Office\ Code\ Pro:h10
 elseif has("mac")
     "set guifont=Monaco:h14
-    "set guifont=Fira\ Mono:h10
-    "set guifont=Droid\ Sans\ Mono:h10
-    "set guifont=Inconsolata\ Regular:h11
+    "set guifont=Inconsolata:h11
     "set guifont=Hack:h10
-    "set guifont=Andale\ Mono:h10
     set guifont=Office\ Code\ Pro:h10
 else
     "set guifont=Monaco\ 10
-    "set guifont=Fira\ Mono\ 10
-    "set guifont=Droid\ Sans\ Mono\ 10
     "set guifont=Inconsolata\ Regular\ 11
     "set guifont=Hack\ 10
-    "set guifont=Andale\ Mono\ 10
     set guifont=Office\ Code\ Pro\ 10
 endif
 
