@@ -39,3 +39,4 @@ echo [boostscript] add `%%APPDATA%%\Python\Python37\Scripts` to `%%PATH%%`
 echo [boostscript] set `%%GOPATH%%` = `%%USERPROFILE%%\go`
 echo [boostscript] add `%%GOPATH%%\bin` to `%%PATH%%`
 echo [boostscript] add `%%GOROOT%%\bin` to `%%PATH%%`
+echo [boostscript] install fonts in `%%USERPROFILE%%\.vim\guifonts`
