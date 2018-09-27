@@ -62,8 +62,8 @@ if has("win32")
     "set guifont=Monaco:h10
     "set guifont=Hack:h11
     "set guifont=Fira\ Mono:h10
-    set guifont=Droid\ Sans\ Mono:h11
-    "set guifont=Inconsolata\ Regular:h11
+    "set guifont=Droid\ Sans\ Mono:h10
+    set guifont=Inconsolata\ Regular:h11
 elseif has("mac")
     "set guifont=Monaco:h14
     "set guifont=Hack:h10
