@@ -40,7 +40,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'sjl/badwolf'
 
 " Synatax
-Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'bat', 'cmd', 'txt', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
 
@@ -84,7 +84,7 @@ Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
 Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': ['hs']}
+Plug 'neovimhaskell/haskell-vim', { 'for': ['hs'] }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
 Plug 'phildawes/racer', { 'for': ['rs'] }
