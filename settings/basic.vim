@@ -60,8 +60,8 @@ endif
 " ---- guifonts ----
 if has("win32")
     "set guifont=Monaco:h10
-    set guifont=Inconsolata:h11
-    "set guifont=Hack:h10
+    "set guifont=Inconsolata:h11
+    set guifont=Hack:h10
     "set guifont=Office\ Code\ Pro:h10
 elseif has("mac")
     "set guifont=Monaco:h14
