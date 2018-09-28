@@ -61,18 +61,18 @@ endif
 if has("win32")
     "set guifont=Monaco:h10
     "set guifont=Inconsolata:h11
-    set guifont=Hack:h10
     "set guifont=Office\ Code\ Pro:h10
+    set guifont=Hack:h10
 elseif has("mac")
     "set guifont=Monaco:h14
     "set guifont=Inconsolata:h11
-    "set guifont=Hack:h10
-    set guifont=Office\ Code\ Pro:h10
+    "set guifont=Office\ Code\ Pro:h10
+    set guifont=Hack:h10
 else
     "set guifont=Monaco\ 10
     "set guifont=Inconsolata\ Regular\ 11
-    "set guifont=Hack\ 10
-    set guifont=Office\ Code\ Pro\ 10
+    "set guifont=Office\ Code\ Pro\ 10
+    set guifont=Hack\ 10
 endif
 
 
