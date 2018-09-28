@@ -58,21 +58,22 @@ if has("gui_running")
 endif
 
 " ---- guifonts ----
-if has("win32")
+if has("win32") || has("mac")
     "set guifont=Monaco:h10
-    "set guifont=Inconsolata:h11
+    "set guifont=Inconsolata-g:h10
     "set guifont=Office\ Code\ Pro:h10
-    set guifont=Hack:h10
-elseif has("mac")
-    "set guifont=Monaco:h14
-    "set guifont=Inconsolata:h11
-    "set guifont=Office\ Code\ Pro:h10
-    set guifont=Hack:h10
+    "set guifont=Hack:h10
+    "set guifont=Anonymous\ Pro:h11
+    set guifont=Droid\ Sans\ Mono:h10
+    "set guifont=Consola\ Mono:h10
 else
     "set guifont=Monaco\ 10
-    "set guifont=Inconsolata\ Regular\ 11
+    "set guifont=Inconsolata-g\ 10
     "set guifont=Office\ Code\ Pro\ 10
-    set guifont=Hack\ 10
+    "set guifont=Hack\ 10
+    "set guifont=Anonymous\ Pro\ 11
+    "set guifont=Droid\ Sans\ Mono\ 10
+    set guifont=Consola\ Mono\ 10
 endif
 
 
