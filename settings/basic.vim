@@ -48,9 +48,11 @@ set clipboard+=unnamed
 set number
 set numberwidth=5
 if has("gui_running")
-    "set lines=60
-    "set columns=180
-    au GUIEnter * simalt ~x
+    set lines=500
+    set columns=500
+    if has("win32")
+        au GUIEnter * simalt ~x
+    endif
     "gvim工具栏
     set guioptions-=T
     "gvim菜单栏
@@ -63,17 +65,15 @@ if has("win32") || has("mac")
     "set guifont=Inconsolata-g:h10
     "set guifont=Office\ Code\ Pro:h10
     "set guifont=Hack:h10
-    "set guifont=Anonymous\ Pro:h11
-    set guifont=Droid\ Sans\ Mono:h10
-    "set guifont=Consola\ Mono:h10
+    set guifont=Anonymous\ Pro:h11
+    "set guifont=Droid\ Sans\ Mono:h10
 else
     "set guifont=Monaco\ 10
     "set guifont=Inconsolata-g\ 10
     "set guifont=Office\ Code\ Pro\ 10
     "set guifont=Hack\ 10
-    "set guifont=Anonymous\ Pro\ 11
+    set guifont=Anonymous\ Pro\ 11
     "set guifont=Droid\ Sans\ Mono\ 10
-    set guifont=Consola\ Mono\ 10
 endif
 
 
