@@ -21,7 +21,7 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
 sudo apt autoremove -y
-sudo apt install git vim vim-gtk curl wget apport zsh -y
+sudo apt install git vim vim-gtk libcanberra-gtk-module curl wget apport zsh -y
 sudo apt install gcc g++ clang autoconf automake cmake bc clang-format -y
 sudo apt install pkg-config libpcre3-dev zlib1g-dev liblzma-dev -y
 sudo apt install libssl-dev libcrypto++-dev openssh-server -y
