@@ -22,7 +22,7 @@ brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
 brew install pkg-config libpcre3-dev zlib1g-dev liblzma-dev
 brew install openssh openssl cryptopp zsh
 brew install git vim macvim
-brew install the_silver_searcher
+brew install the_silver_searcher unzip bzip2 unrar
 brew install nodejs npm bc unzip unrar golang
 brew tap caskroom/versions
 brew cask install java8 maven gradle
