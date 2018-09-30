@@ -73,9 +73,9 @@ else
     "set guifont=Hack\ 10
     "set guifont=Fira\ Code\ 10
     "set guifont=DejaVu\ Sans\ Mono\ 10
-    "set guifont=Fantasque\ Sans\ Mono\ 11
-    "set guifont=Inconsolata-g\ 10
-    "set guifont=Monofur\ 11
+    set guifont=Fantasque\ Sans\ Mono\ 11
+    "set guifont=Inconsolata-g\ 11
+    "set guifont=Monofur\ 12
 endif
 
 
