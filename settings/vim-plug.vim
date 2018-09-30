@@ -16,8 +16,6 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', { 'on': [] } | call plug#load('vimfiler.vim')
 
 " Color Theme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
