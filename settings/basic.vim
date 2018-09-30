@@ -62,17 +62,16 @@ endif
 " ---- guifonts ----
 if has("win32") || has("mac")
     "set guifont=Monaco:h10
-    "set guifont=Inconsolata-g\ for\ Powerline:h11
-    "set guifont=Source\ Code\ Pro\ for\ Powerline:h11
-    set guifont=Hack:h10
-    "set guifont=Anonymous\ Pro\ for\ Powerline:h11
+    "set guifont=Hack:h10
+    "set guifont=Anonymous\ Pro:h11
+    "set guifont=Fira\ Code:h10
+    set guifont=DejaVu\ Sans\ Mono:h10
 else
     "set guifont=Monaco\ 10
-    "set guifont=Inconsolata-g\ for\ Powerline\ 10
-    "set guifont=Source\ Code\ Pro\ for\ Powerline\ 11
-    set guifont=Hack\ 10
-    "set guifont=Anonymous\ Pro\ for\ Powerline\ 11
-    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
+    "set guifont=Hack\ 10
+    "set guifont=Anonymous\ Pro\ 11
+    "set guifont=Fira\ Code\ 10
+    set guifont=DejaVu\ Sans\ Mono\ 10
 endif
 
 

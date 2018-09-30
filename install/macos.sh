@@ -88,13 +88,6 @@ find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$p
 eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
 fc-cache -f $font_dir
 
-# Install PowerlineFonts
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts
-./install.sh
-cd ..
-rm -rf fonts
-
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
