@@ -1,5 +1,5 @@
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeDirArrowExpandable = '|'
+let g:NERDTreeDirArrowCollapsible = '+'
 let g:NERDTreeAutoDeleteBuffer = 1
 
 autocmd StdinReadPre * let s:std_in=1
