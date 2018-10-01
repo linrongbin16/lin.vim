@@ -12,8 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim', { 'on': [] } | call plug#load('vimfiler.vim')
+Plug 'scrooloose/nerdtree'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
