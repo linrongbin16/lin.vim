@@ -91,8 +91,6 @@ Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 " Scala
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
-" Markdown
-Plug 'plasticboy/vim-markdown', { 'for': ['md'] }
 
 
 call plug#end()

@@ -29,3 +29,15 @@ endfunction
 
 nmap <F8> :VimFilerExplorer<cr>:call AdjustVimFilerWidth()<cr>
 nmap <Leader>vf :VimFilerExplorer<cr>:call AdjustVimFilerWidth()<cr>
+
+
+augroup syntax_autocmd
+  autocmd!
+  "toggle quickfix window
+  autocmd BufReadPost quickfix map <buffer> <leader>qq :cclose<cr>|map <buffer> <c-p> <up>|map <buffer> <c-n> <down>
+  autocmd FileType unite call s:unite_settings()
+  " obliterate unite buffers (marks especially).
+  autocmd BufLeave \[unite\]* if "nofile" ==# &buftype | setlocal bufhidden=wipe | endif
+  " Jump to the last position when reopening a file
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
