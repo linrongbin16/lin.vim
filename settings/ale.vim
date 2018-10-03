@@ -17,8 +17,8 @@ let g:ale_lint_on_insert_leave = 0
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
-\   'cpp': ['clang', 'clangcheck', 'cppcheck', 'cpplint', 'gcc', 'clang-format'],
-\}
+            \   'cpp': ['clang', 'clangcheck', 'cppcheck', 'cpplint', 'gcc', 'clang-format'],
+            \}
 
 " disable python useless warnings
 let g:ale_python_flake8_args="--ignore=W801,E501"
