@@ -45,20 +45,19 @@ set hlsearch
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set wrap
 set clipboard+=unnamed
-set number
 
 " show whitespace
 set list listchars=tab:>-,trail:.,extends:>
 set modifiable
-set cursorline
 
-"set nocursorline
+set cursorline
 set scrolloff=1
 set ttyfast
 set lazyredraw
 set nocursorcolumn
 set norelativenumber
-syntax sync minlines=256
+set number
+"syntax sync minlines=120
 
 " sound
 set noerrorbells
@@ -78,7 +77,7 @@ augroup myvimrc
 augroup END
 
 " encoding
-set encoding=utf-8 
+set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
 set termencoding=utf-8
