@@ -1,11 +1,10 @@
 "" ---- guiconf ----
 
 if has("gui_running")
+    set lines=500
+    set columns=500
     if has("win32")
         au GUIEnter * simalt ~x
-    else
-        set lines=500
-        set columns=500
     endif
     "gvim工具栏
     set guioptions-=T
