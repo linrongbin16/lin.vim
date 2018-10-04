@@ -36,7 +36,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'jnurmine/Zenburn'
 Plug 'sjl/badwolf'
 
-" Synatax
+" Lint
 Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
@@ -44,21 +44,25 @@ Plug 'Chiel92/vim-autoformat'
 " Complete Engine
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
+" Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+" File Search
+Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
-Plug 'vim-scripts/Mark--Karkat'
-Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/Mark--Karkat'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
 
-" Coding Util
+" Comment
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/DoxygenToolkit.vim'
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
@@ -68,15 +72,33 @@ Plug 'elzr/vim-json'
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 " Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
-" html/css/js
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
-Plug 'ap/vim-css-color', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
-Plug 'groenewege/vim-less', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
-Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+" Css
+Plug 'ap/vim-css-color', { 'for': ['html', 'xhtml', 'xml', 'css', 'js', 'jsx'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'xhtml', 'xml', 'css', 'js', 'jsx'] }
+" Scss
+Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
+" Less
+Plug 'groenewege/vim-less', { 'for': ['less'] }
+" Javascript
 Plug 'pangloss/vim-javascript', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
 Plug 'mxw/vim-jsx', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+" Html
+Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'xml'] }
+" TypeScript
+Plug 'leafgarland/typescript-vim', { 'for': ['ts', 'typescript'] }
+" CoffeeScript
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
+" Vue
+Plug 'posva/vim-vue', { 'for': ['vue'] }
+" Php
+Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+" Fsharp
+Plug 'fsharp/vim-fsharp', { 'for': ['fs', 'fsi', 'fsx', 'fsharp'] }
+" Perl
+Plug 'vim-perl/vim-perl', { 'for': ['perl'] }
+Plug 'vim-perl/vim-perl6', { 'for': ['pl6', 'pm6', 'p6'] }
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
