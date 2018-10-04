@@ -33,3 +33,26 @@ else
     "set guifont=Anonymous\ Pro\ 11
 endif
 
+
+" statusline
+set laststatus=2
+function! HighlightSearch()
+    if &hls
+        return 'H'
+    else
+        return ''
+    endif
+endfunction
+
+set statusline=
+set statusline+=%7*\[%n]\                                   "buffer number
+set statusline+=%1*\ %<%F\                                  "filepath
+set statusline+=%5*\ %{''.(&fenc!=''?&fenc:&enc).''}        "encoding
+set statusline+=%5*\ %{(&bomb?\",BOM\":\"\")}               "encoding2
+set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\    "language & Highlight on?
+set statusline+=%5*\ %y\                                    "filetype
+set statusline+=%5*\ %{&ff}\                                "fileformat (dos/unix..)
+set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\               "row/total (%)
+set statusline+=%9*\ col:%03c\                              "column
+set statusline+=%2*\ char:0x%04B\ %*                        "character under cursor
+set statusline+=%0*\ \ %m%r%w\ %P\ \                        "Modified? Readonly? Top/bot.

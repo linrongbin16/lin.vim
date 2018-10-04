@@ -92,7 +92,6 @@ set selectmode=mouse,key
 
 " plugins
 set noignorecase
-set laststatus=2
 filetype on
 filetype plugin on
 filetype indent on
