@@ -64,8 +64,9 @@ Plug 'airblade/vim-gitgutter'
 
 " Json
 Plug 'elzr/vim-json'
-" C++ Python Java
+" C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
+" Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " html/css/js
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
