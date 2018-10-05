@@ -1,2 +1,0 @@
-"" ---- vim-jsbeautify.vim ----
-
