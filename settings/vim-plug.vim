@@ -70,6 +70,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 " Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Css
