@@ -17,7 +17,7 @@ let g:ale_lint_on_insert_leave = 0
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
-            \   'cpp': ['clang', 'clangcheck', 'cppcheck', 'cpplint', 'gcc', 'clang-format'],
+            \   'cpp': ['clang', 'cppcheck', 'cpplint', 'gcc', 'clang-format'],
             \}
 
 " disable python useless warnings
