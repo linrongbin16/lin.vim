@@ -76,8 +76,9 @@ Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Css
 Plug 'ap/vim-css-color', { 'for': ['html', 'xhtml', 'xml', 'css', 'js', 'jsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'xhtml', 'xml', 'css', 'js', 'jsx'] }
-" Scss
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
+" Haml/Sass/Scss
+Plug 'cakebaker/scss-syntax.vim', { 'for': ['haml', 'sass', 'scss'] }
+Plug 'tpope/vim-haml', { 'for': ['haml', 'sass', 'scss'] }
 " Less
 Plug 'groenewege/vim-less', { 'for': ['less'] }
 " Javascript
