@@ -149,6 +149,62 @@ user_header = [
     '../../../../../..',
 ]
 
+
+def BuildWindowsHeader():
+    winheader = list()
+
+    # cpp stl header
+    for release in os.listdir(
+            'C:\\Program Files (x86)\\Microsoft Visual Studio'):
+        assert (release, str)
+        try:
+            temp = int(release)
+            if release.startwith('20'):
+                for version in os.listdir(
+                        'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\'
+                        % (release)):
+                    # '-I',
+                    # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\include',
+                    winheader.append('-I')
+                    winheader.append(
+                        'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
+                        % (release, version))
+        except:
+            pass
+
+    # old c header
+    for version in os.listdir(
+            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
+        # '-I',
+        # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
+        winheader.append('-I')
+        winheader.append(
+            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
+            (version))
+
+    return winheader
+
+
+def BuildLinuxHeader():
+    linuxheader = list()
+    linuxheader.extend(user_header)
+    linuxheader.append('-I')
+    linuxheader.append('/usr/include')
+    linuxheader.append('-I')
+    linuxheader.append('/usr/lib')
+    linuxheader.append('-I')
+    linuxheader.append('/usr/include/x86_64-linux-gnu')
+
+    os.chdir('/usr/include/c++')
+    for r in os.listdir():
+        assert (r, str)
+        # '-I',
+        # '/usr/include/c++/7.3.0',
+        linuxheader.append('-I')
+        linuxheader.append('/usr/include/c++/%s' % (r))
+    return linuxheader
+
+
 if platform.system() == 'Windows':
     flags.extend(windows_header)
 else:
