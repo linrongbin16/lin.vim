@@ -18,17 +18,16 @@ if ! type "brew" > /dev/null; then
 fi
 brew update
 brew upgrade
+brew install git vim macvim zsh
 brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
-brew install pkg-config libpcre3-dev zlib1g-dev liblzma-dev
-brew install openssh openssl cryptopp zsh
-brew install git vim macvim
-brew install the_silver_searcher unzip bzip2 unrar
-brew install nodejs npm bc unzip unrar golang
+brew install pkg-config openssl openssh openssl cryptopp
+brew install the_silver_searcher unzip bzip2 unrar bc
+brew install nodejs npm golang
 brew tap caskroom/versions
 brew cask install java8 maven gradle
 brew install python3
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
-sudo npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
+sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
 
 # Git Config
 git config core.filemode false
