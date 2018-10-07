@@ -19,7 +19,8 @@ sudo dnf install git vim gvim curl wget zsh -y
 sudo dnf install gcc gcc-c++ clang make autoconf automake cmake golang kernel-devel -y
 sudo dnf install openssh-server openssl-devel cryptopp-devel -y
 sudo dnf install the_silver_searcher unzip bzip2 unar bc -y
-sudo dnf install nodejs npm -y
+curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+sudo dnf install nodejs -y
 sudo dnf install python3 python3-devel python3-pip -y
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern
