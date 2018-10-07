@@ -16,9 +16,8 @@ touch ~/.zshrc
 sudo dnf upgrade -y
 sudo dnf update -y
 sudo dnf install git vim gvim curl wget zsh -y
-sudo dnf install gcc gcc-c++ clang autoconf automake cmake -y
-sudo dnf install openssh-server openssl-devel -y
-sudo dnf install java-openjdk-devel golang maven gradle -y
+sudo dnf install gcc gcc-c++ clang autoconf automake cmake golang -y
+sudo dnf install openssh-server openssl-devel cryptopp-devel -y
 sudo dnf install the_silver_searcher unzip bzip2 unar bc -y
 sudo dnf install nodejs npm -y
 sudo dnf install python3 python3-devel python3-pip -y

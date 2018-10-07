@@ -23,8 +23,8 @@ sudo apt dist-upgrade -y
 sudo apt autoremove -y
 sudo apt install git vim vim-gtk libcanberra-gtk-module curl wget zsh -y
 sudo apt install gcc g++ clang autoconf automake cmake clang-format -y
-sudo apt install pkg-config libssl-dev openssh-server libnss3-tools -y
-sudo apt install default-jdk golang golang-src golang-go golang-doc -y
+sudo apt install pkg-config libssl-dev openssh-server -y
+sudo apt install golang golang-src golang-go golang-doc -y
 sudo apt install silversearcher-ag unzip bzip2 unrar shadowsocks bc -y
 sudo apt install nodejs npm -y
 sudo rm /usr/bin/node
@@ -50,27 +50,6 @@ git config --global push.default simple
 git config --global pull.default simple
 git config --global core.editor vim
 git config --global credential.helper store
-
-# Maven Gradle
-maven_version=3.5.4
-wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz
-tar -zxvf apache-maven-${maven_version}-bin.tar.gz
-if [ -d /opt/maven ]; then
-    sudo rm -rf /opt/maven
-fi
-sudo mkdir -p /opt/maven
-sudo mv apache-maven-${maven_version} /opt/maven
-rm -rf apache-maven-${maven_version}-bin.tar.gz
-gradle_version=4.9
-wget https://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip
-unzip gradle-${gradle_version}-bin.zip -d gradle-${gradle_version}-bin
-if [ -d /opt/gradle ]; then
-    sudo rm -rf /opt/gradle
-fi
-sudo mkdir -p /opt/gradle
-sudo mv gradle-${gradle_version}-bin/gradle-${gradle_version} /opt/gradle
-rm -rf gradle-${gradle_version}-bin.zip
-rm -rf gradle-${gradle_version}-bin
 
 # Universal Ctags
 git clone https://github.com/universal-ctags/ctags.git universal-ctags
@@ -108,22 +87,9 @@ mkdir -p ~/workspace/project
 mkdir -p ~/go/src
 mkdir -p ~/go/bin
 mkdir -p ~/go/pkg
-if [ -d /usr/lib/jvm ]; then
-    javahome=$(ls /usr/lib/jvm | grep openjdk | grep java | tail -n 1)
-    if [ "${javahome:0:4}" == "java" ]; then
-        echo "export JAVA_HOME=/usr/lib/jvm/$javahome" >> $LINVIMRC
-        echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
-    else
-        echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
-    fi
-else
-    echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
-fi
 echo "export GOPATH=~/go" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOROOT/bin" >> $LINVIMRC
-echo "export PATH=\$PATH:/opt/maven/apache-maven-${maven_version}/bin" >> $LINVIMRC
-echo "export PATH=\$PATH:/opt/gradle/gradle-${gradle_version}/bin" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
