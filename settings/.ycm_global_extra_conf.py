@@ -96,8 +96,6 @@ linux_header = [
     '-I',
     '/usr/include/c++',
     '-I',
-    '/usr/include/c++/2',
-    '-I',
     '/usr/include/c++/3',
     '-I',
     '/usr/include/c++/4',
@@ -107,10 +105,6 @@ linux_header = [
     '/usr/include/c++/6',
     '-I',
     '/usr/include/c++/7',
-    '-I',
-    '/usr/include/c++/8',
-    '-I',
-    '/usr/include/c++/9',
     '-I',
     '/usr/include/x86_64-linux-gnu',
 ]
@@ -149,10 +143,62 @@ user_header = [
     '../../../../../..',
 ]
 
+
+def BuildWindowsHeader():
+    winheader = list()
+
+    # '-I',
+    # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
+    for release in os.listdir(
+            'C:\\Program Files (x86)\\Microsoft Visual Studio\\'):
+        try:
+            temp = int(release)
+            for version in os.listdir(
+                    'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\'
+                    % (release)):
+                winheader.append('-I')
+                winheader.append(
+                    'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
+                    % (release, version))
+        except:
+            pass
+        pass
+
+    # '-I',
+    # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
+    for version in os.listdir(
+            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
+        winheader.append('-I')
+        winheader.append(
+            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
+            (version))
+
+    return winheader
+
+
+def BuildLinuxHeader():
+    linuxheader = list()
+    linuxheader.append('-I')
+    linuxheader.append('/usr/include')
+    linuxheader.append('-I')
+    linuxheader.append('/usr/include/c++')
+    linuxheader.append('-I')
+    linuxheader.append('/usr/lib')
+    linuxheader.append('-I')
+    linuxheader.append('/usr/include/x86_64-linux-gnu')
+
+    # '-I',
+    # '/usr/include/c++/7',
+    for version in os.listdir('/usr/include/c++'):
+        linuxheader.append('-I')
+        linuxheader.append('/usr/include/c++/%s' % (version))
+    return linuxheader
+
+
 if platform.system() == 'Windows':
-    flags.extend(windows_header)
+    flags.extend(BuildWindowsHeader())
 else:
-    flags.extend(linux_header)
+    flags.extend(BuildLinuxHeader())
 flags.extend(user_header)
 
 # Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
