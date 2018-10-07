@@ -23,7 +23,6 @@ sudo apt-get install libssl-dev openssh-server libcrypto++-dev -y
 sudo apt-get install golang golang-src golang-go golang-doc -y
 sudo apt-get install silversearcher-ag unzip bzip2 unrar shadowsocks bc -y
 sudo apt-get install nodejs npm -y
-sudo rm /usr/bin/node
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt-get install python3 python3-dev python3-pip -y
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
