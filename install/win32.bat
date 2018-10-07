@@ -16,7 +16,7 @@ python install.py --clang-completer --go-completer --js-completer --system-libcl
 
 rem install node/python plugin
 call npm config set unsafe-perm true
-call npm install js-beautify standard eslint xo typescript-formatter sass remark-cli -g
+call npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern
 call pip install --user pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf urllib3
 
 rem install golang plugin

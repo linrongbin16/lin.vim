@@ -22,7 +22,7 @@ sudo dnf install the_silver_searcher unzip bzip2 unar bc -y
 sudo dnf install nodejs npm -y
 sudo dnf install python3 python3-devel python3-pip -y
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
-sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli
+sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern
 
 # SSH Server config
 eval `ssh-agent -s`
