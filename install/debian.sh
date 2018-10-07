@@ -23,8 +23,7 @@ sudo apt dist-upgrade -y
 sudo apt autoremove -y
 sudo apt install git vim vim-gtk libcanberra-gtk-module curl wget zsh -y
 sudo apt install gcc g++ clang autoconf automake cmake bc clang-format -y
-sudo apt install pkg-config libpcre3-dev zlib1g-dev liblzma-dev -y
-sudo apt install libssl-dev libcrypto++-dev openssh-server -y
+sudo apt install pkg-config libssl-dev openssh-server -y
 sudo apt install default-jdk golang golang-src golang-go golang-doc -y
 sudo apt install silversearcher-ag unzip bzip2 unrar shadowsocks -y
 sudo apt install nodejs npm libnss3-tools -y
