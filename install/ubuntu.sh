@@ -18,7 +18,7 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 sudo apt-get install git vim vim-gtk libcanberra-gtk-module curl wget zsh -y
-sudo apt-get install gcc g++ clang autoconf automake cmake clang-format pkg-config
+sudo apt-get install gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential -y
 sudo apt-get install libssl-dev openssh-server libcrypto++-dev -y
 sudo apt-get install golang golang-src golang-go golang-doc -y
 sudo apt-get install silversearcher-ag unzip bzip2 unrar shadowsocks bc -y
