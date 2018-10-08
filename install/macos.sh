@@ -23,7 +23,7 @@ brew install nodejs npm golang
 brew tap caskroom/versions
 brew install python3
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
-sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern
+sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 
 # Git Config
 git config core.filemode false
