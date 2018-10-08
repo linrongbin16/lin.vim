@@ -83,7 +83,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
 set termencoding=utf-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-language messages en_US.utf-8
+language messages en_US.UTF-8
 
 " mouse
 set mouse=a
