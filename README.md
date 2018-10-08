@@ -23,6 +23,13 @@ It is for anyone intending to use VIM for development running equally well on Wi
 
 ### Linux, UNIX, MacOS Installation
 
+Currently support system:
+1. Ubuntu
+2. Debian
+3. Fedora
+4. MacOs
+5. FreeBSD
+
 ```bash
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
