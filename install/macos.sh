@@ -39,25 +39,6 @@ git config --global pull.default simple
 git config --global core.editor vim
 git config --global credential.helper store
 
-# Maven Gradle
-maven_version=3.5.4
-wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz
-tar -zxvf apache-maven-${maven_version}-bin.tar.gz
-if [ -d /opt/maven ]; then
-    sudo mkdir -p /opt/maven
-fi
-sudo mv apache-maven-${maven_version} /opt/maven
-rm -rf apache-maven-${maven_version}-bin.tar.gz
-gradle_version=4.9
-wget https://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip
-unzip gradle-${gradle_version}-bin.zip -d gradle-${gradle_version}-bin
-if [ -d /opt/gradle ]; then
-    sudo mkdir -p /opt/gradle
-fi
-sudo mv gradle-${gradle_version}-bin/gradle-${gradle_version} /opt/gradle
-rm -rf gradle-${gradle_version}-bin.zip
-rm -rf gradle-${gradle_version}-bin
-
 # Universal Ctags
 git clone https://github.com/universal-ctags/ctags.git universal-ctags
 cd universal-ctags
@@ -97,24 +78,10 @@ mkdir -p ~/go/pkg
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC
-if [ -d /Library/Java/JavaVirtualMachines ]; then
-    jdkhome=$(ls /Library/Java/JavaVirtualMachines | grep jdk | tail -n 1)
-    if [ "${jdkhome:0:3}" == "jdk" ]; then
-        echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/$jdkhome/Contents/Home" >> $LINVIMRC
-        echo "export CLASSPATH=.:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar" >> $LINVIMRC
-        echo "export PATH=\$JAVA_HOME:\$PATH" >> $LINVIMRC
-    else
-        echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
-    fi
-else
-    echo "[lin-vim] WARNING: no \$JAVA_HOME is found"
-fi
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "export GOPATH=~/go" >> $LINVIMRC
 echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
-echo "export PATH=\$PATH:/opt/maven/apache-maven-${maven_version}/bin" >> $LINVIMRC
-echo "export PATH=\$PATH:/opt/gradle/gradle-${gradle_version}/bin" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
