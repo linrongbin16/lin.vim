@@ -13,22 +13,24 @@ touch ~/.zshrc
 
 
 # Software Dependency
-cd /usr/ports/devel/git && sudo make install clean
-cd /usr/ports/editor/vim && sudo make install clean
-cd /usr/ports/editor/vim-console && sudo make install clean
-cd /usr/ports/ftp/curl && sudo make install clean
-cd /usr/ports/ftp/wget && sudo make install clean
-cd /usr/ports/shells/zsh && sudo make install clean
-cd /usr/ports/lang/clang-devel && sudo make install clean
-cd /usr/ports/devel/autoconf && sudo make install clean
-cd /usr/ports/devel/automake && sudo make install clean
-cd /usr/ports/devel/cmake && sudo make install clean
-cd /usr/ports/security/libssh && sudo make install clean
-cd /usr/ports/security/cryptopp && sudo make install clean
-cd /usr/ports/lang/go && sudo make install clean
-cd /usr/ports/textproc/the_silver_searcher && sudo make install clean
-cd /usr/ports/www/nodejs && sudo make install clean
-cd /usr/ports/lang/python3 && sudo make install clean
+cd /usr/ports/devel/git && sudo make install clean BATCH=yes
+cd /usr/ports/editor/vim && sudo make deinstall
+cd /usr/ports/editor/vim && sudo make reinstall clean
+cd /usr/ports/ftp/curl && sudo make install clean BATCH=yes
+cd /usr/ports/ftp/wget && sudo make install clean BATCH=yes
+cd /usr/ports/shells/zsh && sudo make install clean BATCH=yes
+cd /usr/ports/lang/clang-devel && sudo make install clean BATCH=yes
+cd /usr/ports/devel/autoconf && sudo make install clean BATCH=yes
+cd /usr/ports/devel/automake && sudo make install clean BATCH=yes
+cd /usr/ports/devel/cmake && sudo make install clean BATCH=yes
+cd /usr/ports/security/libssh && sudo make install clean BATCH=yes
+cd /usr/ports/security/cryptopp && sudo make install clean BATCH=yes
+cd /usr/ports/lang/go && sudo make install clean BATCH=yes
+cd /usr/ports/textproc/the_silver_searcher && sudo make install clean BATCH=yes
+cd /usr/ports/www/nodejs && sudo make deinstall
+cd /usr/ports/www/nodejs && sudo make reinstall clean
+cd /usr/ports/lang/python3 && sudo make deinstall
+cd /usr/ports/lang/python3 && sudo make reinstall clean
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 
