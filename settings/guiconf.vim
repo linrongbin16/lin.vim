@@ -35,7 +35,7 @@ endif
 
 
 " statusline
-set laststatus=2
+"set laststatus=2
 function! HighlightSearch()
     if &hls
         return 'H'
