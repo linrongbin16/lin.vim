@@ -15,13 +15,13 @@ touch ~/.zshrc
 # Software Dependency
 sudo dnf update -y
 sudo dnf upgrade -y
-sudo dnf install git vim gvim curl wget zsh -y
-sudo dnf install gcc gcc-c++ clang make autoconf automake cmake golang kernel-devel -y
-sudo dnf install openssh-server openssl-devel cryptopp-devel -y
-sudo dnf install the_silver_searcher unzip bzip2 unar bc -y
+sudo dnf install -y git vim gvim curl wget zsh
+sudo dnf install -y gcc gcc-c++ clang make autoconf automake cmake golang kernel-devel
+sudo dnf install -y openssh-server openssl-devel cryptopp-devel
+sudo dnf install -y the_silver_searcher unzip bzip2 unar bc
 curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-sudo dnf install nodejs npm -y
-sudo dnf install python3 python3-devel python3-pip -y
+sudo dnf install -y nodejs
+sudo dnf install -y python3 python3-devel python3-pip
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 

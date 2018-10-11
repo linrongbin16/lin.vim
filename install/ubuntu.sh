@@ -17,14 +17,14 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-sudo apt-get install git vim vim-gtk libcanberra-gtk-module curl wget zsh -y
-sudo apt-get install gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential -y
-sudo apt-get install libssl-dev openssh-server libcrypto++-dev -y
-sudo apt-get install golang golang-src golang-go golang-doc -y
-sudo apt-get install silversearcher-ag unzip bzip2 unrar shadowsocks bc -y
+sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
+sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
+sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
+sudo apt-get install -y golang golang-src golang-go golang-doc
+sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install nodejs npm -y
-sudo apt-get install python3 python3-dev python3-pip -y
+sudo apt-get install -y nodejs
+sudo apt-get install -y python3 python3-dev python3-pip
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 sudo apt-get autoremove -y
