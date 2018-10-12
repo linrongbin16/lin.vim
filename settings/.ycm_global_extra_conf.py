@@ -77,38 +77,6 @@ flags = [
     './benchmarks/benchmark/include',
 ]
 
-# Windows MinGW header
-windows_header = [
-    '-I',
-    'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\include',
-    '-I',
-    'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
-    '-I',
-    'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
-]
-
-# Linux, Unix header
-linux_header = [
-    '-I',
-    '/usr/include',
-    '-I',
-    '/usr/lib',
-    '-I',
-    '/usr/include/c++',
-    '-I',
-    '/usr/include/c++/3',
-    '-I',
-    '/usr/include/c++/4',
-    '-I',
-    '/usr/include/c++/5',
-    '-I',
-    '/usr/include/c++/6',
-    '-I',
-    '/usr/include/c++/7',
-    '-I',
-    '/usr/include/x86_64-linux-gnu',
-]
-
 # User header
 user_header = [
     '-I',
