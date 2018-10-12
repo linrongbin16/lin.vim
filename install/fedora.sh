@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] Install for Fedora"
+echo "[lin-vim] Install for Fedora" || die "[lin-vim] sudo not found"
 
 # Prepare Environment
 LINVIMRC=~/.linvimrc

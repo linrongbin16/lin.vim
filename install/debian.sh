@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] Install for Debian"
+sudo echo "[lin-vim] Install for Debian" || die "[lin-vim] sudo not found"
 
 # Prepare Environment
 LINVIMRC=~/.linvimrc

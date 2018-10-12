@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] Install for Ubuntu"
+sudo echo "[lin-vim] Install for Ubuntu" || die "[lin-vim] sudo not found"
 
 # Prepare Environment
 LINVIMRC=~/.linvimrc
