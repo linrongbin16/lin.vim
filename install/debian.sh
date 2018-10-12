@@ -15,7 +15,6 @@ touch ~/.zshrc
 # Software Dependency
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
 sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
@@ -27,6 +26,8 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y python3 python3-dev python3-pip
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
+sudo apt-get update -y
+sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
 # SSH Server config
