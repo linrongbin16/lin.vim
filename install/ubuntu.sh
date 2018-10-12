@@ -21,9 +21,7 @@ sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-c
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
 sudo apt-get install -y golang golang-src golang-go golang-doc
 sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo apt-get install -y python3 python3-dev python3-pip
+sudo apt-get install -y python3 python3-dev python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 sudo apt-get update -y
