@@ -163,11 +163,64 @@ def BuildLinuxHeader():
     return linuxheader
 
 
+def IsAscii(s):
+    return all(ord(c) < 128 for c in s)
+
+
+def BuildUserHeader():
+    userheader = list()
+    rootpath = [
+        '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'G:\\',
+        'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
+        'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
+    ]
+
+    header = '.'
+    userheader.append('-I')
+    userheader.append(header)
+    for i in range(10):
+        if os.path.abspath(header) in rootpath:
+            break
+        header = '%s%s' % (header, '/..')
+        if ' ' in header:
+            continue
+        if not IsAscii(header):
+            continue
+        userheader.append('-I')
+        userheader.append(header)
+        for path in os.listdir(header):
+            target = '%s/%s' % (header, path)
+            if ' ' in target:
+                continue
+            if not IsAscii(target):
+                continue
+            if path.startswith('.'):
+                continue
+            if not os.path.isdir(target):
+                continue
+            userheader.append('-I')
+            userheader.append(target)
+
+    for path in os.listdir('.'):
+        if ' ' in path:
+            continue
+        if not IsAscii(path):
+            continue
+        if path.startswith('.'):
+            continue
+        if not os.path.isdir(path):
+            continue
+        userheader.append('-I')
+        userheader.append(path)
+
+    return userheader
+
+
 if platform.system() == 'Windows':
     flags.extend(BuildWindowsHeader())
 else:
     flags.extend(BuildLinuxHeader())
-flags.extend(user_header)
+flags.extend(BuildUserHeader())
 
 # Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
 # which is required for compiling the standard library, and to 'c++11' for older
