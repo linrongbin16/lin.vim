@@ -3,6 +3,7 @@ let g:NERDTreeDirArrowCollapsible = '+'
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeShowHidden=1
 let g:netrw_dirhistmax = 0
+let g:netrw_home='~/.cache/vim'
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd vimenter * NERDTree
