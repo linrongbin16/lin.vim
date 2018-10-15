@@ -129,6 +129,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "" guiconf
 if has("gui_running")
+    set t_Co=256
     set lines=500
     set columns=500
     if has("win32")
@@ -169,25 +170,4 @@ else
     "set guifont=Anonymous\ Pro\ 11
 endif
 
-
-" statusline
-"set laststatus=2
-function! HighlightSearch()
-    if &hls
-        return 'H'
-    else
-        return ''
-    endif
-endfunction
-
-set statusline=
-set statusline+=%0*[%n]                                         "buffer number
-set statusline+=%1*\ \ %<%F                                     "filepath
-set statusline+=%2*\ \ [%{''.(&fenc!=''?&fenc:&enc).''}]          "encoding
-set statusline+=%2*\ [%{&spelllang}\%{HighlightSearch()}]       "language & Highlight on?
-set statusline+=%3*\ %y                                         "filetype
-set statusline+=%3*\ [%{&ff}]                                   "fileformat (dos/unix..)
-set statusline+=%4*\ %=row:%l/%L\ (%03p%%)                      "row/total (%)
-set statusline+=%4*\ \ col:%c                                   "column
-set statusline+=%4*\ \ char:0x%04B\ \                           "character under cursor
-set statusline+=%0*\ \ %m%r%w\ %P\ \                            "Modified? Readonly? Top/bot.
+set laststatus=2

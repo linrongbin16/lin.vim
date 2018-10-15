@@ -13,6 +13,7 @@ Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
