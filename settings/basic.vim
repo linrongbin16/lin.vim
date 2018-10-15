@@ -181,7 +181,7 @@ function! HighlightSearch()
 endfunction
 
 set statusline=
-set statusline+=%1*[%n]                                         "buffer number
+set statusline+=%0*[%n]                                         "buffer number
 set statusline+=%1*\ \ %<%F                                     "filepath
 set statusline+=%2*\ \ [%{''.(&fenc!=''?&fenc:&enc).''}]          "encoding
 set statusline+=%2*\ [%{&spelllang}\%{HighlightSearch()}]       "language & Highlight on?
