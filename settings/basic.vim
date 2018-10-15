@@ -146,8 +146,8 @@ if has("win32") || has("mac")
     "set guifont=Hack:h10
     "set guifont=Fira\ Code:h10
     "set guifont=DejaVu\ Sans\ Mono:h10
-    "set guifont=Fantasque\ Sans\ Mono:h11
-    set guifont=Inconsolata:h11
+    set guifont=Fantasque\ Sans\ Mono:h11
+    "set guifont=Inconsolata:h11
     "set guifont=Monofur:h11
     "set guifont=Anonymous\ Pro:h11
 else
