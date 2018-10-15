@@ -17,7 +17,7 @@ It is for anyone intending to use VIM for development running equally well on Wi
 
 ![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic2.png)
 
-*Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)*
+*Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)*.
 
 # Installation
 
@@ -50,9 +50,9 @@ Install on Windows mannually:
 
 The .vimrc file is suited to programming.
 * Used across Linux, Windows and Mac.
-* Completion Engine based on YouCompleteMe, UltiSnip, Ctags.
-* Multiple Languages supported.
-* Configured plugins.
+* Completion Engine based on YouCompleteMe, Universal-Ctags.
+* Multiple Programming Languages supported.
+* Configured plugins and Develop Tools.
 
 # Fork me on GitHub
 
