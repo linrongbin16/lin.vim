@@ -95,7 +95,7 @@ Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 " Vue
 Plug 'posva/vim-vue', { 'for': ['vue'] }
 " Php
-Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+Plug 'StanAngeloff/php.vim', { 'for': ['php', 'php5', 'php6', 'php7'] }
 " Fsharp
 Plug 'fsharp/vim-fsharp', { 'for': ['fs', 'fsi', 'fsx', 'fsharp'] }
 " Perl
