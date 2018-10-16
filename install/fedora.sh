@@ -41,7 +41,7 @@ git config --global core.editor vim
 git config --global credential.helper store
 
 # Universal Ctags
-if [ -d universal-ctags ]; then
+if [ ! -d universal-ctags ]; then
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
 fi
 cd universal-ctags
