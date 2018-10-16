@@ -38,7 +38,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'sjl/badwolf'
 
 " Lint
-Plug 'w0rp/ale', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'py', 'go', 'rb', 'ruby', 'hs', 'rs', 'java', 'php', 'cs', 'sql', 'lisp', 'kt', 'sh', 'el', 'erl', 'scala', 'html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'w0rp/ale'
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
 
@@ -68,27 +68,27 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " Json
-Plug 'elzr/vim-json'
+Plug 'elzr/vim-json', { 'for': ['json'] }
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 " Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Css
-Plug 'ap/vim-css-color', { 'for': ['html', 'xhtml', 'xml', 'css', 'js', 'jsx'] }
-Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'xhtml', 'xml', 'css', 'js', 'jsx'] }
+Plug 'ap/vim-css-color'
+Plug 'hail2u/vim-css3-syntax'
 " Haml/Sass/Scss
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['haml', 'sass', 'scss'] }
-Plug 'tpope/vim-haml', { 'for': ['haml', 'sass', 'scss'] }
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'tpope/vim-haml'
 " Less
-Plug 'groenewege/vim-less', { 'for': ['less'] }
+Plug 'groenewege/vim-less'
 " Javascript
-Plug 'pangloss/vim-javascript', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
-Plug 'mxw/vim-jsx', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
-Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'xhtml', 'xml', 'json', 'js', 'jsx', 'css', 'less'] }
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
+Plug 'maksimr/vim-jsbeautify'
 " Html
-Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'xml'] }
+Plug 'othree/html5.vim'
 " TypeScript
 Plug 'leafgarland/typescript-vim', { 'for': ['ts', 'typescript'] }
 " CoffeeScript
@@ -114,8 +114,6 @@ Plug 'phildawes/racer', { 'for': ['rs'] }
 " Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
-" Scala
-Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 
 
 call plug#end()
