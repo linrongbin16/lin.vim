@@ -68,7 +68,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " Json
-Plug 'elzr/vim-json', { 'for': ['json'] }
+Plug 'elzr/vim-json'
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
