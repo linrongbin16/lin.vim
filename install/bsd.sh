@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] Install for FreeBSD" || { echo "[lin-vim] sudo not found"; exit 1; }
+sudo echo "[lin-vim] Install for FreeBSD" || { echo "[lin-vim] sudo not found"; exit 1; }
 
 # Prepare Environment
 LINVIMRC=~/.linvimrc
@@ -51,8 +51,11 @@ git config --global core.editor vim
 git config --global credential.helper store
 
 # Universal Ctags
-git clone https://github.com/universal-ctags/ctags.git universal-ctags
+if [ -d universal-ctags ]; then
+    git clone https://github.com/universal-ctags/ctags.git universal-ctags
+fi
 cd universal-ctags
+git pull
 ./autogen.sh
 ./configure
 make

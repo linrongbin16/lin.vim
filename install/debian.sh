@@ -11,7 +11,6 @@ touch $LINVIMRC
 touch ~/.bashrc
 touch ~/.zshrc
 
-
 # Software Dependency
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -46,8 +45,11 @@ git config --global core.editor vim
 git config --global credential.helper store
 
 # Universal Ctags
-git clone https://github.com/universal-ctags/ctags.git universal-ctags
+if [ -d universal-ctags ]; then
+    git clone https://github.com/universal-ctags/ctags.git universal-ctags
+fi
 cd universal-ctags
+git pull
 ./autogen.sh
 ./configure
 make

@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 " UI Manager
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 
@@ -42,6 +41,9 @@ Plug 'w0rp/ale'
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
 
+" Ctags
+Plug 'ludovicchabant/vim-gutentags'
+
 " Complete Engine
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
@@ -50,6 +52,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " File Search
 Plug 'kien/ctrlp.vim'
+
+" The Silver Searcher - Ag
 Plug 'rking/ag.vim'
 
 " Keyboard Operation
@@ -58,7 +62,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'js', 'jsx', 'xml', 'xhtml', 'json', 'less'] }
+Plug 'mattn/emmet-vim'
 
 " Comment
 Plug 'scrooloose/nerdcommenter'
@@ -66,6 +70,7 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
+
 
 " Json
 Plug 'elzr/vim-json'
@@ -114,6 +119,11 @@ Plug 'phildawes/racer', { 'for': ['rs'] }
 " Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
+" Elixir
+Plug 'elixir-editors/vim-elixir', { 'for': ['exs', 'ex', 'eex'] }
+Plug 'slashmili/alchemist.vim', { 'for': ['exs', 'ex', 'eex'] }
+" Erlang
+Plug 'vim-erlang/vim-erlang-runtime', { 'for': ['erl'] }
 
 
 call plug#end()

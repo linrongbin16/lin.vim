@@ -4,7 +4,6 @@ echo "[lin-vim] Install for Windows"
 mkdir %USERPROFILE%\.ssh
 
 rem install vim
-git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
 cd %USERPROFILE%\.vim
 curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -30,7 +29,7 @@ echo.
 echo [lin-vim] NOTICE
 echo [lin-vim] install `https://github.com/k-takata/the_silver_searcher-win32/releases` x86_64 zip, extract zip and put `ag.exe` to `%%USERPROFILE%%\.vim\bin\`
 echo [lin-vim] install `https://github.com/universal-ctags/ctags-win32/releases` x86_64 zip, extract zip and put `ctags.exe`, `readtags.exe` to `%%USERPROFILE%%\.vim\bin\`
-echo [lin-vim] install `https://github.com/powerline/fonts`
+echo [lin-vim] install fonts in %%USERPROFILE%%\.vim\guifonts
 echo [lin-vim] add `%%USERPROFILE%%\.vim\bin` to `%%PATH%%`
 echo [lin-vim] add `%%APPDATA%%\Python\Python37\Scripts` to `%%PATH%%`
 echo [lin-vim] set `%%GOPATH%%` = `%%USERPROFILE%%\go`
