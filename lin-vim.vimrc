@@ -14,7 +14,7 @@ source $HOME/.vim/settings/youcompleteme.vim
 source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/ultisnips.vim
 source $HOME/.vim/settings/vim-easymotion.vim
-source $HOME/.vim/settings/vim-gitgutter.vim
+source $HOME/.vim/settings/vim-signify.vim
 source $HOME/.vim/settings/vim-go.vim
 source $HOME/.vim/settings/nerdtree.vim
 source $HOME/.vim/settings/yank.vim

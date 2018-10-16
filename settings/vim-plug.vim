@@ -65,7 +65,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 
 " Json
