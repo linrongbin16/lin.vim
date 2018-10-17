@@ -145,19 +145,19 @@ endif
 if has("win32") || has("mac")
     "set guifont=Monaco:h10
     set guifont=Hack:h10
+    "set guifont=Meslo\ LG\ M:h9
     "set guifont=Fira\ Code:h10
     "set guifont=DejaVu\ Sans\ Mono:h10
     "set guifont=Fantasque\ Sans\ Mono:h11
     "set guifont=IBM\ Plex\ Mono:h10
-    "set guifont=Andale\ Mono:h10
     "set guifont=Bitstream\ Vera\ Sans\ Mono:h10
-    "set guifont=Office\ Code\ Pro:h10
     "set guifont=Inconsolata:h11
     "set guifont=Monofur:h11
     "set guifont=Anonymous\ Pro:h11
 else
     "set guifont=Monaco\ 10
     set guifont=Hack\ 10
+    "set guifont=Meslo\ LG\ M\ 9
     "set guifont=Fira\ Code\ 10
     "set guifont=DejaVu\ Sans\ Mono\ 10
     "set guifont=Fantasque\ Sans\ Mono\ 11
