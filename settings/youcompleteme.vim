@@ -8,7 +8,7 @@ else
     let g:ycm_path_to_python_interpreter='python3'
     let g:ycm_python_binary_path='python3'
 endif
-let g:ycm_global_ycm_extra_conf = '~/.vim/settings/.ycm_global_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/settings/ycm_global_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_complete_in_strings=1
 let g:ycm_complete_in_comments=1
@@ -30,9 +30,9 @@ let g:ycm_register_as_syntastic_checker=0
 
 " boring hint
 "let g:ycm_semantic_triggers =  {
-           "\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-           "\ 'cs,lua,javascript': ['re!\w{2}'],
-           "\ }
+"\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"\ 'cs,lua,javascript': ['re!\w{2}'],
+"\ }
 
 " disable ycm in some file type
 let g:ycm_filetype_blacklist = {
