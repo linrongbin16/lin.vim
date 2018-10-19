@@ -12,6 +12,7 @@ if has("gui_running")
         execute 'set background=dark'
     endif
     execute 'colorscheme ' .s:mycolor[curcolor]
+    execute 'syntax sync fromstart'
 endif
 
 function RandomColor()
@@ -23,6 +24,7 @@ function RandomColor()
             execute 'set background=dark'
         endif
         execute 'colorscheme ' .s:mycolor[curcolor]
+        execute 'syntax sync fromstart'
     endif
 endfunction
 
