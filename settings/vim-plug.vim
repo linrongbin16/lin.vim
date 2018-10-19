@@ -76,7 +76,8 @@ Plug 'mhinz/vim-signify'
 Plug 'elzr/vim-json'
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
-Plug 'bfrg/vim-cpp-modern', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
+"Plug 'bfrg/vim-cpp-modern', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 
 " Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
