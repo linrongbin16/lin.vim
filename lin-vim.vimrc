@@ -22,5 +22,6 @@ source $HOME/.vim/settings/supertab.vim
 source $HOME/.vim/settings/vim-gutentags.vim
 source $HOME/.vim/settings/vim-autoformat.vim
 source $HOME/.vim/settings/vim-ctrlp.vim
+source $HOME/.vim/settings/vim-cpp-highlight.vim
 
 source $HOME/.vim/settings/basic.vim
