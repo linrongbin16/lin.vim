@@ -143,25 +143,25 @@ endif
 
 " ---- guifonts ----
 if has("win32") || has("mac")
-    "set guifont=Inconsolata:h11
-    "set guifont=DejaVu\ Sans\ Mono:h10
-    "set guifont=IBM\ Plex\ Mono:h10
-    "set guifont=Bitstream\ Vera\ Sans\ Mono:h10
-    "set guifont=Fira\ Code:h10
-    "set guifont=Monaco:h10
-    "set guifont=Fantasque\ Sans\ Mono:h11
-    "set guifont=Meslo\ LG\ M:h10
-    set guifont=Hack:h10
+    "set guifont=Inconsolata:h10
+    "set guifont=DejaVu\ Sans\ Mono:h9
+    "set guifont=IBM\ Plex\ Mono:h9
+    "set guifont=Bitstream\ Vera\ Sans\ Mono:h9
+    "set guifont=Fira\ Code:h9
+    "set guifont=Monaco:h9
+    "set guifont=Fantasque\ Sans\ Mono:h10
+    "set guifont=Meslo\ LG\ M:h9
+    set guifont=Hack:h9
 else
-    "set guifont=Inconsolata\ 11
-    "set guifont=DejaVu\ Sans\ Mono\ 10
-    "set guifont=IBM\ Plex\ Mono\ 10
-    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
-    "set guifont=Fira\ Code\ 10
-    "set guifont=Monaco\ 10
-    "set guifont=Fantasque\ Sans\ Mono\ 11
-    "set guifont=Meslo\ LG\ M\ 10
-    set guifont=Hack\ 10
+    "set guifont=Inconsolata\ 10
+    "set guifont=DejaVu\ Sans\ Mono\ 9
+    "set guifont=IBM\ Plex\ Mono\ 9
+    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+    "set guifont=Fira\ Code\ 9
+    "set guifont=Monaco\ 9
+    "set guifont=Fantasque\ Sans\ Mono\ 10
+    "set guifont=Meslo\ LG\ M\ 9
+    set guifont=Hack\ 9
 endif
 
 set laststatus=2
