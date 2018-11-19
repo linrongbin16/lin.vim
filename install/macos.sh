@@ -19,7 +19,7 @@ brew install git vim macvim zsh
 brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
 brew install pkg-config openssl openssh cryptopp
 brew install the_silver_searcher unzip bzip2 unrar bc
-brew install nodejs npm golang
+brew install nodejs npm
 brew install python3
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
@@ -55,7 +55,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --go-completer --js-completer --system-libclang
+python3 install.py --clang-completer --js-completer --system-libclang
 
 # Install GuiFonts
 font_dir="$HOME/Library/Fonts"
@@ -73,16 +73,10 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
-mkdir -p ~/go/bin
-mkdir -p ~/go/src
-mkdir -p ~/go/pkg
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
-echo "export PATH=\$PATH:/usr/local/opt/go/libexec/bin" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
-echo "export GOPATH=~/go" >> $LINVIMRC
-echo "export PATH=\$PATH:\$GOPATH/bin" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
