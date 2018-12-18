@@ -165,3 +165,13 @@ else
 endif
 
 set laststatus=2
+" normal mode
+nnoremap <c-j> 5j
+nnoremap <c-k> 5k
+nnoremap <c-h> 5h
+nnoremap <c-l> 5l
+" visual mode
+xnoremap <c-j> 5j
+xnoremap <c-k> 5k
+xnoremap <c-h> 5h
+xnoremap <c-l> 5l
