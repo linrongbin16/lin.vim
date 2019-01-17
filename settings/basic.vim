@@ -57,7 +57,6 @@ set lazyredraw
 set nocursorcolumn
 set norelativenumber
 set number
-"syntax sync minlines=120
 
 " sound
 set noerrorbells
@@ -165,12 +164,13 @@ else
 endif
 
 set laststatus=2
-" normal mode
+
+" normal mode move
 nnoremap <c-j> 5j
 nnoremap <c-k> 5k
 nnoremap <c-h> 5h
 nnoremap <c-l> 5l
-" visual mode
+" visual mode move
 xnoremap <c-j> 5j
 xnoremap <c-k> 5k
 xnoremap <c-h> 5h

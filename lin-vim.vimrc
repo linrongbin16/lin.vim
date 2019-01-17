@@ -1,7 +1,6 @@
 "" lin-vim
 source $HOME/.vim/settings/vim-plug.vim
 
-source $HOME/.vim/settings/DoxygenToolkit.vim
 source $HOME/.vim/settings/ag.vim
 source $HOME/.vim/settings/ale.vim
 source $HOME/.vim/settings/color_scheme.vim
