@@ -9,9 +9,9 @@ curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubu
 
 rem install YouCompleteMe
 cp %USERPROFILE%\.vim\lin-vim.vimrc %USERPROFILE%\_vimrc
-vim -c "PlugInstall" -c "qall"
+gvim -c "PlugInstall" -c "qall"
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
-python install.py --clang-completer --js-completer
+python install.py --clang-completer --js-completer --go-completer
 
 rem install node/python plugin
 call npm config set unsafe-perm true
