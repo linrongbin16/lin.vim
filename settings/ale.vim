@@ -22,7 +22,7 @@ let g:ale_linters = {
 
 " disable python useless warnings
 let g:ale_python_flake8_args="--ignore=W801,E501"
-let g:ale_python_pylint_options="--init-hook='import sys; sys.path.append(\".\")'"
+let g:ale_python_pylint_options="--init-hook='import sys; sys.path.append(\".\")'; sys.path.append(\"..\")'"
 let g:ale_python_pylint_args="--ignore=C0301"
 
 " C/C++

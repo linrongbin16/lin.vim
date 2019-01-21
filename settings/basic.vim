@@ -124,13 +124,14 @@ autocmd FileType c,cpp,cc,cxx,h,hh,hpp,hxx setlocal shiftwidth=2 tabstop=2 softt
 
 " conceallevel
 set conceallevel=0
+autocmd FileType json setlocal conceallevel=0
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "" guiconf
 if has("gui_running")
     set t_Co=256
-    set lines=500
-    set columns=500
+    set lines=160
+    set columns=35
     if has("win32")
         au GUIEnter * simalt ~x
     endif
