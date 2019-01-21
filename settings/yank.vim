@@ -1,4 +1,4 @@
 "" ---- yank.vim ----
 
-vnoremap <Leader>y :w! ~/.lin-vim-yanks<CR>
-nnoremap <Leader>p :r ~/.lin-vim-yanks<CR>
+vnoremap <Leader>y :w! ~/.cache/.lin-vim-yanks<CR>
+nnoremap <Leader>p :r ~/.cache/.lin-vim-yanks<CR>

@@ -28,12 +28,6 @@ let g:ycm_key_list_previous_completion=['<c-p>', '<Up>' ]
 let g:ycm_show_diagnostics_ui=0
 let g:ycm_register_as_syntastic_checker=0
 
-" boring hint
-"let g:ycm_semantic_triggers =  {
-"\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-"\ 'cs,lua,javascript': ['re!\w{2}'],
-"\ }
-
 " disable ycm in some file type
 let g:ycm_filetype_blacklist = {
             \  'tagbar' : 1,
