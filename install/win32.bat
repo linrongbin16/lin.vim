@@ -22,6 +22,22 @@ rem install plugin
 mkdir %USERPROFILE%\workspace
 mkdir %USERPROFILE%\workspace\practice
 mkdir %USERPROFILE%\workspace\project
+mkdir %USERPROFILE%\go
+mkdir %USERPROFILE%\go\src
+mkdir %USERPROFILE%\go\bin
+mkdir %USERPROFILE%\go\pkg
+
+rem install golang tools
+mkdir %USERPROFILE%\go\src\github.com
+mkdir %USERPROFILE%\go\src\github.com\golang
+mkdir %USERPROFILE%\go\src\golang.org
+mkdir %USERPROFILE%\go\src\golang.org\x
+cd %USERPROFILE%\go\src\github.com\golang
+rm -rf tools
+git clone https://github.com/golang/tools.git
+cp -rf tools %USERPROFILE%\go\src\golang.org\x
+
+
 cd %USERPROFILE%\.vim
 
 echo.

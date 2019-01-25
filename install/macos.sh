@@ -55,7 +55,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --js-completer --system-libclang
+python3 install.py --clang-completer --js-completer --system-libclang --go-completer
 
 # Install GuiFonts
 font_dir="$HOME/Library/Fonts"
@@ -73,6 +73,10 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
+mkdir -p ~/go
+mkdir -p ~/go/src
+mkdir -p ~/go/bin
+mkdir -p ~/go/pkg
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
