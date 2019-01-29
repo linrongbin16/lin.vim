@@ -11,7 +11,7 @@ rem install YouCompleteMe
 cp %USERPROFILE%\.vim\lin-vim.vimrc %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
-python install.py --clang-completer --js-completer --go-completer
+python install.py --clang-completer --js-completer
 
 rem install node/python plugin
 call npm config set unsafe-perm true
