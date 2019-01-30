@@ -18,6 +18,7 @@ source $HOME/.vim/settings/vim-gutentags.vim
 source $HOME/.vim/settings/vim-autoformat.vim
 source $HOME/.vim/settings/vim-ctrlp.vim
 source $HOME/.vim/settings/vim-cpp-highlight.vim
+source $HOME/.vim/settings/vim-rust.vim
 source $HOME/.vim/settings/vim-signify.vim
 source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/youcompleteme.vim
