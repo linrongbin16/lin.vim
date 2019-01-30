@@ -19,7 +19,7 @@ sudo dnf install -y git vim gvim curl wget zsh
 sudo dnf install -y gcc gcc-c++ clang make autoconf automake cmake kernel-devel
 sudo dnf install -y openssh-server openssl-devel cryptopp-devel
 sudo dnf install -y the_silver_searcher unzip bzip2 unar bc
-sudo dnf install -y python3 python3-devel python3-pip nodejs golang
+sudo dnf install -y python3 python3-devel python3-pip nodejs
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 
@@ -57,7 +57,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --js-completer --system-libclang --go-completer
+python3 install.py --clang-completer --js-completer --system-libclang
 
 # Install GuiFonts
 font_dir="$HOME/.local/share/fonts"
@@ -75,10 +75,6 @@ mkdir -p ~/.ssh
 mkdir -p ~/workspace
 mkdir -p ~/workspace/practice
 mkdir -p ~/workspace/project
-mkdir -p ~/go
-mkdir -p ~/go/src
-mkdir -p ~/go/bin
-mkdir -p ~/go/pkg
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
