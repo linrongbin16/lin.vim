@@ -4,9 +4,11 @@ let g:ycm_server_log_level = 'info'
 if has("win32")
     let g:ycm_path_to_python_interpreter='python'
     let g:ycm_python_binary_path='python'
+    let g:ycm_rust_src_path = '%USERPROFILE%\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\src\rust\src'
 else
     let g:ycm_path_to_python_interpreter='python3'
     let g:ycm_python_binary_path='python3'
+    let g:ycm_rust_src_path = '~/.rustup/toolchains/lib/rustlib/src/rust/src'
 endif
 let g:ycm_global_ycm_extra_conf = '~/.vim/settings/ycm_global_conf.py'
 let g:ycm_confirm_extra_conf=0
