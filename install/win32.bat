@@ -11,11 +11,9 @@ rem install YouCompleteMe
 cp %USERPROFILE%\.vim\lin-vim.vimrc %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
-python install.py --clang-completer --js-completer
+python install.py --clang-completer
 
-rem install node/python plugin
-call npm config set unsafe-perm true
-call npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
+rem install python plugin
 call pip install --user pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf urllib3
 
 rem install plugin

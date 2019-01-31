@@ -39,7 +39,6 @@ Install on Windows mannually:
 5. Install [Vim for Windows](https://tuxproject.de/projects/vim/), **Add gvim.exe to PATH**.
 6. Install [Visual Studio](https://www.visualstudio.com/), choose **VC++**.
 7. Install [LLVM](http://releases.llvm.org/download.html) choose **Add LLVM to PATH**.
-9. Install [NodeJs](https://nodejs.org/) choose **Add Node to PATH**.
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim

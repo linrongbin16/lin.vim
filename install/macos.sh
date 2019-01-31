@@ -19,10 +19,8 @@ brew install git vim macvim zsh
 brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
 brew install pkg-config openssl openssh cryptopp
 brew install the_silver_searcher unzip bzip2 unrar bc
-brew install nodejs npm
 brew install python3
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
-sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 
 # Git Config
 git config core.filemode false
@@ -55,7 +53,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --js-completer --system-libclang
+python3 install.py --clang-completer --system-libclang
 
 # Install GuiFonts
 font_dir="$HOME/Library/Fonts"

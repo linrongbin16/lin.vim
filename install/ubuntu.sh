@@ -20,7 +20,7 @@ sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
 sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
 sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
-sudo apt-get install -y python3 python3-dev python3-pip nodejs npm
+sudo apt-get install -y python3 python3-dev python3-pip
 sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
 sudo npm install -g js-beautify standard eslint xo typescript-formatter sass remark-cli tern typescript
 sudo apt-get update -y
@@ -61,7 +61,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --js-completer --system-libclang
+python3 install.py --clang-completer --system-libclang
 
 # Install GuiFonts
 font_dir="$HOME/.local/share/fonts"
