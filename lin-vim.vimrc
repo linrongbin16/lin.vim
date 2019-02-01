@@ -24,3 +24,7 @@ source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/youcompleteme.vim
 
 source $HOME/.vim/settings/basic.vim
+
+if filereadable(expand('~/.vim/user.vimrc'))
+    source $HOME/.vim/user.vimrc
+endif
