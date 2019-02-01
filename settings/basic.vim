@@ -123,9 +123,6 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "" guiconf
 if has("gui_running")
-    set t_Co=256
-    set lines=160
-    set columns=35
     if has("win32")
         au GUIEnter * simalt ~x
     endif
