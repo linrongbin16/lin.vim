@@ -69,12 +69,6 @@ set ruler
 set magic
 set showmatch
 
-" auto reload vimrc
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
-
 " encoding
 set encoding=utf-8
 set fileencoding=utf-8
