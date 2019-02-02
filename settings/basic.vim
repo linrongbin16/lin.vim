@@ -120,6 +120,7 @@ autocmd FileType c,cpp,cc,cxx,h,hh,hpp,hxx setlocal shiftwidth=2 tabstop=2 softt
 set conceallevel=0
 autocmd FileType json setlocal conceallevel=0
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.hs set filetype=haskell
 
 "" guiconf
 if has("gui_running")
