@@ -70,7 +70,6 @@ set magic
 set showmatch
 
 " encoding
-set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
 set termencoding=utf-8
@@ -142,7 +141,6 @@ if has("win32") || has("mac")
     "set guifont=Fira\ Code:h9
     "set guifont=Monaco:h9
     "set guifont=Fantasque\ Sans\ Mono:h10
-    "set guifont=Meslo\ LG\ M:h9
     set guifont=Hack:h9
 else
     "set guifont=Inconsolata\ 10
@@ -152,7 +150,6 @@ else
     "set guifont=Fira\ Code\ 9
     "set guifont=Monaco\ 9
     "set guifont=Fantasque\ Sans\ Mono\ 10
-    "set guifont=Meslo\ LG\ M\ 9
     set guifont=Hack\ 9
 endif
 
