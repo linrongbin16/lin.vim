@@ -1,5 +1,6 @@
 "" ---- you_complete_me.vim ----
 
+set encoding=utf-8
 let g:ycm_server_log_level = 'info'
 if has("win32")
     let g:ycm_path_to_python_interpreter='python'
