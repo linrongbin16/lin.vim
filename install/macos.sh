@@ -20,7 +20,7 @@ brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
 brew install pkg-config openssl openssh cryptopp
 brew install the_silver_searcher unzip bzip2 unrar bc
 brew install python3
-sudo pip3 install pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 
 # Git Config
 git config core.filemode false

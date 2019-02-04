@@ -14,7 +14,7 @@ cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer
 
 rem install python plugin
-call pip install --user pyOpenSSL pyflakes pep8 flake8 pylint cpplint autopep8 pathlib autopep8 yapf urllib3
+call pip install --user pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 
 cd %USERPROFILE%\.vim
 

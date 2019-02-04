@@ -5,19 +5,20 @@ filetype off
 let &runtimepath.=',~/.vim/plugged/ale'
 filetype plugin on
 
-let g:ale_lint_on_enter = 0
-let g:ale_sign_column_always = 1
 let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_sign_column_always = 1
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 100
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
-            \   'cpp': ['clang', 'cppcheck', 'cpplint', 'gcc', 'clang-format'],
+            \   'cpp': ['clang', 'cpplint', 'gcc', 'clang-format'],
+            \   'python': ['flake8', 'pylint'],
             \}
 
 " disable python useless warnings

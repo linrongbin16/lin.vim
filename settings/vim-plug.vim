@@ -84,7 +84,6 @@ Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
-Plug 'maksimr/vim-jsbeautify'
 " Html
 Plug 'othree/html5.vim'
 " TypeScript
