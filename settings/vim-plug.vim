@@ -53,7 +53,6 @@ Plug 'rking/ag.vim'
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
@@ -67,7 +66,6 @@ Plug 'mhinz/vim-signify'
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
-
 " Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Json
@@ -88,14 +86,6 @@ Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 " TypeScript
 Plug 'leafgarland/typescript-vim'
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script'
-" Vue
-Plug 'posva/vim-vue'
-" Php
-Plug 'StanAngeloff/php.vim', { 'for': ['php', 'php5', 'php6', 'php7'] }
-" Fsharp
-Plug 'fsharp/vim-fsharp', { 'for': ['fs', 'fsi', 'fsx', 'fsharp'] }
 " Perl
 Plug 'vim-perl/vim-perl', { 'for': ['perl'] }
 Plug 'vim-perl/vim-perl6', { 'for': ['pl6', 'pm6', 'p6'] }
@@ -108,15 +98,7 @@ Plug 'neovimhaskell/haskell-vim', { 'for': ['hs'] }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
 Plug 'phildawes/racer', { 'for': ['rs'] }
+" Toml
 Plug 'cespare/vim-toml', { 'for': ['toml'] }
-" Ruby
-Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
-Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
-" Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': ['exs', 'ex', 'eex'] }
-Plug 'slashmili/alchemist.vim', { 'for': ['exs', 'ex', 'eex'] }
-" Erlang
-Plug 'vim-erlang/vim-erlang-runtime', { 'for': ['erl'] }
-
 
 call plug#end()
