@@ -17,8 +17,10 @@ let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
+            \   'c': ['clang', 'cpplint', 'gcc', 'clang-format'],
             \   'cpp': ['clang', 'cpplint', 'gcc', 'clang-format'],
             \   'python': ['flake8', 'pylint'],
+            \   'javascript': ['eslint'],
             \}
 
 " disable python useless warnings
