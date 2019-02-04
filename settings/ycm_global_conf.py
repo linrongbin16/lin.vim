@@ -37,79 +37,79 @@ import ycm_core
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
-    '-Wall',
-    '-Wextra',
-    '-Werror',
-    '-Wno-long-long',
-    '-Wno-variadic-macros',
-    '-fexceptions',
-    '-DNDEBUG',
-    # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
-    # source code needs it.
-    '-DUSE_CLANG_COMPLETER',
-    # THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
-    # use when compiling headers. So it will guess. Badly. So C++ headers will be
-    # compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
-    # For a C project, you would set this to 'c' instead of 'c++'.
-    '-x',
-    'c++',
-    '-isystem',
-    '../BoostParts',
-    '-isystem',
-    get_python_inc(),
-    '-isystem',
-    '../llvm/include',
-    '-isystem',
-    '../llvm/tools/clang/include',
-    '-I',
-    '.',
-    '-I',
-    './ClangCompleter',
-    '-isystem',
-    './tests/gmock/gtest',
-    '-isystem',
-    './tests/gmock/gtest/include',
-    '-isystem',
-    './tests/gmock',
-    '-isystem',
-    './tests/gmock/include',
-    '-isystem',
-    './benchmarks/benchmark/include',
-]
+        '-Wall',
+        '-Wextra',
+        '-Werror',
+        '-Wno-long-long',
+        '-Wno-variadic-macros',
+        '-fexceptions',
+        '-DNDEBUG',
+        # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
+        # source code needs it.
+        '-DUSE_CLANG_COMPLETER',
+        # THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
+        # use when compiling headers. So it will guess. Badly. So C++ headers will be
+        # compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
+        # For a C project, you would set this to 'c' instead of 'c++'.
+        '-x',
+        'c++',
+        '-isystem',
+        '../BoostParts',
+        '-isystem',
+        get_python_inc(),
+        '-isystem',
+        '../llvm/include',
+        '-isystem',
+        '../llvm/tools/clang/include',
+        '-I',
+        '.',
+        '-I',
+        './ClangCompleter',
+        '-isystem',
+        './tests/gmock/gtest',
+        '-isystem',
+        './tests/gmock/gtest/include',
+        '-isystem',
+        './tests/gmock',
+        '-isystem',
+        './tests/gmock/include',
+        '-isystem',
+        './benchmarks/benchmark/include',
+        ]
 
 # User header
 user_header = [
-    '-I',
-    './src',
-    '-I',
-    './include',
-    '-I',
-    '../include',
-    '-I',
-    '../../include',
-    '-I',
-    '../../../include',
-    '-I',
-    '../../../../include',
-    '-I',
-    '../../../../../include',
-    '-I',
-    '../../../../../../include',
-    '-I',
-    '.',
-    '-I',
-    '..',
-    '-I',
-    '../..',
-    '-I',
-    '../../..',
-    '-I',
-    '../../../..',
-    '-I',
-    '../../../../..',
-    '-I',
-    '../../../../../..',
-]
+        '-I',
+        './src',
+        '-I',
+        './include',
+        '-I',
+        '../include',
+        '-I',
+        '../../include',
+        '-I',
+        '../../../include',
+        '-I',
+        '../../../../include',
+        '-I',
+        '../../../../../include',
+        '-I',
+        '../../../../../../include',
+        '-I',
+        '.',
+        '-I',
+        '..',
+        '-I',
+        '../..',
+        '-I',
+        '../../..',
+        '-I',
+        '../../../..',
+        '-I',
+        '../../../../..',
+        '-I',
+        '../../../../../..',
+        ]
 
 
 def BuildWindowsHeader():
@@ -126,8 +126,8 @@ def BuildWindowsHeader():
                     % (release)):
                 winheader.append('-I')
                 winheader.append(
-                    'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
-                    % (release, version))
+                        'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
+                        % (release, version))
         except:
             pass
         pass
@@ -138,10 +138,10 @@ def BuildWindowsHeader():
             'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
         winheader.append('-I')
         winheader.append(
-            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
-            (version))
+                'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
+                (version))
 
-    return winheader
+        return winheader
 
 
 def BuildLinuxHeader():
@@ -170,10 +170,10 @@ def IsAscii(s):
 def BuildUserHeader():
     userheader = list()
     rootpath = [
-        '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'G:\\',
-        'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
-        'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
-    ]
+            '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'G:\\',
+            'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
+            'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
+            ]
 
     header = '.'
     userheader.append('-I')
@@ -268,7 +268,7 @@ def GetCompilationInfoForFile(filename):
             replacement_file = basename + extension
             if os.path.exists(replacement_file):
                 compilation_info = database.GetCompilationInfoForFile(
-                    replacement_file)
+                        replacement_file)
                 if compilation_info.compiler_flags_:
                     return compilation_info
         return None
@@ -278,9 +278,9 @@ def GetCompilationInfoForFile(filename):
 def FlagsForFile(filename, **kwargs):
     if not database:
         return {
-            'flags': flags,
-            'include_paths_relative_to_dir': DirectoryOfThisScript()
-        }
+                'flags': flags,
+                'include_paths_relative_to_dir': DirectoryOfThisScript()
+                }
 
         compilation_info = GetCompilationInfoForFile(filename)
     if not compilation_info:
@@ -299,6 +299,6 @@ def FlagsForFile(filename, **kwargs):
     # pass
 
     return {
-        'flags': final_flags,
-        'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
-    }
+            'flags': final_flags,
+            'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
+            }

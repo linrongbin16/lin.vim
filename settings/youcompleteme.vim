@@ -1,6 +1,3 @@
-"" ---- you_complete_me.vim ----
-
-set encoding=utf-8
 let g:ycm_server_log_level = 'info'
 if has("win32")
     let g:ycm_path_to_python_interpreter='python'
@@ -31,7 +28,7 @@ let g:ycm_key_list_previous_completion=['<c-p>', '<Up>' ]
 let g:ycm_show_diagnostics_ui=0
 let g:ycm_register_as_syntastic_checker=0
 
-" disable ycm in some file type
+" disable ycm for certain file type
 let g:ycm_filetype_blacklist = {
             \  'tagbar' : 1,
             \  'nerdtree' : 1,

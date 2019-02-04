@@ -4,8 +4,8 @@ echo "[lin-vim] Install for Windows"
 rem Software Dependency
 cd %USERPROFILE%\.vim
 curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call pip install --user pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 call npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
-call pip install --user pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlformat
 
 rem Vim Plugins
 cp %USERPROFILE%\.vim\lin-vim.vimrc %USERPROFILE%\_vimrc
