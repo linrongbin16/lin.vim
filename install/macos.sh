@@ -19,8 +19,9 @@ brew install git vim macvim zsh
 brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
 brew install pkg-config openssl openssh cryptopp
 brew install the_silver_searcher unzip bzip2 unrar bc
-brew install python3
+brew install python3 node
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
+sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
 
 # Git Config
 git config core.filemode false
@@ -53,9 +54,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --system-libclang
+python3 install.py --clang-completer --system-libclang --ts-completer
 
-# Install GuiFonts
+# GuiFonts
 font_dir="$HOME/Library/Fonts"
 mkdir -p $font_dir
 cd ~/.vim/guifonts
@@ -63,14 +64,10 @@ find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$p
 eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
 fc-cache -f $font_dir
 
-# Install Oh-My-Zsh
+# Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Path Variable
-mkdir -p ~/.ssh
-mkdir -p ~/workspace
-mkdir -p ~/workspace/practice
-mkdir -p ~/workspace/project
 echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC

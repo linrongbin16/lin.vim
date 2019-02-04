@@ -10,5 +10,5 @@ let g:formatters_hpp = ['clangformat', 'astyle_c']
 let g:formatters_hxx = ['clangformat', 'astyle_c']
 let g:formatters_hh = ['clangformat', 'astyle_c']
 
-" enable for certain file types
-au BufWrite *.c,*.cpp,*.cxx,*.cc,*.h,*.hh,*.hpp,*.hxx,*.java,*.py,*.html,*.json,*.css,*.xml,*.vim,*.go,*.scala,*.kt,*.perl,*.php,*.ruby,*.rb,*.rs,*.sh,*.cmd,*.bat,*.sql,*.go :Autoformat
+" format when write file
+au BufWrite * :Autoformat

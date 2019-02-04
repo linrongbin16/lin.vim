@@ -20,14 +20,12 @@ sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
 sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
 sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
-sudo apt-get install -y python3 python3-dev python3-pip
+sudo apt-get install -y python3 python3-dev python3-pip node
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
+sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
-
-# SSH Server config
-eval `ssh-agent -s`
 
 # Git Config
 git config core.filemode false
@@ -60,9 +58,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --system-libclang
+python3 install.py --clang-completer --system-libclang --ts-completer
 
-# Install GuiFonts
+# GuiFonts
 font_dir="$HOME/.local/share/fonts"
 mkdir -p $font_dir
 cd ~/.vim/guifonts
@@ -70,14 +68,10 @@ find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$p
 eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
 fc-cache -f $font_dir
 
-# Install Oh-My-Zsh
+# Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Path Variable
-mkdir -p ~/.ssh
-mkdir -p ~/workspace
-mkdir -p ~/workspace/practice
-mkdir -p ~/workspace/project
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC

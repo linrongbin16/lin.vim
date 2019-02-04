@@ -5,6 +5,7 @@ source $HOME/.vim/settings/basic.vim
 source $HOME/.vim/settings/indentline.vim
 source $HOME/.vim/settings/nerdtree.vim
 source $HOME/.vim/settings/ale.vim
+source $HOME/.vim/settings/vim-autoformat.vim
 source $HOME/.vim/settings/ag.vim
 source $HOME/.vim/settings/color_scheme.vim
 source $HOME/.vim/settings/ctags.vim
@@ -16,7 +17,6 @@ source $HOME/.vim/settings/vim-easymotion.vim
 source $HOME/.vim/settings/vim-go.vim
 source $HOME/.vim/settings/supertab.vim
 source $HOME/.vim/settings/vim-gutentags.vim
-source $HOME/.vim/settings/vim-autoformat.vim
 source $HOME/.vim/settings/vim-ctrlp.vim
 source $HOME/.vim/settings/vim-cpp-highlight.vim
 source $HOME/.vim/settings/vim-rust.vim
