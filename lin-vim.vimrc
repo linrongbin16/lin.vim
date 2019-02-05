@@ -11,12 +11,12 @@ source $HOME/.vim/settings/supertab.vim
 source $HOME/.vim/settings/youcompleteme.vim
 source $HOME/.vim/settings/ultisnips.vim
 source $HOME/.vim/settings/ag.vim
+source $HOME/.vim/settings/vim-easymotion.vim
 source $HOME/.vim/settings/color_scheme.vim
 source $HOME/.vim/settings/ctags.vim
 source $HOME/.vim/settings/emmet.vim
 source $HOME/.vim/settings/haskell-vim.vim
 source $HOME/.vim/settings/python-syntax.vim
-source $HOME/.vim/settings/vim-easymotion.vim
 source $HOME/.vim/settings/vim-go.vim
 source $HOME/.vim/settings/vim-ctrlp.vim
 source $HOME/.vim/settings/vim-cpp-highlight.vim

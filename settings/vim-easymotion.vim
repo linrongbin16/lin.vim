@@ -1,7 +1,17 @@
-"" ---- easymotion.vim ----
+" disable default mappings, use your mappings when you truely need
+let g:EasyMotion_do_mapping = 0
+" turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
 
+" search char
+map <Leader>s <Plug>(easymotion-overwin-f)
+map <Leader>s <Plug>(easymotion-bd-f)
+" search words
 map <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-map <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-nmap <Leader>g <Plug>(easymotion-overwin-f2)
+
+" jump lines
+" `leader + j{char}{label}`
+map <Leader>j <Plug>(easymotion-j)
+" `leader + k{char}{label}`
+map <Leader>k <Plug>(easymotion-k)
