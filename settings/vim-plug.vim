@@ -45,9 +45,13 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " File Search
-Plug 'kien/ctrlp.vim'
-
-" The Silver Searcher - Ag
+Plug 'ctrlpvim/ctrlp.vim'
+" Comment
+Plug 'scrooloose/nerdcommenter'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+" Ag
 Plug 'rking/ag.vim'
 
 " Keyboard Operation
@@ -55,13 +59,6 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim'
-
-" Comment
-Plug 'scrooloose/nerdcommenter'
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
 
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
@@ -70,20 +67,21 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h',
 Plug 'hdima/python-syntax', { 'for': ['py'] }
 " Json
 Plug 'elzr/vim-json'
-" Css
-Plug 'ap/vim-css-color'
-Plug 'hail2u/vim-css3-syntax'
+" Html
+Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
 " Haml/Sass/Scss
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'tpope/vim-haml'
+" Css
+Plug 'ap/vim-css-color'
+Plug 'hail2u/vim-css3-syntax'
 " Less
 Plug 'groenewege/vim-less'
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
-" Html
-Plug 'othree/html5.vim'
 " TypeScript
 Plug 'leafgarland/typescript-vim'
 " Perl
