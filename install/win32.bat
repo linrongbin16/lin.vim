@@ -27,9 +27,3 @@ git config --global push.default simple
 git config --global pull.default simple
 git config --global core.editor vim
 git config --global credential.helper store
-
-echo.
-echo.
-echo [lin-vim] install ag.exe from `https://github.com/k-takata/the_silver_searcher-win32/releases`, make sure it's available in %%PATH%%
-echo [lin-vim] install ctags.exe, readtags.exe from `https://github.com/universal-ctags/ctags-win32/releases`, make sure they're available in %%PATH%%
-echo [lin-vim] install fonts in %%USERPROFILE%%\.vim\guifonts\

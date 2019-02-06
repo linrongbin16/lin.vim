@@ -34,6 +34,9 @@ _Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)_.
 6.  Install [Visual Studio](https://www.visualstudio.com/), choose **VC++ for desktop**.
 7.  Install [LLVM](http://releases.llvm.org/download.html), choose **Add LLVM to PATH**.
 8.  Install [NodeJs](https://nodejs.org/), choose **Add LLVM to PATH**.
+9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), **add ag.exe to PATH**.
+10. Install [ctags](https://github.com/universal-ctags/ctags-win32/releases), **add ctags.exe readtags.exe to PATH**.
+11. Install [Hack Font](https://sourcefoundry.org/hack/).
 
 ```bash
     git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
