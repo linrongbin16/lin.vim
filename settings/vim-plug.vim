@@ -69,6 +69,7 @@ Plug 'hdima/python-syntax', { 'for': ['py'] }
 Plug 'elzr/vim-json'
 " Html
 Plug 'othree/html5.vim'
+Plug 'othree/html5-syntax.vim'
 Plug 'mattn/emmet-vim'
 " Haml/Sass/Scss
 Plug 'cakebaker/scss-syntax.vim'
