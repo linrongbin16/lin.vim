@@ -102,5 +102,6 @@ Plug 'cespare/vim-toml', { 'for': ['toml'] }
 " Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
+Plug 'slim-template/vim-slim', { 'for': ['rb', 'slim'] }
 
 call plug#end()
