@@ -99,5 +99,8 @@ Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
 Plug 'phildawes/racer', { 'for': ['rs'] }
 " Toml
 Plug 'cespare/vim-toml', { 'for': ['toml'] }
+" Ruby
+Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
+Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 
 call plug#end()
