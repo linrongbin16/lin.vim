@@ -132,7 +132,7 @@ if has("gui_running")
     set guioptions-=m
 endif
 
-" ---- guifonts ----
+" gui fonts
 if has("win32") || has("mac")
     "set guifont=Inconsolata:h10
     "set guifont=DejaVu\ Sans\ Mono:h9
@@ -165,7 +165,6 @@ xnoremap <c-j> 5j
 xnoremap <c-k> 5k
 xnoremap <c-h> 5h
 xnoremap <c-l> 5l
-
 
 " user config
 if filereadable(expand('~/.vim/user.vimrc'))
