@@ -88,8 +88,6 @@ Plug 'leafgarland/typescript-vim'
 " Perl
 Plug 'vim-perl/vim-perl', { 'for': ['perl'] }
 Plug 'vim-perl/vim-perl6', { 'for': ['pl6', 'pm6', 'p6'] }
-" Golang
-Plug 'fatih/vim-go', { 'for': ['go'] }
 " Thrift
 Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 " Haskell
