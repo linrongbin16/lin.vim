@@ -112,10 +112,6 @@ user_header = [
     '-Wall',
     '-std=c++11',
     '-stdlib=libc++',
-    '-x',
-    'c++',
-    '-I',
-    '.',
     '-isystem',
     '/usr/lib/c++/v1'
 ]
