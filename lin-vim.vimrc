@@ -19,3 +19,4 @@ source $HOME/.vim/settings/emmet-vim.vim
 source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/haskell-vim.vim
 source $HOME/.vim/settings/vim-rust.vim
+source $HOME/.vim/settings/vim-go.vim
