@@ -10,3 +10,6 @@ set guifont=Hack\ 9
 
 " nerdtree width
 let g:NERDTreeWinSize=60
+
+" terminal
+nmap <F9> :terminal ++rows=20<cr>
