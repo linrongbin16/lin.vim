@@ -11,4 +11,4 @@ let g:formatters_hxx = ['clangformat', 'astyle_c']
 let g:formatters_hh = ['clangformat', 'astyle_c']
 
 " format when write file
-au BufWrite * :Autoformat
+au BufWrite *.c, *.cc, *.cxx, *.h, *.hh, *.hpp, *.hxx, *.py, *.lua, *.vim, *.vimrc, *.sh, *.bat, *.cmd :Autoformat
