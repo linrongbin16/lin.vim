@@ -18,5 +18,3 @@ function RandomColor()
         execute 'syntax sync fromstart'
     endif
 endfunction
-
-nmap <F9> :call RandomColor()<cr>

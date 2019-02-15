@@ -170,3 +170,6 @@ xnoremap <c-l> 5l
 if filereadable(expand('~/.vim/user.vimrc'))
     source $HOME/.vim/user.vimrc
 endif
+
+" terminal
+nmap <F9> :terminal ++rows=15<cr>
