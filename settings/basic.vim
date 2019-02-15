@@ -166,10 +166,10 @@ xnoremap <c-k> 5k
 xnoremap <c-h> 5h
 xnoremap <c-l> 5l
 
+" terminal
+nmap <F9> :terminal ++rows=15<cr>
+
 " user config
 if filereadable(expand('~/.vim/user.vimrc'))
     source $HOME/.vim/user.vimrc
 endif
-
-" terminal
-nmap <F9> :terminal ++rows=15<cr>
