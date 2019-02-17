@@ -36,6 +36,7 @@ else
     let g:ycm_rust_src_path = '~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 endif
 
-let g:ycm_show_diagnostics_ui = 1
+" disable ycm checker
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_open_loclist_on_ycm_diags = 0
 
