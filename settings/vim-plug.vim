@@ -33,7 +33,7 @@ Plug 'sjl/badwolf'
 " Lint
 Plug 'w0rp/ale'
 " Auto Format
-Plug 'Chiel92/vim-autoformat', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'json', 'js', 'ts', 'html', 'xml', 'css', 'py', 'rs', 'go', 'rb', 'pl', 'perl', 'less', 'sass', 'scss', 'hs']}
+Plug 'Chiel92/vim-autoformat'
 
 " Ctags
 Plug 'ludovicchabant/vim-gutentags'
