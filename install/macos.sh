@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[lin-vim] Install for MacOS"
-
+sudo echo "[lin-vim] Install for MacOS" || { echo "[lin-vim] sudo not found"; exit 1; }
 
 # Prepare Environment
 LINVIMRC=~/.linvimrc
@@ -13,14 +12,12 @@ touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
-brew update
-brew upgrade
-brew install git vim zsh
-brew install macvim --override-system-vim
-brew install curl wget clang autoconf automake cmake clang-format
+brew install git macvim zsh
+brew install curl wget llvm autoconf automake cmake clang-format
 brew install pkg-config openssl openssh cryptopp
 brew install the_silver_searcher
 brew install python3 node
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
 cd ~/
@@ -39,19 +36,6 @@ git config --global push.default simple
 git config --global pull.default simple
 git config --global core.editor vim
 git config --global credential.helper store
-
-# Universal Ctags
-cd ~/.vim
-if [ ! -d universal-ctags ]; then
-    git clone https://github.com/universal-ctags/ctags.git universal-ctags
-fi
-cd universal-ctags
-git pull
-./autogen.sh
-./configure
-make
-sudo make install
-cd ..
 
 # Vim Plugin
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
