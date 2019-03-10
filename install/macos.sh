@@ -24,6 +24,7 @@ cd ~/
 sudo chmod +rwx ./.config
 
 # Git Config
+cd ~/.vim
 git config core.filemode false
 git config core.longpaths true
 git config push.default simple
