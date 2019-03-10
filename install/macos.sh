@@ -15,13 +15,16 @@ touch ~/.zshrc
 # Software Dependency
 brew update
 brew upgrade
-brew install git vim macvim zsh
-brew install curl wget clang gcc g++ autoconf automake cmake clang clang-format
+brew install git vim zsh
+brew install macvim --override-system-vim
+brew install curl wget clang autoconf automake cmake clang-format
 brew install pkg-config openssl openssh cryptopp
-brew install the_silver_searcher unzip bzip2 unrar bc
+brew install the_silver_searcher
 brew install python3 node
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
+cd ~/
+sudo chmod +rwx ./.config
 
 # Git Config
 git config core.filemode false
@@ -38,6 +41,7 @@ git config --global core.editor vim
 git config --global credential.helper store
 
 # Universal Ctags
+cd ~/.vim
 if [ ! -d universal-ctags ]; then
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
 fi
@@ -54,7 +58,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin-vim.vimrc ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --system-libclang --ts-completer
+python3 install.py --clang-completer --ts-completer
 
 # GuiFonts
 font_dir="$HOME/Library/Fonts"
