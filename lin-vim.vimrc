@@ -1,6 +1,5 @@
 "" lin-vim
 source $HOME/.vim/settings/vim-plug.vim
-source $HOME/.vim/settings/basic.vim
 source $HOME/.vim/settings/color-scheme.vim
 source $HOME/.vim/settings/yank.vim
 source $HOME/.vim/settings/indentline.vim
@@ -20,3 +19,4 @@ source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/haskell-vim.vim
 source $HOME/.vim/settings/vim-rust.vim
 source $HOME/.vim/settings/vim-go.vim
+source $HOME/.vim/settings/basic.vim

@@ -7,6 +7,8 @@ set columns=200
 set guifont=Fira\ Code:h9
 " linux, unix
 set guifont=Hack\ 9
+" macos
+set guifont=Hack:h13
 
 " nerdtree width
 let g:NERDTreeWinSize=60

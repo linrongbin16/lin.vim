@@ -117,8 +117,8 @@ user_header = [
 ]
 
 
-def BuildWindowsHeader():
-    winheader = list()
+def WindowsHeader():
+    header = list()
     # '-I',
     # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
     for release in os.listdir(
@@ -127,8 +127,8 @@ def BuildWindowsHeader():
             for version in os.listdir(
                     'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\'
                     % (release)):
-                winheader.append('-I')
-                winheader.append(
+                header.append('-I')
+                header.append(
                     'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
                     % (release, version))
         except:
@@ -138,59 +138,65 @@ def BuildWindowsHeader():
     # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
     for version in os.listdir(
             'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
-        winheader.append('-I')
-        winheader.append(
+        header.append('-I')
+        header.append(
             'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
             (version))
+    return header
 
-    return winheader
 
-
-def BuildLinuxHeader():
-    linuxheader = list()
-    linuxheader.append('-I')
-    linuxheader.append('/usr/include')
-    linuxheader.append('-I')
-    linuxheader.append('/usr/include/c++')
-    linuxheader.append('-I')
-    linuxheader.append('/usr/lib')
-    linuxheader.append('-I')
-    linuxheader.append('/usr/include/x86_64-linux-gnu')
+def LinuxHeader():
+    header = list()
+    header.append('-I')
+    header.append('/usr/include')
+    header.append('-I')
+    header.append('/usr/include/c++')
+    header.append('-I')
+    header.append('/usr/lib')
+    header.append('-I')
+    header.append('/usr/include/x86_64-linux-gnu')
     # '-I',
     # '/usr/include/c++/7',
     for version in os.listdir('/usr/include/c++'):
-        linuxheader.append('-I')
-        linuxheader.append('/usr/include/c++/%s' % (version))
-    return linuxheader
+        header.append('-I')
+        header.append('/usr/include/c++/%s' % (version))
+    return header
+
+
+def MacOSHeader():
+    header = list()
+    header.append('-I')
+    header.append(
+        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
+    return header
 
 
 def IsAscii(s):
     return all(ord(c) < 128 for c in s)
 
 
-def BuildUserHeader():
-    userheader = list()
+def UserHeader():
+    header = list()
     rootpath = [
         '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'G:\\',
         'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
         'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
     ]
-
-    header = '.'
-    userheader.append('-I')
-    userheader.append(header)
+    cur = '.'
+    header.append('-I')
+    header.append(cur)
     for i in range(10):
-        if os.path.abspath(header) in rootpath:
+        if os.path.abspath(cur) in rootpath:
             break
-        header = '%s%s' % (header, '/..')
-        if ' ' in header:
+        cur = '%s%s' % (cur, '/..')
+        if ' ' in cur:
             continue
-        if not IsAscii(header):
+        if not IsAscii(cur):
             continue
-        userheader.append('-I')
-        userheader.append(header)
-        for path in os.listdir(header):
-            target = '%s/%s' % (header, path)
+        header.append('-I')
+        header.append(cur)
+        for path in os.listdir(cur):
+            target = '%s/%s' % (cur, path)
             if ' ' in target:
                 continue
             if not IsAscii(target):
@@ -199,9 +205,8 @@ def BuildUserHeader():
                 continue
             if not os.path.isdir(target):
                 continue
-            userheader.append('-I')
-            userheader.append(target)
-
+            header.append('-I')
+            header.append(target)
     for path in os.listdir('.'):
         if ' ' in path:
             continue
@@ -211,17 +216,18 @@ def BuildUserHeader():
             continue
         if not os.path.isdir(path):
             continue
-        userheader.append('-I')
-        userheader.append(path)
-
-    return userheader
+        header.append('-I')
+        header.append(path)
+    return header
 
 
 if platform.system() == 'Windows':
-    flags.extend(BuildWindowsHeader())
+    flags.extend(WindowsHeader())
+elif platform.system() == 'Darwin':
+    flags.extend(MacOSHeader())
 else:
-    flags.extend(BuildLinuxHeader())
-flags.extend(BuildUserHeader())
+    flags.extend(LinuxHeader())
+flags.extend(UserHeader())
 
 # Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
 # which is required for compiling the standard library, and to 'c++11' for older
