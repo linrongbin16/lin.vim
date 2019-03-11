@@ -168,6 +168,9 @@ def MacOSHeader():
     header.append('-I')
     header.append(
         '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
+    header.append('-I')
+    header.append(
+        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1')
     return header
 
 
