@@ -6,7 +6,7 @@ cd %USERPROFILE%\.vim
 curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 rem Vim Plugins
-cp %USERPROFILE%\.vim\lin-vim.vimrc %USERPROFILE%\_vimrc
+cp %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer --ts-completer

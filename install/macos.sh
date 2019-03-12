@@ -40,7 +40,7 @@ git config --global credential.helper store
 
 # Vim Plugin
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-cp ~/.vim/lin-vim.vimrc ~/.vimrc
+cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python3 install.py --clang-completer --ts-completer

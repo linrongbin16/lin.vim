@@ -167,6 +167,6 @@ xnoremap <c-h> 5h
 xnoremap <c-l> 5l
 
 " user config
-if filereadable(expand('~/.vim/user.vimrc'))
-    source $HOME/.vim/user.vimrc
+if filereadable(expand('~/.vim/user.vim'))
+    source $HOME/.vim/user.vim
 endif
