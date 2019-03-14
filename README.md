@@ -21,8 +21,6 @@ _Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)_.
 
 ### Linux, UNIX, MacOS Installation
 
-1. Install XCode for MacOS.
-
 ```bash
     git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
