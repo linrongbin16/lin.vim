@@ -23,6 +23,18 @@ sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
 sudo apt-get install -y python3 python3-dev python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
+cd ~/.vim
+if [ ! -d universal-ctags ]; then
+    git clone https://github.com/universal-ctags/ctags.git universal-ctags
+fi
+cd universal-ctags
+git pull
+./autogen.sh
+./configure
+make
+sudo make install
+cd ~/
+sudo chmod +rwx ./.config
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
@@ -40,18 +52,6 @@ git config --global push.default simple
 git config --global pull.default simple
 git config --global core.editor vim
 git config --global credential.helper store
-
-# Universal Ctags
-if [ ! -d universal-ctags ]; then
-    git clone https://github.com/universal-ctags/ctags.git universal-ctags
-fi
-cd universal-ctags
-git pull
-./autogen.sh
-./configure
-make
-sudo make install
-cd ..
 
 # Vim Plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
