@@ -8,10 +8,10 @@ set guifont=Fira\ Code:h9
 " linux, unix
 set guifont=Hack\ 9
 " macos
-set guifont=Hack:h13
+set guifont=Hack:h14
 
 " nerdtree width
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=40
 
 " terminal
 nmap <F9> :terminal ++rows=20<cr>
