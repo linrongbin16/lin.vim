@@ -79,12 +79,6 @@ Plug 'ap/vim-css-color'
 Plug 'hail2u/vim-css3-syntax'
 " Less
 Plug 'groenewege/vim-less'
-" Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'mxw/vim-jsx'
-" TypeScript
-Plug 'leafgarland/typescript-vim'
 " Perl
 Plug 'vim-perl/vim-perl', { 'for': ['perl'] }
 Plug 'vim-perl/vim-perl6', { 'for': ['pl6', 'pm6', 'p6'] }
