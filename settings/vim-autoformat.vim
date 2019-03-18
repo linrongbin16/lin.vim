@@ -18,7 +18,7 @@ au BufWrite *.cxx :Autoformat
 au BufWrite *.h :Autoformat
 au BufWrite *.hpp :Autoformat
 au BufWrite *.hxx :Autoformat
-au BufWrite *.py :Autoformat
+"au BufWrite *.py :Autoformat
 au BufWrite *.js :Autoformat
 au BufWrite *.ts :Autoformat
 au BufWrite *.go :Autoformat
