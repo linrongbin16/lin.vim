@@ -15,11 +15,9 @@ touch ~/.zshrc
 brew install git macvim zsh
 brew install curl wget llvm autoconf automake cmake clang-format
 brew install pkg-config openssl openssh cryptopp
-brew install the_silver_searcher
-brew install python3 node
+brew install the_silver_searcher python3
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
 cd ~/
 sudo chmod +rwx ./.config
 
@@ -43,7 +41,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --ts-completer
+python3 install.py --clang-completer
 
 # GuiFonts
 font_dir="$HOME/Library/Fonts"
