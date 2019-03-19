@@ -27,6 +27,8 @@ USER_NAME=$USER
 sudo echo $USER_NAME
 sudo chmod -R +rwx ~/.npm
 sudo chown -R $USER_NAME ~/.npm
+sudo chmod -R +rwx ~/.config
+sudo chown -R $USER_NAME ~/.config
 cd ~/.vim
 if [ ! -d universal-ctags ]; then
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
@@ -37,8 +39,6 @@ git pull
 ./configure
 make
 sudo make install
-cd ~/
-sudo chmod +rwx ./.config
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y

@@ -21,8 +21,8 @@ sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
 sudo chmod -R +rwx ~/.npm
 sudo chown -R $USER ~/.npm
-cd ~/
-sudo chmod +rwx ./.config
+sudo chmod -R +rwx ~/.config
+sudo chown -R $USER ~/.config
 
 # Git Config
 cd ~/.vim
@@ -62,6 +62,7 @@ echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
+echo "export LANGUAGE=en_US.UTF-8" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
