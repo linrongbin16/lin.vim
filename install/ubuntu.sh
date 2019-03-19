@@ -23,12 +23,10 @@ sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
 sudo apt-get install -y python3 python3-dev python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
-USER_NAME=$USER
-sudo echo $USER_NAME
 sudo chmod -R +rwx ~/.npm
-sudo chown -R $USER_NAME ~/.npm
+sudo chown -R $USER ~/.npm
 sudo chmod -R +rwx ~/.config
-sudo chown -R $USER_NAME ~/.config
+sudo chown -R $USER ~/.config
 cd ~/.vim
 if [ ! -d universal-ctags ]; then
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
