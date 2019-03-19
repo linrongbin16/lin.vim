@@ -62,7 +62,7 @@ echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
 echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
-echo "export LANGUAGE=en_US.UTF-8" >> $LINVIMRC
+echo "export LANGUAGE='en_US.UTF-8'" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc

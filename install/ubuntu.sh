@@ -79,6 +79,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 echo "alias l=\"ls -la\"" >> $LINVIMRC
 echo "alias ll=\"ls -l\"" >> $LINVIMRC
 echo "ulimit -c unlimited" >> $LINVIMRC
+echo "export LANGUAGE='en_US.UTF-8'" >> $LINVIMRC
 echo "source $LINVIMRC" >> ~/.bashrc
 echo "source $LINVIMRC" >> ~/.zshrc
 source ~/.bashrc 1>/dev/null 2>&1
