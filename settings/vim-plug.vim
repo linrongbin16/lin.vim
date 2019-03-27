@@ -102,6 +102,8 @@ Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 Plug 'slim-template/vim-slim', { 'for': ['rb', 'slim'] }
 " Golang
-Plug 'fatih/vim-go', { 'for': ['go']}
+Plug 'fatih/vim-go', { 'for': ['go'] }
+" Gradle
+Plug 'tfnico/vim-gradle', { 'for': ['gradle'] }
 
 call plug#end()
