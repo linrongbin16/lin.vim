@@ -1,6 +1,8 @@
 " width height
-set lines=50
-set columns=200
+if has('gui_running')
+    set lines=50
+    set columns=200
+endif
 
 " fonts
 " win32
