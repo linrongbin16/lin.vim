@@ -79,41 +79,12 @@ flags = [
 
 # User header
 user_header = [
-    '-I',
-    './src',
-    '-I',
-    './include',
-    '-I',
-    '../include',
-    '-I',
-    '../../include',
-    '-I',
-    '../../../include',
-    '-I',
-    '../../../../include',
-    '-I',
-    '../../../../../include',
-    '-I',
-    '../../../../../../include',
-    '-I',
-    '.',
-    '-I',
-    '..',
-    '-I',
-    '../..',
-    '-I',
-    '../../..',
-    '-I',
-    '../../../..',
-    '-I',
-    '../../../../..',
-    '-I',
-    '../../../../../..',
-    '-Wall',
-    '-std=c++11',
-    '-stdlib=libc++',
-    '-isystem',
-    '/usr/lib/c++/v1'
+    '-I', './src', '-I', './include', '-I', '../include', '-I',
+    '../../include', '-I', '../../../include', '-I', '../../../../include',
+    '-I', '../../../../../include', '-I', '../../../../../../include', '-I',
+    '.', '-I', '..', '-I', '../..', '-I', '../../..', '-I', '../../../..',
+    '-I', '../../../../..', '-I', '../../../../../..', '-Wall', '-std=c++11',
+    '-stdlib=libc++', '-isystem', '/usr/lib/c++/v1'
 ]
 
 
@@ -133,7 +104,6 @@ def WindowsHeader():
                     % (release, version))
         except:
             pass
-        pass
     # '-I',
     # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
     for version in os.listdir(
@@ -170,7 +140,8 @@ def MacOSHeader():
         '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
     header.append('-I')
     header.append(
-        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1')
+        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
+    )
     return header
 
 

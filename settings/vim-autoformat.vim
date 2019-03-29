@@ -13,7 +13,7 @@ let g:formatters_hh = ['clang_format', 'astyle_c']
 
 " Python
 let g:formatdef_autopep8 = "'autopep8 --ignore=E402'"
-let g:formatters_python = ['autopep8','yapf', 'black']
+let g:formatters_python = ['autopep8', 'yapf', 'black']
 
 " format when write file
 au BufWrite *.c :Autoformat
