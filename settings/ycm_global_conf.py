@@ -142,6 +142,11 @@ def MacOSHeader():
     header.append(
         '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
     )
+    # header.append('-I')
+    # header.append('/usr/local/include')
+    # for version in os.listdir('/usr/local/include/c++'):
+    #    header.append('-I')
+    #    header.append('/usr/local/include/c++/%s' % (version))
     return header
 
 
