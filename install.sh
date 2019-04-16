@@ -10,6 +10,8 @@ if [ $(uname) == "Linux" ]; then
         bash ~/.vim/install/debian.sh
     elif cat /etc/*release | grep ^NAME | grep Fedora 1>/dev/null 2>&1; then
         bash ~/.vim/install/fedora.sh
+    elif cat /etc/*release | grep ^NAME | grep Manjaro 1>/dev/null 2>&1; then
+        bash ~/.vim/install/manjaro.sh
     else
         echo "[lin-vim] OS not supprot, cannot install"
         exit 1;
