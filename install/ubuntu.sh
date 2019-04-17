@@ -13,9 +13,6 @@ touch ~/.zshrc
 
 
 # Software Dependency
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get autoremove -y
 sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
 sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
@@ -37,9 +34,6 @@ git pull
 ./configure
 make
 sudo make install
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get autoremove -y
 
 # Git Config
 git config core.filemode false

@@ -12,7 +12,6 @@ touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
-sudo pacman -Syyu
 yes | sudo pacman -Rs vim
 yes | sudo pacman -S git gvim curl wget zsh
 yes | sudo pacman -S gcc clang make autoreconf autoconf automake cmake pkg-config
