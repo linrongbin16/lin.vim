@@ -14,7 +14,7 @@ touch ~/.zshrc
 # Software Dependency
 yes | sudo pacman -Rs vim
 yes | sudo pacman -S git gvim curl wget zsh
-yes | sudo pacman -S gcc clang make autoreconf autoconf automake cmake pkg-config
+yes | sudo pacman -S gcc clang make autoconf automake cmake pkg-config
 yes | sudo pacman -S openssh openssl crypto++
 yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 shadowsocks-qt5 bc
 yes | sudo pacman -S python python-pip nodejs npm universal-ctags
