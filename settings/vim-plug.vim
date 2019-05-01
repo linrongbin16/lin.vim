@@ -103,5 +103,7 @@ Plug 'tpope/vim-rails', { 'for': ['rb', 'ruby'] }
 Plug 'slim-template/vim-slim', { 'for': ['rb', 'slim'] }
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
+" Scala
+Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 
 call plug#end()
