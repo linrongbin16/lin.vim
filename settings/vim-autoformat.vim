@@ -12,7 +12,7 @@ let g:formatters_hxx = ['clang_format', 'astyle_c']
 let g:formatters_hh = ['clang_format', 'astyle_c']
 
 " Python
-let g:formatdef_autopep8 = "'autopep8 --ignore=E402'"
+let g:formatdef_autopep8 = "'autopep8 --ignore=E402 --ignore=E501 --max-line-length=999999'"
 let g:formatters_python = ['autopep8', 'yapf', 'black']
 
 " format when write file
