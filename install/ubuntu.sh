@@ -17,13 +17,8 @@ sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
 sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
 sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
-sudo apt-get install -y python3 python3-dev python3-pip nodejs npm
+sudo apt-get install -y python3 python3-dev python3-pip
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
-if [ -d ~/.npm ]; then
-    sudo chmod -R +rwx ~/.npm
-    sudo chown -R $USER ~/.npm
-fi
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config

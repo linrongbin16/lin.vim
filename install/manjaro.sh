@@ -17,13 +17,8 @@ yes | sudo pacman -S git gvim curl wget zsh
 yes | sudo pacman -S gcc clang make autoconf automake cmake pkg-config
 yes | sudo pacman -S openssh openssl crypto++
 yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 shadowsocks-qt5 bc
-yes | sudo pacman -S python python-pip nodejs npm universal-ctags
+yes | sudo pacman -S python python-pip universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter remark-cli
-if [ -d ~/.npm ]; then
-    sudo chmod -R +rwx ~/.npm
-    sudo chown -R $USER ~/.npm
-fi
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config
