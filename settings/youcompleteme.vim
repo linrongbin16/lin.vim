@@ -29,7 +29,7 @@ let g:ycm_key_list_stop_completion = ['<C-y>']
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/settings/ycm_global_conf.py'
 if has("win32")
-    let g:ycm_server_python_interpreter = 'python'
+    let g:ycm_server_python_interpreter = 'python3'
     let g:ycm_rust_src_path = '%USERPROFILE%\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\src\rust\src'
 else
     let g:ycm_server_python_interpreter = 'python3'
