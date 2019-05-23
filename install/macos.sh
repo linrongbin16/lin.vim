@@ -3,18 +3,17 @@
 sudo echo "[lin-vim] Install for MacOS" || { echo "[lin-vim] sudo not found"; exit 1; }
 
 # Prepare Environment
-LINVIMRC=~/.linvimrc
-if [ -f $LINVIMRC ]; then
-    rm $LINVIMRC
+if [ -f ~/.linvimrc ]; then
+    mv ~/.linvimrc ~/.linvimrc.bak
 fi
-touch $LINVIMRC
+touch ~/.linvimrc
 touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
 brew install git macvim zsh
-brew install curl wget llvm autoconf automake cmake clang-format
-brew install pkg-config openssl openssh cryptopp
+brew install curl wget llvm autoconf automake cmake clang-format pkg-config
+brew install openssl openssh cryptopp
 brew install the_silver_searcher python3
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
@@ -57,13 +56,16 @@ fc-cache -f $font_dir
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Path Variable
-echo "alias vim=/usr/local/bin/vim" >> $LINVIMRC
-echo "setopt HIST_IGNORE_ALL_DUPS" >> $LINVIMRC
-echo "alias l=\"ls -la\"" >> $LINVIMRC
-echo "alias ll=\"ls -l\"" >> $LINVIMRC
-echo "export LANGUAGE='en_US.UTF-8'" >> $LINVIMRC
-echo "ulimit -c unlimited" >> $LINVIMRC
-echo "source $LINVIMRC" >> ~/.bashrc
-echo "source $LINVIMRC" >> ~/.zshrc
+echo "#! /usr/bin/env bash" >> ~/.linvimrc
+echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
+echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
+echo "ulimit -c unlimited" >> ~/.linvimrc
+echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
+echo "alias l=\"ls -l\"" >> ~/.linvimrc
+echo "alias ll=\"ls -la\"" >> ~/.linvimrc
+echo "source /Users/$(whoami)/.linvimrc" >> ~/.zshrc
+echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.zshrc
+echo "source /Users/$(whoami)/.linvimrc" >> ~/.bashrc
+echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

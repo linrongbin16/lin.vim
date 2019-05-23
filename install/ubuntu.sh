@@ -3,14 +3,12 @@
 sudo echo "[lin-vim] Install for Ubuntu" || { echo "[lin-vim] sudo not found"; exit 1; }
 
 # Prepare Environment
-LINVIMRC=~/.linvimrc
-if [ -f $LINVIMRC ]; then
-    rm $LINVIMRC
+if [ -f ~/.linvimrc ]; then
+    mv ~/.linvimrc ~/.linvimrc.bak
 fi
-touch $LINVIMRC
+touch ~/.linvimrc
 touch ~/.bashrc
 touch ~/.zshrc
-
 
 # Software Dependency
 sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
@@ -67,11 +65,14 @@ fc-cache -f $font_dir
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Path Variable
-echo "alias l=\"ls -la\"" >> $LINVIMRC
-echo "alias ll=\"ls -l\"" >> $LINVIMRC
-echo "ulimit -c unlimited" >> $LINVIMRC
-echo "export LANGUAGE='en_US.UTF-8'" >> $LINVIMRC
-echo "source $LINVIMRC" >> ~/.bashrc
-echo "source $LINVIMRC" >> ~/.zshrc
+echo "#! /usr/bin/env bash" >> ~/.linvimrc
+echo "alias l=\"ls -l\"" >> ~/.linvimrc
+echo "alias ll=\"ls -la\"" >> ~/.linvimrc
+echo "ulimit -c unlimited" >> ~/.linvimrc
+echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
+echo "source /Users/$(whoami)/.linvimrc" >> ~/.zshrc
+echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.zshrc
+echo "source /Users/$(whoami)/.linvimrc" >> ~/.bashrc
+echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
