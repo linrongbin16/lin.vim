@@ -22,7 +22,9 @@ _Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)_.
 ### Linux, UNIX, MacOS Installation
 
 ```bash
-    git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
+    $ git clone https://github.com/linrongbin16/lin-vim ~/.vim 
+    $ cd ~/.vim 
+    $ bash install.sh
 ```
 
 ### Windows Installation
