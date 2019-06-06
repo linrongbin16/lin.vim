@@ -28,11 +28,12 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>' ]
 let g:ycm_key_list_stop_completion = ['<C-y>']
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/settings/ycm_global_conf.py'
+let g:ycm_server_python_interpreter = 'python3'
 if has("win32")
-    let g:ycm_server_python_interpreter = 'python3'
     let g:ycm_rust_src_path = '%USERPROFILE%\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\src\rust\src'
+elseif has("mac")
+    let g:ycm_rust_src_path = '~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 else
-    let g:ycm_server_python_interpreter = 'python3'
     let g:ycm_rust_src_path = '~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 endif
 
