@@ -136,17 +136,23 @@ def LinuxHeader():
 
 def ListDir(directory):
     dir_list = list()
-    for root, ds, fs in os.walk(directory):
-        fs[:] = [f for f in fs if not f[0] == '.']
-        ds[:] = [d for d in ds if not d[0] == '.']
-        for d in ds:
-            tmp = os.path.join(root, d)
-            inc_cnt = sum(
-                1 for _ in re.finditer(r'\b%s\b' % re.escape('inc'), tmp))
-            include_cnt = sum(
-                1 for _ in re.finditer(r'\b%s\b' % re.escape('include'), tmp))
-            if inc_cnt + include_cnt == 1:
-                dir_list.append(tmp)
+    for a in os.listdir(directory):
+        abs_a = directory + '/' + a
+        print('a: %s, abs_a: %s' % (a, abs_a))
+        if a == 'inc' or a == 'include':
+            dir_list.append(abs_a)
+        else:
+            for b in os.listdir(abs_a):
+                abs_b = abs_a + '/' + b
+                print('b: %s, abs_b: %s' % (b, abs_b))
+                if b == 'inc' or b == 'include':
+                    dir_list.append(abs_b)
+                else:
+                    for c in os.listdir(abs_b):
+                        abs_c = abs_b + '/' + c
+                        print('c: %s, abs_c: %s' % (c, abs_c))
+                        if c == 'inc' or c == 'include':
+                            dir_list.append(abs_c)
     return dir_list
 
 
@@ -160,12 +166,8 @@ def MacOSHeader():
         '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
     )
     for inc in ListDir('/usr/local/Cellar'):
-        if len(inc) >= 3 and inc[-3:] == 'inc':
-            header.append('-I')
-            header.append(inc)
-        if len(inc) >= 7 and inc[-7:] == 'include':
-            header.append('-I')
-            header.append(inc)
+        header.append('-I')
+        header.append(inc)
     return header
 
 
