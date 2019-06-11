@@ -32,6 +32,7 @@ from distutils.sysconfig import get_python_inc
 import platform
 import os
 import ycm_core
+import re
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
@@ -133,6 +134,22 @@ def LinuxHeader():
     return header
 
 
+def ListDir(directory):
+    dir_list = list()
+    for root, ds, fs in os.walk(directory):
+        fs[:] = [f for f in fs if not f[0] == '.']
+        ds[:] = [d for d in ds if not d[0] == '.']
+        for d in ds:
+            tmp = os.path.join(root, d)
+            inc_cnt = sum(
+                1 for _ in re.finditer(r'\b%s\b' % re.escape('inc'), tmp))
+            include_cnt = sum(
+                1 for _ in re.finditer(r'\b%s\b' % re.escape('include'), tmp))
+            if inc_cnt + include_cnt == 1:
+                dir_list.append(tmp)
+    return dir_list
+
+
 def MacOSHeader():
     header = list()
     header.append('-I')
@@ -142,11 +159,13 @@ def MacOSHeader():
     header.append(
         '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
     )
-    # header.append('-I')
-    # header.append('/usr/local/include')
-    # for version in os.listdir('/usr/local/include/c++'):
-    #    header.append('-I')
-    #    header.append('/usr/local/include/c++/%s' % (version))
+    for inc in ListDir('/usr/local/Cellar'):
+        if len(inc) >= 3 and inc[-3:] == 'inc':
+            header.append('-I')
+            header.append(inc)
+        if len(inc) >= 7 and inc[-7:] == 'include':
+            header.append('-I')
+            header.append(inc)
     return header
 
 
