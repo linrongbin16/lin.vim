@@ -71,9 +71,7 @@ echo "alias l=\"ls -l\"" >> ~/.linvimrc
 echo "alias ll=\"ls -la\"" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
-echo "source /home/$(whoami)/.linvimrc" >> ~/.zshrc
-echo "[[ -s \"/home/$(whoami)/.linvimrc\" ]] && source \"/home/$(whoami)/.linvimrc\"" >> ~/.zshrc
-echo "source /home/$(whoami)/.linvimrc" >> ~/.bashrc
-echo "[[ -s \"/home/$(whoami)/.linvimrc\" ]] && source \"/home/$(whoami)/.linvimrc\"" >> ~/.bashrc
+echo "source ~/.linvimrc" >> ~/.zshrc
+echo "source ~/.linvimrc" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
