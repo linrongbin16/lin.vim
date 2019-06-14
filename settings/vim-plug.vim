@@ -25,10 +25,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'raphamorim/lucario'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
-Plug 'jnurmine/Zenburn'
-Plug 'sjl/badwolf'
 
 " Lint
 Plug 'w0rp/ale'
