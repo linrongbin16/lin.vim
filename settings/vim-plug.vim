@@ -85,24 +85,16 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 " TypeScript
 Plug 'leafgarland/typescript-vim'
-" Perl
-Plug 'vim-perl/vim-perl', { 'for': ['perl'] }
-Plug 'vim-perl/vim-perl6', { 'for': ['pl6', 'pm6', 'p6'] }
 " Thrift
 Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': ['hs'] }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
-Plug 'phildawes/racer', { 'for': ['rs'] }
 " Toml
 Plug 'cespare/vim-toml', { 'for': ['toml'] }
-" Ruby
-Plug 'vim-ruby/vim-ruby', { 'for': ['rb', 'ruby'] }
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
-" Scala, Sbt
-Plug 'derekwyatt/vim-scala', { 'for': ['scala', 'sbt'] }
 
 
 call plug#end()
