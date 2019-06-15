@@ -123,9 +123,6 @@ autocmd BufRead,BufNewFile *.hs set filetype=haskell
 
 "" guiconf
 if has("gui_running")
-    if has("win32")
-        au GUIEnter * simalt ~x
-    endif
     "gvim工具栏
     set guioptions-=T
     "gvim菜单栏
