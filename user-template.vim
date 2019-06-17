@@ -1,16 +1,20 @@
 " width height
 if has('gui_running')
-    set lines=50
-    set columns=200
+    set lines=30
+    set columns=120
 endif
 
 " fonts
-" win32
-set guifont=Fira\ Code:h9
-" linux, unix
-set guifont=Hack\ 9
-" macos
-set guifont=Hack:h14
+if has("win32")
+    " win32
+    set guifont=Hack:h12
+elseif has("mac")
+    " macos
+    set guifont=Hack:h14
+else
+    " linux, unix
+    set guifont=Hack\ 10
+endif
 
 " nerdtree width
 let g:NERDTreeWinSize=40
