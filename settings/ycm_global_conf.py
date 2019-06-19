@@ -33,6 +33,7 @@ import platform
 import os
 import ycm_core
 import re
+import subprocess
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
@@ -89,6 +90,93 @@ user_header = [
 ]
 
 
+def RunProc(*cmd):
+    try:
+        proc = subprocess.Popen(cmd,
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+        stdout_str = iter(proc.stdout.readline, b"")
+        stderr_str = iter(proc.stderr.readline, b"")
+    except subprocess.CalledProcessError:
+        exit(1)
+    outstr = [x.decode() for x in stdout_str if len(x) > 0]
+    errstr = [x.decode() for x in stderr_str if len(x) > 0]
+    return outstr, errstr
+
+
+def ListDir(base_dir, target, depth):
+    target_dir = os.path.join(os.getcwd(), base_dir)
+    num_sep = target_dir.count(os.path.sep)
+    dir_list = []
+    for root, dirs, files in os.walk(target_dir):
+        files[:] = [f for f in files if not f[0] == '.']
+        dirs[:] = [d for d in dirs if not d[0] == '.']
+        for d in dirs:
+            fd = os.path.join(root, d)
+            if fd.count(target) == 1 and fd[-len(target):] == target:
+                dir_list.append(os.path.join(root, d))
+        cur_num_sep = root.count(os.path.sep)
+        if cur_num_sep >= num_sep + depth:
+            del dirs[:]
+    return dir_list
+
+
+def GitRoot():
+    root, _ = RunProc('git', 'rev-parse', '--show-toplevel')
+    return root[0].strip() if (len(root) > 0) else None
+
+
+def IncludeGit():
+    groot = GitRoot()
+    if groot is None:
+        return []
+    return ListDir(groot, 'include', 20)
+
+
+def IncludeBrew():
+    brew_home = '/usr/local/Cellar'
+    return ListDir(brew_home, 'include', 2)
+
+
+def MacOSHeader():
+    header = []
+    header.append('-I')
+    header.append(
+        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
+    header.append('-I')
+    header.append(
+        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
+    )
+    for inc in IncludeBrew():
+        header.append('-I')
+        header.append(inc)
+    for inc in IncludeGit():
+        header.append('-I')
+        header.append(inc)
+    return header
+
+
+def LinuxHeader():
+    header = []
+    header.append('-I')
+    header.append('/usr/include')
+    header.append('-I')
+    header.append('/usr/include/c++')
+    header.append('-I')
+    header.append('/usr/lib')
+    header.append('-I')
+    header.append('/usr/include/x86_64-linux-gnu')
+    # '-I',
+    # '/usr/include/c++/7',
+    for version in os.listdir('/usr/include/c++'):
+        header.append('-I')
+        header.append('/usr/include/c++/%s' % (version))
+    for inc in IncludeGit():
+        header.append('-I')
+        header.append(inc)
+    return header
+
+
 def WindowsHeader():
     header = list()
     # '-I',
@@ -113,59 +201,7 @@ def WindowsHeader():
         header.append(
             'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
             (version))
-    return header
-
-
-def LinuxHeader():
-    header = list()
-    header.append('-I')
-    header.append('/usr/include')
-    header.append('-I')
-    header.append('/usr/include/c++')
-    header.append('-I')
-    header.append('/usr/lib')
-    header.append('-I')
-    header.append('/usr/include/x86_64-linux-gnu')
-    # '-I',
-    # '/usr/include/c++/7',
-    for version in os.listdir('/usr/include/c++'):
-        header.append('-I')
-        header.append('/usr/include/c++/%s' % (version))
-    return header
-
-
-def ListDir(directory):
-    dir_list = list()
-    for a in os.listdir(directory):
-        abs_a = directory + '/' + a
-        print('a: %s, abs_a: %s' % (a, abs_a))
-        if a == 'inc' or a == 'include':
-            dir_list.append(abs_a)
-        else:
-            for b in os.listdir(abs_a):
-                abs_b = abs_a + '/' + b
-                print('b: %s, abs_b: %s' % (b, abs_b))
-                if b == 'inc' or b == 'include':
-                    dir_list.append(abs_b)
-                else:
-                    for c in os.listdir(abs_b):
-                        abs_c = abs_b + '/' + c
-                        print('c: %s, abs_c: %s' % (c, abs_c))
-                        if c == 'inc' or c == 'include':
-                            dir_list.append(abs_c)
-    return dir_list
-
-
-def MacOSHeader():
-    header = list()
-    header.append('-I')
-    header.append(
-        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
-    header.append('-I')
-    header.append(
-        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
-    )
-    for inc in ListDir('/usr/local/Cellar'):
+    for inc in IncludeGit():
         header.append('-I')
         header.append(inc)
     return header
