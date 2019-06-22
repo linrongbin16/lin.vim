@@ -79,22 +79,11 @@ flags = [
     './benchmarks/benchmark/include',
 ]
 
-# User header
-user_header = [
-    '-I', './src', '-I', './include', '-I', '../include', '-I',
-    '../../include', '-I', '../../../include', '-I', '../../../../include',
-    '-I', '../../../../../include', '-I', '../../../../../../include', '-I',
-    '.', '-I', '..', '-I', '../..', '-I', '../../..', '-I', '../../../..',
-    '-I', '../../../../..', '-I', '../../../../../..', '-Wall', '-std=c++11',
-    '-stdlib=libc++', '-isystem', '/usr/lib/c++/v1'
-]
-
 
 def RunProc(*cmd):
     try:
-        proc = subprocess.Popen(cmd,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
+        proc = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout_str = iter(proc.stdout.readline, b"")
         stderr_str = iter(proc.stderr.readline, b"")
     except subprocess.CalledProcessError:
