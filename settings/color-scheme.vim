@@ -3,7 +3,7 @@
 "" pick random color
 syntax enable
 set background=dark
-let s:mycolor = ['solarized', 'molokai', 'monokai', 'dracula', 'koehler', 'torte', 'darkblue', 'desert', 'evening', 'neodark', 'solarized8_high', 'lucario', 'srcery', 'palenight', 'one']
+let s:mycolor = ['solarized', 'molokai', 'monokai', 'dracula', 'koehler', 'torte', 'darkblue', 'desert', 'evening', 'neodark', 'solarized8_high', 'srcery', 'palenight', 'one']
 
 if has("gui_running")
     let curcolor = localtime() % 101 % len(s:mycolor)
