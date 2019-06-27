@@ -33,7 +33,6 @@ import platform
 import os
 import ycm_core
 import re
-import subprocess
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
@@ -79,22 +78,19 @@ flags = [
     './benchmarks/benchmark/include',
 ]
 
-# User header
-user_header = [
-    '-I', './src', '-I', './include', '-I', '../include', '-I',
-    '../../include', '-I', '../../../include', '-I', '../../../../include',
-    '-I', '../../../../../include', '-I', '../../../../../../include', '-I',
-    '.', '-I', '..', '-I', '../..', '-I', '../../..', '-I', '../../../..',
-    '-I', '../../../../..', '-I', '../../../../../..', '-Wall', '-std=c++11',
-    '-stdlib=libc++', '-isystem', '/usr/lib/c++/v1'
-]
+# Auto Header Extension Begin
+import os
+import subprocess
+
+
+def IsAscii(s):
+    return all(ord(c) < 128 for c in s)
 
 
 def RunProc(*cmd):
     try:
-        proc = subprocess.Popen(cmd,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
+        proc = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout_str = iter(proc.stdout.readline, b"")
         stderr_str = iter(proc.stderr.readline, b"")
     except subprocess.CalledProcessError:
@@ -118,7 +114,7 @@ def ListDir(base_dir, target, depth):
         cur_num_sep = root.count(os.path.sep)
         if cur_num_sep >= num_sep + depth:
             del dirs[:]
-    return dir_list
+    return [d.replace('/', '\\') for d in dir_list]
 
 
 def GitRoot():
@@ -126,7 +122,7 @@ def GitRoot():
     return root[0].strip() if (len(root) > 0) else None
 
 
-def IncludeGit():
+def GitHeader():
     groot = GitRoot()
     if groot is None:
         return []
@@ -139,123 +135,134 @@ def IncludeBrew():
 
 
 def MacOSHeader():
-    header = []
-    header.append('-I')
-    header.append(
-        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
-    header.append('-I')
-    header.append(
-        '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
-    )
-    for inc in IncludeBrew():
+    try:
+        header = []
         header.append('-I')
-        header.append(inc)
-    for inc in IncludeGit():
+        header.append(
+            '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include')
         header.append('-I')
-        header.append(inc)
-    return header
+        header.append(
+            '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
+        )
+        for inc in IncludeBrew():
+            header.append('-I')
+            header.append(inc)
+        for inc in GitHeader():
+            header.append('-I')
+            header.append(inc)
+        return header
+    except Exception:
+        return []
 
 
 def LinuxHeader():
-    header = []
-    header.append('-I')
-    header.append('/usr/include')
-    header.append('-I')
-    header.append('/usr/include/c++')
-    header.append('-I')
-    header.append('/usr/lib')
-    header.append('-I')
-    header.append('/usr/include/x86_64-linux-gnu')
-    # '-I',
-    # '/usr/include/c++/7',
-    for version in os.listdir('/usr/include/c++'):
+    try:
+        header = []
         header.append('-I')
-        header.append('/usr/include/c++/%s' % (version))
-    for inc in IncludeGit():
+        header.append('/usr/include')
         header.append('-I')
-        header.append(inc)
-    return header
+        header.append('/usr/include/c++')
+        header.append('-I')
+        header.append('/usr/lib')
+        header.append('-I')
+        header.append('/usr/include/x86_64-linux-gnu')
+        # '-I',
+        # '/usr/include/c++/7',
+        for version in os.listdir('/usr/include/c++'):
+            header.append('-I')
+            header.append('/usr/include/c++/%s' % (version))
+        for inc in GitHeader():
+            header.append('-I')
+            header.append(inc)
+        return header
+    except Exception:
+        return []
 
 
 def WindowsHeader():
-    header = list()
-    # '-I',
-    # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
-    for release in os.listdir(
-            'C:\\Program Files (x86)\\Microsoft Visual Studio\\'):
-        try:
-            for version in os.listdir(
-                    'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\'
-                    % (release)):
-                header.append('-I')
-                header.append(
-                    'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
-                    % (release, version))
-        except:
-            pass
-    # '-I',
-    # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
-    for version in os.listdir(
-            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
-        header.append('-I')
-        header.append(
-            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
-            (version))
-    for inc in IncludeGit():
-        header.append('-I')
-        header.append(inc)
-    return header
-
-
-def IsAscii(s):
-    return all(ord(c) < 128 for c in s)
+    try:
+        header = []
+        # '-I',
+        # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
+        for release in os.listdir(
+                'C:\\Program Files (x86)\\Microsoft Visual Studio\\'):
+            try:
+                for version in os.listdir(
+                        'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\'
+                        % (release)):
+                    header.append('-I')
+                    header.append(
+                        'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
+                        % (release, version))
+            except Exception:
+                pass
+        # '-I',
+        # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
+        for version in os.listdir(
+                'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
+            header.append('-I')
+            header.append(
+                'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt'
+                % (version))
+        for inc in GitHeader():
+            header.append('-I')
+            header.append(inc)
+        return header
+    except Exception:
+        return []
 
 
 def UserHeader():
-    header = list()
-    rootpath = [
-        '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'G:\\',
-        'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
-        'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
-    ]
-    cur = '.'
-    header.append('-I')
-    header.append(cur)
-    for i in range(10):
-        if os.path.abspath(cur) in rootpath:
-            break
-        cur = '%s%s' % (cur, '/..')
-        if ' ' in cur:
-            continue
-        if not IsAscii(cur):
-            continue
+    try:
+        header = []
+        rootpath = [
+            '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\',
+            'G:\\', 'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\',
+            'R:\\', 'S:\\', 'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\',
+            'Z:\\', 'A:\\', 'B:\\'
+        ]
+        cur = '.'
         header.append('-I')
         header.append(cur)
-        for path in os.listdir(cur):
-            target = '%s/%s' % (cur, path)
-            if ' ' in target:
+        for i in range(10):
+            if os.path.abspath(cur) in rootpath:
+                break
+            cur = '%s%s' % (cur, '/..')
+            if ' ' in cur:
                 continue
-            if not IsAscii(target):
+            if not IsAscii(cur):
+                continue
+            header.append('-I')
+            header.append(cur)
+            for path in os.listdir(cur):
+                target = '%s/%s' % (cur, path)
+                if ' ' in target:
+                    continue
+                if not IsAscii(target):
+                    continue
+                if path.startswith('.'):
+                    continue
+                if not os.path.isdir(target):
+                    continue
+                header.append('-I')
+                header.append(target)
+        for path in os.listdir('.'):
+            if ' ' in path:
+                continue
+            if not IsAscii(path):
                 continue
             if path.startswith('.'):
                 continue
-            if not os.path.isdir(target):
+            if not os.path.isdir(path):
                 continue
             header.append('-I')
-            header.append(target)
-    for path in os.listdir('.'):
-        if ' ' in path:
-            continue
-        if not IsAscii(path):
-            continue
-        if path.startswith('.'):
-            continue
-        if not os.path.isdir(path):
-            continue
-        header.append('-I')
-        header.append(path)
-    return header
+            header.append(path)
+        return header
+    except Exception:
+        return []
 
+
+# Auto Header Extension End
 
 if platform.system() == 'Windows':
     flags.extend(WindowsHeader())
