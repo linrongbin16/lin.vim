@@ -67,8 +67,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # Path Variable
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
-echo "alias l=\"ls -l\"" >> ~/.linvimrc
-echo "alias ll=\"ls -la\"" >> ~/.linvimrc
+echo "alias l=\"ls -lhS\"" >> ~/.linvimrc
+echo "alias ll=\"ls -lahS\"" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "source /home/$(whoami)/.linvimrc" >> ~/.zshrc

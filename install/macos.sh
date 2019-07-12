@@ -61,8 +61,8 @@ echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
-echo "alias l=\"ls -l\"" >> ~/.linvimrc
-echo "alias ll=\"ls -la\"" >> ~/.linvimrc
+echo "alias l=\"ls -lhS\"" >> ~/.linvimrc
+echo "alias ll=\"ls -lahS\"" >> ~/.linvimrc
 echo "source /Users/$(whoami)/.linvimrc" >> ~/.zshrc
 echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.zshrc
 echo "source /Users/$(whoami)/.linvimrc" >> ~/.bashrc
