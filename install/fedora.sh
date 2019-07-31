@@ -12,10 +12,10 @@ touch ~/.zshrc
 
 # Software Dependency
 sudo dnf install -y git vim gvim curl wget zsh
-sudo dnf install -y gcc g++ clang autoconf automake cmake clang-format pkg-config
-sudo dnf install -y libssl openssh-server libcrypto++-dev
-sudo apt-get install -y silversearcher-ag unzip bzip2 unrar shadowsocks bc
-sudo apt-get install -y python3 python3-dev python3-pip nodejs nodejs-dev node-gyp libssl1.0-dev npm
+sudo dnf install -y gcc g++ clang autoconf automake make gdb cmake pkg-config
+sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
+sudo dnf install -y the_silver_searcher unzip bzip2
+sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
@@ -52,7 +52,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --system-libclang
+python3 install.py --clang-completer
 
 # GuiFonts
 font_dir="$HOME/.local/share/fonts"
