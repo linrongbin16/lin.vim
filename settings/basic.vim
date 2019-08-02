@@ -121,6 +121,9 @@ autocmd FileType json setlocal conceallevel=0
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.hs set filetype=haskell
 
+" filetype mapping
+autocmd BufRead,BufNewFile *.hql set filetype=sql
+
 "" guiconf
 if has("gui_running")
     "gvim工具栏
