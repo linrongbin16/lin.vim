@@ -16,7 +16,7 @@ brew install curl wget llvm autoconf automake cmake clang-format pkg-config
 brew install openssl openssh cryptopp
 brew install the_silver_searcher python3 node
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config

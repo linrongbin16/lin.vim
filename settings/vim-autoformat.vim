@@ -15,6 +15,10 @@ let g:formatters_hh = ['clang_format', 'astyle_c']
 let g:formatdef_autopep8 = "'autopep8 --ignore=E402,E501'"
 let g:formatters_python = ['autopep8', 'yapf', 'black']
 
+" Sql
+let g:formatters_sql = ['sqlformat']
+let g:formatters_hql = ['sqlformat']
+
 " format when write file
 au BufWrite *.c :Autoformat
 au BufWrite *.cc :Autoformat
@@ -40,3 +44,5 @@ au BufWrite *.rb :Autoformat
 au BufWrite *.pl :Autoformat
 au BufWrite *.pl6 :Autoformat
 au BufWrite *.perl :Autoformat
+au BufWrite *.sql :Autoformat
+au BufWrite *.hql :Autoformat
