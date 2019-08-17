@@ -37,7 +37,7 @@ Plug 'ludovicchabant/vim-gutentags'
 
 " Complete Engine
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe'
+Plug 'xavierd/clang_complete'
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -62,6 +62,7 @@ Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 " Python
 Plug 'hdima/python-syntax', { 'for': ['py'] }
+Plug 'davidhalter/jedi-vim', { 'for': ['py'] }
 " Json
 Plug 'elzr/vim-json'
 " Html
