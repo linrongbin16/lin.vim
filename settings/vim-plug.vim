@@ -41,15 +41,16 @@ Plug 'ycm-core/YouCompleteMe'
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" File Search
-Plug 'ctrlpvim/ctrlp.vim'
 " Comment
 Plug 'scrooloose/nerdcommenter'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-" Ag
+" Searching
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
