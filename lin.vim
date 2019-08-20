@@ -19,6 +19,7 @@ source $HOME/.vim/settings/python-syntax.vim
 source $HOME/.vim/settings/haskell-vim.vim
 source $HOME/.vim/settings/vim-rust.vim
 source $HOME/.vim/settings/vim-go.vim
+source $HOME/.vim/settings/fzf.vim
 source $HOME/.vim/settings/basic.vim
 source $HOME/.vim/settings/file-setting.vim
 
