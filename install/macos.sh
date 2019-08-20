@@ -61,9 +61,11 @@ echo "#! /usr/bin/env bash" >> ~/.linvimrc
 echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
+echo "defaults write com.apple.finder AppleShowAllFiles TRUE" >> ~/.linvimrc
+echo "alias git='LANG=en_US git'" >> ~/.linvimrc
 echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
-echo "alias l=\"ls -lhS\"" >> ~/.linvimrc
-echo "alias ll=\"ls -lahS\"" >> ~/.linvimrc
+echo "alias l=\"ls -lh\"" >> ~/.linvimrc
+echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "source /Users/$(whoami)/.linvimrc" >> ~/.zshrc
 echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.zshrc
 echo "source /Users/$(whoami)/.linvimrc" >> ~/.bashrc

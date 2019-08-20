@@ -39,56 +39,6 @@ if has("win32")
     endfunction
 endif
 
-" display
-set showcmd
-set hlsearch
-set backspace=indent,eol,start whichwrap+=<,>,[,]
-set wrap
-set clipboard+=unnamed
-
-set list listchars=tab:>-,trail:.,extends:>
-set modifiable
-
-set cursorline
-set scrolloff=1
-set ttyfast
-set lazyredraw
-set nocursorcolumn
-set norelativenumber
-set number
-
-if has("gui_running")
-    " gvim toolbox
-    set guioptions-=T
-    " gvim menu
-    set guioptions-=m
-endif
-
-" gui fonts
-if has("win32") || has("mac")
-    "set guifont=Inconsolata:h10
-    "set guifont=DejaVu\ Sans\ Mono:h9
-    "set guifont=IBM\ Plex\ Mono:h9
-    "set guifont=Bitstream\ Vera\ Sans\ Mono:h9
-    "set guifont=Fira\ Code:h9
-    "set guifont=Monaco:h9
-    "set guifont=Fantasque\ Sans\ Mono:h10
-    set guifont=Hack:h9
-else
-    "set guifont=Inconsolata\ 10
-    "set guifont=DejaVu\ Sans\ Mono\ 9
-    "set guifont=IBM\ Plex\ Mono\ 9
-    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
-    "set guifont=Fira\ Code\ 9
-    "set guifont=Monaco\ 9
-    "set guifont=Fantasque\ Sans\ Mono\ 10
-    set guifont=Hack\ 9
-endif
-
-set laststatus=2
-" conceallevel for json
-set conceallevel=0
-
 " sound
 set noerrorbells
 set novisualbell
@@ -142,3 +92,52 @@ set cindent
 set smartindent
 set autoindent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
+
+" display
+set showcmd
+set hlsearch
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+set wrap
+set clipboard+=unnamed
+
+set list listchars=tab:>-,trail:.,extends:>
+set modifiable
+
+set cursorline
+set scrolloff=1
+set ttyfast
+set lazyredraw
+set nocursorcolumn
+set norelativenumber
+set number
+set laststatus=2
+" conceallevel for json
+set conceallevel=0
+
+if has("gui_running")
+    " gvim toolbox
+    set guioptions-=T
+    " gvim menu
+    set guioptions-=m
+endif
+
+" gui fonts
+if has("win32") || has("mac")
+    "set guifont=Inconsolata:h10
+    "set guifont=DejaVu\ Sans\ Mono:h9
+    "set guifont=IBM\ Plex\ Mono:h9
+    "set guifont=Bitstream\ Vera\ Sans\ Mono:h9
+    "set guifont=Fira\ Code:h9
+    "set guifont=Monaco:h9
+    "set guifont=Fantasque\ Sans\ Mono:h10
+    set guifont=Hack:h9
+else
+    "set guifont=Inconsolata\ 10
+    "set guifont=DejaVu\ Sans\ Mono\ 9
+    "set guifont=IBM\ Plex\ Mono\ 9
+    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+    "set guifont=Fira\ Code\ 9
+    "set guifont=Monaco\ 9
+    "set guifont=Fantasque\ Sans\ Mono\ 10
+    set guifont=Hack\ 9
+endif
