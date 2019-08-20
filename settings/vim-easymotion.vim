@@ -15,3 +15,16 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <Leader>j <Plug>(easymotion-j)
 " `leader + k{char}{label}`
 map <Leader>k <Plug>(easymotion-k)
+
+" easy move
+
+" normal mode move
+nnoremap <c-j> 5j
+nnoremap <c-k> 5k
+nnoremap <c-h> 5h
+nnoremap <c-l> 5l
+" visual mode move
+xnoremap <c-j> 5j
+xnoremap <c-k> 5k
+xnoremap <c-h> 5h
+xnoremap <c-l> 5l

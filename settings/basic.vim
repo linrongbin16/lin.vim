@@ -1,4 +1,4 @@
-"" ---- basic.vim ----
+" ---- basic.vim ----
 
 set runtimepath+=$HOME/.vim
 set nocompatible
@@ -46,7 +46,6 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set wrap
 set clipboard+=unnamed
 
-" show whitespace
 set list listchars=tab:>-,trail:.,extends:>
 set modifiable
 
@@ -57,6 +56,38 @@ set lazyredraw
 set nocursorcolumn
 set norelativenumber
 set number
+
+if has("gui_running")
+    " gvim toolbox
+    set guioptions-=T
+    " gvim menu
+    set guioptions-=m
+endif
+
+" gui fonts
+if has("win32") || has("mac")
+    "set guifont=Inconsolata:h10
+    "set guifont=DejaVu\ Sans\ Mono:h9
+    "set guifont=IBM\ Plex\ Mono:h9
+    "set guifont=Bitstream\ Vera\ Sans\ Mono:h9
+    "set guifont=Fira\ Code:h9
+    "set guifont=Monaco:h9
+    "set guifont=Fantasque\ Sans\ Mono:h10
+    set guifont=Hack:h9
+else
+    "set guifont=Inconsolata\ 10
+    "set guifont=DejaVu\ Sans\ Mono\ 9
+    "set guifont=IBM\ Plex\ Mono\ 9
+    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+    "set guifont=Fira\ Code\ 9
+    "set guifont=Monaco\ 9
+    "set guifont=Fantasque\ Sans\ Mono\ 10
+    set guifont=Hack\ 9
+endif
+
+set laststatus=2
+" conceallevel for json
+set conceallevel=0
 
 " sound
 set noerrorbells
@@ -106,67 +137,8 @@ set foldnestmax=50
 set foldlevel=50
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 
-" ---- indent ----
-" all
+" indent
 set cindent
 set smartindent
 set autoindent
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
-" C/C++
-autocmd FileType c,cpp,cc,cxx,h,hh,hpp,hxx setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab
-
-" conceallevel
-set conceallevel=0
-autocmd FileType json setlocal conceallevel=0
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.hs set filetype=haskell
-
-" filetype mapping
-autocmd BufRead,BufNewFile *.hql set filetype=sql
-
-"" guiconf
-if has("gui_running")
-    "gvim工具栏
-    set guioptions-=T
-    "gvim菜单栏
-    set guioptions-=m
-endif
-
-" gui fonts
-if has("win32") || has("mac")
-    "set guifont=Inconsolata:h10
-    "set guifont=DejaVu\ Sans\ Mono:h9
-    "set guifont=IBM\ Plex\ Mono:h9
-    "set guifont=Bitstream\ Vera\ Sans\ Mono:h9
-    "set guifont=Fira\ Code:h9
-    "set guifont=Monaco:h9
-    "set guifont=Fantasque\ Sans\ Mono:h10
-    set guifont=Hack:h9
-else
-    "set guifont=Inconsolata\ 10
-    "set guifont=DejaVu\ Sans\ Mono\ 9
-    "set guifont=IBM\ Plex\ Mono\ 9
-    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
-    "set guifont=Fira\ Code\ 9
-    "set guifont=Monaco\ 9
-    "set guifont=Fantasque\ Sans\ Mono\ 10
-    set guifont=Hack\ 9
-endif
-
-set laststatus=2
-
-" normal mode move
-nnoremap <c-j> 5j
-nnoremap <c-k> 5k
-nnoremap <c-h> 5h
-nnoremap <c-l> 5l
-" visual mode move
-xnoremap <c-j> 5j
-xnoremap <c-k> 5k
-xnoremap <c-h> 5h
-xnoremap <c-l> 5l
-
-" user config
-if filereadable(expand('~/.vim/user.vim'))
-    source $HOME/.vim/user.vim
-endif

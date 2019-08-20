@@ -36,7 +36,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Complete Engine
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'ycm-core/YouCompleteMe'
 " Snippets
 Plug 'SirVer/ultisnips'
