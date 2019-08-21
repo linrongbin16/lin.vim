@@ -22,6 +22,7 @@ source $HOME/.vim/settings/vim-go.vim
 source $HOME/.vim/settings/fzf.vim
 source $HOME/.vim/settings/basic.vim
 source $HOME/.vim/settings/file-setting.vim
+source $HOME/.vim/settings/key-mapping.vim
 
 " user config
 if filereadable(expand('~/.vim/user.vim'))

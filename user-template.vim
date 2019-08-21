@@ -25,6 +25,3 @@ if has('gui_running')
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 endif
-
-" terminal
-nmap <F9> :terminal ++rows=20<cr>

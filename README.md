@@ -1,23 +1,31 @@
 # lin-vim : Lin Rongbin's Vim Distribution
 
-lin-vim is a distribution of Vim and DevTools.
+lin-vim is a distribution of Vim.
 
-It is for anyone intending to use VIM for development running equally well on Windows, Linux, \*nix and Mac.
+It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities for development running on most operating systems.
 
 ![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic1.png)
 
 ![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic2.png)
 
-_Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)_.
+_Suggestion: using with [boostscript](https://github.com/linrongbin16/boostscript)_.
+
+# Feature
+
+- Multiple platform support: linux, unix, windows and mac.
+- Auto complete engine based on: YouCompleteMe, universal-ctags and ultisnips.
+- Multiple file format and programming languages support: C/C++, Python, Golang, Rust, Bash, Html, Javascript, Markdown, etc.
+- Random color schemes, good look and better syntax highlighting.
+- Async syntastics check.
+- File explorer and finder.
+- Well configured hot key.
 
 # Installation
 
 ### Linux, UNIX, MacOS Installation
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin-vim ~/.vim 
-    $ cd ~/.vim 
-    $ bash install.sh
+    $ git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
 ```
 
 ### Windows Installation
@@ -35,20 +43,7 @@ _Suggest using with [boostscript](https://github.com/linrongbin16/boostscript)_.
 11. Install [Hack Font](https://sourcefoundry.org/hack/).
 
 ```bash
-    git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
-    cd %USERPROFILE%\.vim
-    install.bat
+    $ git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
+    $ cd %USERPROFILE%\.vim
+    $ install.bat
 ```
-
-# A highly optimized .vimrc config file
-
-The .vimrc file is suited to programming.
-
--   Used across Linux, Windows and Mac.
--   Completion Engine based on YouCompleteMe, Universal-Ctags.
--   Multiple Programming Languages supported.
--   Configured plugins and Develop Tools.
-
-# Fork me on GitHub
-
-Happy to take pull requests. Go ahead and fork me.
