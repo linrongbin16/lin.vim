@@ -8,6 +8,17 @@ curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubu
 rem Vim Plugins
 cp %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"
+sed -i "s/Complete Engine/Complete Engine\nPlug 'ycm-core/YouCompleteMe'\n" %USERPROFILE%\.vim\conf\vim-plug.vim
+cd %USERPROFILE\.vim\plugged
+if [ -d YouCompleteMe ]; then
+    rm -rf YouCompleteMe
+fi
+git clone https://github.com/ycm-core/YouCompleteMe.git
+cd YouCompleteMe
+git submodule update --init
+cd third_party\ycmd
+sed -i "s/url = https:\/\/go.googlesource.com\/tools/url = https:\/\/github.com\/golang\/tools.git/" .gitmodules
+git submodule update --init --recursive
 cd %USERPROFILE%\.vim\plugged\YouCompleteMe
 python install.py --clang-completer
 
