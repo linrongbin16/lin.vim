@@ -111,7 +111,9 @@ def list_directory(base_dir, target, depth):
         dirs[:] = [d for d in dirs if not d[0] == '.']
         for d in dirs:
             fd = os.path.join(root, d)
-            if fd.count(target) == 1 and fd[-len(target):] == target:
+            if target == '*':
+                dir_list.append(os.path.join(root, d))
+            elif fd.count(target) == 1 and fd[-len(target):] == target:
                 dir_list.append(os.path.join(root, d))
         cur_num_sep = root.count(os.path.sep)
         if cur_num_sep >= num_sep + depth:
@@ -123,7 +125,7 @@ def git_header():
     try:
         root, _ = run_process('git', 'rev-parse', '--show-toplevel')
         groot = root[0].strip() if (len(root) > 0) else None
-        return list_directory(groot, 'include', 20)
+        return list_directory(groot, '*', 20)
     except:
         return []
 
