@@ -5,4 +5,7 @@ map <F5> :Files<CR>
 map <F6> :NERDTreeToggle<CR>
 
 " open terminal
-map <F7> :terminal ++rows=20<cr>
+map <F7> :terminal ++rows=20<CR>
+
+" change color
+map <F8> :call RandomColor()<CR>
