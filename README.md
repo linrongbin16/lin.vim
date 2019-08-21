@@ -14,8 +14,8 @@ _Suggestion: using with [boostscript](https://github.com/linrongbin16/boostscrip
 
 - Multiple platform support: linux, unix, windows and mac.
 - Auto complete engine based on: YouCompleteMe, universal-ctags and ultisnips.
-- Multiple file format and programming languages support: C/C++, Python, Golang, Rust, Bash, Html, Javascript, Markdown, etc.
-- Random color schemes, good look and better syntax highlighting.
+- Multiple file format and programming languages support: C/C++, Python, Golang, Rust, Javascript, Haskell, Markdown, etc.
+- Random color schemes, better UI and syntax highlighting.
 - Async syntastics check.
 - File explorer and finder.
 - Well configured hot key.

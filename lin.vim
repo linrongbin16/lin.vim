@@ -1,30 +1,34 @@
-" ---- lin-vim ----
+" lin-vim
 
-source $HOME/.vim/settings/vim-plug.vim
-source $HOME/.vim/settings/color-scheme.vim
-source $HOME/.vim/settings/yank.vim
-source $HOME/.vim/settings/indentline.vim
-source $HOME/.vim/settings/nerdtree.vim
-source $HOME/.vim/settings/ale.vim
-source $HOME/.vim/settings/vim-autoformat.vim
-source $HOME/.vim/settings/vim-gutentags.vim
-source $HOME/.vim/settings/youcompleteme.vim
-source $HOME/.vim/settings/ultisnips.vim
-source $HOME/.vim/settings/ctrlp.vim
-source $HOME/.vim/settings/ag.vim
-source $HOME/.vim/settings/vim-easymotion.vim
-source $HOME/.vim/settings/vim-cpp-enhanced-highlight.vim
-source $HOME/.vim/settings/emmet-vim.vim
-source $HOME/.vim/settings/python-syntax.vim
-source $HOME/.vim/settings/haskell-vim.vim
-source $HOME/.vim/settings/vim-rust.vim
-source $HOME/.vim/settings/vim-go.vim
-source $HOME/.vim/settings/fzf.vim
-source $HOME/.vim/settings/basic.vim
-source $HOME/.vim/settings/file-setting.vim
-source $HOME/.vim/settings/key-mapping.vim
+" conf
+source $HOME/.vim/settings/conf/vim-plug.vim
+source $HOME/.vim/settings/conf/basic.vim
+source $HOME/.vim/settings/conf/color.vim
+source $HOME/.vim/settings/conf/copy-paste.vim
+source $HOME/.vim/settings/conf/file.vim
+source $HOME/.vim/settings/conf/key.vim
 
-" user config
-if filereadable(expand('~/.vim/user.vim'))
-    source $HOME/.vim/user.vim
+" plug
+source $HOME/.vim/settings/plug/indentline.vim
+source $HOME/.vim/settings/plug/nerdtree.vim
+source $HOME/.vim/settings/plug/ale.vim
+source $HOME/.vim/settings/plug/vim-autoformat.vim
+source $HOME/.vim/settings/plug/vim-gutentags.vim
+source $HOME/.vim/settings/plug/you-complete-me.vim
+source $HOME/.vim/settings/plug/ultisnips.vim
+source $HOME/.vim/settings/plug/ag.vim
+source $HOME/.vim/settings/plug/fzf.vim
+source $HOME/.vim/settings/plug/vim-easymotion.vim
+source $HOME/.vim/settings/plug/vim-cpp-enhanced-highlight.vim
+source $HOME/.vim/settings/plug/emmet.vim
+source $HOME/.vim/settings/plug/python-syntax.vim
+source $HOME/.vim/settings/plug/haskell.vim
+source $HOME/.vim/settings/plug/vim-rust.vim
+source $HOME/.vim/settings/plug/vim-go.vim
+
+" user
+if !filereadable(expand('~/.vim/user.vim'))
+    echo 'copy user.vim'
+    silent! call cp ~/.vim/settings/conf/user.vim ~/.vim/user.vim
 endif
+source $HOME/.vim/user.vim

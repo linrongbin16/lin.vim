@@ -121,7 +121,7 @@ if has("gui_running")
     set guioptions-=m
 endif
 
-" gui fonts
+" guifonts
 if has("win32") || has("mac")
     "set guifont=Inconsolata:h10
     "set guifont=DejaVu\ Sans\ Mono:h9

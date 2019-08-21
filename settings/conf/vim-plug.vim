@@ -8,6 +8,7 @@ endif
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
+
 " UI Manager
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
@@ -47,7 +48,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 " Searching
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
