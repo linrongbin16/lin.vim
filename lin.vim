@@ -29,6 +29,6 @@ source $HOME/.vim/settings/plug/vim-go.vim
 " user
 if !filereadable(expand('~/.vim/user.vim'))
     echo 'copy user.vim'
-    silent! call cp ~/.vim/settings/conf/user.vim ~/.vim/user.vim
+    silent! call cp ~/.vim/settings/conf/user-template.vim ~/.vim/user.vim
 endif
 source $HOME/.vim/user.vim
