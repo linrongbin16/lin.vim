@@ -27,8 +27,7 @@ source $HOME/.vim/settings/plug/vim-rust.vim
 source $HOME/.vim/settings/plug/vim-go.vim
 
 " user
-if !filereadable(expand('~/.vim/user.vim'))
-    echo 'copy user.vim'
-    silent! call cp ~/.vim/settings/conf/user-template.vim ~/.vim/user.vim
+" please use ~/.vim/settings/conf/user-template.vim
+if filereadable(expand('~/.vim/user.vim'))
+    source $HOME/.vim/user.vim
 endif
-source $HOME/.vim/user.vim
