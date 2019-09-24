@@ -5,8 +5,17 @@ if has('gui_running')
 endif
 
 " fonts
-" macos
-set guifont=Hack:h14
+if has("win32")
+    " win32
+    set guifont=Hack:h12
+elseif has("mac")
+    " macos
+    set guifont=Hack:h12
+else
+    " linux, unix
+    set guifont=Hack\ 10
+endif
+
 
 " nerdtree width
 let g:NERDTreeWinSize=40
