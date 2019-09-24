@@ -34,7 +34,7 @@ Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 
 " Ctags
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Complete Engine
 "Plug 'ervandew/supertab'
