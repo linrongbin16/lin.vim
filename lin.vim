@@ -17,7 +17,6 @@ source $HOME/.vim/settings/plug/vim-gutentags.vim
 source $HOME/.vim/settings/plug/you-complete-me.vim
 source $HOME/.vim/settings/plug/ultisnips.vim
 source $HOME/.vim/settings/plug/ag.vim
-source $HOME/.vim/settings/plug/fzf.vim
 source $HOME/.vim/settings/plug/vim-easymotion.vim
 source $HOME/.vim/settings/plug/vim-cpp-enhanced-highlight.vim
 source $HOME/.vim/settings/plug/emmet.vim

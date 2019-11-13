@@ -49,8 +49,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 " Searching
 Plug 'rking/ag.vim'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-"Plug 'junegunn/fzf.vim'
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
