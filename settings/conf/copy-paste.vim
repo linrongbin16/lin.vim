@@ -1,2 +1,2 @@
-vnoremap <Leader>y :w! ~/.cache/.lin-vim-yank<CR>
-nnoremap <Leader>p :r ~/.cache/.lin-vim-yank<CR>
+vnoremap <Leader>y :w! ~/.cache/.lin-vim-copypaste<CR>
+nnoremap <Leader>p :r ~/.cache/.lin-vim-copypaste<CR>
