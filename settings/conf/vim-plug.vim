@@ -32,6 +32,7 @@ Plug 'rakr/vim-one'
 Plug 'w0rp/ale'
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
+Plug 'junegunn/vim-easy-align'
 
 " Ctags
 Plug 'ludovicchabant/vim-gutentags'

@@ -24,6 +24,7 @@ source $HOME/.vim/settings/plug/python-syntax.vim
 source $HOME/.vim/settings/plug/haskell.vim
 source $HOME/.vim/settings/plug/vim-rust.vim
 source $HOME/.vim/settings/plug/vim-go.vim
+source $HOME/.vim/settings/plug/vim-easy-align.vim
 
 " user
 " please use ~/.vim/settings/conf/user-template.vim
