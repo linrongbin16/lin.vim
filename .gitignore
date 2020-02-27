@@ -1,9 +1,11 @@
+# object files
 *.pro.user
 *.swp
 *.xcuserdata
 *.dat
 *.log
 
+# vim runtime temporary files
 .temp
 .tags
 tags
@@ -15,16 +17,11 @@ tags.temp
 .netrwhist
 __pycache__
 
+# vim plugins
 autoload
 plugged
 universal-ctags
 vim-plug
 
-cmake-build-debug
-CMakeCache.txt
-CMakeFiles
-cmake_install.cmake
-install_manifest.txt
-.vscode
-
+# custom vim settings
 user.vim
