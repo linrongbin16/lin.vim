@@ -1,22 +1,13 @@
 *.slo
 *.lo
 *.pro.user
-*.so
-*.a
-*.dylib
-*.dll
 *.swp
 *.lai
 *.la
-*.a
 *.lib
-*.out
-*.app
 *.xcuserdata
 *.dat
-*.exe
 *.log
-*.pyc
 
 .temp
 .tags
