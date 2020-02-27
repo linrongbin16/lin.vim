@@ -1,8 +1,4 @@
-# object files
-*.pro.user
-*.swp
-*.xcuserdata
-*.dat
+# logging files
 *.log
 
 # vim runtime temporary files
