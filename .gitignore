@@ -1,7 +1,5 @@
 *.slo
 *.lo
-*.o
-*.obj
 *.pro.user
 *.so
 *.a
