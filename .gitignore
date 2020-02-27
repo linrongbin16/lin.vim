@@ -1,10 +1,5 @@
-*.slo
-*.lo
 *.pro.user
 *.swp
-*.lai
-*.la
-*.lib
 *.xcuserdata
 *.dat
 *.log
