@@ -68,29 +68,29 @@ Plug 'othree/html5.vim'
 Plug 'othree/html5-syntax.vim'
 Plug 'mattn/emmet-vim'
 " Haml/Sass/Scss
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'tpope/vim-haml'
+"Plug 'cakebaker/scss-syntax.vim'
+"Plug 'tpope/vim-haml'
 " Css
 Plug 'ap/vim-css-color'
 Plug 'hail2u/vim-css3-syntax'
 " Less
-Plug 'groenewege/vim-less'
+"Plug 'groenewege/vim-less'
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 " TypeScript
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 " Thrift
-Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
-" Haskell
+"Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
+"Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': ['hs'] }
 " Rust
-Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
+"Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
 " Toml
-Plug 'cespare/vim-toml', { 'for': ['toml'] }
+"Plug 'cespare/vim-toml', { 'for': ['toml'] }
 " Golang
-Plug 'fatih/vim-go', { 'for': ['go'] }
+"Plug 'fatih/vim-go', { 'for': ['go'] }
 
 
 call plug#end()

@@ -1,16 +1,5 @@
 "" ---- vim-autoformat ----
 
-" C/C++
-let g:formatdef_clang_format = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=LLVM'"
-let g:formatters_c = ['clang_format', 'astyle_c']
-let g:formatters_cc = ['clang_format', 'astyle_c']
-let g:formatters_cxx = ['clang_format', 'astyle_c']
-let g:formatters_cpp = ['clang_format', 'astyle_c']
-let g:formatters_h = ['clang_format', 'astyle_c']
-let g:formatters_hpp = ['clang_format', 'astyle_c']
-let g:formatters_hxx = ['clang_format', 'astyle_c']
-let g:formatters_hh = ['clang_format', 'astyle_c']
-
 " Python
 let g:formatdef_autopep8 = "'autopep8 --ignore=E402,E501'"
 let g:formatters_python = ['autopep8', 'yapf', 'black']
