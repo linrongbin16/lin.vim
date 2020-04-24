@@ -11,7 +11,7 @@ touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
-brew install git macvim zsh
+brew install macvim zsh
 brew install curl wget llvm autoconf automake cmake clang-format pkg-config
 brew install openssl openssh cryptopp
 brew install the_silver_searcher python3 node fzf
