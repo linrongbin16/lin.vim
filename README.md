@@ -8,8 +8,6 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 ![pic2.jpg](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic2.jpg)
 
-_Suggestion: using with [boostscript](https://github.com/linrongbin16/boostscript)_.
-
 # Feature
 
 - Multiple platform support: linux, unix, windows and mac.
