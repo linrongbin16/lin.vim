@@ -14,9 +14,9 @@ touch ~/.zshrc
 sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
 sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
-sudo apt-get install -y silversearcher-ag unzip bzip2 unrar
+sudo apt-get install -y silversearcher-ag unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip nodejs nodejs-dev node-gyp libssl1.0-dev npm
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat chardet
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
@@ -65,15 +65,19 @@ fc-cache -f $font_dir
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# Commands
+cd ~/.vim/commands
+chmod +x *
+
 # Path Variable
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
 echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
-echo "source /home/$(whoami)/.linvimrc" >> ~/.zshrc
+echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
+
 echo "[[ -s \"/home/$(whoami)/.linvimrc\" ]] && source \"/home/$(whoami)/.linvimrc\"" >> ~/.zshrc
-echo "source /home/$(whoami)/.linvimrc" >> ~/.bashrc
 echo "[[ -s \"/home/$(whoami)/.linvimrc\" ]] && source \"/home/$(whoami)/.linvimrc\"" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

@@ -11,12 +11,14 @@ touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
+brew upgrade
 brew install macvim zsh
 brew install curl wget llvm autoconf automake cmake clang-format pkg-config
 brew install openssl openssh cryptopp
 brew install the_silver_searcher python3 node
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat
+brew install unzip zip p7zip
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat chardet
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
@@ -56,6 +58,10 @@ fc-cache -f $font_dir
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# Commands
+cd ~/.vim/commands
+chmod +x *
+
 # Path Variable
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
 echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
@@ -66,9 +72,9 @@ echo "alias git='LANG=en_US git'" >> ~/.linvimrc
 echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
 echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
-echo "source /Users/$(whoami)/.linvimrc" >> ~/.zshrc
+echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
+
 echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.zshrc
-echo "source /Users/$(whoami)/.linvimrc" >> ~/.bashrc
 echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
