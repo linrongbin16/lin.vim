@@ -17,7 +17,7 @@ yes | sudo pacman -S gcc clang make autoconf automake cmake pkg-config
 yes | sudo pacman -S openssh openssl crypto++
 yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 zip p7zip
 yes | sudo pacman -S python python-pip universal-ctags nodejs npm
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat chardet
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config

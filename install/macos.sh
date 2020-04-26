@@ -18,7 +18,7 @@ brew install openssl openssh cryptopp
 brew install the_silver_searcher python3 node
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install unzip zip p7zip
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat chardet
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config

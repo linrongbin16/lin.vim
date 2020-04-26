@@ -16,7 +16,7 @@ sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-c
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
 sudo apt-get install -y silversearcher-ag unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip nodejs nodejs-dev node-gyp libssl1.0-dev npm
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat chardet
+sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
 sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config

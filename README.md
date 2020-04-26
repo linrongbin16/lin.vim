@@ -30,7 +30,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 1.  Install [Git](https://git-scm.com/), choose **Use Git from Windows Command Prompt**.
 2.  Install [7-zip](http://www.7-zip.org/).
-3.  Install [Python3](https://www.python.org/downloads/), install globally with `pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint sqlparse sqlformat`.
+3.  Install [Python3](https://www.python.org/downloads/), install globally with `pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet`.
 4.  Install [CMake](https://cmake.org/), choose **Add cmake.exe to PATH**.
 5.  Install [Vim for Windows](https://tuxproject.de/projects/vim/), **Add gvim.exe to PATH**.
 6.  Install [Visual Studio](https://www.visualstudio.com/), choose **VC++ for desktop**.
