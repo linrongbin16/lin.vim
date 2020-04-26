@@ -25,28 +25,28 @@ def compressTargz(target):
     tarname = "%s.tar.gz" % target
     util.backup_file(tarname)
     os.system('tar czvf "%s" "%s"' % (tarname, target))
-    print("[boostscript] compress '%s' to '%s'" % (target, tarname))
+    print("[lin-boost] compress '%s' to '%s'" % (target, tarname))
 
 
 def compressTgz(target):
     tarname = "%s.tgz" % target
     util.backup_file(tarname)
     os.system('tar czvf "%s" "%s"' % (tarname, target))
-    print("[boostscript] compress '%s' to '%s'" % (target, tarname))
+    print("[lin-boost] compress '%s' to '%s'" % (target, tarname))
 
 
 def compressTarbz2(target):
     tarname = "%s.tar.bz2" % target
     util.backup_file(tarname)
     os.system('tar czvf "%s" "%s"' % (tarname, target))
-    print("[boostscript] compress '%s' to '%s'" % (target, tarname))
+    print("[lin-boost] compress '%s' to '%s'" % (target, tarname))
 
 
 def compressZip(target):
     tarname = "%s.zip" % target
     util.backup_file(tarname)
     os.system('zip -r "%s" "%s"' % (tarname, target))
-    print("[boostscript] compress '%s' to '%s'" % (target, tarname))
+    print("[lin-boost] compress '%s' to '%s'" % (target, tarname))
 
 
 PackMapping = {

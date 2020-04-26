@@ -28,7 +28,7 @@ if __name__ == '__main__':
     remote_count = util.get_git_remote_repository_count()
     # error: remote repository not exist
     if remote_count == 0:
-        print("[boostscript] remote repository not exist!")
+        print("[lin-boost] remote repository not exist!")
         exit(1)
 
     branch = util.get_git_current_branch()
@@ -37,14 +37,14 @@ if __name__ == '__main__':
     # case 1
     if len(sys.argv) == 1:
         os.chdir(util.get_git_root())
-        print("[boostscript] git pull from \'%s/%s\'" % (remote_repo, branch))
+        print("[lin-boost] git pull from \'%s/%s\'" % (remote_repo, branch))
         os.system("git fetch")
         os.system("git pull %s %s" % (remote_repo, branch))
     # case 2
     else:
         remote_branch = util.get_sys_args_one_line()
         util.check_user_confirm(
-            "[boostscript] git merge \'%s/%s\'(remote) to \'%s\'(local), yes? "
+            "[lin-boost] git merge \'%s/%s\'(remote) to \'%s\'(local), yes? "
             % (remote_repo, remote_branch, branch))
         os.chdir(util.get_git_root())
         os.system("git fetch")

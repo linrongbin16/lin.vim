@@ -28,7 +28,7 @@ def delete_suffix(file_list, suffix):
         if relname.startswith('.'):
             continue
         if relname.endswith(suffix):
-            print('[boostscript] remove %s' % f)
+            print('[lin-boost] remove %s' % f)
             os.remove(f)
 
 
@@ -39,7 +39,7 @@ def delete_no_suffix(file_list):
         if relname.startswith('.'):
             continue
         if relname.find('.') < 0:
-            print('[boostscript] remove %s' % f)
+            print('[lin-boost] remove %s' % f)
             os.remove(f)
 
 

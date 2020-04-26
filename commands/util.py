@@ -103,9 +103,9 @@ def get_file_name_base(name):
 
 def get_command_home():
     if is_windows():
-        return os.path.expanduser('~') + '\\.boostscript\\command'
+        return os.path.expanduser('~') + '\\.lin-boost\\command'
     else:
-        return os.path.expanduser('~') + '/.boostscript/command'
+        return os.path.expanduser('~') + '/.lin-boost/command'
 
 
 def get_command_name():
@@ -153,7 +153,7 @@ def backup_file(target):
     if not os.path.exists(target):
         return
     bakname = ".%s.bak" % (target)
-    check_user_confirm("[boostscript] backup existed '%s' to '%s', yes? " %
+    check_user_confirm("[lin-boost] backup existed '%s' to '%s', yes? " %
                        (target, bakname))
     if os.path.exists(bakname):
         os.rmdir(bakname)
@@ -283,7 +283,7 @@ def get_git_root():
 
 def check_git_repository():
     if get_git_root() is None:
-        print("[boostscript] error: not a git repository")
+        print("[lin-boost] error: not a git repository")
         exit(3)
 
 
@@ -321,16 +321,16 @@ def get_git_remote_repository():
                 i) + "]"
             if i < len(remote_branches) - 1:
                 remote_str = remote_str + ', '
-        print('[boostscript] detect multiple remote repositories: %s' %
+        print('[lin-boost] detect multiple remote repositories: %s' %
               (remote_str))
         user_input = input(
-            '[boostscript] which one to choose(%s[0] if empty)? ' %
+            '[lin-boost] which one to choose(%s[0] if empty)? ' %
             ("\'" + remote_branches[0] + "\'"))
         if not is_empty_str(user_input):
             try:
                 remote_str = list(remote_branches)[int(user_input)]
             except Exception:
-                print('[boostscript] error input: %s' % (user_input))
+                print('[lin-boost] error input: %s' % (user_input))
                 exit(3)
         else:
             remote_str = list(remote_branches)[0]

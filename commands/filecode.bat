@@ -1,3 +1,3 @@
 @ECHO OFF
 REM Copyright 2018-  <linrongbin16@gmail.com>
-python %USERPROFILE%\.boostscript\command\filecode.py %*
+python %USERPROFILE%\.vim\commands\filecode.py %*

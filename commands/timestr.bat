@@ -1,3 +1,3 @@
 @ECHO OFF
 REM Copyright 2018-  <linrongbin16@gmail.com>
-python %USERPROFILE%\.boostscript\command\timestr.py %*
+python %USERPROFILE%\.lin-boost\command\timestr.py %*

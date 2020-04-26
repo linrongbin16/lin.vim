@@ -22,7 +22,7 @@ def help_msg():
 
 
 def catchup(branch):
-    util.check_user_confirm("[boostscript] git catchup(rebase) to '%s', yes? " % (branch))
+    util.check_user_confirm("[lin-boost] git catchup(rebase) to '%s', yes? " % (branch))
     os.system("git rebase %s" % branch)
 
 

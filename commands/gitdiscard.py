@@ -24,7 +24,7 @@ def help_msg():
 def discard_all():
     branch = util.get_git_current_branch()
     util.check_user_confirm(
-        "[boostscript] git discard all changes on \'%s\', yes? " % (branch))
+        "[lin-boost] git discard all changes on \'%s\', yes? " % (branch))
 
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
@@ -39,17 +39,17 @@ def discard_all():
 def discard_file_impl(file_list, modifies, untracts):
     for i in file_list:
         if i in modifies:
-            print('[boostscript] discard: %s' % (i + ' '))
+            print('[lin-boost] discard: %s' % (i + ' '))
             os.system('git checkout %s' % (i + ' '))
         elif i in untracts:
-            print('[boostscript] remove: %s' % (i + ' '))
+            print('[lin-boost] remove: %s' % (i + ' '))
             os.system('rm %s' % (i + ' '))
 
 
 def discard_file(file_name):
     branch = util.get_git_current_branch()
     util.check_user_confirm(
-        "[boostscript] git discard file \'%s\' on \'%s\', yes? " %
+        "[lin-boost] git discard file \'%s\' on \'%s\', yes? " %
         (file_name, branch))
 
     save_dir = os.getcwd()
@@ -64,7 +64,7 @@ def discard_file(file_name):
 def discard_dir(dir_name):
     branch = util.get_git_current_branch()
     util.check_user_confirm(
-        "[boostscript] git discard folder \'%s\' on \'%s\', yes? " %
+        "[lin-boost] git discard folder \'%s\' on \'%s\', yes? " %
         (dir_name, branch))
 
     save_dir = os.getcwd()

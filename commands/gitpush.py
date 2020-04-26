@@ -30,7 +30,7 @@ if __name__ == '__main__':
     remote_count = util.get_git_remote_repository_count()
     # error: remote repository not exist
     if remote_count == 0:
-        print("[boostscript] remote repository not exist!")
+        print("[lin-boost] remote repository not exist!")
         exit(1)
 
     branch = util.get_git_current_branch()
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     # case 1
     if len(sys.argv) == 1:
-        util.check_user_confirm("[boostscript] git push to \'%s/%s\', yes? " %
+        util.check_user_confirm("[lin-boost] git push to \'%s/%s\', yes? " %
                                 (remote_repo, branch))
         os.chdir(util.get_git_root())
         os.system("git push %s %s" % (remote_repo, branch))
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     else:
         comment = util.get_sys_args_one_line()
         util.check_user_confirm(
-            "[boostscript] git push to \'%s/%s\' with \'%s\', yes? " %
+            "[lin-boost] git push to \'%s/%s\' with \'%s\', yes? " %
             (remote_repo, branch, comment))
         os.chdir(util.get_git_root())
         os.system("git add -A .")

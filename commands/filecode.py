@@ -39,9 +39,9 @@ def convert_encoding(src_file, detect_encoding, target_encoding):
             text = s.read()
             d.write(text)
     except UnicodeDecodeError as de:
-        print('[boostscript] unicode decode exception %s' % (de))
+        print('[lin-boost] unicode decode exception %s' % (de))
     except UnicodeEncodeError as ee:
-        print('[boostscript] unicode encode exception %s' % (ee))
+        print('[lin-boost] unicode encode exception %s' % (ee))
 
 
 if __name__ == '__main__':
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 3:
         target_encoding = sys.argv[2].strip()
     if target_encoding == detect_encoding:
-        print('[boostscript] origin and target encoding are the same \"%s\"' %
+        print('[lin-boost] origin and target encoding are the same \"%s\"' %
               (target_encoding))
         exit(1)
     convert_encoding(file_name, detect_encoding, target_encoding)

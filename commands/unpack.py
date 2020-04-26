@@ -61,4 +61,4 @@ if __name__ == '__main__':
         help_msg()
     unpacker = UnpackMapping[ts]
     unpacker(target)
-    print("[boostscript] extract '%s' to '%s'" % (target, foldname))
+    print("[lin-boost] extract '%s' to '%s'" % (target, foldname))

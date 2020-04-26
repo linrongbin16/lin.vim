@@ -29,7 +29,7 @@ if __name__ == '__main__':
         n = int(sys.argv[1])
     commit_name = util.get_git_last_commit(n - 1)
     util.check_user_confirm(
-            "[boostscript] git reset to last '%d' commits '%s' on '%s', yes? " %
+            "[lin-boost] git reset to last '%d' commits '%s' on '%s', yes? " %
             (n, commit_name, branch))
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())

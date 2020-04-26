@@ -1,3 +1,3 @@
 @ECHO OFF
 REM Copyright 2018-  <linrongbin16@gmail.com>
-python %USERPROFILE%\.boostscript\command\agword.py %*
+python %USERPROFILE%\.vim\commands\agword.py %*

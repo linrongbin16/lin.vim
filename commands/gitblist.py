@@ -25,20 +25,20 @@ def help_msg():
 
 def local_branch():
     outstr, errstr = util.run("git", "branch")
-    print("[boostscript] local branches")
+    print("[lin-boost] local branches")
     for o in outstr:
         print("  %s" % (o.strip()))
 
 
 def remote_branch():
     outstr, errstr = util.run("git", "branch", "-r")
-    print("[boostscript] remote branches")
+    print("[lin-boost] remote branches")
     for o in outstr:
         print("  %s" % (o.strip()))
 
 def all_branch():
     outstr, errstr = util.run("git", "branch", "-a")
-    print("[boostscript] all branches")
+    print("[lin-boost] all branches")
     for o in outstr:
         print("  %s" % (o.strip()))
 
