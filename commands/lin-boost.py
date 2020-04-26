@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
-""" boostscript help document """
+""" lin-boost help document """
 
 import sys
 import os
