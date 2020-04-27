@@ -54,6 +54,9 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 ### C/C++
 - `:A`: jump between h/hpp and c/cc/cxx/cpp files
 
+### Customization
+- custom your own settings in ~/.vim/user.vim
+
 # Installation
 
 ### Linux, UNIX, MacOS Installation
