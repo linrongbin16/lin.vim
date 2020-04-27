@@ -268,10 +268,12 @@ else:
 flags.extend(user_header())
 
 # Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
-# which is required for compiling the standard library, and to 'c++11' for older
+# which is required for compiling the standard library, and to 'c++14' for older
 # versions.
-if platform.system() != 'Windows':
-    flags.append('-std=c++11')
+if platform.system() == 'Windows':
+    flags.append('/std:c++14')
+else:
+    flags.append('-std=c++14')
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for

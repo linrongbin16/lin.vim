@@ -12,6 +12,7 @@ source $HOME/.vim/settings/conf/key.vim
 source $HOME/.vim/settings/plug/indentline.vim
 source $HOME/.vim/settings/plug/nerdtree.vim
 source $HOME/.vim/settings/plug/ale.vim
+source $HOME/.vim/settings/plug/ctrlp.vim
 source $HOME/.vim/settings/plug/vim-autoformat.vim
 source $HOME/.vim/settings/plug/vim-gutentags.vim
 source $HOME/.vim/settings/plug/you-complete-me.vim

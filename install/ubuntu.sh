@@ -12,7 +12,7 @@ touch ~/.zshrc
 
 # Software Dependency
 sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
-sudo apt-get install -y gcc g++ clang autoconf automake cmake clang-format pkg-config build-essential
+sudo apt-get install -y gcc g++ clang cmake autoconf automake clang-format pkg-config build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
 sudo apt-get install -y silversearcher-ag unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip nodejs nodejs-dev node-gyp libssl1.0-dev npm
@@ -27,7 +27,6 @@ if [ ! -d universal-ctags ]; then
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
 fi
 cd universal-ctags
-git pull
 ./autogen.sh
 ./configure
 make
@@ -78,8 +77,6 @@ echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
-echo "[[ -s \"/home/$(whoami)/.linvimrc\" ]] && source \"/home/$(whoami)/.linvimrc\"" >> ~/.zshrc
 echo "source ~/.linvimrc" >> ~/.bashrc
-echo "[[ -s \"/home/$(whoami)/.linvimrc\" ]] && source \"/home/$(whoami)/.linvimrc\"" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

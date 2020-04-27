@@ -49,6 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 " Searching
 Plug 'rking/ag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'

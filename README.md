@@ -18,6 +18,42 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - File explorer and finder.
 - Well configured hot key.
 
+# User Guide
+
+### Hot Key
+- `F6` in normal mode: open/close nerdtree
+- `F7` in normal mode: open terminal
+- `F8` in normal mode: change color theme randomly
+
+### Search Text
+- `:Ag [text]` in normal mode: search [text]
+
+### Search File
+- `<Ctrl-p>` in normal mode: search file
+
+### Easy Align
+- `vipga=` in visual mode: align visual-selected paragraph
+- `gaip=` in normal mode: align inner paragraph
+
+### Move Cursor
+- `<Leader>s [char]`: search single char
+- `<Leader>w`: search word
+- `<Leader>j`: jump line forward
+- `<Leader>k`: jump line backward
+- `<Ctrl-j>`: move up 5 lines
+- `<Ctrl-k>`: move down 5 lines
+- `<Ctrl-h>`: move left 5 chars
+- `<Ctrl-l>`: move right 5 chars
+
+### Auto Completion
+- `<Ctrl-]>`: go to definition
+- `<Ctrl-o>`: go back to previous position
+- `<Ctrl-n>` in insert mode: select next completion candidate
+- `<Ctrl-p>` in insert mode: select previous completion candidate
+
+### C/C++
+- `:A`: jump between h/hpp and c/cc/cxx/cpp files
+
 # Installation
 
 ### Linux, UNIX, MacOS Installation
