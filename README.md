@@ -11,19 +11,21 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 # Feature
 
 - Multiple platform support: linux, unix, windows and mac.
-- Auto complete engine based on: YouCompleteMe, universal-ctags and ultisnips.
-- Multiple file format and programming languages support: C/C++, Python, Golang, Rust, Javascript, Haskell, Markdown, etc.
-- Random color schemes, better UI and syntax highlighting.
-- Async syntastics check.
-- File explorer and finder.
-- Well configured hot key.
+- Auto format, async syntastics check, auto complete engine, syntax highlighting and other features for multiple programming languages.
+- Random color schemes, file explorer and better UI.
+- Text and file searching.
+- Settings customization.
 
 # User Guide
 
 ### Hot Key
-- `F6` in normal mode: open/close nerdtree
+- `F6` in normal mode: open/close nerdtree file explorer
 - `F7` in normal mode: open terminal
 - `F8` in normal mode: change color theme randomly
+
+### Enhanced Copy Paste
+- `<Leader>y` in visual mode: copy visual-selected text to locale machine cache
+- `<Leader>p` in normal mode: paste text saved from local machine cache
 
 ### Search Text
 - `:Ag [text]` in normal mode: search [text]
