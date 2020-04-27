@@ -81,17 +81,17 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 " TypeScript
-"Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 " Thrift
 "Plug 'solarnz/thrift.vim', { 'for': ['thrift'] }
 "Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': ['hs'] }
 " Rust
-"Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
+Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
 " Toml
-"Plug 'cespare/vim-toml', { 'for': ['toml'] }
+Plug 'cespare/vim-toml', { 'for': ['toml'] }
 " Golang
-"Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoUpdateBinaries' }
 
 
 call plug#end()
