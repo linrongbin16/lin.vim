@@ -103,9 +103,9 @@ def get_file_name_base(name):
 
 def get_command_home():
     if is_windows():
-        return os.path.expanduser('~') + '\\.lin-boost\\command'
+        return os.path.expanduser('~') + '\\.vim\\commands'
     else:
-        return os.path.expanduser('~') + '/.lin-boost/command'
+        return os.path.expanduser('~') + '/.vim/commands'
 
 
 def get_command_name():

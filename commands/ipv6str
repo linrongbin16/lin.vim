@@ -1,3 +1,3 @@
 #! /usr/bin/env sh
 # Copyright 2018-  <linrongbin16@gmail.com>
-python3 ~/.lin-boost/command/ipv6str.py $@
+python3 ~/.vim/commands/ipv6str.py $@

@@ -74,7 +74,9 @@ echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
 
+echo "source ~/.linvimrc" >> ~/.zshrc
 echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.zshrc
+echo "source ~/.linvimrc" >> ~/.bashrc
 echo "[[ -s \"/Users/$(whoami)/.linvimrc\" ]] && source \"/Users/$(whoami)/.linvimrc\"" >> ~/.bashrc
 source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
