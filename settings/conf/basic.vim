@@ -83,8 +83,8 @@ set completeopt=menu
 " fold code
 set foldenable
 set foldmethod=indent
-set foldnestmax=50
-set foldlevel=50
+set foldnestmax=99
+set foldlevel=99
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 
 " indent
