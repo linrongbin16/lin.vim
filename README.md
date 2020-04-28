@@ -24,34 +24,35 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `F8` in normal mode: change color theme randomly
 
 ### Enhanced Copy Paste
-- `<Leader>y` in visual mode: copy visual-selected text to locale machine cache
-- `<Leader>p` in normal mode: paste text saved from local machine cache
+- `<leader>y` in visual mode: copy visual-selected text to locale machine cache
+- `<leader>p` in normal mode: paste text saved from local machine cache
 
 ### Search Text
 - `:Ag [text]` in normal mode: search [text]
 
 ### Search File
-- `<Ctrl-p>` in normal mode: search file
+- `<ctrl-p>` in normal mode: search file
 
 ### Easy Align
 - `vipga=` in visual mode: align visual-selected paragraph
 - `gaip=` in normal mode: align inner paragraph
 
 ### Move Cursor
-- `<Leader>s [char]`: search single char
-- `<Leader>w`: search word
-- `<Leader>j`: jump line forward
-- `<Leader>k`: jump line backward
-- `<Ctrl-j>`: move up 5 lines
-- `<Ctrl-k>`: move down 5 lines
-- `<Ctrl-h>`: move left 5 chars
-- `<Ctrl-l>`: move right 5 chars
+- `<leader>s [char]`: search single char
+- `<leader>w`: search word
+- `<leader>j`: jump line forward
+- `<leader>k`: jump line backward
+- `<ctrl-j>`: move up 5 lines
+- `<ctrl-k>`: move down 5 lines
+- `<ctrl-h>`: move left 5 chars
+- `<ctrl-l>`: move right 5 chars
 
 ### Auto Completion
-- `<Ctrl-]>`: go to definition
-- `<Ctrl-o>`: go back to previous position
-- `<Ctrl-n>` in insert mode: select next completion candidate
-- `<Ctrl-p>` in insert mode: select previous completion candidate
+- `<ctrl-]>`: go to definition
+- `<ctrl-o>`: go back to previous position
+- `<ctrl-n>` in insert mode: select next completion candidate
+- `<ctrl-p>` in insert mode: select previous completion candidate
+- `<leader>g` in normal mode: go to definition or declaration
 
 ### C/C++
 - `:A`: jump between h/hpp and c/cc/cxx/cpp files
