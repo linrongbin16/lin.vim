@@ -44,6 +44,25 @@ def disable_proxy():
         os.system('git config --unset http.proxy')
 
 
+def print_proxy():
+    gc = os.path.expanduser('~')
+    if util.is_windows():
+        gc = gc + '\\.gitconfig'
+    else:
+        gc = gc + '/.gitconfig'
+    lines = util.readlines_file(gc)
+    trigger = False
+    saver = None
+    for l in lines:
+        if trigger:
+            print('[lin-boost] .gitconfig: %s %s' % (saver, l.strip()))
+            trigger = False
+        if l.lower().find('http') >= 0:
+            saver = l.strip()
+            trigger = True
+    print('[lin-boost] gitproxy: %s' % util.read_file(db))
+
+
 if __name__ == '__main__':
     db = util.get_command_home() + '/gitproxy.db'
     util.check_help_message(help_msg)
@@ -56,6 +75,6 @@ if __name__ == '__main__':
     elif proxy.lower() in ['n', 'no', 'd', 'disable']:
         disable_proxy()
     elif proxy.lower() == 'cat':
-        print('[lin-boost] %s' % util.read_file(db))
+        print_proxy()
     else:
         util.write_file(db, proxy)

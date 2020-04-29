@@ -111,6 +111,16 @@ def read_file(name):
         return None
 
 
+def readlines_file(name):
+    try:
+        fp = open(name, 'r')
+        lines = fp.readlines()
+        fp.close()
+        return lines
+    except Exception:
+        return list()
+
+
 def write_file(name, text):
     try:
         fp = open(name, 'w')
