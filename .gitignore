@@ -21,3 +21,4 @@ vim-plug
 
 # custom vim settings
 user.vim
+commands/*.db

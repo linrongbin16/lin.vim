@@ -101,6 +101,28 @@ def get_file_name_base(name):
     return name
 
 
+def read_file(name):
+    try:
+        fp = open(name, 'r')
+        data = fp.read()
+        fp.close()
+        return data
+    except Exception:
+        return None
+
+
+def write_file(name, text):
+    try:
+        fp = open(name, 'w')
+        if isinstance(text, list):
+            fp.writelines(text)
+        else:
+            fp.write(text)
+        fp.close()
+    except Exception:
+        pass
+
+
 def get_command_home():
     if is_windows():
         return os.path.expanduser('~') + '\\.vim\\commands'
@@ -273,7 +295,8 @@ def get_ag_ignore_file():
             '\\ag.ignore') if is_windows() else (get_command_home() +
                                                  '/ag.ignore')
 
-    # git utils
+
+# git utils
 
 
 def get_git_root():

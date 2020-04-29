@@ -11,10 +11,11 @@ sys.path.append('.')
 import util
 
 
-def auto_echo(command_home):
-    os.chdir(command_home)
+def commands_help():
+    save_dir = os.getcwd()
+    os.chdir(util.get_command_home())
     sys.path.append('.')
-    echo = list()
+    cmd = list()
     command_list = [x for x in os.listdir('.') if x.endswith('.py')]
     command_list.sort()
     space_cnt = max(
@@ -31,19 +32,49 @@ def auto_echo(command_home):
         if command_name == util.get_command_name():
             continue
         spaces = ' ' * (space_cnt - len(command_name))
-        echo.append("    %s%s- %s" % (command_name, spaces, command_doc))
-    return echo
-
-
-def print_echo(echo):
-    print("Usage:")
-    for e in echo:
-        print(e)
-    print("")
+        cmd.append("    %s%s- %s" % (command_name, spaces, command_doc))
+    print("[lin-boost] Usage:")
+    for c in cmd:
+        print(c)
     print("Use -h/--help for more detail. Enjoy :)")
+    if os.path.exists(save_dir):
+        os.chdir(save_dir)
+
+
+def ssh_gen_help():
+    print(
+        "[lin-boost] SSH Configuration Help: generate ssh token for [your_email@email.com]"
+    )
+    print(
+        "    remove old 'id_rsa' and 'id_rsa.pub' in '~/.ssh' before generation."
+    )
+    print("    $ ssh-keygen -t rsa -b 4096 -C 'your_email@email.com'")
+    print("    $ Generating public/private rsa key pair.")
+    print(
+        "    $ Enter file in which to save the key (~/.ssh/id_rsa) `type ENTER`"
+    )
+    print("    $ Enter passphrase (empty for no passphrase) `type ENTER`")
+    print("    $ Enter same passphrase again: `type ENTER`")
+    print("    $ chmod 700 -R ~/.ssh")
+    print("    $ chmod 600 ~/.ssh/authorized_keys")
+    print("    $ chmod 600 ~/.ssh/id_rsa")
+    print("    $ chmod 644 ~/.ssh/id_rsa.pub")
+    print("")
+
+
+def ssh_login_help():
+    print(
+        "[lin-boost] SSH Login Help: login ssh server without username & password"
+    )
+    print(
+        "    copy generated '~/.ssh/id_rsa.pub' to ssh server and login ssh server."
+    )
+    print("    $ cat id_rsa.pub >> ~/.ssh/authorized_keys")
+    print("    $ ssh-add ~/.ssh/id_rsa")
+    print("")
 
 
 if __name__ == '__main__':
-    echo = list()
-    echo.extend(auto_echo(util.get_command_home()))
-    print_echo(echo)
+    ssh_gen_help()
+    ssh_login_help()
+    commands_help()
