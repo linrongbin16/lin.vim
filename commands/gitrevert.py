@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
-""" git revert to last n commits(you don't need `git push --force` to override remote) """
+""" git revert to last n commits (you don't need `git push --force` to override remote) """
 
 import sys
 import os
@@ -13,7 +13,7 @@ def help_msg():
     print("Brief:")
     print("    1. git revert to last commit")
     print("    2. git revert to last [n] commit, NOTICE: `%s 1` equals `%s`" %
-            (util.get_command_name(), util.get_command_name()))
+          (util.get_command_name(), util.get_command_name()))
     print("Usage:")
     print("    1. %s" % util.get_command_name())
     print("    2. %s [n]" % util.get_command_name())
@@ -29,8 +29,8 @@ if __name__ == '__main__':
         n = int(sys.argv[1])
     commit_name = util.get_git_last_commit(n - 1)
     util.check_user_confirm(
-            "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? " %
-            (n, commit_name, branch))
+        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? " %
+        (n, commit_name, branch))
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
     os.system("git revert %s" % commit_name)
