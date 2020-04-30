@@ -1,0 +1,12 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+""" list *.[suffix] files in current directory """
+
+import sys
+import os
+sys.path.append('.')
+import util
+
+
+
