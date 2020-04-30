@@ -13,7 +13,20 @@ import util
 class Srch:
     def __init__(self):
         self.name = util.get_command_name()
+        slash = None
+        if util.is_windows():
+            slash = '\\'
+        else:
+            slash = '/'
+        self.db = util.get_command_home() + slash + 'srch.ignore'
         self.opt_parser = optparse.OptionParser()
+        self.opt_parser.add_option(
+            '-d',
+            '--depth',
+            dest='depth',
+            type='int',
+            default=1,
+            help='*optional* search folder depth, by default 1')
         self.opt_parser.add_option(dest='text', help='search all [text]')
         self.opt_parser.add_option(
             '-c',
@@ -49,17 +62,21 @@ class Srch:
     def parse_opt(self):
         return self.opt_parser.parse_args()
 
-    def text(self, t):
-        pass
+    def text(self, text, depth):
+        os.system('ag --smart-case --depth -%d -p %s %s .' %
+                  (depth, self.db, text))
 
-    def count(self, t):
-        pass
+    def count(self, text, depth):
+        os.system('ag -c --smart-case --depth -%d -p %s %s .' %
+                  (depth, self.db, text))
 
-    def file(self, t):
-        pass
+    def file_name(self, text, depth):
+        os.system('ag -l --smart-case --depth -%d -p %s %s .' %
+                  (depth, self.db, text))
 
-    def word(self, w):
-        pass
+    def word(self, word, depth):
+        os.system('ag -w --smart-case --depth -%d -p %s %s .' %
+                  (depth, self.db, word))
 
     def ignore(self, filetype):
         pass
@@ -71,26 +88,30 @@ class Srch:
         pass
 
 
-def help_msg():
-    print("Brief:")
-    print("    count [text] in current directory")
-    print("Usage:")
-    print("    %s [text]" % util.get_command_name())
-    print("Try again")
-    exit(1)
-
-
 if __name__ == '__main__':
-    # opt_parser = optparse.OptionParser()
-    # opt_parser.add_option('-c',
-    # '--count',
-    # type='string',
-    # dest='count',
-    # help='search [text] count')
-
-    # util.check_help_message(help_msg)
-    # if len(sys.argv) != 2:
-    # help_msg()
-    # os.system('ag -c --smart-case --depth -1 -p %s %s .' %
-    # (util.get_ag_ignore_file(), util.get_sys_args_one_line()))
     srch = Srch()
+    (options, args) = srch.parse_opt()
+    depth = 1
+    if options.depth is not None:
+        depth = options.depth
+    if options.text is not None:
+        'srch [text]'
+        srch.text(options.text, depth)
+    if options.count is not None:
+        'srch -c/--count [text]'
+        srch.count(options.count, depth)
+    elif options.file_name is not None:
+        'srch -f/--file [text]'
+        srch.file_name(options.file_name, depth)
+    elif options.word is not None:
+        'srch -w/--word [text]'
+        srch.word(options.word, depth)
+    elif options.ignore is not None:
+        'srch -i/--ignore [text]'
+        srch.ignore(options.ignore)
+    elif options.purge is not None:
+        'srch -p/--purge [text]'
+        srch.purge()
+    elif options.show is not None:
+        'srch -s/--show [text]'
+        srch.show()

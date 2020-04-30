@@ -44,7 +44,7 @@ def disable_proxy():
         os.system('git config --unset http.proxy')
 
 
-def print_proxy():
+def dump_proxy():
     gc = os.path.expanduser('~')
     if util.is_windows():
         gc = gc + '\\.gitconfig'
@@ -75,6 +75,6 @@ if __name__ == '__main__':
     elif proxy.lower() in ['n', 'no', 'd', 'disable']:
         disable_proxy()
     elif proxy.lower() == 'cat':
-        print_proxy()
+        dump_proxy()
     else:
         util.write_file(db, proxy)
