@@ -42,6 +42,9 @@ endif
 " sound
 set noerrorbells
 set novisualbell
+if has("gui_running")
+    autocmd GUIEnter * set vb t_vb=
+endif
 
 " file writing
 set autoread

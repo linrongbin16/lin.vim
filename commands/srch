@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
-''' search with ag in current folder '''
+''' Search text in current folder by ag. '''
 
-import getopt
 import sys
 import os
+import getopt
 sys.path.append('.')
 import util
 
@@ -21,11 +21,12 @@ usage:
     %s [option] -w/--word <word>    search all <word>.
     %s [option] -c/--count <text>   search files and occurrences that contains <text>.
     %s [option] -f/--file <text>    search files that contains <text>.
-    %s [option]                     other options.
     %s -i/--ignore <filetype>       add <filetype> in searcher ignore configuration.
 
 option:
-    %s -d/--depth N                 searching folder depth, by default 1.
+    -d/--depth N                    searching folder depth, by default 1.
+
+flag:
     %s -p/--purge                   purge all filetypes in searcher configuration.
     %s -s/--show                    show all filetypes in searcher configuration.
     %s -h/--help                    show help message.
@@ -37,15 +38,15 @@ def help():
     exit(0)
 
 
-def text(text, depth):
+def search_text(text, depth):
     os.system('ag --smart-case --depth -%d -p %s %s .' % (depth, db, text))
     exit(0)
 
-def count(text, depth):
+def search_count(text, depth):
     os.system('ag -c --smart-case --depth -%d -p %s %s .' % (depth, db, text))
     exit(0)
 
-def file_name(text, depth):
+def search_file(text, depth):
     os.system('ag -l --smart-case --depth -%d -p %s %s .' % (depth, db, text))
     exit(0)
 
@@ -53,18 +54,18 @@ def word(word, depth):
     os.system('ag -w --smart-case --depth -%d -p %s %s .' % (depth, db, word))
     exit(0)
 
-def ignore(filetype):
+def ignore_filetype(filetype):
     if not filetype.startswith('.'):
         filetype = '.%s' % filetype
     filetype = '%s\n' % filetype.strip()
     util.append_file(db, filetype)
     exit(0)
 
-def purge():
+def purge_filetype():
     util.purge_file(db)
     exit(0)
 
-def show():
+def show_filetype():
     ignore_list = util.readlines_file(db)
     ignore_list = [x.strip() for x in ignore_list]
     ignore_str = ' '.join(ignore_list).strip()
@@ -84,18 +85,18 @@ if __name__ == '__main__':
             if opt[0] in ('-w', '--word'):
                 word(opt[1], depth)
             elif opt[0] in ('-c', '--count'):
-                count(opt[1], depth)
+                search_count(opt[1], depth)
             elif opt[0] in ('-f', '--file'):
-                file_name(opt[1], depth)
+                search_file(opt[1], depth)
             elif opt[0] in ('-i', '--ignore'):
-                ignore(opt[1])
+                ignore_filetype(opt[1])
             elif opt[0] in ('-p', '--purge'):
-                purge()
+                purge_filetype()
             elif opt[0] in ('-s', '--show'):
-                show()
+                show_filetype()
             elif opt[0] in ('-h', '--help'):
                 help()
-        text(args[0], depth)
+        search_text(args[0], depth)
     except getopt.GetoptError as e:
         print(str(e))
         help()
