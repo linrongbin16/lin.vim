@@ -161,7 +161,7 @@ def get_command_home():
 
 
 def get_command_name():
-    py_name = sys.argv[0][:-3]
+    py_name = sys.argv[0]
     left_slash = py_name.rfind('/')
     right_slash = py_name.rfind('\\')
     py_name = py_name[left_slash + 1:] if left_slash >= 0 else py_name
