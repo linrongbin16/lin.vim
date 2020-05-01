@@ -1,0 +1,39 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+""" Git operations. """
+
+import sys
+import os
+sys.path.append('.')
+import util
+
+
+name = util.get_command_name()
+
+help_msg='''Git operations.
+
+usage:
+    %s -bl/--branch-list                list all branches.
+    %s -bm/--branch-move                move to existing branch.
+    %s -bc/--branch-create              create new branch and move to it.
+    %s -pl/--pull                       pull changes from remote.
+    %s -ps/--push                       push changes to remote.
+    %s -f/--fetch                       fetch remote changes.
+    %s -d/--discard                     discard temporary changes.
+    %s -rv/--revert                     revert to previous commit as a new commit.
+    %s -rs/--reset                      reset to previous commit as the old commit.
+    %s -p/--proxy                       configure proxy for git.
+    %s -pc/--proxy-cat                  show proxy configuration for git.
+    %s -pe/--proxy-enable               enable proxy configuration for git.
+    %s -pd/--proxy-disable              disable proxy configuration for git.
+
+flag:
+    %s -h/--help                        show help message.
+''' % (name, name, name, name, name, name, name, name, name, name, name, name, name, name)
+
+
+def help():
+    print(help_msg)
+    exit(0)
+

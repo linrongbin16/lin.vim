@@ -92,6 +92,7 @@ if __name__=='__main__':
                 file_list(opt[1], skip_hidden)
             elif opt[0] in ('-h', '--help'):
                 help()
+        help()
     except getopt.GetoptError as e:
-        print(str(e))
+        print(str(e) + '\n')
         help()

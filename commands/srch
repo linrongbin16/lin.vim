@@ -98,5 +98,5 @@ if __name__ == '__main__':
                 help()
         search_text(args[0], depth)
     except getopt.GetoptError as e:
-        print(str(e))
+        print(str(e) + '\n')
         help()
