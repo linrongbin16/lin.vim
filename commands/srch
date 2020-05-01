@@ -26,7 +26,7 @@ class Srch:
             dest='depth',
             type=int,
             default=1,
-            help='*optional* search folder [depth], by default 1')
+            help='*optional* search in folder [depth], by default 1')
         self.parser.add_argument('-t', '--text', dest='text', help='search all [text]')
         self.parser.add_argument('-c',
                                  '--count',
@@ -44,17 +44,19 @@ class Srch:
         self.parser.add_argument(
             '-p',
             '--purge',
+            default=None,
             action='store_true',
             dest='purge',
             help='purge all filetypes ignored for searcher')
         self.parser.add_argument(
             '-s',
             '--show',
+            default=None,
             action='store_true',
             dest='show',
             help='show all filetypes ignored for searcher')
 
-    def parse_opt(self):
+    def parse(self):
         return self.parser.parse_args()
 
     def text(self, text, depth):
@@ -91,9 +93,9 @@ class Srch:
 
 if __name__ == '__main__':
     srch = Srch()
-    args = srch.parse_opt()
+    args = srch.parse()
     if args.text is not None:
-        'srch [text]'
+        'srch -t/--text [text]'
         srch.text(args.text, args.depth)
     if args.count is not None:
         'srch -c/--count [text]'

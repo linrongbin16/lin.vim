@@ -4,9 +4,77 @@
 """ list *.[suffix] files in current directory """
 
 import sys
+import argparse
 import os
 sys.path.append('.')
 import util
 
 
+class Filer:
+    def __init__(self):
+        self.name = util.get_command_name()
+        slash = None
+        if util.is_windows():
+            slash = '\\'
+        else:
+            slash = '/'
+        self.db = util.get_command_home() + slash + 'filer.ignore'
+        self.parser = argparse.ArgumentParser(description='File operations recursively from current folder')
+        self.parser.add_argument(
+            '-d',
+            '--delete',
+            dest='delete',
+            help='delete files by [filetype]')
+        self.parser.add_argument('-r', '--replace', dest='replace', nargs=2, help='replace [origin] with [text]')
+        self.parser.add_argument('-c',
+                                 '--count',
+                                 dest='count',
+                                 help='search file count that contains [text]')
+        self.parser.add_argument('-f',
+                                 '--file',
+                                 dest='file_name',
+                                 help='search file names that contains [text]')
+        self.parser.add_argument('-w', '--word', dest='word', help='search all [word]')
+        self.parser.add_argument('-i',
+                                 '--ignore',
+                                 dest='ignore',
+                                 help='ignore [filetype] for searcher')
+        self.parser.add_argument(
+            '-p',
+            '--purge',
+            action='store_true',
+            dest='purge',
+            help='purge all filetypes ignored for searcher')
+        self.parser.add_argument(
+            '-s',
+            '--show',
+            action='store_true',
+            dest='show',
+            help='show all filetypes ignored for searcher')
+
+
+if __name__=='__main__':
+    filer = Filer()
+    args = filer.parse()
+    if args.text is not None:
+        'srch [text]'
+        srch.text(args.text, args.depth)
+    if args.count is not None:
+        'srch -c/--count [text]'
+        srch.count(args.count, args.depth)
+    elif args.file_name is not None:
+        'srch -f/--file [text]'
+        srch.file_name(args.file_name, args.depth)
+    elif args.word is not None:
+        'srch -w/--word [text]'
+        srch.word(args.word, args.depth)
+    elif args.ignore is not None:
+        'srch -i/--ignore [text]'
+        srch.ignore(args.ignore)
+    elif args.purge is True:
+        'srch -p/--purge'
+        srch.purge()
+    elif args.show is True:
+        'srch -s/--show'
+        srch.show()
 
