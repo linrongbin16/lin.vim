@@ -206,7 +206,7 @@ def backup_file(target):
     if not os.path.exists(target):
         return
     bakname = ".%s.bak" % (target)
-    check_user_confirm("[lin-boost] backup existed '%s' to '%s', yes? " %
+    check_user_confirm("[lin-command] backup existed '%s' to '%s', yes? " %
                        (target, bakname))
     if os.path.exists(bakname):
         os.rmdir(bakname)
@@ -336,7 +336,7 @@ def get_git_root():
 
 def check_git_repository():
     if get_git_root() is None:
-        print("[lin-boost] error: not a git repository")
+        print("[lin-command] error: not a git repository")
         exit(3)
 
 
@@ -356,40 +356,40 @@ def get_git_untract_files():
 
 
 def get_git_remote_repository_count():
-    branches, _ = run('git', 'remote')
-    return len(branches)
+    repos, _ = run('git', 'remote')
+    return len(repos)
 
 
 def get_git_remote_repository():
-    branches, _ = run('git', 'remote')
-    remote_branches = [x.strip() for x in branches]
-    if len(remote_branches) < 1:
+    repos, _ = run('git', 'remote')
+    repos = [x.strip() for x in repos]
+    if len(repos) <= 0:
         return None
-    remote_str = ""
-    if len(remote_branches) > 1:
-        remote_branches.sort()
-        remote_str = ''
-        for i in range(len(remote_branches)):
-            remote_str = remote_str + "\'" + remote_branches[i] + "\'[" + str(
-                i) + "]"
-            if i < len(remote_branches) - 1:
-                remote_str = remote_str + ', '
-        print('[lin-boost] detect multiple remote repositories: %s' %
-              (remote_str))
-        user_input = input(
-            '[lin-boost] which one to choose(%s[0] if empty)? ' %
-            ("\'" + remote_branches[0] + "\'"))
-        if not is_empty_str(user_input):
-            try:
-                remote_str = list(remote_branches)[int(user_input)]
-            except Exception:
-                print('[lin-boost] error input: %s' % (user_input))
-                exit(3)
-        else:
-            remote_str = list(remote_branches)[0]
-    if len(remote_branches) == 1:
-        remote_str = list(remote_branches)[0]
-    return remote_str
+    repos.sort()
+    repo_str = ', '.join(
+        ['\'%s\'[%d]' % (repos[i], i) for i in range(len(repos))])
+    print('[lin-command] detected remote repositories: %s' % (repo_str))
+    user_input = input(
+        '[lin-command] choose remote repository 0-%d, by default: \'%s\'[0]: '
+        % (len(repos), repos[0]))
+    if is_empty_str(user_input):
+        repo_str = list(repos)[0]
+    else:
+        try:
+            repo_str = repos[int(user_input)]
+        except Exception:
+            print('[lin-command] error input: %s' % (user_input))
+            exit(3)
+    return repo_str
+
+
+def get_git_remote_branch():
+    branches, _ = run('git', 'status')
+    branches = [x.strip() for x in branches]
+    branch = branches[0].split(' ')[2].strip()
+    user_input = input('[lin-command] choose branch, by default: \'%s\': ' %
+                       (branch))
+    return branch if is_empty_str(user_input) else user_input
 
 
 def check_git_is_behind():
