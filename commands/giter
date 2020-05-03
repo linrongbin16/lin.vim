@@ -14,9 +14,9 @@ name = util.get_command_name()
 help_msg='''Git operations.
 
 usage:
-    %s -bl/--branch-list                list all branches.
-    %s -bm/--branch-move                move to existing branch.
-    %s -bc/--branch-create              create new branch and move to it.
+    giter -bl/--branch-list                list all branches.
+    giter -bm/--branch-move                move to existing branch.
+    giter -bc/--branch-create              create new branch and move to it.
     %s -pl/--pull                       pull changes from remote.
     %s -ps/--push                       push changes to remote.
     %s -f/--fetch                       fetch remote changes.
