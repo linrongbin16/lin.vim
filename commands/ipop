@@ -1,0 +1,119 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import getopt
+import datetime
+sys.path.append('.')
+import util
+
+help_msg = '''IP calculations.
+
+usage:
+    ipop -v4/--validate-v4 <ipv4>   validate <ipv4> string.
+    ipop -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
+    ipop -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
+    ipop -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
+    ipop -s4/--string-v4 <ipv4>     convert <ipv4> 32-bit unsigned integer to string, eg: '2130706433' -> "127.0.0.1".
+    ipop -i4/--int-v4 <ipv4>        convert <ipv4> string to 32-bit unsigned integer, eg "192.168.0.1" -> '3232235521'.
+    ipop -v6/--validate-v6 <ipv6>   validate <ipv6> string.
+    ipop -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
+    ipop -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
+    ipop -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
+    ipop -s6/--string-v6 <ipv6>     convert <ipv6> 128-bit unsigned integer to string, eg: '2130706433' -> "127.0.0.1".
+    ipop -i6/--int-v6 <ipv6>        convert <ipv6> string to 128-bit unsigned integer, eg "192.168.0.1" -> '3232235521'.
+
+flag:
+    ipop -h/--help                     show help message.
+'''
+
+
+def help():
+    print(help_msg)
+    exit(0)
+
+
+def validate_ipv4(ipv4):
+    exit(0)
+
+
+def validate_ipv6(ipv6):
+    exit(0)
+
+
+def min_ipv4():
+    print(
+        '[lin-ops] minimum ipv4: \'0.0.0.0\', or as 32-bit unsigned integer: 0'
+    )
+    exit(0)
+
+
+def max_ipv4():
+    print(
+        '[lin-ops] maximum ipv4: \'255.255.255.255\', or as 32-bit unsigned integer: 4294967295'
+    )
+    exit(0)
+
+
+def loopback_ipv4():
+    print(
+        '[lin-ops] loopback ipv4: \'127.0.0.1\', or as 32-bit unsigned integer: 2130706433'
+    )
+    exit(0)
+
+
+def min_ipv6():
+    print(
+        '[lin-ops] minimum ipv4: \'0:0:0:0:0:0:0:0\' or \'::0\', or as 128-bit unsigned integer: 0'
+    )
+    exit(0)
+
+
+def max_ipv6():
+    print(
+        '[lin-ops] minimum ipv4: \'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff\', or as 128-bit unsigned integer: ?'
+    )
+    exit(0)
+
+
+def loopback_ipv6():
+    print(
+        '[lin-ops] loopback ipv4: \'0000:0000:0000:0000:0000:0000:0000:0001\' or \'::1\', or as 128-bit unsigned integer: '
+    )
+    exit(0)
+
+
+def ipv4_stoi(ipv4):
+    exit(0)
+
+
+def ipv4_itos(ipv4):
+    exit(0)
+
+
+def ipv6_stoi(ipv6):
+    exit(0)
+
+
+def ipv6_itos(ipv6):
+    exit(0)
+
+
+if __name__ == '__main__':
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'v:n:x:s:i:h', [
+            'validate-v4=', 'validate-v6=', 'min-v4', 'max-v4', 'loopback-v4',
+            'min-v6', 'max-v6', 'loopback-v6', 'help'
+        ])
+        for opt in opts:
+            if opt[0] == '-v':
+                if opt[1] == '4':
+                    validate_ipv4(args[0])
+                elif opt[1] == '6':
+                    validate_ipv6(args[0])
+        help()
+    except getopt.GetoptError as e:
+        print(str(e) + '\n')
+        help()

@@ -1,0 +1,55 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+""" lin-ops help document. """
+
+import sys
+import os
+sys.path.append('.')
+import util
+
+
+def ops_help():
+    msg = '''[lin-ops] helper operations.
+
+usage:
+    agop    Searching in current folder by ag.
+    fileop  File operations in current folder.
+    gitop   Git operations.
+'''
+    print(msg)
+
+
+def ssh_gen_help():
+    msg = '''[lin-ops] SSH Configuration Help: generate ssh token for [your_email@email.com].
+
+usage:
+    remove old 'id_rsa' and 'id_rsa.pub' in '~/.ssh' before generation.
+    $ ssh-keygen -t rsa -b 4096 -C 'your_email@email.com'
+    $ Generating public/private rsa key pair.
+    $ Enter file in which to save the key (~/.ssh/id_rsa) `type ENTER`
+    $ Enter passphrase (empty for no passphrase) `type ENTER`
+    $ Enter same passphrase again: `type ENTER`
+    $ chmod 700 -R ~/.ssh
+    $ chmod 600 ~/.ssh/authorized_keys
+    $ chmod 600 ~/.ssh/id_rsa
+    $ chmod 644 ~/.ssh/id_rsa.pub
+'''
+    print(msg)
+
+
+def ssh_login_help():
+    msg = '''[lin-ops] SSH Login Help: login ssh server without username & password.
+
+usage:
+    copy generated '~/.ssh/id_rsa.pub' to ssh server and login ssh server.
+    $ cat id_rsa.pub >> ~/.ssh/authorized_keys
+    $ ssh-add ~/.ssh/id_rsa
+'''
+    print(msg)
+
+
+if __name__ == '__main__':
+    ssh_gen_help()
+    ssh_login_help()
+    ops_help()

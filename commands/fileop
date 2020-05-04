@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
-''' File operations in current folder. '''
 
 import sys
 import os
@@ -12,15 +11,15 @@ import util
 help_msg = '''File operations in current folder.
 
 usage:
-    filer [option] -d/--delete <filetype>               delete all files that has <filetype>.
-    filer [option] -r/--replace <old> <new> <filetype>  swap <old> with <new> for all files that has <filetype>.
-    filer [option] -l/--list <filetype>                 list all files that has <filetype>.
+    fileop [option] -d/--delete <filetype>              delete all files that has <filetype>.
+    fileop [option] -r/--replace <old> <new> <filetype> swap <old> with <new> for all files that has <filetype>.
+    fileop [option] -l/--list <filetype>                list all files that has <filetype>.
 
 option:
     -i/--include-hidden                                 operations include hidden folder, by default False.
 
 flag:
-    filer -h/--help                                     show help message.
+    fileop -h/--help                                    show help message.
 '''
 
 
@@ -64,7 +63,7 @@ def file_delete(filetype, include_hidden):
         if relname.startswith('.'):
             continue
         if relname.endswith(filetype):
-            print('[lin-command] remove %s' % f)
+            print('[lin-ops] remove %s' % f)
             os.remove(f)
     exit(0)
 
@@ -98,8 +97,6 @@ if __name__ == '__main__':
                 file_replace(opt[1], opt[2], opt[3], include_hidden)
             elif opt[0] in ('-l', '--list'):
                 file_list(opt[1], include_hidden)
-            elif opt[0] in ('-h', '--help'):
-                help()
         help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')

@@ -206,7 +206,7 @@ def backup_file(target):
     if not os.path.exists(target):
         return
     bakname = ".%s.bak" % (target)
-    check_user_confirm("[lin-command] backup existed '%s' to '%s', yes? " %
+    check_user_confirm("[lin-ops] backup existed '%s' to '%s', yes? " %
                        (target, bakname))
     if os.path.exists(bakname):
         os.rmdir(bakname)
@@ -336,7 +336,7 @@ def get_git_root():
 
 def check_git_repository():
     if get_git_root() is None:
-        print("[lin-command] error: not a git repository")
+        print("[lin-ops] error: not a git repository")
         exit(3)
 
 
@@ -368,17 +368,17 @@ def get_git_remote_repository():
     repos.sort()
     repo_str = ', '.join(
         ['\'%s\'[%d]' % (repos[i], i) for i in range(len(repos))])
-    print('[lin-command] detected remote repositories: %s' % (repo_str))
+    print('[lin-ops] detected remote repositories: %s' % (repo_str))
     user_input = input(
-        '[lin-command] choose remote repository 0-%d, by default: \'%s\'[0]: '
-        % (len(repos), repos[0]))
+        '[lin-ops] choose remote repository 0-%d, by default: \'%s\'[0]: ' %
+        (len(repos), repos[0]))
     if is_empty_str(user_input):
         repo_str = list(repos)[0]
     else:
         try:
             repo_str = repos[int(user_input)]
         except Exception:
-            print('[lin-command] error input: %s' % (user_input))
+            print('[lin-ops] error input: %s' % (user_input))
             exit(3)
     return repo_str
 
@@ -387,7 +387,7 @@ def get_git_remote_branch():
     branches, _ = run('git', 'status')
     branches = [x.strip() for x in branches]
     branch = branches[0].split(' ')[2].strip()
-    user_input = input('[lin-command] choose branch, by default: \'%s\': ' %
+    user_input = input('[lin-ops] choose branch, by default: \'%s\': ' %
                        (branch))
     return branch if is_empty_str(user_input) else user_input
 

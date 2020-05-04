@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
-""" Git operations. """
 
 import sys
 import os
@@ -16,27 +15,27 @@ db = util.get_command_home() + slash + 'git_proxy.db'
 help_msg = '''Git operations.
 
 usage:
-    git -ba/--branch-all              show all branches.
-    git -bl/--branch-local            show all local branches.
-    git -br/--branch-remote           show all remote branches.
-    git -bc/--branch-create <branch>  create new local <branch> and move to it.
-    git -bm/--branch-move <branch>    move to local existing <branch>.
-    git [option] -pl/--pull           pull from remote/branch.
-    git [option] -ps/--push           push to remote/branch with comment.
-    git -d/--discard                  discard changes.
-    git -rb/--rebase [branch]         rebase to remote/[branch].
-    git -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
-    git -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    git -cp/--create-proxy <proxy>    create configure <proxy> for git.
-    git -sp/--show-proxy              show proxy configuration for git.
-    git -ep/--enable-proxy            enable proxy configuration for git.
-    git -dp/--disable-proxy           disable proxy configuration for git.
+    gitop -ba/--branch-all              show all branches.
+    gitop -bl/--branch-local            show all local branches.
+    gitop -br/--branch-remote           show all remote branches.
+    gitop -bc/--branch-create <branch>  create new local <branch> and move to it.
+    gitop -bm/--branch-move <branch>    move to local existing <branch>.
+    gitop [option] -pl/--pull           pull from remote/branch.
+    gitop [option] -ps/--push           push to remote/branch with comment.
+    gitop -d/--discard                  discard changes.
+    gitop -rb/--rebase [branch]         rebase to remote/[branch].
+    gitop -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
+    gitop -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
+    gitop -cp/--create-proxy <proxy>    create configure <proxy> for git.
+    gitop -sp/--show-proxy              show proxy configuration for git.
+    gitop -ep/--enable-proxy            enable proxy configuration for git.
+    gitop -dp/--disable-proxy           disable proxy configuration for git.
 
 option:
     -f/--force                          force operation on pull/push, by default False.
 
 flag:
-    git -h/--help                     show help message.
+    gitop -h/--help                     show help message.
 '''
 
 
@@ -49,17 +48,17 @@ def git_branch_show(opt):
     util.check_git_repository()
     if opt.startswith('a'):
         outs, errs = util.run('git', 'branch', '-a')
-        print("[lin-command] all branch:")
+        print("[lin-ops] all branch:")
         for o in outs:
             print("  %s" % (o.strip()))
     elif opt.startswith('l'):
         outs, errs = util.run('git', 'branch')
-        print("[lin-command] local branch:")
+        print("[lin-ops] local branch:")
         for o in outs:
             print("  %s" % (o.strip()))
     elif opt.startswith('r'):
         outs, errs = util.run('git', 'branch', '-r')
-        print("[lin-command] remote branch:")
+        print("[lin-ops] remote branch:")
         for o in outs:
             print("  %s" % (o.strip()))
     exit(0)
@@ -81,11 +80,11 @@ def git_pull(force):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
-        print("[lin-command] remote git repository not exist!")
+        print("[lin-ops] remote git repository not exist!")
         exit(3)
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
-    print('[lin-command] git pull from \'%s\'/\'%s\'' % (repo, branch))
+    print('[lin-ops] git pull from \'%s\'/\'%s\'' % (repo, branch))
     os.system("git fetch")
     os.system("git pull %s %s %s" % ('--force' if force else '', repo, branch))
     exit(0)
@@ -95,15 +94,15 @@ def git_push(force):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
-        print("[lin-command] remote git repository not exist!")
+        print("[lin-ops] remote git repository not exist!")
         exit(3)
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
-    comment = input('[lin-command] enter comment: ')
-    comment = '[lin-command] git push at %s' % (datetime.datetime.now(
+    comment = input('[lin-ops] enter comment: ')
+    comment = '[lin-ops] git push at %s' % (datetime.datetime.now(
     ).strftime('%Y/%m/%d %H:%M:%S')) if util.is_empty_str(comment) else comment
     util.check_user_confirm(
-        '[lin-command] git push to \'%s\'/\'%s\' with \'%s\', yes? ' %
+        '[lin-ops] git push to \'%s\'/\'%s\' with \'%s\', yes? ' %
         (repo, branch, comment))
     os.chdir(util.get_git_root())
     os.system("git add -A .")
@@ -121,10 +120,10 @@ def git_discard():
     file_list = modifies + untracts
     for i in file_list:
         if i in modifies:
-            print('[lin-command] discard: %s' % (i + ' '))
+            print('[lin-ops] discard: %s' % (i + ' '))
             os.system('git checkout %s' % (i + ' '))
         elif i in untracts:
-            print('[lin-command] remove: %s' % (i + ' '))
+            print('[lin-ops] remove: %s' % (i + ' '))
             os.system('rm %s' % (i + ' '))
     if os.path.exists(save_dir):
         os.chdir(save_dir)
@@ -179,12 +178,12 @@ def git_dump_proxy():
     saver = None
     for l in proxies:
         if trigger:
-            print('[lin-command] .gitconfig: %s %s' % (saver, l.strip()))
+            print('[lin-ops] .gitconfig: %s %s' % (saver, l.strip()))
             trigger = False
         if l.lower().find('http') >= 0:
             saver = l.strip()
             trigger = True
-    print('[lin-command] git proxy: %s' % util.read_file(db))
+    print('[lin-ops] git proxy: %s' % util.read_file(db))
     exit(0)
 
 
@@ -192,7 +191,7 @@ def git_enable_proxy():
     proxy = util.read_file(db)
     if proxy is None:
         print(
-            '[lin-command] git proxy not configured yet, please try \'git -p <proxy>\''
+            '[lin-ops] git proxy not configured yet, please try \'git -p <proxy>\''
         )
         exit(0)
     httpcmd = 'git config --global http.proxy %s' % proxy
