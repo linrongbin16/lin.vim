@@ -35,45 +35,85 @@ def help():
     exit(0)
 
 
+def ipv4_stoi_impl(ipv4):
+    ip_split = ipv4.split('.')
+    ip1 = int(ip_split[0]) * 16777216
+    ip2 = int(ip_split[1]) * 65536
+    ip3 = int(ip_split[2]) * 256
+    ip4 = int(ip_split[3])
+    return ip1 + ip2 + ip3 + ip4
+
+
+def ipv4_itos_impl(ipv4):
+    ip1 = int(ipv4 / 16777216) % 256
+    ip2 = int(ipv4 / 65536) % 256
+    ip3 = int(ipv4 / 256) % 256
+    ip4 = int(ipv4) % 256
+    return '%d.%d.%d.%d' % (ip1, ip2, ip3, ip4)
+
+
+def ipv6_stoi_impl(ipv6):
+    ip_split = ipv6.split('.')
+    ip1 = int(ip_split[0]) * 16777216
+    ip2 = int(ip_split[1]) * 65536
+    ip3 = int(ip_split[2]) * 256
+    ip4 = int(ip_split[3])
+    return ip1 + ip2 + ip3 + ip4
+
+
+def ipv6_itos_impl(ipv6):
+    ip1 = int(ipv6 / 16777216) % 256
+    ip2 = int(ipv6 / 65536) % 256
+    ip3 = int(ipv6 / 256) % 256
+    ip4 = int(ipv6) % 256
+    return '%d.%d.%d.%d' % (ip1, ip2, ip3, ip4)
+
+
 def validate_ipv4(ipv4):
+    print('[lin-ops] ipv4 %s: %s' %
+          (ipv4, 'True' if util.check_valid_ipv4(ipv4) else 'False'))
     exit(0)
 
 
 def validate_ipv6(ipv6):
+    print('[lin-ops] ipv6 %s: %s' %
+          (ipv6, 'True' if util.check_valid_ipv6(ipv6) else 'False'))
     exit(0)
 
 
 def min_ipv4():
-    print(
-        '[lin-ops] minimum ipv4: \'0.0.0.0\', or as 32-bit unsigned integer: 0'
-    )
+    min_ipv4_str = '0.0.0.0'
+    print('[lin-ops] minimum ipv4: \'%s\' (%d)' %
+          (min_ipv4_str, ipv4_stoi_impl(min_ipv4_str)))
     exit(0)
 
 
 def max_ipv4():
-    print(
-        '[lin-ops] maximum ipv4: \'255.255.255.255\', or as 32-bit unsigned integer: 4294967295'
-    )
+    max_ipv4_str = '255.255.255.255'
+    print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
+          (max_ipv4_str, ipv4_stoi_impl(max_ipv4_str)))
     exit(0)
 
 
 def loopback_ipv4():
-    print(
-        '[lin-ops] loopback ipv4: \'127.0.0.1\', or as 32-bit unsigned integer: 2130706433'
-    )
+    lo_ipv4_str = '127.0.0.1'
+    print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
+          (lo_ipv4_str, ipv4_stoi_impl(lo_ipv4_str)))
     exit(0)
 
 
 def min_ipv6():
-    print(
-        '[lin-ops] minimum ipv4: \'0:0:0:0:0:0:0:0\' or \'::0\', or as 128-bit unsigned integer: 0'
-    )
+    min_ipv6_str = '0:0:0:0:0:0:0:0'
+    min_ipv6_str2 = '::0'
+    print('[lin-ops] minimum ipv4: \'%s\' or \'%s\' (%d)' %
+          (min_ipv6_str, min_ipv6_str2, ipv6_stoi_impl(min_ipv6_str)))
     exit(0)
 
 
 def max_ipv6():
+    max_ipv6_str = 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'
     print(
-        '[lin-ops] minimum ipv4: \'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff\', or as 128-bit unsigned integer: ?'
+        '[lin-ops] maximum ipv4: \'%s\' (%d)' % (max_ipv6_str, ipv6_stoi_impl(max_ipv6_str))
     )
     exit(0)
 
@@ -86,18 +126,22 @@ def loopback_ipv6():
 
 
 def ipv4_stoi(ipv4):
+    print('[lin-ops] %d' % (ipv4_stoi_impl(ipv4)))
     exit(0)
 
 
 def ipv4_itos(ipv4):
+    print('[lin-ops] %s' % (ipv4_itos_impl(ipv4)))
     exit(0)
 
 
 def ipv6_stoi(ipv6):
+    print('[lin-ops] %d' % (ipv6_stoi_impl(ipv6)))
     exit(0)
 
 
 def ipv6_itos(ipv6):
+    print('[lin-ops] %s' % (ipv6_itos_impl(ipv6)))
     exit(0)
 
 
