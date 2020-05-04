@@ -1,3 +1,3 @@
 @ECHO OFF
 REM Copyright 2018-  <linrongbin16@gmail.com>
-python %USERPROFILE%\.vim\commands\giter.py %*
+python %USERPROFILE%\.vim\commands\fileop %*

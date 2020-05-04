@@ -6,3 +6,5 @@ map <F7> :terminal ++rows=20<CR>
 
 " change color
 map <F8> :call RandomColor()<CR>
+
+map <F9> :Autoformat<CR>

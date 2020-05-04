@@ -16,27 +16,27 @@ db = util.get_command_home() + slash + 'git_proxy.db'
 help_msg = '''Git operations.
 
 usage:
-    giter -ba/--branch-all              show all branches.
-    giter -bl/--branch-local            show all local branches.
-    giter -br/--branch-remote           show all remote branches.
-    giter -bc/--branch-create <branch>  create new local <branch> and move to it.
-    giter -bm/--branch-move <branch>    move to local existing <branch>.
-    giter [option] -pl/--pull           pull from remote/branch.
-    giter [option] -ps/--push           push to remote/branch with comment.
-    giter -d/--discard                  discard changes.
-    giter -rb/--rebase [branch]         rebase to remote/[branch].
-    giter -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
-    giter -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    giter -p/--proxy <proxy>            configure <proxy> for git.
-    giter -ps/--proxy-show              show proxy configuration for git.
-    giter -pe/--proxy-enable            enable proxy configuration for git.
-    giter -pd/--proxy-disable           disable proxy configuration for git.
+    git -ba/--branch-all              show all branches.
+    git -bl/--branch-local            show all local branches.
+    git -br/--branch-remote           show all remote branches.
+    git -bc/--branch-create <branch>  create new local <branch> and move to it.
+    git -bm/--branch-move <branch>    move to local existing <branch>.
+    git [option] -pl/--pull           pull from remote/branch.
+    git [option] -ps/--push           push to remote/branch with comment.
+    git -d/--discard                  discard changes.
+    git -rb/--rebase [branch]         rebase to remote/[branch].
+    git -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
+    git -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
+    git -cp/--create-proxy <proxy>    create configure <proxy> for git.
+    git -sp/--show-proxy              show proxy configuration for git.
+    git -ep/--enable-proxy            enable proxy configuration for git.
+    git -dp/--disable-proxy           disable proxy configuration for git.
 
 option:
     -f/--force                          force operation on pull/push, by default False.
 
 flag:
-    giter -h/--help                     show help message.
+    git -h/--help                     show help message.
 '''
 
 
@@ -45,7 +45,7 @@ def help():
     exit(0)
 
 
-def giter_branch_show(opt):
+def git_branch_show(opt):
     util.check_git_repository()
     if opt.startswith('a'):
         outs, errs = util.run('git', 'branch', '-a')
@@ -65,19 +65,19 @@ def giter_branch_show(opt):
     exit(0)
 
 
-def giter_branch_create(name):
+def git_branch_create(name):
     util.check_git_repository()
     os.system("git checkout -b %s" % (name))
     exit(0)
 
 
-def giter_branch_move(name):
+def git_branch_move(name):
     util.check_git_repository()
     os.system("git checkout %s" % (name))
     exit(0)
 
 
-def giter_pull(force):
+def git_pull(force):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
@@ -91,7 +91,7 @@ def giter_pull(force):
     exit(0)
 
 
-def giter_push(force):
+def git_push(force):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
@@ -100,7 +100,7 @@ def giter_push(force):
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
     comment = input('[lin-command] enter comment: ')
-    comment = '[lin-command] giter push at %s' % (datetime.datetime.now(
+    comment = '[lin-command] git push at %s' % (datetime.datetime.now(
     ).strftime('%Y/%m/%d %H:%M:%S')) if util.is_empty_str(comment) else comment
     util.check_user_confirm(
         '[lin-command] git push to \'%s\'/\'%s\' with \'%s\', yes? ' %
@@ -112,7 +112,7 @@ def giter_push(force):
     exit(0)
 
 
-def giter_discard():
+def git_discard():
     util.check_git_repository()
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
@@ -131,13 +131,13 @@ def giter_discard():
     exit(0)
 
 
-def giter_rebase(branch):
+def git_rebase(branch):
     util.check_git_repository()
     os.system("git rebase %s" % branch)
     exit(0)
 
 
-def giter_revert(n):
+def git_revert(n):
     util.check_git_repository()
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
@@ -152,7 +152,7 @@ def giter_revert(n):
     exit(0)
 
 
-def giter_reset(n):
+def git_reset(n):
     util.check_git_repository()
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
@@ -167,12 +167,12 @@ def giter_reset(n):
     exit(0)
 
 
-def giter_config_proxy(p):
+def git_config_proxy(p):
     util.write_file(db, p)
     exit(0)
 
 
-def giter_dump_proxy():
+def git_dump_proxy():
     gc = os.path.expanduser('~') + slash + '.gitconfig'
     proxies = util.readlines_file(gc)
     trigger = False
@@ -188,11 +188,11 @@ def giter_dump_proxy():
     exit(0)
 
 
-def giter_enable_proxy():
+def git_enable_proxy():
     proxy = util.read_file(db)
     if proxy is None:
         print(
-            '[lin-command] git proxy not configured yet, please try \'giter -p <proxy>\''
+            '[lin-command] git proxy not configured yet, please try \'git -p <proxy>\''
         )
         exit(0)
     httpcmd = 'git config --global http.proxy %s' % proxy
@@ -202,18 +202,19 @@ def giter_enable_proxy():
     exit(0)
 
 
-def giter_disable_proxy():
+def git_disable_proxy():
     os.system('git config --global --unset https.proxy')
     os.system('git config --global --unset http.proxy')
+    exit(0)
 
 
 if __name__ == '__main__':
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'fb:p:r:dh', [
+        opts, args = getopt.getopt(sys.argv[1:], 'fb:r:c:p:s:e:d:h', [
             'force', 'branch-local', 'branch-remote', 'branch-all',
             'branch-create=', 'branch-move=', 'pull', 'push', 'discard',
-            'rebase', 'revert', 'reset', 'proxy=', 'proxy-show',
-            'proxy-enable', 'proxy-disable', 'help'
+            'rebase', 'revert', 'reset', 'create-proxy=', 'show-proxy',
+            'enable-proxy', 'disable-proxy', 'help'
         ])
         force = False
         for opt in opts:
@@ -223,70 +224,77 @@ if __name__ == '__main__':
         for opt in opts:
             if opt[0] == '-b':
                 if opt[1] == 'a':
-                    giter_branch_show('a')
+                    git_branch_show('a')
                 elif opt[1] == 'l':
-                    giter_branch_show('l')
+                    git_branch_show('l')
                 elif opt[1] == 'r':
-                    giter_branch_show('r')
+                    git_branch_show('r')
                 elif opt[1] == 'c':
-                    giter_branch_create(opt[1])
+                    git_branch_create(opt[1])
                 elif opt[1] == 'm':
-                    giter_branch_move(opt[1])
+                    git_branch_move(opt[1])
             elif opt[0] == '--branch-all':
-                giter_branch_show('a')
+                git_branch_show('a')
             elif opt[0] == '--branch-local':
-                giter_branch_show('l')
+                git_branch_show('l')
             elif opt[0] == '--branch-remote':
-                giter_branch_show('r')
+                git_branch_show('r')
             elif opt[0] == '--branch-create':
-                giter_branch_create(opt[1])
+                git_branch_create(opt[1])
             elif opt[0] == '--branch-move':
-                giter_branch_move(opt[1])
+                git_branch_move(opt[1])
             elif opt[0] == '-p':
                 if opt[1] == 'l':
-                    giter_pull(force)
+                    git_pull(force)
                 elif opt[1] == 's':
-                    giter_push(force)
+                    git_push(force)
             elif opt[0] == '--pull':
-                giter_pull(force)
+                git_pull(force)
             elif opt[0] == '--push':
-                giter_push(force)
-            elif opt[0] in ('-d', '--discard'):
-                giter_discard()
+                git_push(force)
             elif opt[0] == '-r':
                 if opt[1] == 'b':
-                    giter_rebase(n)
+                    git_rebase(n)
                 elif opt[1] == 'v':
                     n = 1 if len(opt) < 3 else int(opt[2])
-                    giter_revert(n)
+                    git_revert(n)
                 elif opt[1] == 's':
                     n = 1 if len(opt) < 3 else int(opt[2])
-                    giter_reset(n)
+                    git_reset(n)
             elif opt[0] == '--rebase':
-                giter_rebase(opt[1])
+                git_rebase(opt[1])
             elif opt[0] == '--revert':
                 n = 1 if len(opt) < 2 else int(opt[1])
-                giter_revert(n)
+                git_revert(n)
             elif opt[0] == '--reset':
                 n = 1 if len(opt) < 2 else int(opt[1])
-                giter_reset(n)
-            elif opt[0] == '-p':
-                if opt[1] == 's':
-                    giter_dump_proxy()
-                elif opt[1] == 'e':
-                    giter_enable_proxy()
-                elif opt[1] == 'd':
-                    giter_disable_proxy()
-                else:
-                    giter_config_proxy(opt[1])
+                git_reset(n)
+            elif opt[0] == '-c':
+                if opt[1] == 'p':
+                    git_config_proxy(args[0])
+            elif opt[0] == '--create-proxy':
+                git_config_proxy(opt[1])
             elif opt[0] == '--proxy':
-                giter_config_proxy(opt[1])
-            elif opt[0] == '--proxy-show':
-                giter_dump_proxy()
-            elif opt[0] == '--proxy-enable':
-                giter_enable_proxy()
-            elif opt[0] == '--proxy-disable':
-                giter_disable_proxy()
+                git_config_proxy(opt[1])
+            elif opt[0] == '-s':
+                if opt[1] == 'p':
+                    git_dump_proxy()
+            elif opt[0] == '--show-proxy':
+                git_dump_proxy()
+            elif opt[0] == '-e':
+                if opt[1] == 'p':
+                    git_enable_proxy()
+            elif opt[0] == '--enable-proxy':
+                git_enable_proxy()
+            elif opt[0] == '-d':
+                if opt[1] is None:
+                    git_discard()
+                elif opt[1] == 'p':
+                    git_disable_proxy()
+            elif opt[0] == '--discard':
+                git_discard()
+            elif opt[0] == '--disable-proxy':
+                git_disable_proxy()
         help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')

@@ -10,24 +10,24 @@ sys.path.append('.')
 import util
 
 slash = '\\' if util.is_windows() else '/'
-db = util.get_command_home() + slash + 'ager.ignore'
+db = util.get_command_home() + slash + 'agop.ignore'
 
 help_msg = '''Searching in current folder by ag.
 
 usage:
-    ager [option] <text>            search all <text>.
-    ager [option] -w/--word <word>  search all <word>.
-    ager [option] -c/--count <text> search files and occurrences that contains <text>.
-    ager [option] -f/--file <text>  search files that contains <text>.
-    ager -i/--ignore <filetype>     add <filetype> in searcher ignore configuration.
+    agop [option] <text>            search all <text>.
+    agop [option] -w/--word <word>  search all <word>.
+    agop [option] -c/--count <text> search files and occurrences that contains <text>.
+    agop [option] -f/--file <text>  search files that contains <text>.
+    agop -i/--ignore <filetype>     add <filetype> in searcher ignore configuration.
 
 option:
     -r/--recursive                  searching recursively from current folder, by default False.
 
 flag:
-    ager -p/--purge                 purge all filetypes in searcher configuration.
-    ager -s/--show                  show all filetypes in searcher configuration.
-    ager -h/--help                  show help message.
+    agop -p/--purge                 purge all filetypes in searcher configuration.
+    agop -s/--show                  show all filetypes in searcher configuration.
+    agop -h/--help                  show help message.
 '''
 
 
