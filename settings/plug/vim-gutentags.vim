@@ -14,4 +14,6 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 if !isdirectory(s:vim_tags)
     silent! call mkdir(s:vim_tags, 'p')
 endif
+
 set tags=./.tags;,.tags
+set statusline+=%{gutentags#statusline()}

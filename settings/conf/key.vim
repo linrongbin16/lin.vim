@@ -7,4 +7,5 @@ map <F7> :terminal ++rows=20<CR>
 " change color
 map <F8> :Color<CR>
 
+" format
 map <F9> :Autoformat<CR>
