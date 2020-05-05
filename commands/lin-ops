@@ -16,6 +16,9 @@ usage:
     agop    Searching in current folder by ag.
     fileop  File operations in current folder.
     gitop   Git operations.
+    ipop    IP calculations.
+    packop  Compress and extract operations.
+    timeop  Date and time calculations.
 '''
     print(msg)
 

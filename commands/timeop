@@ -1,0 +1,30 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import getopt
+sys.path.append('.')
+import util
+
+help_msg = '''Date and time calculations.
+
+usage:
+    timeop [option] [datetime]  convert [datetime] from formatted string to integer or opposite direction, by default local system datetime.
+
+option:
+    -f/--format                 to formatted string.
+    -s/--stamp                  to timestamp.
+
+flag:
+    timeop -h/--help            show help message.
+'''
+
+
+def help():
+    print(help_msg)
+
+
+if __name__ == '__main__':
+    pass

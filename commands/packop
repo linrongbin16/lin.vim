@@ -9,7 +9,7 @@ import ipaddress
 sys.path.append('.')
 import util
 
-help_msg = '''IP calculations.
+help_msg = '''Compress and extract operations.
 
 usage:
     packop [compress] <filename>    compress <filename> to related compressed file, by default tar.gz.
