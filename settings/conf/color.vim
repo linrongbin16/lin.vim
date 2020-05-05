@@ -18,3 +18,5 @@ function RandomColor()
         execute 'syntax sync fromstart'
     endif
 endfunction
+
+:command Color :call RandomColor()

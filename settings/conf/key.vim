@@ -5,6 +5,6 @@ map <F6> :NERDTreeToggle<CR>
 map <F7> :terminal ++rows=20<CR>
 
 " change color
-map <F8> :call RandomColor()<CR>
+map <F8> :Color<CR>
 
 map <F9> :Autoformat<CR>
