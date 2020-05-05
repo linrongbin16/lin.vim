@@ -5,7 +5,7 @@
 import sys
 import os
 import getopt
-import datetime
+import ipaddress
 sys.path.append('.')
 import util
 
@@ -16,17 +16,15 @@ usage:
     ipop -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
     ipop -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
     ipop -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
-    ipop -s4/--string-v4 <ipv4>     convert <ipv4> 32-bit unsigned integer to string, eg: '2130706433' -> "127.0.0.1".
-    ipop -i4/--int-v4 <ipv4>        convert <ipv4> string to 32-bit unsigned integer, eg "192.168.0.1" -> '3232235521'.
+    ipop -c4/--convert-v4 <ipv4>    convert <ipv4> either from 32-bit unsigned integer to string or opposite direction, eg: '127.0.0.1' (2130706433).
     ipop -v6/--validate-v6 <ipv6>   validate <ipv6> string.
     ipop -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
     ipop -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
     ipop -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
-    ipop -s6/--string-v6 <ipv6>     convert <ipv6> 128-bit unsigned integer to string, eg: '2130706433' -> "127.0.0.1".
-    ipop -i6/--int-v6 <ipv6>        convert <ipv6> string to 128-bit unsigned integer, eg "192.168.0.1" -> '3232235521'.
+    ipop -c6/--convert-v6 <ipv6>    convert <ipv6> either from 128-bit unsigned integer to string or opposite direction, eg: 'ff00:1820::1' (338953628238285235687019778098925142017).
 
 flag:
-    ipop -h/--help                     show help message.
+    ipop -h/--help                  show help message.
 '''
 
 
@@ -35,129 +33,138 @@ def help():
     exit(0)
 
 
-def ipv4_stoi_impl(ipv4):
-    ip_split = ipv4.split('.')
-    ip1 = int(ip_split[0]) * 16777216
-    ip2 = int(ip_split[1]) * 65536
-    ip3 = int(ip_split[2]) * 256
-    ip4 = int(ip_split[3])
-    return ip1 + ip2 + ip3 + ip4
-
-
-def ipv4_itos_impl(ipv4):
-    ip1 = int(ipv4 / 16777216) % 256
-    ip2 = int(ipv4 / 65536) % 256
-    ip3 = int(ipv4 / 256) % 256
-    ip4 = int(ipv4) % 256
-    return '%d.%d.%d.%d' % (ip1, ip2, ip3, ip4)
-
-
-def ipv6_stoi_impl(ipv6):
-    ip_split = ipv6.split('.')
-    ip1 = int(ip_split[0]) * 16777216
-    ip2 = int(ip_split[1]) * 65536
-    ip3 = int(ip_split[2]) * 256
-    ip4 = int(ip_split[3])
-    return ip1 + ip2 + ip3 + ip4
-
-
-def ipv6_itos_impl(ipv6):
-    ip1 = int(ipv6 / 16777216) % 256
-    ip2 = int(ipv6 / 65536) % 256
-    ip3 = int(ipv6 / 256) % 256
-    ip4 = int(ipv6) % 256
-    return '%d.%d.%d.%d' % (ip1, ip2, ip3, ip4)
+def identify_input(ip):
+    return int(ip) if (ip.find('.') < 0 or ip.find(':') < 0) else ip
 
 
 def validate_ipv4(ipv4):
-    print('[lin-ops] ipv4 %s: %s' %
-          (ipv4, 'True' if util.check_valid_ipv4(ipv4) else 'False'))
+    try:
+        ipaddr = ipaddress.IPv4Address(ipv4)
+        print('[lin-ops] ipv4 %s (%d): True' % (str(ipaddr), int (ipaddr)))
+    except Exception:
+        print('[lin-ops] ipv4 %s: False' % (ipv4))
     exit(0)
 
 
 def validate_ipv6(ipv6):
-    print('[lin-ops] ipv6 %s: %s' %
-          (ipv6, 'True' if util.check_valid_ipv6(ipv6) else 'False'))
+    try:
+        ipaddr = ipaddress.IPv6Address(ipv6)
+        print('[lin-ops] ipv6 %s (%d): True' % (str(ipaddr), int (ipaddr)))
+    except Exception:
+        print('[lin-ops] ipv6 %s: False' % (ipv6))
     exit(0)
 
 
 def min_ipv4():
-    min_ipv4_str = '0.0.0.0'
+    min_ipv4 = ipaddress.IPv4Address('0.0.0.0')
     print('[lin-ops] minimum ipv4: \'%s\' (%d)' %
-          (min_ipv4_str, ipv4_stoi_impl(min_ipv4_str)))
+          (str(min_ipv4), int(min_ipv4)))
     exit(0)
 
 
 def max_ipv4():
-    max_ipv4_str = '255.255.255.255'
+    max_ipv4 = ipaddress.IPv4Address('255.255.255.255')
     print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
-          (max_ipv4_str, ipv4_stoi_impl(max_ipv4_str)))
+          (str(max_ipv4), int(max_ipv4)))
     exit(0)
 
 
 def loopback_ipv4():
-    lo_ipv4_str = '127.0.0.1'
+    lo_ipv4 = ipaddress.IPv4Address('127.0.0.1')
     print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
-          (lo_ipv4_str, ipv4_stoi_impl(lo_ipv4_str)))
+          (str(lo_ipv4), int(lo_ipv4)))
     exit(0)
 
 
 def min_ipv6():
-    min_ipv6_str = '0:0:0:0:0:0:0:0'
-    min_ipv6_str2 = '::0'
+    min_ipv6 = ipaddress.IPv6Address('::0')
     print('[lin-ops] minimum ipv4: \'%s\' or \'%s\' (%d)' %
-          (min_ipv6_str, min_ipv6_str2, ipv6_stoi_impl(min_ipv6_str)))
+          (str(min_ipv6), int(min_ipv6)))
     exit(0)
 
 
 def max_ipv6():
-    max_ipv6_str = 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'
-    print(
-        '[lin-ops] maximum ipv4: \'%s\' (%d)' % (max_ipv6_str, ipv6_stoi_impl(max_ipv6_str))
-    )
+    max_ipv6 = ipaddress.IPv6Address('ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff')
+    print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
+          (str(max_ipv6), int(max_ipv6)))
     exit(0)
 
 
 def loopback_ipv6():
-    print(
-        '[lin-ops] loopback ipv4: \'0000:0000:0000:0000:0000:0000:0000:0001\' or \'::1\', or as 128-bit unsigned integer: '
-    )
+    lo_ipv6 = ipaddress.IPv6Address('::1')
+    print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
+          (str(lo_ipv6), int(lo_ipv6)))
     exit(0)
 
 
-def ipv4_stoi(ipv4):
-    print('[lin-ops] %d' % (ipv4_stoi_impl(ipv4)))
+def ipv4_convert(ipv4):
+    ipaddr = ipaddress.IPv4Address(ipv4)
+    print('[lin-ops] %s (%d)' % (str(ipaddr), int(ipaddr)))
     exit(0)
 
 
-def ipv4_itos(ipv4):
-    print('[lin-ops] %s' % (ipv4_itos_impl(ipv4)))
-    exit(0)
-
-
-def ipv6_stoi(ipv6):
-    print('[lin-ops] %d' % (ipv6_stoi_impl(ipv6)))
-    exit(0)
-
-
-def ipv6_itos(ipv6):
-    print('[lin-ops] %s' % (ipv6_itos_impl(ipv6)))
+def ipv6_convert(ipv6):
+    ipaddr = ipaddress.IPv6Address(ipv6)
+    print('[lin-ops] %s (%d)' % (str(ipaddr), int(ipaddr)))
     exit(0)
 
 
 if __name__ == '__main__':
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'v:n:x:s:i:h', [
+        opts, args = getopt.getopt(sys.argv[1:], 'v:n:x:c:h', [
             'validate-v4=', 'validate-v6=', 'min-v4', 'max-v4', 'loopback-v4',
-            'min-v6', 'max-v6', 'loopback-v6', 'help'
+            'min-v6', 'max-v6', 'loopback-v6', 'convert-v4=', 'convert-v6=',
+            'help'
         ])
         for opt in opts:
             if opt[0] == '-v':
                 if opt[1] == '4':
-                    validate_ipv4(args[0])
+                    validate_ipv4(identify_input(args[0]))
                 elif opt[1] == '6':
-                    validate_ipv6(args[0])
+                    validate_ipv6(identify_input(args[0]))
+            elif opt[0] == '--validate-v4':
+                validate_ipv4(identify_input(opt[1]))
+            elif opt[0] == '--validate-v6':
+                validate_ipv6(identify_input(opt[1]))
+            elif opt[0] == '-n':
+                if opt[1] == '4':
+                    min_ipv4()
+                elif opt[1] == '6':
+                    min_ipv6()
+            elif opt[0] == '--min-v4':
+                min_ipv4()
+            elif opt[0] == '--min-v6':
+                min_ipv6()
+            elif opt[0] == '-x':
+                if opt[1] == '4':
+                    max_ipv4()
+                elif opt[1] == '6':
+                    max_ipv6()
+            elif opt[0] == '--max-v4':
+                max_ipv4()
+            elif opt[0] == '--max-v6':
+                max_ipv6()
+            elif opt[0] == '-l':
+                if opt[1] == '4':
+                    loopback_ipv4()
+                elif opt[1] == '6':
+                    loopback_ipv6()
+            elif opt[0] == '--loopback-v4':
+                loopback_ipv4()
+            elif opt[0] == '--loopback-v6':
+                loopback_ipv6()
+            elif opt[0] == '-c':
+                if opt[1] == '4':
+                    ipv4_convert(identify_input(args[0]))
+                elif opt[1] == '6':
+                    ipv6_convert(identify_input(args[0]))
+            elif opt[0] == '--convert-v4':
+                ipv4_convert(identify_input(opt[1]))
+            elif opt[0] == '--convert-v6':
+                ipv6_convert(identify_input(opt[1]))
         help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
         help()
+    except Exception as e:
+        print(str(e) + '\n')

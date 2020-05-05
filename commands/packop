@@ -1,0 +1,95 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import getopt
+import ipaddress
+sys.path.append('.')
+import util
+
+help_msg = '''IP calculations.
+
+usage:
+    packop [compress] <filename>    compress <filename> to related compressed file, by default tar.gz.
+    packop [extract] <filename>     extract <filename> to related extracted file, by default use detected file type.
+
+compress:
+    -c/--compress                   compress by tar.gz.
+    -ctg/--compress-tg              compress by tar.gz.
+    -ctb/--compress-tb              compress by tar.bz2.
+    -cz/--compress-zip              compress by zip.
+
+extract:
+    -e/--extract                    extract by detected file type.
+    -etg/--extract-tg               extract by tar.gz.
+    -etb/--extract-tb               extract by tar.bz2.
+    -ez/--extract-zip               extract by zip.
+
+flag:
+    packop -h/--help                show help message.
+'''
+
+
+def help():
+    print(help_msg)
+
+
+def compress(filename, option):
+    pass
+    exit(0)
+
+
+def extract(filename, option):
+    pass
+    exit(0)
+
+
+if __name__ == '__main__':
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'c:e:h', [
+            'compress=', 'compress-tg=', 'compress-tb=', 'compress-zip=',
+            'extract=', 'extract-tg=', 'extract-tb=', 'extract-zip=', 'help'
+        ])
+        for opt in opts:
+            if opt[0] == '-c':
+                if opt[1] == 'tg':
+                    compress(args[0], 'tar.gz')
+                elif opt[1] == 'tb':
+                    compress(args[0], 'tar.bz2')
+                elif opt[1] == 'zip':
+                    compress(args[0], 'zip')
+                else:
+                    compress(opt[1], 'tar.gz')
+            elif opt[0] == '--compress':
+                compress(opt[1], 'tar.gz')
+            elif opt[0] == '--compress-tg':
+                compress(args[0], 'tar.gz')
+            elif opt[0] == '--compress-tb':
+                compress(args[0], 'tar.bz2')
+            elif opt[0] == '--compress-zip':
+                compress(args[0], 'zip')
+            if opt[0] == '-e':
+                if opt[1] == 'tg':
+                    extract(args[0], 'tar.gz')
+                elif opt[1] == 'tb':
+                    extract(args[0], 'tar.bz2')
+                elif opt[1] == 'zip':
+                    extract(args[0], 'zip')
+                else:
+                    extract(opt[1], 'tar.gz')
+            elif opt[0] == '--extract':
+                extract(opt[1], 'tar.gz')
+            elif opt[0] == '--extract-tg':
+                extract(args[0], 'tar.gz')
+            elif opt[0] == '--extract-tb':
+                extract(args[0], 'tar.bz2')
+            elif opt[0] == '--extract-zip':
+                extract(args[0], 'zip')
+        help()
+    except getopt.GetoptError as e:
+        print(str(e) + '\n')
+        help()
+    except Exception as e:
+        print(str(e) + '\n')

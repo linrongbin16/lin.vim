@@ -21,63 +21,7 @@ def is_windows():
     return platform.system() == 'Windows'
 
 
-def is_linux():
-    return platform.system() == 'Linux'
-
-
-def is_ubuntu():
-    if platform.system() == 'Linux':
-        import distro
-        return distro.linux_distribution()[0].find('Ubuntu') >= 0
-    return False
-
-
-def is_debian():
-    if platform.system() == 'Linux':
-        import distro
-        return distro.linux_distribution()[0].find('Debian') >= 0
-    return False
-
-
-def is_manjaro():
-    if platform.system() == 'Linux':
-        import distro
-        return distro.linux_distribution()[0].find('Manjaro') >= 0
-    return False
-
-
-def is_macos():
-    return platform.system() == 'Darwin'
-
-
-def get_platform_name():
-    if is_windows():
-        return 'windows'
-    elif is_macos():
-        return 'macos'
-    elif is_linux():
-        if is_ubuntu():
-            return 'ubuntu'
-        elif is_manjaro():
-            return 'manjaro'
-        else:
-            return None
-    else:
-        return None
-
-
 # path utils
-
-
-def get_file_name_suffix(name):
-    if len(name) <= 0:
-        return ''
-    if name[0] == '.':
-        return ''
-    dot_pos = name.rfind('.')
-    if dot_pos >= 0:
-        return name[dot_pos + 1:]
-    return ''
 
 
 def get_file_name_all_suffix(name):
@@ -89,17 +33,6 @@ def get_file_name_all_suffix(name):
     if dot_pos >= 0:
         return name[dot_pos + 1:]
     return ''
-
-
-def get_file_name_base(name):
-    if len(name) <= 0:
-        return ''
-    if name[0] == '.':
-        return ''
-    dot_pos = name.rfind('.')
-    if dot_pos >= 0:
-        return name[:dot_pos]
-    return name
 
 
 def read_file(name):
@@ -155,10 +88,8 @@ def purge_file(name):
 
 
 def get_command_home():
-    if is_windows():
-        return os.path.expanduser('~') + '\\.vim\\commands'
-    else:
-        return os.path.expanduser('~') + '/.vim/commands'
+    return os.path.expanduser('~') + '\\.vim\\commands' if is_windows(
+    ) else os.path.expanduser('~') + '/.vim/commands'
 
 
 def get_command_name():
@@ -392,100 +323,6 @@ def get_git_remote_branch():
     return branch if is_empty_str(user_input) else user_input
 
 
-def check_git_is_behind():
-    os.system('git fetch')
-    status, _ = run('git', 'status')
-    return len([s for s in status if s.find('Your branch is behind') >= 0]) > 0
-
-
-def check_git_is_ahead():
-    os.system('git fetch')
-    status, _ = run('git', 'status')
-    return len([s for s in status if s.find('Your branch is ahead') >= 0]) > 0
-
-
 def get_git_last_commit(n):
     commits, _ = run('git', 'log', '--pretty=oneline')
     return commits[n].split(' ')[0]
-
-
-def git_has_branch(target_br):
-    os.system('git fetch')
-    branches, _ = run('git', 'branch', '-a')
-    return len([b for b in branches if b.find(target_br) >= 0]) > 0
-
-
-# ip utils
-
-IPV4_PATTERN = re.compile(r'^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$')
-
-IPV6_PATTERN = re.compile(
-    r'^[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}:[0-9,a-e,A-E]{1,4}$'
-)
-
-
-def check_valid_ipv4(ipaddr):
-    try:
-        if not IPV4_PATTERN.match(ipaddr):
-            return False
-        ip_splits = ipaddr.split('.')
-        if len(ip_splits) != 4:
-            return False
-        for each_ip in ip_splits:
-            tmp = int(each_ip)
-            if tmp < 0 or tmp > 255:
-                return False
-        return True
-    except Exception:
-        return False
-
-
-def check_valid_ipv6(ipaddr):
-    try:
-        if not IPV6_PATTERN.match(ipaddr):
-            return False
-        ip_splits = ipaddr.split(':')
-        if len(ip_splits) != 8:
-            return False
-        for each_ip in ip_splits:
-            print('each_ip: %s' % (each_ip))
-            if not all(c in string.hexdigits for c in each_ip):
-                print('not hex string')
-                return False
-        return True
-    except Exception:
-        return False
-
-
-def ipv4_string_to_uint32(ipstr):
-    ip_split = ipstr.split('.')
-    p1 = int(ip_split[0]) * 16777216
-    p2 = int(ip_split[1]) * 65536
-    p3 = int(ip_split[2]) * 256
-    p4 = int(ip_split[3])
-    return p1 + p2 + p3 + p4
-
-
-def ipv4_uint32_to_string(ipint):
-    p1 = int(ipint / 16777216) % 256
-    p2 = int(ipint / 65536) % 256
-    p3 = int(ipint / 256) % 256
-    p4 = int(ipint) % 256
-    return '%d.%d.%d.%d' % (p1, p2, p3, p4)
-
-
-def ipv6_string_to_uint128(ipstr):
-    ip_split = ipstr.split('.')
-    p1 = int(ip_split[0]) * 16777216
-    p2 = int(ip_split[1]) * 65536
-    p3 = int(ip_split[2]) * 256
-    p4 = int(ip_split[3])
-    return p1 + p2 + p3 + p4
-
-
-def ipv6_uint128_to_string(ipint):
-    p1 = int(ipint / 16777216) % 256
-    p2 = int(ipint / 65536) % 256
-    p3 = int(ipint / 256) % 256
-    p4 = int(ipint) % 256
-    return '%d.%d.%d.%d' % (p1, p2, p3, p4)

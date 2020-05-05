@@ -1,3 +1,0 @@
-#! /usr/bin/env sh
-# Copyright 2018-  <linrongbin16@gmail.com>
-python3 ~/.vim/commands/ipv6u128.py $@
