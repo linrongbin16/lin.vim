@@ -12,7 +12,7 @@ help_msg = '''File operations in current folder.
 
 usage:
     fileop [option] -d/--delete <filetype>              delete all files that has <filetype>.
-    fileop [option] -r/--replace <old> <new> <filetype> swap <old> with <new> for all files that has <filetype>.
+    fileop [option] -r/--replace <filetype> <old> <new> swap <old> with <new> for all files that has <filetype>.
     fileop [option] -l/--list <filetype>                list all files that has <filetype>.
 
 option:
@@ -30,13 +30,9 @@ def help():
 
 def file_replace(old, new, filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
+    files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
     filetype = '.%s' % (filetype)
     for f in files:
-        if f.startswith('.'):
-            continue
         if not f.endswith(filetype):
             continue
         try:
@@ -54,14 +50,10 @@ def file_replace(old, new, filetype, include_hidden):
 
 def file_delete(filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
+    files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
     filetype = '.%s' % filetype
     for f in files:
         relname = os.path.relpath(f)
-        if relname.startswith('.'):
-            continue
         if relname.endswith(filetype):
             print('[lin-ops] remove %s' % f)
             os.remove(f)
@@ -70,9 +62,7 @@ def file_delete(filetype, include_hidden):
 
 def file_list(filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
+    files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
     filetype = '.%s' % filetype
     for f in files:
         if f.endswith(filetype):
@@ -93,8 +83,10 @@ if __name__ == '__main__':
         for opt in opts:
             if opt[0] in ('-d', '--delete'):
                 file_delete(opt[1], include_hidden)
-            elif opt[0] in ('-r', '--replace'):
-                file_replace(opt[1], opt[2], opt[3], include_hidden)
+            elif opt[0] == '-r':
+                file_replace(args[0], args[1], opt[1], include_hidden)
+            elif opt[0] == '--replace':
+                file_replace(args[0], args[1], opt[1], include_hidden)
             elif opt[0] in ('-l', '--list'):
                 file_list(opt[1], include_hidden)
         help()

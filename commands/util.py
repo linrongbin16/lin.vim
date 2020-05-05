@@ -144,28 +144,15 @@ def backup_file(target):
     os.rename(target, bakname)
 
 
-def is_hidden_file_impl(file_name):
-    files = [x for x in file_name.split('/') if len(x) > 0]
-    for f in files:
-        if f != '.' and f != '..' and f.startswith('.'):
-            return True
-    return False
-
-
-def walk_dir(directory, include_hidden):
+def walk_dir(directory, include_hidden=False):
     save_dir = os.getcwd()
     os.chdir(directory)
-    file_list = list()
-    walk = scandir.walk('.')
-    for item in walk:
-        folder = item[0]
-        if include_hidden is not True and is_hidden_file_impl(folder):
-            continue
-        files = item[2]
-        for f in files:
-            if include_hidden is not True and f.startswith('.'):
-                continue
-            file_list.append('%s/%s' % (folder, f))
+    file_list = []
+    for root, ds, fs in os.walk(os.getcwd()):
+        if include_hidden is not True:
+            fs[:] = [f for f in fs if not f[0] == '.']
+            ds[:] = [d for d in ds if not d[0] == '.']
+        file_list.extend([os.path.join(root, f) for f in fs])
     if os.path.exists(save_dir):
         os.chdir(save_dir)
     return file_list
