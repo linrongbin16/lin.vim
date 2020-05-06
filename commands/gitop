@@ -84,7 +84,7 @@ def git_pull(force):
         exit(3)
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
-    print('[lin-ops] git pull from \'%s\'/\'%s\'' % (repo, branch))
+    print('[lin-ops] git pull from %s/%s' % (repo, branch))
     os.system("git fetch")
     os.system("git pull %s %s %s" % ('--force' if force else '', repo, branch))
     exit(0)
@@ -102,12 +102,12 @@ def git_push(force):
     comment = '[lin-ops] git push at %s' % (datetime.datetime.now(
     ).strftime('%Y/%m/%d %H:%M:%S')) if util.is_empty_str(comment) else comment
     util.check_user_confirm(
-        '[lin-ops] git push to \'%s\'/\'%s\' with \'%s\', yes? ' %
+        '[lin-ops] git push to %s/%s with \'%s\', yes? ' %
         (repo, branch, comment))
     os.chdir(util.get_git_root())
-    os.system("git add -A .")
-    os.system("git commit -m \"%s\"" % (comment))
-    os.system("git push %s %s %s" % ('--force' if force else '', repo, branch))
+    os.system('git add -A .')
+    os.system('git commit -m \"%s\"' % (comment))
+    os.system('git push %s %s %s' % ('--force' if force else '', repo, branch))
     exit(0)
 
 

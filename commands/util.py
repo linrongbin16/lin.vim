@@ -287,9 +287,14 @@ def get_git_remote_repository():
     repo_str = ', '.join(
         ['\'%s\'[%d]' % (repos[i], i) for i in range(len(repos))])
     print('[lin-ops] detected remote repositories: %s' % (repo_str))
-    user_input = input(
-        '[lin-ops] choose remote repository 0-%d, by default: \'%s\'[0]: ' %
-        (len(repos), repos[0]))
+    if len(repos) <= 1:
+        user_input = input(
+            '[lin-ops] choose remote repository 0, by default: \'%s\'[0]: ' %
+            (repos[0]))
+    else:
+        user_input = input(
+            '[lin-ops] choose remote repository 0-%d, by default: \'%s\'[0]: '
+            % (len(repos) - 1, repos[0]))
     if is_empty_str(user_input):
         repo_str = list(repos)[0]
     else:
