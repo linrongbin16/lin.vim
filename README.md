@@ -4,9 +4,11 @@ lin-vim is a distribution of Vim.
 
 It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities for development running on most operating systems.
 
-![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic1.jpg)
+![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic1.png)
 
-![pic2.jpg](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic2.jpg)
+![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic2.png)
+
+![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic3.png)
 
 # Feature
 
