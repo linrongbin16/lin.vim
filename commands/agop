@@ -30,32 +30,32 @@ flag:
 '''
 
 
-def help():
+def _help():
     print(help_msg)
     exit(0)
 
 
-def search_text(text, depth):
+def _text(text, depth):
     os.system('ag --smart-case --depth %d -p %s %s .' % (depth, db, text))
     exit(0)
 
 
-def search_count(text, depth):
+def _count(text, depth):
     os.system('ag -c --smart-case --depth %d -p %s %s .' % (depth, db, text))
     exit(0)
 
 
-def search_file(text, depth):
+def _file(text, depth):
     os.system('ag -l --smart-case --depth %d -p %s %s .' % (depth, db, text))
     exit(0)
 
 
-def word(word, depth):
+def _word(word, depth):
     os.system('ag -w --smart-case --depth %d -p %s %s .' % (depth, db, word))
     exit(0)
 
 
-def ignore_filetype(filetype):
+def _ignore(filetype):
     if not filetype.startswith('.'):
         filetype = '.%s' % filetype
     filetype = '%s\n' % filetype.strip()
@@ -63,12 +63,12 @@ def ignore_filetype(filetype):
     exit(0)
 
 
-def purge_filetype():
+def _purge():
     util.purge_file(db)
     exit(0)
 
 
-def show_filetype():
+def _show():
     ignore_list = util.readlines_file(db)
     ignore_list = [x.strip() for x in ignore_list]
     ignore_str = ' '.join(ignore_list).strip()
@@ -90,20 +90,20 @@ if __name__ == '__main__':
                 break
         for opt in opts:
             if opt[0] in ('-w', '--word'):
-                word(opt[1], depth)
+                _word(opt[1], depth)
             elif opt[0] in ('-c', '--count'):
-                search_count(opt[1], depth)
+                _count(opt[1], depth)
             elif opt[0] in ('-f', '--file'):
-                search_file(opt[1], depth)
+                _file(opt[1], depth)
             elif opt[0] in ('-i', '--ignore'):
-                ignore_filetype(opt[1])
+                _ignore(opt[1])
             elif opt[0] in ('-p', '--purge'):
-                purge_filetype()
+                _purge()
             elif opt[0] in ('-s', '--show'):
-                show_filetype()
+                _show()
             elif opt[0] in ('-h', '--help'):
-                help()
-        search_text(args[0], depth)
+                _help()
+        _text(args[0], depth)
     except getopt.GetoptError as e:
         print(str(e) + '\n')
-        help()
+        _help()

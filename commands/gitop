@@ -39,12 +39,12 @@ flag:
 '''
 
 
-def help():
+def _help():
     print(help_msg)
     exit(0)
 
 
-def git_branch_show(opt):
+def _branch_show(opt):
     util.check_git_repository()
     if opt.startswith('a'):
         outs, errs = util.run('git', 'branch', '-a')
@@ -64,19 +64,19 @@ def git_branch_show(opt):
     exit(0)
 
 
-def git_branch_create(name):
+def _branch_create(name):
     util.check_git_repository()
     os.system("git checkout -b %s" % (name))
     exit(0)
 
 
-def git_branch_move(name):
+def _branch_move(name):
     util.check_git_repository()
     os.system("git checkout %s" % (name))
     exit(0)
 
 
-def git_pull(force):
+def _pull(force):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
@@ -90,7 +90,7 @@ def git_pull(force):
     exit(0)
 
 
-def git_push(force):
+def _push(force):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
@@ -130,13 +130,13 @@ def git_discard():
     exit(0)
 
 
-def git_rebase(branch):
+def _rebase(branch):
     util.check_git_repository()
     os.system("git rebase %s" % branch)
     exit(0)
 
 
-def git_revert(n):
+def _revert(n):
     util.check_git_repository()
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
@@ -151,7 +151,7 @@ def git_revert(n):
     exit(0)
 
 
-def git_reset(n):
+def _reset(n):
     util.check_git_repository()
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
@@ -166,12 +166,12 @@ def git_reset(n):
     exit(0)
 
 
-def git_config_proxy(p):
+def _proxy(p):
     util.write_file(db, p)
     exit(0)
 
 
-def git_dump_proxy():
+def _dump_proxy():
     gc = os.path.expanduser('~') + slash + '.gitconfig'
     proxies = util.readlines_file(gc)
     trigger = False
@@ -187,7 +187,7 @@ def git_dump_proxy():
     exit(0)
 
 
-def git_enable_proxy():
+def _enable_proxy():
     proxy = util.read_file(db)
     if proxy is None:
         print(
@@ -201,7 +201,7 @@ def git_enable_proxy():
     exit(0)
 
 
-def git_disable_proxy():
+def _disable_proxy():
     os.system('git config --global --unset https.proxy')
     os.system('git config --global --unset http.proxy')
     exit(0)
@@ -223,78 +223,78 @@ if __name__ == '__main__':
         for opt in opts:
             if opt[0] == '-b':
                 if opt[1] == 'a':
-                    git_branch_show('a')
+                    _branch_show('a')
                 elif opt[1] == 'l':
-                    git_branch_show('l')
+                    _branch_show('l')
                 elif opt[1] == 'r':
-                    git_branch_show('r')
+                    _branch_show('r')
                 elif opt[1] == 'c':
-                    git_branch_create(opt[1])
+                    _branch_create(opt[1])
                 elif opt[1] == 'm':
-                    git_branch_move(opt[1])
+                    _branch_move(opt[1])
             elif opt[0] == '--branch-all':
-                git_branch_show('a')
+                _branch_show('a')
             elif opt[0] == '--branch-local':
-                git_branch_show('l')
+                _branch_show('l')
             elif opt[0] == '--branch-remote':
-                git_branch_show('r')
+                _branch_show('r')
             elif opt[0] == '--branch-create':
-                git_branch_create(opt[1])
+                _branch_create(opt[1])
             elif opt[0] == '--branch-move':
-                git_branch_move(opt[1])
+                _branch_move(opt[1])
             elif opt[0] == '-p':
                 if opt[1] == 'l':
-                    git_pull(force)
+                    _pull(force)
                 elif opt[1] == 's':
-                    git_push(force)
+                    _push(force)
             elif opt[0] == '--pull':
-                git_pull(force)
+                _pull(force)
             elif opt[0] == '--push':
-                git_push(force)
+                _push(force)
             elif opt[0] == '-r':
                 if opt[1] == 'b':
-                    git_rebase(n)
+                    _rebase(n)
                 elif opt[1] == 'v':
                     n = 1 if len(opt) < 3 else int(opt[2])
-                    git_revert(n)
+                    _revert(n)
                 elif opt[1] == 's':
                     n = 1 if len(opt) < 3 else int(opt[2])
-                    git_reset(n)
+                    _reset(n)
             elif opt[0] == '--rebase':
-                git_rebase(opt[1])
+                _rebase(opt[1])
             elif opt[0] == '--revert':
                 n = 1 if len(opt) < 2 else int(opt[1])
-                git_revert(n)
+                _revert(n)
             elif opt[0] == '--reset':
                 n = 1 if len(opt) < 2 else int(opt[1])
-                git_reset(n)
+                _reset(n)
             elif opt[0] == '-c':
                 if opt[1] == 'p':
-                    git_config_proxy(args[0])
+                    _proxy(args[0])
             elif opt[0] == '--create-proxy':
-                git_config_proxy(opt[1])
+                _proxy(opt[1])
             elif opt[0] == '--proxy':
-                git_config_proxy(opt[1])
+                _proxy(opt[1])
             elif opt[0] == '-s':
                 if opt[1] == 'p':
-                    git_dump_proxy()
+                    _dump_proxy()
             elif opt[0] == '--show-proxy':
-                git_dump_proxy()
+                _dump_proxy()
             elif opt[0] == '-e':
                 if opt[1] == 'p':
-                    git_enable_proxy()
+                    _enable_proxy()
             elif opt[0] == '--enable-proxy':
-                git_enable_proxy()
+                _enable_proxy()
             elif opt[0] == '-d':
                 if opt[1] is None:
                     git_discard()
                 elif opt[1] == 'p':
-                    git_disable_proxy()
+                    _disable_proxy()
             elif opt[0] == '--discard':
                 git_discard()
             elif opt[0] == '--disable-proxy':
-                git_disable_proxy()
-        help()
+                _disable_proxy()
+        _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
-        help()
+        _help()

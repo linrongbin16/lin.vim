@@ -28,7 +28,7 @@ flag:
 '''
 
 
-def help():
+def _help():
     print(help_msg)
     exit(0)
 
@@ -37,7 +37,7 @@ def identify_input(ip):
     return int(ip) if (ip.find('.') < 0 or ip.find(':') < 0) else ip
 
 
-def validate_ipv4(ipv4):
+def _validate_ipv4(ipv4):
     try:
         ipaddr = ipaddress.IPv4Address(ipv4)
         print('[lin-ops] ipv4 %s (%d): True' % (str(ipaddr), int (ipaddr)))
@@ -46,7 +46,7 @@ def validate_ipv4(ipv4):
     exit(0)
 
 
-def validate_ipv6(ipv6):
+def _validate_ipv6(ipv6):
     try:
         ipaddr = ipaddress.IPv6Address(ipv6)
         print('[lin-ops] ipv6 %s (%d): True' % (str(ipaddr), int (ipaddr)))
@@ -55,55 +55,55 @@ def validate_ipv6(ipv6):
     exit(0)
 
 
-def min_ipv4():
+def _min_ipv4():
     min_ipv4 = ipaddress.IPv4Address('0.0.0.0')
     print('[lin-ops] minimum ipv4: \'%s\' (%d)' %
           (str(min_ipv4), int(min_ipv4)))
     exit(0)
 
 
-def max_ipv4():
+def _max_ipv4():
     max_ipv4 = ipaddress.IPv4Address('255.255.255.255')
     print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
           (str(max_ipv4), int(max_ipv4)))
     exit(0)
 
 
-def loopback_ipv4():
+def _loopback_ipv4():
     lo_ipv4 = ipaddress.IPv4Address('127.0.0.1')
     print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
           (str(lo_ipv4), int(lo_ipv4)))
     exit(0)
 
 
-def min_ipv6():
+def _min_ipv6():
     min_ipv6 = ipaddress.IPv6Address('::0')
     print('[lin-ops] minimum ipv4: \'%s\' or \'%s\' (%d)' %
           (str(min_ipv6), int(min_ipv6)))
     exit(0)
 
 
-def max_ipv6():
+def _max_ipv6():
     max_ipv6 = ipaddress.IPv6Address('ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff')
     print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
           (str(max_ipv6), int(max_ipv6)))
     exit(0)
 
 
-def loopback_ipv6():
+def _loopback_ipv6():
     lo_ipv6 = ipaddress.IPv6Address('::1')
     print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
           (str(lo_ipv6), int(lo_ipv6)))
     exit(0)
 
 
-def ipv4_convert(ipv4):
+def _ipv4_convert(ipv4):
     ipaddr = ipaddress.IPv4Address(ipv4)
     print('[lin-ops] %s (%d)' % (str(ipaddr), int(ipaddr)))
     exit(0)
 
 
-def ipv6_convert(ipv6):
+def _ipv6_convert(ipv6):
     ipaddr = ipaddress.IPv6Address(ipv6)
     print('[lin-ops] %s (%d)' % (str(ipaddr), int(ipaddr)))
     exit(0)
@@ -119,52 +119,52 @@ if __name__ == '__main__':
         for opt in opts:
             if opt[0] == '-v':
                 if opt[1] == '4':
-                    validate_ipv4(identify_input(args[0]))
+                    _validate_ipv4(identify_input(args[0]))
                 elif opt[1] == '6':
-                    validate_ipv6(identify_input(args[0]))
+                    _validate_ipv6(identify_input(args[0]))
             elif opt[0] == '--validate-v4':
-                validate_ipv4(identify_input(opt[1]))
+                _validate_ipv4(identify_input(opt[1]))
             elif opt[0] == '--validate-v6':
-                validate_ipv6(identify_input(opt[1]))
+                _validate_ipv6(identify_input(opt[1]))
             elif opt[0] == '-n':
                 if opt[1] == '4':
-                    min_ipv4()
+                    _min_ipv4()
                 elif opt[1] == '6':
-                    min_ipv6()
+                    _min_ipv6()
             elif opt[0] == '--min-v4':
-                min_ipv4()
+                _min_ipv4()
             elif opt[0] == '--min-v6':
-                min_ipv6()
+                _min_ipv6()
             elif opt[0] == '-x':
                 if opt[1] == '4':
-                    max_ipv4()
+                    _max_ipv4()
                 elif opt[1] == '6':
-                    max_ipv6()
+                    _max_ipv6()
             elif opt[0] == '--max-v4':
-                max_ipv4()
+                _max_ipv4()
             elif opt[0] == '--max-v6':
-                max_ipv6()
+                _max_ipv6()
             elif opt[0] == '-l':
                 if opt[1] == '4':
-                    loopback_ipv4()
+                    _loopback_ipv4()
                 elif opt[1] == '6':
-                    loopback_ipv6()
+                    _loopback_ipv6()
             elif opt[0] == '--loopback-v4':
-                loopback_ipv4()
+                _loopback_ipv4()
             elif opt[0] == '--loopback-v6':
-                loopback_ipv6()
+                _loopback_ipv6()
             elif opt[0] == '-c':
                 if opt[1] == '4':
-                    ipv4_convert(identify_input(args[0]))
+                    _ipv4_convert(identify_input(args[0]))
                 elif opt[1] == '6':
-                    ipv6_convert(identify_input(args[0]))
+                    _ipv6_convert(identify_input(args[0]))
             elif opt[0] == '--convert-v4':
-                ipv4_convert(identify_input(opt[1]))
+                _ipv4_convert(identify_input(opt[1]))
             elif opt[0] == '--convert-v6':
-                ipv6_convert(identify_input(opt[1]))
-        help()
+                _ipv6_convert(identify_input(opt[1]))
+        _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
-        help()
+        _help()
     except Exception as e:
         print(str(e) + '\n')

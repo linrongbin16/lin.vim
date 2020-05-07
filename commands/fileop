@@ -23,12 +23,12 @@ flag:
 '''
 
 
-def help():
+def _help():
     print(help_msg)
     exit(0)
 
 
-def file_replace(old, new, filetype, include_hidden):
+def _replace(old, new, filetype, include_hidden):
     root = os.getcwd()
     files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
     filetype = '.%s' % (filetype)
@@ -48,7 +48,7 @@ def file_replace(old, new, filetype, include_hidden):
     exit(0)
 
 
-def file_delete(filetype, include_hidden):
+def _delete(filetype, include_hidden):
     root = os.getcwd()
     files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
     filetype = '.%s' % filetype
@@ -60,7 +60,7 @@ def file_delete(filetype, include_hidden):
     exit(0)
 
 
-def file_list(filetype, include_hidden):
+def _list(filetype, include_hidden):
     root = os.getcwd()
     files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
     filetype = '.%s' % filetype
@@ -82,14 +82,14 @@ if __name__ == '__main__':
                 break
         for opt in opts:
             if opt[0] in ('-d', '--delete'):
-                file_delete(opt[1], include_hidden)
+                _delete(opt[1], include_hidden)
             elif opt[0] == '-r':
-                file_replace(args[0], args[1], opt[1], include_hidden)
+                _replace(args[0], args[1], opt[1], include_hidden)
             elif opt[0] == '--replace':
-                file_replace(args[0], args[1], opt[1], include_hidden)
+                _replace(args[0], args[1], opt[1], include_hidden)
             elif opt[0] in ('-l', '--list'):
-                file_list(opt[1], include_hidden)
-        help()
+                _list(opt[1], include_hidden)
+        _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
-        help()
+        _help()
