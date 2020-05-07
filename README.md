@@ -8,7 +8,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 ![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic2.png)
 
-![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic3.png)
+![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic6.png)
 
 ![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic4.png)
 
