@@ -10,6 +10,10 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 ![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic3.png)
 
+![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic4.png)
+
+![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/pic5.png)
+
 # Feature
 
 - Multiple platform support: linux, unix, windows and mac.
