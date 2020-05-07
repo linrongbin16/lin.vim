@@ -62,6 +62,9 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 ### Customization
 - custom your own settings in ~/.vim/user.vim
 
+### Commands
+- try `lin-ops` to find more.
+
 # Installation
 
 ### Linux, UNIX, MacOS Installation
