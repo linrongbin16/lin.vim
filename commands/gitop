@@ -298,3 +298,5 @@ if __name__ == '__main__':
     except getopt.GetoptError as e:
         print(str(e) + '\n')
         _help()
+    except Exception as e:
+        print(str(e) + '\n')
