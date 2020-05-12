@@ -94,14 +94,13 @@ def _encoding(encoding, filetype, include_hidden):
         if not f.endswith(filetype):
             continue
         detect_outs, detect_errs = util.run('chardetect', f)
-        detect_encoding = ''.join(detect_outs).strip().split(' ')[1]
+        detect_encoding = ''.join(detect_outs).strip().split(':')[1]
+        detect_encoding = detect_encoding.strip().split(' ')[0]
         if encoding_name_mapping[detect_encoding.upper(
         )] == encoding_name_mapping[encoding.upper()]:
             print('[lin-ops] \'%s\' encoding is already <%s>, skip convert' %
                   (f, encoding_name_mapping[encoding.upper()]))
             continue
-        # import pdb
-        # pdb.set_trace()
         try:
             convert_outs, convert_errs = util.run(
                 'iconv', '-f', encoding_name_mapping[detect_encoding.upper()],
@@ -110,13 +109,13 @@ def _encoding(encoding, filetype, include_hidden):
             new_fp = open(new_filename, 'w')
             new_fp.writelines(convert_outs)
             new_fp.close()
-            os.system('mv %s %s' % (new_filename, f))
+            os.system('mv \'%s\' \'%s\'' % (new_filename, f))
             print(
-                '[lin-ops] convert \'%s\' encoding from <%s> to <%s>' %
+                '[lin-ops] \'%s\' encoding convert from <%s> to <%s>' %
                 (f, detect_encoding, encoding_name_mapping[encoding.upper()]))
         except Exception as e:
             print(
-                '[lin-ops] failed to convert \'%s\' encoding from <%s> to <%s>: '
+                '[lin-ops] \'%s\' encoding failed to convert from <%s> to <%s>: '
                 % (f, detect_encoding, encoding_name_mapping[encoding.upper()],
                    str(e)))
     exit(0)
