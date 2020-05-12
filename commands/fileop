@@ -5,6 +5,7 @@
 import sys
 import os
 import getopt
+import time
 sys.path.append('.')
 import util
 
@@ -12,8 +13,10 @@ help_msg = '''File operations in current folder.
 
 usage:
     fileop [option] -d/--delete <filetype>              delete all files that has <filetype>.
-    fileop [option] -r/--replace <filetype> <old> <new> swap <old> with <new> for all files that has <filetype>.
+    fileop [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
     fileop [option] -l/--list <filetype>                list all files that has <filetype>.
+    fileop [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old-encoding to new <encoding>.
+    fileop [option] -se/--show-encoding <filename>      show detected encoding of <filename>.
 
 option:
     -i/--include-hidden                                 operations include hidden folder, by default False.
@@ -30,7 +33,9 @@ def _help():
 
 def _replace(old, new, filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
+    ]
     filetype = '.%s' % (filetype)
     for f in files:
         if not f.endswith(filetype):
@@ -50,7 +55,9 @@ def _replace(old, new, filetype, include_hidden):
 
 def _delete(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
+    ]
     filetype = '.%s' % filetype
     for f in files:
         relname = os.path.relpath(f)
@@ -62,7 +69,9 @@ def _delete(filetype, include_hidden):
 
 def _list(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
+    ]
     filetype = '.%s' % filetype
     for f in files:
         if f.endswith(filetype):
@@ -70,11 +79,62 @@ def _list(filetype, include_hidden):
     exit(0)
 
 
+def _encoding(encoding, filetype, include_hidden):
+    encoding_name_mapping = {
+        'GB2312': 'GB18030',
+        'UTF8': 'UTF-8',
+        'UTF-8': 'UTF-8'
+    }
+    root = os.getcwd()
+    files = [
+        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
+    ]
+    filetype = '.%s' % filetype
+    for f in files:
+        if not f.endswith(filetype):
+            continue
+        detect_outs, detect_errs = util.run('chardetect', f)
+        detect_encoding = ''.join(detect_outs).strip().split(' ')[1]
+        if encoding_name_mapping[detect_encoding.upper(
+        )] == encoding_name_mapping[encoding.upper()]:
+            print('[lin-ops] \'%s\' encoding is already <%s>, skip convert' %
+                  (f, encoding_name_mapping[encoding.upper()]))
+            continue
+        # import pdb
+        # pdb.set_trace()
+        try:
+            convert_outs, convert_errs = util.run(
+                'iconv', '-f', encoding_name_mapping[detect_encoding.upper()],
+                '-t', encoding_name_mapping[encoding.upper()], f)
+            new_filename = '%s.new.%s' % (f, time.time())
+            new_fp = open(new_filename, 'w')
+            new_fp.writelines(convert_outs)
+            new_fp.close()
+            os.system('mv %s %s' % (new_filename, f))
+            print(
+                '[lin-ops] convert \'%s\' encoding from <%s> to <%s>' %
+                (f, detect_encoding, encoding_name_mapping[encoding.upper()]))
+        except Exception as e:
+            print(
+                '[lin-ops] failed to convert \'%s\' encoding from <%s> to <%s>: '
+                % (f, detect_encoding, encoding_name_mapping[encoding.upper()],
+                   str(e)))
+    exit(0)
+
+
+def _show_encoding(filename):
+    detect_outs, detect_errs = util.run('chardetect', filename)
+    detect_encoding = ''.join(detect_outs).strip()
+    print('[lin-ops] %s' % (detect_encoding))
+    exit(0)
+
+
 if __name__ == '__main__':
     try:
-        opts, args = getopt.getopt(
-            sys.argv[1:], 'd:r:l:ih',
-            ['delete=', 'replace=', 'list=', 'include-hidden', 'help'])
+        opts, args = getopt.getopt(sys.argv[1:], 'd:r:l:e:s:ih', [
+            'delete=', 'replace=', 'list=', 'encoding=', 'show-encoding=',
+            'include-hidden', 'help'
+        ])
         include_hidden = False
         for opt in opts:
             if opt[0] in ('-i', '--include-hidden'):
@@ -83,12 +143,17 @@ if __name__ == '__main__':
         for opt in opts:
             if opt[0] in ('-d', '--delete'):
                 _delete(opt[1], include_hidden)
-            elif opt[0] == '-r':
-                _replace(args[0], args[1], opt[1], include_hidden)
-            elif opt[0] == '--replace':
+            elif opt[0] in ('-r', '--replace'):
                 _replace(args[0], args[1], opt[1], include_hidden)
             elif opt[0] in ('-l', '--list'):
                 _list(opt[1], include_hidden)
+            elif opt[0] in ('-e', '--encoding'):
+                _encoding(args[0], opt[1], include_hidden)
+            elif opt[0] == '-s':
+                if opt[1] == 'e':
+                    _show_encoding(args[0])
+            elif opt[0] == '--show-encoding':
+                _show_encoding(opt[1])
         _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
