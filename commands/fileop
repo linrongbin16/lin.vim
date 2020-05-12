@@ -82,6 +82,7 @@ def _list(filetype, include_hidden):
 def _encoding(encoding, filetype, include_hidden):
     encoding_name_mapping = {
         'GB2312': 'GB18030',
+        'GBK': 'GB18030',
         'UTF8': 'UTF-8',
         'UTF-8': 'UTF-8'
     }
