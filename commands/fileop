@@ -15,7 +15,7 @@ usage:
     fileop [option] -d/--delete <filetype>              delete all files that has <filetype>.
     fileop [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
     fileop [option] -l/--list <filetype>                list all files that has <filetype>.
-    fileop [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old-encoding to new <encoding>.
+    fileop [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
     fileop [option] -se/--show-encoding <filename>      show detected encoding of <filename>.
 
 option:
@@ -115,7 +115,7 @@ def _encoding(encoding, filetype, include_hidden):
                 (f, detect_encoding, encoding_name_mapping[encoding.upper()]))
         except Exception as e:
             print(
-                '[lin-ops] \'%s\' encoding failed to convert from <%s> to <%s>: '
+                '[lin-ops] \'%s\' encoding failed to convert from <%s> to <%s>: %s'
                 % (f, detect_encoding, encoding_name_mapping[encoding.upper()],
                    str(e)))
     exit(0)
