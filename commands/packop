@@ -12,23 +12,26 @@ import util
 help_msg = '''Compress and extract operations.
 
 usage:
-    packop [compress] <filename>    compress <filename> to related compressed file, by default tar.gz.
-    packop [extract] <filename>     extract <filename> to related extracted file, by default use detected file type.
+    packop [compress-option] <filename> compress <filename> to related compressed file, by default tar.gz.
+    packop [extract-option] <filename>  extract <filename> to related extracted file, by default use detected file type.
 
-compress:
-    -c/--compress                   compress by tar.gz.
-    -ctg/--compress-tg              compress by tar.gz.
-    -ctb/--compress-tb              compress by tar.bz2.
-    -cz/--compress-zip              compress by zip.
+compress-option:
+    -c/--compress                       compress by tar.gz.
+    -ctg/--compress-targz               compress by tar.gz.
+    -ctb/--compress-tarbz2              compress by tar.bz2.
+    -ct/--compress-tar                  compress by tar.
+    -cz/--compress-zip                  compress by zip.
 
-extract:
-    -e/--extract                    extract by detected file type.
-    -etg/--extract-tg               extract by tar.gz.
-    -etb/--extract-tb               extract by tar.bz2.
-    -ez/--extract-zip               extract by zip.
+extract-option:
+    -e/--extract                        extract by detected file type.
+    -etg/--extract-targz                extract by tar.gz.
+    -etb/--extract-tarbz2               extract by tar.bz2.
+    -et/--extract-tar                   extract by tar.
+    -ez/--extract-zip                   extract by zip.
+    -ej/--extract-jar                   extract by java jar.
 
 flag:
-    packop -h/--help                show help message.
+    packop -h/--help                    show help message.
 '''
 
 
@@ -36,57 +39,158 @@ def help():
     print(help_msg)
 
 
-def compress(filename, option):
-    pass
+def _compress_targz(filename):
+    tarname = '%s.tar.gz' % filename
+    util.backup_file(tarname)
+    os.system('tar czvf "%s" "%s"' % (tarname, filename))
+    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+
+
+def _compress_tarbz2(filename):
+    tarname = '%s.tar.bz2' % filename
+    util.backup_file(tarname)
+    os.system('tar czvf "%s" "%s"' % (tarname, filename))
+    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+
+
+def _compress_tar(filename):
+    tarname = '%s.tar' % filename
+    util.backup_file(tarname)
+    os.system('tar cvf "%s" "%s"' % (tarname, filename))
+    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+
+
+def _compress_zip(filename):
+    tarname = '%s.zip' % filename
+    util.backup_file(tarname)
+    os.system('zip -r "%s" "%s"' % (tarname, filename))
+    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+
+
+def _compress(filename, option):
+    if option == 'tar.gz':
+        _compress_targz(filename)
+    elif option == 'tar.bz2':
+        _compress_tarbz2(filename)
+    elif option == 'tar':
+        _compress_tar(filename)
+    elif option == 'zip':
+        _compress_zip(filename)
+    else:
+        print('[lin-ops] compress option <%s> not support!' % (option))
     exit(0)
 
 
-def extract(filename, option):
-    pass
+def _extract_folder_name(filename):
+    folder_name_list = [
+        '.tar.gz', '.tar.bz2', '.tar', '.tgz', '.zip', '.jar', '.war'
+    ]
+    for f in folder_name_list:
+        if filename.endswith(f):
+            return filename[:len(f)]
+    raise Exception('file \'%s\' extract failed! filetype not support!' %
+                    filename)
+
+
+def _extract_targz(filename):
+    os.system('tar zxvf "%s"' % (filename))
+    print('[lin-ops] extract \'%s\' to \'%s\'' %
+          (filename, _extract_folder_name(filename)))
+
+
+def _extract_tarbz2(filename):
+    os.system('tar xvf "%s"' % (filename))
+    print('[lin-ops] extract \'%s\' to \'%s\'' %
+          (filename, _extract_folder_name(filename)))
+
+
+def _extract_tar(filename):
+    os.system('tar xvf "%s"' % (filename))
+    print('[lin-ops] extract \'%s\' to \'%s\'' %
+          (filename, _extract_folder_name(filename)))
+
+
+def _extract_zip(filename):
+    os.system('unzip "%s"' % (filename))
+    print('[lin-ops] extract \'%s\' to \'%s\'' %
+          (filename, _extract_folder_name(filename)))
+
+def _extract_jar(filename):
+    os.system('jar xf "%s"' % (filename))
+    print('[lin-ops] java extract \'%s\' to \'%s\'' %
+          (filename, _extract_folder_name(filename)))
+
+
+def _extract(filename, option):
+    if option == 'tar.gz':
+        _extract_targz(filename)
+    elif option == 'tar.bz2':
+        _extract_tarbz2(filename)
+    elif option == 'tar':
+        _extract_tar(filename)
+    elif option == 'zip':
+        _extract_zip(filename)
+    elif option == 'jar':
+        _extract_jar(filename)
+    else:
+        print('[lin-ops] extract option <%s> not support!' % (option))
     exit(0)
 
 
 if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], 'c:e:h', [
-            'compress=', 'compress-tg=', 'compress-tb=', 'compress-zip=',
-            'extract=', 'extract-tg=', 'extract-tb=', 'extract-zip=', 'help'
+            'compress=', 'compress-targz=', 'compress-tarbz2=',
+            'compress-zip=', 'extract=', 'extract-targz=', 'extract-tarbz2=',
+            'extract-zip=', 'help'
         ])
         for opt in opts:
             if opt[0] == '-c':
                 if opt[1] == 'tg':
-                    compress(args[0], 'tar.gz')
+                    _compress(args[0], 'tar.gz')
                 elif opt[1] == 'tb':
-                    compress(args[0], 'tar.bz2')
-                elif opt[1] == 'zip':
-                    compress(args[0], 'zip')
+                    _compress(args[0], 'tar.bz2')
+                elif opt[1] == 't':
+                    _compress(args[0], 'tar')
+                elif opt[1] == 'z':
+                    _compress(args[0], 'zip')
                 else:
-                    compress(opt[1], 'tar.gz')
+                    _compress(opt[1], 'tar.gz')
             elif opt[0] == '--compress':
-                compress(opt[1], 'tar.gz')
-            elif opt[0] == '--compress-tg':
-                compress(args[0], 'tar.gz')
-            elif opt[0] == '--compress-tb':
-                compress(args[0], 'tar.bz2')
+                _compress(opt[1], 'tar.gz')
+            elif opt[0] == '--compress-targz':
+                _compress(args[0], 'tar.gz')
+            elif opt[0] == '--compress-tarbz2':
+                _compress(args[0], 'tar.bz2')
+            elif opt[0] == '--compress-tar':
+                _compress(args[0], 'tar')
             elif opt[0] == '--compress-zip':
-                compress(args[0], 'zip')
+                _compress(args[0], 'zip')
             if opt[0] == '-e':
                 if opt[1] == 'tg':
-                    extract(args[0], 'tar.gz')
+                    _extract(args[0], 'tar.gz')
                 elif opt[1] == 'tb':
-                    extract(args[0], 'tar.bz2')
-                elif opt[1] == 'zip':
-                    extract(args[0], 'zip')
+                    _extract(args[0], 'tar.bz2')
+                elif opt[1] == 't':
+                    _extract(args[0], 'tar')
+                elif opt[1] == 'z':
+                    _extract(args[0], 'zip')
+                elif opt[1] == 'j':
+                    _extract(args[0], 'jar')
                 else:
-                    extract(opt[1], 'tar.gz')
+                    _extract(opt[1], 'tar.gz')
             elif opt[0] == '--extract':
-                extract(opt[1], 'tar.gz')
-            elif opt[0] == '--extract-tg':
-                extract(args[0], 'tar.gz')
-            elif opt[0] == '--extract-tb':
-                extract(args[0], 'tar.bz2')
+                _extract(opt[1], 'tar.gz')
+            elif opt[0] == '--extract-targz':
+                _extract(args[0], 'tar.gz')
+            elif opt[0] == '--extract-tarbz2':
+                _extract(args[0], 'tar.bz2')
+            elif opt[0] == '--extract-tar':
+                _extract(args[0], 'tar')
             elif opt[0] == '--extract-zip':
-                extract(args[0], 'zip')
+                _extract(args[0], 'zip')
+            elif opt[0] == '--extract-jar':
+                _extract(args[0], 'jar')
         help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
