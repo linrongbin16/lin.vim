@@ -16,7 +16,7 @@ usage:
     fileop [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
     fileop [option] -l/--list <filetype>                list all files that has <filetype>.
     fileop [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
-    fileop [option] -se/--show-encoding <filename>      show detected encoding of <filename>.
+    fileop [option] -se/--show-encoding <filetype>      show detected encoding of all files with <filetype>.
 
 option:
     -i/--include-hidden                                 operations include hidden folder, by default False.
@@ -79,6 +79,12 @@ def _list(filetype, include_hidden):
     exit(0)
 
 
+def get_encoding(outs):
+    detect_encoding = ''.join(outs).strip().split(':')[1]
+    detect_encoding = detect_encoding.strip().split(' ')[0]
+    return detect_encoding
+
+
 def _encoding(encoding, filetype, include_hidden):
     encoding_name_mapping = {
         'GB2312': 'GB18030',
@@ -95,8 +101,7 @@ def _encoding(encoding, filetype, include_hidden):
         if not f.endswith(filetype):
             continue
         detect_outs, detect_errs = util.run('chardetect', f)
-        detect_encoding = ''.join(detect_outs).strip().split(':')[1]
-        detect_encoding = detect_encoding.strip().split(' ')[0]
+        detect_encoding = get_encoding(detect_outs)
         if encoding_name_mapping[detect_encoding.upper(
         )] == encoding_name_mapping[encoding.upper()]:
             print('[lin-ops] \'%s\' encoding is already <%s>, skip convert' %
@@ -122,10 +127,16 @@ def _encoding(encoding, filetype, include_hidden):
     exit(0)
 
 
-def _show_encoding(filename):
-    detect_outs, detect_errs = util.run('chardetect', filename)
-    detect_encoding = ''.join(detect_outs).strip()
-    print('[lin-ops] %s' % (detect_encoding))
+def _show_encoding(filetype, include_hidden):
+    root = os.getcwd()
+    files = [
+        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
+    ]
+    filetype = '.%s' % filetype
+    for f in files:
+        detect_outs, detect_errs = util.run('chardetect', f)
+        detect_encoding = get_encoding(detect_outs)
+        print('[lin-ops] \'%s\' encoding with <%s>' % (f, detect_encoding))
     exit(0)
 
 
@@ -151,9 +162,9 @@ if __name__ == '__main__':
                 _encoding(args[0], opt[1], include_hidden)
             elif opt[0] == '-s':
                 if opt[1] == 'e':
-                    _show_encoding(args[0])
+                    _show_encoding(args[0], include_hidden)
             elif opt[0] == '--show-encoding':
-                _show_encoding(opt[1])
+                _show_encoding(opt[1], include_hidden)
         _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
