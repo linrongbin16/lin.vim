@@ -283,7 +283,6 @@ def get_git_remote_repository():
     repos = [x.strip() for x in repos]
     if len(repos) <= 0:
         return None
-    repos.sort()
     repo_str = ', '.join(
         ['\'%s\'[%d]' % (repos[i], i) for i in range(len(repos))])
     print('[lin-ops] detected remote repositories: %s' % (repo_str))
