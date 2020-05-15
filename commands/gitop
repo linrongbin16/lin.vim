@@ -229,9 +229,9 @@ if __name__ == '__main__':
                 elif opt[1] == 'r':
                     _branch_show('r')
                 elif opt[1] == 'c':
-                    _branch_create(opt[1])
+                    _branch_create(args[0])
                 elif opt[1] == 'm':
-                    _branch_move(opt[1])
+                    _branch_move(args[0])
             elif opt[0] == '--branch-all':
                 _branch_show('a')
             elif opt[0] == '--branch-local':
