@@ -9,7 +9,6 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_filetype_changed = 1
 let g:ale_sign_column_always = 1
 let g:ale_lint_delay = 500
-let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
             \   'c': ['cpplint', 'clangd'],

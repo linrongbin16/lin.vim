@@ -13,7 +13,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'

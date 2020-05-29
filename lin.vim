@@ -12,6 +12,7 @@ source $HOME/.vim/setting-vim/hotkey.vim
 " UI
 source $HOME/.vim/setting-plugin/indentline.vim
 source $HOME/.vim/setting-plugin/nerdtree.vim
+source $HOME/.vim/setting-plugin/airline.vim
 
 " Lint
 source $HOME/.vim/setting-plugin/ale.vim
