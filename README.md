@@ -79,18 +79,19 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 ### Windows Installation
 
-1.  Install [Git](https://git-scm.com/), choose **Use Git from Windows Command Prompt**.
-2.  Install [7-zip](http://www.7-zip.org/).
-3.  Install [Python3](https://www.python.org/downloads/), install globally with `pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet`.
-4.  Install [CMake](https://cmake.org/), choose **Add cmake.exe to PATH**.
-5.  Install [Vim for Windows](https://tuxproject.de/projects/vim/), **Add gvim.exe to PATH**.
-6.  Install [Visual Studio](https://www.visualstudio.com/), choose **VC++ for desktop**.
-7.  Install [LLVM](http://releases.llvm.org/download.html), choose **Add LLVM to PATH**.
-8.  Install [NodeJs](https://nodejs.org/), choose **Add node.exe to PATH**, install globally with `npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter`.
-9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), **add ag.exe to PATH**.
-10. Install [ctags](https://github.com/universal-ctags/ctags-win32/releases), **add ctags.exe readtags.exe to PATH**.
+1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line.
+3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`, then `pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet`.
+4.  Install [CMake](https://cmake.org/), add `cmake.exe` to `%PATH%`.
+5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`.
+6.  Install [Visual Studio](https://www.visualstudio.com/) with:
+    * .NET Desktop Development.
+    * Visual C++ Desktop Development.
+    * Common Windows Platform Development.
+7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
+8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`, then `npm install -g --unsafe-perm js-beautify eslint`.
+9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
 11. Install [Hack Font](https://sourcefoundry.org/hack/).
-12. **Add %%USERPROFILE%%\.vim\commands to PATH**.
+12. Add `%%USERPROFILE%%\.vim\commands` to `%PATH%`.
 
 
 ```bash

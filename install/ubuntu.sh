@@ -45,8 +45,8 @@ python3 install.py --clangd-completer
 # GuiFonts
 font_dir="$HOME/.local/share/fonts"
 mkdir -p $font_dir
-cd ~/.vim/guifonts
-find_command="find $HOME/.vim/guifonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
+cd ~/.vim/fonts
+find_command="find $HOME/.vim/fonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
 eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
 fc-cache -f $font_dir
 
