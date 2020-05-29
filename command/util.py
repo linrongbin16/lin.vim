@@ -88,8 +88,8 @@ def purge_file(name):
 
 
 def get_command_home():
-    return os.path.expanduser('~') + '\\.vim\\commands' if is_windows(
-    ) else os.path.expanduser('~') + '/.vim/commands'
+    return os.path.expanduser('~') + '\\.vim\\command' if is_windows(
+    ) else os.path.expanduser('~') + '/.vim/command'
 
 
 def get_command_name():

@@ -105,7 +105,7 @@ def os_listdir_wrapper(d):
         return []
 
 
-def get_macos_header():
+def macos_header():
     header = []
     header.append('-I')
     header.append(
@@ -124,7 +124,7 @@ def get_macos_header():
     return header
 
 
-def get_linux_header():
+def linux_header():
     header = []
     header.append('-I')
     header.append('/usr/include')
@@ -142,7 +142,7 @@ def get_linux_header():
     return header
 
 
-def get_windows_header():
+def windows_header():
     header = []
     # '-I',
     # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
@@ -166,7 +166,7 @@ def get_windows_header():
         return header
 
 
-def get_user_header():
+def user_header():
     header = []
     rootpath = [
         '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'J:\\',
@@ -229,12 +229,12 @@ def Settings(**kwargs):
         '-DNDEBUG',
     ]
     if platform.system() == 'Windows':
-        flags.extend(get_windows_header())
+        flags.extend(windows_header())
     elif platform.system() == 'Darwin':
-        flags.extend(get_macos_header())
+        flags.extend(macos_header())
     else:
-        flags.extend(get_linux_header())
-    flags.extend(get_user_header())
+        flags.extend(linux_header())
+    flags.extend(user_header())
 
     if platform.system() == 'Windows':
         flags.append('/std:c++14')
@@ -244,5 +244,5 @@ def Settings(**kwargs):
 
 
 if __name__ == '__main__':
-    print(git_header())
-    print(homebrew_header())
+    # print(homebrew_header())
+    print(windows_header())

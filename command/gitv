@@ -111,7 +111,7 @@ def _push(force):
     exit(0)
 
 
-def git_discard():
+def _discard():
     util.check_git_repository()
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
@@ -287,11 +287,11 @@ if __name__ == '__main__':
                 _enable_proxy()
             elif opt[0] == '-d':
                 if opt[1] is None:
-                    git_discard()
+                    _discard()
                 elif opt[1] == 'p':
                     _disable_proxy()
             elif opt[0] == '--discard':
-                git_discard()
+                _discard()
             elif opt[0] == '--disable-proxy':
                 _disable_proxy()
         _help()
