@@ -1,34 +1,32 @@
 " lin-vim
 
-" conf
-source $HOME/.vim/settings/conf/vim-plug.vim
-source $HOME/.vim/settings/conf/basic.vim
-source $HOME/.vim/settings/conf/color.vim
-source $HOME/.vim/settings/conf/copy-paste.vim
-source $HOME/.vim/settings/conf/file.vim
-source $HOME/.vim/settings/conf/key.vim
+" config for vim
+source $HOME/.vim/setting-vim/vim-plug.vim
+source $HOME/.vim/setting-vim/basic.vim
+source $HOME/.vim/setting-vim/color.vim
+source $HOME/.vim/setting-vim/filetype.vim
+source $HOME/.vim/setting-vim/hotkey.vim
 
-" plug
-source $HOME/.vim/settings/plug/indentline.vim
-source $HOME/.vim/settings/plug/nerdtree.vim
-source $HOME/.vim/settings/plug/ale.vim
-source $HOME/.vim/settings/plug/ctrlp.vim
-source $HOME/.vim/settings/plug/vim-autoformat.vim
-source $HOME/.vim/settings/plug/vim-gutentags.vim
-source $HOME/.vim/settings/plug/you-complete-me.vim
-source $HOME/.vim/settings/plug/ultisnips.vim
-source $HOME/.vim/settings/plug/ag.vim
-source $HOME/.vim/settings/plug/vim-easymotion.vim
-source $HOME/.vim/settings/plug/vim-cpp-enhanced-highlight.vim
-source $HOME/.vim/settings/plug/emmet.vim
-source $HOME/.vim/settings/plug/python-syntax.vim
-source $HOME/.vim/settings/plug/haskell.vim
-source $HOME/.vim/settings/plug/vim-rust.vim
-source $HOME/.vim/settings/plug/vim-go.vim
-source $HOME/.vim/settings/plug/vim-easy-align.vim
+" config for plugin 
+source $HOME/.vim/setting-plugin/ag.vim
+source $HOME/.vim/setting-plugin/indentline.vim
+source $HOME/.vim/setting-plugin/nerdtree.vim
+source $HOME/.vim/setting-plugin/ale.vim
+source $HOME/.vim/setting-plugin/ctrlp.vim
+source $HOME/.vim/setting-plugin/vim-autoformat.vim
+source $HOME/.vim/setting-plugin/vim-gutentags.vim
+source $HOME/.vim/setting-plugin/you-complete-me.vim
+source $HOME/.vim/setting-plugin/ultisnips.vim
+source $HOME/.vim/setting-plugin/vim-easymotion.vim
+source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
+source $HOME/.vim/setting-plugin/emmet.vim
+source $HOME/.vim/setting-plugin/python-syntax.vim
+source $HOME/.vim/setting-plugin/haskell.vim
+source $HOME/.vim/setting-plugin/vim-rust.vim
+source $HOME/.vim/setting-plugin/vim-go.vim
+source $HOME/.vim/setting-plugin/vim-easy-align.vim
 
-" user
-" please use ~/.vim/settings/conf/user-template.vim
-if filereadable(expand('~/.vim/user.vim'))
-    source $HOME/.vim/user.vim
+" user custom
+if filereadable(expand('~/.vim/custom.vim'))
+    source $HOME/.vim/custom.vim
 endif

@@ -14,6 +14,6 @@ plugged
 vim-plug
 
 # custom vim settings
-user.vim
+custom.vim
 commands/*.db
 commands/*.ignore

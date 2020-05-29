@@ -28,9 +28,10 @@ Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
+Plug 'Rigellute/rigel'
 
 " Lint
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/vim-easy-align'
