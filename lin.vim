@@ -33,7 +33,7 @@ source $HOME/.vim/setting-plugin/vim-easymotion.vim
 " C/C++
 source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
 
-" user custom
-if filereadable(expand('~/.vim/custom.vim'))
-    source $HOME/.vim/custom.vim
+" user setting
+if filereadable(expand('~/.vim/user.vim'))
+    source $HOME/.vim/user.vim
 endif
