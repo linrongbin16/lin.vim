@@ -33,15 +33,6 @@ source $HOME/.vim/setting-plugin/vim-easymotion.vim
 " C/C++
 source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
 
-" Rust
-source $HOME/.vim/setting-plugin/vim-rust.vim
-
-" Go
-source $HOME/.vim/setting-plugin/vim-go.vim
-
-" Haskell
-source $HOME/.vim/setting-plugin/haskell.vim
-
 " user custom
 if filereadable(expand('~/.vim/custom.vim'))
     source $HOME/.vim/custom.vim
