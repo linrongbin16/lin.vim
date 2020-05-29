@@ -1,5 +1,3 @@
-"" ---- vim-autoformat ----
-
 " Python
 let g:formatdef_autopep8 = "'autopep8 --ignore=E402,E501'"
 let g:formatters_python = ['autopep8', 'yapf', 'black']

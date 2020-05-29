@@ -28,60 +28,12 @@
 #
 # For more information, please refer to <http://unlicense.org/>
 
-from distutils.sysconfig import get_python_inc
 import platform
 import os
-import ycm_core
 import re
-
-# These are the compilation flags that will be used in case there's no
-# compilation database set (by default, one is not set).
-# CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
-flags = [
-    '-Wall',
-    '-Wextra',
-    '-Werror',
-    '-Wno-long-long',
-    '-Wno-variadic-macros',
-    '-fexceptions',
-    '-DNDEBUG',
-    # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
-    # source code needs it.
-    '-DUSE_CLANG_COMPLETER',
-    # THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
-    # use when compiling headers. So it will guess. Badly. So C++ headers will be
-    # compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
-    # For a C project, you would set this to 'c' instead of 'c++'.
-    '-x',
-    'c++',
-    '-isystem',
-    '../BoostParts',
-    '-isystem',
-    get_python_inc(),
-    '-isystem',
-    '../llvm/include',
-    '-isystem',
-    '../llvm/tools/clang/include',
-    '-I',
-    '.',
-    '-I',
-    './ClangCompleter',
-    '-isystem',
-    './tests/gmock/gtest',
-    '-isystem',
-    './tests/gmock/gtest/include',
-    '-isystem',
-    './tests/gmock',
-    '-isystem',
-    './tests/gmock/include',
-    '-isystem',
-    './benchmarks/benchmark/include',
-]
+import subprocess
 
 # Auto Header Extension Begin
-
-import os
-import subprocess
 
 
 def is_ascii_char(s):
@@ -132,7 +84,7 @@ def git_header():
 
 def homebrew_header():
     try:
-        header = '/usr/local/Cellar'
+        header = '/usr/local/opt'
         return list_directory(header, 'include', 2)
     except:
         return []
@@ -145,7 +97,7 @@ def os_listdir_wrapper(d):
         return []
 
 
-def macos_header():
+def get_macos_header():
     header = []
     header.append('-I')
     header.append(
@@ -163,7 +115,7 @@ def macos_header():
     return header
 
 
-def linux_header():
+def get_linux_header():
     header = []
     header.append('-I')
     header.append('/usr/include')
@@ -184,7 +136,7 @@ def linux_header():
     return header
 
 
-def windows_header():
+def get_windows_header():
     header = []
     # '-I',
     # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
@@ -211,10 +163,10 @@ def windows_header():
     return []
 
 
-def user_header():
+def get_user_header():
     header = []
     rootpath = [
-        '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'G:\\',
+        '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'J:\\',
         'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
         'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
     ]
@@ -259,93 +211,63 @@ def user_header():
 
 # Auto Header Extension End
 
-if platform.system() == 'Windows':
-    flags.extend(windows_header())
-elif platform.system() == 'Darwin':
-    flags.extend(macos_header())
-else:
-    flags.extend(linux_header())
-flags.extend(user_header())
 
-# Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
-# which is required for compiling the standard library, and to 'c++14' for older
-# versions.
-if platform.system() == 'Windows':
-    flags.append('/std:c++14')
-else:
-    flags.append('-std=c++14')
+def Settings(**kwargs):
+    flags = [
+        '-Wall',
+        '-Wextra',
+        '-Werror',
+        '-Wno-long-long',
+        '-Wno-variadic-macros',
+        '-fexceptions',
+        '-DNDEBUG',
+        '-x',
+        'c++',
+        '-isystem',
+        '../BoostParts',
+        '-isystem',
+        '../llvm/include',
+        '-isystem',
+        '../llvm/tools/clang/include',
+        '-I',
+        '.',
+        '-I',
+        './ClangCompleter',
+        '-isystem',
+        './tests/gmock/gtest',
+        '-isystem',
+        './tests/gmock/gtest/include',
+        '-isystem',
+        './tests/gmock',
+        '-isystem',
+        './tests/gmock/include',
+        '-isystem',
+        './benchmarks/benchmark/include',
+    ]
+    if platform.system() == 'Windows':
+        flags.extend(get_windows_header())
+    elif platform.system() == 'Darwin':
+        flags.extend(get_macos_header())
+    else:
+        flags.extend(get_linux_header())
+    flags.extend(get_user_header())
 
-# Set this to the absolute path to the folder (NOT the file!) containing the
-# compile_commands.json file to use that instead of 'flags'. See here for
-# more details: http://clang.llvm.org/docs/JSONCompilationDatabase.html
-#
-# You can get CMake to generate this file for you by adding:
-#   set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )
-# to your CMakeLists.txt file.
-#
-# Most projects will NOT need to set this to anything; you can just change the
-# 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = ''
-
-if os.path.exists(compilation_database_folder):
-    database = ycm_core.CompilationDatabase(compilation_database_folder)
-else:
-    database = None
-
-SOURCE_EXTENSIONS = ['.cpp', '.cxx', '.cc', '.c', '.m', '.mm']
-
-
-def DirectoryOfThisScript():
-    return os.path.dirname(os.path.abspath(__file__))
-
-
-def IsHeaderFile(filename):
-    extension = os.path.splitext(filename)[1]
-    return extension in ['.h', '.hxx', '.hpp', '.hh']
-
-
-def GetCompilationInfoForFile(filename):
-    # The compilation_commands.json file generated by CMake does not have entries
-    # for header files. So we do our best by asking the db for flags for a
-    # corresponding source file, if any. If one exists, the flags for that file
-    # should be good enough.
-    if IsHeaderFile(filename):
-        basename = os.path.splitext(filename)[0]
-        for extension in SOURCE_EXTENSIONS:
-            replacement_file = basename + extension
-            if os.path.exists(replacement_file):
-                compilation_info = database.GetCompilationInfoForFile(
-                    replacement_file)
-                if compilation_info.compiler_flags_:
-                    return compilation_info
-        return None
-    return database.GetCompilationInfoForFile(filename)
-
-
-def FlagsForFile(filename, **kwargs):
-    if not database:
-        return {
-            'flags': flags,
-            'include_paths_relative_to_dir': DirectoryOfThisScript()
-        }
-
-        compilation_info = GetCompilationInfoForFile(filename)
-    if not compilation_info:
-        return None
-
-    # Bear in mind that compilation_info.compiler_flags_ does NOT return a
-    # python list, but a "list-like" StringVec object.
-    final_flags = list(compilation_info.compiler_flags_)
-
-    # NOTE: This is just for YouCompleteMe; it's highly likely that your project
-    # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
-    # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
-    # try:
-    # final_flags.remove( '-stdlib=libc++' )
-    # except ValueError:
-    # pass
-
+    if platform.system() == 'Windows':
+        flags.append('/std:c++14')
+    else:
+        flags.append('-std=c++14')
     return {
-        'flags': final_flags,
-        'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
+        'ls': {},
+        'flags': flags,
     }
+
+
+if __name__ == '__main__':
+    print('\n\n user header:')
+    print(get_user_header())
+    print('\n\n macos header:')
+    print(get_macos_header())
+    print('\n\n linux header:')
+    print(get_linux_header())
+    print('\n\n windows header:')
+    print(get_windows_header())
