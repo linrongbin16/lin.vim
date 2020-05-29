@@ -54,38 +54,46 @@ def run_process(*params):
     return outstr, errstr
 
 
-def list_directory(base_dir, target, depth):
-    target_dir = os.path.join(os.getcwd(), base_dir)
-    num_sep = target_dir.count(os.path.sep)
+def path_contain(path, part):
+    for p in part:
+        if p in path:
+            return True
+    return False
+
+
+def list_directory(base_dir, depth):
+    num_sep = base_dir.count(os.path.sep)
     dir_list = []
-    for root, dirs, files in os.walk(target_dir):
-        files[:] = [f for f in files if not f[0] == '.']
-        dirs[:] = [d for d in dirs if not d[0] == '.']
+    for root, dirs, files in os.walk(base_dir):
         for d in dirs:
             fd = os.path.join(root, d)
-            if target == '*':
-                dir_list.append(os.path.join(root, d))
-            elif fd.count(target) == 1 and fd[-len(target):] == target:
-                dir_list.append(os.path.join(root, d))
+            if d.startswith('.') or path_contain(fd, ['.git', '.svn', '.hg']):
+                continue
+            dir_list.append(fd)
         cur_num_sep = root.count(os.path.sep)
         if cur_num_sep >= num_sep + depth:
             del dirs[:]
-    return [d.replace('/', '\\') for d in dir_list]
+    return [d.replace('\\', '/') for d in dir_list]
 
 
 def git_header():
     try:
         root, _ = run_process('git', 'rev-parse', '--show-toplevel')
         groot = root[0].strip() if (len(root) > 0) else None
-        return list_directory(groot, '*', 20)
+        return list_directory(groot, 3)
     except:
         return []
 
 
 def homebrew_header():
     try:
-        header = '/usr/local/opt'
-        return list_directory(header, 'include', 2)
+        inc_list = []
+        brew_list = list_directory('/usr/local/opt', 3)
+        for inc in brew_list:
+            c = inc + '/include'
+            if os.path.exists(c):
+                inc_list.append(c)
+        return inc_list
     except:
         return []
 
@@ -106,10 +114,11 @@ def get_macos_header():
     header.append(
         '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1'
     )
+    header.append('-I')
+    header.append(
+        '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1'
+    )
     for inc in homebrew_header():
-        header.append('-I')
-        header.append(inc)
-    for inc in git_header():
         header.append('-I')
         header.append(inc)
     return header
@@ -130,9 +139,6 @@ def get_linux_header():
     for version in os_listdir_wrapper('/usr/include/c++'):
         header.append('-I')
         header.append('/usr/include/c++/%s' % (version))
-    for inc in git_header():
-        header.append('-I')
-        header.append(inc)
     return header
 
 
@@ -149,7 +155,7 @@ def get_windows_header():
             header.append(
                 'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
                 % (release, version))
-    # '-I',
+            # '-I',
     # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
     for version in os_listdir_wrapper(
             'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
@@ -157,10 +163,7 @@ def get_windows_header():
         header.append(
             'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
             (version))
-    for inc in git_header():
-        header.append('-I')
-        header.append(inc)
-    return []
+        return header
 
 
 def get_user_header():
@@ -173,7 +176,7 @@ def get_user_header():
     cur = '.'
     header.append('-I')
     header.append(cur)
-    for i in range(10):
+    for i in range(3):
         if os.path.abspath(cur) in rootpath:
             break
         cur = '%s%s' % (cur, '/..')
@@ -206,6 +209,9 @@ def get_user_header():
             continue
         header.append('-I')
         header.append(path)
+    for inc in git_header():
+        header.append('-I')
+        header.append(inc)
     return header
 
 
@@ -221,28 +227,6 @@ def Settings(**kwargs):
         '-Wno-variadic-macros',
         '-fexceptions',
         '-DNDEBUG',
-        '-x',
-        'c++',
-        '-isystem',
-        '../BoostParts',
-        '-isystem',
-        '../llvm/include',
-        '-isystem',
-        '../llvm/tools/clang/include',
-        '-I',
-        '.',
-        '-I',
-        './ClangCompleter',
-        '-isystem',
-        './tests/gmock/gtest',
-        '-isystem',
-        './tests/gmock/gtest/include',
-        '-isystem',
-        './tests/gmock',
-        '-isystem',
-        './tests/gmock/include',
-        '-isystem',
-        './benchmarks/benchmark/include',
     ]
     if platform.system() == 'Windows':
         flags.extend(get_windows_header())
@@ -256,18 +240,9 @@ def Settings(**kwargs):
         flags.append('/std:c++14')
     else:
         flags.append('-std=c++14')
-    return {
-        'ls': {},
-        'flags': flags,
-    }
+    return {'flags': flags}
 
 
 if __name__ == '__main__':
-    print('\n\n user header:')
-    print(get_user_header())
-    print('\n\n macos header:')
-    print(get_macos_header())
-    print('\n\n linux header:')
-    print(get_linux_header())
-    print('\n\n windows header:')
-    print(get_windows_header())
+    print(git_header())
+    print(homebrew_header())
