@@ -94,7 +94,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
 9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
 11. Install [Hack Font](https://sourcefoundry.org/hack/).
-12. Add `%%USERPROFILE%%\.vim\commands` to `%PATH%`.
+12. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 
 ```bash
