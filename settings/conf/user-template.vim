@@ -1,7 +1,7 @@
 " width height
 if has('gui_running')
-    set lines=50
-    set columns=180
+    set lines=999
+    set columns=999
 endif
 
 " fonts

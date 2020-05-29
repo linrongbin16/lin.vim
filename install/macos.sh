@@ -7,19 +7,14 @@ if [ -f ~/.linvimrc ]; then
     mv ~/.linvimrc ~/.linvimrc.bak
 fi
 touch ~/.linvimrc
-touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
 brew upgrade
-brew install macvim zsh
-brew install curl wget llvm autoconf automake cmake clang-format pkg-config
-brew install openssl openssh cryptopp
-brew install the_silver_searcher python3 node
-brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-brew install unzip zip p7zip
+brew install macvim zsh curl wget llvm autoconf automake cmake clang-format
+brew install openssl openssh cryptopp the_silver_searcher python3 node unzip zip p7zip
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
+sudo npm install -g --unsafe-perm js-beautify tslint
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config
@@ -45,7 +40,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer
+python3 install.py --clangd-completer
 
 # GuiFonts
 font_dir="$HOME/Library/Fonts"
@@ -78,6 +73,4 @@ echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
-echo "source ~/.linvimrc" >> ~/.bashrc
-source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

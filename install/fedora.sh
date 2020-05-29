@@ -7,32 +7,23 @@ if [ -f ~/.linvimrc ]; then
     mv ~/.linvimrc ~/.linvimrc.bak
 fi
 touch ~/.linvimrc
-touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
 sudo dnf install -y git vim gvim curl wget zsh
-sudo dnf install -y gcc g++ clang autoconf automake make gdb cmake pkg-config
+sudo dnf install -y gcc g++ clang autoconf automake make cmake
 sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
 sudo dnf install -y the_silver_searcher unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
+sudo npm install -g --unsafe-perm js-beautify eslint
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config
 fi
-cd ~/.vim
-if [ ! -d universal-ctags ]; then
-    git clone https://github.com/universal-ctags/ctags.git universal-ctags
-fi
-cd universal-ctags
-./autogen.sh
-./configure
-make
-sudo make install
 
 # Git Config
+cd ~/.vim
 git config core.filemode false
 git config core.longpaths true
 git config push.default simple
@@ -51,7 +42,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer
+python3 install.py --clangd-completer
 
 # GuiFonts
 font_dir="$HOME/.local/share/fonts"
@@ -79,6 +70,4 @@ echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
-echo "source ~/.linvimrc" >> ~/.bashrc
-source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

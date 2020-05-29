@@ -7,32 +7,21 @@ if [ -f ~/.linvimrc ]; then
     mv ~/.linvimrc ~/.linvimrc.bak
 fi
 touch ~/.linvimrc
-touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
-sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh
-sudo apt-get install -y gcc g++ clang cmake autoconf automake clang-format pkg-config build-essential
-sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev
-sudo apt-get install -y silversearcher-ag unzip bzip2 unrar zip p7zip
+sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh gcc g++ clang cmake autoconf automake clang-format build-essential
+sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip nodejs nodejs-dev node-gyp libssl1.0-dev npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
+sudo npm install -g --unsafe-perm js-beautify eslint
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config
 fi
-cd ~/.vim
-if [ ! -d universal-ctags ]; then
-    git clone https://github.com/universal-ctags/ctags.git universal-ctags
-fi
-cd universal-ctags
-./autogen.sh
-./configure
-make
-sudo make install
 
 # Git Config
+cd ~/.vim
 git config core.filemode false
 git config core.longpaths true
 git config push.default simple
@@ -51,7 +40,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --system-libclang
+python3 install.py --clangd-completer
 
 # GuiFonts
 font_dir="$HOME/.local/share/fonts"
@@ -80,6 +69,4 @@ echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
-echo "source ~/.linvimrc" >> ~/.bashrc
-source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1

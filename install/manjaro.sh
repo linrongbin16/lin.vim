@@ -7,33 +7,21 @@ if [ -f ~/.linvimrc ]; then
     mv ~/.linvimrc ~/.linvimrc.bak
 fi
 touch ~/.linvimrc
-touch ~/.bashrc
 touch ~/.zshrc
 
 # Software Dependency
 yes | sudo pacman -Rs vim
-yes | sudo pacman -S git gvim curl wget zsh
-yes | sudo pacman -S gcc clang make autoconf automake cmake pkg-config
-yes | sudo pacman -S openssh openssl crypto++
-yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 zip p7zip
-yes | sudo pacman -S python python-pip universal-ctags nodejs npm
+yes | sudo pacman -S git gvim curl wget zsh gcc clang make autoconf automake cmake openssh openssl crypto++
+yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 zip p7zip python python-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify eslint tslint typescript-formatter
+sudo npm install -g --unsafe-perm js-beautify eslint
 if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config
 fi
-cd ~/.vim
-if [ ! -d universal-ctags ]; then
-    git clone https://github.com/universal-ctags/ctags.git universal-ctags
-fi
-cd universal-ctags
-./autogen.sh
-./configure
-make
-sudo make install
 
 # Git Config
+cd ~/.vim
 git config core.filemode false
 git config core.longpaths false
 git config push.default simple
@@ -52,7 +40,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --system-libclang
+python3 install.py --clangd-completer
 
 # GuiFonts
 font_dir="$HOME/.local/share/fonts"
@@ -81,6 +69,4 @@ echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
-echo "source ~/.linvimrc" >> ~/.bashrc
-source ~/.bashrc 1>/dev/null 2>&1
 source ~/.zshrc 1>/dev/null 2>&1
