@@ -3,20 +3,20 @@
 "" pick random color
 syntax enable
 set background=dark
-let s:mycolor = ['solarized', 'molokai', 'monokai', 'dracula', 'koehler', 'torte', 'darkblue', 'desert', 'evening', 'neodark', 'srcery', 'palenight']
+let s:mycolor = ['solarized', 'molokai', 'monokai', 'dracula', 'torte', 'darkblue', 'evening', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox']
 
 if has("gui_running")
-    let curcolor = localtime() % 17 % len(s:mycolor)
+    let curcolor = localtime() % len(s:mycolor)
     execute 'colorscheme ' .s:mycolor[curcolor]
     execute 'syntax sync fromstart'
 endif
 
-function RandomColor()
+function NextColor()
     if has("gui_running")
-        let curcolor = localtime() % 101 % len(s:mycolor)
+        let curcolor = localtime() % len(s:mycolor)
         execute 'colorscheme ' .s:mycolor[curcolor]
         execute 'syntax sync fromstart'
     endif
 endfunction
 
-:command Color :call RandomColor()
+:command NextColor :call NextColor()

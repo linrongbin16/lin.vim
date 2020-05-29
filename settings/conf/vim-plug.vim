@@ -18,15 +18,16 @@ Plug 'itchyny/lightline.vim'
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
+Plug 'crusoexia/vim-monokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'lifepillar/vim-solarized8'
-Plug 'chriskempson/base16-vim'
-Plug 'crusoexia/vim-monokai'
-Plug 'raphamorim/lucario'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
 
 " Lint
 Plug 'w0rp/ale'
