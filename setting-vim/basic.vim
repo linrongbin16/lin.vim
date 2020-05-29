@@ -108,8 +108,6 @@ set modifiable
 
 set cursorline
 set scrolloff=1
-set ttyfast
-set lazyredraw
 set nocursorcolumn
 set norelativenumber
 set number
