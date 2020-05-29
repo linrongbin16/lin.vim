@@ -41,7 +41,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ycm-core/YouCompleteMe'
 
 " Comment
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 
 " Git
 Plug 'tpope/vim-fugitive'
