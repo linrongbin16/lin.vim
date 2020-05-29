@@ -9,24 +9,24 @@ sys.path.append('.')
 import util
 
 slash = '\\' if util.is_windows() else '/'
-db = util.get_command_home() + slash + 'agop.ignore'
+db = util.get_command_home() + slash + 'agv.ignore'
 
 help_msg = '''Searching in current folder by ag.
 
 usage:
-    agop [option] <text>            search all <text>.
-    agop [option] -w/--word <word>  search all <word>.
-    agop [option] -c/--count <text> search files and occurrences that contains <text>.
-    agop [option] -f/--file <text>  search files that contains <text>.
-    agop -i/--ignore <filetype>     add <filetype> in searcher ignore configuration.
+    agv [option] <text>            search all <text>.
+    agv [option] -w/--word <word>  search all <word>.
+    agv [option] -c/--count <text> search files and occurrences that contains <text>.
+    agv [option] -f/--file <text>  search files that contains <text>.
+    agv -i/--ignore <filetype>     add <filetype> in searcher ignore configuration.
 
 option:
     -r/--recursive                  searching recursively from current folder, by default False.
 
 flag:
-    agop -p/--purge                 purge all filetypes in searcher configuration.
-    agop -s/--show                  show all filetypes in searcher configuration.
-    agop -h/--help                  show help message.
+    agv -p/--purge                 purge all filetypes in searcher configuration.
+    agv -s/--show                  show all filetypes in searcher configuration.
+    agv -h/--help                  show help message.
 '''
 
 
@@ -72,7 +72,7 @@ def _show():
     ignore_list = util.readlines_file(db)
     ignore_list = [x.strip() for x in ignore_list]
     ignore_str = ' '.join(ignore_list).strip()
-    print('[lin-ops] search ignore: %s' %
+    print('[vcmd] search ignore: %s' %
           (None if len(ignore_str) == 0 else ignore_str))
     exit(0)
 

@@ -12,17 +12,17 @@ import util
 help_msg = '''File operations in current folder.
 
 usage:
-    fileop [option] -d/--delete <filetype>              delete all files that has <filetype>.
-    fileop [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
-    fileop [option] -l/--list <filetype>                list all files that has <filetype>.
-    fileop [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
-    fileop [option] -se/--show-encoding <filetype>      show detected encoding of all files with <filetype>.
+    filev [option] -d/--delete <filetype>              delete all files that has <filetype>.
+    filev [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
+    filev [option] -l/--list <filetype>                list all files that has <filetype>.
+    filev [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
+    filev [option] -se/--show-encoding <filetype>      show detected encoding of all files with <filetype>.
 
 option:
     -i/--include-hidden                                 operations include hidden folder, by default False.
 
 flag:
-    fileop -h/--help                                    show help message.
+    filev -h/--help                                    show help message.
 '''
 
 
@@ -62,7 +62,7 @@ def _delete(filetype, include_hidden):
     for f in files:
         relname = os.path.relpath(f)
         if relname.endswith(filetype):
-            print('[lin-ops] remove %s' % f)
+            print('[vcmd] remove %s' % f)
             os.remove(f)
     exit(0)
 
@@ -104,7 +104,7 @@ def _encoding(encoding, filetype, include_hidden):
         detect_encoding = get_encoding(detect_outs)
         if encoding_name_mapping[detect_encoding.upper(
         )] == encoding_name_mapping[encoding.upper()]:
-            print('[lin-ops] \'%s\' encoding is already <%s>, skip convert' %
+            print('[vcmd] \'%s\' encoding is already <%s>, skip convert' %
                   (f, encoding_name_mapping[encoding.upper()]))
             continue
         try:
@@ -117,11 +117,11 @@ def _encoding(encoding, filetype, include_hidden):
             new_fp.close()
             os.system('mv \'%s\' \'%s\'' % (new_filename, f))
             print(
-                '[lin-ops] \'%s\' encoding convert from <%s> to <%s>' %
+                '[vcmd] \'%s\' encoding convert from <%s> to <%s>' %
                 (f, detect_encoding, encoding_name_mapping[encoding.upper()]))
         except Exception as e:
             print(
-                '[lin-ops] \'%s\' encoding failed to convert from <%s> to <%s>: %s'
+                '[vcmd] \'%s\' encoding failed to convert from <%s> to <%s>: %s'
                 % (f, detect_encoding, encoding_name_mapping[encoding.upper()],
                    str(e)))
     exit(0)
@@ -136,7 +136,7 @@ def _show_encoding(filetype, include_hidden):
     for f in files:
         detect_outs, detect_errs = util.run('chardetect', f)
         detect_encoding = get_encoding(detect_outs)
-        print('[lin-ops] \'%s\' encoding with <%s>' % (f, detect_encoding))
+        print('[vcmd] \'%s\' encoding with <%s>' % (f, detect_encoding))
     exit(0)
 
 

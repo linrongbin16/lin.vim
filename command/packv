@@ -12,8 +12,8 @@ import util
 help_msg = '''Compress and extract operations.
 
 usage:
-    packop [compress-option] <filename> compress <filename> to related compressed file, by default tar.gz.
-    packop [extract-option] <filename>  extract <filename> to related extracted file, by default use detected file type.
+    packv [compress-option] <filename> compress <filename> to related compressed file, by default tar.gz.
+    packv [extract-option] <filename>  extract <filename> to related extracted file, by default use detected file type.
 
 compress-option:
     -c/--compress                       compress by tar.gz.
@@ -31,7 +31,7 @@ extract-option:
     -ej/--extract-jar                   extract by java jar.
 
 flag:
-    packop -h/--help                    show help message.
+    packv -h/--help                    show help message.
 '''
 
 
@@ -43,28 +43,28 @@ def _compress_targz(filename):
     tarname = '%s.tar.gz' % filename
     util.backup_file(tarname)
     os.system('tar czvf "%s" "%s"' % (tarname, filename))
-    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+    print('[vcmd] compress \'%s\' to \'%s\'' % (filename, tarname))
 
 
 def _compress_tarbz2(filename):
     tarname = '%s.tar.bz2' % filename
     util.backup_file(tarname)
     os.system('tar czvf "%s" "%s"' % (tarname, filename))
-    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+    print('[vcmd] compress \'%s\' to \'%s\'' % (filename, tarname))
 
 
 def _compress_tar(filename):
     tarname = '%s.tar' % filename
     util.backup_file(tarname)
     os.system('tar cvf "%s" "%s"' % (tarname, filename))
-    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+    print('[vcmd] compress \'%s\' to \'%s\'' % (filename, tarname))
 
 
 def _compress_zip(filename):
     tarname = '%s.zip' % filename
     util.backup_file(tarname)
     os.system('zip -r "%s" "%s"' % (tarname, filename))
-    print('[lin-ops] compress \'%s\' to \'%s\'' % (filename, tarname))
+    print('[vcmd] compress \'%s\' to \'%s\'' % (filename, tarname))
 
 
 def _compress(filename, option):
@@ -77,7 +77,7 @@ def _compress(filename, option):
     elif option == 'zip':
         _compress_zip(filename)
     else:
-        print('[lin-ops] compress option <%s> not support!' % (option))
+        print('[vcmd] compress option <%s> not support!' % (option))
     exit(0)
 
 
@@ -94,30 +94,30 @@ def _extract_folder_name(filename):
 
 def _extract_targz(filename):
     os.system('tar zxvf "%s"' % (filename))
-    print('[lin-ops] extract \'%s\' to \'%s\'' %
+    print('[vcmd] extract \'%s\' to \'%s\'' %
           (filename, _extract_folder_name(filename)))
 
 
 def _extract_tarbz2(filename):
     os.system('tar xvf "%s"' % (filename))
-    print('[lin-ops] extract \'%s\' to \'%s\'' %
+    print('[vcmd] extract \'%s\' to \'%s\'' %
           (filename, _extract_folder_name(filename)))
 
 
 def _extract_tar(filename):
     os.system('tar xvf "%s"' % (filename))
-    print('[lin-ops] extract \'%s\' to \'%s\'' %
+    print('[vcmd] extract \'%s\' to \'%s\'' %
           (filename, _extract_folder_name(filename)))
 
 
 def _extract_zip(filename):
     os.system('unzip "%s"' % (filename))
-    print('[lin-ops] extract \'%s\' to \'%s\'' %
+    print('[vcmd] extract \'%s\' to \'%s\'' %
           (filename, _extract_folder_name(filename)))
 
 def _extract_jar(filename):
     os.system('jar xf "%s"' % (filename))
-    print('[lin-ops] java extract \'%s\' to \'%s\'' %
+    print('[vcmd] java extract \'%s\' to \'%s\'' %
           (filename, _extract_folder_name(filename)))
 
 
@@ -133,7 +133,7 @@ def _extract(filename, option):
     elif option == 'jar':
         _extract_jar(filename)
     else:
-        print('[lin-ops] extract option <%s> not support!' % (option))
+        print('[vcmd] extract option <%s> not support!' % (option))
     exit(0)
 
 

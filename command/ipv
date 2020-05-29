@@ -12,19 +12,19 @@ import util
 help_msg = '''IP calculations.
 
 usage:
-    ipop -v4/--validate-v4 <ipv4>   validate <ipv4> string.
-    ipop -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
-    ipop -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
-    ipop -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
-    ipop -c4/--convert-v4 <ipv4>    convert <ipv4> either from 32-bit unsigned integer to string or opposite direction, eg: '127.0.0.1' (2130706433).
-    ipop -v6/--validate-v6 <ipv6>   validate <ipv6> string.
-    ipop -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
-    ipop -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
-    ipop -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
-    ipop -c6/--convert-v6 <ipv6>    convert <ipv6> either from 128-bit unsigned integer to string or opposite direction, eg: 'ff00:1820::1' (338953628238285235687019778098925142017).
+    ipv -v4/--validate-v4 <ipv4>   validate <ipv4> string.
+    ipv -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
+    ipv -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
+    ipv -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
+    ipv -c4/--convert-v4 <ipv4>    convert <ipv4> either from 32-bit unsigned integer to string or opposite direction, eg: '127.0.0.1' (2130706433).
+    ipv -v6/--validate-v6 <ipv6>   validate <ipv6> string.
+    ipv -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
+    ipv -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
+    ipv -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
+    ipv -c6/--convert-v6 <ipv6>    convert <ipv6> either from 128-bit unsigned integer to string or opposite direction, eg: 'ff00:1820::1' (338953628238285235687019778098925142017).
 
 flag:
-    ipop -h/--help                  show help message.
+    ipv -h/--help                  show help message.
 '''
 
 
@@ -40,72 +40,72 @@ def identify_input(ip):
 def _validate_ipv4(ipv4):
     try:
         ipaddr = ipaddress.IPv4Address(ipv4)
-        print('[lin-ops] ipv4 %s (%d): True' % (str(ipaddr), int (ipaddr)))
+        print('[vcmd] ipv4 %s (%d): True' % (str(ipaddr), int (ipaddr)))
     except Exception:
-        print('[lin-ops] ipv4 %s: False' % (ipv4))
+        print('[vcmd] ipv4 %s: False' % (ipv4))
     exit(0)
 
 
 def _validate_ipv6(ipv6):
     try:
         ipaddr = ipaddress.IPv6Address(ipv6)
-        print('[lin-ops] ipv6 %s (%d): True' % (str(ipaddr), int (ipaddr)))
+        print('[vcmd] ipv6 %s (%d): True' % (str(ipaddr), int (ipaddr)))
     except Exception:
-        print('[lin-ops] ipv6 %s: False' % (ipv6))
+        print('[vcmd] ipv6 %s: False' % (ipv6))
     exit(0)
 
 
 def _min_ipv4():
     min_ipv4 = ipaddress.IPv4Address('0.0.0.0')
-    print('[lin-ops] minimum ipv4: \'%s\' (%d)' %
+    print('[vcmd] minimum ipv4: \'%s\' (%d)' %
           (str(min_ipv4), int(min_ipv4)))
     exit(0)
 
 
 def _max_ipv4():
     max_ipv4 = ipaddress.IPv4Address('255.255.255.255')
-    print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
+    print('[vcmd] maximum ipv4: \'%s\' (%d)' %
           (str(max_ipv4), int(max_ipv4)))
     exit(0)
 
 
 def _loopback_ipv4():
     lo_ipv4 = ipaddress.IPv4Address('127.0.0.1')
-    print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
+    print('[vcmd] loopback ipv4: \'%s\' (%d)' %
           (str(lo_ipv4), int(lo_ipv4)))
     exit(0)
 
 
 def _min_ipv6():
     min_ipv6 = ipaddress.IPv6Address('::0')
-    print('[lin-ops] minimum ipv4: \'%s\' or \'%s\' (%d)' %
+    print('[vcmd] minimum ipv4: \'%s\' or \'%s\' (%d)' %
           (str(min_ipv6), int(min_ipv6)))
     exit(0)
 
 
 def _max_ipv6():
     max_ipv6 = ipaddress.IPv6Address('ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff')
-    print('[lin-ops] maximum ipv4: \'%s\' (%d)' %
+    print('[vcmd] maximum ipv4: \'%s\' (%d)' %
           (str(max_ipv6), int(max_ipv6)))
     exit(0)
 
 
 def _loopback_ipv6():
     lo_ipv6 = ipaddress.IPv6Address('::1')
-    print('[lin-ops] loopback ipv4: \'%s\' (%d)' %
+    print('[vcmd] loopback ipv4: \'%s\' (%d)' %
           (str(lo_ipv6), int(lo_ipv6)))
     exit(0)
 
 
 def _ipv4_convert(ipv4):
     ipaddr = ipaddress.IPv4Address(ipv4)
-    print('[lin-ops] %s (%d)' % (str(ipaddr), int(ipaddr)))
+    print('[vcmd] %s (%d)' % (str(ipaddr), int(ipaddr)))
     exit(0)
 
 
 def _ipv6_convert(ipv6):
     ipaddr = ipaddress.IPv6Address(ipv6)
-    print('[lin-ops] %s (%d)' % (str(ipaddr), int(ipaddr)))
+    print('[vcmd] %s (%d)' % (str(ipaddr), int(ipaddr)))
     exit(0)
 
 

@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
-""" lin-ops help document. """
+""" vcmd help document. """
 
 import sys
 import os
@@ -10,21 +10,21 @@ import util
 
 
 def ops_help():
-    msg = '''[lin-ops] helper operations.
+    msg = '''[vcmd] helper operations.
 
 usage:
-    agop    Searching in current folder by ag.
-    fileop  File operations in current folder.
-    gitop   Git operations.
-    ipop    IP calculations.
-    packop  Compress and extract operations.
-    timeop  Date and time calculations.
+    agv    Searching in current folder by ag.
+    filev  File operations in current folder.
+    gitv   Git operations.
+    ipv    IP calculations.
+    packv  Compress and extract operations.
+    timev  Date and time calculations.
 '''
     print(msg)
 
 
 def ssh_gen_help():
-    msg = '''[lin-ops] SSH Configuration Help: generate ssh token for [your_email@email.com].
+    msg = '''[vcmd] SSH Configuration Help: generate ssh token for [your_email@email.com].
 
 usage:
     remove old 'id_rsa' and 'id_rsa.pub' in '~/.ssh' before generation.
@@ -42,7 +42,7 @@ usage:
 
 
 def ssh_login_help():
-    msg = '''[lin-ops] SSH Login Help: login ssh server without username & password.
+    msg = '''[vcmd] SSH Login Help: login ssh server without username & password.
 
 usage:
     copy generated '~/.ssh/id_rsa.pub' to ssh server and login ssh server.
