@@ -64,16 +64,4 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h',
 " Json
 Plug 'elzr/vim-json'
 
-"Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': ['hs'] }
-
-" Rust
-Plug 'rust-lang/rust.vim', { 'for': ['rs'] }
-
-" Toml
-Plug 'cespare/vim-toml', { 'for': ['toml'] }
-
-" Golang
-Plug 'fatih/vim-go', { 'for': ['go'], 'do': ':GoUpdateBinaries' }
-
 call plug#end()

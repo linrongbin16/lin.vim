@@ -61,13 +61,13 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `<leader>g` in normal mode: go to definition or declaration
 
 ### C/C++
-- `:A`: jump between h/hpp and c/cc/cxx/cpp files
+- `:A`: jump between Header and Source files for C/C++
 
 ### Customization
-- custom your own settings in ~/.vim/user.vim
+- custom your own settings in ~/.vim/custom.vim
 
 ### Commands
-- try `lin-ops` to find more.
+- try `vimcmd` to find more.
 
 # Installation
 
@@ -88,7 +88,6 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
-8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`, then `npm install -g --unsafe-perm js-beautify eslint`.
 9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
 11. Install [Hack Font](https://sourcefoundry.org/hack/).
 12. Add `%%USERPROFILE%%\.vim\commands` to `%PATH%`.

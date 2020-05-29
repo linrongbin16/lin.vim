@@ -12,13 +12,8 @@ touch ~/.zshrc
 # Software Dependency
 sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh gcc g++ clang cmake autoconf automake clang-format build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag unzip bzip2 unrar zip p7zip
-sudo apt-get install -y python3 python3-dev python3-pip nodejs nodejs-dev node-gyp libssl1.0-dev npm
+sudo apt-get install -y python3 python3-dev python3-pip libssl1.0-dev
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify eslint
-if [ -d ~/.config ]; then
-    sudo chmod -R +rwx ~/.config
-    sudo chown -R $USER ~/.config
-fi
 
 # Git Config
 cd ~/.vim
@@ -42,7 +37,7 @@ vim -c "PlugInstall" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python3 install.py --clangd-completer
 
-# GuiFonts
+# Fonts
 font_dir="$HOME/.local/share/fonts"
 mkdir -p $font_dir
 cd ~/.vim/fonts
@@ -57,7 +52,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 cp ~/.vim/settings/conf/custom.vim ~/.vim/custom.vim
 
 # Commands
-cd ~/.vim/commands
+cd ~/.vim/command
 chmod +x *
 
 # Path Variable
@@ -66,7 +61,7 @@ echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
-echo "export PATH=\$PATH:~/.vim/commands" >> ~/.linvimrc
+echo "export PATH=\$PATH:~/.vim/command" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
 source ~/.zshrc 1>/dev/null 2>&1
