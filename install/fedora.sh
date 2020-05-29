@@ -51,7 +51,7 @@ fc-cache -f $font_dir
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # User Custom
-cp ~/.vim/settings/conf/custom.vim ~/.vim/custom.vim
+cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
 
 # Commands
 cd ~/.vim/command
