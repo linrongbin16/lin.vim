@@ -9,7 +9,6 @@ tags
 __pycache__
 
 # vim plugins
-autoload
 plugged
 
 # user settings
