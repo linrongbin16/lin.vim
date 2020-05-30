@@ -78,7 +78,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 ### Linux, UNIX, MacOS Installation
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && bash install.sh
+    $ git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
 ### Windows Installation
