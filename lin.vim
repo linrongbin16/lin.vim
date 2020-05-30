@@ -13,6 +13,7 @@ source $HOME/.vim/setting-vim/hotkey.vim
 source $HOME/.vim/setting-plugin/indentline.vim
 source $HOME/.vim/setting-plugin/nerdtree.vim
 source $HOME/.vim/setting-plugin/airline.vim
+source $HOME/.vim/setting-plugin/better-whitespace.vim
 
 " Lint
 source $HOME/.vim/setting-plugin/ale.vim
@@ -33,6 +34,9 @@ source $HOME/.vim/setting-plugin/vim-easymotion.vim
 
 " C/C++
 source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
+
+" HTML/XML
+source $HOME/.vim/setting-plugin/closetag.vim
 
 " user setting
 if filereadable(expand('~/.vim/user.vim'))

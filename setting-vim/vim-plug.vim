@@ -15,6 +15,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -68,5 +69,9 @@ Plug 'elzr/vim-json'
 
 " CSS
 Plug 'ap/vim-css-color'
+
+" HTML, XML
+Plug 'andymass/vim-matchup'
+Plug 'alvan/vim-closetag'
 
 call plug#end()
