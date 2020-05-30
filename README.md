@@ -92,6 +92,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
+8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`, then `npm install -g --unsafe-perm js-beautify eslint`.
 9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
 11. Install [Hack Font](https://sourcefoundry.org/hack/).
 12. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
