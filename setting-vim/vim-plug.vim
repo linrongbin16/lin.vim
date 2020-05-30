@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 
 
 " UI
-Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -43,7 +42,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ycm-core/YouCompleteMe'
 
 " Comment
-"Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 
 " Git
@@ -57,8 +55,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
-Plug 'vim-scripts/Mark--Karkat'
 Plug 'tpope/vim-surround'
+Plug 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-repeat'
 
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }

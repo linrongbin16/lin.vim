@@ -29,8 +29,9 @@ source $HOME/.vim/setting-plugin/you-complete-me.vim
 source $HOME/.vim/setting-plugin/ag.vim
 source $HOME/.vim/setting-plugin/ctrlp.vim
 
-" Move
+" Keyboard Operation
 source $HOME/.vim/setting-plugin/vim-easymotion.vim
+source $HOME/.vim/setting-plugin/insearch.vim
 
 " C/C++
 source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
