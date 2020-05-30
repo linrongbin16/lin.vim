@@ -53,7 +53,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `<ctrl-h>`: move left 5 chars
 - `<ctrl-l>`: move right 5 chars
 
-### Auto Completion and Go To
+### Go To
 - `<ctrl-]>`: go to definition
 - `<ctrl-o>`: go back to previous position
 - `<ctrl-n>` in insert mode: select next completion candidate
