@@ -40,6 +40,7 @@ Plug 'junegunn/vim-easy-align'
 
 " Complete Engine
 Plug 'ycm-core/YouCompleteMe'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Comment
 Plug 'tpope/vim-commentary'

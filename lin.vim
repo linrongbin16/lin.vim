@@ -24,6 +24,7 @@ source $HOME/.vim/setting-plugin/vim-easy-align.vim
 
 " Complete
 source $HOME/.vim/setting-plugin/you-complete-me.vim
+source $HOME/.vim/setting-plugin/gutentags.vim
 
 " Search
 source $HOME/.vim/setting-plugin/ag.vim

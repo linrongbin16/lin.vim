@@ -10,6 +10,7 @@ __pycache__
 
 # vim plugins
 plugged
+universal-ctags
 
 # user settings
 user.vim

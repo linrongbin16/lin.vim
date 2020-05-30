@@ -59,6 +59,9 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `<ctrl-n>` in insert mode: select next completion candidate
 - `<ctrl-p>` in insert mode: select previous completion candidate
 - `<leader>g` in normal mode: go to definition or declaration
+- `gn` in normal mode: go to next buffer
+- `gp` in normal mode: go to previous buffer
+- `gd` in normal mode: close current buffer
 
 ### Commentary
 - `gcc` in normal mode: comment one line
@@ -94,8 +97,9 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
 8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`, then `npm install -g --unsafe-perm js-beautify eslint`.
 9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
-11. Install [Hack Font](https://sourcefoundry.org/hack/).
-12. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
+10. Install [ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe` to `%PATH%`.
+12. Install [Hack Font](https://sourcefoundry.org/hack/).
+13. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 
 ```bash

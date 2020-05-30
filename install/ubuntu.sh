@@ -19,6 +19,15 @@ if [ -d ~/.config ]; then
     sudo chmod -R +rwx ~/.config
     sudo chown -R $USER ~/.config
 fi
+cd ~/.vim
+if [ ! -d universal-ctags ]; then
+    git clone https://github.com/universal-ctags/ctags.git universal-ctags
+fi
+cd universal-ctags
+./autogen.sh
+./configure
+make
+sudo make install
 
 # Git Config
 cd ~/.vim
