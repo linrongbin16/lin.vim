@@ -66,4 +66,7 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h',
 " Json
 Plug 'elzr/vim-json'
 
+" CSS
+Plug 'ap/vim-css-color'
+
 call plug#end()
