@@ -9,7 +9,7 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<TAB>' ]
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<S-TAB>' ]
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/settings/plug/ycm_global_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/setting-plugin/ycm_global_conf.py'
 
 " python3
 let g:ycm_server_python_interpreter = 'python3'

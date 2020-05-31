@@ -1,39 +1,21 @@
-# This file is NOT licensed under the GPLv3, which is the license for the rest
-# of YouCompleteMe.
-#
-# Here's the license text for this file:
-#
-# This is free and unencumbered software released into the public domain.
-#
-# Anyone is free to copy, modify, publish, use, compile, sell, or
-# distribute this software, either in source code form or as a compiled
-# binary, for any purpose, commercial or non-commercial, and by any
-# means.
-#
-# In jurisdictions that recognize copyright laws, the author or authors
-# of this software dedicate any and all copyright interest in the
-# software to the public domain. We make this dedication for the benefit
-# of the public at large and to the detriment of our heirs and
-# successors. We intend this dedication to be an overt act of
-# relinquishment in perpetuity of all present and future rights to this
-# software under copyright law.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-# OTHER DEALINGS IN THE SOFTWARE.
-#
-# For more information, please refer to <http://unlicense.org/>
-
 import platform
 import os
 import re
 import subprocess
+import time
+import datetime
 
-# Auto Header Extension Begin
+
+def dump_flags(flags):
+    try:
+        log_file = 'you-complete-me-config-%s.log' % (
+            datetime.datetime.fromtimestamp(time.time()))
+        fp = open(log_file, 'w')
+        for x in flags:
+            fp.write(x + '\n')
+        fp.close()
+    except:
+        pass
 
 
 def is_ascii_char(s):
@@ -80,7 +62,9 @@ def git_header():
     try:
         root, _ = run_process('git', 'rev-parse', '--show-toplevel')
         groot = root[0].strip() if (len(root) > 0) else None
-        return list_directory(groot, 3)
+        git_list = list_directory(groot, 2)
+        # dump_flags(git_list)
+        return git_list
     except:
         return []
 
@@ -168,36 +152,8 @@ def windows_header():
 
 def user_header():
     header = []
-    rootpath = [
-        '/', 'C:\\', 'D:\\', 'E:\\', 'F:\\', 'G:\\', 'H:\\', 'I:\\', 'J:\\',
-        'K:\\', 'L:\\', 'M:\\', 'N:\\', 'O:\\', 'P:\\', 'Q:\\', 'R:\\', 'S:\\',
-        'T:\\', 'U:\\', 'V:\\', 'W:\\', 'X:\\', 'Y:\\', 'Z:\\', 'A:\\', 'B:\\'
-    ]
-    cur = '.'
     header.append('-I')
-    header.append(cur)
-    for i in range(3):
-        if os.path.abspath(cur) in rootpath:
-            break
-        cur = '%s%s' % (cur, '/..')
-        if ' ' in cur:
-            continue
-        if not is_ascii_char(cur):
-            continue
-        header.append('-I')
-        header.append(cur)
-        for path in os_listdir_wrapper(cur):
-            target = '%s/%s' % (cur, path)
-            if ' ' in target:
-                continue
-            if not is_ascii_char(target):
-                continue
-            if path.startswith('.'):
-                continue
-            if not os.path.isdir(target):
-                continue
-            header.append('-I')
-            header.append(target)
+    header.append('.')
     for path in os_listdir_wrapper('.'):
         if ' ' in path:
             continue
@@ -207,15 +163,14 @@ def user_header():
             continue
         if not os.path.isdir(path):
             continue
+        if not path.endswith('include'):
+            continue
         header.append('-I')
         header.append(path)
     for inc in git_header():
         header.append('-I')
         header.append(inc)
     return header
-
-
-# Auto Header Extension End
 
 
 def Settings(**kwargs):
@@ -229,17 +184,16 @@ def Settings(**kwargs):
         '-DNDEBUG',
     ]
     if platform.system() == 'Windows':
+        flags.append('/std:c++14')
+    else:
+        flags.append('-std=c++14')
+    if platform.system() == 'Windows':
         flags.extend(windows_header())
     elif platform.system() == 'Darwin':
         flags.extend(macos_header())
     else:
         flags.extend(linux_header())
     flags.extend(user_header())
-
-    if platform.system() == 'Windows':
-        flags.append('/std:c++14')
-    else:
-        flags.append('-std=c++14')
     return {'flags': flags}
 
 
