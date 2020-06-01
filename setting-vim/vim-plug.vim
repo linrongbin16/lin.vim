@@ -41,12 +41,11 @@ if has('win32')
     Plug 'ycm-core/YouCompleteMe'
     " Lint
     Plug 'dense-analysis/ale'
+    " Tags
+    Plug 'ludovicchabant/vim-gutentags'
 else
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
-
-" Tags
-Plug 'ludovicchabant/vim-gutentags'
 
 " Comment
 Plug 'tpope/vim-commentary'

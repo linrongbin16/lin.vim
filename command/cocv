@@ -13,7 +13,6 @@ help_msg = '''Generate auto complete database.
 
 usage:
     cocv -c/--c         generate compile_commands.json with CMakeLists.txt for C/C++.
-    cocv -py/--python   generate compile_commands.json with CMakeLists.txt for Python.
 
 flag:
     cocv -h/--help      show help message.
@@ -35,10 +34,6 @@ def _cpp():
     print('[vcmd] compile_commands.json generate success')
     exit(0)
 
-def _python():
-    print('[vcmd] Not implemented yet.')
-    exit(0)
-
 if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], 'cph', [
@@ -47,10 +42,6 @@ if __name__ == '__main__':
         for opt in opts:
             if opt[0] in ('-c', '--c'):
                 _cpp()
-            elif opt[0] == '-p' and opt[1] == 'y':
-                _python()
-            elif opt[0] == '--python':
-                _python()
         _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
