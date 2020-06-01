@@ -31,7 +31,7 @@ endif
 
 " Search
 source $HOME/.vim/setting-plugin/ag.vim
-source $HOME/.vim/setting-plugin/ctrlp.vim
+source $HOME/.vim/setting-plugin/leaderf.vim
 
 " Keyboard Operation
 source $HOME/.vim/setting-plugin/vim-easymotion.vim

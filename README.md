@@ -37,7 +37,10 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `:Ag [text]` in normal mode: search [text]
 
 ### Search File
-- `<ctrl-p>` in normal mode: search file
+- `<leader>ff` in normal mode: search files
+- `<leader>fb` in normal mode: search buffer
+- `<leader>fm` in normal mode: search in recent opened files
+- `<leader>fl` in normal mode: search text in current buffer
 
 ### Easy Align
 - `vipga=` in visual mode: align visual-selected paragraph
@@ -54,14 +57,18 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `<ctrl-l>`: move right 5 chars
 
 ### Go To
-- `<ctrl-]>`: go to definition
-- `<ctrl-o>`: go back to previous position
-- `<ctrl-n>` in insert mode: select next completion candidate
-- `<ctrl-p>` in insert mode: select previous completion candidate
-- `<leader>g` in normal mode: go to definition or declaration
-- `gn` in normal mode: go to next buffer
-- `gp` in normal mode: go to previous buffer
-- `gd` in normal mode: close current buffer
+
+- `gd` in normal mode: go to definition
+- `gy` in normal mode: go to type definition
+- `gi` in normal mode: go to implementation
+- `gr` in normal mode: go to reference
+
+- `[g` in normal mode: go to previous diagnostic
+- `]g` in normal mode: go to next diagnostic
+
+- `<leader>bn` in normal mode: go to next buffer
+- `<leader>bp` in normal mode: go to previous buffer
+- `<leader>bd` in normal mode: close current buffer
 
 ### Commentary
 - `gcc` in normal mode: comment one line

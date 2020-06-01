@@ -56,7 +56,7 @@ Plug 'mhinz/vim-signify'
 
 " Searching
 Plug 'rking/ag.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/LeaderF'
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
