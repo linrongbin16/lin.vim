@@ -14,11 +14,6 @@ sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh gcc
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip libssl1.0-dev nodejs nodejs-dev node-gyp npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify eslint
-if [ -d ~/.config ]; then
-    sudo chmod -R +rwx ~/.config
-    sudo chown -R $USER ~/.config
-fi
 cd ~/.vim
 if [ ! -d universal-ctags ]; then
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
@@ -47,8 +42,7 @@ git config --global credential.helper store
 # Vim Plugins
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
-cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clangd-completer
+vim -c "CocInstall coc-json coc-clangd coc-cmake coc-eslint coc-highlight coc-jedi coc-python coc-spell-checker" -c "qall"
 
 # Fonts
 font_dir="$HOME/.local/share/fonts"

@@ -39,8 +39,13 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/vim-easy-align'
 
 " Complete Engine
-" Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if has('win32')
+    " use YCM in win32
+    " since compile_commands.json is unavailable in win32 CMAKE
+    Plug 'ycm-core/YouCompleteMe'
+else
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'

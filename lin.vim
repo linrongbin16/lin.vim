@@ -23,11 +23,12 @@ source $HOME/.vim/setting-plugin/vim-autoformat.vim
 source $HOME/.vim/setting-plugin/vim-easy-align.vim
 
 " Complete
-" source $HOME/.vim/setting-plugin/you-complete-me.vim
-source $HOME/.vim/setting-plugin/coc-nvim.vim
-
-" Tags
-source $HOME/.vim/setting-plugin/gutentags.vim
+if has('win32')
+    source $HOME/.vim/setting-plugin/you-complete-me.vim
+    source $HOME/.vim/setting-plugin/gutentags.vim
+else
+    source $HOME/.vim/setting-plugin/coc-nvim.vim
+endif
 
 " Search
 source $HOME/.vim/setting-plugin/ag.vim

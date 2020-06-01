@@ -14,11 +14,6 @@ yes | sudo pacman -Rs vim
 yes | sudo pacman -S git gvim curl wget zsh gcc clang make autoconf automake cmake openssh openssl crypto++
 yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 zip p7zip python python-pip nodejs npm universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify eslint
-if [ -d ~/.config ]; then
-    sudo chmod -R +rwx ~/.config
-    sudo chown -R $USER ~/.config
-fi
 
 # Git Config
 cd ~/.vim
@@ -38,8 +33,7 @@ git config --global credential.helper store
 # Vim Plugins
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
-cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clangd-completer
+vim -c "CocInstall coc-json coc-clangd coc-cmake coc-eslint coc-highlight coc-jedi coc-python coc-spell-checker" -c "qall"
 
 # Fonts
 font_dir="$HOME/.local/share/fonts"

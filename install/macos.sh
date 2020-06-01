@@ -15,11 +15,6 @@ brew install macvim zsh curl wget llvm autoconf automake cmake clang-format
 brew install openssl openssh cryptopp the_silver_searcher python3 unzip zip p7zip node
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet
-sudo npm install -g --unsafe-perm js-beautify tslint
-if [ -d ~/.config ]; then
-    sudo chmod -R +rwx ~/.config
-    sudo chown -R $USER ~/.config
-fi
 
 # Git Config
 cd ~/.vim
@@ -39,9 +34,7 @@ git config --global credential.helper store
 # Vim Plugin
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
-vim -c "CocInstall coc-json coc-clangd" -c "qall"
-cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clangd-completer
+vim -c "CocInstall coc-json coc-clangd coc-cmake coc-eslint coc-highlight coc-jedi coc-python coc-spell-checker" -c "qall"
 
 # Fonts
 font_dir="$HOME/Library/Fonts"
