@@ -118,7 +118,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 All extensions in one:
 ```
-:CocInstall coc-json coc-clangd coc-cmake coc-eslint coc-highlight coc-jedi coc-python coc-spell-checker coc-tsserver coc-html coc-emmet
+:CocInstall coc-json coc-clangd coc-jedi coc-python
 ```
 
 # Troubleshooting
