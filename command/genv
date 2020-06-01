@@ -37,7 +37,7 @@ def _cpp():
 
 if __name__ == '__main__':
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'cph', [
+        opts, args = getopt.getopt(sys.argv[1:], 'ch', [
             'c', 'python', 'help'
         ])
         for opt in opts:
