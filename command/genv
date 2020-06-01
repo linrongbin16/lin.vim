@@ -12,10 +12,10 @@ import util
 help_msg = '''Generate auto complete database.
 
 usage:
-    cocv -c/--c         generate compile_commands.json with CMakeLists.txt for C/C++.
+    genv -c/--c         generate compile_commands.json based on CMakeLists.txt for C/C++.
 
 flag:
-    cocv -h/--help      show help message.
+    genv -h/--help      show help message.
 '''
 
 
@@ -25,13 +25,14 @@ def _help():
 
 
 def _cpp():
-    cmake_folder = '.cocv.%s' % (str(time.time()))
-    os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' % (cmake_folder))
-    if not os.path.exists('%s/compile_commands.json' % (cmake_folder)):
-        raise Exception('%s/compile_commands.json not exist' % (cmake_folder))
-    os.system('cp %s/compile_commands.json .' % (cmake_folder))
-    os.system('rm -rf %s' % (cmake_folder))
-    print('[vcmd] compile_commands.json generate success')
+    print('[vcmd] generate compile_commands.json for c/c++')
+    gen_folder = '.genv.%s' % (str(time.time()))
+    os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' % (gen_folder))
+    if not os.path.exists('%s/compile_commands.json' % (gen_folder)):
+        raise Exception('%s/compile_commands.json not exist' % (gen_folder))
+    os.system('cp %s/compile_commands.json .' % (gen_folder))
+    os.system('rm -rf %s' % (gen_folder))
+    print('[vcmd] generate compile_commands.json for c/c++ - done')
     exit(0)
 
 if __name__ == '__main__':
