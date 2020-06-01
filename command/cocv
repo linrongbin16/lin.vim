@@ -1,0 +1,59 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import getopt
+import time
+sys.path.append('.')
+import util
+
+help_msg = '''Generate auto complete database.
+
+usage:
+    cocv -c/--c         generate compile_commands.json with CMakeLists.txt for C/C++.
+    cocv -py/--python   generate compile_commands.json with CMakeLists.txt for Python.
+
+flag:
+    cocv -h/--help      show help message.
+'''
+
+
+def _help():
+    print(help_msg)
+    exit(0)
+
+
+def _cpp():
+    cmake_folder = '.cocv.%s' % (str(time.time()))
+    os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' % (cmake_folder))
+    if not os.path.exists('%s/compile_commands.json' % (cmake_folder)):
+        raise Exception('%s/compile_commands.json not exist' % (cmake_folder))
+    os.system('cp %s/compile_commands.json .' % (cmake_folder))
+    os.system('rm -rf %s' % (cmake_folder))
+    print('[vcmd] compile_commands.json generate success')
+    exit(0)
+
+def _python():
+    print('[vcmd] Not implemented yet.')
+    exit(0)
+
+if __name__ == '__main__':
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'cph', [
+            'c', 'python', 'help'
+        ])
+        for opt in opts:
+            if opt[0] in ('-c', '--c'):
+                _cpp()
+            elif opt[0] == '-p' and opt[1] == 'y':
+                _python()
+            elif opt[0] == '--python':
+                _python()
+        _help()
+    except getopt.GetoptError as e:
+        print(str(e) + '\n')
+        _help()
+    except Exception as e:
+        print(str(e) + '\n')

@@ -17,9 +17,12 @@ vnoremap <Leader>y :w! ~/.cache/.lin-vim-copypaste<CR>
 nnoremap <Leader>p :r ~/.cache/.lin-vim-copypaste<CR>
 
 " Buffer
+
 " go to next buffer
-map gn :bn<cr>
+map <Leader>bn :bn<cr>
+
 " go to previous buffer
-map gp :bp<cr>
+map <Leader>bp :bp<cr>
+
 " close current buffer
-map gd :bd<cr>
+map <Leader>bd :bd<cr>

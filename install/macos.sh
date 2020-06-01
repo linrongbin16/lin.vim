@@ -39,6 +39,7 @@ git config --global credential.helper store
 # Vim Plugin
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
+vim -c "CocInstall coc-json coc-clangd" -c "qall"
 cd ~/.vim/plugged/YouCompleteMe
 python3 install.py --clangd-completer
 
@@ -71,6 +72,7 @@ echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
 echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/command" >> ~/.linvimrc
+echo "export PATH=/usr/local/opt/universal-ctags/bin:\$PATH" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
 source ~/.zshrc 1>/dev/null 2>&1

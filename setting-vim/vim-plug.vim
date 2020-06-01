@@ -39,7 +39,10 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/vim-easy-align'
 
 " Complete Engine
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Tags
 Plug 'ludovicchabant/vim-gutentags'
 
 " Comment
@@ -59,6 +62,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-repeat'
+" Plug 'liuchengxu/vim-which-key'
 
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
