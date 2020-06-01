@@ -2,12 +2,12 @@
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
 
+import util
 import sys
 import os
 import getopt
 import time
 sys.path.append('.')
-import util
 
 help_msg = '''Generate auto complete database.
 
@@ -27,13 +27,15 @@ def _help():
 def _cpp():
     print('[vcmd] generate compile_commands.json for c/c++')
     gen_folder = '.genv.%s' % (str(time.time()))
-    os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' % (gen_folder))
+    os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' %
+              (gen_folder))
     if not os.path.exists('%s/compile_commands.json' % (gen_folder)):
         raise Exception('%s/compile_commands.json not exist' % (gen_folder))
     os.system('cp %s/compile_commands.json .' % (gen_folder))
     os.system('rm -rf %s' % (gen_folder))
     print('[vcmd] generate compile_commands.json for c/c++ - done')
     exit(0)
+
 
 if __name__ == '__main__':
     try:

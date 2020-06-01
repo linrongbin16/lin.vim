@@ -31,18 +31,17 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 
-
-" Auto Format
-Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/vim-easy-align'
 
 if has('win32')
-    " use YCM in win32
+    " Complete Engine
     Plug 'ycm-core/YouCompleteMe'
     " Lint
     Plug 'dense-analysis/ale'
     " Tags
     Plug 'ludovicchabant/vim-gutentags'
+    " Auto Format
+    Plug 'Chiel92/vim-autoformat'
 else
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
