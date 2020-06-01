@@ -16,15 +16,6 @@ sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-deve
 sudo dnf install -y the_silver_searcher unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
-cd ~/.vim
-if [ ! -d universal-ctags ]; then
-    git clone https://github.com/universal-ctags/ctags.git universal-ctags
-fi
-cd universal-ctags
-./autogen.sh
-./configure
-make
-sudo make install
 
 # Git Config
 cd ~/.vim

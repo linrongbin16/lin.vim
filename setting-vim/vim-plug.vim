@@ -31,18 +31,16 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 
-" Lint
-Plug 'dense-analysis/ale'
 
 " Auto Format
 Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/vim-easy-align'
 
-" Complete Engine
 if has('win32')
     " use YCM in win32
-    " since compile_commands.json is unavailable in win32 CMAKE
     Plug 'ycm-core/YouCompleteMe'
+    " Lint
+    Plug 'dense-analysis/ale'
 else
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
