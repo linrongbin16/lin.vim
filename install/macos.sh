@@ -33,7 +33,6 @@ git config --global credential.helper store
 # Vim Plugin
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
-vim -c "CocInstall coc-json coc-clangd coc-cmake coc-eslint coc-highlight coc-jedi coc-python coc-spell-checker coc-tsserver coc-html coc-emmet" -c "qall"
 
 # Fonts
 font_dir="$HOME/Library/Fonts"
