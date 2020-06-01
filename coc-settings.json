@@ -1,0 +1,5 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": [],
+    "coc.preferences.formatOnType": false,
+    "coc.preferences.formatOnInsertLeave": false
+}
