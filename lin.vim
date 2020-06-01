@@ -24,6 +24,7 @@ if has('win32')
     source $HOME/.vim/setting-plugin/you-complete-me.vim
     source $HOME/.vim/setting-plugin/ale.vim
     source $HOME/.vim/setting-plugin/gutentags.vim
+    source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
 else
     source $HOME/.vim/setting-plugin/coc-nvim.vim
 endif
@@ -35,9 +36,6 @@ source $HOME/.vim/setting-plugin/ctrlp.vim
 " Keyboard Operation
 source $HOME/.vim/setting-plugin/vim-easymotion.vim
 source $HOME/.vim/setting-plugin/insearch.vim
-
-" C/C++
-source $HOME/.vim/setting-plugin/vim-cpp-enhanced-highlight.vim
 
 " HTML/XML
 source $HOME/.vim/setting-plugin/closetag.vim

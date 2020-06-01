@@ -42,6 +42,7 @@ if has('win32')
     Plug 'ludovicchabant/vim-gutentags'
     " Auto Format
     Plug 'Chiel92/vim-autoformat'
+    Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 else
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -67,7 +68,6 @@ Plug 'tpope/vim-repeat'
 
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 
 " Json
 Plug 'elzr/vim-json'
