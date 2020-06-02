@@ -128,6 +128,7 @@ def _compile_commands():
 
 def _compile_flags():
     print('[vcmd] generate compile_flags.txt for clangd')
+    print('[vcmd] Windows platform not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist')
     fp = open('compile_flags.txt', 'w')
     uh = user_header()
     wh = windows_header()
@@ -156,14 +157,7 @@ if __name__ == '__main__':
         opts, args = getopt.getopt(sys.argv[1:], 'ch', [
                                    'clangd', 'help'])
         for opt in opts:
-            if opt[0] == '-c':
-                if opt[1] == 'c':
-                    _clangd()
-                elif opt[1] == 'f':
-                    _clangd()
-            elif opt[0] == '--compile_commands':
-                _clangd()
-            elif opt[0] == '--compile_flags':
+            if opt[0] in ('-c', '--clangd'):
                 _clangd()
         _help()
     except getopt.GetoptError as e:
