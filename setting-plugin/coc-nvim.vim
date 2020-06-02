@@ -10,7 +10,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+" set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -80,7 +80,3 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Disable coc.nvim for other filetypes since it my slow vim
-" autocmd BufNew,BufEnter *.c,*.cpp,*.h,*.hpp,*.py,*.json,*.lua execute "silent! CocEnable"
-" autocmd BufLeave *.c,*.cpp,*.h,*.hpp,*.py,*.json,*.lua execute "silent! CocDisable"

@@ -13,7 +13,6 @@ source $HOME/.vim/setting-vim/hotkey.vim
 source $HOME/.vim/setting-plugin/indentline.vim
 source $HOME/.vim/setting-plugin/nerdtree.vim
 source $HOME/.vim/setting-plugin/statusline.vim
-source $HOME/.vim/setting-plugin/better-whitespace.vim
 
 " Auto Complete
 source $HOME/.vim/setting-plugin/coc-nvim.vim

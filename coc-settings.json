@@ -1,5 +1,9 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [],
-    "coc.preferences.formatOnType": false,
-    "coc.preferences.formatOnInsertLeave": false
+    "coc.preferences.formatOnSaveFiletypes": [
+        "json",
+        "c",
+        "cpp",
+        "python"
+    ],
+    "coc.preferences.formatOnInsertLeave": true
 }

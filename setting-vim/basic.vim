@@ -142,3 +142,5 @@ else
     "set guifont=Fantasque\ Sans\ Mono\ 10
     set guifont=Hack\ 10
 endif
+
+set updatetime=100

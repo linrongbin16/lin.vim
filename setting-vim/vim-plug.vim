@@ -12,10 +12,9 @@ call plug#begin('~/.vim/plugged')
 " UI
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-Plug 'itchyny/lightline.vim'
-Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -39,7 +38,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 
 " Git
-Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
 " Searching
@@ -53,9 +51,6 @@ Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
-
-" C/C++
-Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 
 " Json
 Plug 'elzr/vim-json'

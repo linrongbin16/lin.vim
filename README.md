@@ -25,9 +25,10 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 # User Guide
 
 ### Hot Key
-- `F6` in normal mode: open/close nerdtree file explorer
-- `F7` in normal mode: open terminal
-- `F8` in normal mode: change color theme randomly
+- `F4` in normal mode: switch between C/C++ header source file
+- `F5` in normal mode: open/close nerdtree file explorer
+- `F6` in normal mode: open terminal
+- `F7` in normal mode: change color theme randomly
 
 ### Enhanced Copy Paste
 - `<leader>y` in visual mode: copy visual-selected text to locale machine cache
@@ -48,10 +49,6 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `<leader>w`: search word
 - `<leader>j`: jump line forward
 - `<leader>k`: jump line backward
-- `<ctrl-j>`: move up 5 lines
-- `<ctrl-k>`: move down 5 lines
-- `<ctrl-h>`: move left 5 chars
-- `<ctrl-l>`: move right 5 chars
 
 ### Go To
 
@@ -70,9 +67,6 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 ### Commentary
 - `gcc` in normal mode: comment one line
 - `gc` in visual mode: comment visual selection
-
-### C/C++
-- `:A`: jump between Header and Source files for C/C++
 
 ### Customization
 - custom your own settings in ~/.vim/custom.vim
@@ -115,5 +109,5 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 All extensions in one:
 ```
-:CocInstall coc-json coc-clangd coc-python
+:CocInstall coc-json coc-clangd coc-python coc-highlight
 ```

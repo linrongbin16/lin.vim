@@ -2,31 +2,31 @@
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
 
+import util
 import sys
 import os
 import getopt
 sys.path.append('.')
-import util
 
 slash = '\\' if util.is_windows() else '/'
-db = util.get_command_home() + slash + 'agv.ignore'
+db = util.get_command_home() + slash + 'vag.ignore'
 
 help_msg = '''Searching in current folder by ag.
 
 usage:
-    agv [option] <text>            search all <text>.
-    agv [option] -w/--word <word>  search all <word>.
-    agv [option] -c/--count <text> search files and occurrences that contains <text>.
-    agv [option] -f/--file <text>  search files that contains <text>.
-    agv -i/--ignore <filetype>     add <filetype> in searcher ignore configuration.
+    vag [option] <text>             search all <text>.
+    vag [option] -w/--word <word>   search all <word>.
+    vag [option] -c/--count <text>  search files and occurrences that contains <text>.
+    vag [option] -f/--file <text>   search files that contains <text>.
+    vag -i/--ignore <filetype>      add <filetype> in searcher ignore configuration.
 
 option:
     -r/--recursive                  searching recursively from current folder, by default False.
 
 flag:
-    agv -p/--purge                 purge all filetypes in searcher configuration.
-    agv -s/--show                  show all filetypes in searcher configuration.
-    agv -h/--help                  show help message.
+    vag -p/--purge                  purge all filetypes in searcher configuration.
+    vag -s/--show                   show all filetypes in searcher configuration.
+    vag -h/--help                   show help message.
 '''
 
 
