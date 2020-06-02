@@ -124,22 +124,10 @@ endif
 
 " guifonts
 if has("win32") || has("mac")
-    "set guifont=Inconsolata:h10
-    "set guifont=DejaVu\ Sans\ Mono:h9
-    "set guifont=IBM\ Plex\ Mono:h9
-    "set guifont=Bitstream\ Vera\ Sans\ Mono:h9
-    "set guifont=Fira\ Code:h9
     "set guifont=Monaco:h9
-    "set guifont=Fantasque\ Sans\ Mono:h10
     set guifont=Hack:h12
 else
-    "set guifont=Inconsolata\ 10
-    "set guifont=DejaVu\ Sans\ Mono\ 9
-    "set guifont=IBM\ Plex\ Mono\ 9
-    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
-    "set guifont=Fira\ Code\ 9
     "set guifont=Monaco\ 9
-    "set guifont=Fantasque\ Sans\ Mono\ 10
     set guifont=Hack\ 10
 endif
 
