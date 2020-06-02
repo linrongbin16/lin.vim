@@ -16,7 +16,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 - Multiple platform support: UNIX/Linux, Windows and MacOS.
 - Code complete, lint and format running in [coc.nvim](https://github.com/neoclide/coc.nvim) language server for most programming languages.
-- Random color schemes and [Hack](https://sourcefoundry.org/hack/) font.
+- Random color schemes and [Hack Font](https://sourcefoundry.org/hack/).
 - File and buffer explorer and better status line.
 - Source code search and Fuzzy file search.
 - Useful command line utilities support: git, code search, file operation, date/time calculate, ipv4/ipv6 calculate.
@@ -76,6 +76,8 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 # Installation
 
+Please manually install [Hack Font](https://sourcefoundry.org/hack/).
+
 ### Linux, UNIX, MacOS Installation
 
 ```bash
@@ -95,8 +97,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
 8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`.
 9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
-12. Install [Hack Font](https://sourcefoundry.org/hack/).
-13. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
+10. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 
 ```bash
