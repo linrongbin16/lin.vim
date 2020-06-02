@@ -12,7 +12,8 @@ sys.path.append('.')
 help_msg = '''Generate auto complete database.
 
 usage:
-    genv -c/--c         generate compile_commands.json based on CMakeLists.txt for C/C++.
+    genv -cc/--compile_commands     generate compile_commands.json based on CMakeLists.txt for C/C++.
+    genv -cf/--compile_flags        generate compile_flags.txt for C/C++.
 
 flag:
     genv -h/--help      show help message.
@@ -24,7 +25,7 @@ def _help():
     exit(0)
 
 
-def _cpp():
+def _compile_commands():
     print('[vcmd] generate compile_commands.json for c/c++')
     gen_folder = '.genv.%s' % (str(time.time()))
     os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' %
@@ -37,14 +38,24 @@ def _cpp():
     exit(0)
 
 
+def _compile_flags():
+    exit(0)
+
+
 if __name__ == '__main__':
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'ch', [
-            'c', 'python', 'help'
-        ])
+        opts, args = getopt.getopt(sys.argv[1:], 'c:h', [
+                                   'compile_commands', 'compile_flags', 'help'])
         for opt in opts:
-            if opt[0] in ('-c', '--c'):
-                _cpp()
+            if opt[0] == '-c':
+                if opt[1] == 'c':
+                    _compile_commands()
+                elif opt[1] == 'f':
+                    _compile_flags()
+            elif opt[0] == '--compile_commands':
+                _compile_commands()
+            elif opt[0] == '--compile_flags':
+                _compile_flags()
         _help()
     except getopt.GetoptError as e:
         print(str(e) + '\n')
