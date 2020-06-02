@@ -5,8 +5,6 @@ echo "[lin.vim] Install for Windows"
 rem Vim Plugins
 cp %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"
-cd %USERPROFILE%\.vim\plugged\YouCompleteMe
-python install.py --clang-completer
 
 rem Git Config
 cd %USERPROFILE%\.vim
