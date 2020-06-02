@@ -1,77 +1,77 @@
-# lin-vim : Lin Rongbin's Vim Distribution
+# lin.vim : Lin Rongbin's Vim Distribution
 
-lin-vim is a distribution of Vim.
+lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of utilities for development running on most operating systems.
 
-It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities for development running on most operating systems.
+![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
 
-![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/picture/pic1.png)
+![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
 
-![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/picture/pic2.png)
+![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6.png)
 
-![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/picture/pic6.png)
+![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
 
-![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/picture/pic4.png)
-
-![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin-vim/master/picture/pic5.png)
+![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5.png)
 
 # Feature
 
-- Multiple platform support: linux, unix, windows and mac.
-- Auto format, async syntastics check, auto complete engine, syntax highlighting and other features for multiple programming languages.
-- Random color schemes, file explorer and better UI.
-- Text and file searching.
+- Multiple platform support: UNIX/Linux, Windows and MacOS.
+- Code complete, lint and format running in [coc.nvim](https://github.com/neoclide/coc.nvim) language server for most programming languages.
+- Random color schemes and [Hack](https://sourcefoundry.org/hack/) font.
+- File and buffer explorer and better status line.
+- Source code search and Fuzzy file search.
+- Useful command line utilities support: git, code search, file operation, date/time calculate, ipv4/ipv6 calculate.
 - Settings customization.
 
 # User Guide
 
 ### Hot Key
-- `F4` in normal mode: switch between C/C++ header source file
-- `F5` in normal mode: open/close nerdtree file explorer
-- `F6` in normal mode: open terminal
-- `F7` in normal mode: change color theme randomly
+- `F4` in normal mode: switch between C/C++ header source file.
+- `F5` in normal mode: open/close nerdtree file explorer.
+- `F6` in normal mode: open terminal.
+- `F7` in normal mode: change color theme randomly.
 
 ### Enhanced Copy Paste
-- `<leader>y` in visual mode: copy visual-selected text to locale machine cache
-- `<leader>p` in normal mode: paste text saved from local machine cache
+- `<leader>y` in visual mode: copy visual-selected text to locale machine cache.
+- `<leader>p` in normal mode: paste text saved from local machine cache.
 
 ### Search Text
-- `:Ag [text]` in normal mode: search [text]
+- `:Ag [text]` in normal mode: search [text].
 
 ### Search File
-- `<c-p>` in normal mode: search files
+- `<c-p>` in normal mode: fuzzy search file.
 
 ### Easy Align
-- `vipga=` in visual mode: align visual-selected paragraph
-- `gaip=` in normal mode: align inner paragraph
-
-### Move Cursor
-- `<leader>s [char]`: search single char
-- `<leader>w`: search word
-- `<leader>j`: jump line forward
-- `<leader>k`: jump line backward
+- `vipga=` in visual mode: align visual-selected paragraph.
+- `gaip=` in normal mode: align inner paragraph.
 
 ### Go To
+- `<leader>s [char]`: go to [char].
+- `<leader>w`: go to [word].
+- `<leader>j`: go to [forward line].
+- `<leader>k`: go to [backward line].
 
-- `gd` in normal mode: go to definition
-- `gy` in normal mode: go to type definition
-- `gi` in normal mode: go to implementation
-- `gr` in normal mode: go to reference
+- `gd` in normal mode: go to definition.
+- `gy` in normal mode: go to type definition.
+- `gi` in normal mode: go to implementation.
+- `gr` in normal mode: go to reference.
 
-- `[g` in normal mode: go to previous diagnostic
-- `]g` in normal mode: go to next diagnostic
+- `[g` in normal mode: go to previous diagnostic.
+- `]g` in normal mode: go to next diagnostic.
 
-- `<leader>bn` in normal mode: go to next buffer
-- `<leader>bp` in normal mode: go to previous buffer
-- `<leader>bd` in normal mode: close current buffer
+- `<leader>bn` in normal mode: go to next buffer.
+- `<leader>bp` in normal mode: go to previous buffer.
+- `<leader>bd` in normal mode: close current buffer.
+
+- `<c-o>` in normal mode: go back to previous position.
 
 ### Commentary
-- `gcc` in normal mode: comment one line
-- `gc` in visual mode: comment visual selection
+- `gcc` in normal mode: comment one line.
+- `gc` in visual mode: comment visual selection.
 
 ### Customization
-- custom your own settings in ~/.vim/custom.vim
+- custom your own settings in `~/.vim/user.vim` and `~/.vim/coc-settings.json`.
 
-### Commands
+### Command Line Utility
 - try `vcmd` to find more.
 
 # Installation
@@ -79,7 +79,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 ### Linux, UNIX, MacOS Installation
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin-vim ~/.vim && cd ~/.vim && ./install.sh
+    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
 ### Windows Installation
@@ -100,7 +100,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin-vim %USERPROFILE%\.vim
+    $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
     $ install.bat
 ```

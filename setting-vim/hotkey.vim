@@ -12,9 +12,9 @@ map <F7> :NextColor<CR>
 " Command Operations
 
 " copy visual selection to disk cache
-vnoremap <Leader>y :w! ~/.cache/.lin-vim-copypaste<CR>
+vnoremap <Leader>y :w! ~/.cache/.lin.vim.copypaste<CR>
 " copy disk cache to cursor
-nnoremap <Leader>p :r ~/.cache/.lin-vim-copypaste<CR>
+nnoremap <Leader>p :r ~/.cache/.lin.vim.copypaste<CR>
 
 " Buffer
 

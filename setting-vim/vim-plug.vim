@@ -8,13 +8,11 @@ endif
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
-
 " UI
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -52,10 +50,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
 
-" Json
-Plug 'elzr/vim-json'
-
-" HTML, XML
+" HTML, XML tag
 Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 

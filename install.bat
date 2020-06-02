@@ -1,6 +1,6 @@
 @echo off
 cd %USERPROFILE%\.vim\install
-echo "[lin-vim] Install for Windows"
+echo "[lin.vim] Install for Windows"
 
 rem Vim Plugins
 cp %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc

@@ -1,4 +1,4 @@
-" lin-vim
+" lin.vim
 
 " config for vim
 source $HOME/.vim/setting-vim/vim-plug.vim

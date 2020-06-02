@@ -12,7 +12,7 @@ if [ $(uname) == "Linux" ]; then
     elif cat /etc/*release | grep ^NAME | grep Manjaro 1>/dev/null 2>&1; then
         bash ~/.vim/install/manjaro.sh
     else
-        echo "[lin-vim] OS not supprot"
+        echo "[lin.vim] OS not supprot"
         exit 1;
     fi
 elif [ $(uname) == "FreeBSD" ]; then
@@ -20,5 +20,5 @@ elif [ $(uname) == "FreeBSD" ]; then
 elif [ $(uname) == "Darwin" ]; then
     bash ~/.vim/install/macos.sh
 else
-    echo "[lin-vim] Please try 'cmd install.bat'"
+    echo "[lin.vim] Please try 'cmd install.bat'"
 fi

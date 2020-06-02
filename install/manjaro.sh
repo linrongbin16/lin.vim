@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo echo "[lin-vim] Install for Manjaro" || { echo "[lin-vim] sudo not found"; exit 1; }
+sudo echo "[lin.vim] Install for Manjaro" || { echo "[lin.vim] sudo not found"; exit 1; }
 
 # Prepare Environment
 if [ -f ~/.linvimrc ]; then
