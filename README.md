@@ -117,7 +117,3 @@ All extensions in one:
 ```
 :CocInstall coc-json coc-clangd coc-python
 ```
-
-# Troubleshooting
-
-1. Comment [coc.nvim/plugin/coc.vim#L177](https://github.com/neoclide/coc.nvim/blob/master/plugin/coc.vim#L177) if `:write` is slow for you.

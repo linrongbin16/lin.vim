@@ -31,21 +31,8 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 
-Plug 'junegunn/vim-easy-align'
-
-if has('win32')
-    " Complete Engine
-    Plug 'ycm-core/YouCompleteMe'
-    " Lint
-    Plug 'dense-analysis/ale'
-    " Tags
-    Plug 'ludovicchabant/vim-gutentags'
-    " Auto Format
-    Plug 'Chiel92/vim-autoformat'
-    Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
-else
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
+" Auto Complete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Comment
 Plug 'tpope/vim-commentary'
@@ -64,16 +51,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-repeat'
-" Plug 'liuchengxu/vim-which-key'
+Plug 'junegunn/vim-easy-align'
 
 " C/C++
 Plug 'vim-scripts/a.vim', { 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh'] }
 
 " Json
 Plug 'elzr/vim-json'
-
-" CSS
-Plug 'ap/vim-css-color'
 
 " HTML, XML
 Plug 'andymass/vim-matchup'
