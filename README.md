@@ -78,13 +78,13 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases).
 
-### Linux, UNIX, MacOS Installation
+### Linux, UNIX, MacOS
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
-### Windows Installation
+### Windows
 
 1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line.
 3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`, then `pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet`.
@@ -106,7 +106,7 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
     $ install.bat
 ```
 
-### Install [coc.nvim extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
+### [coc.nvim extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
 
 All extensions in one:
 ```
