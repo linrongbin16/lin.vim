@@ -37,10 +37,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 - `:Ag [text]` in normal mode: search [text]
 
 ### Search File
-- `<leader>ff` in normal mode: search files
-- `<leader>fb` in normal mode: search buffer
-- `<leader>fm` in normal mode: search in recent opened files
-- `<leader>fl` in normal mode: search text in current buffer
+- `<c-p>` in normal mode: search files
 
 ### Easy Align
 - `vipga=` in visual mode: align visual-selected paragraph
@@ -118,7 +115,7 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 All extensions in one:
 ```
-:CocInstall coc-json coc-clangd coc-jedi coc-python
+:CocInstall coc-json coc-clangd coc-python
 ```
 
 # Troubleshooting
