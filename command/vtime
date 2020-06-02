@@ -11,14 +11,14 @@ import util
 help_msg = '''Date and time calculations.
 
 usage:
-    timev [option] [datetime]  convert [datetime] from formatted string to integer or opposite direction, by default local system datetime.
+    vtime [option] [datetime]   convert [datetime] from formatted string to integer or opposite direction, by default local system datetime.
 
 option:
     -f/--format                 to formatted string.
     -s/--stamp                  to timestamp.
 
 flag:
-    timev -h/--help            show help message.
+    vtime -h/--help             show help message.
 '''
 
 

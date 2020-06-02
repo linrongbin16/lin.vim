@@ -12,8 +12,8 @@ import util
 help_msg = '''Compress and extract operations.
 
 usage:
-    packv [compress-option] <filename> compress <filename> to related compressed file, by default tar.gz.
-    packv [extract-option] <filename>  extract <filename> to related extracted file, by default use detected file type.
+    vpack [compress-option] <filename> compress <filename> to related compressed file, by default tar.gz.
+    vpack [extract-option] <filename>  extract <filename> to related extracted file, by default use detected file type.
 
 compress-option:
     -c/--compress                       compress by tar.gz.
@@ -31,7 +31,7 @@ extract-option:
     -ej/--extract-jar                   extract by java jar.
 
 flag:
-    packv -h/--help                    show help message.
+    vpack -h/--help                    show help message.
 '''
 
 

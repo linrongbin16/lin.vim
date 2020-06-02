@@ -12,17 +12,17 @@ import util
 help_msg = '''File operations in current folder.
 
 usage:
-    filev [option] -d/--delete <filetype>              delete all files that has <filetype>.
-    filev [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
-    filev [option] -l/--list <filetype>                list all files that has <filetype>.
-    filev [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
-    filev [option] -se/--show-encoding <filetype>      show detected encoding of all files with <filetype>.
+    vfile [option] -d/--delete <filetype>              delete all files that has <filetype>.
+    vfile [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
+    vfile [option] -l/--list <filetype>                list all files that has <filetype>.
+    vfile [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
+    vfile [option] -se/--show-encoding <filetype>      show detected encoding of all files with <filetype>.
 
 option:
     -i/--include-hidden                                 operations include hidden folder, by default False.
 
 flag:
-    filev -h/--help                                    show help message.
+    vfile -h/--help                                    show help message.
 '''
 
 
