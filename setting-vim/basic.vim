@@ -112,8 +112,6 @@ set nocursorcolumn
 set norelativenumber
 set number
 set laststatus=2
-" conceallevel for json
-set conceallevel=0
 
 if has("gui_running")
     " gvim toolbox
