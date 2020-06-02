@@ -34,14 +34,6 @@ git config --global credential.helper store
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
-# Fonts
-font_dir="$HOME/.local/share/fonts"
-mkdir -p $font_dir
-cd ~/.vim/fonts
-find_command="find $HOME/.vim/fonts \( -name '$prefix*.[o,t]tf' -or -name '$prefix*.pcf.gz' \) -type f -print0"
-eval $find_command | xargs -0 -n1 -I % cp "%" "$font_dir/"
-fc-cache -f $font_dir
-
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
