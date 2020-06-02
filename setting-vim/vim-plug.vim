@@ -12,8 +12,9 @@ call plug#begin('~/.vim/plugged')
 " UI
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'ntpeters/vim-better-whitespace'
 
 " Color Theme
@@ -32,7 +33,7 @@ Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 
 " Auto Complete
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'json', 'py']}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Comment
 Plug 'tpope/vim-commentary'

@@ -12,7 +12,7 @@ source $HOME/.vim/setting-vim/hotkey.vim
 " UI
 source $HOME/.vim/setting-plugin/indentline.vim
 source $HOME/.vim/setting-plugin/nerdtree.vim
-source $HOME/.vim/setting-plugin/airline.vim
+source $HOME/.vim/setting-plugin/statusline.vim
 source $HOME/.vim/setting-plugin/better-whitespace.vim
 
 " Auto Complete

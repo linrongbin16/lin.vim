@@ -79,6 +79,8 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold c,cpp,hpp,json,py silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Disable format since :w is too slow
+" Disable coc.nvim for other filetypes since it my slow vim
+autocmd BufNew,BufEnter *.c,*.cpp,*.h,*.hpp,*.py,*.json,*.lua execute "silent! CocEnable"
+autocmd BufLeave *.c,*.cpp,*.h,*.hpp,*.py,*.json,*.lua execute "silent! CocDisable"
