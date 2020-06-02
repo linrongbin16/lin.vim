@@ -1,0 +1,13 @@
+{
+    "suggest.minTriggerInputLength": 2,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "json",
+        "c",
+        "cpp",
+        "python"
+    ],
+    "python.formatting.autopep8Args": [
+        "--ignore",
+        "E402"
+    ]
+}

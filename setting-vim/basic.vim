@@ -54,9 +54,10 @@ set magic
 set showmatch
 
 " encoding
-set fileencoding=utf-8
+set fileencoding=UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
-set termencoding=utf-8
+set termencoding=UTF-8
+set encoding=UTF-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 language messages en_US.UTF-8
@@ -118,15 +119,6 @@ if has("gui_running")
     set guioptions-=T
     " gvim menu
     set guioptions-=m
-endif
-
-" guifonts
-if has("win32") || has("mac")
-    "set guifont=Monaco:h9
-    set guifont=Hack:h12
-else
-    "set guifont=Monaco\ 9
-    set guifont=Hack\ 10
 endif
 
 set updatetime=100

@@ -16,7 +16,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 - Multiple platform support: UNIX/Linux, Windows and MacOS.
 - Code complete, lint and format running in [coc.nvim](https://github.com/neoclide/coc.nvim) language server for most programming languages.
-- Random color schemes and [Hack Font](https://sourcefoundry.org/hack/).
+- Random color schemes and icons.
 - File and buffer explorer and better status line.
 - Source code search and Fuzzy file search.
 - Useful command line utilities support: git, code search, file operation, date/time calculate, ipv4/ipv6 calculate.
@@ -76,7 +76,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 # Installation
 
-Please manually install [Hack Font](https://sourcefoundry.org/hack/).
+Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases).
 
 ### Linux, UNIX, MacOS Installation
 
