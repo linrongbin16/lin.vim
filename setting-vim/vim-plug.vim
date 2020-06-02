@@ -32,7 +32,7 @@ Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 
 " Auto Complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['c', 'cc', 'cxx', 'cpp', 'h', 'hpp', 'hxx', 'hh', 'json', 'py']}
 
 " Comment
 Plug 'tpope/vim-commentary'
