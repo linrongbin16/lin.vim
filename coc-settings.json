@@ -1,5 +1,4 @@
 {
-    "suggest.maxCompleteItemCount": 30,
     "suggest.minTriggerInputLength": 2,
     "coc.preferences.formatOnSaveFiletypes": [
         "json",
@@ -7,7 +6,6 @@
         "cpp",
         "python"
     ],
-    "coc.preferences.formatOnInsertLeave": true,
     "python.formatting.autopep8Args": [
         "--ignore",
         "E402"
