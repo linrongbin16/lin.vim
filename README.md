@@ -109,5 +109,5 @@ It is highly configured [VIM](https://www.vim.org/) integrated tons of utilities
 
 All extensions in one:
 ```
-:CocInstall coc-json coc-clangd coc-python coc-highlight
+:CocInstall coc-json coc-clangd coc-cmake coc-python coc-highlight coc-css coc-cssmodules coc-emmet coc-html coc-xml coc-tsserver
 ```

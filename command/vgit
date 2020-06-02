@@ -15,27 +15,27 @@ db = util.get_command_home() + slash + 'git_proxy.db'
 help_msg = '''Git operations.
 
 usage:
-    gitv -ba/--branch-all              show all branches.
-    gitv -bl/--branch-local            show all local branches.
-    gitv -br/--branch-remote           show all remote branches.
-    gitv -bc/--branch-create <branch>  create new local <branch> and move to it.
-    gitv -bm/--branch-move <branch>    move to local existing <branch>.
-    gitv [option] -pl/--pull           pull from remote/branch.
-    gitv [option] -ps/--push           push to remote/branch with comment.
-    gitv -d/--discard                  discard changes.
-    gitv -rb/--rebase [branch]         rebase to remote/[branch].
-    gitv -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
-    gitv -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    gitv -cp/--create-proxy <proxy>    create configure <proxy> for git.
-    gitv -sp/--show-proxy              show proxy configuration for git.
-    gitv -ep/--enable-proxy            enable proxy configuration for git.
-    gitv -dp/--disable-proxy           disable proxy configuration for git.
+    vgit -ba/--branch-all              show all branches.
+    vgit -bl/--branch-local            show all local branches.
+    vgit -br/--branch-remote           show all remote branches.
+    vgit -bc/--branch-create <branch>  create new local <branch> and move to it.
+    vgit -bm/--branch-move <branch>    move to local existing <branch>.
+    vgit [option] -pl/--pull           pull from remote/branch.
+    vgit [option] -ps/--push           push to remote/branch with comment.
+    vgit -d/--discard                  discard changes.
+    vgit -rb/--rebase [branch]         rebase to remote/[branch].
+    vgit -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
+    vgit -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
+    vgit -cp/--create-proxy <proxy>    create configure <proxy> for git.
+    vgit -sp/--show-proxy              show proxy configuration for git.
+    vgit -ep/--enable-proxy            enable proxy configuration for git.
+    vgit -dp/--disable-proxy           disable proxy configuration for git.
 
 option:
     -f/--force                          force operation on pull/push, by default False.
 
 flag:
-    gitv -h/--help                     show help message.
+    vgit -h/--help                     show help message.
 '''
 
 

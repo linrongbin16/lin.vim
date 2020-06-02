@@ -5,5 +5,9 @@
         "cpp",
         "python"
     ],
-    "coc.preferences.formatOnInsertLeave": true
+    "coc.preferences.formatOnInsertLeave": true,
+    "python.formatting.autopep8Args": [
+        "--ignore",
+        "E402"
+    ]
 }

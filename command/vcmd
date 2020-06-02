@@ -13,13 +13,13 @@ def ops_help():
     msg = '''[vcmd] helper operations.
 
 usage:
-    agv     Searching in current folder by ag.
-    filev   File operations in current folder.
-    gitv    Git operations.
-    ipv     IP calculations.
-    packv   Compress and extract operations.
-    timev   Date and time calculations.
-    genv    Generate auto complete database.
+    vag     Searching in current folder by ag.
+    vfile   File operations in current folder.
+    vgit    Git operations.
+    vip     IP calculations.
+    vpack   Compress and extract operations.
+    vtime   Date and time calculations.
+    vgen    Generate compile database.
 '''
     print(msg)
 

@@ -40,7 +40,7 @@ def identify_input(ip):
 def _validate_ipv4(ipv4):
     try:
         ipaddr = ipaddress.IPv4Address(ipv4)
-        print('[vcmd] ipv4 %s (%d): True' % (str(ipaddr), int (ipaddr)))
+        print('[vcmd] ipv4 %s (%d): True' % (str(ipaddr), int(ipaddr)))
     except Exception:
         print('[vcmd] ipv4 %s: False' % (ipv4))
     exit(0)
@@ -49,7 +49,7 @@ def _validate_ipv4(ipv4):
 def _validate_ipv6(ipv6):
     try:
         ipaddr = ipaddress.IPv6Address(ipv6)
-        print('[vcmd] ipv6 %s (%d): True' % (str(ipaddr), int (ipaddr)))
+        print('[vcmd] ipv6 %s (%d): True' % (str(ipaddr), int(ipaddr)))
     except Exception:
         print('[vcmd] ipv6 %s: False' % (ipv6))
     exit(0)

@@ -2,11 +2,11 @@
 # -*- coding:utf-8 -*-
 # Copyright 2018-  <linrongbin16@gmail.com>
 
-import util
 import sys
 import os
 import getopt
 sys.path.append('.')
+import util
 
 slash = '\\' if util.is_windows() else '/'
 db = util.get_command_home() + slash + 'vag.ignore'

@@ -115,6 +115,7 @@ def _extract_zip(filename):
     print('[vcmd] extract \'%s\' to \'%s\'' %
           (filename, _extract_folder_name(filename)))
 
+
 def _extract_jar(filename):
     os.system('jar xf "%s"' % (filename))
     print('[vcmd] java extract \'%s\' to \'%s\'' %
