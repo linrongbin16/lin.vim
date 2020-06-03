@@ -76,7 +76,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 # Installation
 
-Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases).
+Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) on UNIX/Linux/Mac, install **Hack Nerd Font Mono Windows Compatible** on Windows.
 
 ### Linux, UNIX, MacOS
 
