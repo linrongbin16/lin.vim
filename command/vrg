@@ -99,9 +99,9 @@ def _show():
     ignore_list = util.readlines_file(ignore)
     ignore_list = [x.strip() for x in ignore_list]
     if len(ignore_list) == 0:
-        print('[vcmd] search ignore: %s' % (None))
+        print('[vcmd] ~/.ignore: %s' % (None))
     else:
-        print('[vcmd] search ignore:')
+        print('[vcmd] ~/.ignore:')
         for x in ignore_list:
             print(x)
     exit(0)
