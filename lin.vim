@@ -30,6 +30,9 @@ source $HOME/.vim/setting-plugin/vim-easy-align.vim
 " HTML/XML
 source $HOME/.vim/setting-plugin/closetag.vim
 
+" Markdown
+source $HOME/.vim/setting-plugin/markdown.vim
+
 " user setting
 if filereadable(expand('~/.vim/user.vim'))
     source $HOME/.vim/user.vim

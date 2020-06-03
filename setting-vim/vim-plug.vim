@@ -54,4 +54,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
 call plug#end()
