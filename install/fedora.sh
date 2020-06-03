@@ -13,7 +13,7 @@ touch ~/.zshrc
 sudo dnf install -y git vim gvim curl wget zsh
 sudo dnf install -y gcc g++ clang autoconf automake make cmake
 sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
-sudo dnf install -y the_silver_searcher unzip bzip2
+sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip nodejs npm jedi
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint
 

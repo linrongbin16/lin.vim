@@ -19,7 +19,7 @@ source $HOME/.vim/setting-plugin/statusline.vim
 source $HOME/.vim/setting-plugin/coc-nvim.vim
 
 " Search
-source $HOME/.vim/setting-plugin/ag.vim
+source $HOME/.vim/setting-plugin/ripgrep.vim
 source $HOME/.vim/setting-plugin/leaderf.vim
 
 " Keyboard Operation
