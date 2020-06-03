@@ -35,7 +35,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 - `<leader>p` in normal mode: paste text saved from local machine cache.
 
 ### Search Text
-- `:Rg [string|pattern]` in normal mode: search [string|pattern].
+- `:Ag [text]` in normal mode: search [text].
 
 ### Search File
 - `<c-p>` in normal mode: fuzzy search file.
@@ -96,7 +96,7 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
     * Common Windows Platform Development.
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
 8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`.
-9.  Install [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` to `%PATH%`.
+9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
 10. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 

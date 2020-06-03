@@ -40,7 +40,7 @@ Plug 'tpope/vim-commentary'
 Plug 'mhinz/vim-signify'
 
 " Searching
-Plug 'jremmen/vim-ripgrep'
+Plug 'rking/ag.vim'
 Plug 'Yggdroot/LeaderF'
 
 " Keyboard Operation
