@@ -12,7 +12,7 @@ touch ~/.zshrc
 # Software Dependency
 yes | sudo pacman -Rs vim
 yes | sudo pacman -S git gvim curl wget zsh gcc clang make autoconf automake cmake openssh openssl crypto++
-yes | sudo pacman -S the_silver_searcher unrar unzip bzip2 zip p7zip python python-pip nodejs npm
+yes | sudo pacman -S ripgrep unrar unzip bzip2 zip p7zip python python-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet jedi
 
 # Git Config
