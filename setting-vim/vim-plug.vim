@@ -21,7 +21,6 @@ Plug 'tomasr/molokai'
 Plug 'crusoexia/vim-monokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'KeitaNakamura/neodark.vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
