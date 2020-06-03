@@ -36,12 +36,10 @@ echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "defaults write com.apple.finder AppleShowAllFiles TRUE" >> ~/.linvimrc
-echo "alias git='LANG=en_US git'" >> ~/.linvimrc
 echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
 echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "export PATH=\$PATH:~/.vim/command" >> ~/.linvimrc
-echo "export PATH=/usr/local/opt/universal-ctags/bin:\$PATH" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
 source ~/.zshrc 1>/dev/null 2>&1
