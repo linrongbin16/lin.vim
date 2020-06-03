@@ -38,6 +38,7 @@ filetype plugin on
 filetype indent on
 syntax on
 syntax enable
+set noundofile
 set nobackup
 set noswapfile
 set nowritebackup
