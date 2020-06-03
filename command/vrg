@@ -1,0 +1,138 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import getopt
+sys.path.append('.')
+import util
+
+slash = '\\' if util.is_windows() else '/'
+ignore = os.path.expanduser('~') + slash + '.ignore'
+
+help_msg = '''Search current folder by ag/rg.
+
+usage:
+    vrg [option] <text>             search all <text>.
+    vrg [option] -w/--word <word>   search all <word>.
+    vrg [option] -c/--count <text>  search files and occurrences that contains <text>.
+    vrg -a/--add-ignore <filetype>  add <filetype> in searcher ignore configuration.
+
+option:
+    -t/--top-folder                 search top level folder without recursively, by default False.
+    -i/--ignore-case                search ignore case, by default False.
+
+flag:
+    vrg -p/--purge                  purge all filetypes in searcher configuration.
+    vrg -s/--show                   show all filetypes in searcher configuration.
+    vrg -h/--help                   show help message.
+'''
+
+
+def _help():
+    print(help_msg)
+    exit(0)
+
+
+def _text(text, recursive, sensitive):
+    if recursive:
+        if sensitive:
+            os.system('rg --case-sensitive %s .' % (text))
+        else:
+            os.system('rg --ignore-case %s .' % (text))
+    else:
+        if sensitive:
+            os.system('ag --case-sensitive --depth 0 -p %s %s .' %
+                      (ignore, text))
+        else:
+            os.system('ag --ignore-case --depth 0 -p %s %s .' % (ignore, text))
+    exit(0)
+
+
+def _count(text, recursive, sensitive):
+    if recursive:
+        if sensitive:
+            os.system('rg --case-sensitive -c %s .' % (text))
+        else:
+            os.system('rg --ignore-case -c %s .' % (text))
+    else:
+        if sensitive:
+            os.system('ag --case-sensitive -c --depth 0 -p %s %s .' %
+                      (ignore, text))
+        else:
+            os.system('ag --ignore-case -c --depth 0 -p %s %s .' %
+                      (ignore, text))
+    exit(0)
+
+
+def _word(word, recursive, sensitive):
+    if recursive:
+        if sensitive:
+            os.system('rg --case-sensitive -w %s .' % (word))
+        else:
+            os.system('rg --ignore-case -w %s .' % (word))
+    else:
+        if sensitive:
+            os.system('ag --case-sensitive -w --depth 0 -p %s %s .' %
+                      (ignore, word))
+        else:
+            os.system('ag --ignore-case -w --depth 0 -p %s %s .' %
+                      (ignore, word))
+    exit(0)
+
+
+def _add_ignore(filetype):
+    if not filetype.startswith('.'):
+        filetype = '.%s' % filetype
+    filetype = '%s\n' % filetype.strip()
+    util.append_file(ignore, filetype)
+    exit(0)
+
+
+def _purge():
+    util.purge_file(ignore)
+    exit(0)
+
+
+def _show():
+    ignore_list = util.readlines_file(ignore)
+    ignore_list = [x.strip() for x in ignore_list]
+    ignore_str = ' '.join(ignore_list).strip()
+    print('[vcmd] search ignore: %s' %
+          (None if len(ignore_str) == 0 else ignore_str))
+    exit(0)
+
+
+if __name__ == '__main__':
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'w:c:a:tipsh', [
+            'word=', 'count=', 'add-ignore=', 'top-folder', 'ignore-case', 'purge',
+            'show', 'help'
+        ])
+        recursive = True
+        sensitive = True
+        for opt in opts:
+            if opt[0] in ('-t', '--top-folder'):
+                recursive = False
+            if opt[0] in ('-i', '--ignore-case'):
+                sensitive = False
+        for opt in opts:
+            if opt[0] in ('-w', '--word'):
+                _word(opt[1], recursive, sensitive)
+            elif opt[0] in ('-c', '--count'):
+                _count(opt[1], recursive, sensitive)
+            elif opt[0] in ('-a', '--add-ignore'):
+                _add_ignore(opt[1])
+            elif opt[0] in ('-p', '--purge'):
+                _purge()
+            elif opt[0] in ('-s', '--show'):
+                _show()
+            elif opt[0] in ('-h', '--help'):
+                _help()
+        _text(args[0], recursive, sensitive)
+    except getopt.GetoptError as e:
+        print(str(e) + '\n')
+        _help()
+    except Exception as e:
+        print(str(e) + '\n')
