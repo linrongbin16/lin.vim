@@ -98,9 +98,12 @@ def _purge():
 def _show():
     ignore_list = util.readlines_file(ignore)
     ignore_list = [x.strip() for x in ignore_list]
-    ignore_str = ' '.join(ignore_list).strip()
-    print('[vcmd] search ignore: %s' %
-          (None if len(ignore_str) == 0 else ignore_str))
+    if len(ignore_list) == 0:
+        print('[vcmd] search ignore: %s' % (None))
+    else:
+        print('[vcmd] search ignore:')
+        for x in ignore_list:
+            print(x)
     exit(0)
 
 
