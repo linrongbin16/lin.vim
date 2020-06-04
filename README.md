@@ -56,15 +56,21 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 - `[g` in normal mode: go to previous diagnostic.
 - `]g` in normal mode: go to next diagnostic.
 
-- `<leader>bn` in normal mode: go to next buffer.
-- `<leader>bp` in normal mode: go to previous buffer.
-- `<leader>bd` in normal mode: close current buffer.
-
 - `<c-o>` in normal mode: go back to previous position.
 
 ### Commentary
 - `gcc` in normal mode: comment one line.
 - `gc` in visual mode: comment visual selection.
+
+### File Explorer
+- `ma` in normal mode: create new file/directory.
+- `mc` in normal mode: copy file/directory.
+- `md` in normal mode: delete file/directory.
+- `mm` in normal mode: move file/directory.
+
+- `<leader>bn` in normal mode: go to next buffer.
+- `<leader>bp` in normal mode: go to previous buffer.
+- `<leader>bd` in normal mode: close current buffer.
 
 ### Customization
 - custom your own settings in `~/.vim/user.vim` and `~/.vim/coc-settings.json`.

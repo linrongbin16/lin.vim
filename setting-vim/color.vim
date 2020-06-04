@@ -4,10 +4,10 @@
 syntax enable
 let s:mycolor=['solarized', 'molokai', 'monokai', 'dracula', 'torte', 'darkblue', 'evening', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'one', 'rigel']
 
-if localtime() % 2 == 0
-    set background=dark
-else
+if localtime() % 5 == 0
     set background=light
+else
+    set background=dark
 endif
 
 if has("gui_running")
