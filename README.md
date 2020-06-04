@@ -25,19 +25,17 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 # User Guide
 
 ### Hot Key
-- `F4` in normal mode: switch between C/C++ header source file.
-- `F5` in normal mode: open/close nerdtree file explorer.
-- `F6` in normal mode: open terminal.
-- `F7` in normal mode: change color theme randomly.
+- `F1` in normal mode: switch between C/C++ header source file.
+- `F2` in normal mode: open/close terminal.
+- `F3` in normal mode: change color theme randomly.
+- `F5` in normal mode: open/close file explorer.
 
 ### Enhanced Copy Paste
 - `<leader>y` in visual mode: copy visual-selected text to locale machine cache.
 - `<leader>p` in normal mode: paste text saved from local machine cache.
 
-### Search Text
-- `:Ag [text]` in normal mode: search [text].
-
-### Search File
+### Search
+- `:Ag [text]` or `:Rg [text]` in normal mode: search [text].
 - `<c-p>` in normal mode: fuzzy search file.
 
 ### Easy Align
@@ -76,7 +74,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 # Installation
 
-Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) on UNIX/Linux/Mac, install **Hack Nerd Font Mono Windows Compatible** on Windows.
+Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) on UNIX/Linux/Mac, install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/releases) on Windows.
 
 ### Linux, UNIX, MacOS
 
@@ -96,8 +94,10 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
     * Common Windows Platform Development.
 7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
 8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`.
-9.  Install [ag](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
-10. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
+9.  Install [the_silver_searcher](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
+10. Install [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` to `%PATH%`.
+11. Install [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe` to `%PATH%`.
+12. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 
 ```bash
