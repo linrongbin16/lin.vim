@@ -10,10 +10,10 @@ import util
 
 
 def ops_help():
-    msg = '''[vcmd] helper operations.
+    msg = '''[vcmd] lin.vim command line utility.
 
 usage:
-    vag     Searching in current folder by ag.
+    vrg     Searching in current folder by ag/rg.
     vfile   File operations in current folder.
     vgit    Git operations.
     vip     IP calculations.
