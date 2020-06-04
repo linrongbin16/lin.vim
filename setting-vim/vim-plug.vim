@@ -60,4 +60,7 @@ Plug 'plasticboy/vim-markdown'
 " Flex, Bison
 Plug 'justinmk/vim-syntax-extra'
 
+" LLVM
+Plug 'rhysd/vim-llvm'
+
 call plug#end()
