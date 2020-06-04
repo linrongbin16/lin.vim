@@ -86,4 +86,6 @@ if has("gui_running")
     set guioptions-=m
 endif
 
-set updatetime=100
+set hidden
+set updatetime=150
+set cmdheight=2
