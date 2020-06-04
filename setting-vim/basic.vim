@@ -87,5 +87,5 @@ if has("gui_running")
 endif
 
 set hidden
-set updatetime=150
+set updatetime=100
 set cmdheight=2
