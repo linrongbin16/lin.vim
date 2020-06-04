@@ -22,7 +22,7 @@ usage:
     vgit -bm/--branch-move <branch>    move to local existing <branch>.
     vgit [option] -pl/--pull           pull from remote/branch.
     vgit [option] -ps/--push           push to remote/branch with comment.
-    vgit -d/--discard                  discard changes.
+    vgit -ds/--discard                 discard changes.
     vgit -rb/--rebase [branch]         rebase to remote/[branch].
     vgit -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
     vgit -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
@@ -286,7 +286,7 @@ if __name__ == '__main__':
             elif opt[0] == '--enable-proxy':
                 _enable_proxy()
             elif opt[0] == '-d':
-                if opt[1] is None:
+                if opt[1] == 's':
                     _discard()
                 elif opt[1] == 'p':
                     _disable_proxy()
