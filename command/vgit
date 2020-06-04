@@ -23,7 +23,7 @@ usage:
     vgit [option] -pl/--pull           pull from remote/branch.
     vgit [option] -ps/--push           push to remote/branch with comment.
     vgit -ds/--discard                 discard changes.
-    vgit -rb/--rebase [branch]         rebase to remote/[branch].
+    vgit -rb/--rebase [branch]         rebase to remote/[branch], by default current branch.
     vgit -rv/--revert [N]              revert to last [N] commit (create new commit without push force), by default 1.
     vgit -rs/--reset [N]               reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
     vgit -cp/--create-proxy <proxy>    create configure <proxy> for git.
