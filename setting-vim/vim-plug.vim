@@ -57,4 +57,7 @@ Plug 'alvan/vim-closetag'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 
+" Flex, Bison
+Plug 'justinmk/vim-syntax-extra'
+
 call plug#end()
