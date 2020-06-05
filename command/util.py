@@ -8,31 +8,15 @@ import threading
 import platform
 import datetime
 import time
-import re
-import string
 import subprocess
-import calendar
-import scandir
-
-# platform utils
 
 
 def is_windows():
     return platform.system() == 'Windows'
 
 
-# path utils
-
-
-def get_file_name_all_suffix(name):
-    if len(name) <= 0:
-        return ''
-    if name[0] == '.':
-        return ''
-    dot_pos = name.find('.')
-    if dot_pos >= 0:
-        return name[dot_pos + 1:]
-    return ''
+def is_empty_str(s):
+    return True if (s is None) else (len(s.strip()) == 0)
 
 
 def read_file(name):
@@ -92,47 +76,6 @@ def get_command_home():
     ) else os.path.expanduser('~') + '/.vim/command'
 
 
-def get_command_name():
-    py_name = sys.argv[0]
-    left_slash = py_name.rfind('/')
-    right_slash = py_name.rfind('\\')
-    py_name = py_name[left_slash + 1:] if left_slash >= 0 else py_name
-    py_name = py_name[right_slash + 1:] if right_slash >= 0 else py_name
-    return py_name
-
-
-def get_file_name(file_name):
-    if file_name[0] == "/":
-        file_name = file_name[1:]
-    if file_name[0] == "\\":
-        file_name = file_name[1:]
-    if file_name[-1] == "/":
-        file_name = file_name[:-1]
-    if file_name[-1] == "\\":
-        file_name = file_name[:-1]
-    return file_name
-
-
-def find_file_up_impl(start_path, file_name):
-    os.chdir(start_path)
-    if os.path.exists(file_name):
-        return start_path
-    if os.path.abspath(".") == os.path.abspath("/"):
-        return None
-    for ch in string.ascii_uppercase:
-        if os.path.abspath(".") == os.path.abspath("%s:\\" % (ch)):
-            return None
-    return find_file_up_impl(os.path.abspath(".."), file_name)
-
-
-def find_file_up(start_path, file_name):
-    save_dir = os.path.abspath(".")
-    result = find_file_up_impl(os.path.abspath("."), file_name)
-    if os.path.exists(save_dir):
-        os.chdir(save_dir)
-    return result
-
-
 def backup_file(target):
     if not os.path.exists(target):
         return
@@ -158,9 +101,6 @@ def walk_dir(directory, include_hidden=False):
     return file_list
 
 
-# process utils
-
-
 def run(*cmd):
     try:
         proc = subprocess.Popen(cmd,
@@ -175,76 +115,11 @@ def run(*cmd):
     return outstr, errstr
 
 
-# args utils
-
-
-def get_sys_args_one_line(start=1):
-    args = [sys.argv[i] for i in range(len(sys.argv)) if i >= start]
-    return ' '.join(args).strip()
-
-
-def check_help_message(help_msg_func):
-    if len(sys.argv) >= 2:
-        if sys.argv[1] in ("--help", "-h", "-help"):
-            help_msg_func()
-
-
 def check_user_confirm(msg):
     yes = input(msg)
     if not yes.lower().startswith('y'):
         print("[boostcript] error: user not confirm")
         exit(3)
-
-
-# date time utils
-
-
-def date_to_second(d, local=True):
-    assert isinstance(d, datetime.date)
-    if local:
-        return time.mktime(d.timetuple())
-    else:
-        utc = time.gmtime(time.mktime(d.timetuple()))
-        return time.mktime(utc)
-
-
-def datetime_to_second(dt, local=True):
-    assert isinstance(dt, datetime.datetime)
-    if local:
-        return time.mktime(dt.timetuple())
-    else:
-        utc = time.gmtime(time.mktime(dt.timetuple()))
-        return time.mktime(utc)
-
-
-# number string utils
-
-
-def number_to_string(n):
-    if isinstance(n, int):
-        return str(n)
-    else:
-        n_int = int(n)
-        if float(n_int) == float(n):
-            return str(n_int)
-        else:
-            return str(n)
-
-
-def is_empty_str(s):
-    return True if (s is None) else (len(s.strip()) == 0)
-
-
-def trim_quotation(s):
-    s = s.strip()
-    if s[0] == '\"' or s[0] == '\'':
-        s = s[1:]
-    if s[-1] == '\"' or s[-1] == '\'':
-        s = s[:-1]
-    return s
-
-
-# git utils
 
 
 def get_git_root():
