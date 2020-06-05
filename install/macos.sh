@@ -26,10 +26,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
 cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 
-# Commands
-cd ~/.vim/command
-chmod +x *
-
 # Path Variable
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
 echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
