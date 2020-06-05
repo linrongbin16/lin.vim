@@ -13,7 +13,7 @@ touch ~/.zshrc
 brew upgrade
 brew install macvim zsh curl wget llvm autoconf automake cmake clang-format
 brew install openssl openssh cryptopp the_silver_searcher ripgrep python3 unzip zip p7zip node
-sudo pip3 install pyOpenSSL pep8 flake8 pylint autopep8 yapf cpplint chardet jedi
+sudo pip3 install pyOpenSSL pep8 flake8 pylint black cpplint chardet jedi
 
 # Vim Plugin
 cp ~/.vim/lin.vim ~/.vimrc
