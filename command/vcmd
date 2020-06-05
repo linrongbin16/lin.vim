@@ -5,12 +5,13 @@
 
 import sys
 import os
-sys.path.append('.')
+
+sys.path.append(".")
 import util
 
 
 def ops_help():
-    msg = '''[vcmd] lin.vim command line utility.
+    msg = """[vcmd] lin.vim command line utility.
 
 usage:
     vrg     Searching in current folder by ag/rg.
@@ -20,12 +21,13 @@ usage:
     vpack   Compress and extract operations.
     vtime   Date and time calculations.
     vgen    Generate compile database.
-'''
+"""
     print(msg)
 
 
+
 def ssh_gen_help():
-    msg = '''[vcmd] SSH Configuration Help: generate ssh token for [your_email@email.com].
+    msg = """[vcmd] SSH Configuration Help: generate ssh token for [your_email@email.com].
 
 usage:
     remove old 'id_rsa' and 'id_rsa.pub' in '~/.ssh' before generation.
@@ -38,22 +40,22 @@ usage:
     $ chmod 600 ~/.ssh/authorized_keys
     $ chmod 600 ~/.ssh/id_rsa
     $ chmod 644 ~/.ssh/id_rsa.pub
-'''
+"""
     print(msg)
 
 
 def ssh_login_help():
-    msg = '''[vcmd] SSH Login Help: login ssh server without username & password.
+    msg = """[vcmd] SSH Login Help: login ssh server without username & password.
 
 usage:
     copy generated '~/.ssh/id_rsa.pub' to ssh server and login ssh server.
     $ cat id_rsa.pub >> ~/.ssh/authorized_keys
     $ ssh-add ~/.ssh/id_rsa
-'''
+"""
     print(msg)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     ssh_gen_help()
     ssh_login_help()
     ops_help()

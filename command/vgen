@@ -10,10 +10,11 @@ import re
 import subprocess
 import time
 import datetime
-sys.path.append('.')
+
+sys.path.append(".")
 import util
 
-help_msg = '''Generate auto complete database.
+help_msg = """Generate auto complete database.
 
 usage:
     vgen -c/--clangd    generate compile database for clangd
@@ -21,7 +22,7 @@ usage:
 
 flag:
     vgen -h/--help      show help message.
-'''
+"""
 
 
 def _help():
@@ -53,18 +54,18 @@ def list_directory(base_dir, depth):
     for root, dirs, files in os.walk(base_dir):
         for d in dirs:
             fd = os.path.join(root, d)
-            if d.startswith('.') or path_contain(fd, ['.git', '.svn', '.hg']):
+            if d.startswith(".") or path_contain(fd, [".git", ".svn", ".hg"]):
                 continue
             dir_list.append(fd)
         cur_num_sep = root.count(os.path.sep)
         if cur_num_sep >= num_sep + depth:
             del dirs[:]
-    return [d.replace('\\', '/') for d in dir_list]
+    return [d.replace("\\", "/") for d in dir_list]
 
 
 def git_header():
     try:
-        root, _ = util.run('git', 'rev-parse', '--show-toplevel')
+        root, _ = util.run("git", "rev-parse", "--show-toplevel")
         groot = root[0].strip() if (len(root) > 0) else None
         git_list = list_directory(groot, 2)
         # dump_flags(git_list)
@@ -78,73 +79,78 @@ def windows_header():
     # '-I',
     # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
     for release in os_listdir_wrapper(
-            'C:\\Program Files (x86)\\Microsoft Visual Studio\\'):
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\"
+    ):
         for version in os_listdir_wrapper(
-                'C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\'
-                % (release)):
+            "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\"
+            % (release)
+        ):
             header.append(
-                '-IC:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include'
-                % (release, version))
+                "-IC:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"
+                % (release, version)
+            )
             # '-I',
     # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
     for version in os_listdir_wrapper(
-            'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\'):
+        "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"
+    ):
         header.append(
-            '-IC:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt' %
-            (version))
+            "-IC:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (version)
+        )
     # TODO: add C:\\Program Files\\LLVM headers
     return header
 
 
 def user_header():
     header = []
-    header.append('-I.')
-    for path in os_listdir_wrapper('.'):
-        if ' ' in path:
+    header.append("-I.")
+    for path in os_listdir_wrapper("."):
+        if " " in path:
             continue
         if not is_ascii_char(path):
             continue
-        if path.startswith('.'):
+        if path.startswith("."):
             continue
         if not os.path.isdir(path):
             continue
-        if not path.endswith('include'):
+        if not path.endswith("include"):
             continue
-        header.append('-I%s' % path)
+        header.append("-I%s" % path)
     return header
 
 
 def _compile_commands():
-    print('[vcmd] generate compile_commands.json for clangd')
-    gen_folder = '.vgen.%s' % (str(time.time()))
-    os.system('cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .' %
-              (gen_folder))
-    if not os.path.exists('%s/compile_commands.json' % (gen_folder)):
-        raise Exception('%s/compile_commands.json not exist' % (gen_folder))
-    os.system('cp %s/compile_commands.json .' % (gen_folder))
-    os.system('rm -rf %s' % (gen_folder))
-    print('[vcmd] generate compile_commands.json for clangd - done')
+    print("[vcmd] generate compile_commands.json for clangd")
+    gen_folder = ".vgen.%s" % (str(time.time()))
+    os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
+    if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
+        raise Exception("%s/compile_commands.json not exist" % (gen_folder))
+    os.system("cp %s/compile_commands.json ." % (gen_folder))
+    os.system("rm -rf %s" % (gen_folder))
+    print("[vcmd] generate compile_commands.json for clangd - done")
 
 
 def _compile_flags():
-    print('[vcmd] generate compile_flags.txt for clangd')
-    print('[vcmd] Windows platform not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist')
-    fp = open('compile_flags.txt', 'w')
+    print("[vcmd] generate compile_flags.txt for clangd")
+    print(
+        "[vcmd] Windows platform not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist"
+    )
+    fp = open("compile_flags.txt", "w")
     uh = user_header()
     wh = windows_header()
     gh = git_header()
     for x in uh:
-        fp.write(x + '\n')
+        fp.write(x + "\n")
     for x in wh:
-        fp.write(x + '\n')
+        fp.write(x + "\n")
     for x in gh:
-        fp.write(x + '\n')
+        fp.write(x + "\n")
     fp.close()
-    print('[vcmd] generate compile_flags.txt for clangd - done')
+    print("[vcmd] generate compile_flags.txt for clangd - done")
 
 
 def _clangd():
-    cmake_lists_txt = 'CMakeLists.txt'
+    cmake_lists_txt = "CMakeLists.txt"
     if not util.is_windows() and os.path.isfile(cmake_lists_txt):
         _compile_commands()
     else:
@@ -152,16 +158,15 @@ def _clangd():
     exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'ch', [
-                                   'clangd', 'help'])
+        opts, args = getopt.getopt(sys.argv[1:], "ch", ["clangd", "help"])
         for opt in opts:
-            if opt[0] in ('-c', '--clangd'):
+            if opt[0] in ("-c", "--clangd"):
                 _clangd()
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + '\n')
+        print(str(e) + "\n")
         _help()
     except Exception as e:
-        print(str(e) + '\n')
+        print(str(e) + "\n")

@@ -8,7 +8,7 @@ import time
 import datetime
 import getopt
 
-help_msg = '''Date and time calculations.
+help_msg = """Date and time calculations.
 
 usage:
     vtime [option] -d/--datetime [timestamp]    convert [timestamp] from timestamp to datetime string, by default current datetime.
@@ -19,7 +19,7 @@ option:
 
 flag:
     vtime -h/--help             show help message.
-'''
+"""
 
 
 def _help():
@@ -29,7 +29,7 @@ def _help():
 
 def _datetime(ts):
     dt = datetime.datetime.fromtimestamp(ts)
-    print('[vcmd] %s' % (dt.strftime('%Y-%m-%d %H:%M:%S.%f')[0:23]))
+    print("[vcmd] %s" % (dt.strftime("%Y-%m-%d %H:%M:%S.%f")[0:23]))
     exit(0)
 
 
@@ -55,7 +55,7 @@ def _parse_datetime(args):
     # year, month, day, hour, minute, second, microsecond
     field = [0, 0, 0, 0, 0, 0, 0]
     field_max_len = [4, 2, 2, 2, 2, 2, 999999999]
-    payload = ' '.join(args)
+    payload = " ".join(args)
     pos = None
     c = 0
     for i in range(len(payload)):
@@ -67,7 +67,7 @@ def _parse_datetime(args):
             pos = None
             continue
         if (pos is not None) and (i - pos > field_max_len[c]):
-            field[c] = int(payload[pos:pos + field_max_len[c]])
+            field[c] = int(payload[pos : pos + field_max_len[c]])
             c += 1
             pos = None
             continue
@@ -75,44 +75,49 @@ def _parse_datetime(args):
         field[c] = int(payload[pos:])
         c += 1
     if c == 0:
-        raise Exception('[vmcd] invalid input: %s' % (payload))
-    return datetime.datetime(field[0], field[1], field[2], field[3], field[4], field[5], field[6])
+        raise Exception("[vmcd] invalid input: %s" % (payload))
+    return datetime.datetime(
+        field[0], field[1], field[2], field[3], field[4], field[5], field[6]
+    )
 
 
 def _timestamp(dt):
     if dt.microsecond == 0:
-        print('[vcmd] %s' % (_number_to_string(
-            _datetime_to_ts(dt, utc))))
+        print("[vcmd] %s" % (_number_to_string(_datetime_to_ts(dt, utc))))
     else:
-        print('[vcmd] %s.%s' % (_number_to_string(
-            _datetime_to_ts(dt, utc)), str(dt.microsecond)))
+        print(
+            "[vcmd] %s.%s"
+            % (_number_to_string(_datetime_to_ts(dt, utc)), str(dt.microsecond))
+        )
     exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import pdb
+
     pdb.set_trace()
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'dtuh', [
-                                   'datetime', 'timestamp', 'utc', 'help'])
+        opts, args = getopt.getopt(
+            sys.argv[1:], "dtuh", ["datetime", "timestamp", "utc", "help"]
+        )
         utc = False
         for opt in opts:
-            if opt[0] in ('-u', '--utc'):
+            if opt[0] in ("-u", "--utc"):
                 utc = True
         for opt in opts:
-            if opt[0] in ('-d', '--datetime'):
+            if opt[0] in ("-d", "--datetime"):
                 ts = time.time()
                 if len(args) > 0:
                     ts = float(args[0])
                 _datetime(ts)
-            elif opt[0] in ('-t', '--timestamp'):
+            elif opt[0] in ("-t", "--timestamp"):
                 dt = datetime.datetime.now()
                 if len(args) > 0:
                     dt = _parse_datetime(args)
                 _timestamp(dt)
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + '\n')
+        print(str(e) + "\n")
         _help()
     except Exception as e:
-        print(str(e) + '\n')
+        print(str(e) + "\n")

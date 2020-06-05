@@ -7,9 +7,5 @@
         "cpp",
         "python"
     ],
-    "python.formatting.provider": "black",
-    "python.formatting.autopep8Args": [
-        "--ignore",
-        "E402"
-    ]
+    "python.formatting.provider": "black"
 }

@@ -6,10 +6,11 @@ import sys
 import os
 import getopt
 import time
-sys.path.append('.')
+
+sys.path.append(".")
 import util
 
-help_msg = '''File operations in current folder.
+help_msg = """File operations in current folder.
 
 usage:
     vfile [option] -d/--delete <filetype>              delete all files that has <filetype>.
@@ -23,7 +24,7 @@ option:
 
 flag:
     vfile -h/--help                                    show help message.
-'''
+"""
 
 
 def _help():
@@ -33,141 +34,152 @@ def _help():
 
 def _replace(old, new, filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
-    filetype = '.%s' % (filetype)
+    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    filetype = ".%s" % (filetype)
     for f in files:
         if not f.endswith(filetype):
             continue
         try:
-            with open(f, 'r') as fp:
+            with open(f, "r") as fp:
                 content = fp.read()
                 fp.close()
-            with open(f, 'w') as fp:
+            with open(f, "w") as fp:
                 new_content = content.replace(old, new)
                 fp.write(new_content)
         except Exception as e:
-            print("Error! replace <%s> with <%s> in <%s> exception:%s" %
-                  (old, new, f, str(e)))
+            print(
+                "Error! replace <%s> with <%s> in <%s> exception:%s"
+                % (old, new, f, str(e))
+            )
     exit(0)
 
 
 def _delete(filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
-    filetype = '.%s' % filetype
+    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    filetype = ".%s" % filetype
     for f in files:
         relname = os.path.relpath(f)
         if relname.endswith(filetype):
-            print('[vcmd] remove %s' % f)
+            print("[vcmd] remove %s" % f)
             os.remove(f)
     exit(0)
 
 
 def _list(filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
-    filetype = '.%s' % filetype
+    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    filetype = ".%s" % filetype
     for f in files:
         if f.endswith(filetype):
-            print('%s' % (os.path.relpath(f, root)))
+            print("%s" % (os.path.relpath(f, root)))
     exit(0)
 
 
 def get_encoding(outs):
-    detect_encoding = ''.join(outs).strip().split(':')[1]
-    detect_encoding = detect_encoding.strip().split(' ')[0]
+    detect_encoding = "".join(outs).strip().split(":")[1]
+    detect_encoding = detect_encoding.strip().split(" ")[0]
     return detect_encoding
 
 
 def _encoding(encoding, filetype, include_hidden):
     encoding_name_mapping = {
-        'GB2312': 'GB18030',
-        'GBK': 'GB18030',
-        'UTF8': 'UTF-8',
-        'UTF-8': 'UTF-8'
+        "GB2312": "GB18030",
+        "GBK": "GB18030",
+        "UTF8": "UTF-8",
+        "UTF-8": "UTF-8",
     }
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
-    filetype = '.%s' % filetype
+    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    filetype = ".%s" % filetype
     for f in files:
         if not f.endswith(filetype):
             continue
-        detect_outs, detect_errs = util.run('chardetect', f)
+        detect_outs, detect_errs = util.run("chardetect", f)
         detect_encoding = get_encoding(detect_outs)
-        if encoding_name_mapping[detect_encoding.upper(
-        )] == encoding_name_mapping[encoding.upper()]:
-            print('[vcmd] \'%s\' encoding is already <%s>, skip convert' %
-                  (f, encoding_name_mapping[encoding.upper()]))
+        if (
+            encoding_name_mapping[detect_encoding.upper()]
+            == encoding_name_mapping[encoding.upper()]
+        ):
+            print(
+                "[vcmd] '%s' encoding is already <%s>, skip convert"
+                % (f, encoding_name_mapping[encoding.upper()])
+            )
             continue
         try:
             convert_outs, convert_errs = util.run(
-                'iconv', '-f', encoding_name_mapping[detect_encoding.upper()],
-                '-t', encoding_name_mapping[encoding.upper()], f)
-            new_filename = '%s.new.%s' % (f, time.time())
-            new_fp = open(new_filename, 'w')
+                "iconv",
+                "-f",
+                encoding_name_mapping[detect_encoding.upper()],
+                "-t",
+                encoding_name_mapping[encoding.upper()],
+                f,
+            )
+            new_filename = "%s.new.%s" % (f, time.time())
+            new_fp = open(new_filename, "w")
             new_fp.writelines(convert_outs)
             new_fp.close()
-            os.system('mv \'%s\' \'%s\'' % (new_filename, f))
+            os.system("mv '%s' '%s'" % (new_filename, f))
             print(
-                '[vcmd] \'%s\' encoding convert from <%s> to <%s>' %
-                (f, detect_encoding, encoding_name_mapping[encoding.upper()]))
+                "[vcmd] '%s' encoding convert from <%s> to <%s>"
+                % (f, detect_encoding, encoding_name_mapping[encoding.upper()])
+            )
         except Exception as e:
             print(
-                '[vcmd] \'%s\' encoding failed to convert from <%s> to <%s>: %s'
-                % (f, detect_encoding, encoding_name_mapping[encoding.upper()],
-                   str(e)))
+                "[vcmd] '%s' encoding failed to convert from <%s> to <%s>: %s"
+                % (f, detect_encoding, encoding_name_mapping[encoding.upper()], str(e))
+            )
     exit(0)
 
 
 def _show_encoding(filetype, include_hidden):
     root = os.getcwd()
-    files = [
-        os.path.relpath(f, root) for f in util.walk_dir('.', include_hidden)
-    ]
-    filetype = '.%s' % filetype
+    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    filetype = ".%s" % filetype
     for f in files:
-        detect_outs, detect_errs = util.run('chardetect', f)
+        detect_outs, detect_errs = util.run("chardetect", f)
         detect_encoding = get_encoding(detect_outs)
-        print('[vcmd] \'%s\' encoding with <%s>' % (f, detect_encoding))
+        print("[vcmd] '%s' encoding with <%s>" % (f, detect_encoding))
     exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'd:r:l:e:s:ih', [
-            'delete=', 'replace=', 'list=', 'encoding=', 'show-encoding=',
-            'include-hidden', 'help'
-        ])
+        opts, args = getopt.getopt(
+            sys.argv[1:],
+            "d:r:l:e:s:ih",
+            [
+                "delete=",
+                "replace=",
+                "list=",
+                "encoding=",
+                "show-encoding=",
+                "include-hidden",
+                "help",
+            ],
+        )
         include_hidden = False
         for opt in opts:
-            if opt[0] in ('-i', '--include-hidden'):
+            if opt[0] in ("-i", "--include-hidden"):
                 include_hidden = True
                 break
         for opt in opts:
-            if opt[0] in ('-d', '--delete'):
+            if opt[0] in ("-d", "--delete"):
                 _delete(opt[1], include_hidden)
-            elif opt[0] in ('-r', '--replace'):
+            elif opt[0] in ("-r", "--replace"):
                 _replace(args[0], args[1], opt[1], include_hidden)
-            elif opt[0] in ('-l', '--list'):
+            elif opt[0] in ("-l", "--list"):
                 _list(opt[1], include_hidden)
-            elif opt[0] in ('-e', '--encoding'):
+            elif opt[0] in ("-e", "--encoding"):
                 _encoding(args[0], opt[1], include_hidden)
-            elif opt[0] == '-s':
-                if opt[1] == 'e':
+            elif opt[0] == "-s":
+                if opt[1] == "e":
                     _show_encoding(args[0], include_hidden)
-            elif opt[0] == '--show-encoding':
+            elif opt[0] == "--show-encoding":
                 _show_encoding(opt[1], include_hidden)
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + '\n')
+        print(str(e) + "\n")
         _help()
     except Exception as e:
-        print(str(e) + '\n')
+        print(str(e) + "\n")
