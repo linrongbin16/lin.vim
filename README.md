@@ -116,5 +116,5 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 
 All extensions in one:
 ```
-:CocInstall coc-json coc-clangd coc-cmake coc-python coc-highlight coc-css coc-cssmodules coc-emmet coc-html coc-xml coc-tsserver
+:CocInstall coc-highlight coc-pairs coc-json coc-python coc-clangd coc-cmake coc-emmet coc-css coc-cssmodules coc-html coc-tsserver coc-eslint coc-yaml
 ```

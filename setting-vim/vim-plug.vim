@@ -19,7 +19,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'crusoexia/vim-monokai'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -29,7 +29,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 
-" Auto Complete
+" Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Comment
@@ -40,6 +40,7 @@ Plug 'mhinz/vim-signify'
 
 " Searching
 Plug 'jremmen/vim-ripgrep'
+Plug 'rking/ag.vim'
 Plug 'Yggdroot/LeaderF'
 
 " Keyboard Operation
