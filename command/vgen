@@ -10,7 +10,7 @@ import time
 sys.path.append(".")
 import util
 
-help_msg = """Generate files and configurations.
+help_msg = """Generate configurations.
 
 usage:
     vgen -c/--clangd        generate compile database for clangd.
@@ -157,6 +157,11 @@ def _clangd():
 
 def _sshkey(email):
     os.system("ssh-keygen -t rsa -b 4096 -C '%s'" % email)
+    os.system("touch ~/.ssh/authorized_keys")
+    os.system("chmod 700 -R ~/.ssh")
+    os.system("chmod 600 ~/.ssh/authorized_keys")
+    os.system("chmod 600 ~/.ssh/id_rsa")
+    os.system("chmod 600 ~/.ssh/id_rsa.pub")
     exit(0)
 
 

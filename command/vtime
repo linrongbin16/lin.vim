@@ -8,7 +8,7 @@ import time
 import datetime
 import getopt
 
-help_msg = """Date and time calculations.
+help_msg = """Datetime calculations.
 
 usage:
     vtime [option] -d/--datetime [timestamp]    convert [timestamp] from timestamp to datetime string, by default current datetime.
