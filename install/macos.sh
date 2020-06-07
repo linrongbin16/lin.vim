@@ -18,7 +18,7 @@ sudo pip3 install pyOpenSSL pep8 flake8 pylint black cpplint chardet jedi
 # Vim Plugin
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
-vim -c "CocInstall -sync coc-highlight coc-pairs coc-json coc-python coc-clangd coc-cmake coc-emmet coc-css coc-cssmodules coc-html coc-tsserver coc-eslint" -c "qall"
+vim -c "CocInstall -sync coc-marketplace coc-dictionary coc-word coc-emoji coc-syntax coc-highlight coc-pairs coc-json coc-python coc-clangd coc-cmake coc-emmet coc-css coc-cssmodules coc-html coc-tsserver coc-eslint" -c "qall"
 
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
