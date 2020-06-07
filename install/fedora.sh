@@ -16,6 +16,7 @@ sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-deve
 sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black cpplint jedi chardet
+sudo npm install -g yarn
 
 # Vim Plugins
 cp ~/.vim/lin.vim ~/.vimrc
