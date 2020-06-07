@@ -2,7 +2,9 @@
 
 " config for vim
 source $HOME/.vim/setting-vim/vim-plug.vim
-source $HOME/.vim/setting-vim/win32.vim
+if has("win32")
+    source $HOME/.vim/setting-vim/win32.vim
+endif
 source $HOME/.vim/setting-vim/basic.vim
 source $HOME/.vim/setting-vim/color.vim
 source $HOME/.vim/setting-vim/filetype.vim
