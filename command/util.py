@@ -14,6 +14,8 @@ import subprocess
 def is_windows():
     return platform.system() == "Windows"
 
+def is_macos():
+    return platform.system() == "Darwin"
 
 def is_empty_str(s):
     return True if (s is None) else (len(s.strip()) == 0)

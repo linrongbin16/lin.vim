@@ -13,9 +13,10 @@ import util
 help_msg = """Generate configurations.
 
 usage:
-    vgen -c/--clangd        generate compile database for clangd.
-                            compile_commands.json is preferred if CMakeLists.txt available on non Windows, otherwise compile_flags.txt.
-    vgen -s/-sshkey <email> generate sshkey for <email>.
+    vgen -c/--clangd            generate compile database for clangd.
+                                compile_commands.json is preferred if CMakeLists.txt available on non Windows, otherwise compile_flags.txt.
+    vgen -s/--sshkey <email>    generate sshkey for <email>.
+    vgen -mc/--mirror-china     generate mirror in china for pip, npm and homebrew.
 
 flag:
     vgen -h/--help      show help message.
@@ -148,10 +149,10 @@ def _compile_flags():
 
 def _clangd():
     cmake_lists_txt = "CMakeLists.txt"
-    if not util.is_windows() and os.path.isfile(cmake_lists_txt):
-        _compile_commands()
-    else:
+    if util.is_windows():
         _compile_flags()
+    else:
+        _compile_commands()
     exit(0)
 
 
@@ -165,14 +166,32 @@ def _sshkey(email):
     exit(0)
 
 
+def _mirror_china():
+    if util.is_macos():
+        os.system("git -C \"$(brew --repo)\" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git")
+        os.system("git -C \"$(brew --repo homebrew/core)\" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git")
+        os.system("git -C \"$(brew --repo homebrew/cask)\" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git")
+        print("[vcmd] use tsinghua-mirror for homebrew")
+    os.system("pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple")
+    print("[vcmd] use tsinghua-mirror for pip3")
+    os.system("npm config set registry https://registry.npm.taobao.org")
+    print("[vcmd] use taobao-mirror for npm")
+    exit(0)
+
+
 if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "csh", ["clangd", "sshkey", "help"])
+        opts, args = getopt.getopt(sys.argv[1:], "csm:h", ["clangd", "sshkey", "mirror-china", "help"])
         for opt in opts:
             if opt[0] in ("-c", "--clangd"):
                 _clangd()
             elif opt[0] in ("-s", "--sshkey"):
                 _sshkey(args[0])
+            elif opt[0] == "-m":
+                if opt[1] == "c":
+                    _mirror_china()
+            elif opt[0] == "--mirror-china":
+                _mirror_china()
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
