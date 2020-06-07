@@ -4,21 +4,18 @@
 
 import sys
 import getopt
-import platform
 import os
-import re
-import subprocess
 import time
-import datetime
 
 sys.path.append(".")
 import util
 
-help_msg = """Generate auto complete database.
+help_msg = """Generate files and configurations.
 
 usage:
-    vgen -c/--clangd    generate compile database for clangd
-                        compile_commands.json is preferred if CMakeLists.txt available, otherwise compile_flags.txt
+    vgen -c/--clangd        generate compile database for clangd.
+                            compile_commands.json is preferred if CMakeLists.txt available on non Windows, otherwise compile_flags.txt.
+    vgen -s/-sshkey <email> generate sshkey for <email>.
 
 flag:
     vgen -h/--help      show help message.
@@ -133,7 +130,7 @@ def _compile_commands():
 def _compile_flags():
     print("[vcmd] generate compile_flags.txt for clangd")
     print(
-        "[vcmd] Windows platform not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist"
+        "[vcmd] Windows not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist"
     )
     fp = open("compile_flags.txt", "w")
     uh = user_header()
@@ -158,12 +155,19 @@ def _clangd():
     exit(0)
 
 
+def _sshkey(email):
+    os.system("ssh-keygen -t rsa -b 4096 -C '%s'" % email)
+    exit(0)
+
+
 if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "ch", ["clangd", "help"])
+        opts, args = getopt.getopt(sys.argv[1:], "csh", ["clangd", "sshkey", "help"])
         for opt in opts:
             if opt[0] in ("-c", "--clangd"):
                 _clangd()
+            elif opt[0] in ("-s", "--sshkey"):
+                _sshkey(args[0])
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
