@@ -111,10 +111,3 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
     $ cd %USERPROFILE%\.vim
     $ install.bat
 ```
-
-### [coc.nvim extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
-
-All extensions in one:
-```
-:CocInstall coc-highlight coc-pairs coc-json coc-python coc-clangd coc-cmake coc-emmet coc-css coc-cssmodules coc-html coc-tsserver coc-eslint coc-yaml
-```

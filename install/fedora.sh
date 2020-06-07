@@ -14,12 +14,13 @@ sudo dnf install -y git vim gvim curl wget zsh
 sudo dnf install -y gcc g++ clang autoconf automake make cmake
 sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
 sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
-sudo dnf install -y python3 python3-devel python3-pip nodejs npm jedi
+sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black cpplint jedi chardet
 
 # Vim Plugins
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
+vim -c "CocInstall -sync coc-highlight coc-pairs coc-json coc-python coc-clangd coc-cmake coc-emmet coc-css coc-cssmodules coc-html coc-tsserver coc-eslint coc-yaml" -c "qall"
 
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
