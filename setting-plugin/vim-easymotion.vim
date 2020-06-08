@@ -15,3 +15,9 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <Leader>j <Plug>(easymotion-j)
 " `leader + k{char}{label}`
 map <Leader>k <Plug>(easymotion-k)
+
+" 10 times faster move
+map <c-j> 10j
+map <c-k> 10k
+map <c-h> 10h
+map <c-l> 10l
