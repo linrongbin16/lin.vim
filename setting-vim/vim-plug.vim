@@ -31,6 +31,7 @@ Plug 'Rigellute/rigel'
 
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ludovicchabant/vim-gutentags'
 
 " Comment
 Plug 'tpope/vim-commentary'

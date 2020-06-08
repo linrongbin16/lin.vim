@@ -2,11 +2,12 @@
 *.log
 
 # vim runtime temporary files
-.tags
-tags
 .DS_Store
 .netrwhist
 __pycache__
+tags
+tags.lock
+tags.temp
 
 # vim plugins
 plugged
