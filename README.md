@@ -52,6 +52,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 - `gy` in normal mode: go to type definition.
 - `gi` in normal mode: go to implementation.
 - `gr` in normal mode: go to reference.
+- `<c-]>` in normal mode: go to definition if `gd` not working.
 
 - `[g` in normal mode: go to previous diagnostic.
 - `]g` in normal mode: go to next diagnostic.

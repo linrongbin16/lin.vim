@@ -17,6 +17,7 @@ source $HOME/.vim/setting-plugin/statusline.vim
 
 " Auto Complete
 source $HOME/.vim/setting-plugin/coc-nvim.vim
+source $HOME/.vim/setting-plugin/gutentags.vim
 
 " Search
 source $HOME/.vim/setting-plugin/ripgrep.vim
