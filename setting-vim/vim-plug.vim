@@ -51,6 +51,7 @@ Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/vim-easy-align'
+Plug 'jiangmiao/auto-pairs'
 
 " HTML, XML tag
 Plug 'andymass/vim-matchup'
