@@ -1,0 +1,87 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import base64
+from urllib import parse
+import getopt
+
+sys.path.append(".")
+import util
+
+help_msg = """Encode and decode.
+
+usage:
+    vencode -eb/--encode-base64 <text>      encode <text> with base64 algorithm.
+    vencode -db/--decode-base64 <payload>   decode <payload> with base64 algorithm.
+    vencode -eu/--encode-url <text>         encode <text> with url encoding algorithm.
+    vencode -du/--decode-url <payload>      decode <payload> with url encoding algorithm.
+
+flag:
+    vencode -h/--help                  show help message.
+"""
+
+
+def _help():
+    print(help_msg)
+    exit(0)
+
+
+def _encode_base64(s):
+    b = s.encode("UTF-8")
+    b = base64.b64encode(b)
+    print("[vcmd] base64 encode: %s => %s" % (s, b.decode("UTF-8")))
+    exit(0)
+
+
+def _decode_base64(s):
+    b = s.encode("UTF-8")
+    b = base64.b64decode(b)
+    print("[vcmd] base64 decode: %s => %s" % (s, b.decode("UTF-8")))
+    exit(0)
+
+
+def _encode_url(s):
+    print("[vcmd] url encode: %s => %s" % (s, parse.quote(s)))
+    exit(0)
+
+
+def _decode_url(s):
+    print("[vcmd] url decode: %s => %s" % (s, parse.unquote(s)))
+    exit(0)
+
+
+if __name__ == "__main__":
+    try:
+        opts, args = getopt.getopt(
+            sys.argv[1:],
+            "e:d:h",
+            ["encode-base64=", "decode-base64=", "encode-url=", "decode-url=", "help"],
+        )
+        for opt in opts:
+            if opt[0] == "-e":
+                if opt[1] == "b":
+                    _encode_base64(args[0])
+                elif opt[1] == "u":
+                    _encode_url(args[0])
+            elif opt[0] == "-d":
+                if opt[1] == "b":
+                    _decode_base64(args[0])
+                elif opt[1] == "u":
+                    _decode_url(args[0])
+            elif opt[0] == "--encode-base64":
+                _encode_base64(args[0])
+            elif opt[0] == "--decode-base64":
+                _decode_base64(args[0])
+            elif opt[0] == "--encode-url":
+                _encode_url(args[0])
+            elif opt[0] == "--decode-url":
+                _decode_url(args[0])
+        _help()
+    except getopt.GetoptError as e:
+        print(str(e) + "\n")
+        _help()
+    except Exception as e:
+        print(str(e) + "\n")
