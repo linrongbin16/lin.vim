@@ -21,6 +21,7 @@ usage:
     vgit -br/--branch-remote           show all remote branches.
     vgit -bc/--branch-create <branch>  create new local <branch> and move to it.
     vgit -bm/--branch-move <branch>    move to local existing <branch>.
+    vgit -bd/--branch-delete <branch>  delete local <branch>.
     vgit [option] -pl/--pull           pull from remote/branch.
     vgit [option] -ps/--push           push to remote/branch with comment.
     vgit -ds/--discard                 discard changes.
@@ -74,6 +75,12 @@ def _branch_create(name):
 def _branch_move(name):
     util.check_git_repository()
     os.system("git checkout %s" % (name))
+    exit(0)
+
+
+def _branch_delete(name):
+    util.check_git_repository()
+    os.system("git branch -d %s" % (name))
     exit(0)
 
 
@@ -224,6 +231,7 @@ if __name__ == "__main__":
                 "branch-all",
                 "branch-create=",
                 "branch-move=",
+                "branch-delete=",
                 "pull",
                 "push",
                 "discard",
@@ -254,6 +262,8 @@ if __name__ == "__main__":
                     _branch_create(args[0])
                 elif opt[1] == "m":
                     _branch_move(args[0])
+                elif opt[1] == "d":
+                    _branch_delete(args[0])
             elif opt[0] == "--branch-all":
                 _branch_show("a")
             elif opt[0] == "--branch-local":
