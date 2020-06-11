@@ -21,6 +21,7 @@ usage:
     vpack   Compress and extract operations.
     vtime   Datetime calculations.
     vgen    Generate configurations.
+    vencode Encode and decode.
 """
     print(msg)
 
