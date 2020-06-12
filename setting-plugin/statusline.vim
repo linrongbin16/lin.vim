@@ -7,7 +7,7 @@
 
 " lightline + bufferline
 
-let g:bufferline_solo_highlight = 1
+" let g:bufferline_solo_highlight = 1
 let g:lightline = {
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ], [ 'filename' ], [ 'bufferline' ] ],
