@@ -39,3 +39,7 @@ function MyDiff()
   endif
 endfunction
 
+if has("win32")
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+endif

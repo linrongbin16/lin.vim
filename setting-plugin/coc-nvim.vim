@@ -1,7 +1,6 @@
 " default extensions
 let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-json', 'coc-python', 'coc-clangd', 'coc-cmake', 'coc-css',  'coc-html', 'coc-tsserver', 'coc-eslint']
 
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
@@ -70,8 +69,3 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" For specified plugins
-
-" coc-pairs
-autocmd FileType tex let b:coc_pairs = [["$", "$"]]
