@@ -21,7 +21,6 @@ sudo npm install -g yarn
 # Vim Plugins
 cp ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
-vim -c "CocInstall -sync coc-marketplace coc-highlight coc-json coc-python coc-clangd coc-cmake coc-css coc-html coc-tsserver coc-eslint|q"
 
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

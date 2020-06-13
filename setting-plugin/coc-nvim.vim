@@ -1,3 +1,7 @@
+" default extensions
+let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-json', 'coc-python', 'coc-clangd', 'coc-cmake', 'coc-css',  'coc-html', 'coc-tsserver', 'coc-eslint']
+
+
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
