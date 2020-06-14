@@ -38,8 +38,3 @@ function MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
-
-if has("win32")
-    source $VIMRUNTIME/mswin.vim
-    behave mswin
-endif

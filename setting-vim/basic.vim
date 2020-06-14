@@ -1,5 +1,4 @@
 " ---- basic.vim ----
-
 set runtimepath+=$HOME/.vim
 set nocompatible
 
@@ -24,6 +23,8 @@ set termencoding=UTF-8
 set encoding=UTF-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
 language messages en_US.UTF-8
 
 " mouse
@@ -44,7 +45,7 @@ set noswapfile
 set nowritebackup
 
 " fix bug for gvim
-map Q <Nop>
+" map Q <Nop>
 
 " no more window
 set completeopt=menu
