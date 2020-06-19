@@ -15,7 +15,7 @@ sudo dnf install -y gcc g++ clang autoconf automake make cmake
 sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
 sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip nodejs npm
-sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi
+sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 sudo npm install -g yarn
 
 # Vim Plugins
