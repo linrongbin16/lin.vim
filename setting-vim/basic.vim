@@ -73,12 +73,13 @@ set clipboard+=unnamed
 set list listchars=tab:>-,trail:.,extends:>
 set modifiable
 
-set cursorline
+set nocursorline
 set scrolloff=1
 set nocursorcolumn
 set norelativenumber
 set number
 set laststatus=2
+set lazyredraw
 
 if has("gui_running")
     " gvim toolbox
