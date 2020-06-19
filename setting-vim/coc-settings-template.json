@@ -1,7 +1,7 @@
 {
     "diagnostic.level": "warning",
     "suggest.minTriggerInputLength": 1,
-    "suggest.maxCompleteItemCount": 25,
+    "suggest.maxCompleteItemCount": 15,
     "coc.preferences.formatOnSaveFiletypes": [
         "json",
         "c",
