@@ -29,6 +29,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
 cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 
+# neovim
+mkdir -p ~/.config
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+
 # Path Variable
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
 echo "alias l=\"ls -lh\"" >> ~/.linvimrc
