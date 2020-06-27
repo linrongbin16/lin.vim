@@ -14,7 +14,6 @@ sudo apt-get install -y git vim vim-gtk libcanberra-gtk-module curl wget zsh gcc
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag ripgrep unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip libssl1.0-dev nodejs nodejs-dev node-gyp npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
-sudo npm install -g yarn
 
 # Vim Plugins
 cp ~/.vim/lin.vim ~/.vimrc
