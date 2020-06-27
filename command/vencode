@@ -14,10 +14,10 @@ import util
 help_msg = """Encode and decode.
 
 usage:
-    vencode -eb/--encode-base64 <text>      encode <text> with base64 algorithm.
-    vencode -db/--decode-base64 <payload>   decode <payload> with base64 algorithm.
-    vencode -eu/--encode-url <text>         encode <text> with url encoding algorithm.
-    vencode -du/--decode-url <payload>      decode <payload> with url encoding algorithm.
+    vencode -be/--base64-encode <text>      encode <text> with base64 algorithm.
+    vencode -bd/--base64-decode <payload>   decode <payload> with base64 algorithm.
+    vencode -ue/--url-encode <text>         encode <text> with url encoding algorithm.
+    vencode -ud/--url-decode <payload>      decode <payload> with url encoding algorithm.
 
 flag:
     vencode -h/--help                  show help message.
@@ -29,26 +29,26 @@ def _help():
     exit(0)
 
 
-def _encode_base64(s):
+def _base64_encode(s):
     b = s.encode("UTF-8")
     b = base64.b64encode(b)
     print("[vcmd] base64 encode: %s => %s" % (s, b.decode("UTF-8")))
     exit(0)
 
 
-def _decode_base64(s):
+def _base64_decode(s):
     b = s.encode("UTF-8")
     b = base64.b64decode(b)
     print("[vcmd] base64 decode: %s => %s" % (s, b.decode("UTF-8")))
     exit(0)
 
 
-def _encode_url(s):
+def _url_encode(s):
     print("[vcmd] url encode: %s => %s" % (s, parse.quote(s)))
     exit(0)
 
 
-def _decode_url(s):
+def _url_decode(s):
     print("[vcmd] url decode: %s => %s" % (s, parse.unquote(s)))
     exit(0)
 
@@ -57,28 +57,28 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "e:d:h",
-            ["encode-base64=", "decode-base64=", "encode-url=", "decode-url=", "help"],
+            "b:u:h",
+            ["base64-encode=", "base64-decode=", "url-encode=", "url-decode=", "help"],
         )
         for opt in opts:
-            if opt[0] == "-e":
-                if opt[1] == "b":
-                    _encode_base64(args[0])
-                elif opt[1] == "u":
-                    _encode_url(args[0])
-            elif opt[0] == "-d":
-                if opt[1] == "b":
-                    _decode_base64(args[0])
-                elif opt[1] == "u":
-                    _decode_url(args[0])
-            elif opt[0] == "--encode-base64":
-                _encode_base64(args[0])
-            elif opt[0] == "--decode-base64":
-                _decode_base64(args[0])
-            elif opt[0] == "--encode-url":
-                _encode_url(args[0])
-            elif opt[0] == "--decode-url":
-                _decode_url(args[0])
+            if opt[0] == "-b":
+                if opt[1] == "e":
+                    _base64_encode(args[0])
+                elif opt[1] == "d":
+                    _base64_decode(args[0])
+            elif opt[0] == "-u":
+                if opt[1] == "e":
+                    _url_encode(args[0])
+                elif opt[1] == "d":
+                    _url_decode(args[0])
+            elif opt[0] == "--base64-encode":
+                _base64_encode(args[0])
+            elif opt[0] == "--base64-decode":
+                _base64_decode(args[0])
+            elif opt[0] == "--url-encode":
+                _url_encode(args[0])
+            elif opt[0] == "--url-decode":
+                _url_decode(args[0])
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
