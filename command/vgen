@@ -67,15 +67,14 @@ def git_header():
         groot = root[0].strip() if (len(root) > 0) else None
         git_list = list_directory(groot, 2)
         # dump_flags(git_list)
-        return git_list
+        return ["-I\"%s\"" % (x) for x in git_list] if util.is_windows() else ["-I%s" % (x) for x in git_list]
     except:
         return []
 
 
 def windows_header():
     header = []
-    # '-I',
-    # 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include',
+    # -I"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include"
     for release in os_listdir_wrapper(
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\"
     ):
@@ -84,18 +83,20 @@ def windows_header():
             % (release)
         ):
             header.append(
-                "-IC:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"
+                "-I\"C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include\""
                 % (release, version)
             )
-            # '-I',
-    # 'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt',
+    # -I"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt"
     for version in os_listdir_wrapper(
         "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"
     ):
         header.append(
-            "-IC:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (version)
+            "-I\"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt\"" % (version)
         )
-    # TODO: add C:\\Program Files\\LLVM headers
+    # C:\\Program Files\\LLVM headers
+    header.append("-I\"C:\Program Files\LLVM\include\clang-c\"")
+    header.append("-I\"C:\Program Files\LLVM\include\llvm\"")
+    header.append("-I\"C:\Program Files\LLVM\include\llvm-c\"")
     return header
 
 
@@ -129,10 +130,10 @@ def _compile_commands():
 
 
 def _compile_flags():
-    print("[vcmd] generate compile_flags.txt for clangd")
     print(
         "[vcmd] Windows not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist"
     )
+    print("[vcmd] generate compile_flags.txt for clangd")
     fp = open("compile_flags.txt", "w")
     uh = user_header()
     wh = windows_header()
