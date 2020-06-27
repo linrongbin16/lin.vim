@@ -2,15 +2,13 @@
 
 lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of utilities for development running on most operating systems.
 
-![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
+![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg)
 
-![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
+![pic2.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.jpg)
 
-![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6.png)
+![pic3.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.jpg)
 
-![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
-
-![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5.png)
+![pic4.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.jpg)
 
 # Feature
 
