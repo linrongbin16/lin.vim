@@ -89,7 +89,7 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 
 ### Windows
 
-1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line.
+1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line (You could use UNIX/Linux commands such as `cp` `mv` `rm` in Windows CMD after this step).
 3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`.
 4.  Install [CMake](https://cmake.org/), add `cmake.exe` to `%PATH%`.
 5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`.
