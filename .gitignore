@@ -17,6 +17,3 @@ user.vim
 coc-settings.json
 command/*.db
 command/*.ignore
-
-# nvim
-init.vim

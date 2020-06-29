@@ -16,7 +16,7 @@ yes | sudo pacman -S the_silver_searcher ripgrep unrar unzip bzip2 zip p7zip pyt
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Vim Plugins
-cp ~/.vim/lin.vim ~/.vimrc
+ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # Oh-My-Zsh
@@ -29,7 +29,7 @@ cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 # neovim
 mkdir -p ~/.config
 ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
+ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
 # Path Variable
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
