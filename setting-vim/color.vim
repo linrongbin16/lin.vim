@@ -2,7 +2,7 @@
 
 "" pick random color
 syntax enable
-let s:mycolor=['solarized', 'molokai', 'monokai', 'dracula', 'torte', 'darkblue', 'evening', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'one', 'rigel']
+let s:mycolor=['solarized', 'molokai', 'monokai', 'dracula', 'darkblue', 'evening', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'one', 'rigel']
 
 if localtime() % 5 == 0
     set background=light
