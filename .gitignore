@@ -17,3 +17,6 @@ user.vim
 coc-settings.json
 command/*.db
 command/*.ignore
+
+# neovim
+init.vim
