@@ -70,12 +70,12 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 set wrap
 set clipboard+=unnamed
 
-" set listchars=eol:^,tab:>-,trail:~,extends:>,precedes:<,space:.
-set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+" set listchars=eol:^,tab:>-,trail:~,extends:>,precedes:<
+set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 set modifiable
 
-set nocursorline
+set cursorline
 set scrolloff=1
 set nocursorcolumn
 set norelativenumber
