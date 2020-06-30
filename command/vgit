@@ -223,7 +223,7 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "fb:r:c:p:h",
+            "fb:r:c:p:d:h",
             [
                 "force",
                 "branch-local",
