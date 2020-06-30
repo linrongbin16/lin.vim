@@ -3,7 +3,7 @@
 " open terminal
 map <F2> :terminal ++rows=20<CR>
 " next color
-map <F3> :NextColor<CR>
+map <F3> :call NextColor()<CR>
 " switch between C/C++ header source
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close nerdtree file explorer
