@@ -6,7 +6,9 @@
         "json",
         "c",
         "cpp",
-        "python"
+        "python",
+        "xml",
+        "html"
     ],
     "python.formatting.provider": "black"
 }

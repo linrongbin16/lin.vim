@@ -1,7 +1,7 @@
-# logging files
+# log
 *.log
 
-# vim runtime temporary files
+# runtime files
 .DS_Store
 .netrwhist
 __pycache__
@@ -9,7 +9,7 @@ tags
 tags.lock
 tags.temp
 
-# vim plugins
+# plugins
 plugged
 
 # user settings

@@ -1,4 +1,4 @@
-" width height
+" gui window size
 if has('gui_running')
     set lines=999
     set columns=999
@@ -7,7 +7,7 @@ if has('gui_running')
     endif
 endif
 
-" fonts
+" gui fonts
 if has("win32")
     " win32
     set guifont=Hack\ NF:h9
@@ -31,4 +31,5 @@ let g:NERDTreeWinSize=40
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " endif
 
+" C++ indent with 2 space
 autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
