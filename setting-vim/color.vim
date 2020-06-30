@@ -3,7 +3,7 @@
 "" pick random color
 syntax enable
 let s:guicolor=['solarized', 'molokai', 'monokai', 'dracula', 'darkblue', 'evening', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'one', 'rigel']
-let s:termcolor=['molokai', 'monokai', 'dracula', 'darkblue', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'one', 'rigel']
+let s:termcolor=['molokai', 'monokai', 'dracula', 'darkblue', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'rigel']
 
 set background=dark
 
