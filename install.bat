@@ -3,8 +3,6 @@ cd %USERPROFILE%\.vim\install
 echo "[lin.vim] Install for Windows"
 
 rem Vim Plugins
-git clone https://github.com/junegunn/vim-plug %USERPROFILE%\.vim\vim-plug
-mkdir -p %USERPROFILE%\.vim\autoload
 ln -s %USERPROFILE%\.vim\vim-plug\plug.vim %USERPROFILE%\.vim\autoload\plug.vim
 ln -s %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"

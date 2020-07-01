@@ -12,7 +12,6 @@ tags.temp
 # plugins
 plugged
 autoload
-vim-plug
 
 # user settings
 user.vim
