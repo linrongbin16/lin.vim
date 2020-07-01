@@ -16,6 +16,7 @@ brew install openssl openssh cryptopp the_silver_searcher ripgrep python3 unzip 
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Vim Plugin
+mkdir ~/.vim/autoload
 ln -s ~/.vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"

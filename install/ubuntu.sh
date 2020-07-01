@@ -16,6 +16,7 @@ sudo apt-get install -y python3 python3-dev python3-pip libssl1.0-dev nodejs nod
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Vim Plugins
+mkdir ~/.vim/autoload
 ln -s ~/.vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"

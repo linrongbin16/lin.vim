@@ -84,7 +84,7 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 ### Linux, UNIX, MacOS
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && git submodule init --update && ./install.sh
+    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && git submodule update --init && ./install.sh
 ```
 
 ### Windows
@@ -108,6 +108,6 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
-    $ git submodule init --update
+    $ git submodule update --init
     $ install.bat
 ```
