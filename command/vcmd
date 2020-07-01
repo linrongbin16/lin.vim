@@ -10,7 +10,7 @@ sys.path.append(".")
 import util
 
 
-def ops_help():
+def _help():
     msg = """[vcmd] lin.vim command line utility.
 
 usage:
@@ -24,7 +24,8 @@ usage:
     vencode Encode and decode.
 """
     print(msg)
+    exit(0)
 
 
 if __name__ == "__main__":
-    ops_help()
+    _help()
