@@ -16,6 +16,9 @@ yes | sudo pacman -S the_silver_searcher ripgrep unrar unzip bzip2 zip p7zip pyt
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Vim Plugins
+git clone https://github.com/junegunn/vim-plug ~/.vim/vim-plug
+mkdir -p ~/.vim/autoload
+ln -s ~/.vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
