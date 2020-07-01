@@ -4,7 +4,7 @@ echo "[lin.vim] Install for Windows"
 
 rem Vim Plugins
 mkdir %USERPROFILE%\.vim\autoload
-ln -s %USERPROFILE%\.vim\vim-plug\plug.vim %USERPROFILE%\.vim\autoload\plug.vim
+curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc
 gvim -c "PlugInstall" -c "qall"
 

@@ -2,6 +2,8 @@
 
 sudo echo "[lin.vim] Install for MacOS" || { echo "[lin.vim] sudo not found"; exit 1; }
 
+set -x
+
 # Prepare Environment
 if [ -f ~/.linvimrc ]; then
     mv ~/.linvimrc ~/.linvimrc.bak
@@ -17,7 +19,7 @@ sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Vim Plugin
 mkdir ~/.vim/autoload
-ln -s ~/.vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
