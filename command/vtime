@@ -27,8 +27,13 @@ def _help():
     exit(0)
 
 
-def _datetime(ts):
+def _datetime(ts, utc):
+    assert isinstance(utc, bool)
     dt = datetime.datetime.fromtimestamp(ts)
+    if utc:
+        utc_ts = time.gmtime(time.mktime(dt.timetuple()))
+        utc_ts = time.mktime(utc_ts)
+        dt = datetime.datetime.fromtimestamp(utc_ts)
     print("[vcmd] %s" % (dt.strftime("%Y-%m-%d %H:%M:%S.%f")[0:23]))
     exit(0)
 
@@ -43,6 +48,7 @@ def _number_to_string(n):
 
 
 def _datetime_to_ts(dt, utc):
+    assert isinstance(utc, bool)
     assert isinstance(dt, datetime.datetime)
     if utc:
         utc_ts = time.gmtime(time.mktime(dt.timetuple()))
@@ -81,7 +87,7 @@ def _parse_datetime(args):
     )
 
 
-def _timestamp(dt):
+def _timestamp(dt, utc):
     if dt.microsecond == 0:
         print("[vcmd] %s" % (_number_to_string(_datetime_to_ts(dt, utc))))
     else:
@@ -93,9 +99,6 @@ def _timestamp(dt):
 
 
 if __name__ == "__main__":
-    import pdb
-
-    pdb.set_trace()
     try:
         opts, args = getopt.getopt(
             sys.argv[1:], "dtuh", ["datetime", "timestamp", "utc", "help"]
@@ -109,12 +112,12 @@ if __name__ == "__main__":
                 ts = time.time()
                 if len(args) > 0:
                     ts = float(args[0])
-                _datetime(ts)
+                _datetime(ts, utc)
             elif opt[0] in ("-t", "--timestamp"):
                 dt = datetime.datetime.now()
                 if len(args) > 0:
                     dt = _parse_datetime(args)
-                _timestamp(dt)
+                _timestamp(dt, utc)
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
