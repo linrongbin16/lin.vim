@@ -4,7 +4,7 @@ sudo echo "[lin.vim] Install for Ubuntu" || { echo "[lin.vim] sudo not found"; e
 
 # Prepare Environment
 if [ -f ~/.linvimrc ]; then
-    mv ~/.linvimrc ~/.linvimrc.bak
+    mv ~/.linvimrc ~/.linvimrc.$(date +%s).bak
 fi
 touch ~/.linvimrc
 touch ~/.zshrc

@@ -6,7 +6,7 @@ set -x
 
 # Prepare Environment
 if [ -f ~/.linvimrc ]; then
-    mv ~/.linvimrc ~/.linvimrc.bak
+    mv ~/.linvimrc ~/.linvimrc.$(date +%s).bak
 fi
 touch ~/.linvimrc
 touch ~/.zshrc
