@@ -18,9 +18,7 @@ sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Vim Plugins
-git submodule update --init
-mkdir -p ~/.vim/autoload
-ln -s ~/.vim/vim-plug/plug.vim ~/.vim/autoload/plug.vim
+mkdir ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
