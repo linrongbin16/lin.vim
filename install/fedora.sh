@@ -41,7 +41,7 @@ echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
 echo "ulimit -c unlimited" >> ~/.linvimrc
 echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
-echo "export PATH=\$PATH:~/.vim/command" >> ~/.linvimrc
+echo "export PATH=~/.vim/command:\$PATH" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
 source ~/.zshrc 1>/dev/null 2>&1

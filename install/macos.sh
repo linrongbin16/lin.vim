@@ -44,7 +44,8 @@ echo "defaults write com.apple.finder AppleShowAllFiles TRUE" >> ~/.linvimrc
 echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
 echo "alias l=\"ls -lh\"" >> ~/.linvimrc
 echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
-echo "export PATH=\$PATH:~/.vim/command" >> ~/.linvimrc
+echo "export PATH=~/.vim/command:\$PATH" >> ~/.linvimrc
+echo "export PATH=/usr/local/opt/llvm/bin:\$PATH" >> ~/.linvimrc
 
 echo "source ~/.linvimrc" >> ~/.zshrc
 source ~/.zshrc 1>/dev/null 2>&1
