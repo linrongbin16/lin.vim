@@ -2,11 +2,11 @@
 
 sudo echo "[lin.vim] Install for MacOS" || { echo "[lin.vim] sudo not found"; exit 1; }
 
-set -x
-
 # Prepare Environment
 if [ -f ~/.linvimrc ]; then
-    mv ~/.linvimrc ~/.linvimrc.$(date +%s).bak
+    BAK=~/.linvimrc.$(date +%s).bak
+    echo "[lin.vim] back up .linvimrc to $BAK"
+    mv ~/.linvimrc $BAK
 fi
 touch ~/.linvimrc
 touch ~/.zshrc
@@ -32,6 +32,12 @@ cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 
 # neovim
 mkdir -p ~/.config
+if [ -f ~/.config/nvim ]; then
+    rm -rf ~/.config/nvim
+fi
+if [ -f ~/.config/nvim/init.vim ]; then
+    rm -rf ~/.config/nvim/init.vim
+fi
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
