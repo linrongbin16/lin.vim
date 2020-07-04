@@ -112,6 +112,10 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
     $ install.bat
 ```
 
+### Neovim
+
+[Neovim](https://neovim.io/) is an alternative choice for users. lin.vim has installed the Neovim configuration files as well.
+
 ### Installation Failure Notification
 
 lin.vim installation needs [github.com](https://github.com/) and [raw.githubusercontent.com](https://raw.githubusercontent.com/), for some reasons that we all know, download could fail.
