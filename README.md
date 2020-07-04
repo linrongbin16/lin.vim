@@ -80,6 +80,8 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Installation
 
+### GUI fonts
+
 Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) on UNIX/Linux/Mac, install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/releases) on Windows.
 
 ### Linux, UNIX, MacOS
@@ -93,7 +95,7 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line (UNIX/Linux commands such as `cp` `mv` `rm` are enabled in Windows CMD after this step).
 3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`.
 4.  Install [CMake](https://cmake.org/), add `cmake.exe` to `%PATH%`.
-5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`.
+5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`. If you want Neovim, install [Neovim-Qt](https://github.com/neovim/neovim/wiki/Installing-Neovim) additionally, add `nvim.exe` and `nvim-qt.exe` to `%PATH%`.
 6.  Install [Visual Studio](https://www.visualstudio.com/) with:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
@@ -112,9 +114,16 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
     $ install.bat
 ```
 
-### Neovim
+### Vim vs Neovim
 
-[Neovim](https://neovim.io/) is an alternative choice for users. lin.vim has installed the Neovim configuration files as well.
+Both Vim and Neovim are both supported. 
+
+By default, we support:
+
+- `vim`, `gvim` and `nvim` on UNIX/Linux.
+- `vim.exe`, `gvim.exe`, `nvim.exe`, `nvim-qt.exe` on Windows.
+
+Please install other GUI clients manually if you need.
 
 ### Installation Failure Notification
 

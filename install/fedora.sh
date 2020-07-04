@@ -12,7 +12,7 @@ touch ~/.linvimrc
 touch ~/.zshrc
 
 # Software Dependency
-sudo dnf install -y git vim gvim curl wget zsh
+sudo dnf install -y git vim gvim neovim curl wget zsh
 sudo dnf install -y gcc g++ clang autoconf automake make cmake
 sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
 sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
