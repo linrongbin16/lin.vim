@@ -1,6 +1,6 @@
 # lin.vim : Lin Rongbin's Vim Distribution
 
-lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of utilities for development running on most operating systems.
+lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development running on most operating systems.
 
 ![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg)
 
@@ -12,6 +12,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 
 # Feature
 
+- Support both Vim and Neovim.
 - Multiple platform support: UNIX/Linux, Windows and MacOS.
 - Code complete, lint and format running in [coc.nvim](https://github.com/neoclide/coc.nvim) language server for most programming languages.
 - Random color schemes and icons.
@@ -23,9 +24,9 @@ lin.vim is a highly configured [VIM](https://www.vim.org/) integrated tons of ut
 # User Guide
 
 ### Hot Key
-- `F1` in normal mode: switch between C/C++ header source file.
 - `F2` in normal mode: open/close terminal.
 - `F3` in normal mode: change color theme randomly.
+- `F4` in normal mode: switch between C/C++ header source file.
 - `F5` in normal mode: open/close file explorer.
 
 ### Enhanced Copy Paste
@@ -84,12 +85,12 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 ### Linux, UNIX, MacOS
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && git submodule update --init && ./install.sh
+    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
 ### Windows
 
-1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line (You could use UNIX/Linux commands such as `cp` `mv` `rm` in Windows CMD after this step).
+1.  Install [Git](https://git-scm.com/), enable `git.exe` and other UNIX/Linux commands from Windows Command Line (UNIX/Linux commands such as `cp` `mv` `rm` are enabled in Windows CMD after this step).
 3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`.
 4.  Install [CMake](https://cmake.org/), add `cmake.exe` to `%PATH%`.
 5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`.
@@ -108,6 +109,5 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
-    $ git submodule update --init
     $ install.bat
 ```
