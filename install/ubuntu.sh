@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+function check_fail() {
+    if [ $1 -ne 0 ]; then
+        echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
+        exit 3
+    fi
+}
+
 sudo echo "[lin.vim] Install for Ubuntu" || { echo "[lin.vim] sudo not found"; exit 1; }
 
 # Prepare Environment
