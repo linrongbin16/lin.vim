@@ -1,4 +1,4 @@
-# lin.vim : Lin Rongbin's Vim Distribution
+# lin.vim : Lin Rongbin's (Neo)Vim Distribution
 
 lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development running on most operating systems.
 
@@ -12,13 +12,13 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Feature
 
-- Support both Vim and Neovim.
-- Multiple platform support: UNIX/Linux, Windows and MacOS.
-- Code complete, lint and format running in [coc.nvim](https://github.com/neoclide/coc.nvim) language server for most programming languages.
-- Random color schemes and icons.
+- Multiple platform: UNIX/Linux, Windows and MacOS.
+- Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
+- Random color schemes and pretty icons.
 - File and buffer explorer and better status line.
-- Source code search and Fuzzy file search.
-- Useful command line utilities support: git, code search, file operation, date/time calculate, ipv4/ipv6 calculate.
+- Source code search and file fuzzy search.
+- Useful command line utilities: git, code search, file operation, date/time calculate, ipv4/ipv6 calculate.
+- Support both Vim and Neovim.
 - Settings customization.
 
 # User Guide
@@ -41,22 +41,23 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - `vipga=` in visual mode: align visual-selected paragraph.
 - `gaip=` in normal mode: align inner paragraph.
 
-### Go To
+### Easy Move
 - `<leader>s [char]`: go to [char].
 - `<leader>w`: go to [word].
 - `<leader>j`: go to [forward line].
 - `<leader>k`: go to [backward line].
 
+### Coc.nvim Go To
 - `gd` in normal mode: go to definition.
 - `gy` in normal mode: go to type definition.
 - `gi` in normal mode: go to implementation.
 - `gr` in normal mode: go to reference.
-- `<c-]>` in normal mode: go to definition if `gd` not working.
-
 - `[g` in normal mode: go to previous diagnostic.
 - `]g` in normal mode: go to next diagnostic.
 
+### Tags Go To
 - `<c-o>` in normal mode: go back to previous position.
+- `<c-]>` in normal mode: go to definition if `gd` not working.
 
 ### Commentary
 - `gcc` in normal mode: comment one line.
@@ -68,6 +69,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - `md` in normal mode: delete file/directory.
 - `mm` in normal mode: move file/directory.
 
+### Buffer Explorer
 - `<leader>bn` in normal mode: go to next buffer.
 - `<leader>bp` in normal mode: go to previous buffer.
 - `<leader>bd` in normal mode: close current buffer.
@@ -82,7 +84,9 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### GUI fonts
 
-Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) on UNIX/Linux/Mac, install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/releases) on Windows.
+Please manually install
+- [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/Mac.
+- [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
 
 ### Linux, UNIX, MacOS
 
@@ -116,14 +120,7 @@ Please manually install [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-
 
 ### Vim vs Neovim
 
-Both Vim and Neovim are both supported. 
-
-By default, we support:
-
-- `vim`, `gvim` and `nvim` on UNIX/Linux.
-- `vim.exe`, `gvim.exe`, `nvim.exe`, `nvim-qt.exe` on Windows.
-
-Please install other GUI clients manually if you need.
+Both Vim and Neovim are supported. While by default, we only support `vim` and `gvim`. Please install `nvim` and other Neovim GUI clients manually if you need.
 
 ### Installation Failure Notification
 
