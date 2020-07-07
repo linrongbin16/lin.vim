@@ -17,14 +17,27 @@ brew install macvim neovim zsh curl wget llvm autoconf automake cmake clang-form
 brew install openssl openssh cryptopp the_silver_searcher ripgrep python3 unzip zip p7zip node
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
+# GUI fonts
+cd ~/Library/Fonts
+curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+curl -fLo "Hack Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+curl -fLo "Hack Bold Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+
 # Vim Plugin
 mkdir ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+check_fail $? "vim-plug"
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+check_fail $? "oh-my-zsh"
 
 # User Custom
 cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim

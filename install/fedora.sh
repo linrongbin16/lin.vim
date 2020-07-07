@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+function check_fail() {
+    if [ $1 -ne 0 ]; then
+        echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
+        exit 3
+    fi
+}
+
 sudo echo "[lin.vim] Install for Fedora" || { echo "[lin.vim] sudo not found"; exit 1; }
 
 # Prepare Environment
@@ -19,14 +26,27 @@ sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
+# GUI fonts
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+curl -fLo "Hack Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+curl -fLo "Hack Bold Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+check_fail $? "Hack Nerd Font Complete Mono"
+
 # Vim Plugins
 mkdir ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+check_fail $? "vim-plug"
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+check_fail $? "oh-my-zsh"
 
 # User Custom
 cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim

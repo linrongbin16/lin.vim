@@ -82,12 +82,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Installation
 
-### GUI fonts
-
-Please manually install
-- [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/Mac.
-- [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
-
 ### Linux, UNIX, MacOS
 
 ```bash
@@ -109,7 +103,8 @@ Please manually install
 9.  Install [the_silver_searcher](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
 10. Install [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` to `%PATH%`.
 11. Install [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe` to `%PATH%`.
-12. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
+12. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack).
+13. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 
 ```bash
@@ -117,6 +112,11 @@ Please manually install
     $ cd %USERPROFILE%\.vim
     $ install.bat
 ```
+
+### GUI fonts
+
+By default lin.vim use [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux, use [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+Please manually install [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want other GUI fonts.
 
 ### Vim vs Neovim
 
