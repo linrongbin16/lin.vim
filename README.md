@@ -12,7 +12,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Feature
 
-- Multiple platform: UNIX/Linux, Windows and MacOS.
+- Running on multiple platforms: UNIX/Linux, Windows and MacOS.
 - Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
 - Random color schemes and pretty icons.
 - File and buffer explorer and better status line.
