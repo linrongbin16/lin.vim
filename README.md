@@ -16,10 +16,10 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
 - Random color schemes and pretty icons.
 - File and buffer explorer and better status line.
-- Source code search and file fuzzy search.
-- Useful command line utilities: git, code search, file operation, date/time calculate, ipv4/ipv6 calculate.
-- Support both Vim and Neovim.
-- Settings customization.
+- Source code and file fuzzy search.
+- Useful command line utilities for: git, text search, file operation, datetime calculate, ip calculate.
+- Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
+- Customization.
 
 # User Guide
 
