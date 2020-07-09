@@ -20,5 +20,5 @@ elif [ $(uname) == "FreeBSD" ]; then
 elif [ $(uname) == "Darwin" ]; then
     bash ~/.vim/install/macos.sh
 else
-    echo [lin.vim] Unknown OS, installation error!
+    echo "[lin.vim] Unknown OS $(uname), exiting installation!"
 fi
