@@ -34,7 +34,7 @@ cd universal-ctags
 ./configure
 make
 sudo make install
-# rm -rf ~/.vim/universal-ctags
+rm -rf ~/.vim/universal-ctags
 
 # GUI fonts
 mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
