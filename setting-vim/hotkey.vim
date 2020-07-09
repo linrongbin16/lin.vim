@@ -8,6 +8,8 @@ map <F3> :call NextColor()<CR>
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close nerdtree file explorer
 map <F5> :NERDTreeToggle<CR>
+" open/close tagbar
+nmap <F6> :TagbarToggle<CR>
 
 " Command Operations
 

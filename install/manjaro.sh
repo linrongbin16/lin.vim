@@ -20,7 +20,7 @@ touch ~/.zshrc
 
 # Software Dependency
 yes | sudo pacman -Rs vim
-yes | sudo pacman -S git gvim neovim curl wget zsh gcc clang make autoconf automake cmake openssh openssl crypto++
+yes | sudo pacman -S git gvim neovim curl wget zsh ctags gcc clang make autoconf automake cmake openssh openssl crypto++
 yes | sudo pacman -S the_silver_searcher ripgrep unrar unzip bzip2 zip p7zip python python-pip nodejs npm
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 

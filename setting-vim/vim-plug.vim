@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 " UI
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'

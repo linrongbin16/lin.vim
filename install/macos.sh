@@ -22,6 +22,7 @@ touch ~/.zshrc
 brew upgrade
 brew install macvim neovim zsh curl wget llvm autoconf automake cmake clang-format
 brew install openssl openssh cryptopp the_silver_searcher ripgrep python3 unzip zip p7zip node
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # GUI fonts
