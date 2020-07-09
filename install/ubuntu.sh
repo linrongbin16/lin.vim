@@ -1,32 +1,40 @@
 #!/usr/bin/env bash
 
-function check_fail() {
-    if [ $1 -ne 0 ]; then
-        echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
-        exit 3
-    fi
-}
-
-sudo echo "[lin.vim] Install for Ubuntu" || { echo "[lin.vim] sudo not found"; exit 1; }
-
-# Prepare Environment
-if [ -f ~/.linvimrc ]; then
-    BAK=~/.linvimrc.$(date +%s).bak
-    echo "[lin.vim] back up .linvimrc to $BAK"
-    mv ~/.linvimrc $BAK
-fi
-touch ~/.linvimrc
-touch ~/.zshrc
-
-# Software Dependency
-sudo apt-get install -y git vim vim-gtk neovim libcanberra-gtk-module curl wget zsh gcc g++ make clang cmake pkg-config autoconf automake clang-format build-essential
+sudo apt-get install -y git
+sudo apt-get install -y vim
+sudo apt-get install -y vim-gtk
+sudo apt-get install -y libcanberra-gtk-module
+sudo apt-get install -y neovim
+sudo apt-get install -y curl
+sudo apt-get install -y wget
+sudo apt-get install -y zsh
+sudo apt-get install -y build-essential
+sudo apt-get install -y gcc
+sudo apt-get install -y g++
+sudo apt-get install -y make
+sudo apt-get install -y clang
+sudo apt-get install -y cmake
+sudo apt-get install -y pkg-config
+sudo apt-get install -y autoconf
+sudo apt-get install -y automake
+sudo apt-get install -y clang-format
 sudo apt-get install -y clangd
-sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag ripgrep unzip bzip2 unrar zip p7zip
-sudo apt-get install -y python3 python3-dev python3-pip python3-docutils
-sudo apt-get install -y libseccomp-dev libjansson-dev libyaml-dev libxml2-dev
-sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+sudo apt-get install -y libssl-dev
+sudo apt-get install -y openssh-server
+sudo apt-get install -y libcrypto++-dev
+sudo apt-get install -y silversearcher-ag
+sudo apt-get install -y ripgrep
+sudo apt-get install -y unzip
+sudo apt-get install -y bzip2
+sudo apt-get install -y unrar
+sudo apt-get install -y zip
+sudo apt-get install -y p7zip
+sudo apt-get install -y python3
+sudo apt-get install -y python3-dev
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python3-docutils
 
-# NodeJs
+# Node
 sudo apt-get remove -y nodejs
 sudo apt-get remove -y nodejs-dev
 sudo apt-get remove -y libnode-dev
@@ -34,8 +42,13 @@ sudo apt-get remove -y npm
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Universal-Ctags
-sudo apt-get remove -y universal-ctags exuberant-ctags
+# Ctags
+sudo apt-get remove -y universal-ctags 
+sudo apt-get remove -y exuberant-ctags
+sudo apt-get install -y libseccomp-dev
+sudo apt-get install -y libjansson-dev
+sudo apt-get install -y libyaml-dev
+sudo apt-get install -y libxml2-dev
 cd ~/.vim
 git clone https://github.com/universal-ctags/ctags.git universal-ctags
 cd universal-ctags
@@ -44,65 +57,3 @@ cd universal-ctags
 make
 sudo make install
 rm -rf ~/.vim/universal-ctags
-
-# GUI fonts
-mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-FONTR="Hack Regular Nerd Font Complete Mono.ttf"
-FONTI="Hack Italic Nerd Font Complete Mono.ttf"
-FONTB="Hack Bold Nerd Font Complete Mono.ttf"
-FONTBI="Hack Bold Italic Nerd Font Complete Mono.ttf"
-if [ ! -f $FONTR ]; then
-    curl -fLo $FONTR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-    check_fail $? $FONTR
-fi
-if [ ! -f $FONTI ]; then
-    curl -fLo $FONRI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-    check_fail $? $FONRI
-fi
-if [ ! -f $FONTB ]; then
-    curl -fLo $FONTB https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-    check_fail $? $FONTB
-fi
-if [ ! -f $FONTBI ]; then
-    curl -fLo $FONTBI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-    check_fail $? $FONTBI
-fi
-
-# Vim Plugins
-mkdir ~/.vim/autoload
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-check_fail $? "vim-plug"
-ln -s ~/.vim/lin.vim ~/.vimrc
-vim -c "PlugInstall" -c "qall"
-
-# Oh-My-Zsh
-if [ ! -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    check_fail $? "oh-my-zsh"
-fi
-
-# User Custom
-cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
-cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
-
-# neovim
-mkdir -p ~/.config
-if [ -f ~/.config/nvim ]; then
-    rm -rf ~/.config/nvim
-fi
-if [ -f ~/.config/nvim/init.vim ]; then
-    rm -rf ~/.config/nvim/init.vim
-fi
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
-
-# Path Variable
-echo "#! /usr/bin/env bash" >> ~/.linvimrc
-echo "alias l=\"ls -lh\"" >> ~/.linvimrc
-echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
-echo "ulimit -c unlimited" >> ~/.linvimrc
-echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
-echo "export PATH=~/.vim/command:\$PATH" >> ~/.linvimrc
-
-echo "source ~/.linvimrc" >> ~/.zshrc
-source ~/.zshrc 1>/dev/null 2>&1
