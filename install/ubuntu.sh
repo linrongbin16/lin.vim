@@ -21,10 +21,11 @@ touch ~/.zshrc
 # Software Dependency
 sudo apt-get install -y git vim vim-gtk neovim libcanberra-gtk-module curl wget zsh gcc g++ make clang cmake pkg-config autoconf automake clang-format build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag ripgrep unzip bzip2 unrar zip p7zip
-sudo apt-get install -y python3 python3-dev python3-pip python3-docutils libssl1.0-dev nodejs nodejs-dev node-gyp npm
+sudo apt-get install -y python3 python3-dev python3-pip python3-docutils libssl1.0-dev nodejs nodejs-dev libnode-dev node-gyp npm
 sudo apt-get install -y libseccomp-dev libjansson-dev libyaml-dev libxml2-dev
 sudo apt-get remove -y universal-ctags exuberant-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+sudo pip install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Universal-Ctags
 cd ~/.vim
@@ -55,6 +56,9 @@ ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # Oh-My-Zsh
+if [ -d ~/.oh-my-zsh ]; then
+    rm -rf ~/.oh-my-zsh
+fi
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 check_fail $? "oh-my-zsh"
 

@@ -44,6 +44,9 @@ ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # Oh-My-Zsh
+if [ -d ~/.oh-my-zsh ]; then
+    rm -rf ~/.oh-my-zsh
+fi
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 check_fail $? "oh-my-zsh"
 
