@@ -26,10 +26,10 @@ sudo apt-get install -y libseccomp-dev libjansson-dev libyaml-dev libxml2-dev
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # NodeJs
-sudo apt-get remove nodejs
-sudo apt-get remove nodejs-dev
-sudo apt-get remove libnode-dev
-sudo apt-get remove npm
+sudo apt-get remove -y nodejs
+sudo apt-get remove -y nodejs-dev
+sudo apt-get remove -y libnode-dev
+sudo apt-get remove -y npm
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
