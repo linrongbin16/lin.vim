@@ -75,11 +75,10 @@ ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # Oh-My-Zsh
-if [ -d ~/.oh-my-zsh ]; then
-    rm -rf ~/.oh-my-zsh
+if [ ! -d ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    check_fail $? "oh-my-zsh"
 fi
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-check_fail $? "oh-my-zsh"
 
 # User Custom
 cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
