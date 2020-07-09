@@ -20,6 +20,7 @@ touch ~/.zshrc
 
 # Software Dependency
 sudo apt-get install -y git vim vim-gtk neovim libcanberra-gtk-module curl wget zsh gcc g++ make clang cmake pkg-config autoconf automake clang-format build-essential
+sudo apt-get install -y clangd
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag ripgrep unzip bzip2 unrar zip p7zip
 sudo apt-get install -y python3 python3-dev python3-pip python3-docutils
 sudo apt-get install -y libseccomp-dev libjansson-dev libyaml-dev libxml2-dev
