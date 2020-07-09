@@ -27,14 +27,26 @@ sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # GUI fonts
 cd ~/Library/Fonts
-curl -fLo "Hack Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-check_fail $? "Hack Nerd Font Complete Mono"
-curl -fLo "Hack Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-check_fail $? "Hack Nerd Font Complete Mono"
-curl -fLo "Hack Bold Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-check_fail $? "Hack Nerd Font Complete Mono"
-curl -fLo "Hack Bold Italic Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-check_fail $? "Hack Nerd Font Complete Mono"
+FONTR="Hack Regular Nerd Font Complete Mono.ttf"
+FONTI="Hack Italic Nerd Font Complete Mono.ttf"
+FONTB="Hack Bold Nerd Font Complete Mono.ttf"
+FONTBI="Hack Bold Italic Nerd Font Complete Mono.ttf"
+if [ ! -f $FONTR ]; then
+    curl -fLo $FONTR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+    check_fail $? $FONTR
+fi
+if [ ! -f $FONTI ]; then
+    curl -fLo $FONRI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+    check_fail $? $FONRI
+fi
+if [ ! -f $FONTB ]; then
+    curl -fLo $FONTB https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+    check_fail $? $FONTB
+fi
+if [ ! -f $FONTBI ]; then
+    curl -fLo $FONTBI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+    check_fail $? $FONTBI
+fi
 
 # Vim Plugin
 mkdir ~/.vim/autoload
