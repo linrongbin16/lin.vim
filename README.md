@@ -28,6 +28,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - `F3` in normal mode: change color theme randomly.
 - `F4` in normal mode: switch between C/C++ header source file.
 - `F5` in normal mode: open/close file explorer.
+- `F6` in normal mode: open/close tagbar explorer.
 
 ### Enhanced Copy Paste
 - `<leader>y` in visual mode: copy visual-selected text to locale machine cache.
