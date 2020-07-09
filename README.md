@@ -124,6 +124,4 @@ Both Vim and Neovim are supported. While by default, we only support `vim` and `
 
 ### Installation Failure Notification
 
-lin.vim installation needs [github.com](https://github.com/) and [raw.githubusercontent.com](https://raw.githubusercontent.com/), for some reasons that we all know, download could fail.
-
-Please make sure network is available before installation.
+lin.vim installation needs [github.com](https://github.com/) and [raw.githubusercontent.com](https://raw.githubusercontent.com/), for some reasons the downloading could fail. Please make sure network is available before installation.
