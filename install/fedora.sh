@@ -24,11 +24,11 @@ sudo dnf install -y gcc g++ clang autoconf automake make cmake pkgconfig
 sudo dnf install -y openssl openssh openssh-server openssh-clients cryptopp-devel
 sudo dnf install -y the_silver_searcher ripgrep unzip bzip2
 sudo dnf install -y python3 python3-devel python3-pip python3-docutils nodejs npm
-sudo dnf remove -y ctags
 sudo dnf install -y libseccomp-devel jansson-devel libyaml-devel libxml2-devel
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Universal-Ctags
+sudo dnf remove -y ctags
 cd ~/.vim
 git clone https://github.com/universal-ctags/ctags.git universal-ctags
 cd universal-ctags

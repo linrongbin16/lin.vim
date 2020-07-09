@@ -21,13 +21,20 @@ touch ~/.zshrc
 # Software Dependency
 sudo apt-get install -y git vim vim-gtk neovim libcanberra-gtk-module curl wget zsh gcc g++ make clang cmake pkg-config autoconf automake clang-format build-essential
 sudo apt-get install -y libssl-dev openssh-server libcrypto++-dev silversearcher-ag ripgrep unzip bzip2 unrar zip p7zip
-sudo apt-get install -y python3 python3-dev python3-pip python3-docutils libssl1.0-dev nodejs nodejs-dev libnode-dev node-gyp npm
+sudo apt-get install -y python3 python3-dev python3-pip python3-docutils
 sudo apt-get install -y libseccomp-dev libjansson-dev libyaml-dev libxml2-dev
-sudo apt-get remove -y universal-ctags exuberant-ctags
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
-sudo pip install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+
+# NodeJs
+sudo apt-get remove nodejs
+sudo apt-get remove nodejs-dev
+sudo apt-get remove libnode-dev
+sudo apt-get remove npm
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 # Universal-Ctags
+sudo apt-get remove -y universal-ctags exuberant-ctags
 cd ~/.vim
 git clone https://github.com/universal-ctags/ctags.git universal-ctags
 cd universal-ctags
