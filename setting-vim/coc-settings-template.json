@@ -1,7 +1,7 @@
 {
     "diagnostic.level": "warning",
     "suggest.minTriggerInputLength": 1,
-    "suggest.maxCompleteItemCount": 15,
+    "suggest.maxCompleteItemCount": 30,
     "coc.preferences.formatOnSaveFiletypes": [
         "json",
         "c",
@@ -10,5 +10,6 @@
         "xml",
         "html"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "python3"
 }
