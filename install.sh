@@ -47,6 +47,10 @@ function lin_vim_gui_fonts() {
     fi
 }
 
+function lin_vim_pip3() {
+    sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+}
+
 function lin_vim_plugin() {
     mkdir ~/.vim/autoload
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -117,6 +121,7 @@ else
     exit 3
 fi
 
+lin_vim_pip3
 lin_vim_gui_fonts
 lin_vim_plugin
 lin_vim_user_custom
