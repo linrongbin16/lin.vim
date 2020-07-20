@@ -28,8 +28,8 @@ usage:
     vgit -rb/--rebase [branch]          rebase to remote/[branch], by default current branch.
     vgit -rv/--revert [N]               revert to last [N] commit (create new commit without push force), by default 1.
     vgit -rs/--reset [N]                reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    vgit -pc/--proxy-create <proxy>     create configure <proxy> for git.
-    vgit -pd/--proxy-dump               dump proxy configuration for git.
+    vgit -pc/--proxy-config <proxy>     configure <proxy> for git.
+    vgit -pp/--proxy-print              print proxy configuration for git.
     vgit -pe/--proxy-enable             enable proxy configuration for git.
     vgit -pd/--proxy-disable            disable proxy configuration for git.
 
@@ -185,7 +185,7 @@ def _proxy_create(p):
     exit(0)
 
 
-def _proxy_dump():
+def _proxy_print():
     gc = os.path.expanduser("~") + slash + ".gitconfig"
     proxies = util.readlines_file(gc)
     trigger = False
@@ -238,7 +238,7 @@ if __name__ == "__main__":
                 "rebase",
                 "revert",
                 "reset",
-                "proxy-create=",
+                "proxy-config=",
                 "proxy-dump",
                 "proxy-enable",
                 "proxy-disable",
@@ -281,8 +281,8 @@ if __name__ == "__main__":
                     _push(force)
                 elif opt[1] == "c":
                     _proxy_create(args[0])
-                elif opt[1] == "d":
-                    _proxy_dump()
+                elif opt[1] == "p":
+                    _proxy_print()
                 elif opt[1] == "e":
                     _proxy_enable()
                 elif opt[1] == "d":
@@ -308,10 +308,10 @@ if __name__ == "__main__":
             elif opt[0] == "--reset":
                 n = 1 if len(opt) < 2 else int(opt[1])
                 _reset(n)
-            elif opt[0] == "--proxy-create":
+            elif opt[0] == "--proxy-config":
                 _proxy_create(opt[1])
-            elif opt[0] == "--proxy-dump":
-                _proxy_dump()
+            elif opt[0] == "--proxy-print":
+                _proxy_print()
             elif opt[0] == "--proxy-enable":
                 _proxy_enable()
             elif opt[0] == "--proxy-disable":
