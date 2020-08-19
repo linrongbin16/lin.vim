@@ -91,13 +91,13 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
-1.  Install [Git](https://git-scm.com/), with options below, `git` and other UNIX/Linux commands such as `cp` `mv` `rm` are enabled in Windows CMD after this step.
+1.  Install [Git](https://git-scm.com/) with below options, after this step `git` and other UNIX/Linux commands such as `cp` `mv` `rm` are enabled in Windows CMD.
     * Use Git and optional Unix tools from the Command Prompt.
     * Use Windows' default console window.
 3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`.
 4.  Install [CMake](https://cmake.org/), add `cmake.exe` to `%PATH%`.
 5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`. If you want Neovim, install [Neovim-Qt](https://github.com/neovim/neovim/wiki/Installing-Neovim) additionally, add `nvim.exe` and `nvim-qt.exe` to `%PATH%`.
-6.  Install [Visual Studio](https://www.visualstudio.com/) with:
+6.  Install [Visual Studio](https://www.visualstudio.com/) with below options:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
