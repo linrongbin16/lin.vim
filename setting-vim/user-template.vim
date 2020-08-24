@@ -1,3 +1,36 @@
+" key operations
+" open terminal
+map <F2> :terminal ++rows=20<CR>
+" next color
+map <F3> :call NextColor()<CR>
+" switch between C/C++ header source
+map <F4> :CocCommand clangd.switchSourceHeader<CR>
+" open/close nerdtree file explorer
+map <F5> :NERDTreeToggle<CR>
+" open/close tagbar
+nmap <F6> :TagbarToggle<CR>
+
+" command operations
+" copy visual selection to disk cache
+vnoremap <Leader>y :w! ~/.cache/.lin.vim.copypaste<CR>
+" copy disk cache to cursor
+nnoremap <Leader>p :r ~/.cache/.lin.vim.copypaste<CR>
+
+" buffer operations
+" go to next buffer
+map <Leader>bn :bn<cr>
+" go to previous buffer
+map <Leader>bp :bp<cr>
+" close current buffer
+map <Leader>bd :bd<cr>
+
+" filetype mapping
+autocmd BufRead,BufNewFile *.hql set filetype=sql
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.hs set filetype=haskell
+autocmd BufRead,BufNewFile *Makefile* set filetype=make
+autocmd BufRead,BufNewFile *.ll set filetype=llvm
+
 " gui window size
 if has('gui_running')
     set lines=999

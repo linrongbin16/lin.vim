@@ -4,8 +4,6 @@
 source $HOME/.vim/setting-vim/vim-plug.vim
 source $HOME/.vim/setting-vim/basic.vim
 source $HOME/.vim/setting-vim/color.vim
-source $HOME/.vim/setting-vim/filetype.vim
-source $HOME/.vim/setting-vim/hotkey.vim
 
 " config for plugin
 
