@@ -16,6 +16,9 @@ source $HOME/.vim/setting-plugin/statusline.vim
 source $HOME/.vim/setting-plugin/coc-nvim.vim
 source $HOME/.vim/setting-plugin/gutentags.vim
 
+" Comment
+source $HOME/.vim/setting-plugin/nerdcomment.vim
+
 " Search
 source $HOME/.vim/setting-plugin/ripgrep.vim
 source $HOME/.vim/setting-plugin/leaderf.vim

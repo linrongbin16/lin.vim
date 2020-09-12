@@ -35,7 +35,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
 
 " Comment
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdcommenter'
 
 " Git
 Plug 'mhinz/vim-signify'
