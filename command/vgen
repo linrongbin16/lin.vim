@@ -130,6 +130,7 @@ def _compile_commands():
         "cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS=-isystem\ /Library/Developer/CommandLineTools/usr/include/c++/v1 ."
         % (gen_folder)
     )
+    #  os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
     if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
         raise Exception("%s/compile_commands.json not exist" % (gen_folder))
     os.system("cp %s/compile_commands.json ." % (gen_folder))
