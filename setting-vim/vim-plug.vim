@@ -68,4 +68,7 @@ Plug 'justinmk/vim-syntax-extra'
 " LLVM
 Plug 'rhysd/vim-llvm'
 
+" lisp
+Plug 'vlime/vlime', {'rtp': 'vim/'}
+
 call plug#end()
