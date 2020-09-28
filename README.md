@@ -91,25 +91,29 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
-1.  Install [Git](https://git-scm.com/) with below options, after this step `git` and other UNIX/Linux commands such as `cp` `mv` `rm` are enabled in Windows CMD.
-    * Use Git and optional Unix tools from the Command Prompt.
-    * Use Windows' default console window.
-3.  Install [Python3](https://www.python.org/downloads/), add `python3.exe` and `pip3.exe` to `%PATH%`.
-4.  Install [CMake](https://cmake.org/), add `cmake.exe` to `%PATH%`.
-5.  Install [Vim for Windows](https://github.com/vim/vim-win32-installer), add `gvim.exe` to `%PATH%`. If you want Neovim, install [Neovim-Qt](https://github.com/neovim/neovim/wiki/Installing-Neovim) additionally, add `nvim.exe` and `nvim-qt.exe` to `%PATH%`.
-6.  Install [Visual Studio](https://www.visualstudio.com/) with below options:
+1. Install [Visual Studio](https://www.visualstudio.com/) with below options:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
-7.  Install [LLVM](http://releases.llvm.org/download.html), add `clangd.exe` and `clang-format.exe` to `%PATH%`.
-8.  Install [NodeJs](https://nodejs.org/), add `node.exe` and `npm.exe` to `%PATH%`.
-9.  Install [the_silver_searcher](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` to `%PATH%`.
-10. Install [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` to `%PATH%`.
-11. Install [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe` to `%PATH%`.
-12. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack).
-13. Add `%USERPROFILE%\.vim\command` to `%PATH%`.
+2. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack).
 
+3. Install third party dependencies with [Chocolatey](https://chocolatey.org/):
 
+```bash
+    $ choco install git
+    $ choco install python
+    $ choco install cmake
+    $ choco install vim
+    $ choco install llvm
+    $ choco install nodejs
+    $ choco install ag
+    $ choco install ripgrep
+    $ choco install universal-ctags
+```
+
+4. Add all dependencies above in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
+
+5. Finally run `install.bat`:
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
@@ -123,7 +127,7 @@ Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fon
 
 ### Vim vs Neovim
 
-Both Vim and Neovim are supported. While by default, we only support `vim`, `gvim` and `nvim`. Please install other Neovim GUI clients manually if you need.
+Both Vim and Neovim are supported. While by default, we only support `vim`(`gvim`). Please install Neovim manually if you need.
 
 ### Installation Failure Notification
 
