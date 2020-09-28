@@ -97,7 +97,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     * Common Windows Platform Development.
 2. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack).
 
-3. Install third party dependencies with [Chocolatey](https://chocolatey.org/):
+3. Install third party dependencies with [Chocolatey](https://chocolatey.org/) (run as administrator):
 
 ```bash
     $ choco install git
