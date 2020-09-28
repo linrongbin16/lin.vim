@@ -119,13 +119,18 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### GUI fonts
 
-By default lin.vim use [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux, use [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+* [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux
+* [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+
 Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
 
 ### Vim vs Neovim
 
-Both Vim and Neovim are supported. While by default, we only support `vim`(`gvim`). Please install Neovim manually if you need.
+Both Vim and Neovim are supported. `nvim` not installed by default. Please install Neovim manually if you need.
 
 ### Installation Failure Notification
 
-lin.vim installation needs access of [github.com](https://github.com/) and [raw.githubusercontent.com](https://raw.githubusercontent.com/). Please make sure your network is available before installation.
+lin.vim installation needs access of:
+* [github.com](https://github.com/)
+* [raw.githubusercontent.com](https://raw.githubusercontent.com/)
+Please make sure your network is available before installation.
