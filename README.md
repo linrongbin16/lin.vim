@@ -110,7 +110,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     $ choco install universal-ctags
 ```
 4. Add all dependencies above in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
-5. Finally run `install.bat`:
+5. Finally install lin.vim:
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
