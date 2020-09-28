@@ -6,6 +6,7 @@ import sys
 import getopt
 import os
 import time
+import shutil
 
 sys.path.append(".")
 import util
@@ -133,8 +134,8 @@ def _compile_commands():
     #  os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
     if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
         raise Exception("%s/compile_commands.json not exist" % (gen_folder))
-    os.system("cp %s/compile_commands.json ." % (gen_folder))
-    os.system("rm -rf %s" % (gen_folder))
+    shutil.copyfile("%s/compile_commands.json" % (gen_folder), ".")
+    os.rmdir(gen_folder)
     print("[vcmd] generate compile_commands.json for clangd - done")
 
 

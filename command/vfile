@@ -119,7 +119,7 @@ def _encoding(encoding, filetype, include_hidden):
             new_fp = open(new_filename, "w")
             new_fp.writelines(convert_outs)
             new_fp.close()
-            os.system("mv '%s' '%s'" % (new_filename, f))
+            os.rename(f, new_filename)
             print(
                 "[vcmd] '%s' encoding convert from <%s> to <%s>"
                 % (f, detect_encoding, encoding_name_mapping[encoding.upper()])
