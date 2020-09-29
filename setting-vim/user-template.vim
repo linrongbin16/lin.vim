@@ -1,14 +1,16 @@
 " key operations
-" open terminal
-map <F2> :terminal ++rows=20<CR>
-" next color
-map <F3> :call NextColor()<CR>
-" switch between C/C++ header source
-map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close nerdtree file explorer
-map <F5> :NERDTreeToggle<CR>
+map <F1> :NERDTreeToggle<CR>
 " open/close tagbar
-nmap <F6> :TagbarToggle<CR>
+nmap <F2> :TagbarToggle<CR>
+" switch between C/C++ header source
+map <F3> :CocCommand clangd.switchSourceHeader<CR>
+" format current file
+map <F4> :call CocAction('format')<CR>
+" next color
+map <F9> :call NextColor()<CR>
+" open terminal
+map <F10> :terminal ++rows=20<CR>
 
 " command operations
 " copy visual selection to disk cache
