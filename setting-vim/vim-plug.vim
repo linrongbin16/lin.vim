@@ -71,4 +71,7 @@ Plug 'rhysd/vim-llvm'
 " lisp
 Plug 'vlime/vlime', {'rtp': 'vim/'}
 
+" PowerShell ps1
+Plug 'pprovost/vim-ps1'
+
 call plug#end()
