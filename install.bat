@@ -1,12 +1,12 @@
 @echo off
 cd %USERPROFILE%\.vim\install
-echo "[lin.vim] Install for Windows"
+echo [lin.vim] Install for Windows
 
 rem Vim Plugins
 mkdir %USERPROFILE%\.vim\autoload
 curl -fLo %USERPROFILE%\.vim\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 copy %USERPROFILE%\.vim\lin.vim %USERPROFILE%\_vimrc
-gvim -c "PlugInstall" -c "qall"
+cmd /c gvim -c "PlugInstall" -c "qall"
 
 copy %USERPROFILE%\.vim\setting-vim\user-template.vim %USERPROFILE%\.vim\user.vim
 copy %USERPROFILE%\.vim\setting-vim\coc-settings-template.json %USERPROFILE%\.vim\coc-settings.json

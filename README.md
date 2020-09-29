@@ -92,8 +92,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
-Please use Powershell instead of CMD on Windows.
-
 1. Install [Visual Studio](https://www.visualstudio.com/) with below options:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
@@ -103,17 +101,14 @@ Please use Powershell instead of CMD on Windows.
     * [Hack Italic Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
     * [Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
     * [Hack Bold Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
-3. Install third party dependencies with [chocolatey](https://chocolatey.org/) (run as administrator):
+3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator, use `$env:userprofile` instead of `%USERPROFILE%` on PowerShell):
 ```bash
     $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
-```
-4. Install lin.vim (run as user):
-```bash
     $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
     $ install.bat
 ```
-5. Add third party dependencies in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
+4. Add third party dependencies in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 ### GUI fonts
 
