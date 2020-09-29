@@ -92,31 +92,28 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
+Please use Powershell instead of CMD on Windows.
+
 1. Install [Visual Studio](https://www.visualstudio.com/) with below options:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
-2. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack).
-3. Install third party dependencies with [Chocolatey](https://chocolatey.org/) (run as administrator):
-
+2. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack):
+    * [Hack Regular Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
+    * [Hack Italic Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
+    * [Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
+    * [Hack Bold Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
+3. Install third party dependencies with [chocolatey](https://chocolatey.org/) (run as administrator):
 ```bash
-    $ choco install git
-    $ choco install python
-    $ choco install cmake
-    $ choco install vim
-    $ choco install llvm
-    $ choco install nodejs
-    $ choco install ag
-    $ choco install ripgrep
-    $ choco install universal-ctags
+    $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
 ```
-4. Install lin.vim:
+4. Install lin.vim (run as user):
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
     $ cd %USERPROFILE%\.vim
     $ install.bat
 ```
-5. Add all dependencies above in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
+5. Add third party dependencies in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
 
 ### GUI fonts
 
@@ -133,8 +130,9 @@ Both Vim and Neovim are supported. `nvim` not installed by default. Please insta
 
 ### Installation Failure Notification
 
-lin.vim installation needs access of:
-* [github.com](https://github.com/)
-* [raw.githubusercontent.com](https://raw.githubusercontent.com/)
+lin.vim installation needs access:
+* [github.com](https://github.com/).
+* [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+* [chocolatey](https://chocolatey.org/) on Windows.
 
 Please make sure your network is available before installation.
