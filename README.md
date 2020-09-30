@@ -92,23 +92,23 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
-1. Install [Visual Studio](https://www.visualstudio.com/) with below options:
+1. Install [Visual Studio](https://www.visualstudio.com/) with options:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
-2. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack):
-    * [Hack Regular Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
-    * [Hack Italic Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
-    * [Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
-    * [Hack Bold Nerd Font Complete Mono Windows Compatible.ttf](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)
-3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator, use `$env:userprofile` instead of `%USERPROFILE%` on PowerShell):
+2. Download [v2.1.0-Hack.zip](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip) and install *Hack XXX Mono Windows Compatible* fonts:
+    * Hack Regular Nerd Font Complete Mono Windows Compatible.ttf
+    * Hack Italic Nerd Font Complete Mono Windows Compatible.ttf
+    * Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf
+    * Hack Bold Nerd Font Complete Mono Windows Compatible.ttf
+3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run PowerShell as administrator):
 ```bash
     $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
-    $ git clone https://github.com/linrongbin16/lin.vim %USERPROFILE%\.vim
-    $ cd %USERPROFILE%\.vim
-    $ install.bat
+    $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
+    $ cd $env:UserProfile\.vim
+    $ .\install.ps1
 ```
-4. Add third party dependencies in `%PATH%`, add `%USERPROFILE%\.vim\command` to `%PATH%`.
+4. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
 
 ### GUI fonts
 

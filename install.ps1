@@ -38,26 +38,28 @@ Function Lin-Vim-Plugin {
 }
 
 Function Lin-Vim-User-Custom {
-    Copy-Item $env:userprofile\.vim\setting-vim\user-template.vim $env:userprofile\.vim\user.vim
-    Copy-Item $env:userprofile\.vim\setting-vim\coc-settings-template.json $env:userprofile\.vim\coc-settings.json
+    Copy-Item $env:userprofile\.vim\setting-vim\user-template.vim -Destination $env:userprofile\.vim\user.vim
+    Copy-Item $env:userprofile\.vim\setting-vim\coc-settings-template.json -Destination $env:userprofile\.vim\coc-settings.json
 }
 
 
 Function Lin-Vim-Neovim-Config {
-    New-Item -ItemType Directory -Force -Path $env:userprofile\AppData\Local
+    If (!(Test-Path $env:userprofile\AppData\Local)) {
+        New-Item -ItemType Directory -Force -Path $env:userprofile\AppData\Local
+    }
     If (Test-Path $env:userprofile\AppData\Local\nvim) {
-        Remove-Item $env:userprofile\AppData\Local\nvim
+        Remove-Item -LiteralPath $env:userprofile\AppData\Local\nvim -Force -Recurse
     }
     If (Test-Path $env:userprofile\AppData\Local\nvim\init.vim) {
         Remove-Item $env:userprofile\AppData\Local\nvim\init.vim
     }
-    cmd /c mklink /d %USERPROFILE%\.vim %USERPROFILE%\AppData\Local\nvim
-    cmd /c mklink %USERPROFILE%\.vim\lin.vim %USERPROFILE%\AppData\Local\nvim\init.vim
+    Copy-Item -Path $env:userprofile\.vim -Recurse -Destination $env:userprofile\AppData\Local\nvim -Container
+    Copy-Item $env:userprofile\.vim\lin.vim -Destination $env:userprofile\AppData\Local\nvim\init.vim
 }
 
 Write-Host "[lin.vim] Install for Windows"
 Lin-Vim-Pip3
-Lin-Vim-Gui-Fonts
+# Lin-Vim-Gui-Fonts
 Lin-Vim-Plugin
 Lin-Vim-User-Custom
 Lin-Vim-Neovim-Config
