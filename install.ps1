@@ -3,8 +3,8 @@ Function Lin-Vim-Pip3 {
 }
 
 Function Lin-Vim-Gui-Fonts {
-    New-Item -ItemType Directory -Force -Path $env:userprofile\.vim\guifonts
-    Set-Location -Path $env:userprofile\.vim\guifonts
+    New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\guifonts
+    Set-Location -Path $env:UserProfile\.vim\guifonts
     $FontRegular="Hack Regular Nerd Font Complete Mono Windows Compatible.ttf"
     $FontBold="Hack Bold Nerd Font Complete Mono Windows Compatible.ttf"
     $FontItalic="Hack Italic Nerd Font Complete Mono Windows Compatible.ttf"
@@ -28,33 +28,33 @@ Function Lin-Vim-Gui-Fonts {
 }
 
 Function Lin-Vim-Plugin {
-    New-Item -ItemType Directory -Force -Path $env:userprofile\.vim\autoload
-    Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:userprofile\.vim\autoload\plug.vim
-    If (Test-Path $env:userprofile\_vimrc) {
-        Remove-Item $env:userprofile\_vimrc
+    New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\autoload
+    Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:UserProfile\.vim\autoload\plug.vim
+    If (Test-Path $env:UserProfile\_vimrc) {
+        Remove-Item $env:UserProfile\_vimrc
     }
     cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
     gvim -c "PlugInstall" -c "qall"
 }
 
 Function Lin-Vim-User-Custom {
-    Copy-Item $env:userprofile\.vim\setting-vim\user-template.vim -Destination $env:userprofile\.vim\user.vim
-    Copy-Item $env:userprofile\.vim\setting-vim\coc-settings-template.json -Destination $env:userprofile\.vim\coc-settings.json
+    Copy-Item $env:UserProfile\.vim\setting-vim\user-template.vim -Destination $env:UserProfile\.vim\user.vim
+    Copy-Item $env:UserProfile\.vim\setting-vim\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
 }
 
 
 Function Lin-Vim-Neovim-Config {
-    If (!(Test-Path $env:userprofile\AppData\Local)) {
-        New-Item -ItemType Directory -Force -Path $env:userprofile\AppData\Local
+    If (!(Test-Path $env:UserProfile\AppData\Local)) {
+        New-Item -ItemType Directory -Force -Path $env:UserProfile\AppData\Local
     }
-    If (Test-Path $env:userprofile\AppData\Local\nvim) {
-        Remove-Item -LiteralPath $env:userprofile\AppData\Local\nvim -Force -Recurse
+    If (Test-Path $env:UserProfile\AppData\Local\nvim) {
+        Remove-Item -LiteralPath $env:UserProfile\AppData\Local\nvim -Force -Recurse
     }
-    If (Test-Path $env:userprofile\AppData\Local\nvim\init.vim) {
-        Remove-Item $env:userprofile\AppData\Local\nvim\init.vim
+    If (Test-Path $env:UserProfile\AppData\Local\nvim\init.vim) {
+        Remove-Item $env:UserProfile\AppData\Local\nvim\init.vim
     }
-    Copy-Item -Path $env:userprofile\.vim -Recurse -Destination $env:userprofile\AppData\Local\nvim -Container
-    Copy-Item $env:userprofile\.vim\lin.vim -Destination $env:userprofile\AppData\Local\nvim\init.vim
+    cmd /c mklink %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\.vim
+    cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
 }
 
 Write-Host "[lin.vim] Install for Windows"
