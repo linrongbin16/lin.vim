@@ -30,6 +30,9 @@ Function Lin-Vim-Gui-Fonts {
 Function Lin-Vim-Plugin {
     New-Item -ItemType Directory -Force -Path $env:userprofile\.vim\autoload
     Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:userprofile\.vim\autoload\plug.vim
+    If (Test-Path $env:userprofile\_vimrc) {
+        Remove-Item $env:userprofile\_vimrc
+    }
     cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
     gvim -c "PlugInstall" -c "qall"
 }
@@ -42,6 +45,12 @@ Function Lin-Vim-User-Custom {
 
 Function Lin-Vim-Neovim-Config {
     New-Item -ItemType Directory -Force -Path $env:userprofile\AppData\Local
+    If (Test-Path $env:userprofile\AppData\Local\nvim) {
+        Remove-Item $env:userprofile\AppData\Local\nvim
+    }
+    If (Test-Path $env:userprofile\AppData\Local\nvim\init.vim) {
+        Remove-Item $env:userprofile\AppData\Local\nvim\init.vim
+    }
     cmd /c mklink /d %USERPROFILE%\.vim %USERPROFILE%\AppData\Local\nvim
     cmd /c mklink %USERPROFILE%\.vim\lin.vim %USERPROFILE%\AppData\Local\nvim\init.vim
 }
