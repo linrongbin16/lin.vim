@@ -92,16 +92,18 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
+Note: we don't support CMD any more, please use PowerShell on Windows.
+
 1. Install [Visual Studio](https://www.visualstudio.com/) with options:
     * .NET Desktop Development.
     * Visual C++ Desktop Development.
     * Common Windows Platform Development.
 2. Download [v2.1.0-Hack.zip](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip) and install *Hack XXX Mono Windows Compatible* fonts:
-    * Hack Regular Nerd Font Complete Mono Windows Compatible.ttf
-    * Hack Italic Nerd Font Complete Mono Windows Compatible.ttf
-    * Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf
-    * Hack Bold Nerd Font Complete Mono Windows Compatible.ttf
-3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run PowerShell as administrator):
+    * `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+    * `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+    * `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+    * `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator):
 ```bash
     $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim

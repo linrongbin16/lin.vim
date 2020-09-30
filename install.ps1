@@ -30,8 +30,9 @@ Function Lin-Vim-Gui-Fonts {
 Function Lin-Vim-Plugin {
     New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\autoload
     Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:UserProfile\.vim\autoload\plug.vim
-    If (Test-Path $env:UserProfile\_vimrc) {
-        Remove-Item $env:UserProfile\_vimrc
+    $Vimrc=$env:UserProfile\_vimrc
+    If (Test-Path $Vimrc) {
+        (Get-Item $Vimrc).Delete()
     }
     cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
     gvim -c "PlugInstall" -c "qall"
@@ -44,14 +45,14 @@ Function Lin-Vim-User-Custom {
 
 
 Function Lin-Vim-Neovim-Config {
-    If (!(Test-Path $env:UserProfile\AppData\Local)) {
-        New-Item -ItemType Directory -Force -Path $env:UserProfile\AppData\Local
+    New-Item -ItemType Directory -Force -Path $env:UserProfile\AppData\Local
+    $Nvim=$env:UserProfile\AppData\Local\nvim
+    $NvimInitVim=$env:UserProfile\AppData\Local\nvim\init.vim
+    If (Test-Path $Nvim) {
+        (Get-Item $Nvim).Delete()
     }
-    If (Test-Path $env:UserProfile\AppData\Local\nvim) {
-        Remove-Item -LiteralPath $env:UserProfile\AppData\Local\nvim -Force -Recurse
-    }
-    If (Test-Path $env:UserProfile\AppData\Local\nvim\init.vim) {
-        Remove-Item $env:UserProfile\AppData\Local\nvim\init.vim
+    If (Test-Path $NvimInitVim) {
+        (Get-Item $NvimInitVim).Delete()
     }
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\.vim
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
