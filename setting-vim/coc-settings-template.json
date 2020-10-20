@@ -11,5 +11,23 @@
         "html"
     ],
     "python.formatting.provider": "black",
-    "python.pythonPath": "python3"
+    "python.pythonPath": "python3",
+    "snippets.extends": {
+        "c": [
+            "l",
+            "y"
+        ],
+        "cpp": [
+            "c",
+            "l",
+            "y"
+        ],
+        "javascriptreact": [
+            "javascript"
+        ],
+        "typescript": [
+            "javascript"
+        ]
+    },
+    "snippets.priority": 9999
 }
