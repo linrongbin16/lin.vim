@@ -13,14 +13,16 @@
     "python.formatting.provider": "black",
     "python.pythonPath": "python3",
     "snippets.extends": {
-        "c": [
-            "l",
-            "y"
+        "l": [
+            "c",
+            "cpp"
+        ],
+        "y": [
+            "c",
+            "cpp"
         ],
         "cpp": [
-            "c",
-            "l",
-            "y"
+            "c"
         ],
         "javascriptreact": [
             "javascript"
