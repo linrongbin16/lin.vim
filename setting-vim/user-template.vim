@@ -4,9 +4,9 @@ map <F1> :NERDTreeToggle<CR>
 " open/close tagbar
 nmap <F2> :TagbarToggle<CR>
 " switch between C/C++ header source
-map <F3> :CocCommand clangd.switchSourceHeader<CR>
+map <F5> :CocCommand clangd.switchSourceHeader<CR>
 " format current file
-map <F4> :call CocAction('format')<CR>
+map <F6> :call CocAction('format')<CR>
 " next color
 map <F9> :call NextColor()<CR>
 " open terminal
