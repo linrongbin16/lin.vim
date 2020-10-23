@@ -24,10 +24,10 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 # User Guide
 
 ### Hot Key
-- `F1` in normal mode: open/close file explorer.
-- `F2` in normal mode: open/close tagbar explorer.
-- `F5` in normal mode: switch between C/C++ header source file.
-- `F6` in normal mode: format current file.
+- `F1` in normal mode: switch between C/C++ header source file.
+- `F2` in normal mode: format current file.
+- `F5` in normal mode: open/close file explorer.
+- `F6` in normal mode: open/close tagbar explorer.
 - `F9` in normal mode: change color theme randomly.
 - `F10` in normal mode: open/close terminal.
 
