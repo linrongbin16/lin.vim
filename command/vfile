@@ -13,17 +13,17 @@ import util
 help_msg = """File operations in current folder.
 
 usage:
-    vfile [option] -d/--delete <filetype>               delete all files that has <filetype>.
-    vfile [option] -r/--replace <filetype> <old> <new>  replace <old> with <new> for all files that has <filetype>.
-    vfile [option] -l/--list <filetype>                 list all files that has <filetype>.
-    vfile [option] -e/--encoding <filetype> <encoding>  convert all files with <filetype> from old encoding to new <encoding>.
-    vfile [option] -pe/--print-encoding <filetype>      print detected encoding of all files with <filetype>.
+    vfile [option] -d/--delete <filetype>                           delete all files that has <filetype>.
+    vfile [option] -r/--replace <filetype> <old> <new>              replace <old> with <new> for all files that has <filetype>.
+    vfile [option] -l/--list <filetype>                             list all files that has <filetype>.
+    vfile [option] -ce/--convert-encoding <filetype> <encoding>     convert all files with <filetype> from old encoding to new <encoding>.
+    vfile [option] -pe/--print-encoding <filetype>                  print detected encoding of all files with <filetype>.
 
 option:
-    -i/--include-hidden                                 operations include hidden folder, by default False.
+    -i/--include-hidden                                             operations include hidden folder, by default False.
 
 flag:
-    vfile -h/--help                                     show help message.
+    vfile -h/--help                                                 show help message.
 """
 
 
@@ -76,13 +76,13 @@ def _list(filetype, include_hidden):
     exit(0)
 
 
-def get_encoding(outs):
+def _get_encoding(outs):
     detect_encoding = "".join(outs).strip().split(":")[1]
     detect_encoding = detect_encoding.strip().split(" ")[0]
     return detect_encoding
 
 
-def _encoding(encoding, filetype, include_hidden):
+def _convert_encoding(encoding, filetype, include_hidden):
     encoding_name_mapping = {
         "GB2312": "GB18030",
         "GBK": "GB18030",
@@ -96,7 +96,7 @@ def _encoding(encoding, filetype, include_hidden):
         if not f.endswith(filetype):
             continue
         detect_outs, detect_errs = util.run("chardetect", f)
-        detect_encoding = get_encoding(detect_outs)
+        detect_encoding = _get_encoding(detect_outs)
         if (
             encoding_name_mapping[detect_encoding.upper()]
             == encoding_name_mapping[encoding.upper()]
@@ -138,7 +138,7 @@ def _print_encoding(filetype, include_hidden):
     filetype = ".%s" % filetype
     for f in files:
         detect_outs, detect_errs = util.run("chardetect", f)
-        detect_encoding = get_encoding(detect_outs)
+        detect_encoding = _get_encoding(detect_outs)
         print("[vcmd] '%s' encoding with <%s>" % (f, detect_encoding))
     exit(0)
 
@@ -147,12 +147,12 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "d:r:l:e:p:ih",
+            "d:r:l:c:p:ih",
             [
                 "delete=",
                 "replace=",
                 "list=",
-                "encoding=",
+                "convert-encoding=",
                 "print-encoding=",
                 "include-hidden",
                 "help",
@@ -170,8 +170,11 @@ if __name__ == "__main__":
                 _replace(args[0], args[1], opt[1], include_hidden)
             elif opt[0] in ("-l", "--list"):
                 _list(opt[1], include_hidden)
-            elif opt[0] in ("-e", "--encoding"):
-                _encoding(args[0], opt[1], include_hidden)
+            elif opt[0] == "-c":
+                if opt[1] == "e":
+                    _convert_encoding(args[1], args[0], include_hidden)
+            elif opt[0] == "--convert-encoding":
+                _convert_encoding(args[0], opt[1], include_hidden)
             elif opt[0] == "-p":
                 if opt[1] == "e":
                     _print_encoding(args[0], include_hidden)
