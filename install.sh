@@ -59,14 +59,6 @@ function lin_vim_plugin() {
     vim -c "PlugInstall" -c "qall"
 }
 
-function lin_vim_oh_my_zsh() {
-    if [ ! -d ~/.oh-my-zsh ]; then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-        check_fail $? "oh-my-zsh"
-    fi
-}
-
-
 function lin_vim_user_custom() {
     cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
     cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
@@ -127,4 +119,3 @@ lin_vim_plugin
 lin_vim_user_custom
 lin_vim_neovim_config
 lin_vim_path_variable
-lin_vim_oh_my_zsh
