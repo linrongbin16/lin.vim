@@ -34,7 +34,7 @@ def _help():
     exit(0)
 
 
-def identify_input(ip):
+def _identify_input(ip):
     return int(ip) if (ip.find(".") < 0 or ip.find(":") < 0) else ip
 
 
@@ -126,13 +126,13 @@ if __name__ == "__main__":
         for opt in opts:
             if opt[0] == "-v":
                 if opt[1] == "4":
-                    _validate_ipv4(identify_input(args[0]))
+                    _validate_ipv4(_identify_input(args[0]))
                 elif opt[1] == "6":
-                    _validate_ipv6(identify_input(args[0]))
+                    _validate_ipv6(_identify_input(args[0]))
             elif opt[0] == "--validate-v4":
-                _validate_ipv4(identify_input(opt[1]))
+                _validate_ipv4(_identify_input(opt[1]))
             elif opt[0] == "--validate-v6":
-                _validate_ipv6(identify_input(opt[1]))
+                _validate_ipv6(_identify_input(opt[1]))
             elif opt[0] == "-n":
                 if opt[1] == "4":
                     _min_ipv4()
@@ -162,13 +162,13 @@ if __name__ == "__main__":
                 _loopback_ipv6()
             elif opt[0] == "-c":
                 if opt[1] == "4":
-                    _ipv4_convert(identify_input(args[0]))
+                    _ipv4_convert(_identify_input(args[0]))
                 elif opt[1] == "6":
-                    _ipv6_convert(identify_input(args[0]))
+                    _ipv6_convert(_identify_input(args[0]))
             elif opt[0] == "--convert-v4":
-                _ipv4_convert(identify_input(opt[1]))
+                _ipv4_convert(_identify_input(opt[1]))
             elif opt[0] == "--convert-v6":
-                _ipv6_convert(identify_input(opt[1]))
+                _ipv6_convert(_identify_input(opt[1]))
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")

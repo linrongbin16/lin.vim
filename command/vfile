@@ -13,17 +13,17 @@ import util
 help_msg = """File operations in current folder.
 
 usage:
-    vfile [option] -d/--delete <filetype>              delete all files that has <filetype>.
-    vfile [option] -r/--replace <filetype> <old> <new> replace <old> with <new> for all files that has <filetype>.
-    vfile [option] -l/--list <filetype>                list all files that has <filetype>.
-    vfile [option] -e/--encoding <filetype> <encoding> convert all files with <filetype> from old encoding to new <encoding>.
-    vfile [option] -se/--show-encoding <filetype>      show detected encoding of all files with <filetype>.
+    vfile [option] -d/--delete <filetype>               delete all files that has <filetype>.
+    vfile [option] -r/--replace <filetype> <old> <new>  replace <old> with <new> for all files that has <filetype>.
+    vfile [option] -l/--list <filetype>                 list all files that has <filetype>.
+    vfile [option] -e/--encoding <filetype> <encoding>  convert all files with <filetype> from old encoding to new <encoding>.
+    vfile [option] -pe/--print-encoding <filetype>      print detected encoding of all files with <filetype>.
 
 option:
     -i/--include-hidden                                 operations include hidden folder, by default False.
 
 flag:
-    vfile -h/--help                                    show help message.
+    vfile -h/--help                                     show help message.
 """
 
 
@@ -132,7 +132,7 @@ def _encoding(encoding, filetype, include_hidden):
     exit(0)
 
 
-def _show_encoding(filetype, include_hidden):
+def _print_encoding(filetype, include_hidden):
     root = os.getcwd()
     files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
     filetype = ".%s" % filetype
@@ -147,13 +147,13 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "d:r:l:e:s:ih",
+            "d:r:l:e:p:ih",
             [
                 "delete=",
                 "replace=",
                 "list=",
                 "encoding=",
-                "show-encoding=",
+                "print-encoding=",
                 "include-hidden",
                 "help",
             ],
@@ -172,11 +172,11 @@ if __name__ == "__main__":
                 _list(opt[1], include_hidden)
             elif opt[0] in ("-e", "--encoding"):
                 _encoding(args[0], opt[1], include_hidden)
-            elif opt[0] == "-s":
+            elif opt[0] == "-p":
                 if opt[1] == "e":
-                    _show_encoding(args[0], include_hidden)
-            elif opt[0] == "--show-encoding":
-                _show_encoding(opt[1], include_hidden)
+                    _print_encoding(args[0], include_hidden)
+            elif opt[0] == "--print-encoding":
+                _print_encoding(opt[1], include_hidden)
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")

@@ -18,7 +18,7 @@ option:
     -u/--utc                                    convert with UTC time, by default using system local time.
 
 flag:
-    vtime -h/--help             show help message.
+    vtime -h/--help                             show help message.
 """
 
 

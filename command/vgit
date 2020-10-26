@@ -28,10 +28,10 @@ usage:
     vgit -rb/--rebase [branch]          rebase to remote/[branch], by default current branch.
     vgit -rv/--revert [N]               revert to last [N] commit (create new commit without push force), by default 1.
     vgit -rs/--reset [N]                reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    vgit -pc/--proxy-config <proxy>     configure <proxy> for git.
-    vgit -pp/--proxy-print              print proxy configuration for git.
-    vgit -pe/--proxy-enable             enable proxy configuration for git.
-    vgit -pd/--proxy-disable            disable proxy configuration for git.
+    vgit -cp/--config-proxy <proxy>     configure <proxy> for git.
+    vgit -pp/--print-proxy              print proxy configuration for git.
+    vgit -ep/--enable-proxy             enable proxy configuration for git.
+    vgit -dp/--disable-proxy            disable proxy configuration for git.
 
 option:
     -f/--force                          force operation on pull/push, by default False.
@@ -180,12 +180,12 @@ def _reset(n):
     exit(0)
 
 
-def _proxy_create(p):
+def _config_proxy(p):
     util.write_file(db, p)
     exit(0)
 
 
-def _proxy_print():
+def _print_proxy():
     gc = os.path.expanduser("~") + slash + ".gitconfig"
     proxies = util.readlines_file(gc)
     trigger = False
@@ -201,7 +201,7 @@ def _proxy_print():
     exit(0)
 
 
-def _proxy_enable():
+def _enable_proxy():
     proxy = util.read_file(db)
     if proxy is None:
         print("[vcmd] git proxy not configured yet, please try 'git -p <proxy>'")
@@ -213,7 +213,7 @@ def _proxy_enable():
     exit(0)
 
 
-def _proxy_disable():
+def _disable_proxy():
     os.system("git config --global --unset https.proxy")
     os.system("git config --global --unset http.proxy")
     exit(0)
@@ -279,14 +279,19 @@ if __name__ == "__main__":
                     _pull(force)
                 elif opt[1] == "s":
                     _push(force)
-                elif opt[1] == "c":
-                    _proxy_create(args[0])
                 elif opt[1] == "p":
-                    _proxy_print()
-                elif opt[1] == "e":
-                    _proxy_enable()
-                elif opt[1] == "d":
-                    _proxy_disable()
+                    _print_proxy()
+            elif opt[0] == "-c":
+                if opt[1] == "p":
+                    _config_proxy(args[0])
+            elif opt[0] == "-e":
+                if opt[1] == "p":
+                    _enable_proxy()
+            elif opt[0] == "-d":
+                if opt[1] == "p":
+                    _disable_proxy()
+                elif opt[1] == "s":
+                    _discard()
             elif opt[0] == "--pull":
                 _pull(force)
             elif opt[0] == "--push":
@@ -308,17 +313,14 @@ if __name__ == "__main__":
             elif opt[0] == "--reset":
                 n = 1 if len(opt) < 2 else int(opt[1])
                 _reset(n)
-            elif opt[0] == "--proxy-config":
-                _proxy_create(opt[1])
-            elif opt[0] == "--proxy-print":
-                _proxy_print()
-            elif opt[0] == "--proxy-enable":
-                _proxy_enable()
-            elif opt[0] == "--proxy-disable":
-                _proxy_disable()
-            elif opt[0] == "-d":
-                if opt[1] == "s":
-                    _discard()
+            elif opt[0] == "--config-proxy":
+                _config_proxy(opt[1])
+            elif opt[0] == "--print-proxy":
+                _print_proxy()
+            elif opt[0] == "--enable-proxy":
+                _enable_proxy()
+            elif opt[0] == "--disable-proxy":
+                _disable_proxy()
             elif opt[0] == "--discard":
                 _discard()
         _help()
