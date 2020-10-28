@@ -11,6 +11,7 @@ source $HOME/.vim/setting-vim/color.vim
 source $HOME/.vim/setting-plugin/indentline.vim
 source $HOME/.vim/setting-plugin/nerdtree.vim
 source $HOME/.vim/setting-plugin/statusline.vim
+source $HOME/.vim/setting-plugin/tagbar.vim
 
 " Auto Complete
 source $HOME/.vim/setting-plugin/coc-nvim.vim
