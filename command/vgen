@@ -127,15 +127,15 @@ def user_header():
 def _compile_commands():
     print("[vcmd] generate compile_commands.json for clangd")
     gen_folder = ".vgen.%s" % (str(time.time()))
-    os.system(
-        "cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS=-isystem\ /Library/Developer/CommandLineTools/usr/include/c++/v1 ."
-        % (gen_folder)
-    )
-    #  os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
+    #  os.system(
+    #      "cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS=-I/usr/local/opt/llvm/include/c++/v1 ."
+    #      % (gen_folder)
+    #  )
+    os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
     if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
         raise Exception("%s/compile_commands.json not exist" % (gen_folder))
-    shutil.copyfile("%s/compile_commands.json" % (gen_folder), ".")
-    os.rmdir(gen_folder)
+    shutil.copyfile("%s/compile_commands.json" % (gen_folder), "compile_commands.json")
+    shutil.rmtree(gen_folder, ignore_errors=True)
     print("[vcmd] generate compile_commands.json for clangd - done")
 
 
