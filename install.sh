@@ -83,6 +83,16 @@ function lin_vim_path_variable() {
     source ~/.zshrc 1>/dev/null 2>&1
 }
 
+function lin_vim_zsh_prezto() {
+    zsh
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
+    chsh -s /bin/zsh
+}
+
 lin_vim_backup
 
 if [ $(uname) == "Linux" ]; then
@@ -119,3 +129,4 @@ lin_vim_plugin
 lin_vim_user_custom
 lin_vim_neovim_config
 lin_vim_path_variable
+lin_vim_zsh_prezto
