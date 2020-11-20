@@ -21,20 +21,21 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
 - Custom configuration.
 
-# Architecture
+# Project Structure
 
-lin.vim project is organized in several components:
-* command - Contains command line utilities(called vcmd): vcmd/vencode/vfile/vgen/vgit/vpack/vrg/vtime. These commands are implemented in python3.
-* picture - Screenshot for README.
-* setting-plugin - VimL script settings for vim plugins.
-* setting-vim - VimL script settings for lin.vim.
-* install.sh - MacOS/UNIX/Linux bash installation script.
-* install.ps1 - Windows PowerShell installtion script.
-* install - Detailed installation scripts for different platforms. There will be **plugged** folder which is auto-managed by [vim-plug](https://github.com/junegunn/vim-plug) after installation.
-* LICENSE - The license file.
-* lin.vim - The **.vimrc** file.
-* user.vim - Vim settings, customize you own settings here.
-* coc-settings.json - Coc-nvim settings, customize your own settings here.
+| File/Directory |  Introduction |
+|----------------|---------------|
+| command        | Contains command line utilities(called vcmd): vcmd/vencode/vfile/vgen/vgit/vpack/vrg/vtime. These commands are implemented in python3. |
+| picture        | Screenshot for README. |
+| setting-plugin | VimL script settings for vim plugins. |
+| setting-vim    | VimL script settings for lin.vim. |
+| *install.sh*   | MacOS/UNIX/Linux bash installation script. |
+| *install.ps1*  | MacOS/UNIX/Linux bash installation script. |
+| install        | Detailed installation scripts for different platforms. There will be **plugged** folder which is auto-managed by [vim-plug](https://github.com/junegunn/vim-plug) after installation. |
+| LICENSE        | The license file. |
+| *lin.vim*      | The *.vimrc* file. |
+| *user.vim*     | Vim settings, customize you own settings here. |
+| *coc-settings.json* | Coc-nvim settings, customize your own settings here. |
 
 # User Guide
 
