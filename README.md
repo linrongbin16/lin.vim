@@ -24,11 +24,11 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 # Project Structure
 
 ```
- |+command              Command line utilities(vcmd): vcmd/vencode/vfile/vgen/vgit/vpack/vrg/vtime which are implemented in python3. 
- |+install              Installation scripts for all platforms. The 'plugged' directory will be created during installation which is auto-managed by [vim-plug](https://github.com/junegunn/vim-plug). 
+ |+command              Command line utilities(vcmd) implemented in python3.
+ |+install              Installation scripts for all platforms.
  |+picture              Screenshots for README.
  |+setting-plugin       VimL scripts for vim plugins.
- |+setting-vim          VimL scripts for lin.vim. 
+ |+setting-vim          VimL scripts for lin.vim.
  |`install.sh           MacOS/UNIX/Linux bash installation routing.
  |`install.ps1          Windows PowerShell installation routing.
  |`LICENSE              The license file.
@@ -40,13 +40,17 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # User Guide
 
+* \[N\]: normal mode
+* \[V\]: visual mode
+* \[I\]: insert mode
+
 ### Hot Key
-- `F1` in normal mode: switch between C/C++ header source file.
-- `F2` in normal mode: format current file.
-- `F5` in normal mode: open/close file explorer.
-- `F6` in normal mode: open/close tagbar explorer.
-- `F9` in normal mode: change color theme randomly.
-- `F10` in normal mode: open/close terminal.
+- `F1` \[N\]: switch between C/C++ header source file.
+- `F2` \[N\]: format current file.
+- `F5` \[N\]: open/close file explorer.
+- `F6` \[N\]: open/close tagbar explorer.
+- `F9` \[N\]: change color theme randomly.
+- `F10` \[N\]: open/close terminal.
 
 Please see **user.vim** for more details.
 
