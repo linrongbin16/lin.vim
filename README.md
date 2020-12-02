@@ -35,22 +35,24 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |`lin.vim              The *.vimrc* file.
  |`user.vim             Vim settings, customize your own settings here.
  |`coc-settings.json    Coc-nvim settings, customize your own settings here.
-
 ```
 
 # User Guide
 
-* \[N\]: normal mode
-* \[V\]: visual mode
-* \[I\]: insert mode
+* 🇳: normal mode
+* 🇻: visual mode
+* 🇮: insert mode
+* ***\[N\]***: normal mode
+* ***\[V\]***: visual mode
+* ***\[I\]***: insert mode
 
 ### Hot Key
-- `F1` \[N\]: switch between C/C++ header source file.
-- `F2` \[N\]: format current file.
-- `F5` \[N\]: open/close file explorer.
-- `F6` \[N\]: open/close tagbar explorer.
-- `F9` \[N\]: change color theme randomly.
-- `F10` \[N\]: open/close terminal.
+- `F1` 🇳: switch between C/C++ header source file.
+- `F2` 🇳: format current file.
+- `F5` 🇳: open/close file explorer.
+- `F6` 🇳: open/close tagbar explorer.
+- `F9` 🇳: change color theme randomly.
+- `F10` 🇳 open/close terminal.
 
 Please see **user.vim** for more details.
 
