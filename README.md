@@ -23,19 +23,20 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Project Structure
 
-| File/Directory |  Introduction |
-|----------------|---------------|
-| command        | Contains command line utilities(called vcmd): vcmd/vencode/vfile/vgen/vgit/vpack/vrg/vtime. These commands are implemented in python3. |
-| picture        | Screenshot for README. |
-| setting-plugin | VimL script settings for vim plugins. |
-| setting-vim    | VimL script settings for lin.vim. |
-| *install.sh*   | MacOS/UNIX/Linux bash installation script. |
-| *install.ps1*  | MacOS/UNIX/Linux bash installation script. |
-| install        | Detailed installation scripts for different platforms. There will be **plugged** folder which is auto-managed by [vim-plug](https://github.com/junegunn/vim-plug) after installation. |
-| LICENSE        | The license file. |
-| *lin.vim*      | The *.vimrc* file. |
-| *user.vim*     | Vim settings, customize you own settings here. |
-| *coc-settings.json* | Coc-nvim settings, customize your own settings here. |
+```
+ |+command              Command line utilities(vcmd): vcmd/vencode/vfile/vgen/vgit/vpack/vrg/vtime which are implemented in python3. 
+ |+install              Installation scripts for all platforms. The 'plugged' directory will be created during installation which is auto-managed by [vim-plug](https://github.com/junegunn/vim-plug). 
+ |+picture              Screenshots for README.
+ |+setting-plugin       VimL scripts for vim plugins.
+ |+setting-vim          VimL scripts for lin.vim. 
+ |`install.sh           MacOS/UNIX/Linux bash installation routing.
+ |`install.ps1          Windows PowerShell installation routing.
+ |`LICENSE              The license file.
+ |`lin.vim              The *.vimrc* file.
+ |`user.vim             Vim settings, customize your own settings here.
+ |`coc-settings.json    Coc-nvim settings, customize your own settings here.
+
+```
 
 # User Guide
 
@@ -58,26 +59,18 @@ Please see **user.vim** for more details.
 ### Text Search
 - `:Ag [text]` or `:Rg [text]` in normal mode: search [text].
 
-Please see **setting-plugin/ripgrep.vim** for more details.
-
 ### File Fuzzy Search
 - `<c-p>` in normal mode: fuzzy search file.
-
-Please see **setting-plugin/leaderf.vim** for more details.
 
 ### Easy Align
 - `vipga=` in visual mode: align visual-selected paragraph.
 - `gaip=` in normal mode: align inner paragraph.
-
-Please see **setting-plugin/vim-easy-align.vim** for more details.
 
 ### Easy Move
 - `<leader>s [char]`: go to [char].
 - `<leader>w`: go to [word].
 - `<leader>j`: go to [forward line].
 - `<leader>k`: go to [backward line].
-
-Please see **setting-plugin/vim-easymotion.vim** for more details.
 
 ### Coc.nvim Go To
 - `gd` in normal mode: go to definition.
@@ -93,12 +86,8 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 - `<c-o>` in normal mode: go back to previous position.
 - `<c-]>` in normal mode: go to definition if `gd` not working.
 
-Please see **setting-plugin/gutentags.vim** for more details.
-
 ### Commentary
 - `<leader>c<space>` in normal/visual mode: toggle one line or selected lines.
-
-Please see **setting-plugin/nerdcomment.vim** for more details.
 
 ### File Explorer
 - `ma` in normal mode: create new file/directory.
@@ -106,14 +95,10 @@ Please see **setting-plugin/nerdcomment.vim** for more details.
 - `md` in normal mode: delete file/directory.
 - `mm` in normal mode: move file/directory.
 
-Please see **setting-plugin/nerdtree.vim** for more details.
-
 ### Buffer Explorer
 - `<leader>bn` in normal mode: go to next buffer.
 - `<leader>bp` in normal mode: go to previous buffer.
 - `<leader>bd` in normal mode: close current buffer.
-
-Please see **setting-plugin/statusline.vim** for more details.
 
 ### Customization
 - custom your own settings in **user.vim** and **coc-settings.json**.
