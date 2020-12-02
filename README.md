@@ -42,9 +42,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 * 🇳: normal mode
 * 🇻: visual mode
 * 🇮: insert mode
-* ***\[N\]***: normal mode
-* ***\[V\]***: visual mode
-* ***\[I\]***: insert mode
 
 ### Hot Key
 - `F1` 🇳: switch between C/C++ header source file.
@@ -52,59 +49,59 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - `F5` 🇳: open/close file explorer.
 - `F6` 🇳: open/close tagbar explorer.
 - `F9` 🇳: change color theme randomly.
-- `F10` 🇳 open/close terminal.
+- `F10` 🇳: open/close terminal.
 
 Please see **user.vim** for more details.
 
 ### Enhanced Copy Paste
-- `<leader>y` in visual mode: copy visual-selected text to locale machine cache.
-- `<leader>p` in normal mode: paste text saved from local machine cache.
+- `<leader>y` 🇻: copy visual-selected text to locale machine cache.
+- `<leader>p` 🇳: paste text saved from local machine cache.
 
 Please see **user.vim** for more details.
 
 ### Text Search
-- `:Ag [text]` or `:Rg [text]` in normal mode: search [text].
+- `:Ag [text]` (`:Rg [text]`) 🇳: search [text].
 
 ### File Fuzzy Search
-- `<c-p>` in normal mode: fuzzy search file.
+- `<c-p>` 🇳: fuzzy search file.
 
 ### Easy Align
-- `vipga=` in visual mode: align visual-selected paragraph.
-- `gaip=` in normal mode: align inner paragraph.
+- `vipga=` 🇻: align visual-selected paragraph.
+- `gaip=` 🇳: align inner paragraph.
 
 ### Easy Move
-- `<leader>s [char]`: go to [char].
-- `<leader>w`: go to [word].
-- `<leader>j`: go to [forward line].
-- `<leader>k`: go to [backward line].
+- `<leader>s [char]` 🇳: go to [char].
+- `<leader>w` 🇳: go to [word].
+- `<leader>j` 🇳: go to [forward line].
+- `<leader>k` 🇳: go to [backward line].
 
 ### Coc.nvim Go To
-- `gd` in normal mode: go to definition.
-- `gy` in normal mode: go to type definition.
-- `gi` in normal mode: go to implementation.
-- `gr` in normal mode: go to reference.
-- `[g` in normal mode: go to previous diagnostic.
-- `]g` in normal mode: go to next diagnostic.
+- `gd` 🇳: go to definition.
+- `gy` 🇳: go to type definition.
+- `gi` 🇳: go to implementation.
+- `gr` 🇳: go to reference.
+- `[g` 🇳: go to previous diagnostic.
+- `]g` 🇳: go to next diagnostic.
 
 Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more details.
 
 ### Tags Go To
-- `<c-o>` in normal mode: go back to previous position.
-- `<c-]>` in normal mode: go to definition if `gd` not working.
+- `<c-o>` 🇳: go back to previous position.
+- `<c-]>` 🇳: go to definition if `gd` not working.
 
 ### Commentary
-- `<leader>c<space>` in normal/visual mode: toggle one line or selected lines.
+- `<leader>c<space>` 🇳🇻: toggle one line or selected lines.
 
 ### File Explorer
-- `ma` in normal mode: create new file/directory.
-- `mc` in normal mode: copy file/directory.
-- `md` in normal mode: delete file/directory.
-- `mm` in normal mode: move file/directory.
+- `ma` 🇳: create new file/directory.
+- `mc` 🇳: copy file/directory.
+- `md` 🇳: delete file/directory.
+- `mm` 🇳: move file/directory.
 
 ### Buffer Explorer
-- `<leader>bn` in normal mode: go to next buffer.
-- `<leader>bp` in normal mode: go to previous buffer.
-- `<leader>bd` in normal mode: close current buffer.
+- `<leader>bn` 🇳: go to next buffer.
+- `<leader>bp` 🇳: go to previous buffer.
+- `<leader>bd` 🇳: close current buffer.
 
 ### Customization
 - custom your own settings in **user.vim** and **coc-settings.json**.
