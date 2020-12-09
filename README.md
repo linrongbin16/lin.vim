@@ -72,7 +72,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 # Installation
 
 NOTICE:
-1. lin.vim installation needs access of below, please make sure your network is available before installation.
+1. lin.vim installation needs network access of below, please make sure they're available before installation.
     * [github.com](https://github.com/).
     * [raw.githubusercontent.com](https://raw.githubusercontent.com/).
     * [chocolatey](https://chocolatey.org/) on Windows.
