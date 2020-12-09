@@ -83,15 +83,15 @@ function path_variable_install() {
     source ~/.zshrc 1>/dev/null 2>&1
 }
 
-function zsh_prezto_install() {
-    zsh
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-    setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    done
-    chsh -s /bin/zsh
-}
+# function zsh_prezto_install() {
+#     zsh
+#     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+#     setopt EXTENDED_GLOB
+#     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+#       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+#     done
+#     chsh -s /bin/zsh
+# }
 
 backup_linvimrc
 
