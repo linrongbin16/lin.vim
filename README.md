@@ -11,9 +11,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 * [Installation](#installation)
     * [UNIX,Linux,MacOS](#unix-linux-macos)
     * [Windows](#windows)
-    * [GUI fonts](#gui-fonts)
-    * [Vim vs Neovim](#vim-vs-neovim)
-    * [Installation Failure Notification](#installation-failure-notification)
 * [User Guide](#user-guide)
     * [Hot Key](#hot-key)
     * [Enhanced Copy Paste](#enhanced-copy-paste)
@@ -74,6 +71,16 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Installation
 
+NOTICE:
+1. lin.vim installation needs access of below, please make sure your network is available before installation.
+    * [github.com](https://github.com/).
+    * [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+    * [chocolatey](https://chocolatey.org/) on Windows.
+2. lin.vim use hack nerd fonts by default below, please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
+    * [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux.
+    * [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, and `nvim` will not been installed on Windows by default. Please install Neovim GUI client manually if you need.
+
 ### UNIX, Linux, MacOS
 
 ```bash
@@ -82,7 +89,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
-Note: we don't support CMD any more, please use PowerShell on Windows.
+NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with options:
     * .NET Desktop Development.
@@ -103,27 +110,6 @@ Note: we don't support CMD any more, please use PowerShell on Windows.
 4. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
 
 ### GUI fonts
-
-lin.vim use fonts by default:
-
-* [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux.
-* [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
-
-Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
-
-### Vim vs Neovim
-
-Both Vim and Neovim are supported. `nvim` not installed by default. Please install Neovim manually if you need.
-
-### Installation Failure Notification
-
-lin.vim installation needs access:
-
-* [github.com](https://github.com/).
-* [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-* [chocolatey](https://chocolatey.org/) on Windows.
-
-Please make sure your network is available before installation.
 
 # User Guide
 
