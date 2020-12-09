@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-function lin_vim_check_fail() {
+function check_failure() {
     if [ $1 -ne 0 ]; then
         echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
         exit 3
     fi
 }
 
-function lin_vim_start_install() {
+function start_install() {
     sudo echo "[lin.vim] Install for $1" || { echo "[lin.vim] sudo not found"; exit 1; }
 }
 
-function lin_vim_backup() {
+function backup_linvimrc() {
     if [ -f ~/.linvimrc ]; then
         LINVIMRC_BAK=~/.linvimrc.$(date +%s).bak
         echo "[lin.vim] back up .linvimrc to $LINVIMRC_BAK"
@@ -93,30 +93,33 @@ function zsh_prezto_install() {
     chsh -s /bin/zsh
 }
 
-lin_vim_backup
+backup_linvimrc
 
 if [ $(uname) == "Linux" ]; then
     if cat /etc/*release | grep ^NAME | grep Ubuntu 1>/dev/null 2>&1; then
-        lin_vim_start_install "Ubuntu"
+        start_install "Ubuntu"
         bash ~/.vim/install/ubuntu.sh
     elif cat /etc/*release | grep ^NAME | grep Debian 1>/dev/null 2>&1; then
-        lin_vim_start_install "Debian"
+        start_install "Debian"
         bash ~/.vim/install/ubuntu.sh
     elif cat /etc/*release | grep ^NAME | grep Fedora 1>/dev/null 2>&1; then
-        lin_vim_start_install "Fedora"
+        start_install "Fedora"
         bash ~/.vim/install/fedora.sh
     elif cat /etc/*release | grep ^NAME | grep Manjaro 1>/dev/null 2>&1; then
-        lin_vim_start_install "Manjaro"
+        start_install "Manjaro"
         bash ~/.vim/install/manjaro.sh
+    elif cat /etc/*release | grep ^NAME | grep CentOS 1>/dev/null 2>&1; then
+        start_install "CentOS"
+        bash ~/.vim/install/centos.sh
     else
         echo "[lin.vim] OS not supprot, exiting installation!"
         exit 3
     fi
 elif [ $(uname) == "FreeBSD" ]; then
-    lin_vim_start_install "FreeBSD"
+    start_install "FreeBSD"
     bash ~/.vim/install/bsd.sh
 elif [ $(uname) == "Darwin" ]; then
-    lin_vim_start_install "MacOS"
+    start_install "MacOS"
     bash ~/.vim/install/macos.sh
 else
     echo "[lin.vim] Unknown OS $(uname), exiting installation!"
