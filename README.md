@@ -5,6 +5,8 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 # Table of Contents
 
 * [Introduction](#introduction)
+    * [Feature](###feature)
+    * [Project Structure](###project-structure)
 * [Installation](#installation)
 * [User Guide](#user-guide)
 
