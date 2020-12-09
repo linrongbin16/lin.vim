@@ -1,5 +1,12 @@
 # lin.vim : Lin Rongbin's (Neo)Vim Distribution
 
+# Table of Contents
+
+* [Feature](#feature)
+* [Project Structure](#project-structure)
+* [User Guide](#user-guide)
+* [Installation](#installation)
+
 lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development running on most operating systems.
 
 ![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg)
