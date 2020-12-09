@@ -5,10 +5,29 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 # Table of Contents
 
 * [Introduction](#introduction)
-    * [Feature](###feature)
-    * [Project Structure](###project-structure)
+    * [Screenshots](#screenshots)
+    * [Feature](#feature)
+    * [Project Structure](#project-structure)
 * [Installation](#installation)
+    * [UNIX,Linux,MacOS](#unix-linux-macos)
+    * [Windows](#windows)
+    * [GUI fonts](#gui-fonts)
+    * [Vim vs Neovim](#vim-vs-neovim)
+    * [Installation Failure Notification](#installation-failure-notification)
 * [User Guide](#user-guide)
+    * [Hot Key](#hot-key)
+    * [Enhanced Copy Paste](#enhanced-copy-paste)
+    * [Text Search](#text-search)
+    * [File Fuzzy Search](#file-fuzzy-search)
+    * [Easy Align](#easy-align)
+    * [Easy Move](#easy-move)
+    * [Coc.nvim Go To](#cocnvim-go-to)
+    * [Tags Go To](#tags-go-to)
+    * [Commentary](#commentary)
+    * [File Explorer](#file-explorer)
+    * [Buffer Explorer](#buffer-explorer)
+    * [Customization](#customization)
+    * [Command Line Utility](#command-line-utility)
 
 # Introduction
 
