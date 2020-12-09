@@ -30,17 +30,22 @@ sudo dnf install -y python3-docutils
 sudo dnf install -y nodejs
 sudo dnf install -y npm
 
-# Ctags
-sudo dnf remove -y ctags
 sudo dnf install -y libseccomp-devel
 sudo dnf install -y jansson-devel
 sudo dnf install -y libyaml-devel
 sudo dnf install -y libxml2-devel
-cd ~/.vim
-git clone https://github.com/universal-ctags/ctags.git universal-ctags
-cd universal-ctags
-./autogen.sh
-./configure
-make
-sudo make install
-rm -rf ~/.vim/universal-ctags
+
+# Ctags
+sudo dnf remove -y ctags
+if ! type "ctags" > /dev/null; then
+    cd ~/.vim
+    git clone https://github.com/universal-ctags/ctags.git universal-ctags
+    cd universal-ctags
+    ./autogen.sh
+    ./configure
+    make
+    sudo make install
+    rm -rf ~/.vim/universal-ctags
+else
+    echo "[lin.vim] ctags already installed, skipping..."
+fi

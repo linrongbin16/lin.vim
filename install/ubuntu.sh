@@ -41,18 +41,23 @@ sudo apt-get remove -y npm
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Ctags
-sudo apt-get remove -y universal-ctags 
-sudo apt-get remove -y exuberant-ctags
 sudo apt-get install -y libseccomp-dev
 sudo apt-get install -y libjansson-dev
 sudo apt-get install -y libyaml-dev
 sudo apt-get install -y libxml2-dev
-cd ~/.vim
-git clone https://github.com/universal-ctags/ctags.git universal-ctags
-cd universal-ctags
-./autogen.sh
-./configure
-make
-sudo make install
-rm -rf ~/.vim/universal-ctags
+
+# Ctags
+sudo apt-get remove -y universal-ctags
+sudo apt-get remove -y exuberant-ctags
+if ! type "ctags" > /dev/null; then
+    cd ~/.vim
+    git clone https://github.com/universal-ctags/ctags.git universal-ctags
+    cd universal-ctags
+    ./autogen.sh
+    ./configure
+    make
+    sudo make install
+    rm -rf ~/.vim/universal-ctags
+else
+    echo "[lin.vim] ctags already installed, skipping..."
+fi
