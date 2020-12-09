@@ -4,13 +4,13 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Table of Contents
 
-* [Screenshots](#screenshots)
-* [Feature](#feature)
-* [Project Structure](#project-structure)
-* [User Guide](#user-guide)
+* [Introduction](#introduction)
 * [Installation](#installation)
+* [User Guide](#user-guide)
 
-# Screenshots
+# Introduction
+
+### Screenshots
 
 ![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg)
 
@@ -20,7 +20,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ![pic4.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.jpg)
 
-# Feature
+### Feature
 
 - Running on multiple platforms: UNIX/Linux, Windows and MacOS.
 - Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
@@ -31,7 +31,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
 - Custom configuration.
 
-# Project Structure
+### Project Structure
 
 ```
  |+command              Command line utilities(vcmd) implemented in python3.
@@ -46,6 +46,59 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |`user.vim             Vim settings, customize your own settings here.
  |`coc-settings.json    Coc-nvim settings, customize your own settings here.
 ```
+
+# Installation
+
+### UNIX, Linux, MacOS
+
+```bash
+    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
+```
+
+### Windows
+
+Note: we don't support CMD any more, please use PowerShell on Windows.
+
+1. Install [Visual Studio](https://www.visualstudio.com/) with options:
+    * .NET Desktop Development.
+    * Visual C++ Desktop Development.
+    * Common Windows Platform Development.
+2. Download [v2.1.0-Hack.zip](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip) and install *Hack XXX Mono Windows Compatible* fonts:
+    * `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+    * `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+    * `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+    * `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator):
+```bash
+    $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
+    $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
+    $ cd $env:UserProfile\.vim
+    $ .\install.ps1
+```
+4. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
+
+### GUI fonts
+
+lin.vim use fonts by default:
+
+* [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux.
+* [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+
+Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
+
+### Vim vs Neovim
+
+Both Vim and Neovim are supported. `nvim` not installed by default. Please install Neovim manually if you need.
+
+### Installation Failure Notification
+
+lin.vim installation needs access:
+
+* [github.com](https://github.com/).
+* [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+* [chocolatey](https://chocolatey.org/) on Windows.
+
+Please make sure your network is available before installation.
 
 # User Guide
 
@@ -118,56 +171,3 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 
 ### Command Line Utility
 - try `vcmd` to find more.
-
-# Installation
-
-### UNIX, Linux, MacOS
-
-```bash
-    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
-```
-
-### Windows
-
-Note: we don't support CMD any more, please use PowerShell on Windows.
-
-1. Install [Visual Studio](https://www.visualstudio.com/) with options:
-    * .NET Desktop Development.
-    * Visual C++ Desktop Development.
-    * Common Windows Platform Development.
-2. Download [v2.1.0-Hack.zip](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip) and install *Hack XXX Mono Windows Compatible* fonts:
-    * `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
-    * `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-    * `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-    * `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
-3. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator):
-```bash
-    $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
-    $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
-    $ cd $env:UserProfile\.vim
-    $ .\install.ps1
-```
-4. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
-
-### GUI fonts
-
-lin.vim use fonts by default:
-
-* [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux.
-* [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
-
-Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
-
-### Vim vs Neovim
-
-Both Vim and Neovim are supported. `nvim` not installed by default. Please install Neovim manually if you need.
-
-### Installation Failure Notification
-
-lin.vim installation needs access:
-
-* [github.com](https://github.com/).
-* [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-* [chocolatey](https://chocolatey.org/) on Windows.
-
-Please make sure your network is available before installation.
