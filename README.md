@@ -39,9 +39,9 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # User Guide
 
-> * 🅽: normal mode
-> * 🆅: visual mode
-> * 🅸: insert mode
+* 🅽: normal mode
+* 🆅: visual mode
+* 🅸: insert mode
 
 ### Hot Key
 - `F1` 🅽: switch between C/C++ header source file.
