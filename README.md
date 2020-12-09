@@ -12,21 +12,17 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Screenshots
 
-<!-- ![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg) -->
+##### Simple but pretty UI
+![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg)
 
-<figure>
-  <img src="https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg" alt="pic1.jpg" title="UI with file explorer, status line and different color schemes" />
-  <figcaption>UI with file explorer, status line and different color schemes</figcaption>
-</figure>
-
+##### Code complete for C++
 ![pic2.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.jpg)
-> Code complete for C++
 
+##### Fast cursor movement
 ![pic3.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.jpg)
-> Fast cursor movement
 
+##### Fuzzy file search
 ![pic4.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.jpg)
-> Fuzzy file search
 
 ### Feature
 
