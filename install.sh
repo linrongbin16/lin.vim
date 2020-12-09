@@ -31,19 +31,19 @@ function gui_fonts_install() {
     FONT_BOLD_ITALIC="Hack Bold Italic Nerd Font Complete Mono.ttf"
     if [ ! -f $FONT_REGULAR ]; then
         curl -fLo $FONT_REGULAR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-        check_fail $? $FONT_REGULAR
+        check_failure $? $FONT_REGULAR
     fi
     if [ ! -f $FONT_ITALIC ]; then
         curl -fLo $FONRI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_fail $? $FONRI
+        check_failure $? $FONRI
     fi
     if [ ! -f $FONT_BOLD ]; then
         curl -fLo $FONT_BOLD https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-        check_fail $? $FONT_BOLD
+        check_failure $? $FONT_BOLD
     fi
     if [ ! -f $FONT_BOLD_ITALIC ]; then
         curl -fLo $FONT_BOLD_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_fail $? $FONT_BOLD_ITALIC
+        check_failure $? $FONT_BOLD_ITALIC
     fi
 }
 
@@ -54,7 +54,7 @@ function pip3_install() {
 function plugin_install() {
     mkdir ~/.vim/autoload
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    check_fail $? "vim-plug"
+    check_failure $? "vim-plug"
     ln -s ~/.vim/lin.vim ~/.vimrc
     vim -c "PlugInstall" -c "qall"
 }
