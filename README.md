@@ -9,7 +9,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     * [Feature](#feature)
     * [Project Structure](#project-structure)
 * [Installation](#installation)
-    * [UNIX,Linux](#unix-linux)
+    * [UNIX, Linux, MacOS](#unix-linux-macos)
     * [Windows](#windows)
 * [User Guide](#user-guide)
     * [Hot Key](#hot-key)
@@ -61,7 +61,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |+picture              Screenshots for README.
  |+setting-plugin       VimL scripts for vim plugins.
  |+setting-vim          VimL scripts for lin.vim.
- |`install.sh           UNIX/Linux bash installation script.
+ |`install.sh           UNIX/Linux/MacOS bash installation script.
  |`install.ps1          Windows PowerShell installation script.
  |`LICENSE              The license file.
  |`lin.vim              The *.vimrc* file.
@@ -77,11 +77,11 @@ NOTICE:
     * [raw.githubusercontent.com](https://raw.githubusercontent.com/).
     * [chocolatey](https://chocolatey.org/) on Windows.
 2. Hack Nerd Fonts below is used default, please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
-    * [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux.
+    * [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
     * [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
-3. Both Vim and Neovim are supported on UNIX/Linux, and `nvim` will not been installed on Windows by default. Please install Neovim GUI client manually if you need.
+3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, and `nvim` will not been installed on Windows by default. Please install Neovim GUI client manually if you need.
 
-### UNIX, Linux
+### UNIX, Linux, MacOS
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
