@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function check_failure() {
+function check_download() {
     if [ $1 -ne 0 ]; then
         echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
         exit 3
@@ -19,7 +19,7 @@ function backup_linvimrc() {
     fi
 }
 
-function gui_fonts_install() {
+function install_gui_fonts() {
     if [ $(uname) == "Darwin" ]; then
         cd ~/Library/Fonts
     else
@@ -31,46 +31,46 @@ function gui_fonts_install() {
     FONT_BOLD_ITALIC="Hack Bold Italic Nerd Font Complete Mono.ttf"
     if [ ! -f $FONT_REGULAR ]; then
         curl -fLo $FONT_REGULAR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-        check_failure $? $FONT_REGULAR
+        check_download $? $FONT_REGULAR
     fi
     if [ ! -f $FONT_ITALIC ]; then
         curl -fLo $FONRI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_failure $? $FONRI
+        check_download $? $FONRI
     fi
     if [ ! -f $FONT_BOLD ]; then
         curl -fLo $FONT_BOLD https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-        check_failure $? $FONT_BOLD
+        check_download $? $FONT_BOLD
     fi
     if [ ! -f $FONT_BOLD_ITALIC ]; then
         curl -fLo $FONT_BOLD_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_failure $? $FONT_BOLD_ITALIC
+        check_download $? $FONT_BOLD_ITALIC
     fi
 }
 
-function pip3_install() {
+function install_pip3() {
     sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 }
 
-function plugin_install() {
+function install_plugin() {
     mkdir ~/.vim/autoload
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    check_failure $? "vim-plug"
+    check_download $? "vim-plug"
     ln -s ~/.vim/lin.vim ~/.vimrc
     vim -c "PlugInstall" -c "qall"
 }
 
-function user_custom_install() {
+function install_user_custom() {
     cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
     cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 }
 
-function neovim_config_install() {
+function install_neovim_config() {
     mkdir -p ~/.config
     ln -s ~/.vim ~/.config/nvim
     ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 }
 
-function path_variable_install() {
+function install_path_variable() {
     touch ~/.linvimrc
     touch ~/.zshrc
     echo "#! /usr/bin/env bash" >> ~/.linvimrc
@@ -82,16 +82,6 @@ function path_variable_install() {
     echo "source ~/.linvimrc" >> ~/.zshrc
     source ~/.zshrc 1>/dev/null 2>&1
 }
-
-# function zsh_prezto_install() {
-#     zsh
-#     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-#     setopt EXTENDED_GLOB
-#     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-#     done
-#     chsh -s /bin/zsh
-# }
 
 backup_linvimrc
 
@@ -126,10 +116,9 @@ else
     exit 3
 fi
 
-pip3_install
-gui_fonts_install
-plugin_install
-user_custom_install
-neovim_config_install
-path_variable_install
-# zsh_prezto_install
+install_pip3
+install_gui_fonts
+install_plugin
+install_user_custom
+install_neovim_config
+install_path_variable

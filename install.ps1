@@ -1,4 +1,4 @@
-Function Pip3-Install {
+Function Install-Pip3 {
     pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 }
 
@@ -27,7 +27,7 @@ Function Gui-Fonts-Install {
     }
 }
 
-Function Plugin-Install {
+Function Install-Plugin {
     New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\autoload
     Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:UserProfile\.vim\autoload\plug.vim
     If (Test-Path $env:UserProfile\_vimrc) {
@@ -37,13 +37,13 @@ Function Plugin-Install {
     gvim -c "PlugInstall" -c "qall"
 }
 
-Function User-Custom-Install {
+Function Install-User-Custom {
     Copy-Item $env:UserProfile\.vim\setting-vim\user-template.vim -Destination $env:UserProfile\.vim\user.vim
     Copy-Item $env:UserProfile\.vim\setting-vim\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
 }
 
 
-Function Neovim-Config-Install {
+Function Install-Neovim-Config {
     New-Item -ItemType Directory -Force -Path $env:UserProfile\AppData\Local
     If (Test-Path $env:UserProfile\AppData\Local\nvim) {
         (Get-Item $env:UserProfile\AppData\Local\nvim).Delete()
@@ -56,8 +56,8 @@ Function Neovim-Config-Install {
 }
 
 Write-Host "[lin.vim] Install for Windows"
-Pip3-Install
+Install-Pip3
 # Gui-Fonts-Install
-Plugin-Install
-User-Custom-Install
-Neovim-Config-Install
+Install-Plugin
+Install-User-Custom
+Install-Neovim-Config
