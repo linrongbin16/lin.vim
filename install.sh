@@ -19,7 +19,7 @@ function lin_vim_backup() {
     fi
 }
 
-function lin_vim_gui_fonts() {
+function gui_fonts_install() {
     if [ $(uname) == "Darwin" ]; then
         cd ~/Library/Fonts
     else
@@ -47,11 +47,11 @@ function lin_vim_gui_fonts() {
     fi
 }
 
-function lin_vim_pip3() {
+function pip3_install() {
     sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 }
 
-function lin_vim_plugin() {
+function plugin_install() {
     mkdir ~/.vim/autoload
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     check_fail $? "vim-plug"
@@ -59,18 +59,18 @@ function lin_vim_plugin() {
     vim -c "PlugInstall" -c "qall"
 }
 
-function lin_vim_user_custom() {
+function user_custom_install() {
     cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
     cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 }
 
-function lin_vim_neovim_config() {
+function neovim_config_install() {
     mkdir -p ~/.config
     ln -s ~/.vim ~/.config/nvim
     ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 }
 
-function lin_vim_path_variable() {
+function path_variable_install() {
     touch ~/.linvimrc
     touch ~/.zshrc
     echo "#! /usr/bin/env bash" >> ~/.linvimrc
@@ -83,7 +83,7 @@ function lin_vim_path_variable() {
     source ~/.zshrc 1>/dev/null 2>&1
 }
 
-function lin_vim_zsh_prezto() {
+function zsh_prezto_install() {
     zsh
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
     setopt EXTENDED_GLOB
@@ -123,10 +123,10 @@ else
     exit 3
 fi
 
-lin_vim_pip3
-lin_vim_gui_fonts
-lin_vim_plugin
-lin_vim_user_custom
-lin_vim_neovim_config
-lin_vim_path_variable
-lin_vim_zsh_prezto
+pip3_install
+gui_fonts_install
+plugin_install
+user_custom_install
+neovim_config_install
+path_variable_install
+# zsh_prezto_install

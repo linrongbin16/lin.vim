@@ -111,7 +111,7 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 
 # Installation
 
-### Linux, UNIX, MacOS
+### UNIX, Linux, MacOS
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
