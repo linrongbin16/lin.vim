@@ -1,4 +1,6 @@
 " default extensions
+
+let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-snippets', 'coc-json', 'coc-python', 'coc-clangd', 'coc-cmake', 'coc-css',  'coc-html', 'coc-tsserver', 'coc-eslint', 'coc-sql']
 
 " Don't pass messages to |ins-completion-menu|.
