@@ -105,7 +105,7 @@ if [ $(uname) == "Linux" ]; then
         start_install "CentOS"
         bash ~/.vim/install/centos.sh
     else
-        echo "[lin.vim] OS not supprot, exiting installation!"
+        echo "[lin.vim] OS not support, exiting installation!"
         exit 3
     fi
 elif [ $(uname) == "FreeBSD" ]; then
