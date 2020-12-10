@@ -101,9 +101,6 @@ if [ $(uname) == "Linux" ]; then
     elif cat /etc/*release | grep ^NAME | grep Manjaro 1>/dev/null 2>&1; then
         start_install "Manjaro"
         bash ~/.vim/install/manjaro.sh
-    elif cat /etc/*release | grep ^NAME | grep CentOS 1>/dev/null 2>&1; then
-        start_install "CentOS"
-        bash ~/.vim/install/centos.sh
     else
         echo "[lin.vim] OS not support, exiting installation!"
         exit 3
