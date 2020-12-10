@@ -29,19 +29,19 @@ function install_gui_fonts() {
     FONT_ITALIC="Hack Italic Nerd Font Complete Mono.ttf"
     FONT_BOLD="Hack Bold Nerd Font Complete Mono.ttf"
     FONT_BOLD_ITALIC="Hack Bold Italic Nerd Font Complete Mono.ttf"
-    if [ ! -f $FONT_REGULAR ]; then
+    if [ ! -f "$FONT_REGULAR" ]; then
         curl -fLo $FONT_REGULAR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
         check_download $? $FONT_REGULAR
     fi
-    if [ ! -f $FONT_ITALIC ]; then
+    if [ ! -f "$FONT_ITALIC" ]; then
         curl -fLo $FONRI https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
         check_download $? $FONRI
     fi
-    if [ ! -f $FONT_BOLD ]; then
+    if [ ! -f "$FONT_BOLD" ]; then
         curl -fLo $FONT_BOLD https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
         check_download $? $FONT_BOLD
     fi
-    if [ ! -f $FONT_BOLD_ITALIC ]; then
+    if [ ! -f "$FONT_BOLD_ITALIC" ]; then
         curl -fLo $FONT_BOLD_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
         check_download $? $FONT_BOLD_ITALIC
     fi

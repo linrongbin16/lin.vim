@@ -26,7 +26,6 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # Path
 touch ~/.linvimrc
-touch ~/.zshrc
 echo "#! /usr/bin/env bash" >> ~/.linvimrc
 echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
 echo "defaults write com.apple.finder AppleShowAllFiles TRUE" >> ~/.linvimrc
