@@ -73,6 +73,7 @@ function install_neovim_config() {
 function install_path_variable() {
     touch ~/.linvimrc
     touch ~/.zshrc
+    touch ~/.bashrc
     echo "#! /usr/bin/env bash" >> ~/.linvimrc
     echo "alias l=\"ls -lh\"" >> ~/.linvimrc
     echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
@@ -80,7 +81,9 @@ function install_path_variable() {
     echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
     echo "export PATH=~/.vim/command:\$PATH" >> ~/.linvimrc
     echo "source ~/.linvimrc" >> ~/.zshrc
+    echo "source ~/.linvimrc" >> ~/.bashrc
     source ~/.zshrc 1>/dev/null 2>&1
+    source ~/.bashrc 1>/dev/null 2>&1
 }
 
 backup_linvimrc
