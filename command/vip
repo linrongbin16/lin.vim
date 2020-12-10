@@ -35,7 +35,7 @@ def _help():
 
 
 def _identify_input(ip):
-    return int(ip) if (ip.find(".") < 0 or ip.find(":") < 0) else ip
+    return ip if (ip.find(".") >= 0 or ip.find(":") >= 0) else int(ip)
 
 
 def _validate_ipv4(ipv4):
@@ -76,13 +76,15 @@ def _loopback_ipv4():
 
 def _min_ipv6():
     min_ipv6 = ipaddress.IPv6Address("::0")
-    print("[vcmd] minimum ipv4: '%s' or '%s' (%d)" % (str(min_ipv6), int(min_ipv6)))
+    print(
+        "[vcmd] minimum ipv4: '%s' or '%s' (%d)" % (str(min_ipv6), "::0", int(min_ipv6))
+    )
     exit(0)
 
 
 def _max_ipv6():
     max_ipv6 = ipaddress.IPv6Address("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")
-    print("[vcmd] maximum ipv4: '%s' (%d)" % (str(max_ipv6), int(max_ipv6)))
+    print("[vcmd] maximum ipv6: '%s' (%d)" % (str(max_ipv6), int(max_ipv6)))
     exit(0)
 
 
