@@ -1,8 +1,8 @@
 #! /usr/bin/env zsh
 
 # better ls
-alias l=\"ls -lh\"
-alias ll=\"ls -lah\"
+alias l="ls -lh"
+alias ll="ls -lah"
 
 # coredump
 ulimit -c unlimited
