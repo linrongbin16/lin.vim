@@ -56,26 +56,12 @@ if [ $(uname) == "Darwin" ]; then
     brew cask install font-hack-nerd-font
 else
     mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-    FONT_REGULAR="Hack_Regular_Nerd_Font_Complete_Mono.ttf"
-    FONT_ITALIC="Hack_Italic_Nerd_Font_Complete_Mono.ttf"
-    FONT_BOLD="Hack_Bold_Nerd_Font_Complete_Mono.ttf"
-    FONT_BOLD_ITALIC="Hack_Bold_Italic_Nerd_Font_Complete_Mono.ttf"
-    if [ ! -f "$FONT_REGULAR" ]; then
-        curl -fLo $FONT_REGULAR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_REGULAR
+    if [ -f Hack.zip ]; then
+        rm Hack.zip
     fi
-    if [ ! -f "$FONT_ITALIC" ]; then
-        curl -fLo $FONT_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_ITALIC
-    fi
-    if [ ! -f "$FONT_BOLD" ]; then
-        curl -fLo $FONT_BOLD https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_BOLD
-    fi
-    if [ ! -f "$FONT_BOLD_ITALIC" ]; then
-        curl -fLo $FONT_BOLD_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_BOLD_ITALIC
-    fi
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    check_download $? "Hack Nerd Fonts"
+    unzip Hack.zip
 fi
 
 # install vim-plug
