@@ -33,13 +33,13 @@ encoding:
 
 example:
   $ vfile -d log
-  $ remove => 2020-11-12-23_03_16.log
-  $ remove => 2020-11-12-23_07_30.log
-  $ remove => ./testcases/2020-11-12-23_12_51.log
-  $ remove => ./testcases/2020-11-12-23_30_07.log
+  remove => 2020-11-12-23_03_16.log
+  remove => 2020-11-12-23_07_30.log
+  remove => ./testcases/2020-11-12-23_12_51.log
+  remove => ./testcases/2020-11-12-23_30_07.log
 
   $ vfile -s test.log
-  $ [vcmd]
+  test.log: ascii
 """
     print(msg)
     exit(0)

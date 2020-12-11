@@ -32,7 +32,29 @@ algorithm:
 
 example:
   $ vpack -e Hack.zip
-  $ vpack -c testcases.log
+  Archive:  Hack.zip
+    inflating: Hack Bold Nerd Font Complete Mono.ttf
+    inflating: Hack Bold Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Bold Nerd Font Complete Windows Compatible.ttf
+    inflating: Hack Bold Nerd Font Complete.ttf
+    inflating: Hack Bold Italic Nerd Font Complete Mono.ttf
+    inflating: Hack Bold Italic Nerd Font Complete.ttf
+    inflating: Hack Bold Italic Nerd Font Complete Windows Compatible.ttf
+    inflating: Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Regular Nerd Font Complete.ttf
+    inflating: Hack Regular Nerd Font Complete Windows Compatible.ttf
+    inflating: Hack Regular Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Regular Nerd Font Complete Mono.ttf
+    inflating: Hack Italic Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Italic Nerd Font Complete Mono.ttf
+    inflating: Hack Italic Nerd Font Complete.ttf
+    inflating: Hack Italic Nerd Font Complete Windows Compatible.ttf
+
+  $ vpack -c package
+  a package
+  a package/test.log
+  a package/test3.log
+  a package/test2.log
 """
     print(msg)
     exit(0)

@@ -182,4 +182,217 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 - custom your own settings in **user.vim** and **coc-settings.json**.
 
 ### Command Line Utility
-- try `vcmd` to find more.
+
+- vencode
+
+```
+$ vencode -h
+usage: vencode [option] text
+
+  Encode and decode text with algorithms.
+
+option:
+  -e/--encode [algorithm]       encode text with specified algorithm
+  -d/--decode [algorithm]       decode text with specified algorithm
+
+  -h/--help                     show help message
+
+algorithm:
+  base64                        base64 algorithm
+  url                           url algorithm
+
+example:
+  $ vencode -ebase64 'Hello World'
+  Hello World => SGVsbG8gV29ybGQ=
+```
+
+- vfile
+
+```
+$ vfile -h
+usage: vfile [option] filetype
+
+  File operations recursively in current directory.
+
+option:
+  -d/--delete                           delete files with filetype
+  -r/--replace [old] [new]              replace old text with new text in files with filetype
+  -l/--list                             list files with filetype
+  -c/--convert-encoding [encoding]      convert file encoding from old encoding to new with files with filetype
+  -s/--show-encoding                    show file encoding with files in filetype
+
+  --hidden                              include hidden directories/files (.svn .git etc) for operations above, by default exclude hidden directories/files.
+  -h/--help                             show help message
+
+encoding:
+  GB18030/GB2312/GBK                    Windows chinese encoding
+  UTF-8                                 Unicode UTF-8
+
+
+example:
+  $ vfile -d log
+  remove => 2020-11-12-23_03_16.log
+  remove => 2020-11-12-23_07_30.log
+  remove => ./testcases/2020-11-12-23_12_51.log
+  remove => ./testcases/2020-11-12-23_30_07.log
+
+  $ vfile -s test.log
+  test.log: ascii
+```
+
+- vgen
+
+```
+$ vgen -h
+Generate configurations.
+
+usage:
+    vgen -c/--clangd            generate compile database for clangd.
+                                compile_commands.json is preferred if CMakeLists.txt available on non Windows, otherwise compile_flags.txt.
+    vgen -s/--sshkey <email>    generate sshkey for <email>.
+    vgen -mc/--mirror-china     generate mirror in china for pip, npm and homebrew.
+
+flag:
+    vgen -h/--help      show help message.
+```
+
+- vgit
+
+```
+$ vgit -h
+Git operations.
+
+usage:
+    vgit -ba/--branch-all               show all branches.
+    vgit -bl/--branch-local             show all local branches.
+    vgit -br/--branch-remote            show all remote branches.
+    vgit -bc/--branch-create <branch>   create new local <branch> and move to it.
+    vgit -bm/--branch-move <branch>     move to local existing <branch>.
+    vgit -bd/--branch-delete <branch>   delete local <branch>.
+    vgit [option] -pl/--pull            pull from remote/branch.
+    vgit [option] -ps/--push            push to remote/branch with comment.
+    vgit -ds/--discard                  discard changes.
+    vgit -rb/--rebase [branch]          rebase to remote/[branch], by default current branch.
+    vgit -rv/--revert [N]               revert to last [N] commit (create new commit without push force), by default 1.
+    vgit -rs/--reset [N]                reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
+    vgit -cp/--config-proxy <proxy>     configure <proxy> for git.
+    vgit -pp/--print-proxy              print proxy configuration for git.
+    vgit -ep/--enable-proxy             enable proxy configuration for git.
+    vgit -dp/--disable-proxy            disable proxy configuration for git.
+
+option:
+    -f/--force                          force operation on pull/push, by default False.
+
+flag:
+    vgit -h/--help                      show help message.
+```
+
+- vip
+
+```
+$ vip -h
+IP calculations.
+
+usage:
+    vip -v4/--validate-v4 <ipv4>   validate <ipv4> string.
+    vip -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
+    vip -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
+    vip -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
+    vip -c4/--convert-v4 <ipv4>    convert <ipv4> either from 32-bit unsigned integer to string or opposite direction, eg: '127.0.0.1' (2130706433).
+    vip -v6/--validate-v6 <ipv6>   validate <ipv6> string.
+    vip -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
+    vip -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
+    vip -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
+    vip -c6/--convert-v6 <ipv6>    convert <ipv6> either from 128-bit unsigned integer to string or opposite direction, eg: 'ff00:1820::1' (338953628238285235687019778098925142017).
+
+flag:
+    vip -h/--help                  show help message.
+```
+
+- vpack
+
+```
+$ vpack -h
+usage: vpack [option] filename
+
+  Compression and extraction.
+
+option:
+  -c/--compress [algorithm]         pack directory/file with algorithm, by default generate .tar.gz package
+  -e/--extract                      unpack packaged file with detected algorithm
+
+  -h/--help                         show help message
+
+algorithm:
+  targz                             .tar.gz file
+  tgz                               .tar.gz file
+  tarbz2                            .tar.bz2 file
+  tar                               .tar file
+  zip                               .zip file
+  7z                                .7z file
+
+example:
+  $ vpack -e Hack.zip
+  Archive:  Hack.zip
+    inflating: Hack Bold Nerd Font Complete Mono.ttf
+    inflating: Hack Bold Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Bold Nerd Font Complete Windows Compatible.ttf
+    inflating: Hack Bold Nerd Font Complete.ttf
+    inflating: Hack Bold Italic Nerd Font Complete Mono.ttf
+    inflating: Hack Bold Italic Nerd Font Complete.ttf
+    inflating: Hack Bold Italic Nerd Font Complete Windows Compatible.ttf
+    inflating: Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Regular Nerd Font Complete.ttf
+    inflating: Hack Regular Nerd Font Complete Windows Compatible.ttf
+    inflating: Hack Regular Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Regular Nerd Font Complete Mono.ttf
+    inflating: Hack Italic Nerd Font Complete Mono Windows Compatible.ttf
+    inflating: Hack Italic Nerd Font Complete Mono.ttf
+    inflating: Hack Italic Nerd Font Complete.ttf
+    inflating: Hack Italic Nerd Font Complete Windows Compatible.ttf
+
+  $ vpack -c package
+  a package
+  a package/test.log
+  a package/test3.log
+  a package/test2.log
+```
+
+- vrg
+
+```
+$ vrg -h
+Search current folder by ag/rg.
+
+usage:
+    vrg [option] <text>             search all <text>.
+    vrg [option] -w/--word <word>   search all <word>.
+    vrg [option] -c/--count <text>  search files and occurrences that contains <text>.
+    vrg -a/--add-ignore <filetype>  add <filetype> in searcher ignore configuration.
+
+option:
+    -t/--top-folder                 search top level folder without recursively, by default False.
+    -i/--ignore-case                search ignore case, by default False.
+
+flag:
+    vrg -p/--purge                  purge all filetypes in searcher configuration.
+    vrg -s/--show                   show all filetypes in searcher configuration.
+    vrg -h/--help                   show help message.
+```
+
+- vtime
+
+```
+$ vtime -h
+Datetime calculations.
+
+usage:
+    vtime [option] -d/--datetime [timestamp]    convert [timestamp] from timestamp to datetime string, by default current datetime.
+    vtime [option] -t/--timestamp [datetime]    convert [datetime] from datetime string to timestamp, by default current timestamp.
+
+option:
+    -u/--utc                                    convert with UTC time, by default using system local time.
+
+flag:
+    vtime -h/--help                             show help message.
+```

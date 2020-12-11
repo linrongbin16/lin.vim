@@ -29,7 +29,7 @@ algorithm:
 
 example:
   $ vencode -ebase64 'Hello World'
-  $ Hello World => SGVsbG8gV29ybGQ=
+  Hello World => SGVsbG8gV29ybGQ=
 """
     print(msg)
     exit(0)
