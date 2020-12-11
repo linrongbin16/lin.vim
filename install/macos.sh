@@ -23,14 +23,3 @@ brew install node
 
 # Ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-
-# Path
-touch ~/.linvimrc
-echo "#! /usr/bin/env bash" >> ~/.linvimrc
-echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.linvimrc
-echo "defaults write com.apple.finder AppleShowAllFiles TRUE" >> ~/.linvimrc
-echo "alias vim=/usr/local/bin/vim" >> ~/.linvimrc
-echo "export PATH=/usr/local/opt/llvm/bin:\$PATH" >> ~/.linvimrc
-echo "export PATH=/usr/local/opt/bison/bin:\$PATH" >> ~/.linvimrc
-echo "export PATH=/usr/local/opt/flex/bin:\$PATH" >> ~/.linvimrc
-echo "export PATH=/usr/local/opt/curl/bin:\$PATH" >> ~/.linvimrc

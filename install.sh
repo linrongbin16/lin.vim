@@ -70,20 +70,12 @@ function install_neovim_config() {
     ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 }
 
-function install_path_variable() {
-    touch ~/.linvimrc
+function install_environment() {
+    ln -s ~/.vim/linvimrc.sh ~/.linvimrc
     touch ~/.zshrc
-    touch ~/.bashrc
-    echo "#! /usr/bin/env bash" >> ~/.linvimrc
-    echo "alias l=\"ls -lh\"" >> ~/.linvimrc
-    echo "alias ll=\"ls -lah\"" >> ~/.linvimrc
-    echo "ulimit -c unlimited" >> ~/.linvimrc
-    echo "export LANGUAGE='en_US.UTF-8'" >> ~/.linvimrc
-    echo "export PATH=~/.vim/command:\$PATH" >> ~/.linvimrc
     echo "source ~/.linvimrc" >> ~/.zshrc
-    echo "source ~/.linvimrc" >> ~/.bashrc
+    chsh -s $(which zsh)
     source ~/.zshrc 1>/dev/null 2>&1
-    source ~/.bashrc 1>/dev/null 2>&1
 }
 
 backup_linvimrc
@@ -121,4 +113,4 @@ install_gui_fonts
 install_plugin
 install_user_custom
 install_neovim_config
-install_path_variable
+install_environment

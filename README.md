@@ -51,6 +51,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - Source code and file fuzzy search.
 - Useful command line utilities for: git, text search and encoding/decoding, file operation and compression/extraction, datetime calculation, ip calculation, etc.
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
+- Use [zsh](https://www.zsh.org/) for UNIX/Linux/MacOS with pretty prompt.
 - Custom configuration.
 
 ### Project Structure
