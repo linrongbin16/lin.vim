@@ -10,25 +10,38 @@ import time
 sys.path.append(".")
 import util
 
-help_msg = """File operations in current folder.
-
-usage:
-    vfile [option] -d/--delete <filetype>                           delete all files that has <filetype>.
-    vfile [option] -r/--replace <filetype> <old> <new>              replace <old> with <new> for all files that has <filetype>.
-    vfile [option] -l/--list <filetype>                             list all files that has <filetype>.
-    vfile [option] -ce/--convert-encoding <filetype> <encoding>     convert all files with <filetype> from old encoding to new <encoding>.
-    vfile [option] -pe/--print-encoding <filetype>                  print detected encoding of all files with <filetype>.
-
-option:
-    -i/--include-hidden                                             operations include hidden folder, by default False.
-
-flag:
-    vfile -h/--help                                                 show help message.
-"""
-
 
 def _help():
-    print(help_msg)
+    msg = """usage: vfile [option] filetype
+
+  File operations recursively in current directory.
+
+option:
+  -d/--delete                           delete files with filetype
+  -r/--replace [old] [new]              replace old text with new text in files with filetype
+  -l/--list                             list files with filetype
+  -c/--convert-encoding [encoding]      convert file encoding from old encoding to new with files with filetype
+  -s/--show-encoding                    show file encoding with files in filetype
+
+  --hidden                              include hidden directories/files (.svn .git etc) for operations above, by default exclude hidden directories/files.
+  -h/--help                             show help message
+
+encoding:
+  GB18030/GB2312/GBK                    Windows chinese encoding
+  UTF-8                                 Unicode UTF-8
+
+
+example:
+  $ vfile -d log
+  $ remove => 2020-11-12-23_03_16.log
+  $ remove => 2020-11-12-23_07_30.log
+  $ remove => ./testcases/2020-11-12-23_12_51.log
+  $ remove => ./testcases/2020-11-12-23_30_07.log
+
+  $ vfile -s test.log
+  $ [vcmd]
+"""
+    print(msg)
     exit(0)
 
 
@@ -46,11 +59,9 @@ def _replace(old, new, filetype, include_hidden):
             with open(f, "w") as fp:
                 new_content = content.replace(old, new)
                 fp.write(new_content)
+            print("%s: %s => %s" % (f, old, new))
         except Exception as e:
-            print(
-                "Error! replace <%s> with <%s> in <%s> exception:%s"
-                % (old, new, f, str(e))
-            )
+            print("error: %s: %s => %s failed:%s" % (f, old, new, str(e)))
     exit(0)
 
 
@@ -61,7 +72,7 @@ def _delete(filetype, include_hidden):
     for f in files:
         relname = os.path.relpath(f)
         if relname.endswith(filetype):
-            print("[vcmd] remove %s" % f)
+            print("remove => %s" % f)
             os.remove(f)
     exit(0)
 
@@ -101,10 +112,7 @@ def _convert_encoding(encoding, filetype, include_hidden):
             encoding_name_mapping[detect_encoding.upper()]
             == encoding_name_mapping[encoding.upper()]
         ):
-            print(
-                "[vcmd] '%s' encoding is already <%s>, skip convert"
-                % (f, encoding_name_mapping[encoding.upper()])
-            )
+            print("%s: %s" % (f, encoding_name_mapping[encoding.upper()]))
             continue
         try:
             convert_outs, convert_errs = util.run(
@@ -121,25 +129,27 @@ def _convert_encoding(encoding, filetype, include_hidden):
             new_fp.close()
             os.rename(f, new_filename)
             print(
-                "[vcmd] '%s' encoding convert from <%s> to <%s>"
+                "%s: %s => %s"
                 % (f, detect_encoding, encoding_name_mapping[encoding.upper()])
             )
         except Exception as e:
             print(
-                "[vcmd] '%s' encoding failed to convert from <%s> to <%s>: %s"
+                "error: %s: %s => %s failed:%s"
                 % (f, detect_encoding, encoding_name_mapping[encoding.upper()], str(e))
             )
     exit(0)
 
 
-def _print_encoding(filetype, include_hidden):
+def _show_encoding(filetype, include_hidden):
     root = os.getcwd()
     files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
     filetype = ".%s" % filetype
     for f in files:
+        if not f.endswith(filetype):
+            continue
         detect_outs, detect_errs = util.run("chardetect", f)
         detect_encoding = _get_encoding(detect_outs)
-        print("[vcmd] '%s' encoding with <%s>" % (f, detect_encoding))
+        print("%s: %s" % (f, detect_encoding))
     exit(0)
 
 
@@ -147,39 +157,34 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "d:r:l:c:p:ih",
+            "drlc:sih",
             [
-                "delete=",
-                "replace=",
-                "list=",
+                "delete",
+                "replace",
+                "list",
                 "convert-encoding=",
-                "print-encoding=",
-                "include-hidden",
+                "show-encoding",
+                "hidden",
                 "help",
             ],
         )
         include_hidden = False
         for opt in opts:
-            if opt[0] in ("-i", "--include-hidden"):
+            if opt[0] == "--hidden":
                 include_hidden = True
-                break
+            elif opt[0] in ("-h", "--help"):
+                _help()
         for opt in opts:
             if opt[0] in ("-d", "--delete"):
-                _delete(opt[1], include_hidden)
+                _delete(args[0], include_hidden)
             elif opt[0] in ("-r", "--replace"):
-                _replace(args[0], args[1], opt[1], include_hidden)
+                _replace(args[0], args[1], args[2], include_hidden)
             elif opt[0] in ("-l", "--list"):
-                _list(opt[1], include_hidden)
-            elif opt[0] == "-c":
-                if opt[1] == "e":
-                    _convert_encoding(args[1], args[0], include_hidden)
-            elif opt[0] == "--convert-encoding":
-                _convert_encoding(args[0], opt[1], include_hidden)
-            elif opt[0] == "-p":
-                if opt[1] == "e":
-                    _print_encoding(args[0], include_hidden)
-            elif opt[0] == "--print-encoding":
-                _print_encoding(opt[1], include_hidden)
+                _list(args[0], include_hidden)
+            elif opt[0] in ("-c", "--convert-encoding"):
+                _convert_encoding(opt[1], args[0], include_hidden)
+            elif opt[0] in ("-s", "--show"):
+                _show_encoding(args[0], include_hidden)
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")

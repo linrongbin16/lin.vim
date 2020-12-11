@@ -18,18 +18,14 @@ usage:
 
 compress-option:
     -c/--compress                       compress by tar.gz.
-    -ctg/--compress-targz               compress by tar.gz.
-    -ctb/--compress-tarbz2              compress by tar.bz2.
-    -ct/--compress-tar                  compress by tar.
-    -cz/--compress-zip                  compress by zip.
+    -ctargz/--compress-tar-gz           compress by tar.gz.
+    -ctarbz2/--compress-tar-bz2         compress by tar.bz2.
+    -ctar/--compress-tar                compress by tar.
+    -czip/--compress-zip                compress by zip.
+    -c7z/--compress-7z                  compress by 7z.
 
 extract-option:
     -e/--extract                        extract by detected file type.
-    -etg/--extract-targz                extract by tar.gz.
-    -etb/--extract-tarbz2               extract by tar.bz2.
-    -et/--extract-tar                   extract by tar.
-    -ez/--extract-zip                   extract by zip.
-    -ej/--extract-jar                   extract by java jar.
 
 flag:
     vpack -h/--help                    show help message.
@@ -83,7 +79,16 @@ def _compress(filename, option):
 
 
 def _extract_folder_name(filename):
-    folder_name_list = [".tar.gz", ".tar.bz2", ".tar", ".tgz", ".zip", ".jar", ".war"]
+    folder_name_list = [
+        ".tar.gz",
+        ".tar.bz2",
+        ".tar",
+        ".tgz",
+        ".zip",
+        ".7z",
+        ".jar",
+        ".war",
+    ]
     for f in folder_name_list:
         if filename.endswith(f):
             return filename[: len(f)]
@@ -107,7 +112,12 @@ def _extract_tar(filename):
 
 def _extract_zip(filename):
     os.system('unzip "%s"' % (filename))
-    print("[vcmd] extract '%s' to '%s'" % (filename, _extract_folder_name(filename)))
+    print("[vcmd] extract '%s'" % (filename))
+
+
+def _extract_7z(filename):
+    os.system('7z x "%s"' % (filename))
+    print("[vcmd] extract '%s'" % (filename))
 
 
 def _extract_jar(filename):
@@ -117,16 +127,18 @@ def _extract_jar(filename):
     )
 
 
-def _extract(filename, option):
-    if option == "tar.gz":
+def _extract(filename):
+    if filename.endswith(".tar.gz") or filename.endswith(".tgz"):
         _extract_targz(filename)
-    elif option == "tar.bz2":
+    elif filename.endswith(".tar.bz2"):
         _extract_tarbz2(filename)
-    elif option == "tar":
+    elif filename.endswith(".tar"):
         _extract_tar(filename)
-    elif option == "zip":
+    elif filename.endswith(".zip"):
         _extract_zip(filename)
-    elif option == "jar":
+    elif filename.endswith(".7z"):
+        _extract_7z(filename)
+    elif filename.endswith(".jar"):
         _extract_jar(filename)
     else:
         print("[vcmd] extract option <%s> not support!" % (option))
@@ -140,67 +152,43 @@ if __name__ == "__main__":
             "c:e:h",
             [
                 "compress=",
-                "compress-targz=",
-                "compress-tarbz2=",
+                "compress-tar-gz=",
+                "compress-tar-bz2=",
                 "compress-zip=",
+                "compress-7z=",
                 "extract=",
-                "extract-targz=",
-                "extract-tarbz2=",
-                "extract-zip=",
                 "help",
             ],
         )
         for opt in opts:
             if opt[0] == "-c":
-                if opt[1] == "tg":
+                if opt[1] == "targz":
                     _compress(args[0], "tar.gz")
-                elif opt[1] == "tb":
+                elif opt[1] == "tarbz2":
                     _compress(args[0], "tar.bz2")
-                elif opt[1] == "t":
+                elif opt[1] == "tar":
                     _compress(args[0], "tar")
-                elif opt[1] == "z":
+                elif opt[1] == "zip":
                     _compress(args[0], "zip")
+                elif opt[1] == "7z":
+                    _compress(args[0], "7z")
                 else:
                     _compress(opt[1], "tar.gz")
             elif opt[0] == "--compress":
                 _compress(opt[1], "tar.gz")
-            elif opt[0] == "--compress-targz":
+            elif opt[0] == "--compress-tar-gz":
                 _compress(args[0], "tar.gz")
-            elif opt[0] == "--compress-tarbz2":
+            elif opt[0] == "--compress-tar-bz2":
                 _compress(args[0], "tar.bz2")
             elif opt[0] == "--compress-tar":
                 _compress(args[0], "tar")
             elif opt[0] == "--compress-zip":
                 _compress(args[0], "zip")
-            if opt[0] == "-e":
-                if opt[1] == "tg":
-                    _extract(args[0], "tar.gz")
-                elif opt[1] == "tb":
-                    _extract(args[0], "tar.bz2")
-                elif opt[1] == "t":
-                    _extract(args[0], "tar")
-                elif opt[1] == "z":
-                    _extract(args[0], "zip")
-                elif opt[1] == "j":
-                    _extract(args[0], "jar")
-                else:
-                    _extract(opt[1], "tar.gz")
-            elif opt[0] == "--extract":
-                _extract(opt[1], "tar.gz")
-            elif opt[0] == "--extract-targz":
-                _extract(args[0], "tar.gz")
-            elif opt[0] == "--extract-tarbz2":
-                _extract(args[0], "tar.bz2")
-            elif opt[0] == "--extract-tar":
-                _extract(args[0], "tar")
-            elif opt[0] == "--extract-zip":
-                _extract(args[0], "zip")
-            elif opt[0] == "--extract-jar":
-                _extract(args[0], "jar")
+            if opt[0] in ("-e", "--extract"):
+                _extract(args[0])
         help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
         help()
     except Exception as e:
         print(str(e) + "\n")
-
