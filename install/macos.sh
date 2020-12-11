@@ -4,7 +4,7 @@ brew upgrade
 brew install macvim
 brew install neovim
 brew install zsh
-brew install curl
+brew install curl-openssl
 brew install wget
 brew install llvm
 brew install autoconf
@@ -23,3 +23,5 @@ brew install node
 
 # Ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+export PATH=/usr/local/opt/curl/bin:$PATH
+export PATH=/usr/local/opt/wget/bin:$PATH
