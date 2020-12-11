@@ -10,138 +10,71 @@ import ipaddress
 sys.path.append(".")
 import util
 
-help_msg = """Compress and extract operations.
 
-usage:
-    vpack [compress-option] <filename> compress <filename> to related compressed file, by default tar.gz.
-    vpack [extract-option] <filename>  extract <filename> to related extracted file, by default use detected file type.
+def _help():
+    msg = """usage: vpack [option] filename
 
-compress-option:
-    -c/--compress                       compress by tar.gz.
-    -ctargz/--compress-tar-gz           compress by tar.gz.
-    -ctarbz2/--compress-tar-bz2         compress by tar.bz2.
-    -ctar/--compress-tar                compress by tar.
-    -czip/--compress-zip                compress by zip.
-    -c7z/--compress-7z                  compress by 7z.
+  Compression and extraction.
 
-extract-option:
-    -e/--extract                        extract by detected file type.
+option:
+  -c/--compress [algorithm]         pack directory/file with algorithm, by default generate .tar.gz package
+  -e/--extract                      unpack packaged file with detected algorithm
 
-flag:
-    vpack -h/--help                    show help message.
+  -h/--help                         show help message
+
+algorithm:
+  targz                             .tar.gz file
+  tgz                               .tar.gz file
+  tarbz2                            .tar.bz2 file
+  tar                               .tar file
+  zip                               .zip file
+  7z                                .7z file
+
+example:
+  $ vpack -e Hack.zip
+  $ vpack -c testcases.log
 """
-
-
-def help():
-    print(help_msg)
-
-
-def _compress_targz(filename):
-    tarname = "%s.tar.gz" % filename
-    util.backup_file(tarname)
-    os.system('tar czvf "%s" "%s"' % (tarname, filename))
-    print("[vcmd] compress '%s' to '%s'" % (filename, tarname))
-
-
-def _compress_tarbz2(filename):
-    tarname = "%s.tar.bz2" % filename
-    util.backup_file(tarname)
-    os.system('tar czvf "%s" "%s"' % (tarname, filename))
-    print("[vcmd] compress '%s' to '%s'" % (filename, tarname))
-
-
-def _compress_tar(filename):
-    tarname = "%s.tar" % filename
-    util.backup_file(tarname)
-    os.system('tar cvf "%s" "%s"' % (tarname, filename))
-    print("[vcmd] compress '%s' to '%s'" % (filename, tarname))
-
-
-def _compress_zip(filename):
-    tarname = "%s.zip" % filename
-    util.backup_file(tarname)
-    os.system('zip -r "%s" "%s"' % (tarname, filename))
-    print("[vcmd] compress '%s' to '%s'" % (filename, tarname))
-
-
-def _compress(filename, option):
-    if option == "tar.gz":
-        _compress_targz(filename)
-    elif option == "tar.bz2":
-        _compress_tarbz2(filename)
-    elif option == "tar":
-        _compress_tar(filename)
-    elif option == "zip":
-        _compress_zip(filename)
-    else:
-        print("[vcmd] compress option <%s> not support!" % (option))
+    print(msg)
     exit(0)
 
 
-def _extract_folder_name(filename):
-    folder_name_list = [
-        ".tar.gz",
-        ".tar.bz2",
-        ".tar",
-        ".tgz",
-        ".zip",
-        ".7z",
-        ".jar",
-        ".war",
-    ]
-    for f in folder_name_list:
-        if filename.endswith(f):
-            return filename[: len(f)]
-    raise Exception("file '%s' extract failed! filetype not support!" % filename)
-
-
-def _extract_targz(filename):
-    os.system('tar zxvf "%s"' % (filename))
-    print("[vcmd] extract '%s' to '%s'" % (filename, _extract_folder_name(filename)))
-
-
-def _extract_tarbz2(filename):
-    os.system('tar xvf "%s"' % (filename))
-    print("[vcmd] extract '%s' to '%s'" % (filename, _extract_folder_name(filename)))
-
-
-def _extract_tar(filename):
-    os.system('tar xvf "%s"' % (filename))
-    print("[vcmd] extract '%s' to '%s'" % (filename, _extract_folder_name(filename)))
-
-
-def _extract_zip(filename):
-    os.system('unzip "%s"' % (filename))
-    print("[vcmd] extract '%s'" % (filename))
-
-
-def _extract_7z(filename):
-    os.system('7z x "%s"' % (filename))
-    print("[vcmd] extract '%s'" % (filename))
-
-
-def _extract_jar(filename):
-    os.system('jar xf "%s"' % (filename))
-    print(
-        "[vcmd] java extract '%s' to '%s'" % (filename, _extract_folder_name(filename))
-    )
+def _compress(filename, option):
+    if option == "targz" or option == "tgz":
+        target = "%s.tar.gz" % filename
+        util.backup_file(target)
+        os.system('tar czvf "%s" "%s"' % (target, filename))
+    elif option == "tarbz2":
+        target = "%s.tar.bz2" % filename
+        util.backup_file(target)
+        os.system('tar czvf "%s" "%s"' % (target, filename))
+    elif option == "tar":
+        target = "%s.tar" % filename
+        util.backup_file(target)
+        os.system('tar cvf "%s" "%s"' % (target, filename))
+    elif option == "zip":
+        target = "%s.zip" % filename
+        util.backup_file(target)
+        os.system('zip -r "%s" "%s"' % (target, filename))
+    else:
+        print("error: compress option %s not support" % (option))
+    exit(0)
 
 
 def _extract(filename):
     if filename.endswith(".tar.gz") or filename.endswith(".tgz"):
-        _extract_targz(filename)
+        os.system('tar zxvf "%s"' % (filename))
     elif filename.endswith(".tar.bz2"):
-        _extract_tarbz2(filename)
+        os.system('tar xvf "%s"' % (filename))
     elif filename.endswith(".tar"):
-        _extract_tar(filename)
+        os.system('tar xvf "%s"' % (filename))
     elif filename.endswith(".zip"):
-        _extract_zip(filename)
+        os.system('unzip "%s"' % (filename))
     elif filename.endswith(".7z"):
-        _extract_7z(filename)
+        os.system('7z x "%s"' % (filename))
     elif filename.endswith(".jar"):
-        _extract_jar(filename)
+        os.system('jar xf "%s"' % (filename))
     else:
-        print("[vcmd] extract option <%s> not support!" % (option))
+        print("error: file %s extraction not support" % (filename))
     exit(0)
 
 
@@ -149,46 +82,31 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "c:e:h",
+            "c:eh",
             [
                 "compress=",
-                "compress-tar-gz=",
-                "compress-tar-bz2=",
-                "compress-zip=",
-                "compress-7z=",
                 "extract=",
                 "help",
             ],
         )
         for opt in opts:
-            if opt[0] == "-c":
-                if opt[1] == "targz":
-                    _compress(args[0], "tar.gz")
-                elif opt[1] == "tarbz2":
-                    _compress(args[0], "tar.bz2")
-                elif opt[1] == "tar":
-                    _compress(args[0], "tar")
-                elif opt[1] == "zip":
-                    _compress(args[0], "zip")
-                elif opt[1] == "7z":
-                    _compress(args[0], "7z")
+            if opt[0] in ("-h", "--help"):
+                _help()
+        for opt in opts:
+            if opt[0] in ("-c", "--compress"):
+                algorithm = "targz"
+                filename = None
+                if len(args) > 0:
+                    algorithm = opt[1]
+                    filename = args[0]
                 else:
-                    _compress(opt[1], "tar.gz")
-            elif opt[0] == "--compress":
-                _compress(opt[1], "tar.gz")
-            elif opt[0] == "--compress-tar-gz":
-                _compress(args[0], "tar.gz")
-            elif opt[0] == "--compress-tar-bz2":
-                _compress(args[0], "tar.bz2")
-            elif opt[0] == "--compress-tar":
-                _compress(args[0], "tar")
-            elif opt[0] == "--compress-zip":
-                _compress(args[0], "zip")
-            if opt[0] in ("-e", "--extract"):
+                    filename = opt[1]
+                _compress(filename, algorithm)
+            elif opt[0] in ("-e", "--extract"):
                 _extract(args[0])
-        help()
+        _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
-        help()
+        _help()
     except Exception as e:
         print(str(e) + "\n")

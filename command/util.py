@@ -14,8 +14,10 @@ import subprocess
 def is_windows():
     return platform.system() == "Windows"
 
+
 def is_macos():
     return platform.system() == "Darwin"
+
 
 def is_empty_str(s):
     return True if (s is None) else (len(s.strip()) == 0)
@@ -84,10 +86,7 @@ def get_command_home():
 def backup_file(target):
     if not os.path.exists(target):
         return
-    bakname = ".%s.bak" % (target)
-    check_user_confirm("[vcmd] backup existed '%s' to '%s', yes? " % (target, bakname))
-    if os.path.exists(bakname):
-        os.rmdir(bakname)
+    bakname = "%s.%s" % (target, datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
     os.rename(target, bakname)
 
 
@@ -115,13 +114,6 @@ def run(*cmd):
     outstr = [x.decode() for x in stdout_str if len(x) > 0]
     errstr = [x.decode() for x in stderr_str if len(x) > 0]
     return outstr, errstr
-
-
-def check_user_confirm(msg):
-    yes = input(msg)
-    if not yes.lower().startswith("y"):
-        print("[boostcript] error: user not confirm")
-        exit(3)
 
 
 def get_git_root():
