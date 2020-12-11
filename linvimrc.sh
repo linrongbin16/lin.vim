@@ -37,3 +37,6 @@ fi
 
 PROMPT="${_prompt_color[3]}%n%f@${_prompt_color[2]}%m%f ${_prompt_color[1]}[%D{%Y-%m-%d %H:%M}]%f in ${_prompt_color[5]}%~%f
 $ "
+
+# shell color
+export CLICOLOR=1
