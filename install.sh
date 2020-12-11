@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 function check_download() {
     if [ $1 -ne 0 ]; then
         echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
