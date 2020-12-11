@@ -23,5 +23,3 @@ brew install node
 
 # Ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-export PATH=/usr/local/opt/curl/bin:$PATH
-export PATH=/usr/local/opt/wget/bin:$PATH

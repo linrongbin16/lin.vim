@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 function check_download() {
     if [ $1 -ne 0 ]; then
         echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
@@ -11,74 +13,12 @@ function start_install() {
     sudo echo "[lin.vim] Install for $1" || { echo "[lin.vim] sudo not found"; exit 1; }
 }
 
-function backup_linvimrc() {
-    if [ -f ~/.linvimrc ]; then
-        LINVIMRC_BAK=~/.linvimrc.$(date +%s).bak
-        echo "[lin.vim] back up .linvimrc to $LINVIMRC_BAK"
-        mv ~/.linvimrc $LINVIMRC_BAK
-    fi
-}
-
-function install_gui_fonts() {
-    if [ $(uname) == "Darwin" ]; then
-        cd ~/Library/Fonts
-    else
-        mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-    fi
-    FONT_REGULAR="Hack_Regular_Nerd_Font_Complete_Mono.ttf"
-    FONT_ITALIC="Hack_Italic_Nerd_Font_Complete_Mono.ttf"
-    FONT_BOLD="Hack_Bold_Nerd_Font_Complete_Mono.ttf"
-    FONT_BOLD_ITALIC="Hack_Bold_Italic_Nerd_Font_Complete_Mono.ttf"
-    if [ ! -f "$FONT_REGULAR" ]; then
-        curl -fLo $FONT_REGULAR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_REGULAR
-    fi
-    if [ ! -f "$FONT_ITALIC" ]; then
-        curl -fLo $FONT_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_ITALIC
-    fi
-    if [ ! -f "$FONT_BOLD" ]; then
-        curl -fLo $FONT_BOLD https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_BOLD
-    fi
-    if [ ! -f "$FONT_BOLD_ITALIC" ]; then
-        curl -fLo $FONT_BOLD_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
-        check_download $? $FONT_BOLD_ITALIC
-    fi
-}
-
-function install_pip3() {
-    sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
-}
-
-function install_plugin() {
-    mkdir ~/.vim/autoload
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    check_download $? "vim-plug"
-    ln -s ~/.vim/lin.vim ~/.vimrc
-    vim -c "PlugInstall" -c "qall"
-}
-
-function install_user_custom() {
-    cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
-    cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
-}
-
-function install_neovim_config() {
-    mkdir -p ~/.config
-    ln -s ~/.vim ~/.config/nvim
-    ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
-}
-
-function install_environment() {
-    ln -s ~/.vim/linvimrc.sh ~/.linvimrc
-    touch ~/.zshrc
-    echo "source ~/.linvimrc" >> ~/.zshrc
-    chsh -s $(which zsh)
-    source ~/.zshrc 1>/dev/null 2>&1
-}
-
-backup_linvimrc
+# backup old .linvimrc
+if [ -f ~/.linvimrc ]; then
+    LINVIMRC_BAK=~/.linvimrc.$(date +%s).bak
+    echo "[lin.vim] back up .linvimrc to $LINVIMRC_BAK"
+    mv ~/.linvimrc $LINVIMRC_BAK
+fi
 
 if [ $(uname) == "Linux" ]; then
     if cat /etc/*release | grep ^NAME | grep Ubuntu 1>/dev/null 2>&1; then
@@ -108,9 +48,59 @@ else
     exit 3
 fi
 
-install_pip3
-install_gui_fonts
-install_plugin
-install_user_custom
-install_neovim_config
-install_environment
+# install python3 pip packages
+sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+
+# install hack nerd font
+if [ $(uname) == "Darwin" ]; then
+    cd ~/Library/Fonts
+    brew tap homebrew/cask-fonts
+    brew cask install font-hack-nerd-font
+else
+    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+    FONT_REGULAR="Hack_Regular_Nerd_Font_Complete_Mono.ttf"
+    FONT_ITALIC="Hack_Italic_Nerd_Font_Complete_Mono.ttf"
+    FONT_BOLD="Hack_Bold_Nerd_Font_Complete_Mono.ttf"
+    FONT_BOLD_ITALIC="Hack_Bold_Italic_Nerd_Font_Complete_Mono.ttf"
+    if [ ! -f "$FONT_REGULAR" ]; then
+        curl -fLo $FONT_REGULAR https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf
+        check_download $? $FONT_REGULAR
+    fi
+    if [ ! -f "$FONT_ITALIC" ]; then
+        curl -fLo $FONT_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+        check_download $? $FONT_ITALIC
+    fi
+    if [ ! -f "$FONT_BOLD" ]; then
+        curl -fLo $FONT_BOLD https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+        check_download $? $FONT_BOLD
+    fi
+    if [ ! -f "$FONT_BOLD_ITALIC" ]; then
+        curl -fLo $FONT_BOLD_ITALIC https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+        check_download $? $FONT_BOLD_ITALIC
+    fi
+fi
+
+# install vim-plug
+mkdir ~/.vim/autoload
+# for macOS homebrew curl
+export HOMEBREW_FORCE_BREWED_CURL=1
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+check_download $? "vim-plug"
+ln -s ~/.vim/lin.vim ~/.vimrc
+vim -c "PlugInstall" -c "qall"
+
+# install user custom
+cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
+cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
+
+# install neovim config
+mkdir -p ~/.config
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
+
+# install environment
+cp ~/.vim/linvimrc.sh ~/.linvimrc
+touch ~/.zshrc
+echo "source ~/.linvimrc" >> ~/.zshrc
+chsh -s $(which zsh)
+source ~/.zshrc 1>/dev/null 2>&1
