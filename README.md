@@ -358,26 +358,35 @@ example:
   a package/test2.log
 ```
 
-- vrg
+- vag
 
 ```
-$ vrg -h
-Search current folder by ag/rg.
+$ vag -h
+usage: vag [option] filetype
 
-usage:
-    vrg [option] <text>             search all <text>.
-    vrg [option] -w/--word <word>   search all <word>.
-    vrg [option] -c/--count <text>  search files and occurrences that contains <text>.
-    vrg -a/--add-ignore <filetype>  add <filetype> in searcher ignore configuration.
+  Text search implemented by the silver searcher ag.
 
 option:
-    -t/--top-folder                 search top level folder without recursively, by default False.
-    -i/--ignore-case                search ignore case, by default False.
+  -w/--word                         search word
+  -c/--count                        count text
+  -d/--depth [number]               search depth, search current directory only if 0, by default 25
+  --case-sensitive                  search case sensitively, by default false
 
-flag:
-    vrg -p/--purge                  purge all filetypes in searcher configuration.
-    vrg -s/--show                   show all filetypes in searcher configuration.
-    vrg -h/--help                   show help message.
+  -i/--ignore [filetype]            add filetype to search ignore configuration, the filetype will be ignored in next search
+  -p/--purge                        purge all filetypes in search ignore configurations
+  -s/--show                         show all filetypes in search ignore configurations
+
+  -h/--help                         show help message
+
+example:
+  $ vag Binder
+  $ vag --depth=0 Binder
+  $ vag --depth=0 --case-sensitive Binder
+  $ vag --word Binder
+  $ vag --count Binder
+  $ vag --ignore=svn
+  $ vag --purge
+  $ vag --show
 ```
 
 - vtime

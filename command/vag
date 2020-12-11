@@ -1,0 +1,137 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import getopt
+
+sys.path.append(".")
+import util
+
+SLASH = "\\" if util.is_windows() else "/"
+IGNORE_CONFIG = os.path.expanduser("~") + SLASH + ".ignore"
+
+
+def _help():
+    msg = """usage: vag [option] filetype
+
+  Text search implemented by the silver searcher ag.
+
+option:
+  -w/--word                         search word
+  -c/--count                        count text
+  -d/--depth [number]               search depth, search current directory only if 0, by default 25
+  --case-sensitive                  search case sensitively, by default false
+
+  -i/--ignore [filetype]            add filetype to search ignore configuration, the filetype will be ignored in next search
+  -p/--purge                        purge all filetypes in search ignore configurations
+  -s/--show                         show all filetypes in search ignore configurations
+
+  -h/--help                         show help message
+
+example:
+  $ vag Binder
+  $ vag --depth=0 Binder
+  $ vag --depth=0 --case-sensitive Binder
+  $ vag --word Binder
+  $ vag --count Binder
+  $ vag --ignore=svn
+  $ vag --purge
+  $ vag --show
+"""
+    print(msg)
+    exit(0)
+
+
+def _text(text, depth, sensitive):
+    if sensitive:
+        os.system(
+            "ag --case-sensitive --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text)
+        )
+    else:
+        os.system("ag --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text))
+    exit(0)
+
+
+def _count(text, depth, sensitive):
+    if sensitive:
+        os.system(
+            "ag --case-sensitive -c --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text)
+        )
+    else:
+        os.system("ag -c --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text))
+    exit(0)
+
+
+def _word(word, depth, sensitive):
+    if sensitive:
+        os.system(
+            "ag --case-sensitive -w --depth %d -p %s %s" % (depth, IGNORE_CONFIG, word)
+        )
+    else:
+        os.system("ag -w --depth %d -p %s %s" % (depth, IGNORE_CONFIG, word))
+    exit(0)
+
+
+def _ignore(filetype):
+    if not filetype.startswith("."):
+        filetype = ".%s" % filetype
+    filetype = "%s\n" % filetype.strip()
+    util.append_file(IGNORE_CONFIG, filetype)
+    exit(0)
+
+
+def _purge():
+    util.purge_file(IGNORE_CONFIG)
+    exit(0)
+
+
+def _show():
+    print("~/.ignore:")
+    os.system("cat ~/.ignore")
+    exit(0)
+
+
+if __name__ == "__main__":
+    try:
+        opts, args = getopt.getopt(
+            sys.argv[1:],
+            "wcd:i:psh",
+            [
+                "word",
+                "count",
+                "depth=",
+                "case-sensitive",
+                "ignore=",
+                "purge",
+                "show",
+                "help",
+            ],
+        )
+        depth = 25
+        sensitive = False
+        for opt in opts:
+            if opt[0] in ("-h", "--help"):
+                _help()
+            if opt[0] in ("-d", "--depth"):
+                depth = int(opt[1])
+            if opt[0] in ("--case-sensitive"):
+                sensitive = True
+        for opt in opts:
+            if opt[0] in ("-w", "--word"):
+                _word(args[0], depth, sensitive)
+            elif opt[0] in ("-c", "--count"):
+                _count(args[0], depth, sensitive)
+            elif opt[0] in ("-i", "--ignore"):
+                _ignore(opt[1])
+            elif opt[0] in ("-p", "--purge"):
+                _purge()
+            elif opt[0] in ("-s", "--show"):
+                _show()
+        _text(args[0], depth, sensitive)
+    except getopt.GetoptError as e:
+        print(str(e) + "\n")
+        _help()
+    except Exception as e:
+        print(str(e) + "\n")
