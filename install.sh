@@ -9,7 +9,7 @@ function check_download() {
     fi
 }
 
-function start_install() {
+function check_sudo() {
     sudo echo "[lin.vim] Install for $1" || { echo "[lin.vim] sudo not found"; exit 1; }
 }
 
@@ -22,26 +22,26 @@ fi
 
 if [ $(uname) == "Linux" ]; then
     if cat /etc/*release | grep ^NAME | grep Ubuntu 1>/dev/null 2>&1; then
-        start_install "Ubuntu"
+        check_sudo "Ubuntu"
         bash ~/.vim/install/ubuntu.sh
     elif cat /etc/*release | grep ^NAME | grep Debian 1>/dev/null 2>&1; then
-        start_install "Debian"
+        check_sudo "Debian"
         bash ~/.vim/install/ubuntu.sh
     elif cat /etc/*release | grep ^NAME | grep Fedora 1>/dev/null 2>&1; then
-        start_install "Fedora"
+        check_sudo "Fedora"
         bash ~/.vim/install/fedora.sh
     elif cat /etc/*release | grep ^NAME | grep Manjaro 1>/dev/null 2>&1; then
-        start_install "Manjaro"
+        check_sudo "Manjaro"
         bash ~/.vim/install/manjaro.sh
     else
         echo "[lin.vim] OS not support, exiting installation!"
         exit 3
     fi
 elif [ $(uname) == "FreeBSD" ]; then
-    start_install "FreeBSD"
+    check_sudo "FreeBSD"
     bash ~/.vim/install/bsd.sh
 elif [ $(uname) == "Darwin" ]; then
-    start_install "MacOS"
+    check_sudo "MacOS"
     bash ~/.vim/install/macos.sh
 else
     echo "[lin.vim] Unknown OS $(uname), exiting installation!"
@@ -81,11 +81,9 @@ else
 fi
 
 # install vim-plug
-mkdir ~/.vim/autoload
-# for macOS homebrew curl
-export HOMEBREW_FORCE_BREWED_CURL=1
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-check_download $? "vim-plug"
+if [ -f ~/.vimrc ]; then
+    rm ~/.vimrc
+fi
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
@@ -95,8 +93,15 @@ cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
 
 # install neovim config
 mkdir -p ~/.config
+if [ -d ~/.config/nvim ]; then
+    rm ~/.config/nvim
+fi
 ln -s ~/.vim ~/.config/nvim
+if [ -f ~/.config/nvim/init.vim ]; then
+    rm ~/.config/nvim/init.vim
+fi
 ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
+
 
 # install environment
 cp ~/.vim/linvimrc.sh ~/.linvimrc
