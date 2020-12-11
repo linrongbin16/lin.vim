@@ -10,27 +10,41 @@ import ipaddress
 sys.path.append(".")
 import util
 
-help_msg = """IP calculations.
-
-usage:
-    vip -v4/--validate-v4 <ipv4>   validate <ipv4> string.
-    vip -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
-    vip -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
-    vip -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
-    vip -c4/--convert-v4 <ipv4>    convert <ipv4> either from 32-bit unsigned integer to string or opposite direction, eg: '127.0.0.1' (2130706433).
-    vip -v6/--validate-v6 <ipv6>   validate <ipv6> string.
-    vip -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
-    vip -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
-    vip -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
-    vip -c6/--convert-v6 <ipv6>    convert <ipv6> either from 128-bit unsigned integer to string or opposite direction, eg: 'ff00:1820::1' (338953628238285235687019778098925142017).
-
-flag:
-    vip -h/--help                  show help message.
-"""
-
 
 def _help():
-    print(help_msg)
+    msg = """usage: vip [option] [ipaddress]
+
+  Validate IP address.
+
+option:
+  -v/--validate [mode]                  validate ipaddress, by default validate IPv4 address.
+  --min [mode]                          print minimum ipaddress
+  --max [mode]                          print maximum ipaddress
+  --loopback [mode]                     print loopback ipaddress
+
+  -h/--help                             show help message
+
+mode:
+  v4                                    ipv4
+  v6                                    ipv6
+
+example:
+  $ vip 127.0.0.1
+  127.0.0.1 (2130706433)
+
+  $ vip 2133706831
+  127.45.200.79 (2133706831)
+
+  $ vip -v v6 2133706831
+  127.45.200.79 (2133706831)
+
+  $ vip --max v6
+  ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff (340282366920938463463374607431768211455)
+
+  $ vip.py 289.a.i.1
+  error: invalid IPv4:289.a.i.1
+"""
+    print(msg)
     exit(0)
 
 
@@ -41,18 +55,18 @@ def _identify_input(ip):
 def _validate_ipv4(ipv4):
     try:
         ipaddr = ipaddress.IPv4Address(ipv4)
-        print("[vcmd] ipv4 %s (%d): True" % (str(ipaddr), int(ipaddr)))
+        print("%s (%d)" % (str(ipaddr), int(ipaddr)))
     except Exception:
-        print("[vcmd] ipv4 %s: False" % (ipv4))
+        print("error: invalid IPv4:%s" % (ipv4))
     exit(0)
 
 
 def _validate_ipv6(ipv6):
     try:
         ipaddr = ipaddress.IPv6Address(ipv6)
-        print("[vcmd] ipv6 %s (%d): True" % (str(ipaddr), int(ipaddr)))
+        print("%s (%d)" % (str(ipaddr), int(ipaddr)))
     except Exception:
-        print("[vcmd] ipv6 %s: False" % (ipv6))
+        print("error: invalid IPv6:%s" % (ipv6))
     exit(0)
 
 
@@ -94,83 +108,44 @@ def _loopback_ipv6():
     exit(0)
 
 
-def _ipv4_convert(ipv4):
-    ipaddr = ipaddress.IPv4Address(ipv4)
-    print("[vcmd] %s (%d)" % (str(ipaddr), int(ipaddr)))
-    exit(0)
-
-
-def _ipv6_convert(ipv6):
-    ipaddr = ipaddress.IPv6Address(ipv6)
-    print("[vcmd] %s (%d)" % (str(ipaddr), int(ipaddr)))
-    exit(0)
-
-
 if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "v:n:x:c:h",
+            "h",
             [
-                "validate-v4=",
-                "validate-v6=",
-                "min-v4",
-                "max-v4",
-                "loopback-v4",
-                "min-v6",
-                "max-v6",
-                "loopback-v6",
-                "convert-v4=",
-                "convert-v6=",
+                "min=",
+                "max=",
+                "loopback=",
                 "help",
             ],
         )
         for opt in opts:
-            if opt[0] == "-v":
-                if opt[1] == "4":
+            if opt[0] in ("-h", "--help"):
+                _help()
+        if len(opts) == 0:
+            _validate_ipv4(_identify_input(args[0]))
+        for opt in opts:
+            if opt[0] in ("-v", "--validate"):
+                if opt[1] == "v4":
                     _validate_ipv4(_identify_input(args[0]))
-                elif opt[1] == "6":
+                elif opt[1] == "v6":
                     _validate_ipv6(_identify_input(args[0]))
-            elif opt[0] == "--validate-v4":
-                _validate_ipv4(_identify_input(opt[1]))
-            elif opt[0] == "--validate-v6":
-                _validate_ipv6(_identify_input(opt[1]))
-            elif opt[0] == "-n":
-                if opt[1] == "4":
+            elif opt[0] == "--min":
+                if opt[1] == "v4":
                     _min_ipv4()
-                elif opt[1] == "6":
+                elif opt[1] == "v6":
                     _min_ipv6()
-            elif opt[0] == "--min-v4":
-                _min_ipv4()
-            elif opt[0] == "--min-v6":
-                _min_ipv6()
-            elif opt[0] == "-x":
-                if opt[1] == "4":
+            elif opt[0] == "--min":
+                if opt[1] == "v4":
                     _max_ipv4()
-                elif opt[1] == "6":
+                elif opt[1] == "v6":
                     _max_ipv6()
-            elif opt[0] == "--max-v4":
-                _max_ipv4()
-            elif opt[0] == "--max-v6":
-                _max_ipv6()
-            elif opt[0] == "-l":
-                if opt[1] == "4":
+            elif opt[0] == "--loopback":
+                if opt[1] == "v4":
                     _loopback_ipv4()
-                elif opt[1] == "6":
+                elif opt[1] == "v6":
                     _loopback_ipv6()
-            elif opt[0] == "--loopback-v4":
-                _loopback_ipv4()
-            elif opt[0] == "--loopback-v6":
-                _loopback_ipv6()
-            elif opt[0] == "-c":
-                if opt[1] == "4":
-                    _ipv4_convert(_identify_input(args[0]))
-                elif opt[1] == "6":
-                    _ipv6_convert(_identify_input(args[0]))
-            elif opt[0] == "--convert-v4":
-                _ipv4_convert(_identify_input(opt[1]))
-            elif opt[0] == "--convert-v6":
-                _ipv6_convert(_identify_input(opt[1]))
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
