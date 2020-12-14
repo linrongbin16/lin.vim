@@ -116,6 +116,13 @@ def run(*cmd):
     return outstr, errstr
 
 
+def check_user_confirm(msg):
+    yes = input(msg)
+    if not yes.lower().startswith("y"):
+        print("[boostcript] error: user not confirm")
+        exit(3)
+
+
 def get_git_root():
     root, _ = run("git", "rev-parse", "--show-toplevel")
     return root[0].strip() if (len(root) > 0) else None

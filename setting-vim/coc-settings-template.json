@@ -30,6 +30,5 @@
         "typescript": [
             "javascript"
         ]
-    },
-    "snippets.priority": 9999
+    }
 }
