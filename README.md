@@ -110,8 +110,6 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     * `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
 4. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
 
-### GUI fonts
-
 # User Guide
 
 * 🅽: normal mode
