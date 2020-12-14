@@ -13,9 +13,6 @@ export LANGUAGE='en_US.UTF-8'
 # lin.vim vcmd
 export PATH=~/.vim/command:$PATH
 
-# macOS homebrew curl
-export HOMEBREW_FORCE_BREWED_CURL=1
-
 # prompt color scheme
 if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     _prompt_color=(
