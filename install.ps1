@@ -7,7 +7,7 @@ Function Install-Gui-Fonts {
     New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\guifonts
     Set-Location -Path $env:UserProfile\.vim\guifonts
     Invoke-WebRequest -Uri https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip -OutFile Hack.zip
-    Write-Host "[lin.vim] Warning: GUI font 'Hack.zip' already downloaded at '$env:UserProfile\.vim\guifonts'."
+    Write-Host "[lin.vim] Warning: GUI font 'Hack.zip' downloaded at '$env:UserProfile\.vim\guifonts'."
     Write-Host "[lin.vim] Warning: Please manually install."
 }
 
