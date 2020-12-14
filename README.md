@@ -103,12 +103,12 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     $ cd $env:UserProfile\.vim
     $ .\install.ps1
 ```
-3. Install hack nerd fonts windows compatible downloaded in `$env:UserProfile\.vim\guifonts`:
+3. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
+4. Install hack nerd fonts windows compatible manually downloaded in `$env:UserProfile\.vim\guifonts`:
     * `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
     * `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
     * `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
     * `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
-4. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
 
 # User Guide
 
