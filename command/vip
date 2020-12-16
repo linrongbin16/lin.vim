@@ -148,7 +148,7 @@ if __name__ == "__main__":
                     _loopback_ipv6()
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + "\n")
+        print(e)
         _help()
     except Exception as e:
-        print(str(e) + "\n")
+        print(e)

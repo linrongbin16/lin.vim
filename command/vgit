@@ -291,7 +291,7 @@ if __name__ == "__main__":
                     _disable_proxy()
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + "\n")
+        print(e)
         _help()
     except Exception as e:
-        print(str(e) + "\n")
+        print(e)

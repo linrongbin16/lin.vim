@@ -187,7 +187,7 @@ if __name__ == "__main__":
                 _show_encoding(args[0], include_hidden)
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + "\n")
+        print(e)
         _help()
     except Exception as e:
-        print(str(e) + "\n")
+        print(e)

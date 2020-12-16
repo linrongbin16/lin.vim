@@ -8,22 +8,29 @@ import time
 import datetime
 import getopt
 
-help_msg = """Datetime calculations.
-
-usage:
-    vtime [option] -d/--datetime [timestamp]    convert [timestamp] from timestamp to datetime string, by default current datetime.
-    vtime [option] -t/--timestamp [datetime]    convert [datetime] from datetime string to timestamp, by default current timestamp.
-
-option:
-    -u/--utc                                    convert with UTC time, by default using system local time.
-
-flag:
-    vtime -h/--help                             show help message.
-"""
-
 
 def _help():
-    print(help_msg)
+    msg = """usage: vtime [option] datetime
+
+  Datetime and timestamp conversion.
+
+option:
+  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default timestamp is local system timestamp
+  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default datetime is local system datetime
+
+  -h/--help                             show help message
+
+utc:
+  -u/--utc                              convert with UTC zone, by default false
+
+example:
+  $ vtime -d
+  2020-12-16 17:27:41.872
+
+  $ vtime -t
+  1608110863.764814
+"""
+    print(msg)
     exit(0)
 
 
@@ -34,7 +41,7 @@ def _datetime(ts, utc):
         utc_ts = time.gmtime(time.mktime(dt.timetuple()))
         utc_ts = time.mktime(utc_ts)
         dt = datetime.datetime.fromtimestamp(utc_ts)
-    print("[vcmd] %s" % (dt.strftime("%Y-%m-%d %H:%M:%S.%f")[0:23]))
+    print(dt.strftime("%Y-%m-%d %H:%M:%S.%f")[0:23])
     exit(0)
 
 
@@ -81,7 +88,7 @@ def _parse_datetime(args):
         field[c] = int(payload[pos:])
         c += 1
     if c == 0:
-        raise Exception("[vmcd] invalid input: %s" % (payload))
+        raise Exception("invalid input: %s" % (payload))
     return datetime.datetime(
         field[0], field[1], field[2], field[3], field[4], field[5], field[6]
     )
@@ -89,11 +96,10 @@ def _parse_datetime(args):
 
 def _timestamp(dt, utc):
     if dt.microsecond == 0:
-        print("[vcmd] %s" % (_number_to_string(_datetime_to_ts(dt, utc))))
+        print(_number_to_string(_datetime_to_ts(dt, utc)))
     else:
         print(
-            "[vcmd] %s.%s"
-            % (_number_to_string(_datetime_to_ts(dt, utc)), str(dt.microsecond))
+            "%s.%s" % (_number_to_string(_datetime_to_ts(dt, utc)), str(dt.microsecond))
         )
     exit(0)
 
@@ -105,6 +111,8 @@ if __name__ == "__main__":
         )
         utc = False
         for opt in opts:
+            if opt[0] in ("-h", "--help"):
+                _help()
             if opt[0] in ("-u", "--utc"):
                 utc = True
         for opt in opts:
@@ -120,7 +128,7 @@ if __name__ == "__main__":
                 _timestamp(dt, utc)
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + "\n")
+        print(e)
         _help()
     except Exception as e:
-        print(str(e) + "\n")
+        print(e)

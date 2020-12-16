@@ -223,7 +223,7 @@ if __name__ == "__main__":
                 _mirror(opt[1])
         _help()
     except getopt.GetoptError as e:
-        print(str(e) + "\n")
+        print(e)
         _help()
     except Exception as e:
-        print(str(e) + "\n")
+        print(e)
