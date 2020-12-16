@@ -47,6 +47,23 @@ option:
   -h/--help                 show help message
 
 example:
+  $ vgit --push
+  [vcmd] detected remote repositories: 'origin'[0]
+  [vcmd] choose remote repository 0, by default: 'origin'[0]:
+  [vcmd] choose branch, by default: 'master':
+  [vcmd] enter comment: optimize vgit
+  [vcmd] git push to origin/master with 'optimize vgit', yes? y
+  [master 3666d83] optimize vgit
+   1 file changed, 74 insertions(+), 121 deletions(-)
+  Enumerating objects: 7, done.
+  Counting objects: 100% (7/7), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (4/4), done.
+  Writing objects: 100% (4/4), 1.42 KiB | 1.42 MiB/s, done.
+  Total 4 (delta 3), reused 0 (delta 0)
+  remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+  To https://github.com/linrongbin16/lin.vim
+     31e5da9..3666d83  master -> master
 """
     print(msg)
     exit(0)
@@ -222,9 +239,6 @@ def _disable_proxy():
 
 
 if __name__ == "__main__":
-    #  import pdb
-    #
-    #  pdb.set_trace()
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
@@ -241,7 +255,6 @@ if __name__ == "__main__":
                 "help",
             ],
         )
-        #  print("opts:%s args:%s" % (str(opts), str(args)))
         for opt in opts:
             if opt[0] in ("-h", "--help"):
                 _help()
