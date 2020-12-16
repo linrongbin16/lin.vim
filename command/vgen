@@ -30,6 +30,26 @@ country/region:
 
 example:
   $ vgen -s linrongbin16@outlook.com
+  Generating public/private rsa key pair.
+  Enter file in which to save the key (/Users/linrongbin/.ssh/id_rsa):
+  Enter passphrase (empty for no passphrase):
+  Enter same passphrase again:
+  Your identification has been saved in /Users/linrongbin/.ssh/id_rsa
+  Your public key has been saved in /Users/linrongbin/.ssh/id_rsa.pub
+  The key fingerprint is:
+  SHA256:LiSwQUBzThXXXXXXXXXXXXXXXXXXXXHQxTNow3o61W8 linrongbin16@outlook.com
+  The key's randomart image is:
+  +---[RSA 4096]----+
+  |XXXXXXXXXX       |
+  | XXXXXXXXXX      |
+  |  XXXXXXXXXX     |
+  |   XXXXXXXX      |
+  |  XXXXXXXXX      |
+  |     XXXXXXX     |
+  |      XXXXX      |
+  |       X         |
+  |                 |
+  +----[SHA256]-----+
 """
     print(msg)
     exit(0)
@@ -82,9 +102,9 @@ def windows_sdk_headers():
                 "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"
                 % (release, version)
             )
-            if not os.path.exists(current_version):
-                continue
-            if not os.path.isdir(current_version):
+            if not os.path.exists(current_version) or not os.path.isdir(
+                current_version
+            ):
                 continue
             hds.append(header_path(current_version))
     # -I"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt"
@@ -94,15 +114,19 @@ def windows_sdk_headers():
         current_version = (
             "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (version)
         )
-        if not os.path.exists(current_version):
-            continue
-        if not os.path.isdir(current_version):
+        if not os.path.exists(current_version) or not os.path.isdir(current_version):
             continue
         hds.append(header_path(current_version))
     # C:\\Program Files\\LLVM headers
-    hds.append(header_path("C:\\Program Files\\LLVM\\include\\clang-c"))
-    hds.append(header_path("C:\\Program Files\\LLVM\\include\\llvm"))
-    hds.append(header_path("C:\\Program Files\\LLVM\\include\\llvm-c"))
+    win_clang_list = [
+        "C:\\Program Files\\LLVM\\include\\clang-c",
+        "C:\\Program Files\\LLVM\\include\\llvm",
+        "C:\\Program Files\\LLVM\\include\\llvm-c",
+    ]
+    for hd in win_clang_list:
+        if not os.path.exists(current_version) or not os.path.isdir(current_version):
+            continue
+        hds.append(header_path(hd))
     return hds
 
 
@@ -183,14 +207,10 @@ def _mirror(country):
 
 
 if __name__ == "__main__":
-    import pdb
-
-    pdb.set_trace()
     try:
         opts, args = getopt.getopt(
             sys.argv[1:], "csm:h", ["clangd", "sshkey", "mirror=", "help"]
         )
-        print("opts:%s args:%s" % (str(opts), str(args)))
         for opt in opts:
             if opt[0] in ("-h", "--help"):
                 continue
