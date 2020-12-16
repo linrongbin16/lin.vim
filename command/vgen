@@ -11,21 +11,27 @@ import shutil
 sys.path.append(".")
 import util
 
-help_msg = """Generate configurations.
-
-usage:
-    vgen -c/--clangd            generate compile database for clangd.
-                                compile_commands.json is preferred if CMakeLists.txt available on non Windows, otherwise compile_flags.txt.
-    vgen -s/--sshkey <email>    generate sshkey for <email>.
-    vgen -mc/--mirror-china     generate mirror in china for pip, npm and homebrew.
-
-flag:
-    vgen -h/--help      show help message.
-"""
-
 
 def _help():
-    print(help_msg)
+    msg = """usage: vgen [option]
+
+  Generate common configurations.
+
+option:
+  -c/--clangd                           generate 'compile_commands.json' for clangd
+                                        generate 'compile_flags.txt' otherwise if 'CMakeLists.txt' not available or on Windows Visual Studio toolchain
+  -s/--sshkey [email]                   generate '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub' for [email]
+  -m/--mirror [country/region]          generate mirrors of pip(python), npm(nodejs) and homebrew(macos) for [country/region]
+
+  -h/--help                             show help message
+
+country/region:
+  china
+
+example:
+  $ vgen -s linrongbin16@outlook.com
+"""
+    print(msg)
     exit(0)
 
 
@@ -33,11 +39,11 @@ def is_ascii_char(s):
     return all(ord(c) < 128 for c in s)
 
 
-def path_contain(path, part):
-    for p in part:
-        if p in path:
-            return True
-    return False
+def header_path(s):
+    if util.is_windows():
+        return '-I"%s"' % (s)
+    else:
+        return "-I%s" % (s)
 
 
 def os_listdir_wrapper(d):
@@ -47,116 +53,94 @@ def os_listdir_wrapper(d):
         return []
 
 
-def list_directory(base_dir, depth):
-    num_sep = base_dir.count(os.path.sep)
-    dir_list = []
-    for root, dirs, files in os.walk(base_dir):
-        for d in dirs:
-            fd = os.path.join(root, d)
-            if d.startswith(".") or path_contain(fd, [".git", ".svn", ".hg"]):
-                continue
-            dir_list.append(fd)
-        cur_num_sep = root.count(os.path.sep)
-        if cur_num_sep >= num_sep + depth:
-            del dirs[:]
-    return [d.replace("\\", "/") for d in dir_list]
-
-
-def git_header():
+def git_repo_headers():
     try:
         root, _ = util.run("git", "rev-parse", "--show-toplevel")
-        groot = root[0].strip() if (len(root) > 0) else None
-        git_list = list_directory(groot, 2)
-        # dump_flags(git_list)
-        return (
-            ['-I"%s"' % (x) for x in git_list]
-            if util.is_windows()
-            else ["-I%s" % (x) for x in git_list]
-        )
+        root = root[0].strip()
+        hds = util.list_dirs(root, False, 3)
+        return [header_path(x) for x in hds]
     except:
         return []
 
 
-def windows_header():
-    header = []
+def windows_sdk_headers():
+    hds = []
     # -I"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include"
     for release in os_listdir_wrapper(
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\"
     ):
-        for version in os_listdir_wrapper(
+        current_release = (
             "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\"
             % (release)
-        ):
-            header.append(
-                '-I"C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"'
+        )
+        if not os.path.exists(current_release):
+            continue
+        if not os.path.isdir(current_release):
+            continue
+        for version in os_listdir_wrapper(current_release):
+            current_version = (
+                "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"
                 % (release, version)
             )
+            if not os.path.exists(current_version):
+                continue
+            if not os.path.isdir(current_version):
+                continue
+            hds.append(header_path(current_version))
     # -I"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt"
     for version in os_listdir_wrapper(
         "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"
     ):
-        header.append(
-            '-I"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt"'
-            % (version)
+        current_version = (
+            "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (version)
         )
+        if not os.path.exists(current_version):
+            continue
+        if not os.path.isdir(current_version):
+            continue
+        hds.append(header_path(current_version))
     # C:\\Program Files\\LLVM headers
-    header.append('-I"C:\Program Files\LLVM\include\clang-c"')
-    header.append('-I"C:\Program Files\LLVM\include\llvm"')
-    header.append('-I"C:\Program Files\LLVM\include\llvm-c"')
-    return header
+    hds.append(header_path("C:\\Program Files\\LLVM\\include\\clang-c"))
+    hds.append(header_path("C:\\Program Files\\LLVM\\include\\llvm"))
+    hds.append(header_path("C:\\Program Files\\LLVM\\include\\llvm-c"))
+    return hds
 
 
-def user_header():
-    header = []
-    header.append("-I.")
-    for path in os_listdir_wrapper("."):
-        if " " in path:
-            continue
-        if not is_ascii_char(path):
-            continue
-        if path.startswith("."):
-            continue
-        if not os.path.isdir(path):
-            continue
-        if not path.endswith("include"):
-            continue
-        header.append("-I%s" % path)
-    return header
+def current_headers():
+    hds = []
+    hds.append(header_path("."))
+    for f in util.list_files(".", False, 3):
+        hds.append(header_path(f))
+    return hds
 
 
 def _compile_commands():
-    print("[vcmd] generate compile_commands.json for clangd")
     gen_folder = ".vgen.%s" % (str(time.time()))
     os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
     if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
         raise Exception("%s/compile_commands.json not exist" % (gen_folder))
     shutil.copyfile("%s/compile_commands.json" % (gen_folder), "compile_commands.json")
     shutil.rmtree(gen_folder, ignore_errors=True)
-    print("[vcmd] generate compile_commands.json for clangd - done")
+    print("'compile_commands.json' generated")
 
 
 def _compile_flags():
-    print(
-        "[vcmd] Windows not support CMAKE_EXPORT_COMPILE_COMMANDS or CMakeLists.txt not exist"
-    )
-    print("[vcmd] generate compile_flags.txt for clangd")
     fp = open("compile_flags.txt", "w")
-    uh = user_header()
-    wh = windows_header()
-    gh = git_header()
-    for x in uh:
+    c = current_headers()
+    w = windows_sdk_headers()
+    g = git_repo_headers()
+    for x in c:
         fp.write(x + "\n")
-    for x in wh:
+    for x in w:
         fp.write(x + "\n")
-    for x in gh:
+    for x in g:
         fp.write(x + "\n")
     fp.close()
-    print("[vcmd] generate compile_flags.txt for clangd - done")
+    print("'compile_flags.txt' generated")
 
 
 def _clangd():
-    cmake_lists_txt = "CMakeLists.txt"
-    if util.is_windows():
+    if util.is_windows() or not os.path.exists("CMakeLists.txt"):
         _compile_flags()
     else:
         _compile_commands()
@@ -166,49 +150,57 @@ def _clangd():
 def _sshkey(email):
     os.system("ssh-keygen -t rsa -b 4096 -C '%s'" % email)
     os.system("touch ~/.ssh/authorized_keys")
-    os.system("chmod 700 -R ~/.ssh")
+    os.system("chmod -R 700 ~/.ssh")
     os.system("chmod 600 ~/.ssh/authorized_keys")
     os.system("chmod 600 ~/.ssh/id_rsa")
     os.system("chmod 600 ~/.ssh/id_rsa.pub")
     exit(0)
 
 
-def _mirror_china():
-    if util.is_macos():
-        os.system(
-            'git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git'
-        )
-        os.system(
-            'git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git'
-        )
-        os.system(
-            'git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git'
-        )
-        print("[vcmd] use tsinghua-mirror for homebrew")
-    os.system(
-        "pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple"
-    )
-    print("[vcmd] use tsinghua-mirror for pip3")
-    os.system("npm config set registry https://registry.npm.taobao.org")
-    print("[vcmd] use taobao-mirror for npm")
+def _mirror(country):
+    brew_mirror = {
+        "china": [
+            'git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git',
+            'git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git',
+            'git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git',
+            'git -C "$(brew --repo homebrew/cask-fonts)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git',
+            'git -C "$(brew --repo homebrew/cask-drivers)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git',
+            'git -C "$(brew --repo homebrew/cask-versions)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-versions.git',
+        ],
+    }
+    pip_mirror = {
+        "china": [
+            "pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple",
+        ],
+    }
+    if country in brew_mirror:
+        for cmd in brew_mirror[country]:
+            os.system(cmd)
+    if country in pip_mirror:
+        for cmd in pip_mirror[country]:
+            os.system(cmd)
     exit(0)
 
 
 if __name__ == "__main__":
+    import pdb
+
+    pdb.set_trace()
     try:
         opts, args = getopt.getopt(
-            sys.argv[1:], "csm:h", ["clangd", "sshkey", "mirror-china", "help"]
+            sys.argv[1:], "csm:h", ["clangd", "sshkey", "mirror=", "help"]
         )
+        print("opts:%s args:%s" % (str(opts), str(args)))
+        for opt in opts:
+            if opt[0] in ("-h", "--help"):
+                continue
         for opt in opts:
             if opt[0] in ("-c", "--clangd"):
                 _clangd()
             elif opt[0] in ("-s", "--sshkey"):
                 _sshkey(args[0])
-            elif opt[0] == "-m":
-                if opt[1] == "c":
-                    _mirror_china()
-            elif opt[0] == "--mirror-china":
-                _mirror_china()
+            elif opt[0] in ("-m", "--mirror"):
+                _mirror(opt[1])
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")

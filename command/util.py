@@ -90,18 +90,42 @@ def backup_file(target):
     os.rename(target, bakname)
 
 
-def walk_dir(directory, include_hidden=False):
+def list_files(directory, include_hidden=False, depth=99):
     save_dir = os.getcwd()
     os.chdir(directory)
+    start_dir = os.getcwd()
     file_list = []
-    for root, ds, fs in os.walk(os.getcwd()):
+    for root, ds, fs in os.walk(start_dir):
         if include_hidden is not True:
-            fs[:] = [f for f in fs if not f[0] == "."]
-            ds[:] = [d for d in ds if not d[0] == "."]
+            fs[:] = [f for f in fs if not f.startswith(".")]
+            ds[:] = [d for d in ds if not d.startswith(".")]
+        start_count = start_dir.count("/") + start_dir.count("\\")
+        root_count = root.count("/") + root.count("\\")
+        if root_count - start_count > depth:
+            continue
         file_list.extend([os.path.join(root, f) for f in fs])
     if os.path.exists(save_dir):
         os.chdir(save_dir)
     return file_list
+
+
+def list_dirs(directory, include_hidden=False, depth=99):
+    save_dir = os.getcwd()
+    os.chdir(directory)
+    start_dir = os.getcwd()
+    dir_list = []
+    for root, ds, fs in os.walk(start_dir):
+        if include_hidden is not True:
+            fs[:] = [f for f in fs if not f.startswith(".")]
+            ds[:] = [d for d in ds if not d.startswith(".")]
+        start_count = start_dir.count("/") + start_dir.count("\\")
+        root_count = root.count("/") + root.count("\\")
+        if root_count - start_count > depth:
+            continue
+        dir_list.extend([os.path.join(root, d) for d in ds])
+    if os.path.exists(save_dir):
+        os.chdir(save_dir)
+    return dir_list
 
 
 def run(*cmd):

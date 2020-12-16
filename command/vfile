@@ -47,7 +47,7 @@ example:
 
 def _replace(old, new, filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
     filetype = ".%s" % (filetype)
     for f in files:
         if not f.endswith(filetype):
@@ -67,7 +67,7 @@ def _replace(old, new, filetype, include_hidden):
 
 def _delete(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
     filetype = ".%s" % filetype
     for f in files:
         relname = os.path.relpath(f)
@@ -79,7 +79,7 @@ def _delete(filetype, include_hidden):
 
 def _list(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
     filetype = ".%s" % filetype
     for f in files:
         if f.endswith(filetype):
@@ -101,7 +101,7 @@ def _convert_encoding(encoding, filetype, include_hidden):
         "UTF-8": "UTF-8",
     }
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
     filetype = ".%s" % filetype
     for f in files:
         if not f.endswith(filetype):
@@ -142,7 +142,7 @@ def _convert_encoding(encoding, filetype, include_hidden):
 
 def _show_encoding(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.walk_dir(".", include_hidden)]
+    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
     filetype = ".%s" % filetype
     for f in files:
         if not f.endswith(filetype):
