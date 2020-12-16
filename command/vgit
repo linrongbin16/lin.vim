@@ -13,56 +13,58 @@ import util
 slash = "\\" if util.is_windows() else "/"
 db = util.get_command_home() + slash + "git_proxy.db"
 
-help_msg = """Git operations.
-
-usage:
-    vgit -ba/--branch-all               show all branches.
-    vgit -bl/--branch-local             show all local branches.
-    vgit -br/--branch-remote            show all remote branches.
-    vgit -bc/--branch-create <branch>   create new local <branch> and move to it.
-    vgit -bm/--branch-move <branch>     move to local existing <branch>.
-    vgit -bd/--branch-delete <branch>   delete local <branch>.
-    vgit [option] -pl/--pull            pull from remote/branch.
-    vgit [option] -ps/--push            push to remote/branch with comment.
-    vgit -ds/--discard                  discard changes.
-    vgit -rb/--rebase [branch]          rebase to remote/[branch], by default current branch.
-    vgit -rv/--revert [N]               revert to last [N] commit (create new commit without push force), by default 1.
-    vgit -rs/--reset [N]                reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    vgit -cp/--config-proxy <proxy>     configure <proxy> for git.
-    vgit -pp/--print-proxy              print proxy configuration for git.
-    vgit -ep/--enable-proxy             enable proxy configuration for git.
-    vgit -dp/--disable-proxy            disable proxy configuration for git.
-
-option:
-    -f/--force                          force operation on pull/push, by default False.
-
-flag:
-    vgit -h/--help                      show help message.
-"""
-
 
 def _help():
-    print(help_msg)
+    msg = """usage: vgit [option]
+
+  Git quick operations.
+
+option:
+  -b/--branch [command]     branch operations, the commands are:
+                              a/all             - show all git repository branches, include local and remote
+                              l/local           - show git repository local branches
+                              r/remote          - show git repository remote branches
+                              t/this            - show git repository current branch
+                              c/create [branch] - create new local branch and move to it
+                              m/move [branch]   - move to existing local branch
+                              d/delete [branch] - delete local branch
+
+  --pull [flag]             pull operation
+  --push [flag]             push operation, the flag of both --pull and --push is:
+                              f/force           - pull/push force
+
+  -d/--discard              discard temporary changes
+  --rebase [branch]         rebase to specified remote/branch
+  --revert [n]              revert to last n commit(create new commit without push force), by default 1
+  --reset [n]               reset to last n commit(do not create new commit, have to push force to overwrite remote), by default 1
+
+  -p/--proxy [command]      proxy configuration, the commands are:
+                              c/config [proxy]  - configure proxy for git
+                              s/show            - show git proxy configuration
+                              e/enable          - enable git proxy configuration
+                              d/disable         - disable git proxy configuration
+
+  -h/--help                 show help message
+
+example:
+"""
+    print(msg)
     exit(0)
 
 
 def _branch_show(opt):
     util.check_git_repository()
+    outs = []
     if opt.startswith("a"):
-        outs, errs = util.run("git", "branch", "-a")
-        print("[vcmd] all branch:")
-        for o in outs:
-            print("  %s" % (o.strip()))
+        outs, _ = util.run("git", "branch", "-a")
     elif opt.startswith("l"):
-        outs, errs = util.run("git", "branch")
-        print("[vcmd] local branch:")
-        for o in outs:
-            print("  %s" % (o.strip()))
+        outs, _ = util.run("git", "branch")
     elif opt.startswith("r"):
-        outs, errs = util.run("git", "branch", "-r")
-        print("[vcmd] remote branch:")
-        for o in outs:
-            print("  %s" % (o.strip()))
+        outs, _ = util.run("git", "branch", "-r")
+    elif opt.startswith("t"):
+        outs, _ = util.run("git", "rev-parse", "--abbrev-ref", "HEAD")
+    for o in outs:
+        print(o.strip())
     exit(0)
 
 
@@ -220,109 +222,60 @@ def _disable_proxy():
 
 
 if __name__ == "__main__":
+    #  import pdb
+    #
+    #  pdb.set_trace()
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "fb:r:c:p:d:h",
+            "b:dp:h",
             [
-                "force",
-                "branch-local",
-                "branch-remote",
-                "branch-all",
-                "branch-create=",
-                "branch-move=",
-                "branch-delete=",
+                "branch=",
                 "pull",
                 "push",
                 "discard",
                 "rebase",
                 "revert",
                 "reset",
-                "proxy-config=",
-                "proxy-dump",
-                "proxy-enable",
-                "proxy-disable",
+                "proxy=",
                 "help",
             ],
         )
-        force = False
+        #  print("opts:%s args:%s" % (str(opts), str(args)))
         for opt in opts:
-            if opt[0] in ("-f", "--force"):
-                force = True
-                break
+            if opt[0] in ("-h", "--help"):
+                _help()
         for opt in opts:
-            if opt[0] == "-b":
-                if opt[1] == "a":
-                    _branch_show("a")
-                elif opt[1] == "l":
-                    _branch_show("l")
-                elif opt[1] == "r":
-                    _branch_show("r")
-                elif opt[1] == "c":
+            if opt[0] in ("-b", "--branch"):
+                if opt[1] in ("a", "l", "r", "t", "all", "local", "remote", "this"):
+                    _branch_show(opt[1])
+                elif opt[1] in ("c", "create"):
                     _branch_create(args[0])
-                elif opt[1] == "m":
+                elif opt[1] in ("m", "move"):
                     _branch_move(args[0])
-                elif opt[1] == "d":
+                elif opt[1] in ("d", "delete"):
                     _branch_delete(args[0])
-            elif opt[0] == "--branch-all":
-                _branch_show("a")
-            elif opt[0] == "--branch-local":
-                _branch_show("l")
-            elif opt[0] == "--branch-remote":
-                _branch_show("r")
-            elif opt[0] == "--branch-create":
-                _branch_create(opt[1])
-            elif opt[0] == "--branch-move":
-                _branch_move(opt[1])
-            elif opt[0] == "-p":
-                if opt[1] == "l":
-                    _pull(force)
-                elif opt[1] == "s":
-                    _push(force)
-                elif opt[1] == "p":
-                    _print_proxy()
-            elif opt[0] == "-c":
-                if opt[1] == "p":
-                    _config_proxy(args[0])
-            elif opt[0] == "-e":
-                if opt[1] == "p":
-                    _enable_proxy()
-            elif opt[0] == "-d":
-                if opt[1] == "p":
-                    _disable_proxy()
-                elif opt[1] == "s":
-                    _discard()
             elif opt[0] == "--pull":
-                _pull(force)
+                _pull(len(args) > 1 and args[0] in ("f", "force"))
             elif opt[0] == "--push":
-                _push(force)
-            elif opt[0] == "-r":
-                if opt[1] == "b":
-                    _rebase(n)
-                elif opt[1] == "v":
-                    n = 1 if len(opt) < 3 else int(opt[2])
-                    _revert(n)
-                elif opt[1] == "s":
-                    n = 1 if len(opt) < 3 else int(opt[2])
-                    _reset(n)
-            elif opt[0] == "--rebase":
-                _rebase(opt[1])
-            elif opt[0] == "--revert":
-                n = 1 if len(opt) < 2 else int(opt[1])
-                _revert(n)
-            elif opt[0] == "--reset":
-                n = 1 if len(opt) < 2 else int(opt[1])
-                _reset(n)
-            elif opt[0] == "--config-proxy":
-                _config_proxy(opt[1])
-            elif opt[0] == "--print-proxy":
-                _print_proxy()
-            elif opt[0] == "--enable-proxy":
-                _enable_proxy()
-            elif opt[0] == "--disable-proxy":
-                _disable_proxy()
-            elif opt[0] == "--discard":
+                _push(len(args) > 1 and args[0] in ("f", "force"))
+            elif opt[0] in ("-d", "--discard"):
                 _discard()
+            elif opt[0] in ("--rebase"):
+                _rebase(args[0])
+            elif opt[0] in ("--revert"):
+                _revert(1 if len(args) < 1 else int(args[0]))
+            elif opt[0] in ("--reset"):
+                _reset(1 if len(args) < 1 else int(args[0]))
+            elif opt[0] in ("-p", "--proxy"):
+                if opt[1] in ("c", "config"):
+                    _config_proxy(args[0])
+                elif opt[1] in ("s", "show"):
+                    _print_proxy()
+                elif opt[1] in ("e", "enable"):
+                    _enable_proxy()
+                elif opt[1] in ("d", "disable"):
+                    _disable_proxy()
         _help()
     except getopt.GetoptError as e:
         print(str(e) + "\n")
