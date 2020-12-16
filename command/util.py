@@ -142,7 +142,7 @@ def run(*cmd):
 
 def check_user_confirm(msg):
     yes = input(msg)
-    if not yes.lower().startswith("y"):
+    if yes.lower().startswith("n"):
         print("[boostcript] error: user not confirm")
         exit(3)
 
