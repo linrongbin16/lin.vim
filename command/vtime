@@ -19,7 +19,7 @@ option:
                                 timestamp is local system timestamp
   -t/--timestamp [datetime]     convert datetime string to timestamp, by default
                                 datetime is local system datetime
-  -u/--utc                      convert with UTC zone, by default false
+  -u/--utc                      UTC zone, use with above options, by default false
 
   -h/--help                     show help message
 
