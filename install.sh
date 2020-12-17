@@ -56,9 +56,9 @@ else
     if [ -f Hack.zip ]; then
         rm Hack.zip
     fi
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip -O Hack.zip
     check_download $? "Hack Nerd Fonts"
-    unzip Hack.zip
+    unzip -o Hack.zip
 fi
 
 # install vim-plug
