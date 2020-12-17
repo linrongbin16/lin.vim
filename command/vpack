@@ -17,7 +17,8 @@ def _help():
   Compression and extraction.
 
 option:
-  -c/--compress [algorithm]         pack directory/file with algorithm, by default generate .tar.gz package
+  -c/--compress [algorithm]         pack directory/file with algorithm, by default
+                                    generate .tar.gz package
   -e/--extract                      unpack packaged file with detected algorithm
 
   -h/--help                         show help message

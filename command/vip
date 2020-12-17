@@ -17,7 +17,7 @@ def _help():
   Validate IP address.
 
 option:
-  -v/--validate [mode]                  validate ipaddress, by default validate IPv4 address.
+  -v/--validate [mode]                  validate ipaddress, by default for IPv4 address
   --min [mode]                          print minimum ipaddress
   --max [mode]                          print maximum ipaddress
   --loopback [mode]                     print loopback ipaddress

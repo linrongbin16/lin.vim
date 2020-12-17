@@ -183,26 +183,24 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 
 - vencode
 
-```
-$ vencode -h
-usage: vencode [option] text
+> $ vencode -h
+> usage: vencode [option] text
+> 
+>   Encode and decode text with algorithms.
 
-  Encode and decode text with algorithms.
-
-option:
-  -e/--encode [algorithm]       encode text with specified algorithm
-  -d/--decode [algorithm]       decode text with specified algorithm
-
-  -h/--help                     show help message
-
-algorithm:
-  base64                        base64 algorithm
-  url                           url algorithm
-
-example:
-  $ vencode -ebase64 'Hello World'
-  Hello World => SGVsbG8gV29ybGQ=
-```
+> option:
+>   -e/--encode [algorithm]       encode text with specified algorithm
+>   -d/--decode [algorithm]       decode text with specified algorithm
+> 
+>   -h/--help                     show help message
+> 
+> algorithm:
+>   base64                        base64 algorithm
+>   url                           url algorithm
+> 
+> example:
+>   $ vencode -ebase64 'Hello World'
+>   Hello World => SGVsbG8gV29ybGQ=
 
 - vfile
 

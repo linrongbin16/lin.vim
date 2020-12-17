@@ -21,10 +21,12 @@ def _help():
 option:
   -w/--word                         search word
   -c/--count                        count text
-  -d/--depth [number]               search depth, search current directory only if 0, by default 25
+  -d/--depth [number]               search depth, search current directory only if 0, by
+                                    default 25
   --case-sensitive                  search case sensitively, by default false
 
-  -i/--ignore [filetype]            add filetype to search ignore configuration, the filetype will be ignored in next search
+  -i/--ignore [filetype]            add filetype to search ignore configuration, the
+                                    filetype will be ignored in next search
   -p/--purge                        purge all filetypes in search ignore configurations
   -s/--show                         show all filetypes in search ignore configurations
 

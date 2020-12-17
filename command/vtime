@@ -15,8 +15,10 @@ def _help():
   Datetime and timestamp conversion.
 
 option:
-  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default timestamp is local system timestamp
-  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default datetime is local system datetime
+  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default
+                                        timestamp is local system timestamp
+  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default
+                                        datetime is local system datetime
 
   -h/--help                             show help message
 

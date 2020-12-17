@@ -21,7 +21,8 @@ def _help():
 
 option:
   -b/--branch [command]     branch operations, the commands are:
-                              a/all             - show all git repository branches, include local and remote
+                              a/all             - show all git repository branches,
+                                                  include local and remote
                               l/local           - show git repository local branches
                               r/remote          - show git repository remote branches
                               t/this            - show git repository current branch
@@ -35,8 +36,10 @@ option:
 
   -d/--discard              discard temporary changes
   --rebase [branch]         rebase to specified remote/branch
-  --revert [n]              revert to last n commit(create new commit without push force), by default 1
-  --reset [n]               reset to last n commit(do not create new commit, have to push force to overwrite remote), by default 1
+  --revert [n]              revert to last n commit(create new commit without push force),
+                            by default 1
+  --reset [n]               reset to last n commit(do not create new commit, have to push
+                            force to overwrite remote), by default 1
 
   --proxy [command]         proxy configuration, the commands are:
                               c/config [proxy]  - configure proxy for git

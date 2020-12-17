@@ -19,9 +19,13 @@ def _help():
 
 option:
   -c/--clangd                           generate 'compile_commands.json' for clangd
-                                        generate 'compile_flags.txt' otherwise if 'CMakeLists.txt' not available or on Windows Visual Studio toolchain
-  -s/--sshkey [email]                   generate '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub' for [email]
-  -m/--mirror [country/region]          generate mirrors of pip(python), npm(nodejs) and homebrew(macos) for [country/region]
+                                        generate 'compile_flags.txt' otherwise if
+                                        'CMakeLists.txt' not available or on Windows
+                                        Visual Studio toolchain
+  -s/--sshkey [email]                   generate '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub'
+                                        for email
+  -m/--mirror [country/region]          generate mirrors of pip(python) and
+                                        homebrew(macos) for [country/region]
 
   -h/--help                             show help message
 

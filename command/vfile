@@ -18,12 +18,15 @@ def _help():
 
 option:
   -d/--delete                           delete files with filetype
-  -r/--replace [old] [new]              replace old text with new text in files with filetype
+  -r/--replace [old] [new]              replace old text with new text in files with
+                                        filetype
   -l/--list                             list files with filetype
-  -c/--convert-encoding [encoding]      convert file encoding from old encoding to new with files with filetype
+  -c/--convert-encoding [encoding]      convert file encoding from old encoding to new
+                                        with files with filetype
   -s/--show-encoding                    show file encoding with files in filetype
+  --hidden                              include hidden directories/files (.svn .git etc)
+                                        for operations above, by default exclude hidden directories/files.
 
-  --hidden                              include hidden directories/files (.svn .git etc) for operations above, by default exclude hidden directories/files.
   -h/--help                             show help message
 
 encoding:
