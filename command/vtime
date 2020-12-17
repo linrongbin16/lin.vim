@@ -15,15 +15,13 @@ def _help():
   Datetime and timestamp conversion.
 
 option:
-  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default
-                                        timestamp is local system timestamp
-  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default
-                                        datetime is local system datetime
+  -d/--datetime [timestamp]     convert timestamp to datetime string, by default
+                                timestamp is local system timestamp
+  -t/--timestamp [datetime]     convert datetime string to timestamp, by default
+                                datetime is local system datetime
+  -u/--utc                      convert with UTC zone, by default false
 
-  -h/--help                             show help message
-
-utc:
-  -u/--utc                              convert with UTC zone, by default false
+  -h/--help                     show help message
 
 example:
   $ vtime -d
