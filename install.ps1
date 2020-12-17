@@ -11,8 +11,6 @@ Function Install-Gui-Fonts {
 }
 
 Function Install-Plugin {
-    New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\autoload
-    Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:UserProfile\.vim\autoload\plug.vim
     If (Test-Path $env:UserProfile\_vimrc) {
         (Get-Item $env:UserProfile\_vimrc).Delete()
     }
