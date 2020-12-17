@@ -29,16 +29,16 @@ option:
                               m/move [branch]   - move to existing local branch
                               d/delete [branch] - delete local branch
 
-  --pull [flag]             pull operation
-  --push [flag]             push operation, the flag of both --pull and --push is:
-                              f/force           - pull/push force
+  -pl/--pull                pull operation
+  -ps/--push                push operation
+  -f/--force                force pull/push, use with pull/push
 
   -d/--discard              discard temporary changes
   --rebase [branch]         rebase to specified remote/branch
   --revert [n]              revert to last n commit(create new commit without push force), by default 1
   --reset [n]               reset to last n commit(do not create new commit, have to push force to overwrite remote), by default 1
 
-  -p/--proxy [command]      proxy configuration, the commands are:
+  --proxy [command]         proxy configuration, the commands are:
                               c/config [proxy]  - configure proxy for git
                               s/show            - show git proxy configuration
                               e/enable          - enable git proxy configuration
@@ -47,7 +47,7 @@ option:
   -h/--help                 show help message
 
 example:
-  $ vgit --push
+  $ vgit -ps
   [vcmd] detected remote repositories: 'origin'[0]
   [vcmd] choose remote repository 0, by default: 'origin'[0]:
   [vcmd] choose branch, by default: 'master':
@@ -242,7 +242,7 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "b:dp:h",
+            "b:dp:fh",
             [
                 "branch=",
                 "pull",
@@ -255,9 +255,12 @@ if __name__ == "__main__":
                 "help",
             ],
         )
+        force = False
         for opt in opts:
             if opt[0] in ("-h", "--help"):
                 _help()
+            if opt[0] in ("-f", "--force"):
+                force = True
         for opt in opts:
             if opt[0] in ("-b", "--branch"):
                 if opt[1] in ("a", "l", "r", "t", "all", "local", "remote", "this"):
@@ -268,10 +271,15 @@ if __name__ == "__main__":
                     _branch_move(args[0])
                 elif opt[1] in ("d", "delete"):
                     _branch_delete(args[0])
+            elif opt[0] == "-p":
+                if opt[1] == "l":
+                    _pull(force)
+                elif opt[1] == "s":
+                    _push(force)
             elif opt[0] == "--pull":
-                _pull(len(args) > 1 and args[0] in ("f", "force"))
+                _pull(force)
             elif opt[0] == "--push":
-                _push(len(args) > 1 and args[0] in ("f", "force"))
+                _push(force)
             elif opt[0] in ("-d", "--discard"):
                 _discard()
             elif opt[0] in ("--rebase"):
@@ -280,7 +288,7 @@ if __name__ == "__main__":
                 _revert(1 if len(args) < 1 else int(args[0]))
             elif opt[0] in ("--reset"):
                 _reset(1 if len(args) < 1 else int(args[0]))
-            elif opt[0] in ("-p", "--proxy"):
+            elif opt[0] == "--proxy":
                 if opt[1] in ("c", "config"):
                     _config_proxy(args[0])
                 elif opt[1] in ("s", "show"):
