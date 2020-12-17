@@ -3,7 +3,6 @@ Function Install-Pip3 {
 }
 
 Function Install-Gui-Fonts {
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
     New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\guifonts
     Set-Location -Path $env:UserProfile\.vim\guifonts
     Invoke-WebRequest -Uri https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip -OutFile Hack.zip
