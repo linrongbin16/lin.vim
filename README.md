@@ -242,69 +242,135 @@ example:
 
 ```
 $ vgen -h
-Generate configurations.
+usage: vgen [option]
 
-usage:
-    vgen -c/--clangd            generate compile database for clangd.
-                                compile_commands.json is preferred if CMakeLists.txt available on non Windows, otherwise compile_flags.txt.
-    vgen -s/--sshkey <email>    generate sshkey for <email>.
-    vgen -mc/--mirror-china     generate mirror in china for pip, npm and homebrew.
+  Generate common configurations.
 
-flag:
-    vgen -h/--help      show help message.
+option:
+  -c/--clangd                           generate 'compile_commands.json' for clangd
+                                        generate 'compile_flags.txt' otherwise if 'CMakeLists.txt' not available or on Windows Visual Studio toolchain
+  -s/--sshkey [email]                   generate '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub' for [email]
+  -m/--mirror [country/region]          generate mirrors of pip(python), npm(nodejs) and homebrew(macos) for [country/region]
+
+  -h/--help                             show help message
+
+country/region:
+  china
+
+example:
+  $ vgen -s linrongbin16@outlook.com
+  Generating public/private rsa key pair.
+  Enter file in which to save the key (/Users/linrongbin/.ssh/id_rsa):
+  Enter passphrase (empty for no passphrase):
+  Enter same passphrase again:
+  Your identification has been saved in /Users/linrongbin/.ssh/id_rsa
+  Your public key has been saved in /Users/linrongbin/.ssh/id_rsa.pub
+  The key fingerprint is:
+  SHA256:LiSwQUBzThXXXXXXXXXXXXXXXXXXXXHQxTNow3o61W8 linrongbin16@outlook.com
+  The key's randomart image is:
+  +---[RSA 4096]----+
+  |XXXXXXXXXX       |
+  | XXXXXXXXXX      |
+  |  XXXXXXXXXX     |
+  |   XXXXXXXX      |
+  |  XXXXXXXXX      |
+  |     XXXXXXX     |
+  |      XXXXX      |
+  |       X         |
+  |                 |
+  +----[SHA256]-----+
 ```
 
 - vgit
 
 ```
 $ vgit -h
-Git operations.
+usage: vgit [option]
 
-usage:
-    vgit -ba/--branch-all               show all branches.
-    vgit -bl/--branch-local             show all local branches.
-    vgit -br/--branch-remote            show all remote branches.
-    vgit -bc/--branch-create <branch>   create new local <branch> and move to it.
-    vgit -bm/--branch-move <branch>     move to local existing <branch>.
-    vgit -bd/--branch-delete <branch>   delete local <branch>.
-    vgit [option] -pl/--pull            pull from remote/branch.
-    vgit [option] -ps/--push            push to remote/branch with comment.
-    vgit -ds/--discard                  discard changes.
-    vgit -rb/--rebase [branch]          rebase to remote/[branch], by default current branch.
-    vgit -rv/--revert [N]               revert to last [N] commit (create new commit without push force), by default 1.
-    vgit -rs/--reset [N]                reset to last [N] commit (don't create new commit, need to push force to overwrite remote), by default 1.
-    vgit -cp/--config-proxy <proxy>     configure <proxy> for git.
-    vgit -pp/--print-proxy              print proxy configuration for git.
-    vgit -ep/--enable-proxy             enable proxy configuration for git.
-    vgit -dp/--disable-proxy            disable proxy configuration for git.
+  Git quick operations.
 
 option:
-    -f/--force                          force operation on pull/push, by default False.
+  -b/--branch [command]     branch operations, the commands are:
+                              a/all             - show all git repository branches, include local and remote
+                              l/local           - show git repository local branches
+                              r/remote          - show git repository remote branches
+                              t/this            - show git repository current branch
+                              c/create [branch] - create new local branch and move to it
+                              m/move [branch]   - move to existing local branch
+                              d/delete [branch] - delete local branch
 
-flag:
-    vgit -h/--help                      show help message.
+  -pl/--pull                pull operation
+  -ps/--push                push operation
+  -f/--force                force pull/push, use with pull/push
+
+  -d/--discard              discard temporary changes
+  --rebase [branch]         rebase to specified remote/branch
+  --revert [n]              revert to last n commit(create new commit without push force), by default 1
+  --reset [n]               reset to last n commit(do not create new commit, have to push force to overwrite remote), by default 1
+
+  --proxy [command]         proxy configuration, the commands are:
+                              c/config [proxy]  - configure proxy for git
+                              s/show            - show git proxy configuration
+                              e/enable          - enable git proxy configuration
+                              d/disable         - disable git proxy configuration
+
+  -h/--help                 show help message
+
+example:
+  $ vgit -ps
+  [vcmd] detected remote repositories: 'origin'[0]
+  [vcmd] choose remote repository 0, by default: 'origin'[0]:
+  [vcmd] choose branch, by default: 'master':
+  [vcmd] enter comment: optimize vgit
+  [vcmd] git push to origin/master with 'optimize vgit', yes? y
+  [master 3666d83] optimize vgit
+   1 file changed, 74 insertions(+), 121 deletions(-)
+  Enumerating objects: 7, done.
+  Counting objects: 100% (7/7), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (4/4), done.
+  Writing objects: 100% (4/4), 1.42 KiB | 1.42 MiB/s, done.
+  Total 4 (delta 3), reused 0 (delta 0)
+  remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+  To https://github.com/linrongbin16/lin.vim
+     31e5da9..3666d83  master -> master
 ```
 
 - vip
 
 ```
 $ vip -h
-IP calculations.
+usage: vip [option] [ipaddress]
 
-usage:
-    vip -v4/--validate-v4 <ipv4>   validate <ipv4> string.
-    vip -n4/--min-v4               dump minimum <ipv4> string and 32-bit unsigned integer.
-    vip -x4/--max-v4               dump maximum <ipv4> string and 32-bit unsigned integer.
-    vip -l4/--loopback-v4          dump loopback <ipv4> string and 32-bit unsigned integer.
-    vip -c4/--convert-v4 <ipv4>    convert <ipv4> either from 32-bit unsigned integer to string or opposite direction, eg: '127.0.0.1' (2130706433).
-    vip -v6/--validate-v6 <ipv6>   validate <ipv6> string.
-    vip -n6/--min-v6               dump minimum <ipv6> string and 128-bit unsigned integer.
-    vip -x6/--max-v6               dump maximum <ipv6> string and 128-bit unsigned integer.
-    vip -l6/--loopback-v6          dump loopback <ipv6> string and 128-bit unsigned integer.
-    vip -c6/--convert-v6 <ipv6>    convert <ipv6> either from 128-bit unsigned integer to string or opposite direction, eg: 'ff00:1820::1' (338953628238285235687019778098925142017).
+  Validate IP address.
 
-flag:
-    vip -h/--help                  show help message.
+option:
+  -v/--validate [mode]                  validate ipaddress, by default validate IPv4 address.
+  --min [mode]                          print minimum ipaddress
+  --max [mode]                          print maximum ipaddress
+  --loopback [mode]                     print loopback ipaddress
+
+  -h/--help                             show help message
+
+mode:
+  v4                                    ipv4
+  v6                                    ipv6
+
+example:
+  $ vip 127.0.0.1
+  127.0.0.1 (2130706433)
+
+  $ vip 2133706831
+  127.45.200.79 (2133706831)
+
+  $ vip -v v6 2133706831
+  127.45.200.79 (2133706831)
+
+  $ vip --max v6
+  ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff (340282366920938463463374607431768211455)
+
+  $ vip.py 289.a.i.1
+  error: invalid IPv4:289.a.i.1
 ```
 
 - vpack
@@ -391,15 +457,23 @@ example:
 
 ```
 $ vtime -h
-Datetime calculations.
+usage: vtime [option] datetime
 
-usage:
-    vtime [option] -d/--datetime [timestamp]    convert [timestamp] from timestamp to datetime string, by default current datetime.
-    vtime [option] -t/--timestamp [datetime]    convert [datetime] from datetime string to timestamp, by default current timestamp.
+  Datetime and timestamp conversion.
 
 option:
-    -u/--utc                                    convert with UTC time, by default using system local time.
+  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default timestamp is local system timestamp
+  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default datetime is local system datetime
 
-flag:
-    vtime -h/--help                             show help message.
+  -h/--help                             show help message
+
+utc:
+  -u/--utc                              convert with UTC zone, by default false
+
+example:
+  $ vtime -d
+  2020-12-16 17:27:41.872
+
+  $ vtime -t
+  1608110863.764814
 ```
