@@ -98,7 +98,8 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     * Common Windows Platform Development.
 2. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator):
 ```bash
-    $ choco install git python cmake vim llvm nodejs ag ripgrep universal-ctags
+    $ choco install -y git cmake vim llvm nodejs ag ripgrep universal-ctags
+    $ choco install -y python --version=3.8.0
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
     $ cd $env:UserProfile\.vim
     $ .\install.ps1
