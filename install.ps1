@@ -1,5 +1,5 @@
 Function Install-Pip3 {
-    pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+    pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet jedi neovim
 }
 
 Function Install-Gui-Fonts {

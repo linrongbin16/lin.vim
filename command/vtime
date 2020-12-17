@@ -80,7 +80,7 @@ def _parse_datetime(args):
             pos = None
             continue
         if (pos is not None) and (i - pos > field_max_len[c]):
-            field[c] = int(payload[pos : pos + field_max_len[c]])
+            field[c] = int(payload[pos:pos + field_max_len[c]])
             c += 1
             pos = None
             continue
@@ -89,9 +89,8 @@ def _parse_datetime(args):
         c += 1
     if c == 0:
         raise Exception("invalid input: %s" % (payload))
-    return datetime.datetime(
-        field[0], field[1], field[2], field[3], field[4], field[5], field[6]
-    )
+    return datetime.datetime(field[0], field[1], field[2], field[3], field[4],
+                             field[5], field[6])
 
 
 def _timestamp(dt, utc):
@@ -99,16 +98,15 @@ def _timestamp(dt, utc):
         print(_number_to_string(_datetime_to_ts(dt, utc)))
     else:
         print(
-            "%s.%s" % (_number_to_string(_datetime_to_ts(dt, utc)), str(dt.microsecond))
-        )
+            "%s.%s" %
+            (_number_to_string(_datetime_to_ts(dt, utc)), str(dt.microsecond)))
     exit(0)
 
 
 if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(
-            sys.argv[1:], "dtuh", ["datetime", "timestamp", "utc", "help"]
-        )
+        opts, args = getopt.getopt(sys.argv[1:], "dtuh",
+                                   ["datetime", "timestamp", "utc", "help"])
         utc = False
         for opt in opts:
             if opt[0] in ("-h", "--help"):

@@ -51,7 +51,9 @@ example:
 
 def _replace(old, new, filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.list_files(".", include_hidden)
+    ]
     filetype = ".%s" % (filetype)
     for f in files:
         if not f.endswith(filetype):
@@ -71,7 +73,9 @@ def _replace(old, new, filetype, include_hidden):
 
 def _delete(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.list_files(".", include_hidden)
+    ]
     filetype = ".%s" % filetype
     for f in files:
         relname = os.path.relpath(f)
@@ -83,7 +87,9 @@ def _delete(filetype, include_hidden):
 
 def _list(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.list_files(".", include_hidden)
+    ]
     filetype = ".%s" % filetype
     for f in files:
         if f.endswith(filetype):
@@ -105,17 +111,17 @@ def _convert_encoding(encoding, filetype, include_hidden):
         "UTF-8": "UTF-8",
     }
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.list_files(".", include_hidden)
+    ]
     filetype = ".%s" % filetype
     for f in files:
         if not f.endswith(filetype):
             continue
         detect_outs, detect_errs = util.run("chardetect", f)
         detect_encoding = _get_encoding(detect_outs)
-        if (
-            encoding_name_mapping[detect_encoding.upper()]
-            == encoding_name_mapping[encoding.upper()]
-        ):
+        if (encoding_name_mapping[detect_encoding.upper()] ==
+                encoding_name_mapping[encoding.upper()]):
             print("%s: %s" % (f, encoding_name_mapping[encoding.upper()]))
             continue
         try:
@@ -133,20 +139,20 @@ def _convert_encoding(encoding, filetype, include_hidden):
             new_fp.close()
             os.rename(f, new_filename)
             print(
-                "%s: %s => %s"
-                % (f, detect_encoding, encoding_name_mapping[encoding.upper()])
-            )
+                "%s: %s => %s" %
+                (f, detect_encoding, encoding_name_mapping[encoding.upper()]))
         except Exception as e:
-            print(
-                "error: %s: %s => %s failed:%s"
-                % (f, detect_encoding, encoding_name_mapping[encoding.upper()], str(e))
-            )
+            print("error: %s: %s => %s failed:%s" %
+                  (f, detect_encoding, encoding_name_mapping[encoding.upper()],
+                   str(e)))
     exit(0)
 
 
 def _show_encoding(filetype, include_hidden):
     root = os.getcwd()
-    files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
+    files = [
+        os.path.relpath(f, root) for f in util.list_files(".", include_hidden)
+    ]
     filetype = ".%s" % filetype
     for f in files:
         if not f.endswith(filetype):

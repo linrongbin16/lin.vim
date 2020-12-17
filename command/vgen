@@ -91,12 +91,10 @@ def windows_sdk_headers():
     hds = []
     # -I"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include"
     for release in os_listdir_wrapper(
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\"
-    ):
+            "C:\\Program Files (x86)\\Microsoft Visual Studio\\"):
         current_release = (
             "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\"
-            % (release)
-        )
+            % (release))
         if not os.path.exists(current_release):
             continue
         if not os.path.isdir(current_release):
@@ -104,21 +102,19 @@ def windows_sdk_headers():
         for version in os_listdir_wrapper(current_release):
             current_version = (
                 "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"
-                % (release, version)
-            )
+                % (release, version))
             if not os.path.exists(current_version) or not os.path.isdir(
-                current_version
-            ):
+                    current_version):
                 continue
             hds.append(header_path(current_version))
     # -I"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt"
     for version in os_listdir_wrapper(
-        "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"
-    ):
+            "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"):
         current_version = (
-            "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (version)
-        )
-        if not os.path.exists(current_version) or not os.path.isdir(current_version):
+            "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" %
+            (version))
+        if not os.path.exists(current_version) or not os.path.isdir(
+                current_version):
             continue
         hds.append(header_path(current_version))
     # C:\\Program Files\\LLVM headers
@@ -128,7 +124,8 @@ def windows_sdk_headers():
         "C:\\Program Files\\LLVM\\include\\llvm-c",
     ]
     for hd in win_clang_list:
-        if not os.path.exists(current_version) or not os.path.isdir(current_version):
+        if not os.path.exists(current_version) or not os.path.isdir(
+                current_version):
             continue
         hds.append(header_path(hd))
     return hds
@@ -144,10 +141,12 @@ def current_headers():
 
 def _compile_commands():
     gen_folder = ".vgen.%s" % (str(time.time()))
-    os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
+    os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." %
+              (gen_folder))
     if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
         raise Exception("%s/compile_commands.json not exist" % (gen_folder))
-    shutil.copyfile("%s/compile_commands.json" % (gen_folder), "compile_commands.json")
+    shutil.copyfile("%s/compile_commands.json" % (gen_folder),
+                    "compile_commands.json")
     shutil.rmtree(gen_folder, ignore_errors=True)
     print("'compile_commands.json' generated")
 
@@ -212,9 +211,8 @@ def _mirror(country):
 
 if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(
-            sys.argv[1:], "csm:h", ["clangd", "sshkey", "mirror=", "help"]
-        )
+        opts, args = getopt.getopt(sys.argv[1:], "csm:h",
+                                   ["clangd", "sshkey", "mirror=", "help"])
         for opt in opts:
             if opt[0] in ("-h", "--help"):
                 continue
