@@ -47,7 +47,7 @@ else
 fi
 
 # install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet jedi neovim
+sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # install hack nerd font
 if [ $(uname) == "Darwin" ]; then

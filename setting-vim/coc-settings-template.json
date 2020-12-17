@@ -10,7 +10,7 @@
         "xml",
         "html"
     ],
-    "python.formatting.provider": "yapf",
+    "python.formatting.provider": "black",
     "python.pythonPath": "python3",
     "snippets.extends": {
         "l": [

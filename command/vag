@@ -48,8 +48,9 @@ example:
 
 def _text(text, depth, sensitive):
     if sensitive:
-        os.system("ag --case-sensitive --depth %d -p %s %s" %
-                  (depth, IGNORE_CONFIG, text))
+        os.system(
+            "ag --case-sensitive --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text)
+        )
     else:
         os.system("ag --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text))
     exit(0)
@@ -57,8 +58,9 @@ def _text(text, depth, sensitive):
 
 def _count(text, depth, sensitive):
     if sensitive:
-        os.system("ag --case-sensitive -c --depth %d -p %s %s" %
-                  (depth, IGNORE_CONFIG, text))
+        os.system(
+            "ag --case-sensitive -c --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text)
+        )
     else:
         os.system("ag -c --depth %d -p %s %s" % (depth, IGNORE_CONFIG, text))
     exit(0)
@@ -66,8 +68,9 @@ def _count(text, depth, sensitive):
 
 def _word(word, depth, sensitive):
     if sensitive:
-        os.system("ag --case-sensitive -w --depth %d -p %s %s" %
-                  (depth, IGNORE_CONFIG, word))
+        os.system(
+            "ag --case-sensitive -w --depth %d -p %s %s" % (depth, IGNORE_CONFIG, word)
+        )
     else:
         os.system("ag -w --depth %d -p %s %s" % (depth, IGNORE_CONFIG, word))
     exit(0)

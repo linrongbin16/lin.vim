@@ -76,16 +76,17 @@ def purge_file(name):
 
 
 def get_command_home():
-    return (os.path.expanduser("~") +
-            "\\.vim\\command" if is_windows() else os.path.expanduser("~") +
-            "/.vim/command")
+    return (
+        os.path.expanduser("~") + "\\.vim\\command"
+        if is_windows()
+        else os.path.expanduser("~") + "/.vim/command"
+    )
 
 
 def backup_file(target):
     if not os.path.exists(target):
         return
-    bakname = "%s.%s" % (target,
-                         datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
+    bakname = "%s.%s" % (target, datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
     os.rename(target, bakname)
 
 
@@ -129,9 +130,7 @@ def list_dirs(directory, include_hidden=False, depth=99):
 
 def run(*cmd):
     try:
-        proc = subprocess.Popen(cmd,
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout_str = iter(proc.stdout.readline, b"")
         stderr_str = iter(proc.stderr.readline, b"")
     except subprocess.CalledProcessError:
@@ -184,17 +183,17 @@ def get_git_remote_repository():
     repos = [x.strip() for x in repos]
     if len(repos) <= 0:
         return None
-    repo_str = ", ".join(
-        ["'%s'[%d]" % (repos[i], i) for i in range(len(repos))])
+    repo_str = ", ".join(["'%s'[%d]" % (repos[i], i) for i in range(len(repos))])
     print("[vcmd] detected remote repositories: %s" % (repo_str))
     if len(repos) <= 1:
         user_input = input(
-            "[vcmd] choose remote repository 0, by default: '%s'[0]: " %
-            (repos[0]))
+            "[vcmd] choose remote repository 0, by default: '%s'[0]: " % (repos[0])
+        )
     else:
         user_input = input(
-            "[vcmd] choose remote repository 0-%d, by default: '%s'[0]: " %
-            (len(repos) - 1, repos[0]))
+            "[vcmd] choose remote repository 0-%d, by default: '%s'[0]: "
+            % (len(repos) - 1, repos[0])
+        )
     if is_empty_str(user_input):
         repo_str = list(repos)[0]
     else:

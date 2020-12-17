@@ -129,11 +129,15 @@ def _push(force):
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
     comment = input("[vcmd] enter comment: ")
-    comment = ("[vcmd] git push at %s" %
-               (datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
-               if util.is_empty_str(comment) else comment)
-    util.check_user_confirm("[vcmd] git push to %s/%s with '%s', yes? " %
-                            (repo, branch, comment))
+    comment = (
+        "[vcmd] git push at %s"
+        % (datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+        if util.is_empty_str(comment)
+        else comment
+    )
+    util.check_user_confirm(
+        "[vcmd] git push to %s/%s with '%s', yes? " % (repo, branch, comment)
+    )
     os.chdir(util.get_git_root())
     os.system("git add -A .")
     os.system('git commit -m "%s"' % (comment))
@@ -171,8 +175,9 @@ def _revert(n):
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
     util.check_user_confirm(
-        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? " %
-        (n, commit, branch))
+        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? "
+        % (n, commit, branch)
+    )
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
     os.system("git revert %s" % commit)
@@ -186,8 +191,9 @@ def _reset(n):
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
     util.check_user_confirm(
-        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? " %
-        (n, commit, branch))
+        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? "
+        % (n, commit, branch)
+    )
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
     os.system("git reset HEAD~%d" % n)
@@ -220,8 +226,7 @@ def _print_proxy():
 def _enable_proxy():
     proxy = util.read_file(db)
     if proxy is None:
-        print(
-            "[vcmd] git proxy not configured yet, please try 'git -p <proxy>'")
+        print("[vcmd] git proxy not configured yet, please try 'git -p <proxy>'")
         exit(0)
     httpcmd = "git config --global http.proxy %s" % proxy
     httpscmd = "git config --global https.proxy %s" % proxy
@@ -261,8 +266,7 @@ if __name__ == "__main__":
                 force = True
         for opt in opts:
             if opt[0] in ("-b", "--branch"):
-                if opt[1] in ("a", "l", "r", "t", "all", "local", "remote",
-                              "this"):
+                if opt[1] in ("a", "l", "r", "t", "all", "local", "remote", "this"):
                     _branch_show(opt[1])
                 elif opt[1] in ("c", "create"):
                     _branch_create(args[0])
