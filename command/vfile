@@ -25,7 +25,8 @@ option:
                                         with files with filetype
   -s/--show-encoding                    show file encoding with files in filetype
   --hidden                              include hidden directories/files (.svn .git etc)
-                                        for operations above, by default exclude hidden directories/files.
+                                        for operations above, by default exclude hidden
+                                        directories/files.
 
   -h/--help                             show help message
 

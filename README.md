@@ -183,24 +183,26 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 
 - vencode
 
-> $ vencode -h
-> usage: vencode [option] text
-> 
->   Encode and decode text with algorithms.
+```
+$ vencode -h
+usage: vencode [option] text
 
-> option:
->   -e/--encode [algorithm]       encode text with specified algorithm
->   -d/--decode [algorithm]       decode text with specified algorithm
-> 
->   -h/--help                     show help message
-> 
-> algorithm:
->   base64                        base64 algorithm
->   url                           url algorithm
-> 
-> example:
->   $ vencode -ebase64 'Hello World'
->   Hello World => SGVsbG8gV29ybGQ=
+  Encode and decode text with algorithms.
+
+option:
+  -e/--encode [algorithm]       encode text with specified algorithm
+  -d/--decode [algorithm]       decode text with specified algorithm
+
+  -h/--help                     show help message
+
+algorithm:
+  base64                        base64 algorithm
+  url                           url algorithm
+
+example:
+  $ vencode -ebase64 'Hello World'
+  Hello World => SGVsbG8gV29ybGQ=
+```
 
 - vfile
 
@@ -212,12 +214,16 @@ usage: vfile [option] filetype
 
 option:
   -d/--delete                           delete files with filetype
-  -r/--replace [old] [new]              replace old text with new text in files with filetype
+  -r/--replace [old] [new]              replace old text with new text in files with
+                                        filetype
   -l/--list                             list files with filetype
-  -c/--convert-encoding [encoding]      convert file encoding from old encoding to new with files with filetype
+  -c/--convert-encoding [encoding]      convert file encoding from old encoding to new
+                                        with files with filetype
   -s/--show-encoding                    show file encoding with files in filetype
+  --hidden                              include hidden directories/files (.svn .git etc)
+                                        for operations above, by default exclude hidden
+                                        directories/files.
 
-  --hidden                              include hidden directories/files (.svn .git etc) for operations above, by default exclude hidden directories/files.
   -h/--help                             show help message
 
 encoding:
@@ -246,9 +252,13 @@ usage: vgen [option]
 
 option:
   -c/--clangd                           generate 'compile_commands.json' for clangd
-                                        generate 'compile_flags.txt' otherwise if 'CMakeLists.txt' not available or on Windows Visual Studio toolchain
-  -s/--sshkey [email]                   generate '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub' for [email]
-  -m/--mirror [country/region]          generate mirrors of pip(python), npm(nodejs) and homebrew(macos) for [country/region]
+                                        generate 'compile_flags.txt' otherwise if
+                                        'CMakeLists.txt' not available or on Windows
+                                        Visual Studio toolchain
+  -s/--sshkey [email]                   generate '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub'
+                                        for email
+  -m/--mirror [country/region]          generate mirrors of pip(python) and
+                                        homebrew(macos) for country/region
 
   -h/--help                             show help message
 
@@ -289,7 +299,8 @@ usage: vgit [option]
 
 option:
   -b/--branch [command]     branch operations, the commands are:
-                              a/all             - show all git repository branches, include local and remote
+                              a/all             - show all git repository branches,
+                                                  include local and remote
                               l/local           - show git repository local branches
                               r/remote          - show git repository remote branches
                               t/this            - show git repository current branch
@@ -303,8 +314,10 @@ option:
 
   -d/--discard              discard temporary changes
   --rebase [branch]         rebase to specified remote/branch
-  --revert [n]              revert to last n commit(create new commit without push force), by default 1
-  --reset [n]               reset to last n commit(do not create new commit, have to push force to overwrite remote), by default 1
+  --revert [n]              revert to last n commit(create new commit without push force),
+                            by default 1
+  --reset [n]               reset to last n commit(do not create new commit, have to push
+                            force to overwrite remote), by default 1
 
   --proxy [command]         proxy configuration, the commands are:
                               c/config [proxy]  - configure proxy for git
@@ -343,7 +356,7 @@ usage: vip [option] [ipaddress]
   Validate IP address.
 
 option:
-  -v/--validate [mode]                  validate ipaddress, by default validate IPv4 address.
+  -v/--validate [mode]                  validate ipaddress, by default for IPv4 address
   --min [mode]                          print minimum ipaddress
   --max [mode]                          print maximum ipaddress
   --loopback [mode]                     print loopback ipaddress
@@ -380,7 +393,8 @@ usage: vpack [option] filename
   Compression and extraction.
 
 option:
-  -c/--compress [algorithm]         pack directory/file with algorithm, by default generate .tar.gz package
+  -c/--compress [algorithm]         pack directory/file with algorithm, by default
+                                    generate .tar.gz package
   -e/--extract                      unpack packaged file with detected algorithm
 
   -h/--help                         show help message
@@ -431,10 +445,12 @@ usage: vag [option] filetype
 option:
   -w/--word                         search word
   -c/--count                        count text
-  -d/--depth [number]               search depth, search current directory only if 0, by default 25
+  -d/--depth [number]               search depth, search current directory only if 0, by
+                                    default 25
   --case-sensitive                  search case sensitively, by default false
 
-  -i/--ignore [filetype]            add filetype to search ignore configuration, the filetype will be ignored in next search
+  -i/--ignore [filetype]            add filetype to search ignore configuration, the
+                                    filetype will be ignored in next search
   -p/--purge                        purge all filetypes in search ignore configurations
   -s/--show                         show all filetypes in search ignore configurations
 
@@ -460,8 +476,10 @@ usage: vtime [option] datetime
   Datetime and timestamp conversion.
 
 option:
-  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default timestamp is local system timestamp
-  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default datetime is local system datetime
+  [utc] -d/--datetime [timestamp]       convert timestamp to datetime string, by default
+                                        timestamp is local system timestamp
+  [utc] -t/--timestamp [datetime]       convert datetime string to timestamp, by default
+                                        datetime is local system datetime
 
   -h/--help                             show help message
 
