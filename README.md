@@ -105,7 +105,8 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     $ .\install.ps1
 ```
 3. Add third party dependencies in `$env:Path`, add `$env:UserProfile\.vim\command` to `$env:Path`.
-4. Install hack nerd fonts windows compatible manually downloaded in `$env:UserProfile\.vim\guifonts`:
+4. Additionally copy a duplicated executable file `python3.exe` from `python.exe` for explicitly different from python2.
+5. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
     * `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
     * `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
     * `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
