@@ -34,6 +34,7 @@ sudo dnf install -y libseccomp-devel
 sudo dnf install -y jansson-devel
 sudo dnf install -y libyaml-devel
 sudo dnf install -y libxml2-devel
+sudo dnf install -y util-linux-user # for chsh
 
 # Ctags
 sudo dnf remove -y ctags
