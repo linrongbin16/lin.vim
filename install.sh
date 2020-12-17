@@ -22,9 +22,6 @@ if [ $(uname) == "Linux" ]; then
     if cat /etc/*release | grep ^NAME | grep Ubuntu 1>/dev/null 2>&1; then
         check_sudo "Ubuntu"
         bash ~/.vim/install/ubuntu.sh
-    elif cat /etc/*release | grep ^NAME | grep Debian 1>/dev/null 2>&1; then
-        check_sudo "Debian"
-        bash ~/.vim/install/ubuntu.sh
     elif cat /etc/*release | grep ^NAME | grep Fedora 1>/dev/null 2>&1; then
         check_sudo "Fedora"
         bash ~/.vim/install/fedora.sh
