@@ -143,7 +143,7 @@ def run(*cmd):
 def check_user_confirm(msg):
     yes = input(msg)
     if yes.lower().startswith("n"):
-        print("[vcmd] error: user not confirm")
+        print("[vcmd] user not confirm")
         exit(3)
 
 
@@ -183,33 +183,26 @@ def get_git_remote_repository():
     repos = [x.strip() for x in repos]
     if len(repos) <= 0:
         return None
-    repo_str = ", ".join(["'%s'[%d]" % (repos[i], i) for i in range(len(repos))])
-    print("[vcmd] detected remote repositories: %s" % (repo_str))
-    if len(repos) <= 1:
-        user_input = input(
-            "[vcmd] choose remote repository 0, by default: '%s'[0]: " % (repos[0])
-        )
-    else:
-        user_input = input(
-            "[vcmd] choose remote repository 0-%d, by default: '%s'[0]: "
-            % (len(repos) - 1, repos[0])
-        )
+    repos_str = ", ".join(["'%s'[%d]" % (repos[i], i) for i in range(len(repos))])
+    user_input = input(
+        "[vcmd] choose remote repository %s (by default 0): " % (repos_str)
+    )
     if is_empty_str(user_input):
-        repo_str = list(repos)[0]
+        repos_str = list(repos)[0]
     else:
         try:
-            repo_str = repos[int(user_input)]
+            repos_str = repos[int(user_input)]
         except Exception:
-            print("[vcmd] error input: %s" % (user_input))
+            print("[vcmd] error input:%s" % (user_input))
             exit(3)
-    return repo_str
+    return repos_str
 
 
 def get_git_remote_branch():
     branches, _ = run("git", "status")
     branches = [x.strip() for x in branches]
     branch = branches[0].split(" ")[2].strip()
-    user_input = input("[vcmd] choose branch, by default: '%s': " % (branch))
+    user_input = input("[vcmd] choose branch (by default %s): " % (branch))
     return branch if is_empty_str(user_input) else user_input
 
 
