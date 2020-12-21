@@ -8,7 +8,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     * [Screenshots](#screenshots)
     * [Feature](#feature)
     * [Project Structure](#project-structure)
-    * [Installation](#installation)
+* [Installation](#installation)
     * [UNIX, Linux, MacOS](#unix-linux-macos)
     * [Windows](#windows)
 * [User Guide](#user-guide)
