@@ -1,8 +1,11 @@
-" key operations
-" switch between C/C++ header source
-map <F1> :CocCommand clangd.switchSourceHeader<CR>
+" custom configurations
+
+" 1. Hot key
+
 " format current file
-map <F2> :call CocAction('format')<CR>
+map <F3> :call CocAction('format')<CR>
+" switch between C/C++ header source
+map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close nerdtree file explorer
 map <F5> :NERDTreeToggle<CR>
 " open/close tagbar
@@ -12,13 +15,17 @@ map <F9> :call NextColor()<CR>
 " open terminal
 map <F10> :terminal ++rows=20<CR>
 
-" command operations
+
+" 2. Enhanced copy paste
+
 " copy visual selection to disk cache
 vnoremap <Leader>y :w! ~/.cache/.lin.vim.copypaste<CR>
 " copy disk cache to cursor
 nnoremap <Leader>p :r ~/.cache/.lin.vim.copypaste<CR>
 
-" buffer operations
+
+" 3. Buffer operations
+
 " go to next buffer
 map <Leader>bn :bn<cr>
 " go to previous buffer
@@ -26,7 +33,15 @@ map <Leader>bp :bp<cr>
 " close current buffer
 map <Leader>bd :bd<cr>
 
-" filetype mapping
+
+" 4. 10 times faster jkhl
+map <c-j> 10j
+map <c-k> 10k
+map <c-h> 10h
+map <c-l> 10l
+
+
+" 5. Filetype mapping
 autocmd BufRead,BufNewFile *.hql set filetype=sql
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.hs set filetype=haskell
@@ -35,7 +50,8 @@ autocmd BufRead,BufNewFile *makefile* set filetype=make
 autocmd BufRead,BufNewFile *.ll set filetype=llvm
 autocmd BufRead,BufNewFile *.scm set filetype=lisp
 
-" gui window size
+
+" 6. GUI window size
 if has('gui_running')
     set lines=999
     set columns=999
@@ -44,7 +60,7 @@ if has('gui_running')
     endif
 endif
 
-" gui fonts
+" 7. GUI fonts
 if has("win32")
     " win32
     set guifont=Hack\ NF:h9
@@ -57,17 +73,23 @@ else
 endif
 
 
-" nerdtree width
-let g:NERDTreeWinSize=40
+" 8. Nerdtree settings
 
+" nerdtree window size
+let g:NERDTreeWinSize=40
 " nerdtree auto open
 autocmd StdinReadPre * let s:std_in=1
 autocmd vimenter * NERDTree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-" C++ indent with 2 space
+
+" 9. C++ indent with 2 space
 autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
-" line length marker=80
+" 10. Line length marker=80
 set colorcolumn=80
+
+" 11. coc.nvim plugin list
+let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-snippets', 'coc-json', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-css',  'coc-html', 'coc-tsserver', 'coc-eslint', 'coc-sql']

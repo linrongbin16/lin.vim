@@ -7,8 +7,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 * [Introduction](#introduction)
     * [Screenshots](#screenshots)
     * [Feature](#feature)
-    * [Project Structure](#project-structure)
-* [Installation](#installation)
+    * [Project Structure](#project-structure) * [Installation](#installation)
     * [UNIX, Linux, MacOS](#unix-linux-macos)
     * [Windows](#windows)
 * [User Guide](#user-guide)
@@ -16,15 +15,14 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     * [Enhanced Copy Paste](#enhanced-copy-paste)
     * [Text Search](#text-search)
     * [File Fuzzy Search](#file-fuzzy-search)
-    * [Easy Align](#easy-align)
-    * [Easy Move](#easy-move)
-    * [Coc.nvim Go To](#cocnvim-go-to)
-    * [Tags Go To](#tags-go-to)
+    * [Alignment](#alignment)
+    * [Cursor Movement](#cursor-movement)
+    * [Language Server](#language-server)
+    * [Tags](#tags)
     * [Commentary](#commentary)
     * [File Explorer](#file-explorer)
-    * [Buffer Explorer](#buffer-explorer)
     * [Customization](#customization)
-    * [Command Line Utility](#command-line-utility)
+    * [Command Line Utility(vcmd)](#command-line-utility)
 
 # Introduction
 
@@ -114,74 +112,135 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 
 # User Guide
 
+In this section, functionalities are introduced in three VIM modes:
 * 🅽: normal mode
 * 🆅: visual mode
 * 🅸: insert mode
 
 ### Hot Key
-- `F1` 🅽: switch between C/C++ header source file.
-- `F2` 🅽: format current file.
-- `F5` 🅽: open/close file explorer.
-- `F6` 🅽: open/close tagbar explorer.
-- `F9` 🅽: change color theme randomly.
-- `F10` 🅽: open/close terminal.
 
-Please see **user.vim** for more details.
+- `F3` 🅽: format current file.
+- `F4` 🅽: switch between C/C++ header and source files.
+- `F5` 🅽: open/close nerdtree file explorer.
+- `F6` 🅽: open/close tagbar tags explorer.
+- `F9` 🅽: change color theme randomly.
+- `F10` 🅽: open/close terminal window.
+
+You could configure these hot keys in ***user.vim***.
 
 ### Enhanced Copy Paste
-- `<leader>y` 🆅: copy visual-selected text to locale machine cache.
-- `<leader>p` 🅽: paste text saved from local machine cache.
 
-Please see **user.vim** for more details.
+Enhanced copy-paste are supported when you want to export/import content from/to a text file.
+
+- `<leader>y` 🆅: copy visual-selected text to locale machine cache `~/.cache/.lin.vim.copypaste`.
+- `<leader>p` 🅽: paste text saved from local machine cache `~/.cache/.lin.vim.copypaste`.
+
+You could configure these hot keys in ***user.vim***.
+
 
 ### Text Search
-- `:Ag [text]` (`:Rg [text]`) 🅽: search [text].
 
-### File Fuzzy Search
-- `<c-p>` 🅽: fuzzy search file.
+Text search is supported by [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher) and [ripgrep(rg)](https://github.com/BurntSushi/ripgrep).
 
-### Easy Align
+- `:Ag {text}` and `:Rg {text}` 🅽: search {text}.
+
+### File Search
+
+File search is supported by [LeaderF](https://github.com/Yggdroot/LeaderF).
+
+- `<c-p>` 🅽: search file.
+
+### Alignment
+
+Text Alignment is supported by [easy-align](https://github.com/junegunn/vim-easy-align).
+
 - `vipga=` 🆅: align visual-selected paragraph.
 - `gaip=` 🅽: align inner paragraph.
 
-### Easy Move
-- `<leader>s [char]` 🅽: go to [char].
-- `<leader>w` 🅽: go to [word].
-- `<leader>j` 🅽: go to [forward line].
-- `<leader>k` 🅽: go to [backward line].
+### Cursor Movement
 
-### Coc.nvim Go To
+Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion).
+
+- `<leader><leader>f{char}` 🅽: go to a single {char}.
+- `<leader>s{char}{char}` 🅽: go to consequent two {char}{char}.
+- `<leader><leader>w` 🅽: go to word.
+- `<leader><leader>j` 🅽: go to a forward line below cursor.
+- `<leader><leader>k` 🅽: go to a backward line above cursor.
+- `<leader><leader>L` 🅽: go to a specified line.
+
+10 times faster jkhl movement is binded:
+
+- `<c-j>` 🅽: equal to `10j`
+- `<c-k>` 🅽: euqal to `10k`
+- `<c-h>` 🅽: equal to `10h`
+- `<c-l>` 🅽: equal to `10l`
+
+You could configure these in ***user.vim***.
+
+### Language Server
+
+Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim).
+
+Completion operations are supported in VIM insert mode:
+
+- `<c-n>` 🅸: select next in candidate list, same as `<tab>` `<up>`.
+- `<c-p>` 🅸: select previous in candidate list, same as `<s-tab>` `<down>`.
+- `<c-k>` 🅸: trigger completion.
+
+Go to operations are supported in VIM normal mode:
 - `gd` 🅽: go to definition.
 - `gy` 🅽: go to type definition.
 - `gi` 🅽: go to implementation.
 - `gr` 🅽: go to reference.
-- `[g` 🅽: go to previous diagnostic.
-- `]g` 🅽: go to next diagnostic.
 
-Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more details.
+You could configure coc.nvim plugins in ***user.vim*** and ***coc-settings.json***.
 
-### Tags Go To
+### Tags
+
+Tags are important suppliement of language server, they're auto generated and updated by [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags), and viewed by [tagbar](https://github.com/preservim/tagbar).
+
+- `F6` 🅽: open/close tagbar tags explorer.
+- `<c-]>` 🅽: go to definition.
 - `<c-o>` 🅽: go back to previous position.
-- `<c-]>` 🅽: go to definition if `gd` not working.
 
 ### Commentary
+
+Commentary is supported by [nerdcomment](https://github.com/preservim/nerdcommenter).
+
 - `<leader>c<space>` 🅽🆅: toggle one line or selected lines.
 
 ### File Explorer
-- `ma` 🅽: create new file/directory.
-- `mc` 🅽: copy file/directory.
-- `md` 🅽: delete file/directory.
-- `mm` 🅽: move file/directory.
 
-### Buffer Explorer
+File explorer is supported by [nerdtree](https://github.com/preservim/nerdtree), [lightline](https://github.com/itchyny/lightline.vim) and [vim-buftabline](https://github.com/ap/vim-buftabline).
+They constructs the file/directory explorer on the left(nerdtree), opened buffers on the top(vim-buftabline) and current editing status on the bottom(lightline).
+
+- `ma` 🅽 on the left: create new file/directory.
+- `mc` 🅽 on the left: copy file/directory.
+- `md` 🅽 on the left: delete file/directory.
+- `mm` 🅽 on the left: move file/directory.
+
 - `<leader>bn` 🅽: go to next buffer.
 - `<leader>bp` 🅽: go to previous buffer.
 - `<leader>bd` 🅽: close current buffer.
 
 ### Customization
-- custom your own settings in **user.vim** and **coc-settings.json**.
+- custom your own settings in ***user.vim*** and **coc-settings.json**.
 
-### Command Line Utility
+### Command Line Utility (vcmd)
+
+A bunch of command line utilities are implemented by python3 to speed up your edit and development, named ***vcmd***.
+***vcmd*** simplify common operations in most scenarios of developing and editing, include:
+
+* `vencode`: encode/decode text strings.
+* `vfile`: file operations such as a) delete files with a specified filetype, b) replace content in files with a specified filetype, c) list files with a specified filetype, d) detect and convert file encodings with a specified filetype.
+* `vconf`: configure `compile_commands.json` for C/C++ language server clangd, generate ssh key for host, homebrew/python-pip/ubuntu/fedora/manjaro... mirrors to speed up, etc.
+* `vgit`: git operations without the burden of time consuming remember.
+* `vip`: ip address calculations for both ipv4 and ipv6.
+* `vpack`: easier file/directory compression and extraction.
+* `vag`: fast text search wrapped the_silver_search ag.
+* `vtime`: easier time calculations.
+
+Here's the help document of each command:
 
 - vencode
 
@@ -189,7 +248,7 @@ Please see **setting-plugin/coc-nvim.vim** and **coc-settings.json** for more de
 $ vencode -h
 usage: vencode [option] text
 
-  Encode and decode text with algorithms.
+  Encode and decode text strings with algorithms.
 
 option:
   -e/--encode [algorithm]       encode text with specified algorithm
@@ -244,11 +303,11 @@ example:
   test.log: ascii
 ```
 
-- vgen
+- vconf
 
 ```
-$ vgen -h
-usage: vgen [option]
+$ vconf -h
+usage: vconf [option]
 
   Generate common configurations.
 
@@ -268,7 +327,7 @@ country/region:
   china
 
 example:
-  $ vgen -s linrongbin16@outlook.com
+  $ vconf -s linrongbin16@outlook.com
   Generating public/private rsa key pair.
   Enter file in which to save the key (/Users/linrongbin/.ssh/id_rsa):
   Enter passphrase (empty for no passphrase):
