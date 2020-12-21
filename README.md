@@ -24,6 +24,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     * [File Explorer](#file-explorer)
     * [Customization](#customization)
     * [Command Line Utility (vcmd)](#command-line-utility-vcmd)
+* [Contribute](#contribute)
 
 # Introduction
 
@@ -266,3 +267,7 @@ example:
 ```
 
 Please try these commands with `-h` option for more details.
+
+# Contribute
+
+Please open an issue for anything about lin.vim.
