@@ -32,7 +32,7 @@ option:
 
   -pl/--pull                pull operation
   -ps/--push                push operation
-  -f/--force                force pull/push, use with pull/push
+  -f/--force                use with pull/push for overwrite
 
   -d/--discard              discard temporary changes
   --rebase [branch]         rebase to specified remote/branch
