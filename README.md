@@ -15,7 +15,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     * [Hot Key](#hot-key)
     * [Enhanced Copy Paste](#enhanced-copy-paste)
     * [Text Search](#text-search)
-    * [File Fuzzy Search](#file-fuzzy-search)
+    * [File Search](#file-search)
     * [Alignment](#alignment)
     * [Cursor Movement](#cursor-movement)
     * [Language Server](#language-server)
@@ -113,7 +113,8 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 
 # User Guide
 
-In this section, functionalities are introduced in three VIM modes:
+In this section, VIM editing modes are specified with:
+
 * 🅽: normal mode
 * 🆅: visual mode
 * 🅸: insert mode
@@ -180,15 +181,14 @@ You could configure these in ***user.vim***.
 
 ### Language Server
 
-Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim).
-
-Completion operations are supported in VIM insert mode:
+Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim), and completion are supported in insert mode:
 
 - `<c-n>` 🅸: select next in candidate list, same as `<tab>` `<up>`.
 - `<c-p>` 🅸: select previous in candidate list, same as `<s-tab>` `<down>`.
 - `<c-k>` 🅸: trigger completion.
 
-Go to operations are supported in VIM normal mode:
+Go to operations are supported in normal mode:
+
 - `gd` 🅽: go to definition.
 - `gy` 🅽: go to type definition.
 - `gi` 🅽: go to implementation.
