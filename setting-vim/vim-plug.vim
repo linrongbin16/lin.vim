@@ -29,6 +29,9 @@ Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
+Plug 'romainl/Apprentice'
+Plug 'chriskempson/base16-vim'
+Plug 'nanotech/jellybeans.vim'
 
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
