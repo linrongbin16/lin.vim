@@ -10,8 +10,8 @@ map <F4> :CocCommand clangd.switchSourceHeader<CR>
 map <F5> :NERDTreeToggle<CR>
 " open/close tagbar
 map <F6> :TagbarToggle<CR>
-" open/close markdown preview
-map <F7> :MarkdownPreviewToggle<CR>
+" open markdown preview
+map <F7> :MarkdownPreview<CR>
 " next color
 map <F9> :call NextColor()<CR>
 " open terminal

@@ -31,16 +31,26 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 ### Screenshots
 
 ##### Simple but pretty UI
-![pic1.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.jpg)
+![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
 
 ##### Code complete for C++
-![pic2.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.jpg)
+![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
 
 ##### Fast cursor movement
-![pic3.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.jpg)
+![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.png)
 
 ##### Fuzzy file search
-![pic4.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.jpg)
+![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
+
+##### Text search
+![pic7-1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-1.png)
+![pic7-2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-2.png)
+
+##### Markdown preview
+![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
+
+##### Terminal window
+![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6-terminal-window.png)
 
 ### Feature
 
@@ -124,11 +134,11 @@ In this section, VIM editing modes are specified with:
 
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open/close nerdtree file explorer.
-- `F6` 🅽: open/close tagbar tags explorer.
-- `F7` 🅽: open/close markdown preview window in browser.
-- `F9` 🅽: change color theme randomly.
-- `F10` 🅽: open/close terminal window.
+- `F5` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c%2B%2B).
+- `F6` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c%2B%2B).
+- `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
+- `F9` 🅽: change color theme randomly, see [Screenshots](#screenshots).
+- `F10` 🅽: open/close terminal window, see [Terminal window](#terminal-window).
 
 You could configure these hot keys in ***user.vim***.
 
@@ -141,16 +151,15 @@ Enhanced copy-paste are supported when you want to export/import content from/to
 
 You could configure these hot keys in ***user.vim***.
 
-
 ### Text Search
 
-Text search is supported by [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher) and [ripgrep(rg)](https://github.com/BurntSushi/ripgrep).
+Text search is supported by [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher) and [ripgrep(rg)](https://github.com/BurntSushi/ripgrep), see [Text search](#text-search).
 
 - `:Ag {text}` and `:Rg {text}` 🅽: search {text}.
 
 ### File Search
 
-File search is supported by [LeaderF](https://github.com/Yggdroot/LeaderF).
+File search is supported by [LeaderF](https://github.com/Yggdroot/LeaderF), see [Fuzzy file search](#fuzzy-file-search).
 
 - `<c-p>` 🅽: search file.
 
@@ -163,7 +172,7 @@ Text Alignment is supported by [easy-align](https://github.com/junegunn/vim-easy
 
 ### Cursor Movement
 
-Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion).
+Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion), see [Fast cursor movement](#fast-cursor-movement).
 
 - `<leader><leader>f{char}` 🅽: go to a single {char}.
 - `<leader>s{char}{char}` 🅽: go to consequent two {char}{char}.
