@@ -9,7 +9,9 @@ map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close nerdtree file explorer
 map <F5> :NERDTreeToggle<CR>
 " open/close tagbar
-nmap <F6> :TagbarToggle<CR>
+map <F6> :TagbarToggle<CR>
+" open/close markdown preview
+map <F7> :MarkdownPreviewToggle<CR>
 " next color
 map <F9> :call NextColor()<CR>
 " open terminal
