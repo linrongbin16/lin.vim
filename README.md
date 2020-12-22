@@ -134,8 +134,8 @@ In this section, VIM editing modes are specified with:
 
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c%2B%2B).
-- `F6` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c%2B%2B).
+- `F5` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
+- `F6` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F9` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 - `F10` 🅽: open/close terminal window, see [Terminal window](#terminal-window).
