@@ -11,6 +11,9 @@ tags.temp
 
 # plugins
 plugged
+node_modules/
+package-lock.json
+package.json
 
 # user settings
 user.vim

@@ -64,6 +64,7 @@ Plug 'alvan/vim-closetag'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Flex, Bison
 Plug 'justinmk/vim-syntax-extra'
