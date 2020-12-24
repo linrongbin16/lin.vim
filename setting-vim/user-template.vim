@@ -94,7 +94,7 @@ set colorcolumn=80
 
 " 11. coc.nvim plugin list
 let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier']
+let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet']
 
 " open coc-yank list: <space>y
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
