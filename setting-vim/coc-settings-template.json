@@ -1,33 +1,24 @@
 {
-    "diagnostic.level": "warning",
-    "suggest.minTriggerInputLength": 1,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "json",
-        "c",
-        "cpp",
-        "python",
-        "xml",
-        "html"
-    ],
-    "python.formatting.provider": "black",
-    "python.pythonPath": "python3",
-    "snippets.extends": {
-        "l": [
-            "c",
-            "cpp"
-        ],
-        "y": [
-            "c",
-            "cpp"
-        ],
-        "cpp": [
-            "c"
-        ],
-        "javascriptreact": [
-            "javascript"
-        ],
-        "typescript": [
-            "javascript"
-        ]
-    }
+  "diagnostic.level": "warning",
+  "suggest.minTriggerInputLength": 1,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "c",
+    "cpp",
+    "python",
+    "xml",
+    "html",
+    "css",
+    "markdown"
+  ],
+  "python.formatting.provider": "black",
+  "python.pythonPath": "python3",
+  "snippets.extends": {
+    "l": ["c", "cpp"],
+    "y": ["c", "cpp"],
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "json.format.enable": false
 }

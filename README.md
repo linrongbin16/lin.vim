@@ -4,52 +4,59 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Table of Contents
 
-* [Introduction](#introduction)
-    * [Screenshots](#screenshots)
-    * [Feature](#feature)
-    * [Project Structure](#project-structure)
-* [Installation](#installation)
-    * [UNIX, Linux, MacOS](#unix-linux-macos)
-    * [Windows](#windows)
-* [User Guide](#user-guide)
-    * [Hot Key](#hot-key)
-    * [Enhanced Copy Paste](#enhanced-copy-paste)
-    * [Text Search](#text-search)
-    * [File Search](#file-search)
-    * [Alignment](#alignment)
-    * [Cursor Movement](#cursor-movement)
-    * [Language Server](#language-server)
-    * [Tags](#tags)
-    * [Commentary](#commentary)
-    * [File Explorer](#file-explorer)
-    * [Customization](#customization)
-    * [Command Line Utility (vcmd)](#command-line-utility-vcmd)
-* [Contribute](#contribute)
+- [Introduction](#introduction)
+  - [Screenshots](#screenshots)
+  - [Feature](#feature)
+  - [Project Structure](#project-structure)
+- [Installation](#installation)
+  - [UNIX, Linux, MacOS](#unix-linux-macos)
+  - [Windows](#windows)
+- [User Guide](#user-guide)
+  - [Hot Key](#hot-key)
+  - [Enhanced Copy Paste](#enhanced-copy-paste)
+  - [Text Search](#text-search)
+  - [File Search](#file-search)
+  - [Alignment](#alignment)
+  - [Cursor Movement](#cursor-movement)
+  - [Language Server](#language-server)
+  - [Tags](#tags)
+  - [Commentary](#commentary)
+  - [File Explorer](#file-explorer)
+  - [Customization](#customization)
+  - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
+- [Contribute](#contribute)
 
 # Introduction
 
 ### Screenshots
 
 ##### Simple but pretty UI
+
 ![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
 
 ##### Code complete for C++
+
 ![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
 
 ##### Fast cursor movement
+
 ![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.png)
 
 ##### Fuzzy file search
+
 ![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
 
 ##### Text search
+
 ![pic7-1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-1.png)
 ![pic7-2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-2.png)
 
 ##### Markdown preview
+
 ![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
 
 ##### Terminal window
+
 ![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6-terminal-window.png)
 
 ### Feature
@@ -83,13 +90,14 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 # Installation
 
 NOTICE:
+
 1. Installation needs network access of below, please make sure they're available before installation.
-    * [github.com](https://github.com/).
-    * [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-    * [chocolatey](https://chocolatey.org/) on Windows.
+   - [github.com](https://github.com/).
+   - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+   - [chocolatey](https://chocolatey.org/) on Windows.
 2. Hack Nerd Fonts below is used default, please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
-    * [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
-    * [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+   - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
+   - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
 3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, and `nvim` will not been installed on Windows by default. Please install Neovim GUI client manually if you need.
 
 ### UNIX, Linux, MacOS
@@ -103,10 +111,11 @@ NOTICE:
 NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with options:
-    * .NET Desktop Development.
-    * Visual C++ Desktop Development.
-    * Common Windows Platform Development.
+   - .NET Desktop Development.
+   - Visual C++ Desktop Development.
+   - Common Windows Platform Development.
 2. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run as administrator):
+
 ```bash
     $ choco install -y git cmake vim llvm nodejs ag ripgrep universal-ctags
     $ choco install -y python --version=3.8.0
@@ -114,22 +123,23 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     $ cd $env:UserProfile\.vim
     $ .\install.ps1
 ```
+
 3. Add third party dependencies `git.exe`, `cmake.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`
 4. Add `$env:UserProfile\.vim\command` and `$env:UserProfile\.vim\node_modules\.bin` to `$env:Path`.
 5. Additionally copy a duplicated executable file `python3.exe` from `python.exe` for explicitly different from python2.
 6. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
-    * `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
-    * `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-    * `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-    * `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
 
 # User Guide
 
 In this section, VIM editing modes are specified with:
 
-* 🅽: normal mode
-* 🆅: visual mode
-* 🅸: insert mode
+- 🅽: normal mode
+- 🆅: visual mode
+- 🅸: insert mode
 
 ### Hot Key
 
@@ -141,7 +151,7 @@ In this section, VIM editing modes are specified with:
 - `F9` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 - `F10` 🅽: open/close terminal window, see [Terminal window](#terminal-window).
 
-You could configure these hot keys in ***user.vim***.
+You could configure these hot keys in **_user.vim_**.
 
 ### Enhanced Copy Paste
 
@@ -150,7 +160,7 @@ Enhanced copy-paste are supported when you want to export/import content from/to
 - `<leader>y` 🆅: copy visual-selected text to locale machine cache `~/.cache/.lin.vim.copypaste`.
 - `<leader>p` 🅽: paste text saved from local machine cache `~/.cache/.lin.vim.copypaste`.
 
-You could configure these hot keys in ***user.vim***.
+You could configure these hot keys in **_user.vim_**.
 
 ### Text Search
 
@@ -189,7 +199,7 @@ Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/v
 - `<c-h>` 🅽: equal to `10h`
 - `<c-l>` 🅽: equal to `10l`
 
-You could configure these in ***user.vim***.
+You could configure these in **_user.vim_**.
 
 ### Language Server
 
@@ -206,7 +216,7 @@ Go to operations are supported in normal mode:
 - `gi` 🅽: go to implementation.
 - `gr` 🅽: go to reference.
 
-You could configure coc.nvim plugins in ***user.vim*** and ***coc-settings.json***.
+You could configure coc.nvim plugins in **_user.vim_** and **_coc-settings.json_**.
 
 ### Tags
 
@@ -239,21 +249,22 @@ They constructs the file explorer on the left(nerdtree), pretty icons integrated
 Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.
 
 ### Customization
-- custom your own settings in ***user.vim*** and **coc-settings.json**.
+
+- custom your own settings in **_user.vim_** and **coc-settings.json**.
 
 ### Command Line Utility (vcmd)
 
-A bunch of command line utilities are implemented by python3 to speed up your edit and development, named ***vcmd***.
-***vcmd*** simplifies common operations in most scenarios of developing and editing, include:
+A bunch of command line utilities are implemented by python3 to speed up your edit and development, named **_vcmd_**.
+**_vcmd_** simplifies common operations in most scenarios of developing and editing, include:
 
-* `vencode`: Encode/decode text strings.
-* `vfile`: File operations such as a) delete files with a specified filetype, b) replace content in files with a specified filetype, c) list files with a specified filetype, d) detect and convert file encodings with a specified filetype.
-* `vconf`: Configure `compile_commands.json` for C/C++ language server clangd, generate ssh key for host, homebrew/python-pip/ubuntu/fedora/manjaro... mirrors to speed up, etc.
-* `vgit`: Git operations without the burden of time consuming remember.
-* `vip`: Ip address calculations for both ipv4 and ipv6.
-* `vpack`: Easier file/directory compression and extraction.
-* `vag`: Fast text search wrapped the_silver_search ag.
-* `vtime`: Easier time calculations.
+- `vencode`: Encode/decode text strings.
+- `vfile`: File operations such as a) delete files with a specified filetype, b) replace content in files with a specified filetype, c) list files with a specified filetype, d) detect and convert file encodings with a specified filetype.
+- `vconf`: Configure `compile_commands.json` for C/C++ language server clangd, generate ssh key for host, homebrew/python-pip/ubuntu/fedora/manjaro... mirrors to speed up, etc.
+- `vgit`: Git operations without the burden of time consuming remember.
+- `vip`: Ip address calculations for both ipv4 and ipv6.
+- `vpack`: Easier file/directory compression and extraction.
+- `vag`: Fast text search wrapped the_silver_search ag.
+- `vtime`: Easier time calculations.
 
 For better understanding and use, help document is supported for all commands, contains command functionality, options and examples.
 Here's an example of `vencode`:

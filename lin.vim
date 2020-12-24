@@ -13,7 +13,10 @@ source $HOME/.vim/setting-plugin/nerdtree.vim
 source $HOME/.vim/setting-plugin/statusline.vim
 source $HOME/.vim/setting-plugin/tagbar.vim
 
-" Auto Complete
+" Syntax highlight
+source $HOME/.vim/setting-plugin/vim-polyglot.vim
+
+" Language Server
 source $HOME/.vim/setting-plugin/coc-nvim.vim
 source $HOME/.vim/setting-plugin/gutentags.vim
 
