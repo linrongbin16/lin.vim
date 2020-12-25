@@ -222,6 +222,8 @@ Go to operations are supported in normal mode:
 
 You could configure coc.nvim plugins in **_user.vim_** and **_coc-settings.json_**.
 
+Please refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming language support.
+
 ### Tags
 
 Tags are important suppliement of language server, they're auto generated and updated by [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags), and viewed by [tagbar](https://github.com/preservim/tagbar).
