@@ -220,9 +220,7 @@ Go to operations are supported in normal mode:
 - `gi` 🅽: go to implementation.
 - `gr` 🅽: go to reference.
 
-You could configure coc.nvim plugins in **_user.vim_** and **_coc-settings.json_**.
-
-Please refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming language support.
+You could configure coc extensions in **_user.vim_** and **_coc-settings.json_**. And refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming languages, [coc.nvim#wiki#Using-coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) for more coc extensions.
 
 ### Tags
 
