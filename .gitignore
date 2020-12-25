@@ -8,6 +8,7 @@ __pycache__
 tags
 tags.lock
 tags.temp
+.lin-vim-enhanced-copy-paste
 
 # plugins
 plugged

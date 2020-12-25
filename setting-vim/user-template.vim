@@ -20,10 +20,10 @@ map <F10> :terminal ++rows=20<CR>
 
 " 2. Enhanced copy paste
 
-" copy visual selection to disk cache
-vnoremap <Leader>y :w! ~/.cache/.lin.vim.copypaste<CR>
-" copy disk cache to cursor
-nnoremap <Leader>p :r ~/.cache/.lin.vim.copypaste<CR>
+" copy visual selection to cache
+vnoremap <Leader>y :w! ~/.vim/.lin-vim-enhanced-copy-paste<CR>
+" paste cache to cursor
+nnoremap <Leader>p :r ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 
 
 " 3. Buffer operations
@@ -96,5 +96,5 @@ set colorcolumn=80
 let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet']
 
-" open coc-yank list: <space>y
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+" open coc-yank list: <Leader>y
+nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
