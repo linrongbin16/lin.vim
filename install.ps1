@@ -4,7 +4,7 @@ Write-Host "[lin.vim] Install for Windows"
 pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # Install nodejs npm packages
-npm install yarn
+npm install -g yarn
 
 # Install GUI Fonts
 New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\guifonts

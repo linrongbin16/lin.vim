@@ -124,9 +124,9 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     $ .\install.ps1
 ```
 
-3. Add third party dependencies `git.exe`, `cmake.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`
-4. Add `$env:UserProfile\.vim\command` and `$env:UserProfile\.vim\node_modules\.bin` to `$env:Path`.
-5. Additionally copy a duplicated executable file `python3.exe` from `python.exe` for explicitly different from python2.
+3. Add third party dependencies `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`
+4. Add `$env:UserProfile\.vim\command`.
+5. Additionally copy a duplicated executable `python3.exe` from `python.exe` for explicitly different from python2, and add `python3.exe` in `$env:Path`.
 6. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
    - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
