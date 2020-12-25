@@ -14,7 +14,7 @@ IGNORE_CONFIG = os.path.expanduser("~") + SLASH + ".ignore"
 
 
 def _help():
-    msg = """usage: vag [option] filetype
+    msg = """usage: vag [option] text
 
   Text search implemented by the silver searcher ag.
 
@@ -36,8 +36,6 @@ example:
   $ vag Binder
   $ vag --depth=0 Binder
   $ vag --depth=0 --case-sensitive Binder
-  $ vag --word Binder
-  $ vag --count Binder
   $ vag --ignore=svn
   $ vag --purge
   $ vag --show
