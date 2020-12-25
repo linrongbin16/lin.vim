@@ -2,20 +2,22 @@
 
 " 1. Hot key
 
+" open/close nerdtree file explorer
+map <F1> :NERDTreeToggle<CR>
+" open/close tagbar
+map <F2> :TagbarToggle<CR>
 " format current file
 map <F3> :call CocAction('format')<CR>
 " switch between C/C++ header source
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
-" open/close nerdtree file explorer
-map <F5> :NERDTreeToggle<CR>
-" open/close tagbar
-map <F6> :TagbarToggle<CR>
+" open/close terminal
+map <F5> :CocCommand terminal.Toggle<CR>
+" open enhanced yank list
+map <F6> :CocList -A --normal yank<CR>
 " open markdown preview
 map <F7> :MarkdownPreview<CR>
 " next color
-map <F9> :call NextColor()<CR>
-" open terminal
-map <F10> :terminal ++rows=20<CR>
+map <F8> :call NextColor()<CR>
 
 
 " 2. Enhanced copy paste
@@ -94,7 +96,4 @@ set colorcolumn=80
 
 " 11. coc.nvim plugin list
 let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet']
-
-" open coc-yank list: <Leader>y
-nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
+let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-terminal']

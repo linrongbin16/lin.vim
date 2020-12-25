@@ -143,13 +143,14 @@ In this section, VIM editing modes are specified with:
 
 ### Hot Key
 
+- `F1` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
+- `F2` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
-- `F6` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
+- `F5` 🅽: open/close terminal window, see [Terminal window](#terminal-window).
+- `F6` 🅽: open enhanced yank list.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
-- `F9` 🅽: change color theme randomly, see [Screenshots](#screenshots).
-- `F10` 🅽: open/close terminal window, see [Terminal window](#terminal-window).
+- `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 
 You could configure these hot keys in **_user.vim_**.
 
@@ -160,9 +161,7 @@ Enhanced copy-paste are supported when you want to export/import content from/to
 - `<leader>c` 🆅: copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 - `<leader>p` 🅽: paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 
-All copied content in system clipboard will be stored in a text database.
-
-- `<leader>y` 🅽: open enhanced yank list.
+All copied content in system clipboard will be stored in a text database, press `F10` to open enhanced yank list.
 
 You could configure these hot keys in **_user.vim_**.
 
