@@ -155,10 +155,14 @@ You could configure these hot keys in **_user.vim_**.
 
 ### Enhanced Copy Paste
 
-Enhanced copy-paste are supported when you want to export/import content from/to a text file.
+Enhanced copy-paste are supported when you want to export/import content from/to an outer file.
 
-- `<leader>y` 🆅: copy visual-selected text to locale machine cache `~/.cache/.lin.vim.copypaste`.
-- `<leader>p` 🅽: paste text saved from local machine cache `~/.cache/.lin.vim.copypaste`.
+- `<leader>c` 🆅: copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+- `<leader>p` 🅽: paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+
+All copied content in system clipboard will be stored in a text database.
+
+- `<leader>y` 🅽: open enhanced yank list.
 
 You could configure these hot keys in **_user.vim_**.
 
