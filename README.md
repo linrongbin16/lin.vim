@@ -225,7 +225,7 @@ You could configure coc extensions in **_user.vim_** and **_coc-settings.json_**
 
 Tags are important suppliement of language server, they're auto generated and updated by [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags), and viewed by [tagbar](https://github.com/preservim/tagbar).
 
-- `F6` 🅽: open/close tagbar tags explorer.
+- `F2` 🅽: open/close tagbar tags explorer.
 - `<c-]>` 🅽: go to definition.
 - `<c-o>` 🅽: go back to previous position.
 
