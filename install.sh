@@ -47,7 +47,7 @@ fi
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 
 # install nodejs npm packages
-sudo npm install yarn
+sudo npm install -g yarn
 
 # install hack nerd font
 if [ $(uname) == "Darwin" ]; then
