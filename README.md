@@ -209,8 +209,8 @@ You could configure these in **_user.vim_**.
 
 Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim), and completion are supported in insert mode:
 
-- `<c-n>` 🅸: select next in candidate list, same as `<tab>` `<up>`.
-- `<c-p>` 🅸: select previous in candidate list, same as `<s-tab>` `<down>`.
+- `<c-n>` `tab` `<up>` 🅸: select next in candidate list.
+- `<c-p>` `<s-tab>` `<down>` 🅸: select previous in candidate list.
 - `<c-k>` 🅸: trigger completion.
 
 Go to operations are supported in normal mode:
