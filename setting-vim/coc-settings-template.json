@@ -8,8 +8,14 @@
     "python",
     "xml",
     "html",
+    "xhtml",
+    "yaml",
     "css",
-    "markdown"
+    "markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
   "python.formatting.provider": "black",
   "python.pythonPath": "python3",
@@ -18,7 +24,8 @@
     "y": ["c", "cpp"],
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
-    "typescript": ["javascript"]
+    "typescript": ["javascript"],
+    "md": ["markdown"]
   },
   "json.format.enable": false
 }
