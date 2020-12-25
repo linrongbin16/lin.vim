@@ -72,10 +72,7 @@ Plug 'justinmk/vim-syntax-extra'
 " LLVM
 Plug 'rhysd/vim-llvm'
 
-" lisp
-Plug 'vlime/vlime', {'rtp': 'vim/'}
-
-" PowerShell ps1
+" PowerShell
 Plug 'pprovost/vim-ps1'
 
 call plug#end()
