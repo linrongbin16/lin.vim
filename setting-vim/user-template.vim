@@ -11,7 +11,7 @@ map <F3> :call CocAction('format')<CR>
 " switch between C/C++ header source
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close terminal
-map <F5> :CocCommand terminal.Toggle<CR>
+map <F5> :below terminal ++rows=20<CR>
 " open enhanced yank list
 map <F6> :CocList -A --normal yank<CR>
 " open markdown preview
@@ -95,4 +95,4 @@ autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expan
 set colorcolumn=80
 
 " 11. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-terminal']
+let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet']
