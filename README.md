@@ -141,6 +141,7 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 | ---------------------- | ---------------------- | --------------------------- | --------------------------- | ------------------ |
 | MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python3.9.1 with pip 20.3.1 | node v15.5.0 with npm 7.3.0 | **_test success_** |
 | Windows 10             | (G)vim 8.2 -lpython3.8 | python3.8.0                 | node v14                    | **_test success_** |
+| CentOS Linux 8         |                        |                             |                             | **_test failure_** |
 
 # User Guide
 
