@@ -132,7 +132,7 @@ Successfully tested on operating systems:
 | MacOS Catalina   | 10.15.7        |
 | Windows 10       |                |
 | Ubuntu           | 20.04 LTS      |
-| Manjaro          |                |
+| Manjaro          | 20.2           |
 | Fedora           | Workstation 32 |
 
 Software dependencies versions need at least newer than:
@@ -149,7 +149,7 @@ Compatibility tested on platforms:
 | Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                             |
 | ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                           |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v14                      | **_success_**                                                                                                           |
+| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                           |
 | Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                           |
 | Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                           |
 | Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                           |
