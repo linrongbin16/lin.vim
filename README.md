@@ -100,7 +100,7 @@ NOTICE:
    - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
    - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
 3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, and `nvim` will not been installed on Windows by default. Please install Neovim GUI client manually if you need.
-4. Only python3 is supproted, python2 is not supported.
+4. Only python3 is supported, python2 is not supported.
 
 ### UNIX, Linux, MacOS
 
