@@ -137,11 +137,11 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 
 ### Compatibility
 
-| Operating System       | (Neo)Vim Info          | Python Info                 | Nodejs Info                 | Test Result   |
-| ---------------------- | ---------------------- | --------------------------- | --------------------------- | ------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python3.9.1 with pip 20.3.1 | node v15.5.0 with npm 7.3.0 | **_success_** |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python3.8.0                 | node v14                    | **_success_** |
-| CentOS Linux 8         |                        |                             |                             | **_failure_** |
+| Operating System       | (Neo)Vim Info            | Python Info                  | Nodejs Info                 | Test Result   |
+| ---------------------- | ------------------------ | ---------------------------- | --------------------------- | ------------- |
+| MacOS Catalina 10.15.7 | Macvim 8.2 `-lpython3.9` | python 3.9.1 with pip 20.3.1 | node v15.5.0 with npm 7.3.0 | **_success_** |
+| Windows 10             | Gvim 8.2 `-lpython3.8`   | python 3.8.0                 | node v14                    | **_success_** |
+| CentOS Linux 8         |                          |                              |                             | **_failure_** |
 
 # User Guide
 
