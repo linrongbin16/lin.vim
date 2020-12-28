@@ -11,6 +11,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - [Installation](#installation)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
+  - [Compatibility](#compatibility)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [Enhanced Copy Paste](#enhanced-copy-paste)
@@ -99,6 +100,7 @@ NOTICE:
    - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
    - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
 3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, and `nvim` will not been installed on Windows by default. Please install Neovim GUI client manually if you need.
+4. Only python3 is supproted, python2 is not supported.
 
 ### UNIX, Linux, MacOS
 
@@ -132,6 +134,13 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
    - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+
+### Compatibility
+
+| Operating System       | (Neo)Vim Info          | Python Info                 | Nodejs Info                 | Compatibility      |
+| ---------------------- | ---------------------- | --------------------------- | --------------------------- | ------------------ |
+| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python3.9.1 with pip 20.3.1 | node v15.5.0 with npm 7.3.0 | **_test success_** |
+| Windows 10             | (G)vim 8.2 -lpython3.8 | python3.8.0                 | node v14                    | **_test success_** |
 
 # User Guide
 
