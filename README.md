@@ -142,12 +142,13 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
    - [github.com](https://github.com/).
    - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
    - [chocolatey](https://chocolatey.org/) on Windows.
-2. Hack Nerd Fonts below is installed default, while only downloaded on Windows and need manually install. Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
+2. (Neo)vim, python3 with related pip packages, nodejs with related npm packages will be installed, which may conflict with already installed ones.
+3. `nvim.exe` isn't installed on Windows by default. Please install Neovim GUI client manually if you need.
+4. Only python3 is supported, python2 is not supported.
+5. Hack Nerd Fonts below is installed default, while only downloaded on Windows and need manually install. Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
    - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
    - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
-3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, while `nvim.exe` isn't installed on Windows by default. Please install Neovim GUI client manually if you need.
-4. Only python3 is supported, python2 is not supported.
-5. Compatibility (test case) information:
+6. Compatibility (test case) information:
 
 | Operating System       | (Neo)Vim               | Python                       | Nodejs                      | Test Result   |
 | ---------------------- | ---------------------- | ---------------------------- | --------------------------- | ------------- |
