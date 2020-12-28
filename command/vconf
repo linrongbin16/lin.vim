@@ -27,6 +27,7 @@ option:
 
   -b/--brew                             configure homebrew mirrors for China
   -p/--pip                              configure python3 pip mirrors for China
+  -n/--npm                              configure nodejs npm mirrors for China
   -u/--ubuntu                           configure ubuntu mirrors for China
   -d/--debian                           configure debian mirrors for China
   -m/--manjaro                          configure manjaro mirrors for China
@@ -207,6 +208,15 @@ def _pip3_mirror():
     exit(0)
 
 
+def _npm_mirror():
+    mirrors = [
+        "npm config set registry https://registry.npm.taobao.org",
+    ]
+    for cmd in mirrors:
+        os.system(cmd)
+    exit(0)
+
+
 def _ubuntu_mirror():
     print(
         "[vcmd] replace 'archive.ubuntu/com' to 'mirrors.ustc.edu.cn' in /etc/apt/sources.list"
@@ -301,12 +311,13 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             sys.argv[1:],
-            "csbpudmfh",
+            "csbpnudmfh",
             [
                 "clangd",
                 "sshkey",
                 "brew",
                 "pip",
+                "npm",
                 "ubuntu",
                 "debian",
                 "manjaro",
@@ -326,6 +337,8 @@ if __name__ == "__main__":
                 _brew_mirror()
             elif opt[0] in ("-p", "--pip"):
                 _pip3_mirror()
+            elif opt[0] in ("-n", "--npm"):
+                _npm_mirror()
             elif opt[0] in ("-u", "--ubuntu"):
                 _ubuntu_mirror()
             elif opt[0] in ("-d", "--debian"):
