@@ -11,7 +11,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - [Installation](#installation)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
-  - [Compatibility](#compatibility)
+  - [Known Issue](#known-issue)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [Enhanced Copy Paste](#enhanced-copy-paste)
@@ -126,7 +126,8 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
     $ .\install.ps1
 ```
 
-3. Add third party dependencies `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`
+3. Add third party dependencies `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`. Actually it's totally free to install third party dependencies above in other ways, just make sure they're available in environment with compatible version.
+
 4. Add `$env:UserProfile\.vim\command`.
 5. Additionally copy a duplicated executable `python3.exe` from `python.exe` for explicitly different from python2, and add `python3.exe` in `$env:Path`.
 6. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
@@ -135,9 +136,20 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
    - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
 
-### Compatibility
+### Known Issue
 
-| Operating System       | (Neo)Vim Info          | Python Info                  | Nodejs Info                 | Test Result   |
+1. Installation needs network access of below, please make sure they're available before installation.
+   - [github.com](https://github.com/).
+   - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+   - [chocolatey](https://chocolatey.org/) on Windows.
+2. Hack Nerd Fonts below is installed default, while only downloaded on Windows and need manually install. Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
+   - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
+   - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+3. Both Vim and Neovim are supported on UNIX/Linux/MacOS, while `nvim.exe` isn't installed on Windows by default. Please install Neovim GUI client manually if you need.
+4. Only python3 is supported, python2 is not supported.
+5. Compatibility (test case) information:
+
+| Operating System       | (Neo)Vim               | Python                       | Nodejs                      | Test Result   |
 | ---------------------- | ---------------------- | ---------------------------- | --------------------------- | ------------- |
 | MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip 20.3.1 | node v15.5.0 with npm 7.3.0 | **_success_** |
 | Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                 | node v14                    | **_success_** |
