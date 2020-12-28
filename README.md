@@ -11,7 +11,8 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - [Installation](#installation)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
-  - [Known Issue](#known-issue)
+  - [Limitation](#limitation)
+  - [Known Issues](#known-issues)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [Enhanced Copy Paste](#enhanced-copy-paste)
@@ -126,27 +127,50 @@ NOTICE: we don't support CMD any more, please use PowerShell on Windows.
 
 ### Limitation
 
+Successfully tested on operating systems:
+
+| Operating System | Version Info   |
+| ---------------- | -------------- |
+| MacOS Catalina   | 10.15.7        |
+| Windows 10       |                |
+| Ubuntu           | 20.04 LTS      |
+| Manjaro          |                |
+| Fedora           | Workstation 32 |
+
+Software dependencies versions need at least newer than:
+
+| Software Dependency | Version Info |
+| ------------------- | ------------ |
+| (g)vim              | 8.0+         |
+| neovim              | 0.4.0+       |
+| python3             | 3.6+         |
+| nodejs              | 10.12+       |
+
+Compatibility tested on platforms:
+
+| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                             |
+| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                           |
+| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v14                      | **_success_**                                                                                                           |
+| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                           |
+| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                           |
+| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                           |
+| CentOS Linux 8         |                        |                               |                               | **_failure_**                                                                                                           |
+| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+ |
+
+### Known Issues
+
 1. Installation needs network access of below, please make sure they're available before installation.
    - [github.com](https://github.com/).
    - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
    - [chocolatey](https://chocolatey.org/) on Windows.
-2. Vim 8.0+ and Neovim 0.4.0+ have been tested successfully. Lower versions may have unexpected errors.
-3. (Neo)vim, python3 with related pip packages, nodejs with related npm packages will be installed, which may conflict with already installed ones.
-4. `nvim.exe` isn't installed on Windows by default. Please install Neovim GUI client manually if you need.
-5. Only python3 is supported, python2 is not supported.
-6. Hack Nerd Fonts below is installed default, while only downloaded on Windows and need manually install. Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
+2. (Neo)vim, python3 with related pip packages, nodejs with related npm packages will be installed, which may conflict with already installed ones.
+3. `nvim.exe` isn't installed on Windows by default. Please install Neovim GUI client manually if you need.
+4. Only python3 is supported, python2 is not supported.
+5. Hack Nerd Fonts below is installed default, while only downloaded on Windows and need manually install. Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
 
    - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
    - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
-
-7. Compatibility (test case) information:
-
-| Operating System       | (Neo)Vim               | Python                       | Nodejs                       | Test Result                                                                                                             |
-| ---------------------- | ---------------------- | ---------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip 20.3.1 | node v15.5.0 with npm 7.3.0  | **_success_**                                                                                                           |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                 | node v14                     | **_success_**                                                                                                           |
-| CentOS Linux 8         |                        |                              |                              | **_failure_**                                                                                                           |
-| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1  | node v14.5.3 with npm 6.14.9 | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+ |
 
 # User Guide
 
