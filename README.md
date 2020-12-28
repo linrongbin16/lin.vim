@@ -147,7 +147,7 @@ In this section, VIM editing modes are specified with:
 - `F2` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open/close terminal window, see [Terminal window](#terminal-window).
+- `F5` 🅽: open terminal window, see [Terminal window](#terminal-window).
 - `F6` 🅽: open enhanced yank list.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
