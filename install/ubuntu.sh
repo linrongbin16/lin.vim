@@ -35,12 +35,12 @@ sudo apt-get install -y python3-pip
 sudo apt-get install -y python3-docutils
 
 # Node
-sudo apt-get remove -y nodejs
-sudo apt-get remove -y nodejs-dev
-sudo apt-get remove -y libnode-dev
-sudo apt-get remove -y npm
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
+if ! type "node" > /dev/null; then
+    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+else
+    echo "[lin.vim] node already installed, skipping..."
+fi
 
 sudo apt-get install -y libseccomp-dev
 sudo apt-get install -y libjansson-dev
