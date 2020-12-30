@@ -141,7 +141,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - cmake
 - the_silver_searcher(ag)
 - ripgrep(rg)
-- zip, unzip, unrar, bzip2, p7zip (7z installed on Windows as an alternative)
+- zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
 - python3, pip packages (python2 is not support)
 - node, npm packages
 - universal-ctags
