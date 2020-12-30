@@ -12,7 +12,8 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
   - [Limitation](#limitation)
-  - [Known Issues](#known-issues)
+    - [Third Party Dependencies](#third-party-dependencies)
+    - [Tested Platforms](#tested-platforms)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [Enhanced Copy Paste](#enhanced-copy-paste)
@@ -25,6 +26,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Commentary](#commentary)
   - [File Explorer](#file-explorer)
   - [Customization](#customization)
+    - [GUI Fonts](#gui-fonts)
   - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
 - [Contribute](#contribute)
 
@@ -125,17 +127,36 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Limitation
 
-Successfully tested on operating systems:
+##### Third Party Dependencies
 
-| Operating System | Version Info   |
-| ---------------- | -------------- |
-| MacOS Catalina   | 10.15.7        |
-| Windows 10       |                |
-| Ubuntu           | 20.04 LTS      |
-| Manjaro          | 20.2           |
-| Fedora           | Workstation 32 |
+[install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) ([install.ps1](https://github.com/linrongbin16/lin.vim/blob/master/install.ps1)) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
-Software dependencies versions need at least newer than:
+- git
+- (g)vim (macvim on MacOS)
+- curl
+- wget
+- llvm (clang, clang++, clangd, clang-format)
+- autoconf
+- automake
+- cmake
+- the_silver_searcher(ag)
+- ripgrep(rg)
+- zip, unzip, unrar, bzip2, p7zip (7z installed on Windows as an alternative)
+- python3, pip packages (python2 is not support)
+- node, npm packages
+- universal-ctags
+- gcc, g++ (only on Linux such as Ubuntu/Fedora/Manjaro)
+- neovim (not installed on Windows)
+- zsh (not installed on Windows)
+- fack nerd font (only download on Windows, need manually installation)
+
+Please notice that installation needs access of websites below, please make sure they're available before installation.
+
+- [github.com](https://github.com/).
+- [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+- [chocolatey](https://chocolatey.org/) on Windows.
+
+Customizing third party dependencies is not supported, but typing the commands in [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) ([install.ps1](https://github.com/linrongbin16/lin.vim/blob/master/install.ps1)) could achieve manually installation with these prerequisites:
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
@@ -144,7 +165,7 @@ Software dependencies versions need at least newer than:
 | python3             | 3.6+         |
 | nodejs              | 10.12+       |
 
-Compatibility tested on platforms:
+##### Tested Platforms
 
 | Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                             |
 | ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -154,21 +175,6 @@ Compatibility tested on platforms:
 | Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                           |
 | Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                           |
 | Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+ |
-| CentOS Linux 8         |                        |                               |                               | **_failure_**                                                                                                           |
-
-### Known Issues
-
-1. Installation needs network access of below, please make sure they're available before installation.
-   - [github.com](https://github.com/).
-   - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-   - [chocolatey](https://chocolatey.org/) on Windows.
-2. (Neo)vim, python3 with related pip packages, nodejs with related npm packages will be installed, which may conflict with already installed ones.
-3. `nvim.exe` isn't installed on Windows by default. Please install Neovim GUI client manually if you need.
-4. Only python3 is supported, python2 is not supported.
-5. Hack Nerd Fonts below is installed default, while only downloaded on Windows and need manually install. Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
-
-   - [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
-   - [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
 
 # User Guide
 
@@ -290,7 +296,14 @@ Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[a
 
 ### Customization
 
-- custom your own settings in **_user.vim_** and **coc-settings.json**.
+Please custom your own settings in **_user.vim_** and **coc-settings.json**.
+
+##### GUI Fonts
+
+Hack Nerd Fonts below is installed default(while only downloaded on Windows and need manually install). Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
+
+- [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
+- [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
 
 ### Command Line Utility (vcmd)
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 yes | sudo pacman -Rs vim
-yes | sudo pacman -S git
 yes | sudo pacman -S gvim
 yes | sudo pacman -S neovim
 yes | sudo pacman -S curl
@@ -15,7 +14,6 @@ yes | sudo pacman -S automake
 yes | sudo pacman -S cmake
 yes | sudo pacman -S the_silver_searcher
 yes | sudo pacman -S ripgrep
-yes | sudo pacman -S unrar
 yes | sudo pacman -S unzip
 yes | sudo pacman -S bzip2
 yes | sudo pacman -S zip

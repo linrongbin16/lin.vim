@@ -18,6 +18,7 @@ brew install the_silver_searcher
 brew install ripgrep
 brew install unzip
 brew install zip
+brew install bzip2
 brew install p7zip
 brew install python3
 
