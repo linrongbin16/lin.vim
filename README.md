@@ -118,7 +118,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 3. Add third party dependencies `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`. Actually it's totally free to install third party dependencies above in other ways, just make sure they're available in environment with compatible version.
 
 4. Add `$env:UserProfile\.vim\command`.
-5. Additionally copy a duplicated executable `python3.exe` from `python.exe` for explicitly different from python2, and add `python3.exe` in `$env:Path`.
+5. Additionally copy a duplicated executable `python3.exe` from `python.exe` for explicitly different from python2, and add `python3.exe` and `pip.exe` in `$env:Path`.
 6. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
    - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
@@ -150,7 +150,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - zsh (not installed on Windows)
 - fack nerd font (only download on Windows, need manually installation)
 
-Please notice that installation needs access of websites below, please make sure they're available before installation.
+Please notice that installation needs access of websites below, and make sure they're available:
 
 - [github.com](https://github.com/).
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
