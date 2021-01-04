@@ -137,7 +137,7 @@ Add `$env:UserProfile\.vim\command`.
 
 ##### Third Party Dependencies
 
-[install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) ([install.ps1](https://github.com/linrongbin16/lin.vim/blob/master/install.ps1)) will install third party dependencies automatically through package manager, which could conflict with your systems:
+[install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
 - git
 - (g)vim (macvim on MacOS)
@@ -164,7 +164,7 @@ Please notice that installation needs access of websites below, and make sure th
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
 - [chocolatey](https://chocolatey.org/) on Windows.
 
-Customizing third party dependencies is not supported, but typing the commands in [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) ([install.ps1](https://github.com/linrongbin16/lin.vim/blob/master/install.ps1)) could achieve manually installation with these prerequisites:
+Customizing third party dependencies is not supported, but typing the commands in [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) could achieve manually installation with these prerequisites:
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
