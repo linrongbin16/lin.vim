@@ -105,25 +105,33 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
    - .NET Desktop Development.
    - Visual C++ Desktop Development.
    - Common Windows Platform Development.
-2. Install third party dependencies with [chocolatey](https://chocolatey.org/) and lin.vim (run powershell as administrator):
+2. Install third party dependencies, [chocolatey](https://chocolatey.org/) is recommanded, and it's free to manually install these dependencies or through other package manager. Please make sure (Neo)vim's compiled python3 dynamic library version is compatible with installed python3. Install with chocolatey as administrator:
 
 ```bash
     $ choco install -y git cmake vim llvm nodejs ag ripgrep universal-ctags
     $ choco install -y python --version=3.8.0
+```
+
+Add `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `python.exe`, `pip.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`.
+
+3. Install following components as administrator:
+
+```bash
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
     $ cd $env:UserProfile\.vim
     $ .\install.ps1
 ```
 
-3. Add third party dependencies `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`. Actually it's totally free to install third party dependencies above in other ways, just make sure they're available in environment with compatible version.
+Add `$env:UserProfile\.vim\command`.
 
-4. Add `$env:UserProfile\.vim\command`.
-5. Additionally copy a duplicated executable `python3.exe` from `python.exe` for explicitly different from python2, and add `python3.exe` and `pip.exe` in `$env:Path`.
-6. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
-   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+4. Python3 on Windows don't provide `python3.exe`, please copy `python.exe` as `python3.exe` in python3's installation directory to explicitly distinguish from python2.
+
+5. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
+
+- `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+- `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+- `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+- `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
 
 ### Limitation
 
