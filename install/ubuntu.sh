@@ -38,13 +38,13 @@ fi
 
 
 # Ctags
-sudo apt-get remove -y universal-ctags
-sudo apt-get remove -y exuberant-ctags
-sudo apt-get install -y libseccomp-dev
-sudo apt-get install -y libjansson-dev
-sudo apt-get install -y libyaml-dev
-sudo apt-get install -y libxml2-dev
 if ! type "ctags" > /dev/null; then
+    sudo apt-get remove -y universal-ctags
+    sudo apt-get remove -y exuberant-ctags
+    sudo apt-get install -y libseccomp-dev
+    sudo apt-get install -y libjansson-dev
+    sudo apt-get install -y libyaml-dev
+    sudo apt-get install -y libxml2-dev
     cd ~/.vim
     git clone https://github.com/universal-ctags/ctags.git universal-ctags
     cd universal-ctags
