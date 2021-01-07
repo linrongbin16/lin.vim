@@ -87,6 +87,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |`install.ps1          Windows PowerShell installation script.
  |`LICENSE              The license file.
  |`lin.vim              The *.vimrc* file.
+ |`README.md            Readme wiki.
 ```
 
 # Installation
