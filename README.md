@@ -82,7 +82,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |+install              Installation scripts for all platforms.
  |+picture              Screenshots for README.
  |+setting              VimL script settings.
- |+template             Template settings for user-settings.vim, coc-settings.json, vim-plug.vim and .linvimrc.
+ |+template             Templates for user-settings.vim, coc-settings.json, vim-plug.vim and .linvimrc.
  |`install.sh           UNIX/Linux/MacOS bash installation script.
  |`install.ps1          Windows PowerShell installation script.
  |`LICENSE              The license file.
