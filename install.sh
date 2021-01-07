@@ -88,7 +88,7 @@ ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
 
 # install environment
-cp ~/.vim/linvimrc.sh ~/.linvimrc
+cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc
 touch ~/.zshrc
 echo "source ~/.linvimrc" >> ~/.zshrc
 chsh -s $(which zsh)
