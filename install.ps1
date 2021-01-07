@@ -23,8 +23,9 @@ cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
 gvim -c "PlugInstall" -c "qall"
 
 # Install User Custom
-Copy-Item $env:UserProfile\.vim\setting-vim\user-template.vim -Destination $env:UserProfile\.vim\user.vim
-Copy-Item $env:UserProfile\.vim\setting-vim\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
+Copy-Item $env:UserProfile\.vim\template\vim-plug-template.vim -Destination $env:UserProfile\.vim\vim-plug.vim
+Copy-Item $env:UserProfile\.vim\template\user-settings-template.vim -Destination $env:UserProfile\.vim\user-settings.vim
+Copy-Item $env:UserProfile\.vim\template\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
 
 # Install Neovim Config
 New-Item -ItemType Directory -Force -Path $env:UserProfile\AppData\Local

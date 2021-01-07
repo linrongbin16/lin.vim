@@ -14,7 +14,8 @@ tags.temp
 plugged
 
 # user settings
-user.vim
+vim-plug.vim
+user-settings.vim
 coc-settings.json
 command/*.db
 command/*.ignore

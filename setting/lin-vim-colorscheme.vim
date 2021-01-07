@@ -1,6 +1,3 @@
-"" ---- color scheme ----
-
-"" pick random color
 syntax enable
 let s:guicolor=['darkblue', 'solarized', 'molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'one', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'base16-default-dark', 'jellybeans']
 let s:termcolor=['molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'jellybeans']

@@ -71,8 +71,9 @@ ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"
 
 # install user custom
-cp ~/.vim/setting-vim/user-template.vim ~/.vim/user.vim
-cp ~/.vim/setting-vim/coc-settings-template.json ~/.vim/coc-settings.json
+cp ~/.vim/template/vim-plug-template.vim ~/.vim/vim-plug.vim
+cp ~/.vim/template/user-settings-template.vim ~/.vim/user-settings.vim
+cp ~/.vim/template/coc-settings-template.json ~/.vim/coc-settings.json
 
 # install neovim config
 mkdir -p ~/.config

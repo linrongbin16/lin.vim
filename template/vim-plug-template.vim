@@ -1,7 +1,6 @@
 "" ---- vim-plug.vim ----
 
 if has('win32') || has('win64')
-    " Make windows use ~/.vim too, I don't want to use _vimfiles
     set runtimepath^=~/.vim
 endif
 
@@ -74,5 +73,7 @@ Plug 'rhysd/vim-llvm'
 
 " PowerShell
 Plug 'pprovost/vim-ps1'
+
+Plug 'vlime/vlime'
 
 call plug#end()
