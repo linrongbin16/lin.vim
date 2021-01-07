@@ -9,11 +9,11 @@ source $HOME/.vim/setting/lin-vim-standalone.vim
 " 3) vim-plug config
 
 " UI
+source $HOME/.vim/setting/lin-vim-colorscheme.vim
 source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/scrooloose-nerdtree.vim
 source $HOME/.vim/setting/itchyny-lightline.vim.vim
 source $HOME/.vim/setting/majutsushi-tagbar.vim
-source $HOME/.vim/setting/lin-vim-colorscheme.vim
 
 " Syntax highlight
 source $HOME/.vim/setting/sheerun-vim-polyglot.vim
