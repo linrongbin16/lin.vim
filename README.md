@@ -101,10 +101,10 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 ### Windows
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with options:
-   - .NET Desktop Development.
-   - Visual C++ Desktop Development.
-   - Common Windows Platform Development.
-2. Install third party dependencies, [chocolatey](https://chocolatey.org/) is recommanded, and it's free to manually install these dependencies or through other package manager. Please make sure (Neo)vim's compiled python3 dynamic library version is compatible with installed python3. Install with chocolatey as administrator:
+   - .NET Desktop Development
+   - Visual C++ Desktop Development
+   - Common Windows Platform Development
+2. Install third party dependencies with recommanded [chocolatey](https://chocolatey.org/) as administrator:
 
 ```bash
     $ choco install -y git cmake vim llvm nodejs ag ripgrep universal-ctags
@@ -112,6 +112,8 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 ```
 
 Add `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `python.exe`, `pip.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`.
+Python3 on Windows don't provide `python3.exe`, please copy `python.exe` as `python3.exe` in python3's installation directory to explicitly distinguish from python2.
+You could also manually install these dependencies or through other package manager. Just make sure they're avaiable in `$env:Path`, and make sure (Neo)vim's compiled python3 version is compatible with `python3.exe`.
 
 3. Install following components as administrator:
 
@@ -121,9 +123,7 @@ Add `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`
     $ .\install.ps1
 ```
 
-Add `$env:UserProfile\.vim\command`.
-
-4. Python3 on Windows don't provide `python3.exe`, please copy `python.exe` as `python3.exe` in python3's installation directory to explicitly distinguish from python2.
+Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
 5. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
 
