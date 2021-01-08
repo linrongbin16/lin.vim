@@ -112,7 +112,9 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 ```
 
 Add `git.exe`, `cmake.exe`, `gvim.exe`, `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`, `node.exe`, `npm.exe`, `python.exe`, `pip.exe`, `ag.exe`, `rg.exe`, `ctags.exe` in `$env:Path`.
+
 Python3 on Windows don't provide `python3.exe`, please copy `python.exe` as `python3.exe` in python3's installation directory to explicitly distinguish from python2.
+
 You could also manually install these dependencies or through other package manager. Just make sure they're avaiable in `$env:Path`, and make sure (Neo)vim's compiled python3 version is compatible with `python3.exe`.
 
 3. Install following components as administrator:
