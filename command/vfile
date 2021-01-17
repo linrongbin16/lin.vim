@@ -33,6 +33,7 @@ option:
 encoding:
   GB18030/GB2312/GBK                    Windows chinese encoding
   UTF-8                                 Unicode UTF-8
+  ASCII                                 ASCII
 
 
 example:
@@ -93,17 +94,15 @@ def _list(filetype, include_hidden):
 
 def _get_encoding(outs):
     detect_encoding = "".join(outs).strip().split(":")[1]
+    if detect_encoding.find("no result") >= 0:
+        return None
     detect_encoding = detect_encoding.strip().split(" ")[0]
     return detect_encoding
 
 
 def _convert_encoding(encoding, filetype, include_hidden):
-    encoding_name_mapping = {
-        "GB2312": "GB18030",
-        "GBK": "GB18030",
-        "UTF8": "UTF-8",
-        "UTF-8": "UTF-8",
-    }
+    encoding = encoding.upper()
+    encoding_name_map = {"UTF-8-SIG": "UTF-8"}
     root = os.getcwd()
     files = [os.path.relpath(f, root) for f in util.list_files(".", include_hidden)]
     filetype = ".%s" % filetype
@@ -112,19 +111,22 @@ def _convert_encoding(encoding, filetype, include_hidden):
             continue
         detect_outs, detect_errs = util.run("chardetect", f)
         detect_encoding = _get_encoding(detect_outs)
-        if (
-            encoding_name_mapping[detect_encoding.upper()]
-            == encoding_name_mapping[encoding.upper()]
-        ):
-            print("%s: %s" % (f, encoding_name_mapping[encoding.upper()]))
+        if detect_encoding is None:
+            print("%s: no encoding" % (f))
             continue
+        detect_encoding = detect_encoding.upper()
+        detect_encoding = (
+            encoding_name_map[detect_encoding]
+            if detect_encoding in encoding_name_map
+            else detect_encoding
+        )
         try:
             convert_outs, convert_errs = util.run(
                 "iconv",
                 "-f",
-                encoding_name_mapping[detect_encoding.upper()],
+                detect_encoding,
                 "-t",
-                encoding_name_mapping[encoding.upper()],
+                encoding,
                 f,
             )
             new_filename = "%s.new.%s" % (f, time.time())
@@ -132,14 +134,10 @@ def _convert_encoding(encoding, filetype, include_hidden):
             new_fp.writelines(convert_outs)
             new_fp.close()
             os.rename(f, new_filename)
-            print(
-                "%s: %s => %s"
-                % (f, detect_encoding, encoding_name_mapping[encoding.upper()])
-            )
+            print("%s: %s => %s" % (f, detect_encoding, encoding))
         except Exception as e:
             print(
-                "error: %s: %s => %s failed:%s"
-                % (f, detect_encoding, encoding_name_mapping[encoding.upper()], str(e))
+                "error: %s: %s => %s failed:%s" % (f, detect_encoding, encoding, str(e))
             )
     exit(0)
 
