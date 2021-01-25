@@ -70,16 +70,20 @@ if __name__ == "__main__":
                 if opt[1] == "base64":
                     for a in args:
                         _encode_base64(a)
+                    exit(0)
                 elif opt[1] == "url":
                     for a in args:
                         _encode_url(a)
+                    exit(0)
             elif opt[0] in ("-d", "--decode"):
                 if opt[1] == "base64":
                     for a in args:
                         _decode_base64(a)
+                    exit(0)
                 elif opt[1] == "url":
                     for a in args:
                         _decode_url(a)
+                    exit(0)
         _help()
     except getopt.GetoptError as e:
         print(e)
