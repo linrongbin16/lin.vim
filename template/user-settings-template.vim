@@ -46,13 +46,15 @@ map <c-l> 10l
 
 
 " 5. Filetype mapping
-autocmd BufRead,BufNewFile *.hql set filetype=sql
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.hs set filetype=haskell
-autocmd BufRead,BufNewFile *Makefile* set filetype=make
-autocmd BufRead,BufNewFile *makefile* set filetype=make
-autocmd BufRead,BufNewFile *.ll set filetype=llvm
-autocmd BufRead,BufNewFile *.scm set filetype=lisp
+autocmd BufRead,BufNewFile *.hql setlocal filetype=sql
+autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+autocmd BufRead,BufNewFile *.hs setlocal filetype=haskell
+autocmd BufRead,BufNewFile *Makefile* setlocal filetype=make
+autocmd BufRead,BufNewFile *makefile* setlocal filetype=make
+autocmd BufRead,BufNewFile *.ll setlocal filetype=llvm
+autocmd BufRead,BufNewFile *.scm setlocal filetype=lisp
+autocmd BufRead,BufNewFile *.vuejs setlocal filetype=html
+autocmd BufRead,BufNewFile *.vue setlocal filetype=html
 
 
 " 6. GUI window size
@@ -95,4 +97,4 @@ autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expan
 set colorcolumn=80
 
 " 11. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet']
+let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-yank', 'coc-snippets', 'coc-tag', 'coc-pyright', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur']

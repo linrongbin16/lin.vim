@@ -74,6 +74,11 @@ Plug 'rhysd/vim-llvm'
 " PowerShell
 Plug 'pprovost/vim-ps1'
 
+" Lisp
 Plug 'vlime/vlime'
+
+" Vue
+Plug 'posva/vim-vue'
+
 
 call plug#end()
