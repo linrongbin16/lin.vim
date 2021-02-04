@@ -53,8 +53,8 @@ autocmd BufRead,BufNewFile *Makefile* setlocal filetype=make
 autocmd BufRead,BufNewFile *makefile* setlocal filetype=make
 autocmd BufRead,BufNewFile *.ll setlocal filetype=llvm
 autocmd BufRead,BufNewFile *.scm setlocal filetype=lisp
-autocmd BufRead,BufNewFile *.vuejs setlocal filetype=html
-autocmd BufRead,BufNewFile *.vue setlocal filetype=html
+autocmd BufRead,BufNewFile *.vuejs setlocal filetype=vue
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
 
 
 " 6. GUI window size
