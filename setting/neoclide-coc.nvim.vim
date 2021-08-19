@@ -1,7 +1,5 @@
 " default extensions
 
-set encoding=utf-8
-set hidden
 set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
