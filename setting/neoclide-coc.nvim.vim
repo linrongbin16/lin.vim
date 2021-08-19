@@ -1,9 +1,7 @@
 " default extensions
 
-" let g:coc_disable_startup_warning = 1
-" let g:coc_global_extensions = ['coc-marketplace', 'coc-highlight', 'coc-snippets', 'coc-json', 'coc-pyright', 'coc-jedi', 'coc-clangd', 'coc-cmake', 'coc-css',  'coc-html', 'coc-tsserver', 'coc-eslint', 'coc-sql']
-
-" Don't pass messages to |ins-completion-menu|.
+set encoding=utf-8
+set hidden
 set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -55,8 +53,3 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
