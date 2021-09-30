@@ -53,7 +53,7 @@ sudo npm install -g yarn prettier
 if [ $(uname) == "Darwin" ]; then
     cd ~/Library/Fonts
     brew tap homebrew/cask-fonts
-    brew cask install font-hack-nerd-font
+    brew install --cask font-hack-nerd-font
 else
     mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
     if [ ! -f Hack.zip ]; then
