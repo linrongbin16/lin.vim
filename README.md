@@ -135,7 +135,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 5. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
-6. Install hack nerd fonts windows compatible version downloaded as `$env:UserProfile\.vim\guifonts\Hack.zip`:
+6. Install [hack nerd fonts windows compatible version](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack.zip`, please manually install the following fonts:
    - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
