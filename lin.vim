@@ -18,9 +18,10 @@ source $HOME/.vim/setting/majutsushi-tagbar.vim
 " Syntax highlight
 source $HOME/.vim/setting/sheerun-vim-polyglot.vim
 
-" Language Server
+" Language
 source $HOME/.vim/setting/neoclide-coc.nvim.vim
 source $HOME/.vim/setting/ludovicchabant-vim-gutentags.vim
+source $HOME/.vim/setting/rust-lang-rust.vim.vim
 
 " Comment
 source $HOME/.vim/setting/preservim-nerdcommenter.vim

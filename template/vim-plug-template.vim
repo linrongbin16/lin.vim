@@ -80,5 +80,7 @@ Plug 'vlime/vlime'
 " Vue
 Plug 'posva/vim-vue'
 
+" Rust
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
