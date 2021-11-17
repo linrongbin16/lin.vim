@@ -28,6 +28,7 @@
     "typescript": ["javascript"],
     "md": ["markdown"]
   },
-  "json.format.enable": false,
+  "json.enable": true,
+  "json.format.enable": true,
   "eslint.run": "onSave"
 }
