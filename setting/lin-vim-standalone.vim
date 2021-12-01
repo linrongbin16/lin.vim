@@ -84,9 +84,11 @@ set norelativenumber
 set number
 set laststatus=2
 set lazyredraw
+set ttyfast
 set hidden
 set updatetime=100
 set cmdheight=2
+set regexpengine=1
 
 if has("gui_running")
     " gvim toolbox
