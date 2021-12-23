@@ -32,24 +32,12 @@ algorithm:
   7z                                .7z file
 
 example:
-  $ vpack -e Hack.zip
-  Archive:  Hack.zip
-    inflating: Hack Bold Nerd Font Complete Mono.ttf
-    inflating: Hack Bold Nerd Font Complete Mono Windows Compatible.ttf
-    inflating: Hack Bold Nerd Font Complete Windows Compatible.ttf
-    inflating: Hack Bold Nerd Font Complete.ttf
-    inflating: Hack Bold Italic Nerd Font Complete Mono.ttf
-    inflating: Hack Bold Italic Nerd Font Complete.ttf
-    inflating: Hack Bold Italic Nerd Font Complete Windows Compatible.ttf
-    inflating: Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf
-    inflating: Hack Regular Nerd Font Complete.ttf
-    inflating: Hack Regular Nerd Font Complete Windows Compatible.ttf
-    inflating: Hack Regular Nerd Font Complete Mono Windows Compatible.ttf
-    inflating: Hack Regular Nerd Font Complete Mono.ttf
-    inflating: Hack Italic Nerd Font Complete Mono Windows Compatible.ttf
-    inflating: Hack Italic Nerd Font Complete Mono.ttf
-    inflating: Hack Italic Nerd Font Complete.ttf
-    inflating: Hack Italic Nerd Font Complete Windows Compatible.ttf
+  $ vpack -e Hack-v3.003-ttf.zip
+  Archive:  Hack-v3.003-ttf.zip
+    inflating: ttf/Hack-Bold.ttf
+    inflating: ttf/Hack-BoldItalic.ttf
+    inflating: ttf/Hack-Italic.ttf
+    inflating: ttf/Hack-Regular.ttf
 
   $ vpack -c package
   a package

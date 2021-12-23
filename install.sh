@@ -49,18 +49,22 @@ sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
 # install nodejs npm packages
 sudo npm install -g yarn prettier
 
-# install hack nerd font
+# install hack font
 if [ $(uname) == "Darwin" ]; then
     cd ~/Library/Fonts
     brew tap homebrew/cask-fonts
-    brew install --cask font-hack-nerd-font
+    brew install --cask font-hack
 else
     mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-    if [ ! -f Hack.zip ]; then
-        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    if [ ! -f Hack-v3.003-ttf.zip ]; then
+        wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
     fi
-    check_download $? "Hack Nerd Fonts"
-    unzip -o Hack.zip
+    check_download $? "Hack Fonts"
+    unzip -o Hack-v3.003-ttf.zip
+    cp ttf/Hack-Bold.ttf ..
+    cp ttf/Hack-BoldItalic.ttf ..
+    cp ttf/Hack-Italic.ttf ..
+    cp ttf/Hack-Regular.ttf ..
 fi
 
 # install vim-plug

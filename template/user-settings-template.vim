@@ -69,13 +69,13 @@ endif
 " 7. GUI fonts
 if has("win32")
     " win32
-    set guifont=Hack\ NF:h9
+    set guifont=Hack:h9
 elseif has("mac")
     " macos
-    set guifont=Hack\ Nerd\ Font\ Mono:h12
+    set guifont=Hack:h12
 else
     " linux, unix
-    set guifont=Hack\ Nerd\ Font\ Mono\ 10
+    set guifont=Hack\ 10
 endif
 
 

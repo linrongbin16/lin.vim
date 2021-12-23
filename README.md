@@ -135,11 +135,11 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 5. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
-6. Install [hack nerd fonts windows compatible version](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack.zip`, please manually install the following fonts:
-   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+6. Install [hack fonts](https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack-v3.003-ttf.zip`, please manually install the following fonts:
+   - `Hack-Bold.ttf`
+   - `Hack-BoldItalic.ttf`
+   - `Hack-Italic.ttf`
+   - `Hack-Regular.ttf`
 
 ### Limitation
 
@@ -164,7 +164,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - gcc, g++ (only on Linux such as Ubuntu/Fedora/Manjaro)
 - neovim (not installed on Windows)
 - zsh (not installed on Windows)
-- fack nerd font (only download on Windows, need manually installation)
+- fack font (only download on Windows, need manually installation)
 
 Please notice that installation needs access of websites below, and make sure they're available:
 
@@ -316,10 +316,7 @@ Please custom your own settings in **_user.vim_** and **coc-settings.json**.
 
 ##### GUI Fonts
 
-Hack Nerd Fonts below is installed default(while only downloaded on Windows and need manually install). Please manually install other [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts:
-
-- [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on UNIX/Linux/MacOS.
-- [Hack Nerd Font Complete Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack) on Windows.
+[Hack Fonts](https://github.com/source-foundry/Hack/releases/download/) below is installed by default(while only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
 
 ### Command Line Utility (vcmd)
 
