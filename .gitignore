@@ -22,3 +22,6 @@ command/*.ignore
 
 # neovim
 init.vim
+
+# jetbrains
+.idea
