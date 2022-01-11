@@ -14,8 +14,14 @@
     "markdown",
     "javascript",
     "javascriptreact",
+    "jsx",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "tsx",
+    "vue",
+    "ml",
+    "ocaml",
+    "rust"
   ],
   "python.pythonPath": "python3",
   "python.formatting.provider": "black",
@@ -26,7 +32,8 @@
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
-    "md": ["markdown"]
+    "md": ["markdown"],
+    "ml": ["ocaml"]
   },
   "json.enable": true,
   "json.format.enable": true,
