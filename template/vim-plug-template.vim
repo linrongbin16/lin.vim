@@ -33,7 +33,7 @@ Plug 'nanotech/jellybeans.vim'
 
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 " Plug 'sheerun/vim-polyglot'
 
 " Comment
