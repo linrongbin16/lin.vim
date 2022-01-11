@@ -1,6 +1,7 @@
 {
   "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
+  "suggest.triggerCompletionWait": 5,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "c",
@@ -37,5 +38,17 @@
   },
   "json.enable": true,
   "json.format.enable": true,
-  "eslint.run": "onSave"
+  "eslint.run": "onSave",
+  "clangd.path": "clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--compile-commands-dir=_debug_build",
+    "--query-driver=clang++",
+    "-j=12",
+    "--clang-tidy",
+    "--all-scopes-completion",
+    "--completion-style=detailed",
+    "--header-insertion=iwyu",
+    "--pch-storage=disk"
+  ]
 }

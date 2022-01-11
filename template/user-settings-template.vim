@@ -12,8 +12,8 @@ map <F3> :call CocAction('format')<CR>
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close terminal
 map <F5> :below terminal ++rows=20<CR>
-" open enhanced yank list
-map <F6> :CocList -A --normal yank<CR>
+" rename symbol
+nmap <S-F6> <Plug>(coc-rename)
 " open markdown preview
 map <F7> :MarkdownPreview<CR>
 " next color

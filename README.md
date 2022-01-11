@@ -207,7 +207,7 @@ In this section, VIM editing modes are specified with:
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
 - `F5` 🅽: open terminal window, see [Terminal window](#terminal-window).
-- `F6` 🅽: open enhanced yank list.
+- `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 
