@@ -84,7 +84,7 @@ def git_repo_headers():
     try:
         root, _ = util.run("git", "rev-parse", "--show-toplevel")
         root = root[0].strip()
-        _, hds = util.list_files(root, depth=3)
+        hds = util.list_dirs(root, False, 3)
         return [header_path(x) for x in hds]
     except:
         return []

@@ -132,7 +132,7 @@ def _push(force):
     comment = (
         "[vcmd] git push at %s"
         % (datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
-        if util.str_empty(comment)
+        if util.is_empty_str(comment)
         else comment
     )
     util.check_user_confirm(
@@ -209,7 +209,7 @@ def _config_proxy(p):
 
 def _print_proxy():
     gc = os.path.expanduser("~") + slash + ".gitconfig"
-    proxies = util.read_file_by_lines(gc)
+    proxies = util.readlines_file(gc)
     trigger = False
     saver = None
     for l in proxies:
