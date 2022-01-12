@@ -12,11 +12,11 @@ import subprocess
 
 
 def is_windows():
-    return platform.system() == "Windows"
+    return platform.system().lower().startswith("win")
 
 
 def is_macos():
-    return platform.system() == "Darwin"
+    return platform.system().lower().startswith("darwin")
 
 
 def is_empty_str(s):

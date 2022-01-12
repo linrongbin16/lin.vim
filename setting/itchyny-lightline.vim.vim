@@ -29,7 +29,7 @@ function! LightlineCocStatus() abort
   if empty(coc_status) && coc_function == 0
     return ''
   else
-    return printf('coc - %s %s', coc_status, coc_function)
+    return printf('coc %s %s', coc_status, coc_function)
   endif
 endfunction
 
