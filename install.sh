@@ -44,7 +44,7 @@ else
 fi
 
 # install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim
+sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim cmakelang
 
 # install nodejs npm packages
 sudo npm install -g yarn prettier
