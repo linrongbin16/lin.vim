@@ -40,11 +40,7 @@
   "json.enable": true,
   "json.format.enable": true,
   "eslint.run": "onSave",
-  "clangd.path": "clangd",
   "clangd.arguments": [
-    "--background-index",
-    "--compile-commands-dir=_debug_build",
-    "--query-driver=clang++",
     "-j=12",
     "--clang-tidy",
     "--all-scopes-completion",
