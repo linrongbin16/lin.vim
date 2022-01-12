@@ -210,6 +210,8 @@ In this section, VIM editing modes are specified with:
 - `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
+- `CTRL-TAB` 🅽: go to next buffer.
+- `CTRL-SHIFT-TAB` 🅽: go to previous buffer.
 
 You could configure these hot keys in **_user.vim_**.
 
@@ -296,16 +298,16 @@ Commentary is supported by [nerdcomment](https://github.com/preservim/nerdcommen
 
 ### File Explorer
 
-File explorer is supported by [nerdtree](https://github.com/preservim/nerdtree), [lightline](https://github.com/itchyny/lightline.vim), [vim-buftabline](https://github.com/ap/vim-buftabline) and [vim-devicons](https://github.com/ryanoasis/vim-devicons).
-They constructs the file explorer on the left(nerdtree), pretty icons integrated with file explorer(vim-devicons), opened buffers on the top(vim-buftabline) and current editing status on the bottom(lightline).
+File explorer is supported by [nerdtree](https://github.com/preservim/nerdtree), [lightline](https://github.com/itchyny/lightline.vim) and [vim-buftabline](https://github.com/ap/vim-buftabline).
+They constructs the file explorer on the left(nerdtree), opened buffers on the top(vim-buftabline) and current editing status on the bottom(lightline).
 
 - `ma` 🅽 on the left: create new file/directory.
 - `mc` 🅽 on the left: copy file/directory.
 - `md` 🅽 on the left: delete file/directory.
 - `mm` 🅽 on the left: move file/directory.
 
-- `<leader>bn` 🅽: go to next buffer.
-- `<leader>bp` 🅽: go to previous buffer.
+- `<leader>bn`(`CTRL-TAB`) 🅽: go to next buffer .
+- `<leader>bp`(`CTRL-SHIFT-TAB`) 🅽: go to previous buffer.
 - `<leader>bd` 🅽: close current buffer.
 
 Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.

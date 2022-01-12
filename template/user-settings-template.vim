@@ -18,6 +18,9 @@ nmap <S-F6> <Plug>(coc-rename)
 map <F7> :MarkdownPreview<CR>
 " next color
 map <F8> :call NextColor()<CR>
+" use ctrl-tab, ctrl-shift-tab to switch buffer
+nnoremap <C-Tab> :bn<CR>
+nnoremap <C-S-Tab> :bp<CR>
 
 
 " 2. Enhanced copy paste
