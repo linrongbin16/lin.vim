@@ -18,7 +18,7 @@ let g:lightline = {
 
 function! LightLineFileName() abort
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' [+]' : ''
+  let modified = &modified ? ' [*]' : ''
   return filename . modified
 endfunction
 
