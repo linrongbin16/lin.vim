@@ -19,74 +19,56 @@ def is_macos():
     return platform.system().lower().startswith("darwin")
 
 
-def is_empty_str(s):
+def str_empty(s):
     return True if (s is None) else (len(s.strip()) == 0)
 
 
 def read_file(name):
-    try:
-        fp = open(name, "r")
-        data = fp.read()
-        fp.close()
-        return data
-    except Exception:
-        return None
+    fp = open(name, "r")
+    data = fp.read()
+    fp.close()
+    return data
 
 
-def readlines_file(name):
-    try:
-        fp = open(name, "r")
-        lines = fp.readlines()
-        fp.close()
-        return lines
-    except Exception:
-        return list()
+def read_file_by_lines(name):
+    fp = open(name, "r")
+    lines = fp.readlines()
+    fp.close()
+    return lines
 
 
 def write_file(name, text):
-    try:
-        fp = open(name, "w")
-        if isinstance(text, list):
-            fp.writelines(text)
-        else:
-            fp.write(text)
-        fp.close()
-    except Exception:
-        pass
+    fp = open(name, "w")
+    if isinstance(text, list):
+        fp.writelines(text)
+    else:
+        fp.write(text)
+    fp.close()
 
 
 def append_file(name, text):
-    try:
-        fp = open(name, "a+")
-        if isinstance(text, list):
-            fp.writelines(text)
-        else:
-            fp.write(text)
-        fp.close()
-    except Exception:
-        pass
+    fp = open(name, "a+")
+    if isinstance(text, list):
+        fp.writelines(text)
+    else:
+        fp.write(text)
+    fp.close()
 
 
 def purge_file(name):
-    try:
-        fp = open(name, "w")
-        fp.close()
-    except Exception:
-        pass
+    fp = open(name, "w")
+    fp.close()
 
 
 def get_command_home():
-    return (
-        os.path.expanduser("~") + "\\.vim\\command"
-        if is_windows()
-        else os.path.expanduser("~") + "/.vim/command"
-    )
+    SLASH = "\\" if is_windows() else "/"
+    return f"{os.path.expanduser('~')}{SLASH}.vim{SLASH}command"
 
 
 def backup_file(target):
     if not os.path.exists(target):
         return
-    bakname = "%s.%s" % (target, datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
+    bakname = f"{target}.{datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')}"
     os.rename(target, bakname)
 
 
@@ -129,21 +111,18 @@ def list_dirs(directory, include_hidden=False, depth=99):
 
 
 def run(*cmd):
-    try:
-        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout_str = iter(proc.stdout.readline, b"")
-        stderr_str = iter(proc.stderr.readline, b"")
-    except subprocess.CalledProcessError:
-        exit(3)
-    outstr = [x.decode() for x in stdout_str if len(x) > 0]
-    errstr = [x.decode() for x in stderr_str if len(x) > 0]
-    return outstr, errstr
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out_bytes = iter(proc.stdout.readline, b"")
+    err_bytes = iter(proc.stderr.readline, b"")
+    out_lines = [x.decode() for x in out_bytes if len(x) > 0]
+    err_lines = [x.decode() for x in err_bytes if len(x) > 0]
+    return out_lines, err_lines
 
 
 def check_user_confirm(msg):
     yes = input(msg)
     if yes.lower().startswith("n"):
-        print("[vcmd] user not confirm")
+        print("[vcmd] user not confirm, exit...")
         exit(3)
 
 
@@ -154,7 +133,7 @@ def get_git_root():
 
 def check_git_repository():
     if get_git_root() is None:
-        print("[vcmd] error: not a git repository")
+        print("[vcmd] error: not a git repository, exit...")
         exit(3)
 
 
@@ -183,17 +162,15 @@ def get_git_remote_repository():
     repos = [x.strip() for x in repos]
     if len(repos) <= 0:
         return None
-    repos_str = ", ".join(["'%s'[%d]" % (repos[i], i) for i in range(len(repos))])
-    user_input = input(
-        "[vcmd] choose remote repository %s (by default 0): " % (repos_str)
-    )
-    if is_empty_str(user_input):
+    repos_str = ", ".join([f"'{repos[i]}'[{i}]" for i in range(len(repos))])
+    user_input = input(f"[vcmd] choose remote repository {repos_str} (by default 0): ")
+    if str_empty(user_input):
         repos_str = list(repos)[0]
     else:
         try:
             repos_str = repos[int(user_input)]
         except Exception:
-            print("[vcmd] error input:%s" % (user_input))
+            print(f"[vcmd] error input:{user_input}, exit...")
             exit(3)
     return repos_str
 
@@ -202,8 +179,8 @@ def get_git_remote_branch():
     branches, _ = run("git", "status")
     branches = [x.strip() for x in branches]
     branch = branches[0].split(" ")[2].strip()
-    user_input = input("[vcmd] choose branch (by default %s): " % (branch))
-    return branch if is_empty_str(user_input) else user_input
+    user_input = input(f"[vcmd] choose branch (by default {branch}): ")
+    return branch if str_empty(user_input) else user_input
 
 
 def get_git_last_commit(n):
