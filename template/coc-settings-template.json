@@ -53,8 +53,5 @@
     "--pch-storage=disk"
   ],
   "cmake.cmakePath": "cmake",
-  "cmake.formatter": "cmake-format",
-  "cmake.lsp.enable": true,
-  "cmake.lsp.serverPath": "cmake-language-server",
-  "cmake.lsp.buildDirectory": "_debug_build"
+  "cmake.formatter": "cmake-format"
 }
