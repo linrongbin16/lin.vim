@@ -13,6 +13,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
+Plug 'RRethy/vim-illuminate'
+" this plugin need golang
+" Plug 'RRethy/vim-hexokinase'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
