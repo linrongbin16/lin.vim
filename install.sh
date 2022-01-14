@@ -13,7 +13,7 @@ function check_sudo() {
 
 # backup old .linvimrc
 if [ -f ~/.linvimrc ]; then
-    LINVIMRC_BAK=~/.linvimrc.$(date +%s).bak
+    LINVIMRC_BAK=~/.linvimrc.$(date +%s)
     echo "[lin.vim] back up .linvimrc to $LINVIMRC_BAK"
     mv ~/.linvimrc $LINVIMRC_BAK
 fi
@@ -39,7 +39,7 @@ elif [ $(uname) == "Darwin" ]; then
     check_sudo "MacOS"
     bash ~/.vim/install/macos.sh
 else
-    echo "[lin.vim] Unknown OS $(uname), exiting installation!"
+    echo "[lin.vim] Unknown OS $(uname), exit..."
     exit 3
 fi
 
@@ -69,7 +69,9 @@ fi
 
 # install vim-plug
 if [ -f ~/.vimrc ]; then
-    rm ~/.vimrc
+    VIMRC_BAK=~/.vimrc.$(date +%s)
+    echo "[lin.vim] back up .vimrc to $VIMRC_BAK"
+    mv ~/.vimrc $VIMRC_BAK
 fi
 ln -s ~/.vim/lin.vim ~/.vimrc
 vim -c "PlugInstall" -c "qall"

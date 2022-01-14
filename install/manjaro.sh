@@ -12,6 +12,7 @@ yes | sudo pacman -S make
 yes | sudo pacman -S autoconf
 yes | sudo pacman -S automake
 yes | sudo pacman -S cmake
+yes | sudo pacman -S go
 yes | sudo pacman -S the_silver_searcher
 yes | sudo pacman -S ripgrep
 yes | sudo pacman -S unzip

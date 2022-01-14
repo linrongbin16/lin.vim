@@ -100,32 +100,31 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Windows
 
-1. Install [Visual Studio](https://www.visualstudio.com/) with options:
+1. Install [Visual Studio](https://www.visualstudio.com/) with at least these options:
 
    - .NET Desktop Development
    - Visual C++ Desktop Development
    - Common Windows Platform Development
 
-2. Install third party dependencies with recommanded [chocolatey](https://chocolatey.org/) as administrator:
+2. Install third party dependencies (x64 is preferred):
 
-```bash
-    $ choco install -y git cmake vim llvm nodejs ag ripgrep universal-ctags
-    $ choco install -y python --version=3.8.0
-```
+   - [git](https://git-scm.com/downloads), add `git.exe` in `$env:Path`
+   - [cmake](https://cmake.org/download/), add `cmake.exe` in `$env.Path`
+   - [gvim](https://github.com/vim/vim-win32-installer/releases), add `gvim.exe` in `$env.Path`
+   - (Optional) [neovim](https://github.com/neovim/neovim/releases), add `nvim.exe` in `$env.Path`
+   - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add `python3.exe`, `pip3.exe` in `$env.Path`
+   - [llvm](https://releases.llvm.org/), add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
+   - [golang](https://go.dev/doc/install), add `go.exe` in `$env.Path`
+   - [nodejs](https://nodejs.org/en/download/), add `node.exe`, `npm.exe` in `$env.Path`
+   - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` in `$env.Path`
+   - [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` in `$env.Path`
+   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe`, `readtags.exe` in `$env.Path`
 
-3. Add above dependencies in `$env:Path`. Python3 on Windows don't provide `python3.exe`, please copy `python.exe` as `python3.exe` to explicitly distinguish from python2. You could also manually install these dependencies or through other package manager. Just make sure (Neo)vim's compiled python3 version is compatible with `python3.exe` and they're avaiable in `$env:Path`:
+Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
 
-   - `git.exe`
-   - `cmake.exe`
-   - `gvim.exe`
-   - `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-format.exe`
-   - `node.exe`, `npm.exe`
-   - `python.exe`, `pip.exe`
-   - `ag.exe`
-   - `rg.exe`
-   - `ctags.exe`
+You could also install these dependencies with other windows package manager such as [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/), just make sure these commands are available in `$env.Path`.
 
-4. Install following components as administrator:
+3. Install following components as administrator:
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
@@ -133,9 +132,9 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     $ .\install.ps1
 ```
 
-5. Add `$env:UserProfile\.vim\command` in `$env:Path`.
+4. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
-6. Install [hack fonts](https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack-v3.003-ttf.zip`, please manually install the following fonts:
+5. Install [hack fonts](https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack-v3.003-ttf.zip`, please manually install the following fonts:
    - `Hack-Bold.ttf`
    - `Hack-BoldItalic.ttf`
    - `Hack-Italic.ttf`
@@ -148,10 +147,11 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
 - git
-- (g)vim (macvim on MacOS)
+- (g)vim/macvim
 - curl
 - wget
 - llvm (clang, clang++, clangd, clang-format)
+- golang
 - autoconf
 - automake
 - cmake
@@ -166,22 +166,20 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - zsh (not installed on Windows)
 - fack font (only download on Windows, need manually installation)
 
-Please notice that installation needs access of websites below, and make sure they're available:
+Notice: installation needs access of websites below, and make sure they're available:
 
 - [github.com](https://github.com/).
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
 - [chocolatey](https://chocolatey.org/) on Windows.
 
-Customizing third party dependencies is not supported, but typing the commands in [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) could achieve manually installation with these prerequisites:
+##### Tested Platforms
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
-| (g)vim              | 8.0+         |
+| (g)vim/macvim       | 8.0+         |
 | neovim              | 0.4.0+       |
 | python3             | 3.6+         |
 | nodejs              | 10.12+       |
-
-##### Tested Platforms
 
 | Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                             |
 | ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -207,24 +205,24 @@ In this section, VIM editing modes are specified with:
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
 - `F5` 🅽: open terminal window, see [Terminal window](#terminal-window).
-- `SHIFT-F6` 🅽: rename symbol.
+- `F6`, `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 - `CTRL-TAB` 🅽: go to next buffer.
 - `CTRL-SHIFT-TAB` 🅽: go to previous buffer.
 
-You could configure these hot keys in **_user.vim_**.
+You could configure these hot keys in **_user-settings.vim_**.
 
 ### Enhanced Copy Paste
 
-Enhanced copy-paste are supported when you want to export/import content from/to an outer file.
+Enhanced copy-paste are supported when you want copy/paste between different vim instances.
 
 - `<leader>c` 🆅: copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 - `<leader>p` 🅽: paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 
-All copied content in system clipboard will be stored in a text database, press `F6` to open enhanced yank list.
+Copied content will be stored in a text database, then you could paste them to other vim instances.
 
-You could configure these hot keys in **_user.vim_**.
+You could configure these hot keys in **_user-settings.vim_**.
 
 ### Text Search
 
@@ -263,7 +261,7 @@ Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/v
 - `<c-h>` 🅽: equal to `10h`
 - `<c-l>` 🅽: equal to `10l`
 
-You could configure these in **_user.vim_**.
+You could configure these in **_user-settings.vim_**.
 
 ### Language Server
 
@@ -271,7 +269,6 @@ Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim)
 
 - `<c-n>` `tab` `<up>` 🅸: select next in candidate list.
 - `<c-p>` `<s-tab>` `<down>` 🅸: select previous in candidate list.
-- `<c-k>` 🅸: trigger completion.
 
 Go to operations are supported in normal mode:
 
@@ -279,8 +276,9 @@ Go to operations are supported in normal mode:
 - `gy` 🅽: go to type definition.
 - `gi` 🅽: go to implementation.
 - `gr` 🅽: go to reference.
+- `F6`, `<s-F6>` 🅽: rename symbol.
 
-You could configure coc extensions in **_user.vim_** and **_coc-settings.json_**. And refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming languages, [coc.nvim#wiki#Using-coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) for more coc extensions.
+You could configure coc extensions in **_user-settings.vim_** and **_coc-settings.json_**. And refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming languages, [coc.nvim#wiki#Using-coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) for more coc extensions.
 
 ### Tags
 
@@ -289,6 +287,8 @@ Tags are important suppliement of language server, they're auto generated and up
 - `F2` 🅽: open/close tagbar tags explorer.
 - `<c-]>` 🅽: go to definition.
 - `<c-o>` 🅽: go back to previous position.
+
+Notice: tags could be inaccurate in large project (since words could be conflict), please use language server as your first choice.
 
 ### Commentary
 
@@ -306,19 +306,19 @@ They constructs the file explorer on the left(nerdtree), opened buffers on the t
 - `md` 🅽 on the left: delete file/directory.
 - `mm` 🅽 on the left: move file/directory.
 
-- `<leader>bn`(`CTRL-TAB`) 🅽: go to next buffer .
-- `<leader>bp`(`CTRL-SHIFT-TAB`) 🅽: go to previous buffer.
+- `<leader>bn`(`<c-tab>`) 🅽: go to next buffer .
+- `<leader>bp`(`<c-s-tab>`) 🅽: go to previous buffer.
 - `<leader>bd` 🅽: close current buffer.
 
 Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.
 
 ### Customization
 
-Please custom your own settings in **_user.vim_** and **coc-settings.json**.
+Please custom your own settings in **_user-settings.vim_** and **coc-settings.json**.
 
 ##### GUI Fonts
 
-[Hack Fonts](https://github.com/source-foundry/Hack/releases/download/) below is installed by default(while only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user.vim` if you want to customize GUI fonts.
+[Hack Fonts](https://github.com/source-foundry/Hack/releases/download/) below is installed by default(while only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize GUI fonts.
 
 ### Command Line Utility (vcmd)
 
@@ -331,7 +331,7 @@ A bunch of command line utilities are implemented by python3 to speed up your ed
 - `vgit`: Git operations without the burden of time consuming remember.
 - `vip`: Ip address calculations for both ipv4 and ipv6.
 - `vpack`: Easier file/directory compression and extraction.
-- `vag`: Fast text search wrapped the_silver_search ag.
+- `vag`: Fast text search wrapped ag/vg.
 - `vtime`: Easier time calculations.
 
 For better understanding and use, help document is supported for all commands, contains command functionality, options and examples.

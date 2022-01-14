@@ -13,6 +13,7 @@ map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close terminal
 map <F5> :below terminal ++rows=20<CR>
 " rename symbol
+nmap <F6> <Plug>(coc-rename)
 nmap <S-F6> <Plug>(coc-rename)
 " open markdown preview
 map <F7> :MarkdownPreview<CR>

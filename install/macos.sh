@@ -13,7 +13,7 @@ brew install llvm
 brew install autoconf
 brew install automake
 brew install cmake
-brew install clang-format
+brew install go
 brew install the_silver_searcher
 brew install ripgrep
 brew install unzip

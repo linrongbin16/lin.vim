@@ -16,6 +16,7 @@ sudo apt-get install -y autoconf
 sudo apt-get install -y automake
 sudo apt-get install -y clang-format
 sudo apt-get install -y clangd
+sudo apt-get install -y go
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y ripgrep
 sudo apt-get install -y unzip
@@ -33,7 +34,7 @@ if ! type "node" > /dev/null; then
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
-    echo "[lin.vim] node already installed, skipping..."
+    echo "[lin.vim] node already installed, skip..."
 fi
 
 
@@ -54,5 +55,5 @@ if ! type "ctags" > /dev/null; then
     sudo make install
     rm -rf ~/.vim/universal-ctags
 else
-    echo "[lin.vim] ctags already installed, skipping..."
+    echo "[lin.vim] ctags already installed, skip..."
 fi

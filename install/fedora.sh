@@ -13,6 +13,7 @@ sudo dnf install -y autoconf
 sudo dnf install -y automake
 sudo dnf install -y make
 sudo dnf install -y cmake
+sudo dnf install -y go
 sudo dnf install -y the_silver_searcher
 sudo dnf install -y ripgrep
 sudo dnf install -y unzip

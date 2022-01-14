@@ -9,11 +9,11 @@ npm install -g yarn prettier
 # Install GUI Fonts
 New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\guifonts
 Set-Location -Path $env:UserProfile\.vim\guifonts
-If (!(Test-Path $env:UserProfile\.vim\guifonts\Hack.zip -PathType Leaf)) {
+If (!(Test-Path $env:UserProfile\.vim\guifonts\Hack-v3.003-ttf.zip -PathType Leaf)) {
     Invoke-WebRequest -Uri https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -OutFile Hack-v3.003-ttf.zip
 }
 Write-Host "[lin.vim] Warning: GUI font 'Hack-v3.003-ttf.zip' downloaded at '$env:UserProfile\.vim\guifonts'."
-Write-Host "[lin.vim] Warning: Please manually install."
+Write-Host "[lin.vim] Warning: Please manually install hack font."
 
 # Install VIM Plugins
 If (Test-Path $env:UserProfile\_vimrc) {
