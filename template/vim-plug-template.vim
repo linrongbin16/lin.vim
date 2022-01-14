@@ -49,7 +49,7 @@ Plug 'mhinz/vim-signify'
 " Searching
 Plug 'jremmen/vim-ripgrep'
 Plug 'rking/ag.vim'
-Plug 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
