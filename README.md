@@ -67,7 +67,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 - Running on multiple platforms: UNIX/Linux, Windows and MacOS.
 - Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
-- Random color schemes and pretty icons.
+- Random color schemes.
 - File and buffer explorer and better status line.
 - Source code and file fuzzy search.
 - Useful command line utilities for: git, text search and encoding/decoding, file operation and compression/extraction, datetime calculation, ip calculation, etc.
