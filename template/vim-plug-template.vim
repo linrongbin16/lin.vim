@@ -49,6 +49,8 @@ Plug 'mhinz/vim-signify'
 " Searching
 Plug 'jremmen/vim-ripgrep'
 Plug 'rking/ag.vim'
+" enable C extension in LeaderF if you want better performance
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'Yggdroot/LeaderF'
 
 " Keyboard Operation
