@@ -46,7 +46,7 @@
     "--all-scopes-completion",
     "--completion-style=detailed",
     "--header-insertion=iwyu",
-    "--pch-storage=disk"
+    "--pch-storage=memory"
   ],
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format"
