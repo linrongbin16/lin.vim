@@ -8,21 +8,21 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
     - [Screenshots](#screenshots)
-        - [Simple but pretty UI](#simple-but-pretty-ui)
-        - [Code complete for C++](#code-complete-for-c)
-        - [Fast cursor movement](#fast-cursor-movement)
-        - [Fuzzy file search](#fuzzy-file-search)
-        - [Text search](#text-search)
-        - [Markdown preview](#markdown-preview)
-        - [Terminal window](#terminal-window)
+      - [Simple but pretty UI](#simple-but-pretty-ui)
+      - [Code complete for C++](#code-complete-for-c)
+      - [Fast cursor movement](#fast-cursor-movement)
+      - [Fuzzy file search](#fuzzy-file-search)
+      - [Text search](#text-search)
+      - [Markdown preview](#markdown-preview)
+      - [Terminal window](#terminal-window)
     - [Feature](#feature)
     - [Project Structure](#project-structure)
 - [Installation](#installation)
     - [UNIX, Linux, MacOS](#unix-linux-macos)
     - [Windows](#windows)
     - [Limitation](#limitation)
-        - [Third Party Dependencies](#third-party-dependencies)
-        - [Tested Platforms](#tested-platforms)
+      - [Third Party Dependencies](#third-party-dependencies)
+      - [Tested Platforms](#tested-platforms)
 - [User Guide](#user-guide)
     - [Hot Key](#hot-key)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
@@ -35,7 +35,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Commentary](#commentary)
     - [File Explorer](#file-explorer)
     - [Customization](#customization)
-        - [GUI Fonts](#gui-fonts)
+      - [GUI Fonts](#gui-fonts)
     - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
 - [Contribute](#contribute)
 
@@ -43,32 +43,32 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Screenshots
 
-##### Simple but pretty UI
+#### Simple but pretty UI
 
 ![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
 
-##### Code complete for C++
+#### Code complete for C++
 
 ![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
 
-##### Fast cursor movement
+#### Fast cursor movement
 
 ![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.png)
 
-##### Fuzzy file search
+#### Fuzzy file search
 
 ![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
 
-##### Text search
+#### Text search
 
 ![pic7-1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-1.png)
 ![pic7-2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-2.png)
 
-##### Markdown preview
+#### Markdown preview
 
 ![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
 
-##### Terminal window
+#### Terminal window
 
 ![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6-terminal-window.png)
 
@@ -151,7 +151,7 @@ You could also install these dependencies with other windows package manager suc
 
 ### Limitation
 
-##### Third Party Dependencies
+#### Third Party Dependencies
 
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
@@ -181,7 +181,7 @@ Notice: installation needs access of websites below, and make sure they're avail
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
 - [chocolatey](https://chocolatey.org/) on Windows.
 
-##### Tested Platforms
+#### Tested Platforms
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
@@ -325,7 +325,7 @@ Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[a
 
 Please custom your own settings in **_user-settings.vim_** and **coc-settings.json**.
 
-##### GUI Fonts
+#### GUI Fonts
 
 [Hack Fonts](https://github.com/source-foundry/Hack/releases/download/) below is installed by default(while only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize GUI fonts.
 
