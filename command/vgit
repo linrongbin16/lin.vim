@@ -6,73 +6,17 @@ import sys
 import os
 import getopt
 import datetime
+import click
 
 sys.path.append(".")
 import util
 
-slash = "\\" if util.is_windows() else "/"
-db = util.get_command_home() + slash + "git_proxy.db"
+SLASH = "\\" if util.is_windows() else "/"
+GIT_PROXY_DB = util.get_command_home() + SLASH + "git_proxy.db"
+GIT_CONFIG = os.path.expanduser("~") + SLASH + ".gitconfig"
 
 
-def _help():
-    msg = """usage: vgit [option]
-
-  Git quick operations.
-
-option:
-  -b/--branch [command]     branch operations, the commands are:
-                              a/all             - show all git repository branches,
-                                                  include local and remote
-                              l/local           - show git repository local branches
-                              r/remote          - show git repository remote branches
-                              t/this            - show git repository current branch
-                              c/create [branch] - create new local branch and move to it
-                              m/move [branch]   - move to existing local branch
-                              d/delete [branch] - delete local branch
-
-  -pl/--pull                pull operation
-  -ps/--push                push operation
-  -f/--force                use with pull/push for overwrite
-
-  -d/--discard              discard temporary changes
-  --rebase [branch]         rebase to specified remote/branch
-  --revert [n]              revert to last n commit(create new commit without push force),
-                            by default 1
-  --reset [n]               reset to last n commit(do not create new commit, have to push
-                            force to overwrite remote), by default 1
-
-  --proxy [command]         proxy configuration, the commands are:
-                              c/config [proxy]  - configure proxy for git
-                              s/show            - show git proxy configuration
-                              e/enable          - enable git proxy configuration
-                              d/disable         - disable git proxy configuration
-
-  -h/--help                 show help message
-
-example:
-  $ vgit -ps
-  [vcmd] detected remote repositories: 'origin'[0]
-  [vcmd] choose remote repository 0, by default: 'origin'[0]:
-  [vcmd] choose branch, by default: 'master':
-  [vcmd] enter comment: optimize vgit
-  [vcmd] git push to origin/master with 'optimize vgit', yes? y
-  [master 3666d83] optimize vgit
-   1 file changed, 74 insertions(+), 121 deletions(-)
-  Enumerating objects: 7, done.
-  Counting objects: 100% (7/7), done.
-  Delta compression using up to 12 threads
-  Compressing objects: 100% (4/4), done.
-  Writing objects: 100% (4/4), 1.42 KiB | 1.42 MiB/s, done.
-  Total 4 (delta 3), reused 0 (delta 0)
-  remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-  To https://github.com/linrongbin16/lin.vim
-     31e5da9..3666d83  master -> master
-"""
-    print(msg)
-    exit(0)
-
-
-def _branch_show(opt):
+def branch_show(opt):
     util.check_git_repository()
     outs = []
     if opt.startswith("a"):
@@ -88,64 +32,56 @@ def _branch_show(opt):
     exit(0)
 
 
-def _branch_create(name):
+def branch_create(name):
     util.check_git_repository()
     os.system("git checkout -b %s" % (name))
     exit(0)
 
 
-def _branch_move(name):
+def branch_switch(name):
     util.check_git_repository()
     os.system("git checkout %s" % (name))
     exit(0)
 
 
-def _branch_delete(name):
+def branch_delete(name):
     util.check_git_repository()
     os.system("git branch -d %s" % (name))
     exit(0)
 
 
-def _pull(force):
+def vgit_pull(force, debug):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
-        print("[vcmd] remote git repository not exist!")
-        exit(3)
+        print("[vcmd] remote git repository not exist")
+        return
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
-    print("[vcmd] git pull from %s/%s" % (repo, branch))
+    print(f"[vcmd] git pull from {repo}/{branch}")
     os.system("git fetch")
-    os.system("git pull %s %s %s" % ("--force" if force else "", repo, branch))
-    exit(0)
+    os.system(f"git pull {'--force' if force else ''} {repo} {branch}")
 
 
-def _push(force):
+def vgit_push(force, debug):
     util.check_git_repository()
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
-        print("[vcmd] remote git repository not exist!")
+        print("[vcmd] remote git repository not exist")
         exit(3)
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
     comment = input("[vcmd] enter comment: ")
-    comment = (
-        "[vcmd] git push at %s"
-        % (datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
-        if util.str_empty(comment)
-        else comment
-    )
-    util.check_user_confirm(
-        "[vcmd] git push to %s/%s with '%s', yes? " % (repo, branch, comment)
-    )
+    comment = f"[vcmd] git push at {(datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')) if util.str_empty(comment) else comment}"
+    util.check_user_confirm(f"[vcmd] git push to {repo}/{branch} with '{comment}', yes? ")
     os.chdir(util.get_git_root())
     os.system("git add -A .")
-    os.system('git commit -m "%s"' % (comment))
-    os.system("git push %s %s %s" % ("--force" if force else "", repo, branch))
+    os.system(f'git commit -m "{comment}"')
+    os.system(f"git push {'--force' if force else ''} {repo} {branch}")
     exit(0)
 
 
-def _discard():
+def vgit_discard(debug):
     util.check_git_repository()
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
@@ -161,148 +97,207 @@ def _discard():
             os.system("rm %s" % (i + " "))
     if os.path.exists(save_dir):
         os.chdir(save_dir)
-    exit(0)
 
 
-def _rebase(branch):
-    util.check_git_repository()
-    os.system("git rebase %s" % branch)
-    exit(0)
-
-
-def _revert(n):
+def vgit_revert(n):
     util.check_git_repository()
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
-    util.check_user_confirm(
-        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? "
-        % (n, commit, branch)
-    )
+    util.check_user_confirm("[vcmd] git revert to last '%d' commits '%s' on '%s', yes? " % (n, commit, branch))
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
     os.system("git revert %s" % commit)
     if os.path.exists(save_dir):
         os.chdir(save_dir)
-    exit(0)
 
 
-def _reset(n):
+def vgit_reset(n):
     util.check_git_repository()
     branch = util.get_git_current_branch()
     commit = util.get_git_last_commit(n - 1)
-    util.check_user_confirm(
-        "[lin-boost] git revert to last '%d' commits '%s' on '%s', yes? "
-        % (n, commit, branch)
-    )
+    util.check_user_confirm("[vcmd] git revert to last '%d' commits '%s' on '%s', yes? " % (n, commit, branch))
     save_dir = os.getcwd()
     os.chdir(util.get_git_root())
     os.system("git reset HEAD~%d" % n)
     if os.path.exists(save_dir):
         os.chdir(save_dir)
-    exit(0)
 
 
-def _config_proxy(p):
-    util.write_file(db, p)
-    exit(0)
+def add_proxy(value, debug):
+    if debug:
+        print(f"[vcmd] add git proxy:{value}")
+    util.append_file(GIT_PROXY_DB, f"{value}\n")
 
 
-def _print_proxy():
-    gc = os.path.expanduser("~") + slash + ".gitconfig"
-    proxies = util.read_file_by_lines(gc)
+def current_using_proxy(debug):
+    configs = util.read_file_by_lines(GIT_CONFIG)
+    if debug:
+        print(f"{GIT_CONFIG}:{configs}")
+    last_setting = None
+    current_proxies = []
+    if configs:
+        for i, line in enumerate(configs):
+            trim_line = line.strip()
+            if debug:
+                print(f"the {i}-th line:{trim_line}, last_setting:{last_setting}, startswith proxy:{trim_line.startswith('proxy')}")
+            if trim_line == 0:
+                continue
+            if trim_line.startswith("[") and trim_line.endswith("]"):
+                last_setting = trim_line
+            elif trim_line.startswith("proxy") and last_setting.lower().startswith("[http"):
+                current_proxies.append(f"{last_setting}:{trim_line}")
+    if current_proxies:
+        for p in current_proxies:
+            print(f"[vcmd] current using git proxy - {p}")
+    else:
+        print(f"[vcmd] no current using git proxy")
+
+
+def display_proxy(debug):
+    proxies = util.read_file_by_lines(GIT_PROXY_DB)
+    if debug:
+        print(f"{GIT_CONFIG}:{proxies}")
     trigger = False
     saver = None
-    for l in proxies:
-        if trigger:
-            print("[vcmd] .gitconfig: %s %s" % (saver, l.strip()))
-            trigger = False
-        if l.lower().find("http") >= 0:
-            saver = l.strip()
-            trigger = True
-    print("[vcmd] git proxy: %s" % util.read_file(db))
-    exit(0)
+    print(f"[vcmd] stored git proxy:")
+    n = 0
+    if proxies:
+        for i, p in enumerate(proxies):
+            if p.strip() == 0:
+                continue
+            print(f"[vcmd] stored git proxy - {p.strip()}")
+            n += 1
+    if n == 0:
+        print(f"[vcmd] no stored git proxies")
+    current_using_proxy(debug)
 
 
-def _enable_proxy():
-    proxy = util.read_file(db)
-    if proxy is None:
-        print("[vcmd] git proxy not configured yet, please try 'git -p <proxy>'")
-        exit(0)
-    httpcmd = "git config --global http.proxy %s" % proxy
-    httpscmd = "git config --global https.proxy %s" % proxy
-    os.system(httpcmd)
-    os.system(httpscmd)
-    exit(0)
-
-
-def _disable_proxy():
+def disable_proxy():
     os.system("git config --global --unset https.proxy")
     os.system("git config --global --unset http.proxy")
-    exit(0)
+
+
+def switch_proxy(name, debug):
+    os.system("git config --global --unset https.proxy")
+    os.system("git config --global --unset http.proxy")
+    proxies = util.read_file_by_lines(GIT_PROXY_DB)
+    if debug:
+        print(f"[vcmd] {GIT_PROXY_DB}:{proxies}")
+    if proxies is None:
+        print("[vcmd] git proxy not configured yet, please try 'vgit -p add <name> <proxy>' first")
+        return
+    for p in proxies:
+        ps = [x.strip() for x in p.split(":")]
+        if ps[0] == name.strip():
+            if debug:
+                print(f"[vcmd] switch to proxy:{ps}")
+            httpcmd = f"git config --global http.proxy {ps[1]}"
+            httpscmd = f"git config --global https.proxy {ps[1]}"
+            os.system(httpcmd)
+            os.system(httpscmd)
+            return
+    print(f"[vcmd] git proxy:{name} not found")
+
+
+def purge_proxy():
+    util.purge_file(GIT_PROXY_DB)
+
+
+def vgit_branch_sub_cli(branch, args, debug):
+    if branch in ("local", "remote", "all", "this"):
+        branch_show(branch)
+    elif branch == "create":
+        if len(args) != 1:
+            print(f"[vcmd] please provide branch name")
+            return
+        branch_create(args[0])
+    elif branch == "switch":
+        if len(args) != 1:
+            print(f"[vcmd] please provide branch name")
+            return
+        branch_switch(args[0])
+    elif branch == "delete":
+        if len(args) != 1:
+            print(f"[vcmd] please provide branch name")
+            return
+        branch_delete(args[0])
+
+
+def vgit_proxy_sub_cli(proxy, args, debug):
+    if proxy == "add":
+        if len(args) != 1:
+            print(f"[vcmd] please provide ip proxy in format name=value")
+            return
+        add_proxy(args[0], debug)
+    elif proxy == "switch":
+        if len(args) != 1:
+            print(f"[vcmd] please provide ip proxy name")
+            return
+        switch_proxy(args[0], debug)
+    elif proxy == "none":
+        disable_proxy()
+    elif proxy == "purge":
+        purge_proxy()
+    elif proxy == "show":
+        display_proxy(debug)
+
+
+@click.command()
+@click.option(
+    "-b",
+    "--branch",
+    type=click.Choice(["local", "remote", "all", "this", "create", "switch", "delete"]),
+    help="branch operations, use `local/remote/all/this` to display local/remote/all branches, use `create/move/delete` to create/switch/delete with branches",
+)
+@click.option("-pl", "--pull", is_flag=True, help="pull, use --force to pull force")
+@click.option("-ps", "--push", is_flag=True, help="push, use --force to push force")
+@click.option("-f", "--force", is_flag=True, help="pull/push force")
+@click.option("-d", "--discard", is_flag=True, help="discard local changes")
+@click.option(
+    "--reset",
+    type=str,
+    required=False,
+    help="reset N previous commits(you need to push force to override remote repository)",
+)
+@click.option(
+    "--revert", type=str, required=False, help="revert N previous commits(use new commit instead of push force)"
+)
+@click.option(
+    "-p",
+    "--proxy",
+    type=click.Choice(["add", "switch", "none", "purge", "show"]),
+    help="proxy configuration, use `add` to add new ip proxy, use `switch` to switch between different ip proxies, use `none` to disable ip proxy, use `purge` to remove all configured ip proxies(and disable currently using ip proxy if exist), use `show` to display configured ip proxies and currently using ip proxy if exist",
+)
+@click.option("--debug", is_flag=True, help="debug mode")
+@click.argument("args", nargs=-1)
+def vgit_cli(branch, pull, push, force, discard, reset, revert, proxy, debug, args):
+    """Dummy user interface for git"""
+    if debug:
+        print(f"args:{args}, type:{type(args)}")
+    if branch:
+        vgit_branch_sub_cli(branch, args, debug)
+    elif proxy:
+        vgit_proxy_sub_cli(proxy, args, debug)
+    else:
+        if pull:
+            vgit_pull(force, debug)
+        elif push:
+            vgit_push(force, debug)
+        elif discard:
+            vgit_discard(debug)
+        elif reset:
+            if len(args) != 1:
+                print(f"[vcmd] please provide N")
+                return
+            vgit_reset(int(args[0]))
+        elif revert:
+            if len(args) != 1:
+                print(f"[vcmd] N please provide N")
+                return
+            vgit_revert(int(args[0]))
+        else:
+            print(f"[vcmd] unknown option, please try `vgit --help` for more information")
 
 
 if __name__ == "__main__":
-    try:
-        opts, args = getopt.getopt(
-            sys.argv[1:],
-            "b:dp:fh",
-            [
-                "branch=",
-                "pull",
-                "push",
-                "discard",
-                "rebase",
-                "revert",
-                "reset",
-                "proxy=",
-                "help",
-            ],
-        )
-        force = False
-        for opt in opts:
-            if opt[0] in ("-h", "--help"):
-                _help()
-            if opt[0] in ("-f", "--force"):
-                force = True
-        for opt in opts:
-            if opt[0] in ("-b", "--branch"):
-                if opt[1] in ("a", "l", "r", "t", "all", "local", "remote", "this"):
-                    _branch_show(opt[1])
-                elif opt[1] in ("c", "create"):
-                    _branch_create(args[0])
-                elif opt[1] in ("m", "move"):
-                    _branch_move(args[0])
-                elif opt[1] in ("d", "delete"):
-                    _branch_delete(args[0])
-            elif opt[0] == "-p":
-                if opt[1] == "l":
-                    _pull(force)
-                elif opt[1] == "s":
-                    _push(force)
-            elif opt[0] == "--pull":
-                _pull(force)
-            elif opt[0] == "--push":
-                _push(force)
-            elif opt[0] in ("-d", "--discard"):
-                _discard()
-            elif opt[0] in ("--rebase"):
-                _rebase(args[0])
-            elif opt[0] in ("--revert"):
-                _revert(1 if len(args) < 1 else int(args[0]))
-            elif opt[0] in ("--reset"):
-                _reset(1 if len(args) < 1 else int(args[0]))
-            elif opt[0] == "--proxy":
-                if opt[1] in ("c", "config"):
-                    _config_proxy(args[0])
-                elif opt[1] in ("s", "show"):
-                    _print_proxy()
-                elif opt[1] in ("e", "enable"):
-                    _enable_proxy()
-                elif opt[1] in ("d", "disable"):
-                    _disable_proxy()
-        _help()
-    except getopt.GetoptError as e:
-        print(e)
-        _help()
-    except Exception as e:
-        print(e)
+    vgit_cli()
