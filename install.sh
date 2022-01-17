@@ -67,15 +67,6 @@ else
     cp ttf/Hack-Regular.ttf ..
 fi
 
-# install vim-plug
-if [ -f ~/.vimrc ]; then
-    VIMRC_BAK=~/.vimrc.$(date +%s)
-    echo "[lin.vim] back up .vimrc to $VIMRC_BAK"
-    mv ~/.vimrc $VIMRC_BAK
-fi
-ln -s ~/.vim/lin.vim ~/.vimrc
-vim -c "PlugInstall" -c "qall"
-
 # install user custom
 cp ~/.vim/template/vim-plug-template.vim ~/.vim/vim-plug.vim
 cp ~/.vim/template/user-settings-template.vim ~/.vim/user-settings.vim
@@ -92,6 +83,14 @@ if [ -f ~/.config/nvim/init.vim ]; then
 fi
 ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
+# install vim-plug
+if [ -f ~/.vimrc ]; then
+    VIMRC_BAK=~/.vimrc.$(date +%s)
+    echo "[lin.vim] back up .vimrc to $VIMRC_BAK"
+    mv ~/.vimrc $VIMRC_BAK
+fi
+ln -s ~/.vim/lin.vim ~/.vimrc
+vim -c "PlugInstall" -c "qall"
 
 # install environment
 cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc

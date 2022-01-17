@@ -9,6 +9,7 @@ sudo dnf install -y zsh
 sudo dnf install -y gcc
 sudo dnf install -y g++
 sudo dnf install -y clang
+sudo dnf install -y clang-extra-tools
 sudo dnf install -y autoconf
 sudo dnf install -y automake
 sudo dnf install -y make
