@@ -4,30 +4,39 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Table of Contents
 
+- [lin.vim : Lin Rongbin's (Neo)Vim Distribution](#linvim--lin-rongbins-neovim-distribution)
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-  - [Screenshots](#screenshots)
-  - [Feature](#feature)
-  - [Project Structure](#project-structure)
+    - [Screenshots](#screenshots)
+        - [Simple but pretty UI](#simple-but-pretty-ui)
+        - [Code complete for C++](#code-complete-for-c)
+        - [Fast cursor movement](#fast-cursor-movement)
+        - [Fuzzy file search](#fuzzy-file-search)
+        - [Text search](#text-search)
+        - [Markdown preview](#markdown-preview)
+        - [Terminal window](#terminal-window)
+    - [Feature](#feature)
+    - [Project Structure](#project-structure)
 - [Installation](#installation)
-  - [UNIX, Linux, MacOS](#unix-linux-macos)
-  - [Windows](#windows)
-  - [Limitation](#limitation)
-    - [Third Party Dependencies](#third-party-dependencies)
-    - [Tested Platforms](#tested-platforms)
+    - [UNIX, Linux, MacOS](#unix-linux-macos)
+    - [Windows](#windows)
+    - [Limitation](#limitation)
+        - [Third Party Dependencies](#third-party-dependencies)
+        - [Tested Platforms](#tested-platforms)
 - [User Guide](#user-guide)
-  - [Hot Key](#hot-key)
-  - [Enhanced Copy Paste](#enhanced-copy-paste)
-  - [Text Search](#text-search)
-  - [File Search](#file-search)
-  - [Alignment](#alignment)
-  - [Cursor Movement](#cursor-movement)
-  - [Language Server](#language-server)
-  - [Tags](#tags)
-  - [Commentary](#commentary)
-  - [File Explorer](#file-explorer)
-  - [Customization](#customization)
-    - [GUI Fonts](#gui-fonts)
-  - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
+    - [Hot Key](#hot-key)
+    - [Enhanced Copy Paste](#enhanced-copy-paste)
+    - [Text Search](#text-search-1)
+    - [File Search](#file-search)
+    - [Alignment](#alignment)
+    - [Cursor Movement](#cursor-movement)
+    - [Language Server](#language-server)
+    - [Tags](#tags)
+    - [Commentary](#commentary)
+    - [File Explorer](#file-explorer)
+    - [Customization](#customization)
+        - [GUI Fonts](#gui-fonts)
+    - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
 - [Contribute](#contribute)
 
 # Introduction
@@ -331,7 +340,7 @@ A bunch of command line utilities are implemented by python3 to speed up your ed
 - `vgit`: Git operations without the burden of time consuming remember.
 - `vip`: Ip address calculations for both ipv4 and ipv6.
 - `vpack`: Easier file/directory compression and extraction.
-- `vag`: Fast text search wrapped ag/vg.
+- `vgp`: Fast text search wrapped ag/vg.
 - `vtime`: Easier time calculations.
 
 For better understanding and use, help document is supported for all commands, contains command functionality, options and examples.
