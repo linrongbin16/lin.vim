@@ -1,0 +1,75 @@
+#! /usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Copyright 2018-  <linrongbin16@gmail.com>
+
+import sys
+import os
+import click
+
+sys.path.append(".")
+import util
+
+SLASH = "\\" if util.is_windows() else "/"
+IGNORE_CONFIG = os.path.expanduser("~") + SLASH + ".ignore"
+
+
+@click.command()
+@click.option("-c", "--count", is_flag=True, help="count pattern")
+@click.option("-w", "--word", is_flag=True, help="search word")
+@click.option("-z", "--zip-file", is_flag=True, help="search compressed file gzip/bzip2/lzma/xz/lz4/brotli/zstd")
+@click.option("-i", "--ignore-case", is_flag=True, help="ignore case")
+@click.option("-s", "--smart-case", is_flag=True, help="smart case, like --ignore-case, but disable itself when pattern contains upper case")
+@click.option("--sort", type=click.Choice(["none", "path", "modified", "accessed", "created"]), default="none", help="sort output, by default none")
+@click.option("-d", "--depth", type=int, default=-1, help="search depth, by default -1(no limit)")
+@click.option("--debug", is_flag=True, help="debug mode")
+@click.option(
+    "--config",
+    type=click.Choice(["ignore", "purge", "show"]),
+    required=False,
+    help="search configuration, use `ignore` to specific file types, use `purge` to remove all file types, use `show` to display all ignored file types",
+)
+@click.argument("pattern", nargs=-1)
+def vgp_cli(count, word, zip_file, ignore_case, smart_case, sort, depth, debug, config, pattern):
+    """ Line-oriented search tool recursively search pattern in current directory"""
+    if debug:
+        click.echo(f"pattern:{pattern}, type:{type(pattern)}")
+    if len(pattern) > 1:
+        click.echo(f"Arguments must no more than 1")
+    if not config:
+        cmd = f"rg"
+        if count:
+            cmd += " -c"
+        if word:
+            cmd += " -w"
+        if zip_file:
+            cmd += " -z"
+        if ignore_case:
+            cmd += " -i"
+        if smart_case:
+            cmd += " -S"
+        if sort:
+            cmd += f" --sort {sort}"
+        if depth and depth >= 0:
+            cmd += f" --max-depth {depth}"
+        for p in pattern:
+            cmd += f" {p}"
+        if debug:
+            click.echo(f"[vcmd] cmd:{cmd}")
+        os.system(cmd)
+    elif config == "ignore":
+        ignored_file_types = [f"{p}\n" for p in pattern]
+        if debug:
+            click.echo(f"[vcmd] ignored file types:{ignored_file_types}")
+        util.append_file(IGNORE_CONFIG, ignored_file_types)
+    elif config =="purge":
+        util.purge_file(IGNORE_CONFIG)
+    elif config == "show":
+        click.echo(f"[vcmd] {IGNORE_CONFIG}:")
+        os.system(f"cat {IGNORE_CONFIG}")
+    else:
+        click.echo(f"Unknown option:{config}")
+
+
+
+if __name__ == "__main__":
+    vgp_cli()
