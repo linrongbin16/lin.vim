@@ -13,7 +13,7 @@ SLASH = "\\" if util.is_windows() else "/"
 IGNORE_CONFIG = os.path.expanduser("~") + SLASH + ".ignore"
 
 
-def vgp_config_sub_cli(config, args, debug):
+def vgp_config(config, args, debug):
     if config == "ignore":
         ignored_file_types = [f"{p}\n" for p in args]
         if debug:
@@ -25,7 +25,7 @@ def vgp_config_sub_cli(config, args, debug):
         print(f"[vcmd] {IGNORE_CONFIG}:")
         os.system(f"cat {IGNORE_CONFIG}")
     else:
-        print(f"[vcmd] unknown option:{config}")
+        print(f"[vcmd] unknown option:{config}, please try `vgp --help` for more information")
 
 
 @click.command()
@@ -54,12 +54,12 @@ def vgp_config_sub_cli(config, args, debug):
 )
 @click.option("--debug", is_flag=True, help="debug mode")
 @click.argument("args", nargs=-1)
-def vgp_cli(count, word, zip_file, ignore_case, smart_case, sort, depth, config, debug, args):
+def vgp(count, word, zip_file, ignore_case, smart_case, sort, depth, config, debug, args):
     """Line-oriented search tool recursively search pattern in current directory"""
     if debug:
         print(f"args:{args}, type:{type(args)}")
     if config:
-        vgp_config_sub_cli(config, args, debug)
+        vgp_config(config, args, debug)
     else:
         cmd = f"rg"
         if count:
@@ -84,4 +84,4 @@ def vgp_cli(count, word, zip_file, ignore_case, smart_case, sort, depth, config,
 
 
 if __name__ == "__main__":
-    vgp_cli()
+    vgp()

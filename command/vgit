@@ -29,25 +29,21 @@ def branch_show(opt):
         outs, _ = util.run("git", "rev-parse", "--abbrev-ref", "HEAD")
     for o in outs:
         print(o.strip())
-    exit(0)
 
 
 def branch_create(name):
     util.check_git_repository()
     os.system("git checkout -b %s" % (name))
-    exit(0)
 
 
 def branch_switch(name):
     util.check_git_repository()
     os.system("git checkout %s" % (name))
-    exit(0)
 
 
 def branch_delete(name):
     util.check_git_repository()
     os.system("git branch -d %s" % (name))
-    exit(0)
 
 
 def vgit_pull(force, debug):
@@ -68,7 +64,7 @@ def vgit_push(force, debug):
     remote_count = util.get_git_remote_repository_count()
     if remote_count <= 0:
         print("[vcmd] remote git repository not exist")
-        exit(3)
+        return
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
     comment = input("[vcmd] enter comment: ")
@@ -78,7 +74,6 @@ def vgit_push(force, debug):
     os.system("git add -A .")
     os.system(f'git commit -m "{comment}"')
     os.system(f"git push {'--force' if force else ''} {repo} {branch}")
-    exit(0)
 
 
 def vgit_discard(debug):
@@ -139,7 +134,9 @@ def current_using_proxy(debug):
         for i, line in enumerate(configs):
             trim_line = line.strip()
             if debug:
-                print(f"the {i}-th line:{trim_line}, last_setting:{last_setting}, startswith proxy:{trim_line.startswith('proxy')}")
+                print(
+                    f"the {i}-th line:{trim_line}, last_setting:{last_setting}, startswith proxy:{trim_line.startswith('proxy')}"
+                )
             if trim_line == 0:
                 continue
             if trim_line.startswith("[") and trim_line.endswith("]"):
@@ -203,7 +200,7 @@ def purge_proxy():
     util.purge_file(GIT_PROXY_DB)
 
 
-def vgit_branch_sub_cli(branch, args, debug):
+def vgit_branch(branch, args, debug):
     if branch in ("local", "remote", "all", "this"):
         branch_show(branch)
     elif branch == "create":
@@ -221,9 +218,11 @@ def vgit_branch_sub_cli(branch, args, debug):
             print(f"[vcmd] please provide branch name")
             return
         branch_delete(args[0])
+    else:
+        print(f"[vcmd] unknown option:{branch}, please try `vgit --help` for more information")
 
 
-def vgit_proxy_sub_cli(proxy, args, debug):
+def vgit_proxy(proxy, args, debug):
     if proxy == "add":
         if len(args) != 1:
             print(f"[vcmd] please provide ip proxy in format name=value")
@@ -240,6 +239,8 @@ def vgit_proxy_sub_cli(proxy, args, debug):
         purge_proxy()
     elif proxy == "show":
         display_proxy(debug)
+    else:
+        print(f"[vcmd] unknown option:{proxy}, please try `vgit --help` for more information")
 
 
 @click.command()
@@ -270,14 +271,14 @@ def vgit_proxy_sub_cli(proxy, args, debug):
 )
 @click.option("--debug", is_flag=True, help="debug mode")
 @click.argument("args", nargs=-1)
-def vgit_cli(branch, pull, push, force, discard, reset, revert, proxy, debug, args):
+def vgit(branch, pull, push, force, discard, reset, revert, proxy, debug, args):
     """Dummy user interface for git"""
     if debug:
         print(f"args:{args}, type:{type(args)}")
     if branch:
-        vgit_branch_sub_cli(branch, args, debug)
+        vgit_branch(branch, args, debug)
     elif proxy:
-        vgit_proxy_sub_cli(proxy, args, debug)
+        vgit_proxy(proxy, args, debug)
     else:
         if pull:
             vgit_pull(force, debug)
@@ -300,4 +301,4 @@ def vgit_cli(branch, pull, push, force, discard, reset, revert, proxy, debug, ar
 
 
 if __name__ == "__main__":
-    vgit_cli()
+    vgit()
