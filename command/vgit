@@ -184,7 +184,7 @@ def switch_proxy(name, debug):
         print("[vcmd] git proxy not configured yet, please try 'vgit -p add <name> <proxy>' first")
         return
     for p in proxies:
-        ps = [x.strip() for x in p.split(":")]
+        ps = [x.strip() for x in p.split("=")]
         if ps[0] == name.strip():
             if debug:
                 print(f"[vcmd] switch to proxy:{ps}")
