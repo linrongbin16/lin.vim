@@ -7,14 +7,13 @@ set background=dark
 function NextColor()
     try
         if has("gui_running")
-            let curcolor = localtime() % len(s:guicolor)
-            execute 'colorscheme ' .s:guicolor[curcolor]
-            execute 'syntax sync fromstart'
+            let idx = localtime() % len(s:guicolor)
+            execute 'colorscheme ' .s:guicolor[idx]
         else
-            let curcolor = localtime() % len(s:termcolor)
-            execute 'colorscheme ' .s:termcolor[curcolor]
-            execute 'syntax sync fromstart'
+            let idx = localtime() % len(s:termcolor)
+            execute 'colorscheme ' .s:termcolor[idx]
         endif
+        execute 'syntax sync fromstart'
         catch
     endtry
 endfunction
