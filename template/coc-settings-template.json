@@ -33,7 +33,6 @@
   "json.enable": true,
   "json.format.enable": true,
   "eslint.run": "onSave",
-  "rust-analyzer.server.path": "rust-analyzer",
   "clangd.arguments": [
     "-j=12",
     "--clang-tidy",
