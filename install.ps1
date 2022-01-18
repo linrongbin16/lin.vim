@@ -1,7 +1,7 @@
 Write-Host "[lin.vim] Install for Windows"
 
 # Install python3 pip packages
-pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim cmakelang cmake-language-server click
+pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim cmakelang cmake-language-server 'python-language-server[all]' click
 
 # Install nodejs npm packages
 npm install -g yarn prettier

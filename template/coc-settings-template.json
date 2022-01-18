@@ -1,7 +1,6 @@
 {
   "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
-  "suggest.triggerCompletionWait": 5,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "c",
@@ -13,21 +12,15 @@
     "xhtml",
     "yaml",
     "css",
-    "markdown",
     "javascript",
     "javascriptreact",
-    "jsx",
     "typescript",
     "typescriptreact",
-    "tsx",
-    "vue",
+    "markdown",
     "ml",
     "ocaml",
     "rust"
   ],
-  "python.pythonPath": "python3",
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "120"],
   "snippets.extends": {
     "l": ["c", "cpp"],
     "y": ["c", "cpp"],
@@ -40,6 +33,7 @@
   "json.enable": true,
   "json.format.enable": true,
   "eslint.run": "onSave",
+  "rust-analyzer.server.path": "rust-analyzer",
   "clangd.arguments": [
     "-j=12",
     "--clang-tidy",
@@ -49,5 +43,65 @@
     "--pch-storage=memory"
   ],
   "cmake.cmakePath": "cmake",
-  "cmake.formatter": "cmake-format"
+  "cmake.formatter": "cmake-format",
+  "languageserver": {
+    "python": {
+      "command": "python3",
+      "args": ["-mpyls", "-vv", "--log-file", "/tmp/lsp_python.log"],
+      "trace.server": "verbose",
+      "filetypes": ["python"],
+      "settings": {
+        "pyls": {
+          "enable": true,
+          "trace": {
+            "server": "verbose"
+          },
+          "commandPath": "",
+          "configurationSources": ["pycodestyle"],
+          "plugins": {
+            "jedi_completion": {
+              "enabled": true
+            },
+            "jedi_hover": {
+              "enabled": true
+            },
+            "jedi_references": {
+              "enabled": true
+            },
+            "jedi_signature_help": {
+              "enabled": true
+            },
+            "jedi_symbols": {
+              "enabled": true,
+              "all_scopes": true
+            },
+            "mccabe": {
+              "enabled": true,
+              "threshold": 15
+            },
+            "preload": {
+              "enabled": true
+            },
+            "pycodestyle": {
+              "enabled": true
+            },
+            "pydocstyle": {
+              "enabled": false,
+              "match": "(?!test_).*\\.py",
+              "matchDir": "[^\\.].*"
+            },
+            "pyflakes": {
+              "enabled": true
+            },
+            "rope_completion": {
+              "enabled": true
+            },
+            "yapf": {
+              "enabled": true
+            }
+          }
+        }
+      }
+    }
+  }
 }
