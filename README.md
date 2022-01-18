@@ -7,36 +7,36 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - [lin.vim : Lin Rongbin's (Neo)Vim Distribution](#linvim--lin-rongbins-neovim-distribution)
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-    - [Screenshots](#screenshots)
-      - [Simple but pretty UI](#simple-but-pretty-ui)
-      - [Code complete for C++](#code-complete-for-c)
-      - [Fast cursor movement](#fast-cursor-movement)
-      - [Fuzzy file search](#fuzzy-file-search)
-      - [Text search](#text-search)
-      - [Markdown preview](#markdown-preview)
-      - [Terminal window](#terminal-window)
-    - [Feature](#feature)
-    - [Project Structure](#project-structure)
+  - [Screenshots](#screenshots)
+    - [Simple but pretty UI](#simple-but-pretty-ui)
+    - [Code complete for C++](#code-complete-for-c)
+    - [Fast cursor movement](#fast-cursor-movement)
+    - [Fuzzy file search](#fuzzy-file-search)
+    - [Text search](#text-search)
+    - [Markdown preview](#markdown-preview)
+    - [Terminal window](#terminal-window)
+  - [Feature](#feature)
+  - [Project Structure](#project-structure)
 - [Installation](#installation)
-    - [UNIX, Linux, MacOS](#unix-linux-macos)
-    - [Windows](#windows)
-    - [Limitation](#limitation)
-      - [Third Party Dependencies](#third-party-dependencies)
-      - [Tested Platforms](#tested-platforms)
+  - [UNIX, Linux, MacOS](#unix-linux-macos)
+  - [Windows](#windows)
+  - [Limitation](#limitation)
+    - [Third Party Dependencies](#third-party-dependencies)
+    - [Tested Platforms](#tested-platforms)
 - [User Guide](#user-guide)
-    - [Hot Key](#hot-key)
-    - [Enhanced Copy Paste](#enhanced-copy-paste)
-    - [Text Search](#text-search-1)
-    - [File Search](#file-search)
-    - [Alignment](#alignment)
-    - [Cursor Movement](#cursor-movement)
-    - [Language Server](#language-server)
-    - [Tags](#tags)
-    - [Commentary](#commentary)
-    - [File Explorer](#file-explorer)
-    - [Customization](#customization)
-      - [GUI Fonts](#gui-fonts)
-    - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
+  - [Hot Key](#hot-key)
+  - [Enhanced Copy Paste](#enhanced-copy-paste)
+  - [Text Search](#text-search-1)
+  - [File Search](#file-search)
+  - [Alignment](#alignment)
+  - [Cursor Movement](#cursor-movement)
+  - [Language Server](#language-server)
+  - [Tags](#tags)
+  - [Commentary](#commentary)
+  - [File Explorer](#file-explorer)
+  - [Customization](#customization)
+    - [GUI Fonts](#gui-fonts)
+  - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
 - [Contribute](#contribute)
 
 # Introduction
@@ -143,11 +143,11 @@ You could also install these dependencies with other windows package manager suc
 
 4. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
-5. Install [hack fonts](https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack-v3.003-ttf.zip`, please manually install the following fonts:
-   - `Hack-Bold.ttf`
-   - `Hack-BoldItalic.ttf`
-   - `Hack-Italic.ttf`
-   - `Hack-Regular.ttf`
+5. Install [Hack Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/releases), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack.zip`, please manually extract and install the following fonts:
+   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
 
 ### Limitation
 
@@ -173,7 +173,7 @@ You could also install these dependencies with other windows package manager suc
 - gcc, g++ (only on Linux such as Ubuntu/Fedora/Manjaro)
 - neovim (not installed on Windows)
 - zsh (not installed on Windows)
-- fack font (only download on Windows, need manually installation)
+- hack nerd font (only download on Windows, need manually installation)
 
 Notice: installation needs access of websites below, and make sure they're available:
 
@@ -327,7 +327,7 @@ Please custom your own settings in **_user-settings.vim_** and **coc-settings.js
 
 #### GUI Fonts
 
-[Hack Fonts](https://github.com/source-foundry/Hack/releases/download/) below is installed by default(while only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize GUI fonts.
+[Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only download on Windows and need manually install). Please manually install other nerd fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize GUI fonts.
 
 ### Command Line Utility (vcmd)
 
