@@ -16,7 +16,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'RRethy/vim-illuminate'
 " this plugin need golang
-" Plug 'RRethy/vim-hexokinase'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -50,9 +50,8 @@ Plug 'mhinz/vim-signify'
 " Searching
 Plug 'jremmen/vim-ripgrep'
 Plug 'rking/ag.vim'
-" enable C extension in LeaderF if you want better performance
-" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-Plug 'Yggdroot/LeaderF'
+" enable C extension for LeaderF for better performance
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
