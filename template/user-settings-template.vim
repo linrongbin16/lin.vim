@@ -105,8 +105,6 @@ set colorcolumn=120
 let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-clangd', 'coc-pyright', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur']
 
 " 12. other stuffs
-" optimize python format since it's bad performance
-au BufWrite *.py call CocAction('format')
 
 " disable () in auto-pairs
 let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}
