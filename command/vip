@@ -90,9 +90,7 @@ def _loopback_ipv4():
 
 def _min_ipv6():
     min_ipv6 = ipaddress.IPv6Address("::0")
-    print(
-        "[vcmd] minimum ipv4: '%s' or '%s' (%d)" % (str(min_ipv6), "::0", int(min_ipv6))
-    )
+    print("[vcmd] minimum ipv4: '%s' or '%s' (%d)" % (str(min_ipv6), "::0", int(min_ipv6)))
     exit(0)
 
 

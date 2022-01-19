@@ -115,11 +115,8 @@ def _convert_encoding(encoding, filetype, include_hidden):
             print("%s: no encoding" % (f))
             continue
         detect_encoding = detect_encoding.upper()
-        detect_encoding = (
-            encoding_name_map[detect_encoding]
-            if detect_encoding in encoding_name_map
-            else detect_encoding
-        )
+        detect_encoding = (encoding_name_map[detect_encoding]
+                           if detect_encoding in encoding_name_map else detect_encoding)
         try:
             convert_outs, convert_errs = util.run(
                 "iconv",
@@ -136,9 +133,7 @@ def _convert_encoding(encoding, filetype, include_hidden):
             os.rename(f, new_filename)
             print("%s: %s => %s" % (f, detect_encoding, encoding))
         except Exception as e:
-            print(
-                "error: %s: %s => %s failed:%s" % (f, detect_encoding, encoding, str(e))
-            )
+            print("error: %s: %s => %s failed:%s" % (f, detect_encoding, encoding, str(e)))
     exit(0)
 
 

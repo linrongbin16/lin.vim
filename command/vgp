@@ -50,7 +50,8 @@ def vgp_config(config, args, debug):
     "--config",
     type=click.Choice(["ignore", "purge", "show"]),
     required=False,
-    help="search configuration, use `ignore` to specific file types, use `purge` to remove all file types, use `show` to display all ignored file types",
+    help=
+    "search configuration, use `ignore` to specific file types, use `purge` to remove all file types, use `show` to display all ignored file types",
 )
 @click.option("--debug", is_flag=True, help="debug mode")
 @click.argument("args", nargs=-1)
