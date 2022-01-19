@@ -16,6 +16,7 @@ source $HOME/.vim/setting/itchyny-lightline.vim.vim
 source $HOME/.vim/setting/majutsushi-tagbar.vim
 source $HOME/.vim/setting/RRethy-vim-illuminate.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
+source $HOME/.vim/setting/jlanzarotta-bufexplorer.vim
 
 " Syntax highlight
 source $HOME/.vim/setting/sheerun-vim-polyglot.vim

@@ -14,6 +14,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'RRethy/vim-illuminate'
 " this plugin need golang
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }

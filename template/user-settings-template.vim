@@ -19,9 +19,10 @@ nmap <S-F6> <Plug>(coc-rename)
 map <F7> :MarkdownPreview<CR>
 " next color
 map <F8> :call NextColor()<CR>
-" use ctrl-tab, ctrl-shift-tab to switch buffer
-nnoremap <C-Tab> :bn<CR>
-nnoremap <C-S-Tab> :bp<CR>
+" open buffer explorer
+nnoremap <script> <silent> <unique> <F9> :BufExplorer<CR>
+" close buffer explorer
+nnoremap <script> <silent> <unique> <F10> :ToggleBufExplorer<CR>
 
 
 " 2. Enhanced copy paste
@@ -40,6 +41,9 @@ map <Leader>bn :bn<cr>
 map <Leader>bp :bp<cr>
 " close current buffer
 map <Leader>bd :bd<cr>
+" use ctrl-tab, ctrl-shift-tab to switch buffer
+nnoremap <C-Tab> :bn<CR>
+nnoremap <C-S-Tab> :bp<CR>
 
 
 " 4. 10 times faster jkhl

@@ -4,8 +4,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 # Table of Contents
 
-- [lin.vim : Lin Rongbin's (Neo)Vim Distribution](#linvim--lin-rongbins-neovim-distribution)
-- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
   - [Screenshots](#screenshots)
     - [Simple but pretty UI](#simple-but-pretty-ui)
@@ -34,6 +32,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Tags](#tags)
   - [Commentary](#commentary)
   - [File Explorer](#file-explorer)
+  - [Buffer Explorer](#buffer-explorer)
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
   - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
@@ -214,11 +213,11 @@ In this section, VIM editing modes are specified with:
 - `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
 - `F5` 🅽: open terminal window, see [Terminal window](#terminal-window).
-- `F6`, `SHIFT-F6` 🅽: rename symbol.
+- `F6` `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
-- `CTRL-TAB` 🅽: go to next buffer.
-- `CTRL-SHIFT-TAB` 🅽: go to previous buffer.
+- `F9` 🅽: open buffer explorer.
+- `F10` 🅽: close buffer explorer.
 
 You could configure these hot keys in **_user-settings.vim_**.
 
@@ -315,9 +314,13 @@ They constructs the file explorer on the left(nerdtree), opened buffers on the t
 - `md` 🅽 on the left: delete file/directory.
 - `mm` 🅽 on the left: move file/directory.
 
+### Buffer Explorer
+
 - `<leader>bn`(`<c-tab>`) 🅽: go to next buffer .
 - `<leader>bp`(`<c-s-tab>`) 🅽: go to previous buffer.
 - `<leader>bd` 🅽: close current buffer.
+- `<c-tab>` (ctrl+tab) 🅽: go to next buffer.
+- `<c-s-tab>` (ctrl+shift+tab) 🅽: go to previous buffer.
 
 Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.
 
