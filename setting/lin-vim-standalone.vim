@@ -96,3 +96,6 @@ if has("gui_running")
     " gvim menu
     set guioptions-=m
 endif
+
+" fix maxmatchparen memory issue for syntax on large file
+set mmp=10000
