@@ -1,4 +1,4 @@
-let g:Illuminate_delay = 100
+let g:Illuminate_delay = 300
 
 " let g:Illuminate_ftblacklist = ['nerdtree']
 

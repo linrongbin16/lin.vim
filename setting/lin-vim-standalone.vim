@@ -99,3 +99,6 @@ endif
 
 " fix maxmatchparen memory issue for syntax on large file
 set mmp=10000
+
+" faster regex engine
+set regexpengine=1
