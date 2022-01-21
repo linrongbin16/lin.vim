@@ -102,3 +102,4 @@ set mmp=10000
 
 " faster regex engine
 set regexpengine=1
+set termguicolors
