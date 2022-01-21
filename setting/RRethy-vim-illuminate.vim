@@ -2,8 +2,8 @@ let g:Illuminate_delay = 300
 
 " let g:Illuminate_ftblacklist = ['nerdtree']
 
-" use Search instead of default CursorLine for better contrast
+" use Underline for highlight
 " augroup illuminate_augroup
 "     autocmd!
-"     autocmd VimEnter * hi link illuminatedWord Search
+"     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
 " augroup END
