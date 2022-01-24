@@ -3,27 +3,27 @@
 " 1. Hot key
 
 " open/close nerdtree file explorer
-map <F1> :NERDTreeToggle<CR>
+nmap <F1> :NERDTreeToggle<CR>
 " open/close tagbar
-map <F2> :TagbarToggle<CR>
+nmap <F2> :TagbarToggle<CR>
 " format current file
-map <F3> :call CocAction('format')<CR>
+nmap <F3> <Plug>(lcn-format)
+nmap <S-F3> <Plug>(lcn-format-sync)
 " switch between C/C++ header source
-map <F4> :CocCommand clangd.switchSourceHeader<CR>
-" open/close terminal
-map <F5> :below terminal<CR>
+nmap <F4> :call LanguageClient#textDocument_switchSourceHeader()<CR>
+" open LanguageClient-neovim menu
+nmap <F5> :call LanguageClient_contextMenu<CR>
 " rename symbol
-nmap <F6> <Plug>(coc-rename)
-nmap <S-F6> <Plug>(coc-rename)
+nmap <F6> <Plug>(lcn-rename)
+nmap <S-F6> <Plug>(lcn-rename)
 " open markdown preview
-map <F7> :MarkdownPreview<CR>
+nmap <F7> :MarkdownPreview<CR>
 " next color
-map <F8> :call NextColor()<CR>
+nmap <F8> :call NextColor()<CR>
 " open buffer explorer
-nnoremap <script> <silent> <unique> <F9> :BufExplorer<CR>
+nmap <script> <silent> <unique> <F9> :BufExplorer<CR>
 " close buffer explorer
-nnoremap <script> <silent> <unique> <F10> :ToggleBufExplorer<CR>
-
+nmap <script> <silent> <unique> <F10> :ToggleBufExplorer<CR>
 
 " 2. Enhanced copy paste
 
@@ -77,13 +77,13 @@ endif
 " 7. GUI fonts
 if has("win32")
     " win32
-    set guifont=Hack:h9
+    set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
-    set guifont=Hack:h12
+    set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " linux, unix
-    set guifont=Hack\ 10
+    set guifont=Hack\ Nerd\ Font\ Mono\ 10
 endif
 
 
@@ -105,8 +105,14 @@ autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwi
 " 10. Line length marker=120
 set colorcolumn=120
 
-" 11. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-snippets', 'coc-tag', 'coc-clangd', 'coc-pyright', 'coc-cmake', 'coc-json', 'coc-html', 'coc-xml', 'coc-css', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-emmet', 'coc-vetur', 'coc-tabnine']
+" 11. language server
+let g:LanguageClient_serverCommands = {
+            \ 'c': ['clangd', '-j=12', '-background-index', '--clang-tidy', "--all-scopes-completion", "--completion-style=detailed", "--header-insertion=iwyu", "--pch-storage=memory"],
+            \ 'cpp': ['clangd', '-j=12', '-background-index', '--clang-tidy', "--all-scopes-completion", "--completion-style=detailed", "--header-insertion=iwyu", "--pch-storage=memory"],
+            \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+            \ 'python': ['pyls'],
+            \ }
+
 
 " 12. other stuffs
 
