@@ -24,6 +24,7 @@ source $HOME/.vim/setting/sheerun-vim-polyglot.vim
 " Language
 source $HOME/.vim/setting/neoclide-coc.nvim.vim
 source $HOME/.vim/setting/rust-lang-rust.vim.vim
+source $HOME/.vim/setting/ludovicchabant-vim-gutentags.vim
 
 " Comment
 source $HOME/.vim/setting/preservim-nerdcommenter.vim
