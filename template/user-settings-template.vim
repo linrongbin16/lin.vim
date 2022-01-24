@@ -109,9 +109,15 @@ set colorcolumn=120
 let g:LanguageClient_serverCommands = {
             \ 'c': ['clangd', '-j=12', '-background-index', '--clang-tidy', "--all-scopes-completion", "--completion-style=detailed", "--header-insertion=iwyu", "--pch-storage=memory"],
             \ 'cpp': ['clangd', '-j=12', '-background-index', '--clang-tidy', "--all-scopes-completion", "--completion-style=detailed", "--header-insertion=iwyu", "--pch-storage=memory"],
-            \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
             \ 'python': ['pyls'],
             \ }
+
+"            \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+
+augroup LanguageServerFormatOnSave
+    autocmd FileType c,cpp,python
+        \ autocmd! BufWritePre <buffer> call LanguageClient#textDocument_formatting_sync()
+augroup END
 
 
 " 12. other stuffs
