@@ -43,8 +43,11 @@ else
     exit 3
 fi
 
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint black yapf chardet jedi neovim cmakelang cmake-language-server click
+sudo pip3 install pyOpenSSL pep8 flake8 pylint black yapf chardet jedi neovim cmakelang cmake-language-server click pynvim msgpack
 
 # install nodejs npm packages
 sudo npm install -g yarn prettier

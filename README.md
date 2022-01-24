@@ -74,7 +74,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 ### Feature
 
 - Running on multiple platforms: UNIX/Linux, Windows and MacOS.
-- Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
+- Language server (code complete, lint and formatting) for many programming languages by [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim).
 - Random color schemes.
 - File and buffer explorer and better status line.
 - Source code and file fuzzy search.
@@ -90,7 +90,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |+install              Installation scripts for all platforms.
  |+picture              Screenshots for README.
  |+setting              VimL script settings.
- |+template             Templates for user-settings.vim, coc-settings.json, vim-plug.vim and .linvimrc.
+ |+template             Templates for user-settings.vim, vim-plug.vim and .linvimrc.
  |`install.sh           UNIX/Linux/MacOS bash installation script.
  |`install.ps1          Windows PowerShell installation script.
  |`LICENSE              The license file.
@@ -122,6 +122,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
    - (Optional) [neovim](https://github.com/neovim/neovim/releases), add `nvim.exe` in `$env.Path`
    - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add `python3.exe`, `pip3.exe` in `$env.Path`
    - [llvm](https://releases.llvm.org/), add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
+   - [rust](https://www.rust-lang.org/tools/install), add `rustup.exe`, `rustc.exe`, `cargo.exe` in `$env.Path`
    - [golang](https://go.dev/doc/install), add `go.exe` in `$env.Path`
    - [nodejs](https://nodejs.org/en/download/), add `node.exe`, `npm.exe` in `$env.Path`
    - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` in `$env.Path`
@@ -178,7 +179,6 @@ Notice: installation needs access of websites below, and make sure they're avail
 
 - [github.com](https://github.com/).
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-- [chocolatey](https://chocolatey.org/) on Windows.
 
 #### Tested Platforms
 
@@ -196,7 +196,7 @@ Notice: installation needs access of websites below, and make sure they're avail
 | Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                           |
 | Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                           |
 | Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                           |
-| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+ |
+| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br> |
 
 # User Guide
 
@@ -210,10 +210,10 @@ In this section, VIM editing modes are specified with:
 
 - `F1` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
 - `F2` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3` 🅽: format current file.
+- `F3`/`SHIFT-F6` 🅽: format/sync-format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open terminal window, see [Terminal window](#terminal-window).
-- `F6` `SHIFT-F6` 🅽: rename symbol.
+- `F5` 🅽: open language server menu.
+- `F6`/`SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 - `F9` 🅽: open buffer explorer.
@@ -273,7 +273,7 @@ You could configure these in **_user-settings.vim_**.
 
 ### Language Server
 
-Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim), and completion are supported in insert mode:
+Language server is supported by [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim), and completion are supported in insert mode:
 
 - `<c-n>` `tab` `<up>` 🅸: select next in candidate list.
 - `<c-p>` `<s-tab>` `<down>` 🅸: select previous in candidate list.
@@ -281,12 +281,16 @@ Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim)
 Go to operations are supported in normal mode:
 
 - `gd` 🅽: go to definition.
-- `gy` 🅽: go to type definition.
+- `gt` 🅽: go to type definition.
 - `gi` 🅽: go to implementation.
 - `gr` 🅽: go to reference.
 - `F6`, `<s-F6>` 🅽: rename symbol.
+- `<leader>lh` 🅽: show hover.
+- `<leader>ls` 🅽: list symbols.
+- `<leader>lc` 🅽: code actions.
+- `<leader>ll` 🅽: code lens action.
 
-You could configure coc extensions in **_user-settings.vim_** and **_coc-settings.json_**. And refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming languages, [coc.nvim#wiki#Using-coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) for more coc extensions.
+You could configure Language server in **_user-settings.vim_****. please refer to [LanguageClient-neovim#wiki](https://github.com/autozimu/LanguageClient-neovim/wiki) for more information.
 
 ### Tags
 
@@ -326,7 +330,7 @@ Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[a
 
 ### Customization
 
-Please custom your own settings in **_user-settings.vim_** and **coc-settings.json**.
+Please custom your own settings in **_user-settings.vim_**.
 
 #### GUI Fonts
 

@@ -12,9 +12,10 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'filename'          : 'LightLineFileName',
-  \   'coc_status'        : 'LightlineCocStatus',
   \ }
   \ }
+
+"  \   'coc_status'        : 'LightlineCocStatus',
 
 function! LightLineFileName() abort
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
