@@ -11,7 +11,7 @@ map <F3> :call CocAction('format')<CR>
 " switch between C/C++ header source
 map <F4> :CocCommand clangd.switchSourceHeader<CR>
 " open/close terminal
-map <F5> :below terminal ++rows=20<CR>
+map <F5> :below terminal<CR>
 " rename symbol
 nmap <F6> <Plug>(coc-rename)
 nmap <S-F6> <Plug>(coc-rename)
