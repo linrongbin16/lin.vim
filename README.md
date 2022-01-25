@@ -189,13 +189,13 @@ Notice: installation needs access of websites below, and make sure they're avail
 | python3             | 3.6+         |
 | nodejs              | 10.12+       |
 
-| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                             |
-| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                           |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                           |
-| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                           |
-| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                           |
-| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                           |
+| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                           |
+| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ------------------------------------------------------------------------------------- |
+| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                         |
+| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                         |
+| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                         |
+| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                         |
+| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                         |
 | Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br> |
 
 # User Guide
@@ -290,7 +290,7 @@ Go to operations are supported in normal mode:
 - `<leader>lc` 🅽: code actions.
 - `<leader>ll` 🅽: code lens action.
 
-You could configure Language server in **_user-settings.vim_****. please refer to [LanguageClient-neovim#wiki](https://github.com/autozimu/LanguageClient-neovim/wiki) for more information.
+You could configure Language server in **_user-settings.vim_**. please refer to [LanguageClient-neovim#wiki](https://github.com/autozimu/LanguageClient-neovim/wiki) for more information.
 
 ### Tags
 
