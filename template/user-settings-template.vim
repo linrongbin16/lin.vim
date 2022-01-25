@@ -7,8 +7,7 @@ nmap <F1> :NERDTreeToggle<CR>
 " open/close tagbar
 nmap <F2> :TagbarToggle<CR>
 " format current file
-nmap <F3> <Plug>(lcn-format)
-nmap <S-F3> <Plug>(lcn-format-sync)
+nmap <F3> :Neoformat<CR>
 " switch between C/C++ header source
 nmap <F4> :call LanguageClient#textDocument_switchSourceHeader()<CR>
 " show hover
@@ -43,15 +42,15 @@ map <Leader>bp :bp<cr>
 " close current buffer
 map <Leader>bd :bd<cr>
 " use ctrl-tab, ctrl-shift-tab to switch buffer
-nnoremap <C-Tab> :bn<CR>
-nnoremap <C-S-Tab> :bp<CR>
+nmap <C-Tab> :bn<CR>
+nmap <C-S-Tab> :bp<CR>
 
 
 " 4. 10 times faster jkhl
-map <c-j> 10j
-map <c-k> 10k
-map <c-h> 10h
-map <c-l> 10l
+nmap <c-j> 10j
+nmap <c-k> 10k
+nmap <c-h> 10h
+nmap <c-l> 10l
 
 
 " 5. Filetype mapping
@@ -101,7 +100,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 " 9. indent with 2 space for some languages
 autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 " 10. Line length marker=120
 set colorcolumn=120
@@ -116,15 +115,9 @@ let g:LanguageClient_serverCommands = {
             \ }
 
 
-" format on save by LanguageClient-neovim
-augroup LanguageClientFormat
-    autocmd FileType c,cpp,cmake,python,rust
-        \ autocmd! BufWritePre <buffer> call LanguageClient#textDocument_formatting_sync()
-augroup END
-
-" format on save by neoformat (when LanguageClient-neovim is missing)
+" code format by neoformat
 augroup fmt
-    autocmd FileType html,xml,xhtml,json,markdown
+    autocmd FileType c,cpp,cmake,python,rust,html,xml,xhtml,json,markdown
         \ autocmd! BufWritePre <buffer> Neoformat
 augroup END
 

@@ -25,7 +25,6 @@ source $HOME/.vim/setting/sheerun-vim-polyglot.vim
 " source $HOME/.vim/setting/neoclide-coc.nvim.vim
 source $HOME/.vim/setting/Shougo-deoplete.nvim.vim
 source $HOME/.vim/setting/autozimu-LanguageClient-neovim.vim
-source $HOME/.vim/setting/rust-lang-rust.vim.vim
 source $HOME/.vim/setting/ludovicchabant-vim-gutentags.vim
 source $HOME/.vim/setting/sbdchd-neoformat.vim
 

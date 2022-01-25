@@ -205,7 +205,7 @@ In this section, VIM editing modes are specified with:
 
 - `F1` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
 - `F2` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3`/`SHIFT-F3` 🅽: format/sync-format current file.
+- `F3` 🅽: format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
 - `F5` 🅽: show hover.
 - `F6` 🅽: show symbols.
