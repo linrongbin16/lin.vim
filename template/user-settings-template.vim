@@ -11,10 +11,11 @@ nmap <F3> <Plug>(lcn-format)
 nmap <S-F3> <Plug>(lcn-format-sync)
 " switch between C/C++ header source
 nmap <F4> :call LanguageClient#textDocument_switchSourceHeader()<CR>
-" open LanguageClient-neovim menu
-nmap <F5> :call LanguageClient_contextMenu<CR>
+" show hover
+nmap <F5> <Plug>(lcn-hover)
+" show symbols
+nmap <F6> <Plug>(lcn-symbols)
 " rename symbol
-nmap <F6> <Plug>(lcn-rename)
 nmap <S-F6> <Plug>(lcn-rename)
 " open markdown preview
 nmap <F7> :MarkdownPreview<CR>
@@ -99,26 +100,33 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 
 " 9. indent with 2 space for some languages
-autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 " 10. Line length marker=120
 set colorcolumn=120
 
 " 11. language server
 let g:LanguageClient_serverCommands = {
-            \ 'c': ['clangd', '-j=12', '-background-index', '--clang-tidy', "--all-scopes-completion", "--completion-style=detailed", "--header-insertion=iwyu", "--pch-storage=memory"],
-            \ 'cpp': ['clangd', '-j=12', '-background-index', '--clang-tidy', "--all-scopes-completion", "--completion-style=detailed", "--header-insertion=iwyu", "--pch-storage=memory"],
+            \ 'c': ['clangd', '-j=12', '-background-index', '--clang-tidy', '--completion-style=detailed', '--header-insertion=iwyu', '--pch-storage=memory'],
+            \ 'cpp': ['clangd', '-j=12', '-background-index', '--clang-tidy', '--completion-style=detailed', '--header-insertion=iwyu', '--pch-storage=memory'],
+            \ 'cmake': ['cmake-language-server'],
             \ 'python': ['pyls'],
+            \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
             \ }
 
-"            \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 
-augroup LanguageServerFormatOnSave
-    autocmd FileType c,cpp,python
+" format on save by LanguageClient-neovim
+augroup LanguageClientFormat
+    autocmd FileType c,cpp,cmake,python,rust
         \ autocmd! BufWritePre <buffer> call LanguageClient#textDocument_formatting_sync()
 augroup END
 
+" format on save by neoformat (when LanguageClient-neovim is missing)
+augroup fmt
+    autocmd FileType html,xml,xhtml,json,markdown
+        \ autocmd! BufWritePre <buffer> Neoformat
+augroup END
 
 " 12. other stuffs
 
