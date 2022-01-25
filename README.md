@@ -12,7 +12,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Fuzzy file search](#fuzzy-file-search)
     - [Text search](#text-search)
     - [Markdown preview](#markdown-preview)
-    - [Terminal window](#terminal-window)
   - [Feature](#feature)
   - [Project Structure](#project-structure)
 - [Installation](#installation)
@@ -66,10 +65,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 #### Markdown preview
 
 ![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
-
-#### Terminal window
-
-![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6-terminal-window.png)
 
 ### Feature
 
@@ -210,10 +205,11 @@ In this section, VIM editing modes are specified with:
 
 - `F1` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
 - `F2` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3`/`SHIFT-F6` 🅽: format/sync-format current file.
+- `F3`/`SHIFT-F3` 🅽: format/sync-format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open language server menu.
-- `F6`/`SHIFT-F6` 🅽: rename symbol.
+- `F5` 🅽: show hover.
+- `F6` 🅽: show symbols.
+- `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
 - `F9` 🅽: open buffer explorer.

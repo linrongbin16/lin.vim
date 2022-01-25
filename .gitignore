@@ -16,7 +16,7 @@ plugged
 # user settings
 vim-plug.vim
 user-settings.vim
-coc-settings.json
+settings.json
 command/*.db
 command/*.ignore
 

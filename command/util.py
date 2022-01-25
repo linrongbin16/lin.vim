@@ -111,7 +111,8 @@ def list_dirs(directory, include_hidden=False, depth=99):
 
 
 def run(*cmd):
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE)
     out_bytes = iter(proc.stdout.readline, b"")
     err_bytes = iter(proc.stderr.readline, b"")
     out_lines = [x.decode() for x in out_bytes if len(x) > 0]
@@ -163,7 +164,8 @@ def get_git_remote_repository():
     if len(repos) <= 0:
         return None
     repos_str = ", ".join([f"'{repos[i]}'[{i}]" for i in range(len(repos))])
-    user_input = input(f"[vcmd] choose remote repository {repos_str} (by default 0): ")
+    user_input = input(
+        f"[vcmd] choose remote repository {repos_str} (by default 0): ")
     if str_empty(user_input):
         repos_str = list(repos)[0]
     else:

@@ -1,5 +1,12 @@
 Write-Host "[lin.vim] Install for Windows"
 
+# Install rust language server and format tool
+rustup component add rust-std
+rustup component add rust-src
+rustup component add rustfmt
+rustup component add rust-analysis
+rustup component add rls
+
 # Install python3 pip packages
 pip3 install pyOpenSSL pep8 flake8 pylint black yapf chardet jedi neovim cmakelang cmake-language-server click pynvim msgpack
 
@@ -25,7 +32,7 @@ gvim -c "PlugInstall" -c "qall"
 # Install User Custom
 Copy-Item $env:UserProfile\.vim\template\vim-plug-template.vim -Destination $env:UserProfile\.vim\vim-plug.vim
 Copy-Item $env:UserProfile\.vim\template\user-settings-template.vim -Destination $env:UserProfile\.vim\user-settings.vim
-Copy-Item $env:UserProfile\.vim\template\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
+Copy-Item $env:UserProfile\.vim\template\settings-template.json -Destination $env:UserProfile\.vim\settings.json
 
 # Install Neovim Config
 New-Item -ItemType Directory -Force -Path $env:UserProfile\AppData\Local

@@ -45,6 +45,11 @@ fi
 
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup component add rust-std
+rustup component add rust-src
+rustup component add rustfmt
+rustup component add rust-analysis
+rustup component add rls
 
 # install python3 pip packages
 sudo pip3 install pyOpenSSL pep8 flake8 pylint black yapf chardet jedi neovim cmakelang cmake-language-server click pynvim msgpack
@@ -68,7 +73,7 @@ fi
 # install user custom
 cp ~/.vim/template/vim-plug-template.vim ~/.vim/vim-plug.vim
 cp ~/.vim/template/user-settings-template.vim ~/.vim/user-settings.vim
-cp ~/.vim/template/coc-settings-template.json ~/.vim/coc-settings.json
+cp ~/.vim/template/settings-template.json ~/.vim/settings.json
 
 # install neovim config
 mkdir -p ~/.config
