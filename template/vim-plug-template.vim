@@ -14,10 +14,9 @@ Plug 'majutsushi/tagbar'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'RRethy/vim-illuminate'
-" this plugin need golang
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'jlanzarotta/bufexplorer'
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -37,9 +36,29 @@ Plug 'chriskempson/base16-vim'
 Plug 'nanotech/jellybeans.vim'
 
 " Language Server
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if has('win32') || has('win64')
+    Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'powershell.exe .\install.ps1'}
+    Plug 'tbodt/deoplete-tabnine', {'do': 'powershell.exe .\install.ps1'}
+else
+    Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+    Plug 'tbodt/deoplete-tabnine', {'do': './install.sh'}
+endif
+Plug 'junegunn/fzf'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'junegunn/fzf', {'dir':'~/.fzf', 'do':'./install --all'}
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sbdchd/neoformat'
 
 " Comment
 " Plug 'tpope/vim-commentary'
@@ -51,7 +70,6 @@ Plug 'mhinz/vim-signify'
 " Searching
 Plug 'jremmen/vim-ripgrep'
 Plug 'rking/ag.vim'
-" enable C extension for LeaderF for better performance
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " Keyboard Operation
@@ -67,7 +85,7 @@ Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 
 " Markdown
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Flex, Bison
@@ -82,10 +100,5 @@ Plug 'pprovost/vim-ps1'
 " Lisp
 Plug 'vlime/vlime'
 
-" Vue
-Plug 'posva/vim-vue'
-
-" Rust
-Plug 'rust-lang/rust.vim'
 
 call plug#end()
