@@ -1,4 +1,4 @@
-let g:LanguageClient_rootMarkers = ['.root', '.git', '.svn', '.hg', 'project.*']
+let g:LanguageClient_hasSnippetSupport = 0
 
 
 set hidden

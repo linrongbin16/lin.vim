@@ -106,6 +106,8 @@ autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwi
 set colorcolumn=120
 
 " 11. language server
+let g:LanguageClient_rootMarkers = ['.root', '.git', '.svn', '.hg', 'project.*', 'package.json', 'package-lock.json', 'Cargo.toml', 'tsconfig.json']
+
 let g:LanguageClient_serverCommands = {
             \ 'c': ['clangd', '-j=12', '-background-index', '--clang-tidy', '--completion-style=detailed', '--header-insertion=iwyu', '--pch-storage=memory'],
             \ 'cpp': ['clangd', '-j=12', '-background-index', '--clang-tidy', '--completion-style=detailed', '--header-insertion=iwyu', '--pch-storage=memory'],
