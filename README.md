@@ -59,10 +59,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
 
-##### Terminal window
-
-![pic6.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic6-terminal-window.png)
-
 ### Feature
 
 - Running on multiple platforms: UNIX/Linux, Windows and MacOS.
@@ -203,16 +199,17 @@ In this section, VIM editing modes are specified with:
 
 ### Hot Key
 
-- `F1` 🅽: open/close nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
-- `F2` 🅽: open/close tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3` 🅽: format current file.
+- `F1` 🅽: toggle(open/close) nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
+- `F2` 🅽: toggle(open/close) tagbar tags explorer, see [Code complete for C++](#code-complete-for-c).
+- `F3` (`SHIFT-F3`) 🅽: format (sync-format) current file.
 - `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: open terminal window, see [Terminal window](#terminal-window).
-- `F6`, `SHIFT-F6` 🅽: rename symbol.
+- `F5` 🅽: run codeLens on current file.
+- `SHFIT-F5` 🅽: quick auto-fix(run codeActions) on current line.
+- `F6` 🅽: hover symbol.
+- `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
-- `CTRL-TAB` 🅽: go to next buffer.
-- `CTRL-SHIFT-TAB` 🅽: go to previous buffer.
+- `F10` (`SHIFT-F10`) 🅽: open (close) buffer explorer.
 
 You could configure these hot keys in **_user-settings.vim_**.
 
@@ -220,7 +217,7 @@ You could configure these hot keys in **_user-settings.vim_**.
 
 Enhanced copy-paste are supported when you want copy/paste between different vim instances.
 
-- `<leader>c` 🆅: copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+- `<leader>y` 🆅: copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 - `<leader>p` 🅽: paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 
 Copied content will be stored in a text database, then you could paste them to other vim instances.
