@@ -44,6 +44,7 @@ Plug 'preservim/nerdcommenter'
 
 " Git
 Plug 'mhinz/vim-signify'
+Plug 'itchyny/vim-gitbranch'
 
 " Searching
 Plug 'jremmen/vim-ripgrep'

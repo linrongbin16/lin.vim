@@ -2,7 +2,7 @@
 let g:lightline = {
   \ 'active': {
       \ 'left': [ ['mode', 'paste'],
-  \               ['readonly', 'filename', 'coc_status'] ],
+  \               ['readonly', 'filename', 'git_branch', 'coc_status'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -12,6 +12,7 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'filename'          : 'LightLineFileName',
+  \   'git_branch'        : 'LightlineGitBranch',
   \   'coc_status'        : 'LightlineCocStatus',
   \ }
   \ }
@@ -33,4 +34,15 @@ function! LightlineCocStatus() abort
   endif
 endfunction
 
+" integrate statusline with git
+function! LightlineGitBranch() abort
+    let branch = gitbranch#name()
+    if empty(branch)
+        return ''
+    else
+        return printf('%s', branch)
+    endif
+endfunction
+
 autocmd User CocDiagnosticChange call lightline#update()
+
