@@ -55,16 +55,12 @@ if [ $(uname) == "Darwin" ]; then
     brew tap homebrew/cask-fonts
     brew install --cask font-hack
 else
-    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-    if [ ! -f Hack-v3.003-ttf.zip ]; then
-        wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
+   mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+    if [ ! -f Hack.zip ]; then
+        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
     fi
-    check_download $? "Hack Fonts"
-    unzip -o Hack-v3.003-ttf.zip
-    cp ttf/Hack-Bold.ttf ..
-    cp ttf/Hack-BoldItalic.ttf ..
-    cp ttf/Hack-Italic.ttf ..
-    cp ttf/Hack-Regular.ttf ..
+    check_download $? "Hack Nerd Fonts"
+    unzip -o Hack.zip
 fi
 
 # install user custom
