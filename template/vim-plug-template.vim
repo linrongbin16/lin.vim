@@ -15,7 +15,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'RRethy/vim-illuminate'
 " this plugin need golang
-" Plug 'RRethy/vim-hexokinase'
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -64,7 +64,7 @@ Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 
 " Markdown
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Flex, Bison
@@ -79,10 +79,5 @@ Plug 'pprovost/vim-ps1'
 " Lisp
 Plug 'vlime/vlime'
 
-" Vue
-Plug 'posva/vim-vue'
-
-" Rust
-Plug 'rust-lang/rust.vim'
 
 call plug#end()

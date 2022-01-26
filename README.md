@@ -114,11 +114,13 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
    - (Optional) [neovim](https://github.com/neovim/neovim/releases), add `nvim.exe` in `$env.Path`
    - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add `python3.exe`, `pip3.exe` in `$env.Path`
    - [llvm](https://releases.llvm.org/), add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
+   - [rust](https://www.rust-lang.org/tools/install), add `rustc.exe`, `cargo.exe` in `$env.Path`
    - [golang](https://go.dev/doc/install), add `go.exe` in `$env.Path`
    - [nodejs](https://nodejs.org/en/download/), add `node.exe`, `npm.exe` in `$env.Path`
    - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` in `$env.Path`
    - [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` in `$env.Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe`, `readtags.exe` in `$env.Path`
+   - [7z](https://www.7-zip.org/download.html), add `7z.exe` in `$env.Path`
 
 Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
 
@@ -134,11 +136,11 @@ You could also install these dependencies with other windows package manager suc
 
 4. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
-5. Install [hack fonts](https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack-v3.003-ttf.zip`, please manually install the following fonts:
-   - `Hack-Bold.ttf`
-   - `Hack-BoldItalic.ttf`
-   - `Hack-Italic.ttf`
-   - `Hack-Regular.ttf`
+5. Install [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack.zip`, please manually install the following fonts:
+   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
 
 ### Limitation
 
@@ -148,9 +150,11 @@ You could also install these dependencies with other windows package manager suc
 
 - git
 - (g)vim/macvim
+- neovim (not installed on Windows)
 - curl
 - wget
 - llvm (clang, clang++, clangd, clang-format)
+- rust
 - golang
 - autoconf
 - automake
@@ -158,13 +162,12 @@ You could also install these dependencies with other windows package manager suc
 - the_silver_searcher(ag)
 - ripgrep(rg)
 - zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
-- python3, pip packages (python2 is not support)
+- python3, pip3
 - node, npm packages
 - universal-ctags
 - gcc, g++ (only on Linux such as Ubuntu/Fedora/Manjaro)
-- neovim (not installed on Windows)
 - zsh (not installed on Windows)
-- fack font (only download on Windows, need manually installation)
+- hack nerd font (only download on Windows, need manually installation)
 
 Notice: installation needs access of websites below, and make sure they're available:
 
@@ -314,11 +317,11 @@ Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[a
 
 ### Customization
 
-Please custom your own settings in **_user-settings.vim_** and **coc-settings.json**.
+Please custom your own settings in **_user-settings.vim_** and **_coc-settings.json_**.
 
 ##### GUI Fonts
 
-[Hack Fonts](https://github.com/source-foundry/Hack/releases/download/) below is installed by default(while only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize GUI fonts.
+[Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize gui fonts.
 
 ### Command Line Utility (vcmd)
 

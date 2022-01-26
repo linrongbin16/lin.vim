@@ -1,0 +1,1 @@
+g:bufExplorerDisableDefaultKeyMapping == 1

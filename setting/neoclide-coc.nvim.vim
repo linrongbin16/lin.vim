@@ -2,55 +2,72 @@
 
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
+" use `<tab>` `<c-n>` `<PnDown>` to select next suggestion
+" use `<s-tab>` `<c-p>` `<PnUp>` to select previous suggestion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" if has("patch-8.1.1564")
-"   set signcolumn=number
-" else
-"   set signcolumn=yes
-" endif
-
-" use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Make <tab> <c-n> <PnDown> and <s-tab> <c-p> <PnUp> to select down and up 
-" in completion candidate list
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" use `<c-space>` to trigger complete
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
-" Make <cr> auto-select the first completion item when nothing selected
+" use `<cr>` to confirm the complete item
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" use <c-k>for trigger completion
-inoremap <silent><expr> <c-k> coc#refresh()
-
-" close the preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" Use `[g` and `]g` to navigate diagnostics
+" use `[g` and `]g` to navigate diagnostics
+" use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" go to definition
+" use `gd` to go to definition
 nmap <silent> gd <Plug>(coc-definition)
-" go to type definition
+" use `gy` to go to type definition
 nmap <silent> gy <Plug>(coc-type-definition)
-" go to implementation
+" use `gi` to go to implementation
 nmap <silent> gi <Plug>(coc-implementation)
-" go to reference
+" use `gr` to go to references
 nmap <silent> gr <Plug>(coc-references)
 
-" Highlight the symbol and its references when holding the cursor.
+" Use `K` to hover
+nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" highlight current symbol
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
+" use `<leader>rs` to rename symbol
+nmap <leader>rs  <Plug>(coc-rename)
+
+" use `<leader>cs` to apply codeAction to the selected code.
+xmap <leader>cs  <Plug>(coc-codeaction-selected)
+nmap <leader>cs  <Plug>(coc-codeaction-selected)
+
+" use `<leader>ca` to apply codeAction to the current buffer
+nmap <leader>ca  <Plug>(coc-codeaction)
+" use `<leader>qf` to apply auto-fix problem on the current line
+xmap <leader>qf  <Plug>(coc-fix-current)
+
+" use `<leader>cl` to run codeLens on current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
+

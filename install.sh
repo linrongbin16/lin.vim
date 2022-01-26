@@ -44,7 +44,7 @@ else
 fi
 
 # install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint black chardet jedi neovim cmakelang cmake-language-server
+sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet jedi neovim cmakelang cmake-language-server
 
 # install nodejs npm packages
 sudo npm install -g yarn prettier
@@ -67,21 +67,19 @@ else
     cp ttf/Hack-Regular.ttf ..
 fi
 
-# install vim-plug
-if [ -f ~/.vimrc ]; then
-    VIMRC_BAK=~/.vimrc.$(date +%s)
-    echo "[lin.vim] back up .vimrc to $VIMRC_BAK"
-    mv ~/.vimrc $VIMRC_BAK
-fi
-ln -s ~/.vim/lin.vim ~/.vimrc
-vim -c "PlugInstall" -c "qall"
-
 # install user custom
 cp ~/.vim/template/vim-plug-template.vim ~/.vim/vim-plug.vim
 cp ~/.vim/template/user-settings-template.vim ~/.vim/user-settings.vim
 cp ~/.vim/template/coc-settings-template.json ~/.vim/coc-settings.json
 
-# install neovim config
+
+# install .vimrc file
+if [ -f ~/.vimrc ]; then
+    rm ~/.vimrc
+fi
+ln -s ~/.vim/lin.vim ~/.vimrc
+
+# install nvim init.vim file
 mkdir -p ~/.config
 if [ -d ~/.config/nvim ]; then
     rm ~/.config/nvim
@@ -92,6 +90,8 @@ if [ -f ~/.config/nvim/init.vim ]; then
 fi
 ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
+# install vim plugins
+vim -c "PlugInstall" -c "qall"
 
 # install environment
 cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc
