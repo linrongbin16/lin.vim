@@ -59,6 +59,12 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " use `<leader>rs` to rename symbol
 nmap <leader>rs  <Plug>(coc-rename)
 
+augroup mycocgroup
+  autocmd!
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
 " use `<leader>cs` to apply codeAction to the selected code.
 xmap <leader>cs  <Plug>(coc-codeaction-selected)
 nmap <leader>cs  <Plug>(coc-codeaction-selected)
