@@ -230,11 +230,11 @@ Text search is supported by [the_silver_searcher(ag)](https://github.com/ggreer/
 
 - `:Ag {text}` and `:Rg {text}` 🅽: search {text}.
 
-### File Search
+### Fuzzy File Search
 
 File search is supported by [LeaderF](https://github.com/Yggdroot/LeaderF), see [Fuzzy file search](#fuzzy-file-search).
 
-- `<c-p>` 🅽: search file.
+- `<c-p>` 🅽: fuzzy search file.
 
 ### Alignment
 
@@ -253,13 +253,6 @@ Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/v
 - `<leader><leader>j` 🅽: go to a forward line below cursor.
 - `<leader><leader>k` 🅽: go to a backward line above cursor.
 - `<leader><leader>L` 🅽: go to a specified line.
-
-10 times faster jkhl movement is binded:
-
-- `<c-j>` 🅽: equal to `10j`
-- `<c-k>` 🅽: euqal to `10k`
-- `<c-h>` 🅽: equal to `10h`
-- `<c-l>` 🅽: equal to `10l`
 
 You could configure these in **_user-settings.vim_**.
 
