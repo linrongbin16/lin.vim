@@ -94,8 +94,8 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 
 " 8. indent with 2 space for some languages
-autocmd FileType c,cpp,h,hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-autocmd FileType html,xml,xhtml,json,js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 " 9. Line length marker=120
 set colorcolumn=120
