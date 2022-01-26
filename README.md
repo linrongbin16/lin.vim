@@ -34,28 +34,28 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ### Screenshots
 
-##### Simple but pretty UI
+#### Simple but pretty UI
 
 ![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
 
-##### Code complete for C++
+#### Code complete for C++
 
 ![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
 
-##### Fast cursor movement
+#### Fast cursor movement
 
 ![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.png)
 
-##### Fuzzy file search
+#### Fuzzy file search
 
 ![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
 
-##### Text search
+#### Text search
 
 ![pic7-1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-1.png)
 ![pic7-2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-2.png)
 
-##### Markdown preview
+#### Markdown preview
 
 ![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
 
@@ -140,7 +140,7 @@ You could also install these dependencies with other windows package manager suc
 
 ### Limitation
 
-##### Third Party Dependencies
+#### Third Party Dependencies
 
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
@@ -171,7 +171,7 @@ Notice: installation needs access of websites below, and make sure they're avail
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
 - [chocolatey](https://chocolatey.org/) on Windows.
 
-##### Tested Platforms
+#### Tested Platforms
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
@@ -309,7 +309,7 @@ Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[a
 
 Please custom your own settings in **_user-settings.vim_** and **_coc-settings.json_**.
 
-##### GUI Fonts
+#### GUI Fonts
 
 [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize gui fonts.
 
