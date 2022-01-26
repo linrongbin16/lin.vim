@@ -16,7 +16,7 @@ sudo apt-get install -y autoconf
 sudo apt-get install -y automake
 sudo apt-get install -y clang-format
 sudo apt-get install -y clangd
-sudo apt-get install -y go
+sudo apt-get install -y golang-go
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y ripgrep
 sudo apt-get install -y unzip
