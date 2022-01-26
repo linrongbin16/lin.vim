@@ -3,90 +3,68 @@
 # Copyright 2018-  <linrongbin16@gmail.com>
 
 import sys
-import os
 import base64
 from urllib import parse
-import getopt
+import click
 
 sys.path.append(".")
 import util
 
 
-def _help():
-    msg = """usage: vencode [option] text
-
-  Encode and decode text with algorithms.
-
-option:
-  -e/--encode [algorithm]       encode text with specified algorithm
-  -d/--decode [algorithm]       decode text with specified algorithm
-
-  -h/--help                     show help message
-
-algorithm:
-  base64                        base64 algorithm
-  url                           url algorithm
-
-example:
-  $ vencode -ebase64 'Hello World'
-  Hello World => SGVsbG8gV29ybGQ=
-"""
-    print(msg)
-    exit(0)
-
-
-def _encode_base64(s):
+def encode_base64(s):
     b = s.encode("UTF-8")
     b = base64.b64encode(b)
-    print("%s => %s" % (s, b.decode("UTF-8")))
+    print(f"`{s}` => `{b.decode('UTF-8')}`")
 
 
-def _decode_base64(s):
+def decode_base64(s):
     b = s.encode("UTF-8")
     b = base64.b64decode(b)
-    print("%s => %s" % (s, b.decode("UTF-8")))
+    print(f"`{s}` => `{b.decode('UTF-8')}`")
 
 
-def _encode_url(s):
-    print("%s => %s" % (s, parse.quote(s)))
+def encode_url(s):
+    print(f"`{s}` => `{parse.quote(s)}`")
 
 
-def _decode_url(s):
-    print("%s => %s" % (s, parse.unquote(s)))
+def decode_url(s):
+    print(f"`{s}` => `{parse.unquote(s)}`")
+
+
+@click.command()
+@click.option("-e",
+              "--encode",
+              type=click.Choice(["base64", "url"]),
+              required=False,
+              help="encode text with specified algorithm")
+@click.option("-d",
+              "--decode",
+              type=click.Choice(["base64", "url"]),
+              required=False,
+              help="decode text with specified algorithm")
+@click.argument("args", nargs=-1)
+def vencode(encode, decode, args):
+    """Encode/decode text with algorithm"""
+    if len(args) == 0:
+        print(f"[vcmd] args is missing")
+        return
+    if encode:
+        if encode == "base64":
+            for a in args:
+                encode_base64(a)
+        elif encode == "url":
+            for a in args:
+                encode_url(a)
+    elif decode:
+        if decode == "base64":
+            for a in args:
+                decode_base64(a)
+        elif decode == "url":
+            for a in args:
+                decode_url(a)
+    else:
+        print(f"[vcmd] unknown option")
 
 
 if __name__ == "__main__":
-    try:
-        opts, args = getopt.getopt(
-            sys.argv[1:],
-            "e:d:h",
-            ["encode=", "decode=", "help"],
-        )
-        for opt in opts:
-            if opt[0] in ("-h", "--help"):
-                _help()
-        for opt in opts:
-            if opt[0] in ("-e", "--encode"):
-                if opt[1] == "base64":
-                    for a in args:
-                        _encode_base64(a)
-                    exit(0)
-                elif opt[1] == "url":
-                    for a in args:
-                        _encode_url(a)
-                    exit(0)
-            elif opt[0] in ("-d", "--decode"):
-                if opt[1] == "base64":
-                    for a in args:
-                        _decode_base64(a)
-                    exit(0)
-                elif opt[1] == "url":
-                    for a in args:
-                        _decode_url(a)
-                    exit(0)
-        _help()
-    except getopt.GetoptError as e:
-        print(e)
-        _help()
-    except Exception as e:
-        print(e)
+    vencode()

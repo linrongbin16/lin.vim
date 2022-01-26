@@ -7,59 +7,10 @@ import getopt
 import os
 import time
 import shutil
+import click
 
 sys.path.append(".")
 import util
-
-
-def _help():
-    msg = """usage: vconf [option]
-
-  Quicker configurations.
-
-option:
-  -c/--clangd                           configure 'compile_commands.json' for clangd
-                                        configure 'compile_flags.txt' otherwise if
-                                        'CMakeLists.txt' not available or on Windows
-                                        Visual Studio toolchain
-  -s/--sshkey [email]                   configure '~/.ssh/id_rsa' and '~/.ssh/id_rsa.pub'
-                                        for email
-
-  -b/--brew                             configure homebrew mirrors for China
-  -p/--pip                              configure python3 pip mirrors for China
-  -n/--npm                              configure nodejs npm mirrors for China
-  -u/--ubuntu                           configure ubuntu mirrors for China
-  -d/--debian                           configure debian mirrors for China
-  -m/--manjaro                          configure manjaro mirrors for China
-  -f/--fedora                           configure fedora mirrors for China
-
-  -h/--help                             show help message
-
-example:
-  $ vconf -s linrongbin16@outlook.com
-  Generating public/private rsa key pair.
-  Enter file in which to save the key (/Users/linrongbin/.ssh/id_rsa):
-  Enter passphrase (empty for no passphrase):
-  Enter same passphrase again:
-  Your identification has been saved in /Users/linrongbin/.ssh/id_rsa
-  Your public key has been saved in /Users/linrongbin/.ssh/id_rsa.pub
-  The key fingerprint is:
-  SHA256:LiSwQUBzThXXXXXXXXXXXXXXXXXXXXHQxTNow3o61W8 linrongbin16@outlook.com
-  The key's randomart image is:
-  +---[RSA 4096]----+
-  |XXXXXXXXXX       |
-  | XXXXXXXXXX      |
-  |  XXXXXXXXXX     |
-  |   XXXXXXXX      |
-  |  XXXXXXXXX      |
-  |     XXXXXXX     |
-  |      XXXXX      |
-  |       X         |
-  |                 |
-  +----[SHA256]-----+
-"""
-    print(msg)
-    exit(0)
 
 
 def is_ascii_char(s):
@@ -68,9 +19,9 @@ def is_ascii_char(s):
 
 def header_path(s):
     if util.is_windows():
-        return '-I"%s"' % (s)
+        return f'-I"{s}"'
     else:
-        return "-I%s" % (s)
+        return f"-I{s}"
 
 
 def os_listdir_wrapper(d):
@@ -94,12 +45,9 @@ def windows_sdk_headers():
     hds = []
     # -I"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.14.26428\\include"
     for release in os_listdir_wrapper(
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\"
-    ):
-        current_release = (
-            "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\"
-            % (release)
-        )
+            "C:\\Program Files (x86)\\Microsoft Visual Studio\\"):
+        current_release = "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\" % (
+            release)
         if not os.path.exists(current_release):
             continue
         if not os.path.isdir(current_release):
@@ -107,21 +55,18 @@ def windows_sdk_headers():
         for version in os_listdir_wrapper(current_release):
             current_version = (
                 "C:\\Program Files (x86)\\Microsoft Visual Studio\\%s\\Community\\VC\\Tools\\MSVC\\%s\\include"
-                % (release, version)
-            )
+                % (release, version))
             if not os.path.exists(current_version) or not os.path.isdir(
-                current_version
-            ):
+                    current_version):
                 continue
             hds.append(header_path(current_version))
     # -I"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17134.0\\ucrt"
     for version in os_listdir_wrapper(
-        "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"
-    ):
-        current_version = (
-            "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (version)
-        )
-        if not os.path.exists(current_version) or not os.path.isdir(current_version):
+            "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\"):
+        current_version = "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\%s\\ucrt" % (
+            version)
+        if not os.path.exists(current_version) or not os.path.isdir(
+                current_version):
             continue
         hds.append(header_path(current_version))
     # C:\\Program Files\\LLVM headers
@@ -145,50 +90,64 @@ def current_headers():
     return hds
 
 
-def _compile_commands():
-    gen_folder = ".vconf.%s" % (str(time.time()))
-    os.system("cmake -B %s -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ." % (gen_folder))
-    if not os.path.exists("%s/compile_commands.json" % (gen_folder)):
-        raise Exception("%s/compile_commands.json not exist" % (gen_folder))
-    shutil.copyfile("%s/compile_commands.json" % (gen_folder), "compile_commands.json")
+def compile_commands(debug):
+    gen_folder = f".vconf.{str(time.time())}"
+    os.system(f"cmake -B {gen_folder} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .")
+    if not os.path.exists(f"{gen_folder}/compile_commands.json"):
+        raise RuntimeError(
+            "failed to generate `{gen_folder}/compile_commands.json`")
+    shutil.copyfile(f"{gen_folder}/compile_commands.json",
+                    "compile_commands.json")
     shutil.rmtree(gen_folder, ignore_errors=True)
-    print("'compile_commands.json' generated")
+    print("[vcmd] generate `compile_commands.json`")
 
 
-def _compile_flags():
+def compile_flags(debug):
     fp = open("compile_flags.txt", "w")
     c = current_headers()
+    if debug:
+        print(f"current directory headers:{c}")
     w = windows_sdk_headers()
+    if debug:
+        print(f"windows sdk headers:{w}")
     g = git_repo_headers()
+    if debug:
+        print(f"git repo headers:{g}")
     for x in c:
-        fp.write(x + "\n")
+        fp.write(f"{x}\n")
     for x in w:
-        fp.write(x + "\n")
+        fp.write(f"{x}\n")
     for x in g:
-        fp.write(x + "\n")
+        fp.write(f"{x}\n")
     fp.close()
-    print("'compile_flags.txt' generated")
+    print("[vcmd] generate `compile_flags.txt`")
 
 
-def _clangd():
+def sub_cli_clangd(debug):
     if util.is_windows() or not os.path.exists("CMakeLists.txt"):
-        _compile_flags()
+        if debug:
+            if util.is_windows():
+                print("Windows Platform, generate `compile_flags.txt`")
+            elif not os.path.exists("CMakeLists.txt"):
+                print("CMakeLists.txt missing, generate `compile_flags.txt`")
+        compile_flags(debug)
     else:
-        _compile_commands()
-    exit(0)
+        print(
+            "Non-Windows Platform and CMakeLists.txt exist, generate `compile_commands.json`"
+        )
+        compile_commands(debug)
 
 
-def _sshkey(email):
-    os.system("ssh-keygen -t rsa -b 4096 -C '%s'" % email)
+def sub_cli_sshkey(email, debug):
+    os.system(f"ssh-keygen -t rsa -b 4096 -C '{email}'")
     os.system("touch ~/.ssh/authorized_keys")
     os.system("chmod -R 700 ~/.ssh")
     os.system("chmod 600 ~/.ssh/authorized_keys")
     os.system("chmod 600 ~/.ssh/id_rsa")
     os.system("chmod 600 ~/.ssh/id_rsa.pub")
-    exit(0)
 
 
-def _brew_mirror():
+def brew_mirror():
     mirrors = [
         'git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git',
         'git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git',
@@ -196,28 +155,25 @@ def _brew_mirror():
     ]
     for cmd in mirrors:
         os.system(cmd)
-    exit(0)
 
 
-def _pip3_mirror():
+def pip3_mirror():
     mirrors = [
         "pip3 config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple",
     ]
     for cmd in mirrors:
         os.system(cmd)
-    exit(0)
 
 
-def _npm_mirror():
+def npm_mirror():
     mirrors = [
         "npm config set registry https://registry.npm.taobao.org",
     ]
     for cmd in mirrors:
         os.system(cmd)
-    exit(0)
 
 
-def _ubuntu_mirror():
+def ubuntu_mirror():
     print(
         "[vcmd] replace 'archive.ubuntu/com' to 'mirrors.ustc.edu.cn' in /etc/apt/sources.list"
     )
@@ -248,18 +204,15 @@ deb https://mirrors.ustc.edu.cn/ubuntu/ xenial-security main restricted universe
     print(
         "[vcmd] please see http://mirrors.ustc.edu.cn/help/ubuntu.html for more details"
     )
-    exit(0)
 
 
-def _debian_mirror():
+def debian_mirror():
     print(
         "[vcmd] replace 'deb.debian.org' to 'mirrors.ustc.edu.cn' in /etc/apt/sources.list"
     )
     util.backup_file("/etc/apt/sources.list")
     if os.path.exists("/etc/apt/source.list"):
-        replace_cmd = (
-            "sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list"
-        )
+        replace_cmd = "sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list"
         os.system(replace_cmd)
     print("[vcmd] you could also manually edit source.list like below")
     mirror_content = """
@@ -276,10 +229,9 @@ deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
     print(
         "[vcmd] please see http://mirrors.ustc.edu.cn/help/debian.html for more details"
     )
-    exit(0)
 
 
-def _fedora_mirror():
+def fedora_mirror():
     print(
         "[vcmd] replace fedora.repo fedora-modular.repo fedora-updates.repo fedora-updates-modular.repo in /etc/yum.repos.d/"
     )
@@ -295,61 +247,71 @@ def _fedora_mirror():
     print(
         "[vcmd] please see http://mirrors.ustc.edu.cn/help/fedora.html for more details"
     )
-    exit(0)
 
 
-def _manjaro_mirror():
+def manjaro_mirror():
     print("[vcmd] update manjaro mirror to China")
     update_mirror_cmd = "sudo pacman-mirrors -i -c China -m rank"
     refresh_mirror_cmd = "sudo pacman -Syy"
     os.system(update_mirror_cmd)
     os.system(refresh_mirror_cmd)
-    exit(0)
 
 
-if __name__ == "__main__":
-    try:
-        opts, args = getopt.getopt(
-            sys.argv[1:],
-            "csbpnudmfh",
-            [
-                "clangd",
-                "sshkey",
-                "brew",
-                "pip",
-                "npm",
-                "ubuntu",
-                "debian",
-                "manjaro",
-                "fedora",
-                "help",
-            ],
+def sub_cli_mirror(mirror, debug):
+    if mirror == "brew":
+        brew_mirror()
+    elif mirror == "npm":
+        npm_mirror()
+    elif mirror == "pip3":
+        pip3_mirror()
+    elif mirror == "ubuntu":
+        ubuntu_mirror()
+    elif mirror == "debian":
+        debian_mirror()
+    elif mirror == "fedora":
+        fedora_mirror()
+    elif mirror == "manjaro":
+        manjaro_mirror()
+    else:
+        print(f"[vcmd] unknown mirror option:{mirror}")
+
+
+@click.command()
+@click.option(
+    "-c",
+    "--clangd",
+    is_flag=True,
+    help=
+    "generate compile_commands.json/compile_flags.txt for clangd code complete",
+)
+@click.option("-s",
+              "--sshkey",
+              required=False,
+              help="generate new ssh keys with email address in ~/.ssh")
+@click.option("-m",
+              "--mirror",
+              type=click.Choice([
+                  "brew", "npm", "pip3", "ubuntu", "debian", "fedora",
+                  "manjaro"
+              ]),
+              required=False,
+              help="configure mirror")
+@click.option("--debug", is_flag=True, help="debug mode")
+def vconf(clangd, sshkey, mirror, debug):
+    """Configure tool for system"""
+    if debug:
+        print(f"clangd:{clangd}, sshkey:{sshkey}, mirror:{mirror}")
+    if clangd:
+        sub_cli_clangd(debug)
+    elif sshkey:
+        sub_cli_sshkey(sshkey, debug)
+    elif mirror:
+        sub_cli_mirror(mirror, debug)
+    else:
+        print(
+            f"[vcmd] unknown option, please try `vconf --help` for more information"
         )
-        for opt in opts:
-            if opt[0] in ("-h", "--help"):
-                continue
-        for opt in opts:
-            if opt[0] in ("-c", "--clangd"):
-                _clangd()
-            elif opt[0] in ("-s", "--sshkey"):
-                _sshkey(args[0])
-            elif opt[0] in ("-b", "--brew"):
-                _brew_mirror()
-            elif opt[0] in ("-p", "--pip"):
-                _pip3_mirror()
-            elif opt[0] in ("-n", "--npm"):
-                _npm_mirror()
-            elif opt[0] in ("-u", "--ubuntu"):
-                _ubuntu_mirror()
-            elif opt[0] in ("-d", "--debian"):
-                _debian_mirror()
-            elif opt[0] in ("-f", "--fedora"):
-                _fedora_mirror()
-            elif opt[0] in ("-m", "--manjaro"):
-                _manjaro_mirror()
-        _help()
-    except getopt.GetoptError as e:
-        print(e)
-        _help()
-    except Exception as e:
-        print(e)
+
+
+if __name__ == '__main__':
+    vconf()

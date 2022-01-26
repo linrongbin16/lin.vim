@@ -108,7 +108,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
    - [cmake](https://cmake.org/download/), add `cmake.exe` in `$env.Path`
    - [gvim](https://github.com/vim/vim-win32-installer/releases), add `gvim.exe` in `$env.Path`
    - (Optional) [neovim](https://github.com/neovim/neovim/releases), add `nvim.exe` in `$env.Path`
-   - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add `python3.exe`, `pip3.exe` in `$env.Path`
+   - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them in `$env.Path`
    - [llvm](https://releases.llvm.org/), add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
    - [rust](https://www.rust-lang.org/tools/install), add `rustc.exe`, `cargo.exe` in `$env.Path`
    - [golang](https://go.dev/dl/), add `go.exe` in `$env.Path`
@@ -324,7 +324,7 @@ A bunch of command line utilities are implemented by python3 to speed up your ed
 - `vgit`: Git operations without the burden of time consuming remember.
 - `vip`: Ip address calculations for both ipv4 and ipv6.
 - `vpack`: Easier file/directory compression and extraction.
-- `vag`: Fast text search wrapped ag/vg.
+- `vgp`: Fast text searcher.
 - `vtime`: Easier time calculations.
 
 For better understanding and use, help document is supported for all commands, contains command functionality, options and examples.
