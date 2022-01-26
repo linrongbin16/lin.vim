@@ -1,18 +1,18 @@
 syntax enable
-let s:guicolor=['darkblue', 'solarized', 'molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'one', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'base16-default-dark', 'jellybeans']
-let s:termcolor=['molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'jellybeans']
+let s:gui_color_scheme=['darkblue', 'solarized', 'molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'one', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'base16-default-dark', 'jellybeans']
+let s:term_color_scheme=['molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'jellybeans']
 
 set background=dark
 
 function NextColor()
     try
         if has("gui_running")
-            let curcolor = localtime() % len(s:guicolor)
-            execute 'colorscheme ' .s:guicolor[curcolor]
+            let idx = localtime() % len(s:gui_color_scheme)
+            execute 'colorscheme ' .s:gui_color_scheme[idx]
             execute 'syntax sync fromstart'
         else
-            let curcolor = localtime() % len(s:termcolor)
-            execute 'colorscheme ' .s:termcolor[curcolor]
+            let idx = localtime() % len(s:term_color_scheme)
+            execute 'colorscheme ' .s:term_color_scheme[idx]
             execute 'syntax sync fromstart'
         endif
         catch
