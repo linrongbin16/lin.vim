@@ -104,19 +104,19 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 2. Install third party dependencies (x64 is preferred):
 
-   - [git](https://git-scm.com/downloads), add `git.exe` in `$env:Path`
-   - [cmake](https://cmake.org/download/), add `cmake.exe` in `$env.Path`
-   - [gvim](https://github.com/vim/vim-win32-installer/releases), add `gvim.exe` in `$env.Path`
-   - (Optional) [neovim](https://github.com/neovim/neovim/releases), add `nvim.exe` in `$env.Path`
-   - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them in `$env.Path`
-   - [llvm](https://releases.llvm.org/), add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
-   - [rust](https://www.rust-lang.org/tools/install), add `rustc.exe`, `cargo.exe` in `$env.Path`
-   - [golang](https://go.dev/dl/), add `go.exe` in `$env.Path`
-   - [nodejs](https://nodejs.org/en/download/), add `node.exe`, `npm.exe` in `$env.Path`
-   - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` in `$env.Path`
-   - [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` in `$env.Path`
-   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases), add `ctags.exe`, `readtags.exe` in `$env.Path`
-   - [7z](https://www.7-zip.org/download.html), add `7z.exe` in `$env.Path`
+   - [git](https://git-scm.com/downloads): add `git.exe` in `$env:Path`
+   - [cmake](https://cmake.org/download/): add `cmake.exe` in `$env.Path`
+   - [gvim](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` in `$env.Path`
+   - (Optional) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` in `$env.Path`
+   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them in `$env.Path`
+   - [llvm](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
+   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env.Path`
+   - [golang](https://go.dev/dl/): add `go.exe` in `$env.Path`
+   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env.Path`
+   - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases): add `ag.exe` in `$env.Path`
+   - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env.Path`
+   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env.Path`
+   - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env.Path`
 
 Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
 

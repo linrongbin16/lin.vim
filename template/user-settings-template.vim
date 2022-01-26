@@ -103,7 +103,7 @@ autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth
 set colorcolumn=120
 
 " 10. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-snippets', 'coc-pyright', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier']
+let g:coc_global_extensions = ['coc-snippets', 'coc-pyright', 'coc-clangd', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-sql', 'coc-prettier', 'coc-tabnine']
 
 " 11. other stuffs
 

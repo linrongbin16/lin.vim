@@ -1,7 +1,6 @@
 {
   "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
-  "suggest.triggerCompletionWait": 5,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "c",
