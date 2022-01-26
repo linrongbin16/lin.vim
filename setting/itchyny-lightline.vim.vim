@@ -2,7 +2,7 @@
 let g:lightline = {
   \ 'active': {
       \ 'left': [ ['mode', 'paste'],
-  \               ['readonly', 'filename', 'git_branch', 'coc_status'] ],
+  \               ['readonly', 'filename', 'git_branch', 'function_name', 'coc_status'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -13,6 +13,7 @@ let g:lightline = {
   \ 'component_function': {
   \   'filename'          : 'LightLineFileName',
   \   'git_branch'        : 'LightlineGitBranch',
+  \   'function_name'     : 'LightlineFunctionName',
   \   'coc_status'        : 'LightlineCocStatus',
   \ }
   \ }
@@ -44,5 +45,15 @@ function! LightlineGitBranch() abort
     endif
 endfunction
 
-autocmd User CocDiagnosticChange call lightline#update()
+" integrate vista nearest method/function
+function! LightlineFunctionName() abort
+    let function_name = get(b:, 'vista_nearest_method_or_function', '')
+    if empty(function_name)
+        return ''
+    else
+        return printf('%s', function_name)
+    endif
+endfunction
 
+" update coc status when it's changed
+autocmd User CocDiagnosticChange call lightline#update()

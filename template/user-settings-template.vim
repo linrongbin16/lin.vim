@@ -4,8 +4,8 @@
 
 " open/close nerdtree file explorer
 nmap <F1> :NERDTreeToggle<CR>
-" open/close tagbar
-nmap <F2> :TagbarToggle<CR>
+" open/close vista
+nmap <F2> :Vista!!<CR>
 " format current file
 nmap <F3> :call CocActionAsync('format')<CR>
 nmap <S-F3> :call CocAction('format')<CR>

@@ -10,7 +10,7 @@ call plug#begin('~/.vim/plugged')
 " UI
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'RRethy/vim-illuminate'
