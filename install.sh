@@ -43,6 +43,19 @@ else
     exit 3
 fi
 
+# install rust interactively with default settings
+# if you need customize rust installer, please use below
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+source $HOME/.cargo/env
+rustup component add rust-doc
+rustup component add rust-std
+rustup component add rustfmt
+rustup component add rls
+rustup component add clippy
+rustup component add rust-analysis
+
+
 # install python3 pip packages
 sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet jedi neovim cmakelang cmake-language-server
 
