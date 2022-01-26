@@ -111,7 +111,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
    - [python3](https://www.python.org/downloads/), since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add `python3.exe`, `pip3.exe` in `$env.Path`
    - [llvm](https://releases.llvm.org/), add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
    - [rust](https://www.rust-lang.org/tools/install), add `rustc.exe`, `cargo.exe` in `$env.Path`
-   - [golang](https://go.dev/doc/install), add `go.exe` in `$env.Path`
+   - [golang](https://go.dev/dl/), add `go.exe` in `$env.Path`
    - [nodejs](https://nodejs.org/en/download/), add `node.exe`, `npm.exe` in `$env.Path`
    - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases), add `ag.exe` in `$env.Path`
    - [ripgrep](https://github.com/BurntSushi/ripgrep/releases), add `rg.exe` in `$env.Path`

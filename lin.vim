@@ -17,13 +17,9 @@ source $HOME/.vim/setting/majutsushi-tagbar.vim
 source $HOME/.vim/setting/RRethy-vim-illuminate.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
 
-" Syntax highlight
-source $HOME/.vim/setting/sheerun-vim-polyglot.vim
-
 " Language
 source $HOME/.vim/setting/neoclide-coc.nvim.vim
 source $HOME/.vim/setting/ludovicchabant-vim-gutentags.vim
-source $HOME/.vim/setting/rust-lang-rust.vim.vim
 
 " Comment
 source $HOME/.vim/setting/preservim-nerdcommenter.vim
