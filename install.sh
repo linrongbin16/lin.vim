@@ -57,7 +57,7 @@ rustup component add rust-analysis
 
 
 # install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet jedi neovim cmakelang cmake-language-server
+sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet jedi neovim cmakelang cmake-language-server click
 
 # install nodejs npm packages
 sudo npm install -g yarn prettier
