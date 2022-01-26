@@ -41,11 +41,13 @@ nnoremap <Leader>p :r ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 " 3. Buffer operations
 
 " go to next buffer
-map <Leader>bn :bn<cr>
+nmap <Leader>bn :bn<cr>
+nmap <C-Tab> :bn<cr>
 " go to previous buffer
-map <Leader>bp :bp<cr>
+nmap <Leader>bp :bp<cr>
+nmap <C-S-Tab> :bn<cr>
 " close current buffer
-map <Leader>bd :bd<cr>
+nmap <Leader>bd :bd<cr>
 
 
 " 4. Filetype mapping
