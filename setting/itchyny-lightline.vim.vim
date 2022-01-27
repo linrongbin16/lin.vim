@@ -20,18 +20,30 @@ let g:lightline = {
 
 function! LightLineFileName() abort
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' [*]' : ''
+  let modified = &modified ? '*' : ''
   return filename . modified
 endfunction
 
 " integrate statusline with coc.nvim
 function! LightlineCocStatus() abort
   let coc_status = coc#status()
-  let coc_function = get(b:,'coc_current_function','')
-  if empty(coc_status) && coc_function == 0
+  let coc_info = get(b:, 'coc_diagnostic_info', {})
+  if empty(coc_status) && empty(coc_info)
     return ''
+  endif
+
+  let msgs = []
+  call add(msgs, coc_status)
+  if get(coc_info, 'error', 0)
+    call add(msgs, 'E' . coc_info['error'])
+  endif
+  if get(coc_info, 'warning', 0)
+    call add(msgs, 'W' . coc_info['warning'])
+  endif
+  if empty(msgs)
+      return ''
   else
-    return printf('coc %s %s', coc_status, coc_function)
+      return join(msgs, ' ')
   endif
 endfunction
 
@@ -47,7 +59,7 @@ endfunction
 
 " integrate vista nearest method/function
 function! LightlineFunctionName() abort
-    let function_name = get(b:, 'vista_nearest_method_or_function', '')
+    let function_name = get(b:,'coc_current_function','')
     if empty(function_name)
         return ''
     else

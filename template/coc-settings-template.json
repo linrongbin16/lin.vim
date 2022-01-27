@@ -1,6 +1,7 @@
 {
   "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "c",
