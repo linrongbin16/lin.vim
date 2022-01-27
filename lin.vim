@@ -14,7 +14,6 @@ source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/scrooloose-nerdtree.vim
 source $HOME/.vim/setting/itchyny-lightline.vim.vim
 source $HOME/.vim/setting/liuchengxu-vista.vim.vim
-source $HOME/.vim/setting/RRethy-vim-illuminate.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
 
 " Language

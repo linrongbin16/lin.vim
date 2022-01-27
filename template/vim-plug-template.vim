@@ -13,7 +13,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
-Plug 'RRethy/vim-illuminate'
 " this plugin need golang
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
