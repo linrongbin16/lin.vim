@@ -299,8 +299,8 @@ They constructs the file explorer on the left(nerdtree), opened buffers on the t
 - `md` 🅽 on the left: delete file/directory.
 - `mm` 🅽 on the left: move file/directory.
 
-- `<leader>bn`(`<c-tab>`) 🅽: go to next buffer .
-- `<leader>bp`(`<c-s-tab>`) 🅽: go to previous buffer.
+- `<leader>bn`/`<c-tab>` 🅽: go to next buffer .
+- `<leader>bp`/`<c-s-tab>` 🅽: go to previous buffer.
 - `<leader>bd` 🅽: close current buffer.
 
 Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.

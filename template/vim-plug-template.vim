@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
+Plug 'jlanzarotta/bufexplorer'
 " this plugin need golang
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
@@ -36,14 +37,13 @@ Plug 'nanotech/jellybeans.vim'
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
+if has('nvim-0.5.0')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 " Comment
 " Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdcommenter'
-
-" Git
-Plug 'mhinz/vim-signify'
-Plug 'itchyny/vim-gitbranch'
 
 " Searching
 Plug 'jremmen/vim-ripgrep'

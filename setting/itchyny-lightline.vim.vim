@@ -2,7 +2,7 @@
 let g:lightline = {
   \ 'active': {
       \ 'left': [ ['mode', 'paste'],
-  \               ['readonly', 'filename', 'git_branch', 'function_name', 'coc_status'] ],
+  \               ['readonly', 'filename', 'git_branch', 'current_function', 'coc_status'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -13,7 +13,7 @@ let g:lightline = {
   \ 'component_function': {
   \   'filename'          : 'LightLineFileName',
   \   'git_branch'        : 'LightlineGitBranch',
-  \   'function_name'     : 'LightlineFunctionName',
+  \   'current_function'  : 'LightlineFunctionName',
   \   'coc_status'        : 'LightlineCocStatus',
   \ }
   \ }
@@ -49,11 +49,11 @@ endfunction
 
 " integrate statusline with git
 function! LightlineGitBranch() abort
-    let branch = gitbranch#name()
-    if empty(branch)
+    let git_status = get(g:, 'coc_git_status', '')
+    if empty(git_status)
         return ''
     else
-        return printf('%s', branch)
+        return printf('%s', git_status)
     endif
 endfunction
 
