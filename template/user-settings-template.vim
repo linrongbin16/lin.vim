@@ -74,7 +74,7 @@ endif
 " 6. GUI fonts
 if has("win32")
     " win32
-    set guifont=HackNF:h9
+    set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
     set guifont=Hack\ Nerd\ Font\ Mono:h12
