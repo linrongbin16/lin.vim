@@ -14,8 +14,10 @@ Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'jlanzarotta/bufexplorer'
-" this plugin need golang
-Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+" this plugin need linux and golang
+if !has('win32') && !has('win64')
+    Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+endif
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
