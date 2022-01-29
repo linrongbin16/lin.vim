@@ -104,3 +104,6 @@ set mmp=10000
 set regexpengine=1
 " true color for terminal
 set termguicolors
+
+" neovim python3
+let g:python3_host_prog='python3'
