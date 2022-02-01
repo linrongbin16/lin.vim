@@ -105,6 +105,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 2. Install third party dependencies (x64 is preferred):
 
    - [git](https://git-scm.com/downloads): add `git.exe` in `$env:Path`
+   - (Optional) [make](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` in `$env:Path`
    - [cmake](https://cmake.org/download/): add `cmake.exe` in `$env.Path`
    - [gvim](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` in `$env.Path`
    - (Optional) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` in `$env.Path`
@@ -200,8 +201,8 @@ In this section, VIM editing modes are specified with:
 ### Hot Key
 
 - `F1` 🅽: toggle(open/close) nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
-- `F2` 🅽: toggle(open/close) tag explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3` (`SHIFT-F3`) 🅽: format (sync-format) current file.
+- `F2` 🅽: toggle(open/close) vista tag explorer, see [Code complete for C++](#code-complete-for-c).
+- `F3`/`SHIFT-F3` 🅽: format/sync-format current file.
 - `F4` 🅽: switch between C/C++ header and source files.
 - `F5` 🅽: run codeLens on current file.
 - `SHFIT-F5` 🅽: quick auto-fix(run codeActions) on current line.
@@ -209,7 +210,7 @@ In this section, VIM editing modes are specified with:
 - `SHIFT-F6` 🅽: rename symbol.
 - `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
 - `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
-- `F10` (`SHIFT-F10`) 🅽: open (close) buffer explorer.
+- `F10`/`SHIFT-F10` 🅽: open/close(toggle) buffer explorer.
 
 You could configure these hot keys in **_user-settings.vim_**.
 

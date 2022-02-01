@@ -14,10 +14,14 @@ Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'jlanzarotta/bufexplorer'
-" this plugin need linux and golang
-if !has('win32') && !has('win64')
+Plug 'ryanoasis/vim-devicons'
+" this plugin need golang
+if has('make')
     Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+else
+    Plug 'RRethy/vim-hexokinase', {'do': 'git submodule init && git submodule update && cd hexokinase/ && go build'}
 endif
+
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -39,9 +43,14 @@ Plug 'nanotech/jellybeans.vim'
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
-if has('nvim-0.5.0')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-endif
+" Flex, Bison
+Plug 'justinmk/vim-syntax-extra'
+" LLVM
+Plug 'rhysd/vim-llvm'
+" PowerShell
+Plug 'pprovost/vim-ps1'
+" Lisp
+Plug 'vlime/vlime'
 
 " Comment
 " Plug 'tpope/vim-commentary'
@@ -67,18 +76,6 @@ Plug 'alvan/vim-closetag'
 " Markdown
 " Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
-" Flex, Bison
-Plug 'justinmk/vim-syntax-extra'
-
-" LLVM
-Plug 'rhysd/vim-llvm'
-
-" PowerShell
-Plug 'pprovost/vim-ps1'
-
-" Lisp
-Plug 'vlime/vlime'
 
 
 call plug#end()
