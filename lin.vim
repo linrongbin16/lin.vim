@@ -19,9 +19,6 @@ source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
 " Language
 source $HOME/.vim/setting/neoclide-coc.nvim.vim
 source $HOME/.vim/setting/ludovicchabant-vim-gutentags.vim
-if has('nvim-0.5.0')
-    source $HOME/.vim/setting/nvim-treesitter-nvim-treesitter.vim
-endif
 
 " Comment
 source $HOME/.vim/setting/preservim-nerdcommenter.vim
