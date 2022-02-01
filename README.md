@@ -170,7 +170,6 @@ Notice: installation needs access of websites below, and make sure they're avail
 
 - [github.com](https://github.com/).
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-- [chocolatey](https://chocolatey.org/) on Windows.
 
 #### Tested Platforms
 
@@ -194,23 +193,23 @@ Notice: installation needs access of websites below, and make sure they're avail
 
 In this section, VIM editing modes are specified with:
 
-- 🅽: normal mode
-- 🆅: visual mode
-- 🅸: insert mode
+- 🅽 - Normal Mode
+- 🆅 - Visual Mode
+- 🅸 - Insert Mode
 
 ### Hot Key
 
-- `F1` 🅽: toggle(open/close) nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
-- `F2` 🅽: toggle(open/close) vista tag explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3`/`SHIFT-F3` 🅽: format/sync-format current file.
-- `F4` 🅽: switch between C/C++ header and source files.
-- `F5` 🅽: run codeLens on current file.
-- `SHFIT-F5` 🅽: quick auto-fix(run codeActions) on current line.
-- `F6` 🅽: hover symbol.
-- `SHIFT-F6` 🅽: rename symbol.
-- `F7` 🅽: open markdown preview window in browser, see [Markdown preview](#markdown-preview).
-- `F8` 🅽: change color theme randomly, see [Screenshots](#screenshots).
-- `F10`/`SHIFT-F10` 🅽: open/close(toggle) buffer explorer.
+- `F1` 🅽 - toggle(open/close) nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
+- `F2` 🅽 - toggle(open/close) vista tag explorer, see [Code complete for C++](#code-complete-for-c).
+- `F3`/`SHIFT-F3` 🅽 - format/sync-format current file.
+- `F4` 🅽 - switch between C/C++ header and source files.
+- `F5` 🅽 - run codeLens on current file.
+- `SHFIT-F5` 🅽 - quick auto-fix(run codeActions) on current line.
+- `F6` 🅽 - hover symbol.
+- `SHIFT-F6` 🅽 - rename symbol.
+- `F7` 🅽 - open markdown preview window in browser, see [Markdown preview](#markdown-preview).
+- `F8` 🅽 - change color theme randomly, see [Screenshots](#screenshots).
+- `F10`/`SHIFT-F10` 🅽 - open/close(toggle) buffer explorer.
 
 You could configure these hot keys in **_user-settings.vim_**.
 
@@ -218,8 +217,8 @@ You could configure these hot keys in **_user-settings.vim_**.
 
 Enhanced copy-paste are supported when you want copy/paste between different vim instances.
 
-- `<leader>y` 🆅: copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
-- `<leader>p` 🅽: paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+- `<leader>y` 🆅 - copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+- `<leader>p` 🅽 - paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 
 Copied content will be stored in a text database, then you could paste them to other vim instances.
 
@@ -229,31 +228,31 @@ You could configure these hot keys in **_user-settings.vim_**.
 
 Text search is supported by [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher) and [ripgrep(rg)](https://github.com/BurntSushi/ripgrep), see [Text search](#text-search).
 
-- `:Ag {text}` and `:Rg {text}` 🅽: search {text}.
+- `:Ag {text}` and `:Rg {text}` 🅽 - search {text}.
 
 ### Fuzzy File Search
 
 File search is supported by [LeaderF](https://github.com/Yggdroot/LeaderF), see [Fuzzy file search](#fuzzy-file-search).
 
-- `<c-p>` 🅽: fuzzy search file.
+- `<c-p>` 🅽 - fuzzy search file.
 
 ### Alignment
 
 Text Alignment is supported by [easy-align](https://github.com/junegunn/vim-easy-align).
 
-- `vipga=` 🆅: align visual-selected paragraph.
-- `gaip=` 🅽: align inner paragraph.
+- `vipga=` 🆅 - align visual-selected paragraph.
+- `gaip=` 🅽 - align inner paragraph.
 
 ### Cursor Movement
 
 Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion), see [Fast cursor movement](#fast-cursor-movement).
 
-- `<leader><leader>f{char}` 🅽: go to a single {char}.
-- `<leader>s{char}{char}` 🅽: go to consequent two {char}{char}.
-- `<leader><leader>w` 🅽: go to word.
-- `<leader><leader>j` 🅽: go to a forward line below cursor.
-- `<leader><leader>k` 🅽: go to a backward line above cursor.
-- `<leader><leader>L` 🅽: go to a specified line.
+- `<leader><leader>f{char}` 🅽 - go to a single {char}.
+- `<leader>s{char}{char}` 🅽 - go to consequent two {char}{char}.
+- `<leader><leader>w` 🅽 - go to word.
+- `<leader><leader>j` 🅽 - go to a forward line below cursor.
+- `<leader><leader>k` 🅽 - go to a backward line above cursor.
+- `<leader><leader>L` 🅽 - go to a specified line.
 
 You could configure these in **_user-settings.vim_**.
 
@@ -261,16 +260,16 @@ You could configure these in **_user-settings.vim_**.
 
 Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim), and completion are supported in insert mode:
 
-- `<c-n>` `tab` `<up>` 🅸: select next in candidate list.
-- `<c-p>` `<s-tab>` `<down>` 🅸: select previous in candidate list.
+- `<c-n>` `tab` `<up>` 🅸 - select next in candidate list.
+- `<c-p>` `<s-tab>` `<down>` 🅸 - select previous in candidate list.
 
 Go to operations are supported in normal mode:
 
-- `gd` 🅽: go to definition.
-- `gy` 🅽: go to type definition.
-- `gi` 🅽: go to implementation.
-- `gr` 🅽: go to reference.
-- `F6`, `<s-F6>` 🅽: rename symbol.
+- `gd` 🅽 - go to definition.
+- `gy` 🅽 - go to type definition.
+- `gi` 🅽 - go to implementation.
+- `gr` 🅽 - go to reference.
+- `F6`, `<s-F6>` 🅽 - rename symbol.
 
 You could configure coc extensions in **_user-settings.vim_** and **_coc-settings.json_**. And refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming languages, [coc.nvim#wiki#Using-coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) for more coc extensions.
 
@@ -278,9 +277,9 @@ You could configure coc extensions in **_user-settings.vim_** and **_coc-setting
 
 Tags are important suppliement of language server, they're auto generated and updated by [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags), and viewed by [tagbar](https://github.com/preservim/tagbar).
 
-- `F2` 🅽: open/close tagbar tags explorer.
-- `<c-]>` 🅽: go to definition.
-- `<c-o>` 🅽: go back to previous position.
+- `F2` 🅽 - open/close tagbar tags explorer.
+- `<c-]>` 🅽 - go to definition.
+- `<c-o>` 🅽 - go back to previous position.
 
 Notice: tags could be inaccurate in large project (since words could be conflict), please use language server as your first choice.
 
@@ -288,7 +287,7 @@ Notice: tags could be inaccurate in large project (since words could be conflict
 
 Commentary is supported by [nerdcomment](https://github.com/preservim/nerdcommenter).
 
-- `<leader>c<space>` 🅽🆅: toggle one line or selected lines.
+- `<leader>c<space>` 🅽🆅 - toggle one line or selected lines.
 
 ### File Explorer
 
@@ -300,9 +299,9 @@ They constructs the file explorer on the left(nerdtree), opened buffers on the t
 - `md` 🅽 on the left: delete file/directory.
 - `mm` 🅽 on the left: move file/directory.
 
-- `<leader>bn`/`<c-tab>` 🅽: go to next buffer .
-- `<leader>bp`/`<c-s-tab>` 🅽: go to previous buffer.
-- `<leader>bd` 🅽: close current buffer.
+- `<leader>bn`/`<c-tab>` 🅽 - go to next buffer .
+- `<leader>bp`/`<c-s-tab>` 🅽 - go to previous buffer.
+- `<leader>bd` 🅽 - close current buffer.
 
 Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.
 
