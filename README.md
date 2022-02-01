@@ -160,7 +160,7 @@ You could also install these dependencies with other windows package manager suc
 - ripgrep(rg)
 - zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
 - python3, pip3
-- node, npm packages
+- node, npm
 - universal-ctags
 - gcc, g++ (only on Linux such as Ubuntu/Fedora/Manjaro)
 - zsh (not installed on Windows)
