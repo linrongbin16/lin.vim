@@ -22,7 +22,6 @@ else
     Plug 'RRethy/vim-hexokinase', {'do': 'git submodule init && git submodule update && cd hexokinase/ && go build'}
 endif
 
-
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
@@ -43,14 +42,22 @@ Plug 'nanotech/jellybeans.vim'
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
+
+" Syntax highlighting supplementary for programming languages
 " Flex, Bison
-Plug 'justinmk/vim-syntax-extra'
+Plug 'justinmk/vim-syntax-extra', {'for': ['lex', 'flex', 'yacc', 'bison']}
+" Followings are from vim-polyglot, but don't use it directly since it's
+" contains too much plugins and cannot integrate well with this
 " LLVM
 Plug 'rhysd/vim-llvm'
 " PowerShell
-Plug 'pprovost/vim-ps1'
-" Lisp
-Plug 'vlime/vlime'
+Plug 'PProvost/vim-ps1'
+" Protobuf
+Plug 'uarun/vim-protobuf'
+" Hive
+Plug 'zebradil/hive.vim'
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
 
 " Comment
 " Plug 'tpope/vim-commentary'
