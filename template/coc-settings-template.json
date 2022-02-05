@@ -1,5 +1,9 @@
 {
   "diagnostic.level": "warning",
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.source": "vim-devicons",
+  "explorer.icon.enableNerdfont": true,
   "suggest.minTriggerInputLength": 1,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": [

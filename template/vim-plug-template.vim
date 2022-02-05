@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 
 " UI
 Plug 'Yggdroot/indentLine'
-Plug 'scrooloose/nerdtree'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
@@ -86,3 +85,4 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 
 call plug#end()
+
