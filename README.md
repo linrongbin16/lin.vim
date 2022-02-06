@@ -199,7 +199,7 @@ In this section, VIM editing modes are specified with:
 
 ### Hot Key
 
-- `F1` 🅽 - toggle(open/close) nerdtree file explorer, see [Code complete for C++](#code-complete-for-c).
+- `F1` 🅽 - toggle(open/close) fern file explorer, see [Code complete for C++](#code-complete-for-c).
 - `F2` 🅽 - toggle(open/close) vista tag explorer, see [Code complete for C++](#code-complete-for-c).
 - `F3`/`SHIFT-F3` 🅽 - format/sync-format current file.
 - `F4` 🅽 - switch between C/C++ header and source files.
@@ -291,19 +291,32 @@ Commentary is supported by [nerdcomment](https://github.com/preservim/nerdcommen
 
 ### File Explorer
 
-File explorer is supported by [nerdtree](https://github.com/preservim/nerdtree), [lightline](https://github.com/itchyny/lightline.vim) and [vim-buftabline](https://github.com/ap/vim-buftabline).
-They constructs the file explorer on the left(nerdtree), opened buffers on the top(vim-buftabline) and current editing status on the bottom(lightline).
+File explorer is supported by [fern](https://github.com/lambdalisue/fern.vim), [lightline](https://github.com/itchyny/lightline.vim) and [vim-buftabline](https://github.com/ap/vim-buftabline).
+They constructs the file explorer on the left(fern), opened buffers on the top(vim-buftabline) and current editing status on the bottom(lightline).
 
-- `ma` 🅽 on the left: create new file/directory.
-- `mc` 🅽 on the left: copy file/directory.
-- `md` 🅽 on the left: delete file/directory.
-- `mm` 🅽 on the left: move file/directory.
+When cursor is on the file explorer window, please use:
+
+- `h` 🅽 - collapse directory.
+- `l` 🅽 - expand directory or open file.
+- `<cr>` 🅽 - cd directory or open file.
+- `<bs>` 🅽 - leave directory and go upper.
+- `N` 🅽 - new file.
+- `K` 🅽 - new directory.
+- `c` 🅽 - copy file or directory.
+- `m` 🅽 - move file or directory.
+- `D` 🅽 - delete file or directory.
+- `R` 🅽 - rename file or directory.
+- `?` 🅽 on the left: move file/directory.
+
+For more key mappings, please refer to [fern - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings).
+
+When cursor is on the edit window, please use:
 
 - `<leader>bn`/`<c-tab>` 🅽 - go to next buffer .
 - `<leader>bp`/`<c-s-tab>` 🅽 - go to previous buffer.
 - `<leader>bd` 🅽 - close current buffer.
 
-Other alternatives such as [vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of heavy of features, which will lead to a performance issue. Otherwise, current combination are smooth, not pretty enough though.
+Other alternatives such as [nerdtree](https://github.com/preservim/nerdtree)/[vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of performance issues. Current combination are smooth, not pretty enough though.
 
 ### Customization
 

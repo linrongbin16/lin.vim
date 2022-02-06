@@ -1,35 +1,6 @@
 {
   "diagnostic.level": "warning",
   "coc.preferences.extensionUpdateCheck": "daily",
-  "explorer.toggle": true,
-  "explorer.focus": false,
-  "explorer.position": "left",
-  "explorer.width": 40,
-  "explorer.root.strategies": ["cwd"],
-  "explorer.file.showHiddenFiles": true,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.icon.source": "vim-devicons",
-  "explorer.sources": [
-    {
-      "name": "bookmark",
-      "expand": false
-    },
-    {
-      "name": "buffer",
-      "expand": true
-    },
-    {
-      "name": "file",
-      "expand": true
-    }
-  ],
-  "explorer.keyMappings.global": {
-    "mc": "copyFile",
-    "md": "deleteForever",
-    "ma": "addFile",
-    "mA": "addDirectory",
-    "mm": "rename"
-  },
   "suggest.minTriggerInputLength": 1,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": [

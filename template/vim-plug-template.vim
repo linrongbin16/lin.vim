@@ -8,12 +8,15 @@ source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
 " UI
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'ryanoasis/vim-devicons'
 " this plugin need golang
 if has('make')
     Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
@@ -85,4 +88,3 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 
 call plug#end()
-
