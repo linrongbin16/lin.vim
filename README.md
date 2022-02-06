@@ -17,8 +17,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [Enhanced Copy Paste](#enhanced-copy-paste)
-  - [Text Search](#text-search)
-  - [File Search](#file-search)
+  - [Search](#search)
   - [Alignment](#alignment)
   - [Cursor Movement](#cursor-movement)
   - [Language Server](#language-server)
@@ -46,14 +45,14 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.png)
 
-#### Fuzzy file search
-
-![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
-
 #### Text search
 
 ![pic7-1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-1.png)
 ![pic7-2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-2.png)
+
+#### File search (deprecated)
+
+![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
 
 #### Markdown preview
 
@@ -65,7 +64,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 - Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
 - Random color schemes and pretty icons.
 - File and buffer explorer and better status line.
-- Source code and file fuzzy search.
+- Text/words/files/symbols/yanks/etc search.
 - Useful command line utilities for: git, text search and encoding/decoding, file operation and compression/extraction, datetime calculation, ip calculation, etc.
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
 - Use [zsh](https://www.zsh.org/) for UNIX/Linux/MacOS with pretty prompt.
@@ -114,7 +113,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env.Path`
    - [golang](https://go.dev/dl/): add `go.exe` in `$env.Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env.Path`
-   - [the_silver_searcher-win32](https://github.com/k-takata/the_silver_searcher-win32/releases): add `ag.exe` in `$env.Path`
    - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env.Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env.Path`
    - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env.Path`
@@ -156,7 +154,6 @@ You could also install these dependencies with other windows package manager suc
 - autoconf
 - automake
 - cmake
-- the_silver_searcher(ag)
 - ripgrep(rg)
 - zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
 - python3, pip3
@@ -175,19 +172,19 @@ Notice: installation needs access of websites below, and make sure they're avail
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
-| (g)vim/macvim       | 8.0+         |
+| (g)vim/macvim       | 8.1+         |
 | neovim              | 0.4.0+       |
 | python3             | 3.6+         |
 | nodejs              | 10.12+       |
 
-| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                             |
-| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                           |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                           |
-| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                           |
-| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                           |
-| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                           |
-| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+ |
+| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                                                                    |
+| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                                                                  |
+| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                                                                  |
+| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                                                                  |
+| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                                                                  |
+| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                                                                  |
+| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+<br>3) coc-lists need at least vim 8.1+ |
 
 # User Guide
 
@@ -224,17 +221,27 @@ Copied content will be stored in a text database, then you could paste them to o
 
 You could configure these hot keys in **_user-settings.vim_**.
 
-### Text Search
+### Search
 
-Text search is supported by [the_silver_searcher(ag)](https://github.com/ggreer/the_silver_searcher) and [ripgrep(rg)](https://github.com/BurntSushi/ripgrep), see [Text search](#text-search).
+Search is supported by [coc-lists](https://github.com/neoclide/coc-lists), the extension of coc.nvim, which uses [ag](https://github.com/ggreer/the_silver_searcher)/[rg](https://github.com/BurntSushi/ripgrep) as backend engine. lin.vim only install rg, so coc-lists will use rg as backend engine.
 
-- `:Ag {text}` and `:Rg {text}` 🅽 - search {text}.
+Text search see [Text search](#text-search):
 
-### Fuzzy File Search
+- `<leader>lg` 🅽 - search text.
 
-File search is supported by [LeaderF](https://github.com/Yggdroot/LeaderF), see [Fuzzy file search](#fuzzy-file-search).
+File search see [Fuzzy file search](#fuzzy-file-search):
 
-- `<c-p>` 🅽 - fuzzy search file.
+- `<leader>lf` 🅽 - fuzzy search file.
+
+Symbol search:
+
+- `<leader>ls` 🅽 - symbol search.
+
+Yank history search:
+
+- `<leader>ly` 🅽 - yank history search.
+
+Please try `:CocList` for more usage and `:h coc-list` for help.
 
 ### Alignment
 

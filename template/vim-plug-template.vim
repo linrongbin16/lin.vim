@@ -68,6 +68,7 @@ Plug 'preservim/nerdcommenter'
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
+Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'junegunn/vim-easy-align'
