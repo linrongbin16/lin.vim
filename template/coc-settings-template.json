@@ -1,89 +1,34 @@
 {
   "diagnostic.level": "warning",
   "coc.preferences.extensionUpdateCheck": "daily",
+  "explorer.toggle": true,
+  "explorer.focus": false,
+  "explorer.position": "left",
+  "explorer.width": 40,
+  "explorer.root.strategies": ["cwd"],
   "explorer.file.showHiddenFiles": true,
-  "explorer.icon.source": "vim-devicons",
   "explorer.icon.enableNerdfont": true,
+  "explorer.icon.source": "vim-devicons",
+  "explorer.sources": [
+    {
+      "name": "bookmark",
+      "expand": false
+    },
+    {
+      "name": "buffer",
+      "expand": true
+    },
+    {
+      "name": "file",
+      "expand": true
+    }
+  ],
   "explorer.keyMappings.global": {
-    "i": false,
-    "<c-o>": "noop",
-
-    "*": "toggleSelection",
-    "<tab>": "actionMenu",
-
-    "gk": ["wait", "expandablePrev"],
-    "gj": ["wait", "expandableNext"],
-    "h": ["wait", "collapse"],
-    "l": ["wait", "expandable?", "expand", "open"],
-    "J": ["wait", "toggleSelection", "normal:j"],
-    "K": ["wait", "toggleSelection", "normal:k"],
-    "gl": ["wait", "expand:recursive"],
-    "gh": ["wait", "collapse:recursive"],
-    "<2-LeftMouse>": [
-      "expandable?",
-      ["expanded?", "collapse", "expand"],
-      "open"
-    ],
-    "o": ["wait", "expanded?", "collapse", "expand"],
-    "<cr>": ["wait", "expandable?", "expand", "open"],
-    "e": "open",
-    "s": "open:split",
-    "E": "open:vsplit",
-    "t": "open:tab",
-    "<bs>": ["wait", "gotoParent"],
-    "gs": ["wait", "reveal:select"],
-    "il": "preview:labeling",
-    "ic": "preview:content",
-    "Il": "previewOnHover:toggle:labeling",
-    "Ic": "previewOnHover:toggle:content",
-    "II": "previewOnHover:disable",
-
-    "yp": "copyFilepath",
-    "yn": "copyFilename",
-    "yy": "copyFile",
-    "dd": "cutFile",
-    "p": "pasteFile",
-    "df": "delete",
-    "dF": "deleteForever",
-
-    "a": "addFile",
-    "A": "addDirectory",
-    "r": "rename",
-
-    "zh": "toggleHidden",
-    "g<dot>": "toggleHidden",
-    "R": "refresh",
-
-    "?": "help",
-    "q": "quit",
-    "<esc>": "esc",
-    "X": "systemExecute",
-    "gd": "listDrive",
-
-    "f": "search",
-    "F": "searchRecursive",
-
-    "gf": "gotoSource:file",
-    "gb": "gotoSource:buffer",
-
-    "[[": ["wait", "sourcePrev"],
-    "]]": ["wait", "sourceNext"],
-
-    "[i": ["wait", "indentPrev"],
-    "]i": ["wait", "indentNext"],
-
-    "[m": ["wait", "markPrev:modified"],
-    "]m": ["wait", "markNext:modified"],
-
-    "[d": ["wait", "markPrev:diagnosticError:diagnosticWarning"],
-    "]d": ["wait", "markNext:diagnosticError:diagnosticWarning"],
-    "[D": ["wait", "markPrev:diagnosticError"],
-    "]D": ["wait", "markNext:diagnosticError"],
-
-    "[c": ["wait", "markPrev:git"],
-    "]c": ["wait", "markNext:git"],
-    "<<": "gitStage",
-    ">>": "gitUnstage"
+    "mc": "copyFile",
+    "md": "deleteForever",
+    "ma": "addFile",
+    "mA": "addDirectory",
+    "mm": "rename"
   },
   "suggest.minTriggerInputLength": 1,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,

@@ -2,8 +2,8 @@
 
 " 1. Hot key
 
-" open/close nerdtree file explorer
-nmap <F1> :NERDTreeToggle<CR>
+" open/close file explorer
+nmap <F1> :CocCommand explorer<CR>
 " open/close vista
 nmap <F2> :Vista!!<CR>
 " format current file
@@ -87,13 +87,13 @@ endif
 
 " 7. Nerdtree settings
 
-" nerdtree window size
-let g:NERDTreeWinSize=40
-" nerdtree auto open
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" " nerdtree window size
+" let g:NERDTreeWinSize=40
+" " nerdtree auto open
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 
 " 8. indent with 2 space for some languages
@@ -106,7 +106,13 @@ set colorcolumn=120
 " 10. coc.nvim plugin list
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-lists', 'coc-yank', 'coc-explorer', 'coc-highlight', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
+" for coc-explorer open buffer on right side when start vim
+set splitright
+autocmd VimEnter * CocCommand explorer --root-strategies cwd --width 40 --toggle --no-focus
+
+
 " 11. other stuffs
 
 " auto-pairs config
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}
+
