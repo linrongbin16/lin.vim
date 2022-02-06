@@ -65,11 +65,6 @@ Plug 'neovimhaskell/haskell-vim'
 " Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdcommenter'
 
-" Searching
-Plug 'jremmen/vim-ripgrep'
-Plug 'rking/ag.vim'
-Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension'}
-
 " Keyboard Operation
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'

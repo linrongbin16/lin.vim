@@ -109,8 +109,12 @@ let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-lists', 'coc-yank
 " coc-lists configuration
 " coc-lists grep
 nnoremap <silent> <Leader>lg :CocList grep<CR>
-" coc-lists grep word under cursor
-nnoremap <silent> <Leader>lc :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+" coc-lists files
+nnoremap <silent> <Leader>lf :CocList files<CR>
+" coc-lists symbols
+nnoremap <silent> <Leader>ls :CocList symbols<CR>
+" coc-lists yank
+nnoremap <silent> <Leader>ly :CocList yank<CR>
 
 " 11. other stuffs
 
