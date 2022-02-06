@@ -10,6 +10,7 @@ source $HOME/.vim/setting/lin-vim-standalone.vim
 
 " UI
 source $HOME/.vim/setting/lin-vim-colorscheme.vim
+source $HOME/.vim/setting/lambdalisue-fern.vim.vim
 source $HOME/.vim/setting/lambdalisue-fern-renderer-nerdfont.vim.vim
 source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/itchyny-lightline.vim.vim

@@ -106,9 +106,11 @@ set colorcolumn=120
 " 10. coc.nvim plugin list
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-lists', 'coc-yank', 'coc-highlight', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * ++nested Fern -stay -keep -toggle -width=40 -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-
+" coc-lists configuration
+" coc-lists grep
+nnoremap <silent> <Leader>lg :CocList grep<CR>
+" coc-lists grep word under cursor
+nnoremap <silent> <Leader>lc :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 
 " 11. other stuffs
 
