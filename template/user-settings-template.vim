@@ -3,7 +3,7 @@
 " 1. Hot key
 
 " open/close file explorer
-nmap <F1> :Fern -stay -keep -toggle -width=40 . -drawer<CR>
+nmap <F1> :Fern -stay -keep -toggle . -drawer<CR>
 " open/close vista
 nmap <F2> :Vista!!<CR>
 " format current file
@@ -85,15 +85,10 @@ else
 endif
 
 
-" 7. Nerdtree settings
+" 7. Fern settings
 
-" " nerdtree window size
-" let g:NERDTreeWinSize=40
-" " nerdtree auto open
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * NERDTree
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" drawer width
+let g:fern#drawer_width=40
 
 
 " 8. indent with 2 space for some languages
