@@ -59,7 +59,7 @@ set foldenable
 set foldmethod=indent
 set foldnestmax=99
 set foldlevel=99
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
+nnoremap zz @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 
 " indent
 set cindent

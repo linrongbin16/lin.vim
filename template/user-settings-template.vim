@@ -101,15 +101,31 @@ set colorcolumn=120
 " 10. coc.nvim plugin list
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-lists', 'coc-yank', 'coc-highlight', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
-" coc-lists configuration
-" coc-lists grep
-nnoremap <silent> <Leader>lg :CocList grep<CR>
-" coc-lists files
-nnoremap <silent> <Leader>lf :CocList files<CR>
-" coc-lists symbols
-nnoremap <silent> <Leader>ls :CocList symbols<CR>
-" coc-lists yank
-nnoremap <silent> <Leader>ly :CocList yank<CR>
+" coc-list mappings
+" grep - text search
+nnoremap <silent> <space>g :CocList grep<CR>
+" files - search files
+nnoremap <silent> <space>f :CocList files<CR>
+nnoremap <silent> <C-p> :CocList files<CR>
+" symbols - search symbols
+nnoremap <silent> <space>s :CocList symbols<CR>
+" yank - search yank history
+nnoremap <silent> <space>y :CocList yank<CR>
+" actions - search action history
+nnoremap <silent> <space>a :CocList actions<CR>
+" diagnostics - search diagnostics
+nnoremap <silent> <space>d :CocList diagnostics<CR>
+" diagnostics on current buffer - search diagnostics on current buffer
+nnoremap <silent> <space>b :CocList diagnostics --current-buf<CR>
+" commands - search commands
+nnoremap <silent> <space>c :CocList commands<CR>
+" extensions - search extensions
+nnoremap <silent> <space>e :CocList extensions<CR>
+" location - search location
+nnoremap <silent> <space>l :CocList location<CR>
+" outline - search outline
+nnoremap <silent> <space>o :CocList outline<CR>
+
 
 " 11. other stuffs
 
