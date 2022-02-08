@@ -42,6 +42,10 @@ Plug 'Rigellute/rigel'
 Plug 'romainl/Apprentice'
 Plug 'chriskempson/base16-vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'sainnhe/edge'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
 
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
