@@ -18,6 +18,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'RRethy/vim-illuminate'
 " this plugin need golang
 if has('make')
     Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
@@ -45,6 +46,9 @@ Plug 'nanotech/jellybeans.vim'
 " Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'jremmen/vim-ripgrep'
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+Plug 'vn-ki/coc-clap'
 
 " Syntax highlighting supplementary for programming languages
 " Flex, Bison
