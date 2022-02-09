@@ -104,6 +104,13 @@ vim -c "PlugInstall" -c "qall"
 
 # install environment
 cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc
+if [ $(uname) == "Darwin" ]; then
+    # export clangd/clang-format/clang-tidy to path for macOS
+    echo "" >> ~/.linvimrc
+    echo "alias clangd=\"/usr/local/opt/llvm/bin/clangd\"" >> ~/.linvimrc
+    echo "alias clang-format=\"/usr/local/opt/llvm/bin/clang-format\"" >> ~/.linvimrc
+    echo "alias clang-tidy=\"/usr/local/opt/llvm/bin/clang-tidy\"" >> ~/.linvimrc
+fi
 touch ~/.zshrc
 echo "source ~/.linvimrc" >> ~/.zshrc
 chsh -s $(which zsh)

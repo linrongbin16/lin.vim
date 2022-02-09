@@ -2,14 +2,16 @@
 
 " search text
 nnoremap <silent> <space>g :Clap grep2<CR>
-" search lines
-nnoremap <silent> <space>bl :Clap blines<CR>
-" search lines only on current buffer
+" search lines on opened buffers
 nnoremap <silent> <space>l :Clap lines<CR>
+" search lines only on current buffer
+nnoremap <silent> <space>bl :Clap blines<CR>
 " search text on tags
 nnoremap <silent> <space>t :Clap tags<CR>
 " search symbols based on coc.nvim language server
 nnoremap <silent> <space>s :Clap coc_symbols<CR>
+" search symbol dummy jumps
+nnoremap <silent> <space>j :Clap dumb_jump<CR>
 " search diagnostics based on coc.nvim language server
 nnoremap <silent> <space>d :Clap coc_diagnostics<CR>
 " search symbol outlines based on coc.nvim language server

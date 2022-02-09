@@ -1,6 +1,6 @@
 # lin.vim : Lin Rongbin's (Neo)Vim Distribution
 
-lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development running on most operating systems.
+lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development.
 
 # Table of Contents
 
@@ -16,58 +16,84 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Tested Platforms](#tested-platforms)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
-  - [Enhanced Copy Paste](#enhanced-copy-paste)
+  - [UI](#ui)
+    - [File Explorer](#file-explorer)
+    - [Opened Buffers](#opened-buffers)
+  - [IDE-like Editing Features](#ide-like-editing-features)
+    - [Code Complete (by coc.nvim)](#code-complete-by-coc-nvim)
+    - [Jumps (by coc.nvim)](#jumps-by-coc-nvim)
+    - [Quick Code Actions/Lens (by coc.nvim)](#quick-code-actions-lens-by-coc-nvim)
   - [Search](#search)
-  - [Alignment](#alignment)
-  - [Cursor Movement](#cursor-movement)
-  - [Language Server](#language-server)
-  - [Tags](#tags)
-  - [Commentary](#commentary)
-  - [File Explorer](#file-explorer)
+    - [Text Search (by vim-clap and coc.nvim)](#text-search-by-vim-clap-and-coc-nvim)
+    - [File Search (by vim-clap and coc.nvim)](#file-search-by-vim-clap-and-coc-nvim)
+    - [Git Search (by vim-clap)](#git-search-by-vim-clap)
+    - [Other Search (by vim-clap)](#other-search-by-vim-clap)
+    - [Rg Search (by ripgrep)](#rg-search-by-ripgrep)
+  - [Other Enhancements](#other-enhancements)
+    - [Enhanced Copy Paste](#enhanced-copy-paste)
+    - [Easy Alignment by easy-align](#easy-alignment-by-easy-align)
+    - [Easy Cursor Movement by vim-easymotion](#easy-cursor-movement-by-vim-easymotion)
+    - [Fast Repeat by vim-repeat](#fast-repeat-by-vim-repeat)
+    - [Fast Quotes Operation by vim-surround](#fast-quotes-operation-by-vim-surround)
+    - [Match Brackets and HTML Tags by vim-matchup](#match-brackets-and-html-tags-by-vim-matchup)
+    - [Auto Close Brackets and HTML Tags by auto-pairs and vim-closetag](#auto-close-brackets-and-html-tags-by-auto-pairs-and-vim-closetag)
+    - [Easy Comment by nerdcommenter](#easy-comment-by-nerdcommenter)
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
   - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
 - [Contribute](#contribute)
 
-# Introduction
+## Introduction
+
+lin.vim is aimed to out of box, IDE-like editing features, after high performance, light weight and friendly to most (Neo)VIM users.
+
+lin.vim is focused on and only on editing, it doesn't compiling/packaging/debugging projects, not a tutorial for new (Neo)VIM users neither.
+
+lin.vim solved such issues:
+
+- Solved the difficulty of choosing/grouping/configuring plugins, a list of plugins are embeded and well configured which meets most needs.
+- Solved the difficulty of repeatly installing vim on different OS and machines, installation are been made easy by one shell command (not on Windows for now).
+- Solved the performance/feature/looking issue on naive (neo)vim, only carefully chosen plugins are installed by default, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons try to make you happy working.
+- Command line utilities implemented by python3 for easier daily working.
+- Wiki for everything so nothing confused you.
+- Customization ability for special needs.
 
 ### Screenshots
 
 #### Simple but pretty UI
 
-![pic1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic1.png)
+![edit-markdown.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/edit-markdown.png)
 
 #### Code complete for C++
 
-![pic2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic2.png)
+![cplusplus-code-complete.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/cplusplus-code-complete.png)
 
 #### Fast cursor movement
 
-![pic3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic3.png)
+![fast-cursor-movement.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/fast-cursor-movement.jpg)
 
-#### Text search
+#### Search text
 
-![pic7-1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-1.png)
-![pic7-2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic7-text-search-2.png)
+![search-text.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-text.png)
 
-#### File search (deprecated)
+#### Search files
 
-![pic4.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic4.png)
+![search-files.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-files.png)
 
 #### Markdown preview
 
-![pic5.png](https://raw.githubusercontent.com/linrongbin16/lin.vim/master/picture/pic5-markdown-preview.png)
+![markdown-preview.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/markdown-preview.jpg)
 
 ### Feature
 
-- Running on multiple platforms: UNIX/Linux, Windows and MacOS.
-- Code complete, lint and format for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim).
-- Random color schemes and pretty icons.
-- File and buffer explorer and better status line.
-- Text/words/files/symbols/yanks/etc search.
-- Useful command line utilities for: git, text search and encoding/decoding, file operation and compression/extraction, datetime calculation, ip calculation, etc.
+- Automatically installation.
+- Running on multiple platforms: Windows, macOS and Linux(Ubuntu/Debian/Fedora/Manjaro).
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
-- Use [zsh](https://www.zsh.org/) for UNIX/Linux/MacOS with pretty prompt.
+- Modern UI such as file explorer, pretty icons, Plentiful randomly selected color schemes on start, opened buffers, file status line, outline/tags, etc.
+- Code complete, lint/diagnostic, format, symbol jumps, codeLens/codeActions, highlight for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim) and [TabNine](https://www.tabnine.com/)(by using coc-tabnine, please login if you want full power of it), embeded C/C++/Python3/Rust language servers.
+- Search engine by [vim-clap](https://github.com/liuchengxu/vim-clap), supprot text search such as strings/words/regex/tags/symbols/yanks/etc, file search such as file names/most recent used/opened buffers, git search such as commits, file explorer search.
+- Command line utilities implemented by python3, working with git, text search, encoding/decoding, file operation, compression/extraction, datetime calculation, ip calculation, etc.
+- Use [zsh](https://www.zsh.org/) for macOS/Linux with pretty prompt.
 - Custom configuration.
 
 ### Project Structure
@@ -85,7 +111,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
  |`README.md            Readme wiki.
 ```
 
-# Installation
+## Installation
 
 ### UNIX, Linux, MacOS
 
@@ -143,187 +169,223 @@ You could also install these dependencies with other windows package manager suc
 
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
-- git
-- (g)vim/macvim
-- neovim (not installed on Windows)
-- curl
-- wget
+- git, curl, wget
+- (g)vim/neovim (macvim is installed on macOS)
 - llvm (clang, clang++, clangd, clang-format)
 - rust
 - golang
-- autoconf
-- automake
-- cmake
+- autoconf, automake, make, cmake (make is optional on windows, gcc/g++ is additionally installed on Linux)
 - ripgrep(rg)
 - zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
 - python3, pip3
-- node, npm
+- nodejs, npm
 - universal-ctags
-- gcc, g++ (only on Linux such as Ubuntu/Fedora/Manjaro)
 - zsh (not installed on Windows)
 - hack nerd font (only download on Windows, need manually installation)
 
 Notice: installation needs access of websites below, and make sure they're available:
 
-- [github.com](https://github.com/).
-- [raw.githubusercontent.com](https://raw.githubusercontent.com/).
+- [github.com](https://github.com/)
+- [raw.githubusercontent.com](https://raw.githubusercontent.com/)
+- [crates.io](https://crates.io/)
 
 #### Tested Platforms
 
 | Software Dependency | Version Info |
 | ------------------- | ------------ |
 | (g)vim/macvim       | 8.1+         |
-| neovim              | 0.4.0+       |
+| neovim              | 0.5.0+       |
 | python3             | 3.6+         |
 | nodejs              | 10.12+       |
 
-| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                                                                    |
-| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                                                                  |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                                                                  |
-| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                                                                  |
-| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                                                                  |
-| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                                                                  |
-| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim need at least vim 8.0+<br>3) coc-lists need at least vim 8.1+ |
+| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                                                                                |
+| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                                                                              |
+| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                                                                              |
+| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                                                                              |
+| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                                                                              |
+| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                                                                              |
+| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim and coc-list need at least vim 8.1+<br>3) vim-clap need at least vim 8.1+ |
 
-# User Guide
+## User Guide
 
-In this section, VIM editing modes are specified with:
+In this section, VIM edit mode are specified with:
 
-- 🅽 - Normal Mode
-- 🆅 - Visual Mode
-- 🅸 - Insert Mode
+- 🄽 - Normal Mode
+- 🅅 - Visual Mode
+- 🄸 - Insert Mode
 
 ### Hot Key
 
-- `F1` 🅽 - toggle(open/close) fern file explorer, see [Code complete for C++](#code-complete-for-c).
-- `F2` 🅽 - toggle(open/close) vista tag explorer, see [Code complete for C++](#code-complete-for-c).
-- `F3`/`SHIFT-F3` 🅽 - format/sync-format current file.
-- `F4` 🅽 - switch between C/C++ header and source files.
-- `F5` 🅽 - run codeLens on current file.
-- `SHFIT-F5` 🅽 - quick auto-fix(run codeActions) on current line.
-- `F6` 🅽 - hover symbol.
-- `SHIFT-F6` 🅽 - rename symbol.
-- `F7` 🅽 - open markdown preview window in browser, see [Markdown preview](#markdown-preview).
-- `F8` 🅽 - change color theme randomly, see [Screenshots](#screenshots).
-- `F10`/`SHIFT-F10` 🅽 - open/close(toggle) buffer explorer.
+- `F1` 🄽 - toggle(open/close) fern file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
+- `F2` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
+- `F3`/`SHIFT-F3` 🄽 - format/sync-format current file.
+- `F4` 🄽 - switch between C/C++ header and source files.
+- `F5` 🄽 - run codeLens on current file.
+- `SHFIT-F5` 🄽 - quick auto-fix(run codeActions) on current line.
+- `F6` 🄽 - hover symbol.
+- `SHIFT-F6` 🄽 - rename symbol.
+- `F7` 🄽 - open markdown preview window in browser, see [Markdown preview](#markdown-preview).
+- `F8` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
+- `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
-You could configure these hot keys in **_user-settings.vim_**.
+You could configure these keys in **_user-settings.vim_**.
 
-### Enhanced Copy Paste
+### UI
 
-Enhanced copy-paste are supported when you want copy/paste between different vim instances.
+#### File Explorer
 
-- `<leader>y` 🆅 - copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
-- `<leader>p` 🅽 - paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim), you could use key mappings on the file explorer left side:
 
-Copied content will be stored in a text database, then you could paste them to other vim instances.
+- `N/K` 🄽 - create new file/directory.
+- `m` 🄽 - move file/directory.
+- `c` 🄽 - copy file/directory.
+- `R` 🄽 - rename file/directory.
+- `D` 🄽 - delete file/directory to trash.
+- `h` 🄽 - leave or collapse directory.
+- `l` 🄽 - open or expand directory.
+- `<cr>` 🄽 - open file or cd into directory.
+- `<bs>` 🄽 - leave directory and goto upper directory.
+- `<F5>` 🄽 - reload file explorer.
 
-You could configure these hot keys in **_user-settings.vim_**.
+Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) fore more key mappings.
+
+#### Opened Buffers
+
+Buffers can be switched/closed by key mappings:
+
+- `<leader>bn`/`<c-tab>` 🄽 - go to next buffer.
+- `<leader>bp`/`<c-s-tab>` 🄽 - go to previous buffer.
+- `<leader>bd` 🄽 - close current buffer.
+- `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
+
+### IDE-like Editing Features
+
+#### Code Complete (by coc.nvim)
+
+- `<c-n>`/`tab`/`<down>` 🄸 - select next suggestion.
+- `<c-p>`/`<s-tab>`/`<up>` 🄸 - select previous suggestion.
+- `<esc>`/`<c-[>` 🄸 - quit suggestion.
+
+#### Jumps (by coc.nvim)
+
+- `[g` 🄽 - go to previous diagnostic location.
+- `]g` 🄽 - go to next diagnostic location.
+- `gd` 🄽 - go to definition.
+- `gy` 🄽 - go to type(function) definition.
+- `gi` 🄽 - go to implemention.
+- `gr` 🄽 - go to references.
+- `K` 🄽 - show hover(symbol definition).
+
+#### Quick Code Actions/Lens (by coc.nvim)
+
+- `<leader>rs`/`<s-F6>` 🄽 - rename symbol.
+- `<leader>cs` 🄽 - run code actions on selected code.
+- `<leader>ca` 🄽 - run code actions on current buffer.
+- `<leader>cl`/`<F5>` 🄽 - run code lens on current line.
+- `<leader>qf`/`<s-F5>` 🄽 - apply quick fix on current line.
 
 ### Search
 
-Search is supported by [coc-lists](https://github.com/neoclide/coc-lists), the extension of coc.nvim, which uses [ag](https://github.com/ggreer/the_silver_searcher)/[rg](https://github.com/BurntSushi/ripgrep) as backend engine. lin.vim only install rg, so coc-lists will use rg as backend engine.
+#### Text Search (by vim-clap and coc.nvim)
 
-Text search see [Text search](#text-search):
+- `<space>g` 🄽 - search text by `:Clap grep2`.
+- `<space>l` 🄽 - search lines on opened buffers by `:Clap lines`.
+- `<space>bl` 🄽 - search lines on current buffer by `:Clap blines`.
+- `<space>t` 🄽 - search tags by `:Clap tags`.
+- `<space>s` 🄽 - search symbols by `:Clap coc_symbols`.
+- `<space>j` 🄽 - search jump locations by `:Clap dumb_jump`.
+- `<space>d` 🄽 - search diagnostics by `:Clap coc_diagnostics`.
+- `<space>o` 🄽 - search outline/tags by `:Clap coc_outline`.
 
-- `<leader>lg` 🅽 - search text.
+#### File Search (by vim-clap and coc.nvim)
 
-File search see [Fuzzy file search](#fuzzy-file-search):
+- `<space>f`/`<c-p>` 🄽 - search files by `:Clap files`.
+- `<space>r` 🄽 - search most recently used files by `:Clap recent_files`.
+- `<space>bf` 🄽 - search opened buffers by `:Clap buffers`.
 
-- `<leader>lf` 🅽 - fuzzy search file.
+#### Git Search (by vim-clap)
 
-Symbol search:
+- `<space>c` 🄽 - search git commits by `:Clap commits`.
+- `<space>bc` 🄽 - search git commits on current buffer rby `:Clap bcommits`.
 
-- `<leader>ls` 🅽 - symbol search.
+#### Other Search (by vim-clap)
 
-Yank history search:
+- `<space>e` 🄽 - search lvy-like file explorer by `:Clap filer`.
+- `<space>mk` 🄽 - search marks by `:Clap marks`.
+- `<space>mp` 🄽 - search key mappings by `:Clap maps`.
+- `<space>y` 🄽 - search yank histories by `:Clap yanks`.
 
-- `<leader>ly` 🅽 - yank history search.
+#### Rg Search (by ripgrep)
 
-Please try `:CocList` for more usage and `:h coc-list` for help.
+`:Rg` command is still supported by [vim-ripgrep](https://github.com/jremmen/vim-ripgrep) as an old-style search method.
 
-### Alignment
+### Other Enhancements
 
-Text Alignment is supported by [easy-align](https://github.com/junegunn/vim-easy-align).
+#### Enhanced Copy Paste
 
-- `vipga=` 🆅 - align visual-selected paragraph.
-- `gaip=` 🅽 - align inner paragraph.
+Enhanced copy-paste are supported when you want copy/paste between different vim instances.
 
-### Cursor Movement
+- `<leader>y` 🅅 - copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
+- `<leader>p` 🄽 - paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
 
-Cursor Movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion), see [Fast cursor movement](#fast-cursor-movement).
+Copied content will be stored in a text file, then you could paste them to other vim instances.
 
-- `<leader><leader>f{char}` 🅽 - go to a single {char}.
-- `<leader>s{char}{char}` 🅽 - go to consequent two {char}{char}.
-- `<leader><leader>w` 🅽 - go to word.
-- `<leader><leader>j` 🅽 - go to a forward line below cursor.
-- `<leader><leader>k` 🅽 - go to a backward line above cursor.
-- `<leader><leader>L` 🅽 - go to a specified line.
+You could configure these keys in **_user-settings.vim_**.
 
-You could configure these in **_user-settings.vim_**.
+#### Easy Alignment by [easy-align](https://github.com/junegunn/vim-easy-align)
 
-### Language Server
+- `vipga=` 🅅 - align visual-selected paragraph.
+- `gaip=` 🄽 - align inner paragraph.
 
-Language server is supported by [coc.nvim](https://github.com/neoclide/coc.nvim), and completion are supported in insert mode:
+Please visit [easy-align](https://github.com/junegunn/vim-easy-align) for more usage.
 
-- `<c-n>` `tab` `<up>` 🅸 - select next in candidate list.
-- `<c-p>` `<s-tab>` `<down>` 🅸 - select previous in candidate list.
+#### Easy Cursor Movement by [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 
-Go to operations are supported in normal mode:
+See [Fast cursor movement](#fast-cursor-movement).
 
-- `gd` 🅽 - go to definition.
-- `gy` 🅽 - go to type definition.
-- `gi` 🅽 - go to implementation.
-- `gr` 🅽 - go to reference.
-- `F6`, `<s-F6>` 🅽 - rename symbol.
+- `<leader>f{char}` 🄽 - move to a single {char}.
+- `<leader>s{char}{char}` 🄽 - move to consequent two {char}{char}.
+- `<leader>w` 🄽 - move to word.
+- `<leader>L` 🄽 - move to specified line.
+- `<leader>j` 🄽 - go to forward line below cursor.
+- `<leader>k` 🄽 - go to backward line above cursor.
 
-You could configure coc extensions in **_user-settings.vim_** and **_coc-settings.json_**. And refer to [coc.nvim#wiki#Language-servers](https://github.com/neoclide/coc.nvim/wiki/Language-servers) for more programming languages, [coc.nvim#wiki#Using-coc-extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) for more coc extensions.
+Please visit [vim-easymotion](https://github.com/easymotion/vim-easymotion) for more usage.
 
-### Tags
+#### Fast Repeat by [vim-repeat](https://github.com/tpope/vim-repeat)
 
-Tags are important suppliement of language server, they're auto generated and updated by [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags), and viewed by [tagbar](https://github.com/preservim/tagbar).
+Enhancement for `.` operation.
 
-- `F2` 🅽 - open/close tagbar tags explorer.
-- `<c-]>` 🅽 - go to definition.
-- `<c-o>` 🅽 - go back to previous position.
+Please visit [vim-repeat](https://github.com/tpope/vim-repeat) for more information.
 
-Notice: tags could be inaccurate in large project (since words could be conflict), please use language server as your first choice.
+#### Fast Quotes Operation by [vim-surround](https://github.com/tpope/vim-surround)
 
-### Commentary
+Enhancement for add/remove quotes operation.
 
-Commentary is supported by [nerdcomment](https://github.com/preservim/nerdcommenter).
+Please visit [vim-surround](https://github.com/tpope/vim-surround) for more information.
 
-- `<leader>c<space>` 🅽🆅 - toggle one line or selected lines.
+#### Match Brackets and HTML Tags by [vim-matchup](https://github.com/andymass/vim-matchup)
 
-### File Explorer
+Enhancement for brackets(pairs) and html tags.
 
-File explorer is supported by [fern](https://github.com/lambdalisue/fern.vim), [lightline](https://github.com/itchyny/lightline.vim) and [vim-buftabline](https://github.com/ap/vim-buftabline).
-They constructs the file explorer on the left(fern), opened buffers on the top(vim-buftabline) and current editing status on the bottom(lightline).
+Please visit [vim-matchup](https://github.com/andymass/vim-matchup) for more usage.
 
-When cursor is on the file explorer window, please use:
+#### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) and [vim-closetag](https://github.com/alvan/vim-closetag)
 
-- `h` 🅽 - collapse directory.
-- `l` 🅽 - expand directory or open file.
-- `<cr>` 🅽 - cd directory or open file.
-- `<bs>` 🅽 - leave directory and go upper.
-- `N` 🅽 - new file.
-- `K` 🅽 - new directory.
-- `c` 🅽 - copy file or directory.
-- `m` 🅽 - move file or directory.
-- `D` 🅽 - delete file or directory.
-- `R` 🅽 - rename file or directory.
-- `?` 🅽 on the left: move file/directory.
+Enhancement for auto close brackets(pairs) and html tags.
 
-For more key mappings, please refer to [fern - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings).
+Please visit [auto-pairs](https://github.com/jiangmiao/auto-pairs) and [vim-closetag](https://github.com/alvan/vim-closetag) for more usage.
 
-When cursor is on the edit window, please use:
+### Easy Comment by [nerdcommenter](https://github.com/preservim/nerdcommenter)
 
-- `<leader>bn`/`<c-tab>` 🅽 - go to next buffer .
-- `<leader>bp`/`<c-s-tab>` 🅽 - go to previous buffer.
-- `<leader>bd` 🅽 - close current buffer.
+The most popular key mappings are:
 
-Other alternatives such as [nerdtree](https://github.com/preservim/nerdtree)/[vimfiler](https://github.com/Shougo/vimfiler.vim)/[airline](https://github.com/vim-airline/vim-airline)/[powerline](https://github.com/powerline/powerline) are not chosen because of performance issues. Current combination are smooth, not pretty enough though.
+- `<leader>cc` 🄽🅅 - comment current line or selected lines.
+- `<leader>cn` 🄽🅅 - comment current line or selected lines with force nesting.
+- `<leader>c<space>` 🄽🅅 - toggle current line or selected lines.
+
+Please visit [nerdcommenter](https://github.com/preservim/nerdcommenter) for more usage and configuration.
 
 ### Customization
 
@@ -351,28 +413,23 @@ For better understanding and use, help document is supported for all commands, c
 Here's an example of `vencode`:
 
 ```
-$ vencode -h
-usage: vencode [option] text
+$ vencode --help
+Usage: vencode [OPTIONS] [ARGS]...
 
-  Encode and decode text strings with algorithms.
+  Encode/decode text with algorithm
 
-option:
-  -e/--encode [algorithm]       encode text with specified algorithm
-  -d/--decode [algorithm]       decode text with specified algorithm
+Options:
+  -e, --encode [base64|url]  encode text with specified algorithm
+  -d, --decode [base64|url]  decode text with specified algorithm
+  --help                     Show this message and exit.
 
-  -h/--help                     show help message
-
-algorithm:
-  base64                        base64 algorithm
-  url                           url algorithm
-
-example:
+Examples:
   $ vencode -ebase64 'Hello World'
-  Hello World => SGVsbG8gV29ybGQ=
+  `Hello World` => `SGVsbG8gV29ybGQ=`
 ```
 
-Please try these commands with `-h` option for more details.
+Please try `--help` for more details.
 
-# Contribute
+## Contribute
 
-Please open an issue for anything about lin.vim.
+Please open issue/PR for anything about lin.vim.
