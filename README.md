@@ -101,7 +101,6 @@ lin.vim solved such issues:
 ```
  |+command              Command line utilities(vcmd) implemented in python3.
  |+install              Installation scripts for all platforms.
- |+picture              Screenshots for README.
  |+setting              VimL script settings.
  |+template             Templates for user-settings.vim, coc-settings.json, vim-plug.vim and .linvimrc.
  |`install.sh           UNIX/Linux/MacOS bash installation script.
