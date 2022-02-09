@@ -376,7 +376,7 @@ Enhancement for auto close brackets(pairs) and html tags.
 
 Please visit [auto-pairs](https://github.com/jiangmiao/auto-pairs) and [vim-closetag](https://github.com/alvan/vim-closetag) for more usage.
 
-### Easy Comment by [nerdcommenter](https://github.com/preservim/nerdcommenter)
+#### Easy Comment by [nerdcommenter](https://github.com/preservim/nerdcommenter)
 
 The most popular key mappings are:
 
