@@ -18,6 +18,8 @@ sudo apt-get install -y clang-format
 sudo apt-get install -y clangd
 sudo apt-get install -y golang-go
 sudo apt-get install -y ripgrep
+sudo apt-get install -y fd-find
+sudo apt-get install -y bat
 sudo apt-get install -y unzip
 sudo apt-get install -y bzip2
 sudo apt-get install -y zip

@@ -48,11 +48,13 @@ Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
 
 " Language Server
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'jremmen/vim-ripgrep'
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'vn-ki/coc-clap'
+Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+Plug 'junegunn/fzf.vim' " needed for previews
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+" Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+" Plug 'vn-ki/coc-clap'
 
 " Syntax highlighting supplementary for programming languages
 " Flex, Bison

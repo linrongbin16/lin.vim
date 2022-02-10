@@ -15,6 +15,8 @@ sudo dnf install -y make
 sudo dnf install -y cmake
 sudo dnf install -y go
 sudo dnf install -y ripgrep
+sudo dnf install -y fd-find
+sudo dnf install -y bat
 sudo dnf install -y unzip
 sudo dnf install -y bzip2
 sudo dnf install -y zip

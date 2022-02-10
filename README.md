@@ -24,11 +24,12 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Jumps](#jumps-by-coc-nvim)
     - [Quick Code Actions/Lens](#quick-code-actions-lens-by-coc-nvim)
   - [Search](#search)
-    - [Text Search](#text-search-by-vim-clap-and-coc-nvim)
-    - [File Search](#file-search-by-vim-clap-and-coc-nvim)
-    - [Git Search](#git-search-by-vim-clap)
-    - [Other Search](#other-search-by-vim-clap)
-    - [Rg Search](#rg-search-by-ripgrep)
+    - [Text Search](#text-search)
+    - [File Search](#file-search)
+    - [Git Search](#git-search)
+    - [Other Search](#other-search)
+    - [Coc.nvim Search](#coc-nvim-search)
+    - [Rg Search](#rg-search)
   - [Other Enhancements](#other-enhancements)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Easy Alignment](#easy-alignment-by-easy-align)
@@ -91,7 +92,7 @@ lin.vim solved such issues:
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
 - Modern UI such as file explorer, pretty icons, Plentiful randomly selected color schemes on start, opened buffers, file status line, outline/tags, etc.
 - Code complete, lint/diagnostic, format, symbol jumps, codeLens/codeActions, highlight for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim) and [TabNine](https://www.tabnine.com/)(by using coc-tabnine, please login if you want full power of it), embeded C/C++/Python3/Rust language servers.
-- Search engine by [vim-clap](https://github.com/liuchengxu/vim-clap), supprot text search such as strings/words/regex/tags/symbols/yanks/etc, file search such as file names/most recent used/opened buffers, git search such as commits, file explorer search.
+- Search engine by [fzf.vim](https://github.com/junegunn/fzf.vim), (optional [bat](https://github.com/sharkdp/bat) for preview and [fd](https://github.com/sharkdp/fd) for directory searching), supprot text search such as text/lines/tags/search-histories/command-histories, file search such as files/buffers, git search such as commits/changes, coc.nvim integrated search such as symbols/outline/diagnostics/coc-yank.
 - Command line utilities implemented by python3, working with git, text search, encoding/decoding, file operation, compression/extraction, datetime calculation, ip calculation, etc.
 - Use [zsh](https://www.zsh.org/) for macOS/Linux with pretty prompt.
 - Custom configuration.
@@ -197,14 +198,14 @@ Notice: installation needs access of websites below, and make sure they're avail
 | python3             | 3.6+         |
 | nodejs              | 10.12+       |
 
-| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                                                                                |
-| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                                                                              |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                                                                              |
-| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                                                                              |
-| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                                                                              |
-| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                                                                              |
-| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim and coc-list need at least vim 8.1+<br>3) vim-clap need at least vim 8.1+ |
+| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                                              |
+| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                                            |
+| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                                            |
+| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                                            |
+| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                                            |
+| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                                            |
+| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim and coc-list need at least vim 8.1+<br> |
 
 ## User Guide
 
@@ -286,39 +287,53 @@ Buffers can be switched/closed by key mappings:
 
 ### Search
 
-#### Text Search (by vim-clap and coc.nvim)
+Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`.
 
-- `<space>gr` 🄽 - search text by `:Clap grep2`.
-- `<space>l` 🄽 - search lines on opened buffers by `:Clap lines`.
-- `<space>t` 🄽 - search tags by `:Clap tags`.
-- `<space>h` 🄽 - search search history by `:Clap search_history`.
-- `<space>y` 🄽 - search yank history by `:Clap yanks`.
-- `<space>j` 🄽 - search tags by `:Clap dumb_jump`.
-- `<space>s` 🄽 - search symbols by `:Clap coc_symbols`.
-- `<space>d` 🄽 - search diagnostics by `:Clap coc_diagnostics`.
-- `<space>o` 🄽 - search outline/tags by `:Clap coc_outline`.
+#### Text Search
 
-#### File Search (by vim-clap and coc.nvim)
+- `<space>gr` 🄽 - search text by `:FzfRg`.
+- `<space>l` 🄽 - search lines on opened buffers by `:FzfLines`.
+- `<space>t` 🄽 - search tags by `:FzfTags`.
+- `<space>sh` 🄽 - search search history by `:FzfHistory/`.
+- `<space>ch` 🄽 - search vim command history by `:FzfHistory:`.
 
-- `<space>f`/`<c-p>` 🄽 - search files by `:Clap files`.
-- `<space>r` 🄽 - search most recently used files by `:Clap recent_files`.
-- `<space>b` 🄽 - search opened buffers by `:Clap buffers`.
+#### File Search
 
-#### Git Search (by vim-clap)
+Implement by fzf.vim.
 
-- `<space>gc` 🄽 - search git commits by `:Clap commits`.
-- `<space>gf` 🄽 - search git files rby `:Clap gfiles`.
-- `<space>gd` 🄽 - search git diff files rby `:Clap git_diff_files`.
+- `<space>f`/`<c-p>` 🄽 - search files by `:FzfFiles`.
+- `<space>b` 🄽 - search opened buffers by `:FzfBuffers`.
+- `<space>hf` 🄽 - search history files (v:oldfiles) and opened buffers by `:FzfHistory`.
 
-#### Other Search (by vim-clap)
+#### Git Search
 
-- `<space>e` 🄽 - search lvy-like file explorer by `:Clap filer`.
-- `<space>mk` 🄽 - search marks by `:Clap marks`.
-- `<space>mp` 🄽 - search key mappings by `:Clap maps`.
+Implement by fzf.vim.
 
-Please visit [vim-clap](https://github.com/liuchengxu/vim-clap) and [coc-clap](https://github.com/vn-ki/coc-clap) for more search commands.
+- `<space>gc` 🄽 - search git commits by `:FzfCommits`.
+- `<space>gf` 🄽 - search git files rby `:FzfGFile`.
+- `<space>gs` 🄽 - search git status(also diff files by preview) by `:FzfGFiles?`.
 
-#### Rg Search (by ripgrep)
+#### Other Search
+
+- `<space>mk` 🄽 - search marks by `:FzfMarks`.
+- `<space>mp` 🄽 - search normal mode vim key mappings by `:FzfMaps`.
+- `<space>vc` 🄽 - search vim commands by `:FzfCommands`.
+- `<space>ht` 🄽 - search help tags by `:FzfHelptags`.
+
+#### Coc.nvim Search
+
+Key mappings are configured with prefix char `c` after `<space>`.
+
+- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`. Notice this will only work on NeoVIM, fallback to `:CocList symbols` on VIM.
+- `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics`.
+- `<space>co` 🄽 - search outline/tags by `:CocFzfList outline`.
+- `<space>cy` 🄽 - search coc-yank by `:CocFzfList yank`.
+- `<space>cc` 🄽 - search commands by `:CocFzfList commands`.
+- `<space>cl` 🄽 - search location by `:CocFzfList location`.
+
+Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
+
+#### Rg Search
 
 `:Rg` command is still supported by [vim-ripgrep](https://github.com/jremmen/vim-ripgrep) as an old-style search method.
 

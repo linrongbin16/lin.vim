@@ -26,7 +26,8 @@ source $HOME/.vim/setting/preservim-nerdcommenter.vim
 
 " Search
 source $HOME/.vim/setting/jremmen-vim-ripgrep.vim
-source $HOME/.vim/setting/liuchengxu-vim-clap.vim
+source $HOME/.vim/setting/junegunn-fzf.vim.vim
+" source $HOME/.vim/setting/liuchengxu-vim-clap.vim
 
 " Keyboard Operation
 source $HOME/.vim/setting/easymotion-vim-easymotion.vim
