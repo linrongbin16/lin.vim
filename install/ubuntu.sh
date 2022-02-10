@@ -18,10 +18,13 @@ sudo apt-get install -y clang-format
 sudo apt-get install -y clangd
 sudo apt-get install -y golang-go
 sudo apt-get install -y ripgrep
+sudo apt-get install -y bat
 sudo apt-get install -y unzip
 sudo apt-get install -y bzip2
 sudo apt-get install -y zip
 sudo apt-get install -y p7zip
+
+# Python3
 sudo apt-get install -y python3
 sudo apt-get install -y python3-dev
 sudo apt-get install -y python3-venv
@@ -39,8 +42,6 @@ fi
 
 # Ctags
 if ! type "ctags" > /dev/null; then
-    sudo apt-get remove -y universal-ctags
-    sudo apt-get remove -y exuberant-ctags
     sudo apt-get install -y libseccomp-dev
     sudo apt-get install -y libjansson-dev
     sudo apt-get install -y libyaml-dev

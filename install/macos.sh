@@ -15,10 +15,13 @@ brew install automake
 brew install cmake
 brew install go
 brew install ripgrep
+brew install bat
 brew install unzip
 brew install zip
 brew install bzip2
 brew install p7zip
+
+# Python3
 brew install python3
 
 # Node
