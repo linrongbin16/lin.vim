@@ -14,7 +14,6 @@ yes | sudo pacman -S automake
 yes | sudo pacman -S cmake
 yes | sudo pacman -S go
 yes | sudo pacman -S ripgrep
-yes | sudo pacman -S bat
 yes | sudo pacman -S unzip
 yes | sudo pacman -S bzip2
 yes | sudo pacman -S zip

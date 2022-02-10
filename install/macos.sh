@@ -15,7 +15,6 @@ brew install automake
 brew install cmake
 brew install go
 brew install ripgrep
-brew install bat
 brew install unzip
 brew install zip
 brew install bzip2
