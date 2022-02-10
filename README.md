@@ -288,12 +288,13 @@ Buffers can be switched/closed by key mappings:
 
 #### Text Search (by vim-clap and coc.nvim)
 
-- `<space>g` 🄽 - search text by `:Clap grep2`.
+- `<space>gr` 🄽 - search text by `:Clap grep2`.
 - `<space>l` 🄽 - search lines on opened buffers by `:Clap lines`.
-- `<space>bl` 🄽 - search lines on current buffer by `:Clap blines`.
 - `<space>t` 🄽 - search tags by `:Clap tags`.
+- `<space>h` 🄽 - search search history by `:Clap search_history`.
+- `<space>y` 🄽 - search yank history by `:Clap yanks`.
+- `<space>j` 🄽 - search tags by `:Clap dumb_jump`.
 - `<space>s` 🄽 - search symbols by `:Clap coc_symbols`.
-- `<space>j` 🄽 - search jump locations by `:Clap dumb_jump`.
 - `<space>d` 🄽 - search diagnostics by `:Clap coc_diagnostics`.
 - `<space>o` 🄽 - search outline/tags by `:Clap coc_outline`.
 
@@ -301,19 +302,21 @@ Buffers can be switched/closed by key mappings:
 
 - `<space>f`/`<c-p>` 🄽 - search files by `:Clap files`.
 - `<space>r` 🄽 - search most recently used files by `:Clap recent_files`.
-- `<space>bf` 🄽 - search opened buffers by `:Clap buffers`.
+- `<space>b` 🄽 - search opened buffers by `:Clap buffers`.
 
 #### Git Search (by vim-clap)
 
-- `<space>c` 🄽 - search git commits by `:Clap commits`.
-- `<space>bc` 🄽 - search git commits on current buffer rby `:Clap bcommits`.
+- `<space>gc` 🄽 - search git commits by `:Clap commits`.
+- `<space>gf` 🄽 - search git files rby `:Clap gfiles`.
+- `<space>gd` 🄽 - search git diff files rby `:Clap git_diff_files`.
 
 #### Other Search (by vim-clap)
 
 - `<space>e` 🄽 - search lvy-like file explorer by `:Clap filer`.
 - `<space>mk` 🄽 - search marks by `:Clap marks`.
 - `<space>mp` 🄽 - search key mappings by `:Clap maps`.
-- `<space>y` 🄽 - search yank histories by `:Clap yanks`.
+
+Please visit [vim-clap](https://github.com/liuchengxu/vim-clap) and [coc-clap](https://github.com/vn-ki/coc-clap) for more search commands.
 
 #### Rg Search (by ripgrep)
 

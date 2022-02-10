@@ -1,45 +1,56 @@
-" 1. search text
+" clap's colorscheme
+let g:clap_theme = 'material_design_dark'
+
+" key mappings
+nmap <space> [fzf-p]
+xmap <space> [fzf-p]
+
+" 1. text kinds of search
 
 " search text
-nnoremap <silent> <space>g :Clap grep2<CR>
+nnoremap <silent> [fzf-p]gr :Clap grep2<CR>
 " search lines on opened buffers
-nnoremap <silent> <space>l :Clap lines<CR>
-" search lines only on current buffer
-nnoremap <silent> <space>bl :Clap blines<CR>
+nnoremap <silent> [fzf-p]l :Clap lines<CR>
 " search text on tags
-nnoremap <silent> <space>t :Clap tags<CR>
-" search symbols based on coc.nvim language server
-nnoremap <silent> <space>s :Clap coc_symbols<CR>
+nnoremap <silent> [fzf-p]t :Clap tags<CR>
 " search symbol dummy jumps
-nnoremap <silent> <space>j :Clap dumb_jump<CR>
+nnoremap <silent> [fzf-p]j :Clap dumb_jump<CR>
+" search symbols based on coc.nvim language server
+nnoremap <silent> [fzf-p]s :Clap coc_symbols<CR>
 " search diagnostics based on coc.nvim language server
-nnoremap <silent> <space>d :Clap coc_diagnostics<CR>
+nnoremap <silent> [fzf-p]d :Clap coc_diagnostics<CR>
 " search symbol outlines based on coc.nvim language server
-nnoremap <silent> <space>o :Clap coc_outline<CR>
+nnoremap <silent> [fzf-p]o :Clap coc_outline<CR>
+" search search history
+nnoremap <silent> [fzf-p]h :Clap search_history<CR>
+" search yank history
+nnoremap <silent> [fzf-p]y :Clap yanks<CR>
 
-" 2. search files
+" 2. files kinds of search
 
 " search files
-nnoremap <silent> <space>f :Clap files<CR>
+nnoremap <silent> [fzf-p]f :Clap files<CR>
 nnoremap <silent> <C-p> :Clap files<CR>
 " search files order by most recently used
-nnoremap <silent> <space>r :Clap recent_files<CR>
+nnoremap <silent> [fzf-p]r :Clap recent_files<CR>
 " search opened buffers
-nnoremap <silent> <space>bf :Clap buffers<CR>
+nnoremap <silent> [fzf-p]b :Clap buffers<CR>
 
-" 3. search git
+" 3. git kinds of search
+
 " search git commits
-nnoremap <silent> <space>c :Clap commits<CR>
-" search git commits only on current buffer
-nnoremap <silent> <space>bc :Clap bcommits<CR>
+nnoremap <silent> [fzf-p]gc :Clap commits<CR>
+" search git files
+nnoremap <silent> [fzf-p]gf :Clap gfiles<CR>
+" search git diff files (git status)
+nnoremap <silent> [fzf-p]gd :Clap git_diff_files<CR>
 
-" 4. other search types
+
+" 4. other kinds of search
 
 " search lvy-like file explorer
-nnoremap <silent> <space>e :Clap filer<CR>
+nnoremap <silent> [fzf-p]e :Clap filer<CR>
 " search marks
-nnoremap <silent> <space>mk :Clap marks<CR>
+nnoremap <silent> [fzf-p]mk :Clap marks<CR>
 " search maps
-nnoremap <silent> <space>mp :Clap maps<CR>
-" search yank history
-nnoremap <silent> <space>y :Clap yanks<CR>
+nnoremap <silent> [fzf-p]mp :Clap maps<CR>
