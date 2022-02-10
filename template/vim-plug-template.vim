@@ -51,7 +51,7 @@ Plug 'sainnhe/sonokai'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'jremmen/vim-ripgrep'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'vn-ki/coc-clap'
 
 " Syntax highlighting supplementary for programming languages
