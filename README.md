@@ -9,11 +9,10 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Feature](#feature)
   - [Project Structure](#project-structure)
 - [Installation](#installation)
+  - [Requirements](#requirements)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
-  - [Limitation](#limitation)
-    - [Third Party Dependencies](#third-party-dependencies)
-    - [Tested Platforms](#tested-platforms)
+  - [Notice](#notice)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [UI](#ui)
@@ -113,6 +112,16 @@ lin.vim solved such issues:
 
 ## Installation
 
+### Requirements
+
+lin.vim needs at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not supproted), Nodejs 10.12+. Its installation has been tested on these platforms:
+
+- MacOS Catalina 10.15.7 with Macvim 8.2, python 3.9+, node v15.x+
+- Windows 10 with Vim 8.2, python 3.8+, node v15+
+- Ubuntu 20.04 LTS with Vim 8.1, python 3.8+, node v14+
+- Fedora Workstation 32 with with Vim 8.2, python 3.8+, node v12+
+- Manjaro 20.2 with with Vim 8.2, python 3.8+, node v15+
+
 ### UNIX, Linux, MacOS
 
 ```bash
@@ -165,9 +174,7 @@ You could also install these dependencies with other windows package manager suc
    - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
 
-### Limitation
-
-#### Third Party Dependencies
+### Notice
 
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
@@ -190,24 +197,6 @@ Notice: installation needs access of websites below, and make sure they're avail
 - [github.com](https://github.com/)
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/)
 - [crates.io](https://crates.io/)
-
-#### Tested Platforms
-
-| Software Dependency | Version Info |
-| ------------------- | ------------ |
-| (g)vim/macvim       | 8.1+         |
-| neovim              | 0.5.0+       |
-| python3             | 3.6+         |
-| nodejs              | 10.12+       |
-
-| Operating System       | (Neo)Vim               | Python                        | Nodejs                        | Test Result                                                                                                                              |
-| ---------------------- | ---------------------- | ----------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| MacOS Catalina 10.15.7 | Macvim 8.2 -lpython3.9 | python 3.9.1 with pip3 20.3.1 | node v15.5.0 with npm 7.3.0   | **_success_**                                                                                                                            |
-| Windows 10             | Gvim 8.2 -lpython3.8   | python 3.8.0                  | node v15.4.0 with npm 7.0.15  | **_success_**                                                                                                                            |
-| Ubuntu 20.04 LTS       | Gvim 8.1 -lpython3.8   | python 3.8.5 with pip3 20.0.2 | node v14.5.3 with npm 6.14.9  | **_success_**                                                                                                                            |
-| Fedora Workstation 32  | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 19.3.1 | node v12.19.0 with npm 6.14.8 | **_success_**                                                                                                                            |
-| Manjaro 20.2           | Gvim 8.2 +python3/dyn  | python 3.8.6 with pip3 20.2   | node v15.3.0 with npm 6.14.8  | **_success_**                                                                                                                            |
-| Ubuntu 16.04 LTS       | Gvim 7.4 -lpython3.5   | python 3.5.2 with pip 8.1.1   | node v14.5.3 with npm 6.14.9  | **_partial failure_**<br>1) python formatter **_black_** need at least python 3.6<br>2) coc.nvim and coc-list need at least vim 8.1+<br> |
 
 ## User Guide
 
