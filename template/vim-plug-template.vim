@@ -49,12 +49,14 @@ Plug 'sainnhe/sonokai'
 
 " Language Server
 Plug 'ludovicchabant/vim-gutentags'
+" fzf and coc.nvim
 Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-" Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-" Plug 'vn-ki/coc-clap'
+" vim-clap
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+Plug 'vn-ki/coc-clap'
 
 " Syntax highlighting supplementary for programming languages
 " Flex, Bison

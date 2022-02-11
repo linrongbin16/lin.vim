@@ -92,7 +92,7 @@ lin.vim solved such issues:
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
 - Modern UI such as file explorer, pretty icons, Plentiful randomly selected color schemes on start, opened buffers, file status line, outline/tags, etc.
 - Code complete, lint/diagnostic, format, symbol jumps, codeLens/codeActions, highlight for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim) and [TabNine](https://www.tabnine.com/)(by using coc-tabnine, please login if you want full power of it), embeded C/C++/Python3/Rust language servers.
-- Search engine by [fzf.vim](https://github.com/junegunn/fzf.vim), (optional [bat](https://github.com/sharkdp/bat) for preview and [fd](https://github.com/sharkdp/fd) for directory searching), supprot text search such as text/lines/tags/search-histories/command-histories, file search such as files/buffers, git search such as commits/changes, coc.nvim integrated search such as symbols/outline/diagnostics/coc-yank.
+- Search engine contains two backends: [fzf.vim](https://github.com/junegunn/fzf.vim) and [vim-clap](https://github.com/liuchengxu/vim-clap), it supprot text search such as text/lines/tags/search-histories/command-histories, file search such as files/buffers, git search such as commits/changes, coc.nvim integrated search such as symbols/outline/diagnostics/coc-yank, etc. Both `:Fzf` and `:Clap` are enabled, but key mappings are provide for fzf.vim as default.
 - Command line utilities implemented by python3, working with git, text search, encoding/decoding, file operation, compression/extraction, datetime calculation, ip calculation, etc.
 - Use [zsh](https://www.zsh.org/) for macOS/Linux with pretty prompt.
 - Custom configuration.
@@ -140,6 +140,8 @@ lin.vim solved such issues:
    - [golang](https://go.dev/dl/): add `go.exe` in `$env.Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env.Path`
    - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env.Path`
+   - (Optional for better fzf.vim preview) [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env.Path`
+   - (Optional for better fzf.vim file search performance) [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env.Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env.Path`
    - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env.Path`
 
@@ -175,7 +177,7 @@ You could also install these dependencies with other windows package manager suc
 - rust
 - golang
 - autoconf, automake, make, cmake (make is optional on windows, gcc/g++ is additionally installed on Linux)
-- ripgrep(rg)
+- ripgrep(rg), bat, fd
 - zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
 - python3, pip3
 - nodejs, npm
@@ -287,49 +289,60 @@ Buffers can be switched/closed by key mappings:
 
 ### Search
 
-Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`.
+By default search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`, ...
+
+But if you want, just edit **_user-settings.vim_**, disable(comment) the line `source $HOME/.vim/setting/junegunn-fzf.vim.vim`(which provide key mappings for fzf.vim), and enable(uncomment) the line `" source $HOME/.vim/setting/liuchengxu-vim-clap.vim`(which provide key mappings for vim-clap). Both fzf.vim and vim-clap's key mappings are functioned almost in the same way.
 
 #### Text Search
 
-- `<space>gr` 🄽 - search text by `:FzfRg`.
-- `<space>l` 🄽 - search lines on opened buffers by `:FzfLines`.
-- `<space>t` 🄽 - search tags by `:FzfTags`.
-- `<space>sh` 🄽 - search search history by `:FzfHistory/`.
-- `<space>ch` 🄽 - search vim command history by `:FzfHistory:`.
+- `<space>gr` 🄽 - search text by `:FzfRg` or `:Clap grep2`.
+- `<space>l` 🄽 - search lines on opened buffers by `:FzfLines` or `:Clap lines`.
+- `<space>t` 🄽 - search tags by `:FzfTags` or `:Clap tags`.
+- `<space>y` 🄽 - search yank history by `:CocFzfList yank` or `:Clap yanks`, Notice yank search in fzf.vim is implemented by coc-fzf.
+- `<space>sh` 🄽 - search search history by `:FzfHistory/` or `:Clap search_history`.
+- `<space>ch` 🄽 - search vim command history by `:FzfHistory:` or `:Clap command_history`.
 
 #### File Search
 
 Implement by fzf.vim.
 
-- `<space>f`/`<c-p>` 🄽 - search files by `:FzfFiles`.
-- `<space>b` 🄽 - search opened buffers by `:FzfBuffers`.
-- `<space>hf` 🄽 - search history files (v:oldfiles) and opened buffers by `:FzfHistory`.
+- `<space>f`/`<c-p>` 🄽 - search files by `:FzfFiles` or `:Clap files`.
+- `<space>b` 🄽 - search opened buffers by `:FzfBuffers` or `:Clap buffers`.
+- `<space>hf` 🄽 - search history files (v:oldfiles) and opened buffers by `:FzfHistory` or `:Clap history`.
 
 #### Git Search
 
 Implement by fzf.vim.
 
-- `<space>gc` 🄽 - search git commits by `:FzfCommits`.
-- `<space>gf` 🄽 - search git files rby `:FzfGFile`.
-- `<space>gs` 🄽 - search git status(also diff files by preview) by `:FzfGFiles?`.
+- `<space>gc` 🄽 - search git commits by `:FzfCommits` or `:Clap commits`.
+- `<space>gf` 🄽 - search git files rby `:FzfGFile` or `:Clap gfiles`.
+- `<space>gs` 🄽 - search git status(also diff files by preview) by `:FzfGFiles?` or `:Clap git_diff_files`.
 
 #### Other Search
 
-- `<space>mk` 🄽 - search marks by `:FzfMarks`.
-- `<space>mp` 🄽 - search normal mode vim key mappings by `:FzfMaps`.
-- `<space>vc` 🄽 - search vim commands by `:FzfCommands`.
-- `<space>ht` 🄽 - search help tags by `:FzfHelptags`.
+- `<space>mk` 🄽 - search marks by `:FzfMarks` or `:Clap marks`.
+- `<space>mp` 🄽 - search normal mode vim key mappings by `:FzfMaps` or `:Clap maps`.
+- `<space>vc` 🄽 - search vim commands by `:FzfCommands` or `:Clap command`.
+- `<space>ht` 🄽 - search help tags by `:FzfHelptags` or `:Clap help_tags`.
 
 #### Coc.nvim Search
 
 Key mappings are configured with prefix char `c` after `<space>`.
 
-- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`. Notice this will only work on NeoVIM, fallback to `:CocList symbols` on VIM.
-- `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics`.
-- `<space>co` 🄽 - search outline/tags by `:CocFzfList outline`.
-- `<space>cy` 🄽 - search coc-yank by `:CocFzfList yank`.
-- `<space>cc` 🄽 - search commands by `:CocFzfList commands`.
-- `<space>cl` 🄽 - search location by `:CocFzfList location`.
+- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols` or `:Clap coc_symbols`, Notice coc-fzf's symbols only work on NeoVIM, it fallback to `:CocList symbols` on VIM.
+- `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics` or `:Clap coc_diagnostics`.
+- `<space>co` 🄽 - search outline/tags by `:CocFzfList outline` or `:Clap coc_outline`.
+- `<space>cc` 🄽 - search commands by `:CocFzfList commands` or `:Clap coc_commands`.
+- `<space>cl` 🄽 - search location by `:CocFzfList location` or `:Clap coc_location`.
+
+#### Enhanced key mappings for vim-clap
+
+Since vim-clap provide more search sources, lin.vim also provide more key mappings for it (only when you enabled vim-clap key mappings).
+
+- `<space>j` 🄽 - search dumb jump locations by `:Clap dumb_jump`.
+- `<space>r` 🄽 - search files order by most recently used by `:Clap recent_files`.
+- `<space>gd` 🄽 - search git diff files by `:Clap git_diff_files`, same with `<space>gs`.
+- `<space>e` 🄽 - search lvy-like file explorer by `:Clap filer`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 

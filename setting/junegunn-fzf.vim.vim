@@ -20,8 +20,10 @@ nnoremap <silent> [fzf-p]l :FzfLines<CR>
 nnoremap <silent> [fzf-p]t :FzfTags<CR>
 " search search history
 nnoremap <silent> [fzf-p]sh :FzfHistory/<CR>
-" search yank history
+" search command history
 nnoremap <silent> [fzf-p]ch :FzfHistory:<CR>
+" search yank history
+nnoremap <silent> [fzf-p]y :CocFzfList yank<CR>
 
 " 2. files kinds of search
 
@@ -63,8 +65,6 @@ nnoremap <silent> [fzf-p]cs :CocFzfList symbols<CR>
 nnoremap <silent> [fzf-p]cd :CocFzfList diagnostics<CR>
 " search symbol outlines based on coc.nvim
 nnoremap <silent> [fzf-p]co :CocFzfList outline<CR>
-" search yank history based on coc-yank
-nnoremap <silent> [fzf-p]cy :CocFzfList yank<CR>
 " search commands based on coc.nvim
 nnoremap <silent> [fzf-p]cc :CocFzfList commands<CR>
 " search location based on coc.nvim

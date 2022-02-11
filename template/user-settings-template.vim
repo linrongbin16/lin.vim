@@ -99,9 +99,16 @@ autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth
 set colorcolumn=120
 
 " 10. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-lists', 'coc-yank', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
-" 11. other stuffs
+" 11. search engine key mappings for fzf.vim or vim-clap
+" by default lin.vim provide key mappings only for fzf.vim
+" if you don't want key mappings for fzf.vim, please comment this line below
+source $HOME/.vim/setting/junegunn-fzf.vim.vim
+" if you want key mappings for vim-clap, please uncomment this line below
+" source $HOME/.vim/setting/liuchengxu-vim-clap.vim
+
+" 12. other stuffs
 
 " auto-pairs config
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}
