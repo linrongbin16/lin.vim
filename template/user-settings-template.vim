@@ -24,9 +24,10 @@ nmap <S-F6> <Plug>(coc-rename)
 " open markdown preview
 nmap <F7> :MarkdownPreview<CR>
 " next color
-nmap <F8> :call NextColor()<CR>
-" open/close buffer explorer
+nmap <F8> :call NextRandomColor()<CR>
+" open buffer explorer
 nnoremap <silent> <F10> :BufExplorer<CR>
+" close buffer explorer if it's opened
 nnoremap <silent> <S-F10> :ToggleBufExplorer<CR>
 
 
@@ -102,10 +103,11 @@ set colorcolumn=120
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
 " 11. search engine key mappings for fzf.vim or vim-clap
-" by default lin.vim provide key mappings only for fzf.vim
-" if you don't want key mappings for fzf.vim, please comment this line below
+" by default key mappings are provided only for fzf.vim
+
+" if you want to disable key mappings for fzf.vim, please comment this line below
 source $HOME/.vim/setting/junegunn-fzf.vim.vim
-" if you want key mappings for vim-clap, please uncomment this line below
+" if you want to enable key mappings for vim-clap, please uncomment this line below
 " source $HOME/.vim/setting/liuchengxu-vim-clap.vim
 
 " 12. other stuffs

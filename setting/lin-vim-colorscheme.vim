@@ -4,7 +4,7 @@ let s:term_color_scheme=['molokai', 'monokai', 'dracula', 'neodark', 'srcery', '
 
 set background=dark
 
-function NextColor()
+function NextRandomColor()
     try
         if has("gui_running")
             let idx = localtime() % len(s:gui_color_scheme)
@@ -19,4 +19,4 @@ function NextColor()
     endtry
 endfunction
 
-call NextColor()
+call NextRandomColor()
