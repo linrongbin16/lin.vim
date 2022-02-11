@@ -296,7 +296,11 @@ def vgit_proxy(proxy, args, debug):
 @click.argument("args", nargs=-1)
 def vgit(branch, pull, push, force, discard, reset, revert, proxy, debug,
          args):
-    """Dummy user interface for git"""
+    """
+Dummy user interface for git
+
+Example:
+    """
     if debug:
         print(f"args:{args}, type:{type(args)}")
     if branch:

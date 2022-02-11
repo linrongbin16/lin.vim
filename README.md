@@ -45,17 +45,17 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ## Introduction
 
-lin.vim is aimed to out of box, IDE-like editing features, after high performance, light weight and friendly to most (Neo)VIM users.
+lin.vim is aimed to out of box, IDE-like editing features, high performance, light weight and friendly to most (Neo)VIM users.
 
 lin.vim is focused on and only on editing, it doesn't compiling/packaging/debugging projects, not a tutorial for new (Neo)VIM users neither.
 
 lin.vim solved such issues:
 
 - Solved the difficulty of choosing/grouping/configuring plugins, a list of plugins are embeded and well configured which meets most needs.
-- Solved the difficulty of repeatly installing vim on different OS and machines, installation are been made easy by one shell command (not on Windows for now).
-- Solved the performance/feature/looking issue on naive (neo)vim, only carefully chosen plugins are installed by default, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons try to make you happy working.
-- Command line utilities implemented by python3 for easier daily working.
-- Wiki for everything so nothing confused you.
+- Solved the difficulty of repeatable install work on different OS and machines, installation has been made easier by one line command (not on Windows for now).
+- Solved the performance/feature/UI-looking issue on (Neo)VIM, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
+- Solved the repeatable daily shell command line work by offering a set of command line utilities implemented by python3, include vfile/vgit/vgp/vencode/vip/vpack/vtime/vconf/etc.
+- Detailed wiki for almost everything so nothing been confused.
 - Customization ability for special needs.
 
 ### Screenshots
@@ -86,14 +86,44 @@ lin.vim solved such issues:
 
 ### Feature
 
-- Automatically installation.
-- Running on multiple platforms: Windows, macOS and Linux(Ubuntu/Debian/Fedora/Manjaro).
+- Automatically installation (not on windows for now).
+- Works on multiple OS platforms:
+  - Windows
+  - macOS
+  - Linux(Ubuntu/Debian/Fedora/Manjaro)
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/).
-- Modern UI such as file explorer, pretty icons, Plentiful randomly selected color schemes on start, opened buffers, file status line, outline/tags, etc.
-- Code complete, lint/diagnostic, format, symbol jumps, codeLens/codeActions, highlight for most programming languages by [coc.nvim](https://github.com/neoclide/coc.nvim) and [TabNine](https://www.tabnine.com/)(by using coc-tabnine, please login if you want full power of it), embeded C/C++/Python3/Rust language servers.
-- Search engine contains two backends: [fzf.vim](https://github.com/junegunn/fzf.vim) and [vim-clap](https://github.com/liuchengxu/vim-clap), it supprot text search such as text/lines/tags/search-histories/command-histories, file search such as files/buffers, git search such as commits/changes, coc.nvim integrated search such as symbols/outline/diagnostics/coc-yank, etc. Both `:Fzf` and `:Clap` are enabled, but key mappings are provide for fzf.vim as default.
-- Command line utilities implemented by python3, working with git, text search, encoding/decoding, file operation, compression/extraction, datetime calculation, ip calculation, etc.
-- Use [zsh](https://www.zsh.org/) for macOS/Linux with pretty prompt.
+- Modern editor UI features:
+  - File explorer
+  - Buffers explorer
+  - Pretty icons
+  - Best color schemes collected and randomly selected on (Neo)VIM start
+  - Status line
+  - Outline/Tags
+- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), C/C++/Python3/Rust language servers are embeded by default:
+  - Code complete
+  - (Optional) AI complete (login to [TabNine](https://www.tabnine.com/) to enable)
+  - Diagnostic
+  - Lint
+  - Code format
+  - Jump between symbols
+  - Code Lens
+  - Code Actions
+- Search engine features supported by [fzf.vim](https://github.com/junegunn/fzf.vim). [vim-clap](https://github.com/liuchengxu/vim-clap) is also installed, both `:Fzf` and `:Clap` are available, but key mappings are only provide for fzf.vim by default:
+  - Text search on text/lines/tags/search-histories/command-histories/yank-histories
+  - File search on files/buffers/history-files
+  - Git search on commits/uncommit-changes
+  - Coc.nvim integrated search on symbols/outline/diagnostics/yank
+  - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags
+- Command line utilities works on multiple OS platforms, implemented by python3 for easier daily work:
+  - vgit: better git operations, no need to remember tons of options, better interactive UI for user
+  - vgp: better text searches implement by ripgrep, no need to remember tons of options, easier management on `~/.ignore` files
+  - vfile: better file operations(delete/content-replace/encoding-convert)
+  - vip: easier IPv4 IPv6 address validator and translation with integer
+  - vencode: easier Base64/URL encoder/decoder
+  - vconf: easier configuration for generate `compile_commands.json`/`compile_flags.txt` for clangd, ssh-keys, faster china mirrors for homebrew/npm/pip3/ubuntu/debian/fedora/manjaro
+  - vpack: earier compression/extraction, no need to remember tons of options on tar/zip/7z
+  - vtime: earier translation with seconds/milliseconds integer and local/UTC timezone, no need to remember tons of options
+- Use [zsh](https://www.zsh.org/) for macOS/Linux with pretty colorscheme, and also a `~/.linvimrc` is installed for environment variable management.
 - Custom configuration.
 
 ### Project Structure
@@ -114,7 +144,7 @@ lin.vim solved such issues:
 
 ### Requirements
 
-lin.vim needs at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not supproted), Nodejs 10.12+. Its installation has been tested on these platforms:
+lin.vim needs at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not supported), Nodejs 10.12+. Its installation has been tested on these platforms:
 
 - MacOS Catalina 10.15.7 with Macvim 8.2, python 3.9+, node v15.x+
 - Windows 10 with Vim 8.2, python 3.8+, node v15+
@@ -416,43 +446,47 @@ Please custom your own settings in **_user-settings.vim_** and **_coc-settings.j
 
 ### Command Line Utility (vcmd)
 
-A bunch of command line utilities are implemented by python3 to speed up your edit and development, named **_vcmd_**.
-**_vcmd_** simplifies common operations in most scenarios of developing and editing, include:
-
-- `vencode`: Encode/decode text strings.
-- `vfile`: File operations such as a) delete files with a specified filetype, b) replace content in files with a specified filetype, c) list files with a specified filetype, d) detect and convert file encodings with a specified filetype.
-- `vconf`: Configure `compile_commands.json` for C/C++ language server clangd, generate ssh key for host, homebrew/python-pip/ubuntu/fedora/manjaro... mirrors to speed up, etc.
-- `vgit`: Git operations without the burden of time consuming remember.
-- `vip`: Ip address calculations for both ipv4 and ipv6.
-- `vpack`: Easier file/directory compression and extraction.
-- `vgp`: Fast text searcher.
-- `vtime`: Easier time calculations.
-
-For better understanding and use, help document is supported for all commands, contains command functionality, options and examples.
-Here's an example of `vencode`:
+A bunch of command line utilities (named **_vcmd_**) are implemented by python3 to speed up daily work.
+Here's an example:
 
 ```
-$ vencode --help
-Usage: vencode [OPTIONS] [ARGS]...
+$ vgit --help
+Usage: vgit [OPTIONS] [ARGS]...
 
-  Encode/decode text with algorithm
+  Dummy user interface for git
 
 Options:
-  -e, --encode [base64|url]  encode text with specified algorithm
-  -d, --decode [base64|url]  decode text with specified algorithm
-  --help                     Show this message and exit.
-
-Examples:
-  $ vencode -ebase64 'Hello World'
-  `Hello World` => `SGVsbG8gV29ybGQ=`
+  -b, --branch [local|remote|all|this|create|switch|delete]
+                                  branch operations, use
+                                  `local/remote/all/this` to display
+                                  local/remote/all branches, use
+                                  `create/move/delete` to create/switch/delete
+                                  with branches
+  -pl, --pull                     pull, use --force to pull force
+  -ps, --push                     push, use --force to push force
+  -f, --force                     pull/push force
+  -d, --discard                   discard local changes
+  --reset TEXT                    reset N previous commits(you need to push
+                                  force to override remote repository)
+  --revert TEXT                   revert N previous commits(use new commit
+                                  instead of push force)
+  -p, --proxy [add|switch|none|purge|show]
+                                  proxy configuration, use `add` to add new ip
+                                  proxy, use `switch` to switch between
+                                  different ip proxies, use `none` to disable
+                                  ip proxy, use `purge` to remove all
+                                  configured ip proxies(and disable currently
+                                  using ip proxy if exist), use `show` to
+                                  display configured ip proxies and currently
+                                  using ip proxy if exist
+  --debug                         debug mode
+  --help                          Show this message and exit.
 ```
 
-Please try `--help` for more details.
+Please try `--help` on **_vcmd_** commands for more usage.
 
 ## Contribute
 
 Please open issue/PR for anything about lin.vim.
 
-Like lin.vim? Consider
-
-<a href="https://www.buymeacoffee.com/linrongbin16" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+Like lin.vim? Consider <a href="https://www.buymeacoffee.com/linrongbin16" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
