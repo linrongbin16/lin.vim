@@ -68,7 +68,10 @@ def vgit_push(force, debug):
     repo = util.get_git_remote_repository()
     branch = util.get_git_remote_branch()
     comment = input("[vcmd] enter comment: ")
-    comment = f"[vcmd] git push at {(datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')) if util.str_empty(comment) else comment}"
+    if util.str_empty(comment):
+        comment = f"[vcmd] git push at {(datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S'))}"
+    else:
+        comment = f"[vcmd] git push with {comment.strip()}"
     util.check_user_confirm(
         f"[vcmd] git push to {repo}/{branch} with '{comment}', yes? ")
     os.chdir(util.get_git_root())
@@ -297,9 +300,30 @@ def vgit_proxy(proxy, args, debug):
 def vgit(branch, pull, push, force, discard, reset, revert, proxy, debug,
          args):
     """
-Dummy user interface for git
+Dummy UI for git
 
 Example:
+
+\b
+```
+$ vgit -ps
+[vcmd] choose remote repository 'origin'[0] (by default 0):
+[vcmd] choose branch (by default master):
+[vcmd] enter comment: test vgit -ps
+[vcmd] git push to origin/master with '[vcmd] git push at test vgit -ps', yes? Y
+[master 0995109] [vcmd] git push at test vgit -ps
+ 2 files changed, 80 insertions(+), 42 deletions(-)
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 2.21 KiB | 1.10 MiB/s, done.
+Total 5 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To https://github.com/linrongbin16/lin.vim
+   9ff7a14..0995109  master -> master
+```
+
     """
     if debug:
         print(f"args:{args}, type:{type(args)}")

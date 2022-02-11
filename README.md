@@ -453,7 +453,26 @@ Here's an example:
 $ vgit --help
 Usage: vgit [OPTIONS] [ARGS]...
 
-  Dummy user interface for git
+  Dummy UI for git
+
+  Example:
+
+  $ vgit -ps
+  [vcmd] choose remote repository 'origin'[0] (by default 0):
+  [vcmd] choose branch (by default master):
+  [vcmd] enter comment: test vgit -ps
+  [vcmd] git push to origin/master with '[vcmd] git push at test vgit -ps', yes? Y
+  [master 0995109] [vcmd] git push at test vgit -ps
+   2 files changed, 80 insertions(+), 42 deletions(-)
+  Enumerating objects: 9, done.
+  Counting objects: 100% (9/9), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (5/5), done.
+  Writing objects: 100% (5/5), 2.21 KiB | 1.10 MiB/s, done.
+  Total 5 (delta 4), reused 0 (delta 0)
+  remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+  To https://github.com/linrongbin16/lin.vim
+     9ff7a14..0995109  master -> master
 
 Options:
   -b, --branch [local|remote|all|this|create|switch|delete]
@@ -489,4 +508,6 @@ Please try `--help` on **_vcmd_** commands for more usage.
 
 Please open issue/PR for anything about lin.vim.
 
-Like lin.vim? Consider <a href="https://www.buymeacoffee.com/linrongbin16" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+Like lin.vim? Consider
+
+<a href="https://www.buymeacoffee.com/linrongbin16" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
