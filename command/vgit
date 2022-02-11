@@ -278,14 +278,14 @@ def vgit_proxy(proxy, args, debug):
 @click.option("-d", "--discard", is_flag=True, help="discard local changes")
 @click.option(
     "--reset",
-    type=str,
+    type=int,
     required=False,
     help=
     "reset N previous commits(you need to push force to override remote repository)",
 )
 @click.option(
     "--revert",
-    type=str,
+    type=int,
     required=False,
     help="revert N previous commits(use new commit instead of push force)")
 @click.option(
@@ -338,15 +338,15 @@ To https://github.com/linrongbin16/lin.vim
         elif discard:
             vgit_discard(debug)
         elif reset:
-            if len(args) != 1:
-                print("[vcmd] please provide N")
+            if reset < 1:
+                print(f"[vcmd] invalid N:{reset}")
                 return
-            vgit_reset(int(args[0]))
+            vgit_reset(reset)
         elif revert:
-            if len(args) != 1:
-                print("[vcmd] N please provide N")
+            if revert < 1:
+                print(f"[vcmd] invalid N:{revert}")
                 return
-            vgit_revert(int(args[0]))
+            vgit_revert(revert)
         else:
             print(
                 "[vcmd] unknown option, please try `vgit --help` for more information"
