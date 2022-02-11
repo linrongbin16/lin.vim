@@ -127,13 +127,17 @@ def sub_cli_clangd(debug):
     if util.is_windows() or not os.path.exists("CMakeLists.txt"):
         if debug:
             if util.is_windows():
-                print("Windows Platform, generate `compile_flags.txt`")
+                print(
+                    "[vcmd] Windows Platform, generating `compile_flags.txt` ..."
+                )
             elif not os.path.exists("CMakeLists.txt"):
-                print("CMakeLists.txt missing, generate `compile_flags.txt`")
+                print(
+                    "[vcmd] CMakeLists.txt missing, generating `compile_flags.txt` ..."
+                )
         compile_flags(debug)
     else:
         print(
-            "Non-Windows Platform and CMakeLists.txt exist, generate `compile_commands.json`"
+            "[vcmd] Non-Windows Platform and CMakeLists.txt exist, generate `compile_commands.json` ..."
         )
         compile_commands(debug)
 
@@ -298,7 +302,37 @@ def sub_cli_mirror(mirror, debug):
               help="configure mirror")
 @click.option("--debug", is_flag=True, help="debug mode")
 def vconf(clangd, sshkey, mirror, debug):
-    """Configure tool for system"""
+    """
+Configure tool for system
+
+Example:
+
+\b
+```
+$ vconf -c
+[vcmd] Non-Windows Platform and CMakeLists.txt exist, generate `compile_commands.json` ...
+-- The CXX compiler identification is AppleClang 12.0.0.12000032
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMAKE_BUILD_TYPE:
+-- Found PkgConfig: /usr/local/bin/pkg-config (found version "0.29.2")
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Found Python: /usr/local/Frameworks/Python.framework/Versions/3.9/bin/python3.9 (found version "3.9.10") found components: Interpreter Development Development.Module Development.Embed
+-- Checking for module 'jemalloc'
+--   Found jemalloc, version 5.2.1_0
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/linrongbin16/workspace/github/hello-cpp/.vconf.1644556264.228266
+[vcmd] generate `compile_commands.json`
+```
+    """
     if debug:
         print(f"clangd:{clangd}, sshkey:{sshkey}, mirror:{mirror}")
     if clangd:

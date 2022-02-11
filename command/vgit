@@ -323,7 +323,6 @@ remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
 To https://github.com/linrongbin16/lin.vim
    9ff7a14..0995109  master -> master
 ```
-
     """
     if debug:
         print(f"args:{args}, type:{type(args)}")
