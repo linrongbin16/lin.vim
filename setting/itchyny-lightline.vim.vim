@@ -72,4 +72,4 @@ function! LightlineFunctionName() abort
 endfunction
 
 " update coc status when it's changed
-autocmd User CocDiagnosticChange call lightline#update()
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
