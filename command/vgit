@@ -300,7 +300,7 @@ def vgit_proxy(proxy, args, debug):
 def vgit(branch, pull, push, force, discard, reset, revert, proxy, debug,
          args):
     """
-Dummy UI for git
+Dummy UI for git with global .gitconfig http(s) proxy management
 
 Example:
 

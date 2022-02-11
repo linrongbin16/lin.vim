@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
-# Copyright 2018-  <linrongbin16@gmail.com>
+# Copyright 2018-  <linrongbin16@outlook.com>
 
 import sys
 import os
@@ -67,7 +67,25 @@ def vgp_config(config, args, debug):
 @click.argument("args", nargs=-1)
 def vgp(count, word, zip_file, ignore_case, smart_case, sort, depth, config,
         debug, args):
-    """Line-oriented search tool recursively search pattern in current directory"""
+    """
+Dummy wrapper for rg(ripgrep) with .ignore management
+
+Example:
+
+\b
+```
+$ vgp -d 2 --sort modified -w -c lin
+install/fedora.sh:1
+install/ubuntu.sh:2
+install.ps1:5
+template/linvimrc-template.sh:1
+template/user-settings-template.vim:3
+install.sh:7
+lin.vim:3
+README.md:22
+command/vgit:1
+```
+    """
     if debug:
         print(f"args:{args}, type:{type(args)}")
     if config:
