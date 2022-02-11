@@ -101,7 +101,7 @@ lin.vim solved such issues:
   - Outline/Tags
 - IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), C/C++/Python3/Rust language servers are embeded by default:
   - Code complete
-  - (Optional) AI complete (login to [TabNine](https://www.tabnine.com/) to enable)
+  - (Optional) AI complete (by [TabNine](https://www.tabnine.com/))
   - Diagnostic
   - Lint
   - Code format
@@ -281,6 +281,8 @@ Buffers can be switched/closed by key mappings:
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
 ### IDE-like Editing Features
+
+The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a try(also it eats lots of memory), type `:CocCommand tabnine.openHub` to login and enable after installation.
 
 #### Code Complete (by coc.nvim)
 
