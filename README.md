@@ -514,6 +514,6 @@ Like lin.vim? Consider
 
 Or
 
-![wechat-pay.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/wechat-pay.jpg)
+![wechat-pay.jpeg](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/wechat-pay.jpeg)
 
-![alipay.jpg](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/alipay.jpg)
+![alipay.jpeg](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/alipay.jpeg)
