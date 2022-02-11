@@ -60,7 +60,7 @@ rustup component add rust-analysis
 sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 
 # install nodejs npm packages
-sudo npm install -g yarn prettier
+sudo npm install -g yarn prettier neovim
 
 # install hack font
 if [ $(uname) == "Darwin" ]; then

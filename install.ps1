@@ -12,7 +12,7 @@ rustup component add rust-analysis
 pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 
 # Install nodejs npm packages
-npm install -g yarn prettier
+npm install -g yarn prettier neovim
 
 # Install gui fonts
 New-Item -ItemType Directory -Force -Path $env:UserProfile\.vim\guifonts
