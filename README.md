@@ -17,7 +17,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Hot Key](#hot-key)
   - [UI](#ui)
     - [File Explorer](#file-explorer)
-    - [Opened Buffers](#opened-buffers)
+    - [Buffers/Tabs](#buffers-tabs)
   - [IDE-like Editing Features](#ide-like-editing-features)
     - [Code Complete](#code-complete-by-coc-nvim)
     - [Jumps](#jumps-by-coc-nvim)
@@ -271,14 +271,28 @@ File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim
 
 Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) fore more key mappings.
 
-#### Opened Buffers
+#### Buffers/Tabs
 
-Buffers can be switched/closed by key mappings:
+Buffers/tabs can be switched/closed by key mappings:
 
 - `<leader>bn`/`<c-tab>` 🄽 - go to next buffer.
 - `<leader>bp`/`<c-s-tab>` 🄽 - go to previous buffer.
 - `<leader>bd` 🄽 - close current buffer.
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
+
+Ctrl-1 ~ Ctrl-9 are mapped to navigate 1~9 tabs, Ctrl-0 are mapped to navigate to the last tab.
+On macOS Command-1 ~ Command~9 and Command-0 are mapped as well.
+
+- `<C-1>`(`<D-1>`) - go to tab-1
+- `<C-2>`(`<D-2>`) - go to tab-2
+- `<C-3>`(`<D-3>`) - go to tab-3
+- `<C-4>`(`<D-4>`) - go to tab-4
+- `<C-5>`(`<D-5>`) - go to tab-5
+- `<C-6>`(`<D-6>`) - go to tab-6
+- `<C-7>`(`<D-7>`) - go to tab-7
+- `<C-8>`(`<D-8>`) - go to tab-8
+- `<C-9>`(`<D-9>`) - go to tab-9
+- `<C-0>`(`<D-0>`) - go to the last tab
 
 ### IDE-like Editing Features
 
