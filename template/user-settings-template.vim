@@ -43,10 +43,10 @@ nnoremap <Leader>p :r ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 
 " go to next buffer
 nmap <Leader>bn :bn<cr>
-nmap <C-Tab> :bn<cr>
+nmap <Leader><Tab> :bn<cr>
 " go to previous buffer
 nmap <Leader>bp :bp<cr>
-nmap <C-S-Tab> :bn<cr>
+nmap <Leader><S-Tab> :bn<cr>
 " close current buffer
 nmap <Leader>bd :bd<cr>
 

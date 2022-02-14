@@ -95,7 +95,7 @@ lin.vim solved such issues:
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim is recommended since it has a better performance since 0.5+.
 - Modern editor UI features:
   - File explorer
-  - Buffers explorer
+  - Buffers/tabs explorer
   - Pretty icons
   - Best color schemes collected and randomly selected on (Neo)VIM start
   - Status line
@@ -276,8 +276,8 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 Buffers/tabs can be switched/closed by key mappings:
 
-- `<leader>bn`/`<c-tab>` 🄽 - go to next buffer.
-- `<leader>bp`/`<c-s-tab>` 🄽 - go to previous buffer.
+- `<leader>bn`/`<leader><tab>` 🄽 - go to next buffer.
+- `<leader>bp`/`<leader><s-tab>` 🄽 - go to previous buffer.
 - `<leader>bd` 🄽 - close current buffer.
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
