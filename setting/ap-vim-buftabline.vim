@@ -13,9 +13,7 @@ nmap <D-6> <Plug>BufTabLine.Go(6)
 nmap <D-7> <Plug>BufTabLine.Go(7)
 nmap <D-8> <Plug>BufTabLine.Go(8)
 nmap <D-9> <Plug>BufTabLine.Go(9)
-" nmap <D-0> <Plug>BufTabLine.Go(10)
-" go to the last buffer
-nmap <D-0> <Plug>BufTabLine.Go(-1)
+nmap <D-0> <Plug>BufTabLine.Go(10)
 
 " for other OS alt-key
 nmap <A-1> <Plug>BufTabLine.Go(1)
@@ -27,7 +25,4 @@ nmap <A-6> <Plug>BufTabLine.Go(6)
 nmap <A-7> <Plug>BufTabLine.Go(7)
 nmap <A-8> <Plug>BufTabLine.Go(8)
 nmap <A-9> <Plug>BufTabLine.Go(9)
-" nmap <A-0> <Plug>BufTabLine.Go(10)
-" go to the last buffer
-nmap <A-0> <Plug>BufTabLine.Go(-1)
-
+nmap <A-0> <Plug>BufTabLine.Go(10)

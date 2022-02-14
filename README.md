@@ -274,7 +274,7 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 #### Buffers/Tabs
 
-Buffers/tabs can be switched/closed by key mappings:
+Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet), you could switch/close them by key mappings:
 
 - `<leader>bn`/`<leader><tab>` 🄽 - go to next buffer.
 - `<leader>bp`/`<leader><s-tab>` 🄽 - go to previous buffer.
@@ -293,7 +293,7 @@ For macOS, Command-1 ~ Command~9 and Command-0 are configured for the same thing
 - `<A-7>`(`<D-7>`) 🄽 - go to tab-7
 - `<A-8>`(`<D-8>`) 🄽 - go to tab-8
 - `<A-9>`(`<D-9>`) 🄽 - go to tab-9
-- `<A-0>`(`<D-0>`) 🄽 - go to the last tab
+- `<A-0>`(`<D-0>`) 🄽 - go to tab-10
 
 ### IDE-like Editing Features
 

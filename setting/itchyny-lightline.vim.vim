@@ -1,4 +1,6 @@
-" use vim-buftabline for buffer
+" use vim-buftabline or vim-buffet for tabline
+" only enable statusline
+
 let g:lightline = {
   \ 'active': {
       \ 'left': [ ['mode', 'paste'],
@@ -15,7 +17,11 @@ let g:lightline = {
   \   'git_status'        : 'LightlineGitStatus',
   \   'current_function'  : 'LightlineFunctionName',
   \   'coc_status'        : 'LightlineCocStatus',
-  \ }
+  \ },
+  \ 'enable': {
+  \   'statusline': 1,
+  \   'tabline': 0
+  \   }
   \ }
 
 function! LightLineFileName() abort

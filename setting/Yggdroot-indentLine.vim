@@ -6,4 +6,3 @@ autocmd Filetype markdown let g:indentLine_enabled = 0
 
 " disable indentline for coc-explorer
 let g:indentLine_fileTypeExclude = ['coc-explorer', 'json', 'markdown']
-

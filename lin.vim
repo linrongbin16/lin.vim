@@ -16,8 +16,9 @@ source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/itchyny-lightline.vim.vim
 source $HOME/.vim/setting/liuchengxu-vista.vim.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
-source $HOME/.vim/setting/ap-vim-buftabline.vim
 source $HOME/.vim/setting/inkarkat-vim-mark.vim
+" source $HOME/.vim/setting/ap-vim-buftabline.vim
+source $HOME/.vim/setting/bagrat-vim-buffet.vim
 
 " Language
 source $HOME/.vim/setting/neoclide-coc.nvim.vim
