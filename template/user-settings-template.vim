@@ -113,4 +113,4 @@ source $HOME/.vim/setting/junegunn-fzf.vim.vim
 " 12. other stuffs
 
 " auto-pairs config
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}
+let g:AutoPairs = {'[':']', '{':'}', "'":"'", '"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}
