@@ -21,6 +21,8 @@ nmap <D-7> <Plug>BuffetSwitch(7)
 nmap <D-8> <Plug>BuffetSwitch(8)
 nmap <D-9> <Plug>BuffetSwitch(9)
 nmap <D-0> <Plug>BuffetSwitch(10)
+nmap <D-Left> :bp<CR>
+nmap <D-Right> :bn<CR>
 
 " for other OS alt-key
 nmap <A-1> <Plug>BuffetSwitch(1)
@@ -33,3 +35,5 @@ nmap <A-7> <Plug>BuffetSwitch(7)
 nmap <A-8> <Plug>BuffetSwitch(8)
 nmap <A-9> <Plug>BuffetSwitch(9)
 nmap <A-0> <Plug>BuffetSwitch(10)
+nmap <A-Left> :bp<CR>
+nmap <A-Right> :bn<CR>
