@@ -284,16 +284,16 @@ Buffers/tabs can be switched/closed by key mappings:
 Alt-1 ~ Alt-9 are mapped to navigate 1~9 tabs, Alt-0 are mapped to navigate to the last tab.
 For macOS, Command-1 ~ Command~9 and Command-0 are configured for the same thing.
 
-- `<M-1>`(`<D-1>`) 🄽 - go to tab-1
-- `<M-2>`(`<D-2>`) 🄽 - go to tab-2
-- `<M-3>`(`<D-3>`) 🄽 - go to tab-3
-- `<M-4>`(`<D-4>`) 🄽 - go to tab-4
-- `<M-5>`(`<D-5>`) 🄽 - go to tab-5
-- `<M-6>`(`<D-6>`) 🄽 - go to tab-6
-- `<M-7>`(`<D-7>`) 🄽 - go to tab-7
-- `<M-8>`(`<D-8>`) 🄽 - go to tab-8
-- `<M-9>`(`<D-9>`) 🄽 - go to tab-9
-- `<M-0>`(`<D-0>`) 🄽 - go to the last tab
+- `<A-1>`(`<D-1>`) 🄽 - go to tab-1
+- `<A-2>`(`<D-2>`) 🄽 - go to tab-2
+- `<A-3>`(`<D-3>`) 🄽 - go to tab-3
+- `<A-4>`(`<D-4>`) 🄽 - go to tab-4
+- `<A-5>`(`<D-5>`) 🄽 - go to tab-5
+- `<A-6>`(`<D-6>`) 🄽 - go to tab-6
+- `<A-7>`(`<D-7>`) 🄽 - go to tab-7
+- `<A-8>`(`<D-8>`) 🄽 - go to tab-8
+- `<A-9>`(`<D-9>`) 🄽 - go to tab-9
+- `<A-0>`(`<D-0>`) 🄽 - go to the last tab
 
 ### IDE-like Editing Features
 
@@ -307,8 +307,8 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 
 #### Jumps (by coc.nvim)
 
-- `[g` 🄽 - go to previous diagnostic location.
-- `]g` 🄽 - go to next diagnostic location.
+- `[d` 🄽 - go to previous diagnostic location.
+- `]d` 🄽 - go to next diagnostic location.
 - `gd` 🄽 - go to definition.
 - `gy` 🄽 - go to type(function) definition.
 - `gi` 🄽 - go to implemention.
