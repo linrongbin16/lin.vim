@@ -27,6 +27,7 @@ Write-Host "[lin.vim] Warning: Please manually install hack nerd font."
 Copy-Item $env:UserProfile\.vim\template\vim-plug-template.vim -Destination $env:UserProfile\.vim\vim-plug.vim
 Copy-Item $env:UserProfile\.vim\template\user-settings-template.vim -Destination $env:UserProfile\.vim\user-settings.vim
 Copy-Item $env:UserProfile\.vim\template\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
+Copy-Item $env:UserProfile\.vim\template\ginit-template.json -Destination $env:UserProfile\.vim\ginit.vim
 
 # Install _vimrc file
 If (Test-Path $env:UserProfile\_vimrc) {

@@ -18,6 +18,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-mark'
 Plug 'RRethy/vim-illuminate'
 " this plugin need golang
 if has('make')
