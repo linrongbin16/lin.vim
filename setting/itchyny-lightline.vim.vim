@@ -1,6 +1,5 @@
 " use vim-buftabline or vim-buffet for tabline
 " only enable statusline
-
 let g:lightline = {
   \ 'active': {
       \ 'left': [ ['mode', 'paste'],
@@ -11,6 +10,7 @@ let g:lightline = {
   \ },
   \ 'component': {
   \   'charvaluehex': '0x%B',
+  \   'lineinfo': ' %4l:%-3v',
   \ },
   \ 'component_function': {
   \   'filename'          : 'LightLineFileName',
@@ -18,6 +18,8 @@ let g:lightline = {
   \   'current_function'  : 'LightlineFunctionName',
   \   'coc_status'        : 'LightlineCocStatus',
   \ },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' },
   \ 'enable': {
   \   'statusline': 1,
   \   'tabline': 0
