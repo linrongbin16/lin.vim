@@ -14,7 +14,10 @@ function! s:fern_settings() abort
   nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
   nmap <silent> <buffer> <expr> <Plug>(fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
   nmap <silent> <buffer> q <Plug>(fern-quit-or-close-preview)
-endfunction
+
+  " disable line number on fern explorer for better UI looking
+  set nonumber
+  endfunction
 
 augroup FernCustom
   autocmd!
