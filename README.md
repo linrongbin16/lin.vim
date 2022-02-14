@@ -38,6 +38,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Match Brackets and HTML Tags](#match-brackets-and-html-tags-by-vim-matchup)
     - [Auto Close Brackets and HTML Tags](#auto-close-brackets-and-html-tags-by-auto-pairs-and-vim-closetag)
     - [Easy Comment](#easy-comment-by-nerdcommenter)
+    - [Highlight(Mark) specific words](#highlight-mark-specific-words)
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
   - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
@@ -283,16 +284,16 @@ Buffers/tabs can be switched/closed by key mappings:
 Alt-1 ~ Alt-9 are mapped to navigate 1~9 tabs, Alt-0 are mapped to navigate to the last tab.
 For macOS, Command-1 ~ Command~9 and Command-0 are configured for the same thing.
 
-- `<M-1>`(`<D-1>`) - go to tab-1
-- `<M-2>`(`<D-2>`) - go to tab-2
-- `<M-3>`(`<D-3>`) - go to tab-3
-- `<M-4>`(`<D-4>`) - go to tab-4
-- `<M-5>`(`<D-5>`) - go to tab-5
-- `<M-6>`(`<D-6>`) - go to tab-6
-- `<M-7>`(`<D-7>`) - go to tab-7
-- `<M-8>`(`<D-8>`) - go to tab-8
-- `<M-9>`(`<D-9>`) - go to tab-9
-- `<M-0>`(`<D-0>`) - go to the last tab
+- `<M-1>`(`<D-1>`) 🄽 - go to tab-1
+- `<M-2>`(`<D-2>`) 🄽 - go to tab-2
+- `<M-3>`(`<D-3>`) 🄽 - go to tab-3
+- `<M-4>`(`<D-4>`) 🄽 - go to tab-4
+- `<M-5>`(`<D-5>`) 🄽 - go to tab-5
+- `<M-6>`(`<D-6>`) 🄽 - go to tab-6
+- `<M-7>`(`<D-7>`) 🄽 - go to tab-7
+- `<M-8>`(`<D-8>`) 🄽 - go to tab-8
+- `<M-9>`(`<D-9>`) 🄽 - go to tab-9
+- `<M-0>`(`<D-0>`) 🄽 - go to the last tab
 
 ### IDE-like Editing Features
 
@@ -403,8 +404,6 @@ You could configure these keys in **_user-settings.vim_**.
 - `vipga=` 🅅 - align visual-selected paragraph.
 - `gaip=` 🄽 - align inner paragraph.
 
-Please visit [easy-align](https://github.com/junegunn/vim-easy-align) for more usage.
-
 #### Easy Cursor Movement by [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 
 See [Fast cursor movement](#fast-cursor-movement).
@@ -416,31 +415,21 @@ See [Fast cursor movement](#fast-cursor-movement).
 - `<leader>j` 🄽 - go to forward line below cursor.
 - `<leader>k` 🄽 - go to backward line above cursor.
 
-Please visit [vim-easymotion](https://github.com/easymotion/vim-easymotion) for more usage.
-
 #### Fast Repeat by [vim-repeat](https://github.com/tpope/vim-repeat)
 
 Enhancement for `.` operation.
-
-Please visit [vim-repeat](https://github.com/tpope/vim-repeat) for more information.
 
 #### Fast Quotes Operation by [vim-surround](https://github.com/tpope/vim-surround)
 
 Enhancement for add/remove quotes operation.
 
-Please visit [vim-surround](https://github.com/tpope/vim-surround) for more information.
-
 #### Match Brackets and HTML Tags by [vim-matchup](https://github.com/andymass/vim-matchup)
 
 Enhancement for brackets(pairs) and html tags.
 
-Please visit [vim-matchup](https://github.com/andymass/vim-matchup) for more usage.
-
 #### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) and [vim-closetag](https://github.com/alvan/vim-closetag)
 
 Enhancement for auto close brackets(pairs) and html tags.
-
-Please visit [auto-pairs](https://github.com/jiangmiao/auto-pairs) and [vim-closetag](https://github.com/alvan/vim-closetag) for more usage.
 
 #### Easy Comment by [nerdcommenter](https://github.com/preservim/nerdcommenter)
 
@@ -450,7 +439,16 @@ The most popular key mappings are:
 - `<leader>cn` 🄽🅅 - comment current line or selected lines with force nesting.
 - `<leader>c<space>` 🄽🅅 - toggle current line or selected lines.
 
-Please visit [nerdcommenter](https://github.com/preservim/nerdcommenter) for more usage and configuration.
+Please visit nerdcommenter for more key mappings.
+
+#### Highlight/Mark words by [vim-mark](https://github.com/inkarkat/vim-mark) and [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
+
+Make a word or something highlight/marked could be quite useful in some cases:
+
+- `<leader>m` 🄽 - mark/clear a (marked) word under cursor.
+- `<leader>n` 🄽 - clear a mark under cursor.
+- `<leader>M` 🄽 - disable/enable all marks.
+- `<leader>N` 🄽 - clear all marks.
 
 ### Customization
 
