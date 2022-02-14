@@ -10,7 +10,7 @@ let g:lightline = {
   \ },
   \ 'component': {
   \   'charvaluehex': '0x%B',
-  \   'lineinfo': ' %4l:%-3v',
+  \   'lineinfo': ' %3l:%-2v',
   \ },
   \ 'component_function': {
   \   'filename'          : 'LightLineFileName',
