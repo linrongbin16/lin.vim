@@ -281,8 +281,8 @@ Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet),
 - `<leader>bd` 🄽 - close current buffer.
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
-Alt-1 ~ Alt-9 are mapped to navigate 1~9 tabs, Alt-0 are mapped to navigate to the last tab.
-For macOS, Command-1 ~ Command~9 and Command-0 are configured for the same thing.
+Alt-1 ~ Alt-9 are mapped to navigate 1 ~ 9 tabs, Alt-0 are mapped to navigate to the last tab.
+For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing.
 
 - `<A-1>`(`<D-1>`) 🄽 - go to tab-1
 - `<A-2>`(`<D-2>`) 🄽 - go to tab-2
@@ -294,6 +294,8 @@ For macOS, Command-1 ~ Command~9 and Command-0 are configured for the same thing
 - `<A-8>`(`<D-8>`) 🄽 - go to tab-8
 - `<A-9>`(`<D-9>`) 🄽 - go to tab-9
 - `<A-0>`(`<D-0>`) 🄽 - go to tab-10
+- `<A-Left>`(`<D-Left>`) 🄽 - go to previous tab
+- `<A-Right>`(`<D-Right>`) 🄽 - go to next tab
 
 ### IDE-like Editing Features
 
