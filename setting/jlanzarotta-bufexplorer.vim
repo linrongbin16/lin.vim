@@ -1,1 +1,1 @@
-g:bufExplorerDisableDefaultKeyMapping == 1
+let g:bufExplorerDisableDefaultKeyMapping=1
