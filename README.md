@@ -92,7 +92,7 @@ lin.vim solved such issues:
   - Windows
   - macOS
   - Linux(Ubuntu/Debian/Fedora/Manjaro)
-- Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim is recommended since it has a better performance since 0.5+.
+- Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.5+ is strongly recommended for better performance.
 - Modern editor UI features:
   - File explorer
   - Buffers/tabs explorer
