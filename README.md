@@ -406,16 +406,15 @@ You could configure these keys in **_user-settings.vim_**.
 - `vipga=` 🅅 - align visual-selected paragraph.
 - `gaip=` 🄽 - align inner paragraph.
 
-#### Easy Cursor Movement by [vim-easymotion](https://github.com/easymotion/vim-easymotion)
+#### Easy Cursor Movement
 
+Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion).
 See [Fast cursor movement](#fast-cursor-movement).
 
 - `<leader>f{char}` 🄽 - move to a single {char}.
 - `<leader>s{char}{char}` 🄽 - move to consequent two {char}{char}.
 - `<leader>w` 🄽 - move to word.
-- `<leader>L` 🄽 - move to specified line.
-- `<leader>j` 🄽 - go to forward line below cursor.
-- `<leader>k` 🄽 - go to backward line above cursor.
+- `<leader>l` 🄽 - move to line.
 
 #### Fast Repeat by [vim-repeat](https://github.com/tpope/vim-repeat)
 
