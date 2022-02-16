@@ -19,6 +19,7 @@ set noundofile
 set nobackup
 set noswapfile
 set nowritebackup
+set noshowmode
 
 " encoding
 
