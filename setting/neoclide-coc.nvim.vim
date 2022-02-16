@@ -73,7 +73,7 @@ nmap <leader>cs  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction)
 
 " use `<leader>cf` to apply auto-fix problem on the current line
-xmap <leader>cf  <Plug>(coc-fix-current)
+" xmap <leader>cf  <Plug>(coc-fix-current)
 
 " use `<leader>cl` to run codeLens on current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
+" nmap <leader>cl  <Plug>(coc-codelens-action)

@@ -322,8 +322,8 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 - `<leader>rs`/`<s-F6>` 🄽 - rename symbol.
 - `<leader>ca`/`<F5>` 🄽 - run code actions on current buffer.
 - `<leader>cs`/`<s-F5>` 🄽 - run code actions on selected code.
-- `<leader>cl` 🄽 - run code lens on current line.
-- `<leader>cf` 🄽 - apply quick fix on current line.
+  <!-- - `<leader>cl` 🄽 - run code lens on current line. -->
+  <!-- - `<leader>cf` 🄽 - apply quick fix on current line. -->
 
 ### Search
 
