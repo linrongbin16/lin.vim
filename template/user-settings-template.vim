@@ -93,7 +93,7 @@ let g:fern#drawer_width=40
 
 
 " 8. indent with 2 space for some languages
-autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType c,cpp,lua setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 " 9. Line length marker=120
@@ -104,10 +104,9 @@ let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists
 
 " 11. search engine key mappings for fzf.vim or vim-clap
 " by default key mappings are provided only for fzf.vim
-
-" if you want to disable key mappings for fzf.vim, please comment this line below
+" if you want to disable key mappings for fzf.vim, please comment below line
 source $HOME/.vim/setting/junegunn-fzf.vim.vim
-" if you want to enable key mappings for vim-clap, please uncomment this line below
+" if you want to enable key mappings for vim-clap, please uncomment below line
 " source $HOME/.vim/setting/liuchengxu-vim-clap.vim
 
 " 12. other stuffs

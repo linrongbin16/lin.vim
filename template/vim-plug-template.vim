@@ -15,7 +15,7 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'yuki-yano/fern-preview.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vista.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'inkarkat/vim-ingo-library'
@@ -26,6 +26,11 @@ if has('make')
     Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 else
     Plug 'RRethy/vim-hexokinase', {'do': 'git submodule init && git submodule update && cd hexokinase/ && go build'}
+endif
+if has('nvim-0.5')
+    Plug 'nvim-lualine/lualine.nvim'
+else
+    Plug 'itchyny/lightline.vim'
 endif
 
 " Color Theme
@@ -77,13 +82,16 @@ Plug 'zebradil/hive.vim'
 Plug 'neovimhaskell/haskell-vim'
 
 " Comment
-" Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdcommenter'
 
 " Keyboard Operation
-Plug 'tpope/vim-repeat'
-Plug 'easymotion/vim-easymotion'
+if has('nvim-0.5')
+    Plug 'phaazon/hop.nvim'
+else
+    Plug 'easymotion/vim-easymotion'
+endif
 Plug 'chaoren/vim-wordmotion'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'junegunn/vim-easy-align'
@@ -94,8 +102,6 @@ Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 
 " Markdown
-" Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
 
 call plug#end()

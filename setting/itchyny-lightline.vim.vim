@@ -2,7 +2,7 @@
 let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
-  \             ['readonly', 'filename', 'modified'],
+  \             ['LightLineFileName'],
   \             ['LightLineGitStatus', 'LightLineCurrentFunction', 'LightLineCocStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
@@ -13,9 +13,9 @@ let g:lightline = {
   \   'lineinfo': ' %3l:%-2v',
   \ },
   \ 'component_function': {
-  \   'LightLineGitStatus'          : 'LightLineGitStatus',
-  \   'LightLineCurrentFunction'    : 'LightLineCurrentFunction',
-  \   'LightLineCocStatus'          : 'LightLineCocStatus',
+  \   'LightLineFileName'   : 'LightLineFileName',
+  \   'LightLineGitStatus'  : 'LightLineGitStatus',
+  \   'LightLineCocStatus'  : 'LightLineCocStatus',
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -25,37 +25,38 @@ let g:lightline = {
   \   }
   \ }
 
-" integrate statusline with coc.nvim
+
+function! LightLineFileName() abort
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    if &modified
+        let filename = filename . '[+]'
+    endif
+    if &readonly
+        let filename = filename . '[-]'
+    endif
+    return filename
+endfunction
+
 function! LightLineCocStatus() abort
-  let coc_status = coc#status()
-  if empty(coc_status)
-    return ''
-  else
-    return coc_status
-  endif
+    let coc_status = coc#status()
+    if empty(coc_status)
+        return ''
+    else
+        return coc_status
+    endif
 endfunction
 
 " integrate statusline with git
 function! LightLineGitStatus() abort
     let git_branch = get(g:, 'coc_git_status', '')
     if empty(git_branch)
-      return ''
-    endif
-    let git_current_buffer_changes = get(b:, 'coc_git_status', '')
-    if empty(git_current_buffer_changes)
-      return git_branch
-    else
-      return git_branch . git_current_buffer_changes
-    endif
-endfunction
-
-" integrate vista nearest method/function
-function! LightLineCurrentFunction() abort
-    let function_name = get(b:,'coc_current_function','')
-    if empty(function_name)
         return ''
+    endif
+    let git_changes = get(b:, 'coc_git_status', '')
+    if empty(git_changes)
+        return git_branch
     else
-        return function_name
+        return git_branch . git_changes
     endif
 endfunction
 

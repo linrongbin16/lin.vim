@@ -27,6 +27,7 @@ Write-Host "[lin.vim] Warning: Please manually install hack nerd font."
 Copy-Item $env:UserProfile\.vim\template\vim-plug-template.vim -Destination $env:UserProfile\.vim\vim-plug.vim
 Copy-Item $env:UserProfile\.vim\template\user-settings-template.vim -Destination $env:UserProfile\.vim\user-settings.vim
 Copy-Item $env:UserProfile\.vim\template\coc-settings-template.json -Destination $env:UserProfile\.vim\coc-settings.json
+Copy-Item $env:UserProfile\.vim\template\ginit-template.vim -Destination $env:UserProfile\.vim\ginit.vim
 
 # Install _vimrc file
 If (Test-Path $env:UserProfile\_vimrc) {
@@ -47,3 +48,13 @@ cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.v
 
 # Install vim plugins
 gvim -c "PlugInstall" -c "qall"
+
+# Check if command exists
+function Check-Command($cmdname) {
+    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
+}
+
+# Install neovim plugins if nvim.exe exists
+if (Check-Command -cmdname 'nvim') {
+    nvim -c "PlugInstall" -c "qall"
+}

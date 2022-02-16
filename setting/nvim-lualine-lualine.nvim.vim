@@ -6,44 +6,25 @@ local function LuaLineGitStatus()
   if git_branch == nil or git_branch == '' then
     return ''
   end
-  return git_branch
-end
-local function LuaLineCurrentFunction()
-  local function_name = vim.b.coc_current_function
-  if function_name == nil or function_name == '' then
-    return ''
+  local git_changes = vim.b.coc_git_status
+  if git_changes == nil or git_changes == '' then
+    return git_branch
   else
-    return string.format('%s', function_name)
+    return string.format('%s%s', git_branch, git_changes)
   end
 end
 local function LuaLineCocStatus()
   local coc_status = vim.fn['coc#status']()
-  local coc_info = vim.b.coc_diagnostic_info
   if coc_status == nil or coc_status == '' then
-      return ''
+    return ''
+  else
+    return coc_status
   end
-  local i = 1
-  local msgs = {}
-  msgs[i] = coc_status
-  i = i + 1
-  if coc_info['error'] ~= nil and coc_info['error'] ~= nil and coc_info['error'] ~= '' then
-      msgs[i] = string.format('E%s', coc_info['error'])
-      i = i + 1
-  end
-  if coc_info['warning'] ~= nil and coc_info['warning'] ~= nil and coc_info['warning'] ~= '' then
-      msgs[i] = string.format('W%s', coc_info['warning'])
-      i = i + 1
-  end
-  if next(msgs) then
-      return ''
-  end
-  return table.concat(msgs, " ")
 end
 local function LuaLineCursorLocation()
   return ' %3l:%-2v'
 end
 local function LuaLineCharHexValue()
-  -- char hex value: 0x%B
   return '0x%B'
 end
 require('lualine').setup{
@@ -57,8 +38,8 @@ require('lualine').setup{
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'filename'},
-        lualine_c = { LuaLineGitStatus, LuaLineCurrentFunction, LuaLineCocStatus },
+        lualine_b = { 'filename' },
+        lualine_c = { LuaLineGitStatus, LuaLineCocStatus },
         lualine_x = { 'fileformat', 'encoding', 'filetype', LuaLineCharHexValue },
         lualine_y = { 'progress' },
         lualine_z = { LuaLineCursorLocation },
