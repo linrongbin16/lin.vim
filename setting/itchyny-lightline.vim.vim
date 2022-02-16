@@ -1,5 +1,4 @@
-" use vim-buftabline or vim-buffet for tabline
-" only enable statusline
+" only enable statusline, disable tabline
 let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
@@ -29,23 +28,10 @@ let g:lightline = {
 " integrate statusline with coc.nvim
 function! LightLineCocStatus() abort
   let coc_status = coc#status()
-  let coc_info = get(b:, 'coc_diagnostic_info', {})
-  if empty(coc_status) && empty(coc_info)
+  if empty(coc_status)
     return ''
-  endif
-
-  let msgs = []
-  call add(msgs, coc_status)
-  if get(coc_info, 'error', 0)
-    call add(msgs, 'E' . coc_info['error'])
-  endif
-  if get(coc_info, 'warning', 0)
-    call add(msgs, 'W' . coc_info['warning'])
-  endif
-  if empty(msgs)
-      return ''
   else
-      return join(msgs, ' ')
+    return coc_status
   endif
 endfunction
 
@@ -57,9 +43,9 @@ function! LightLineGitStatus() abort
     endif
     let git_current_buffer_changes = get(b:, 'coc_git_status', '')
     if empty(git_current_buffer_changes)
-      return printf('%s', git_branch)
+      return git_branch
     else
-      return printf('%s%s', git_branch, git_current_buffer_changes)
+      return git_branch . git_current_buffer_changes
     endif
 endfunction
 
@@ -69,7 +55,7 @@ function! LightLineCurrentFunction() abort
     if empty(function_name)
         return ''
     else
-        return printf('%s', function_name)
+        return function_name
     endif
 endfunction
 
