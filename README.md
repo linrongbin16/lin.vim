@@ -408,7 +408,7 @@ You could configure these keys in **_user-settings.vim_**.
 
 #### Easy Cursor Movement
 
-Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion).
+Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion), or [hop.nvim](https://github.com/phaazon/hop.nvim) in Neovim 0.5+.
 See [Fast cursor movement](#fast-cursor-movement).
 
 - `<leader>f{char}` 🄽 - move to a single {char}.
