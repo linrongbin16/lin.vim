@@ -8,7 +8,7 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 
 " Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
+" let g:NERDAltDelims_java = 1
 
 " Add your own custom formats or override the defaults
 " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' }, 'cpp': { 'left': '/**','right': '*/' } }
@@ -21,3 +21,10 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+
+" disable default mapping since it's conflict with coc.nvim
+let g:NERDCreateDefaultMappings = 0
+
+" only provide one key mappings
+nmap <silent> <leader>c<space>  <Plug>NERDCommenterToggle
+xmap <silent> <leader>c<space>  <Plug>NERDCommenterToggle
