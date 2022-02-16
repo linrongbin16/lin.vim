@@ -243,8 +243,8 @@ In this section, VIM edit mode are specified with:
 - `F2` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
 - `F3`/`SHIFT-F3` 🄽 - format/sync-format current file.
 - `F4` 🄽 - switch between C/C++ header and source files.
-- `F5` 🄽 - run codeLens on current file.
-- `SHFIT-F5` 🄽 - quick auto-fix(run codeActions) on current line.
+- `F5` 🄽 - run code actions on current file.
+- `SHFIT-F5` 🄽 - run code actions on selected code.
 - `F6` 🄽 - hover symbol.
 - `SHIFT-F6` 🄽 - rename symbol.
 - `F7` 🄽 - open markdown preview window in browser, see [Markdown preview](#markdown-preview).
@@ -320,10 +320,10 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 #### Quick Code Actions/Lens (by coc.nvim)
 
 - `<leader>rs`/`<s-F6>` 🄽 - rename symbol.
-- `<leader>cs` 🄽 - run code actions on selected code.
-- `<leader>ca` 🄽 - run code actions on current buffer.
-- `<leader>cl`/`<F5>` 🄽 - run code lens on current line.
-- `<leader>qf`/`<s-F5>` 🄽 - apply quick fix on current line.
+- `<leader>ca`/`<F5>` 🄽 - run code actions on current buffer.
+- `<leader>cs`/`<s-F5>` 🄽 - run code actions on selected code.
+- `<leader>cl` 🄽 - run code lens on current line.
+- `<leader>cf` 🄽 - apply quick fix on current line.
 
 ### Search
 

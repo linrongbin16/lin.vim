@@ -11,11 +11,11 @@ nmap <F3> :call CocActionAsync('format')<CR>
 nmap <S-F3> :call CocAction('format')<CR>
 " switch between C/C++ header source
 nmap <F4> :CocCommand clangd.switchSourceHeader<CR>
-" run codeLens/codeActions
-" run codeLens on current buffer
-nmap <F5>  <Plug>(coc-codelens-action)
-" run codeAction to quick auto-fix problem on current line
-xmap <S-F5>  <Plug>(coc-fix-current)
+" run codeActions on current buffer
+nmap <F5>  <Plug>(coc-codeaction)
+" run codeActions on selected code
+xmap <S-F5>  <Plug>(coc-codeaction-selected)
+nmap <S-F5>  <Plug>(coc-codeaction-selected)
 " hover/rename symbol
 " hover symbol
 nmap <F6> :call CocActionAsync('doHover')<CR>

@@ -71,9 +71,9 @@ nmap <leader>cs  <Plug>(coc-codeaction-selected)
 
 " use `<leader>ca` to apply codeAction to the current buffer
 nmap <leader>ca  <Plug>(coc-codeaction)
-" use `<leader>qf` to apply auto-fix problem on the current line
-xmap <leader>qf  <Plug>(coc-fix-current)
+
+" use `<leader>cf` to apply auto-fix problem on the current line
+xmap <leader>cf  <Plug>(coc-fix-current)
 
 " use `<leader>cl` to run codeLens on current line
 nmap <leader>cl  <Plug>(coc-codelens-action)
-
