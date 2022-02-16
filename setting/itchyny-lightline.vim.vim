@@ -2,8 +2,9 @@
 " only enable statusline
 let g:lightline = {
   \ 'active': {
-      \ 'left': [ ['mode', 'paste'],
-  \               ['readonly', 'filename', 'git_status', 'current_function', 'coc_status'] ],
+  \   'left': [ ['mode', 'paste'],
+  \             ['readonly', 'filename', 'modified'],
+  \             ['LightLineGitStatus', 'LightLineCurrentFunction', 'LightLineCocStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -13,10 +14,9 @@ let g:lightline = {
   \   'lineinfo': ' %3l:%-2v',
   \ },
   \ 'component_function': {
-  \   'filename'          : 'LightLineFileName',
-  \   'git_status'        : 'LightlineGitStatus',
-  \   'current_function'  : 'LightlineFunctionName',
-  \   'coc_status'        : 'LightlineCocStatus',
+  \   'LightLineGitStatus'          : 'LightLineGitStatus',
+  \   'LightLineCurrentFunction'    : 'LightLineCurrentFunction',
+  \   'LightLineCocStatus'          : 'LightLineCocStatus',
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -26,14 +26,8 @@ let g:lightline = {
   \   }
   \ }
 
-function! LightLineFileName() abort
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? '*' : ''
-  return filename . modified
-endfunction
-
 " integrate statusline with coc.nvim
-function! LightlineCocStatus() abort
+function! LightLineCocStatus() abort
   let coc_status = coc#status()
   let coc_info = get(b:, 'coc_diagnostic_info', {})
   if empty(coc_status) && empty(coc_info)
@@ -56,7 +50,7 @@ function! LightlineCocStatus() abort
 endfunction
 
 " integrate statusline with git
-function! LightlineGitStatus() abort
+function! LightLineGitStatus() abort
     let git_branch = get(g:, 'coc_git_status', '')
     if empty(git_branch)
       return ''
@@ -70,7 +64,7 @@ function! LightlineGitStatus() abort
 endfunction
 
 " integrate vista nearest method/function
-function! LightlineFunctionName() abort
+function! LightLineCurrentFunction() abort
     let function_name = get(b:,'coc_current_function','')
     if empty(function_name)
         return ''
