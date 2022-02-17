@@ -53,6 +53,14 @@ Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
+Plug 'EdenEast/nightfox.nvim'
+if has('nvim-0.5')
+    Plug 'folke/tokyonight.nvim', {'branch': 'main'}
+    Plug 'projekt0n/github-nvim-theme'
+endif
+if has('nvim-0.6')
+    Plug 'rebelot/kanagawa.nvim'
+endif
 
 " Language Server
 Plug 'ludovicchabant/vim-gutentags'
