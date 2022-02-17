@@ -1,6 +1,6 @@
 # lin.vim : Lin Rongbin's (Neo)Vim Distribution
 
-lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development.
+lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
 # Table of Contents
 
@@ -37,7 +37,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Fast Quotes Operation](#fast-quotes-operation-by-vim-surround)
     - [Match Brackets and HTML Tags](#match-brackets-and-html-tags-by-vim-matchup)
     - [Auto Close Brackets and HTML Tags](#auto-close-brackets-and-html-tags-by-auto-pairs-and-vim-closetag)
-    - [Easy Comment](#easy-comment-by-nerdcommenter)
+    - [Easy Comment](#easy-comment)
     - [Highlight(Mark) specific words](#highlight-mark-specific-words)
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
@@ -432,15 +432,16 @@ Enhancement for brackets(pairs) and html tags.
 
 Enhancement for auto close brackets(pairs) and html tags.
 
-#### Easy Comment by [nerdcommenter](https://github.com/preservim/nerdcommenter)
+#### Easy Comment
+
+Easy comment is supported by [tcomment_vim](https://github.com/tomtom/tcomment_vim).
 
 The most popular key mappings are:
 
-- `<leader>cc` 🄽🅅 - comment current line or selected lines.
-- `<leader>cn` 🄽🅅 - comment current line or selected lines with force nesting.
-- `<leader>c<space>` 🄽🅅 - toggle current line or selected lines.
-
-Please visit nerdcommenter for more key mappings.
+- `gcc` 🄽 - toggle(comment/uncomment) current line.
+- `gc` 🅅 - toggle(comment/uncomment) visual selected blocks.
+- `gc{motion}` 🄽 - toggle(comment/uncomment) from current line with motion such as **_jkhl_**.
+- `gc<Count>{motion}` 🄽 - toggle(comment/uncomment) from current line with **_Count_** motion repeat.
 
 #### Highlight/Mark words by [vim-mark](https://github.com/inkarkat/vim-mark) and [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
 

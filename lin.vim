@@ -28,9 +28,6 @@ endif
 source $HOME/.vim/setting/neoclide-coc.nvim.vim
 source $HOME/.vim/setting/ludovicchabant-vim-gutentags.vim
 
-" Comment
-source $HOME/.vim/setting/preservim-nerdcommenter.vim
-
 " Search
 source $HOME/.vim/setting/jremmen-vim-ripgrep.vim
 

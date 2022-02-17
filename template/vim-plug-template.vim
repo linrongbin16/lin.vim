@@ -78,7 +78,8 @@ Plug 'zebradil/hive.vim'
 Plug 'neovimhaskell/haskell-vim'
 
 " Comment
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 
 " Keyboard Operation
 if has('nvim-0.5')
