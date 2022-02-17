@@ -16,8 +16,7 @@ function! s:fern_settings() abort
   nmap <silent> <buffer> q <Plug>(fern-quit-or-close-preview)
 
   " disable line number on fern explorer for better UI looking
-  set nonumber
-  endfunction
+endfunction
 
 augroup FernCustom
   autocmd!
