@@ -42,13 +42,13 @@ nnoremap <Leader>p :r ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 " 3. Buffer operations
 
 " go to next buffer
-nmap <Leader><Tab> :bn<cr>
-nmap <D-Right> :bn<CR>
-nmap <A-Right> :bn<CR>
+nnoremap <expr> <Leader><Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+nnoremap <expr> <D-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+nnoremap <expr> <A-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
 " go to previous buffer
-nmap <Leader><S-Tab> :bp<cr>
-nmap <D-Left> :bp<CR>
-nmap <A-Left> :bp<CR>
+nnoremap <expr> <Leader><S-Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+nnoremap <expr> <D-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+nnoremap <expr> <A-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
 
 
 " 4. Filetype mapping
