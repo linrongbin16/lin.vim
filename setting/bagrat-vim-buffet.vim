@@ -18,25 +18,25 @@ let g:buffet_modified_icon = " ●"
 " key mappings to switch buffers/tabs
 
 " macOS command-key
-nmap <D-1> <Plug>BuffetSwitch(1)
-nmap <D-2> <Plug>BuffetSwitch(2)
-nmap <D-3> <Plug>BuffetSwitch(3)
-nmap <D-4> <Plug>BuffetSwitch(4)
-nmap <D-5> <Plug>BuffetSwitch(5)
-nmap <D-6> <Plug>BuffetSwitch(6)
-nmap <D-7> <Plug>BuffetSwitch(7)
-nmap <D-8> <Plug>BuffetSwitch(8)
-nmap <D-9> <Plug>BuffetSwitch(9)
-nmap <D-0> <Plug>BuffetSwitch(10)
+nmap <silent> <expr> <D-1> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(1)"
+nmap <silent> <expr> <D-2> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(2)"
+nmap <silent> <expr> <D-3> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(3)"
+nmap <silent> <expr> <D-4> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(4)"
+nmap <silent> <expr> <D-5> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(5)"
+nmap <silent> <expr> <D-6> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(6)"
+nmap <silent> <expr> <D-7> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(7)"
+nmap <silent> <expr> <D-8> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(8)"
+nmap <silent> <expr> <D-9> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(9)"
+nmap <silent> <expr> <D-0> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(10)"
 
 " for other OS alt-key
-nmap <A-1> <Plug>BuffetSwitch(1)
-nmap <A-2> <Plug>BuffetSwitch(2)
-nmap <A-3> <Plug>BuffetSwitch(3)
-nmap <A-4> <Plug>BuffetSwitch(4)
-nmap <A-5> <Plug>BuffetSwitch(5)
-nmap <A-6> <Plug>BuffetSwitch(6)
-nmap <A-7> <Plug>BuffetSwitch(7)
-nmap <A-8> <Plug>BuffetSwitch(8)
-nmap <A-9> <Plug>BuffetSwitch(9)
-nmap <A-0> <Plug>BuffetSwitch(10)
+nmap <silent> <expr> <A-1> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(1)"
+nmap <silent> <expr> <A-2> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(2)"
+nmap <silent> <expr> <A-3> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(3)"
+nmap <silent> <expr> <A-4> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(4)"
+nmap <silent> <expr> <A-5> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(5)"
+nmap <silent> <expr> <A-6> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(6)"
+nmap <silent> <expr> <A-7> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(7)"
+nmap <silent> <expr> <A-8> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(8)"
+nmap <silent> <expr> <A-9> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(9)"
+nmap <silent> <expr> <A-0> (expand('%') =~ 'fern' ? "<c-w><c-w>" : '')."<Plug>BuffetSwitch(10)"

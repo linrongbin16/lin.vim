@@ -22,8 +22,6 @@ require("bufferline").setup{
 EOF
 
 " key mappings to switch buffers
-" the expand('%') =~ 'fern' condition is for fern.vim explorer optimization
-" if cursor is in fern.vim explorer, it will <C-w><C-w> jump to buffer on the right side, then switch buffer
 
 " macOS command-key
 nnoremap <silent> <expr> <D-1> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 1<CR>"
