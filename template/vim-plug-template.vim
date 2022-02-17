@@ -54,6 +54,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
 Plug 'EdenEast/nightfox.nvim'
+Plug 'kaicataldo/material.vim'
 if has('nvim-0.5')
     Plug 'folke/tokyonight.nvim', {'branch': 'main'}
     Plug 'projekt0n/github-nvim-theme'
