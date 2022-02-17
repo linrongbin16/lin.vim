@@ -3,13 +3,17 @@ let g:buffet_always_show_tabline=1
 let g:buffet_show_index=1
 
 " better UI with devicons
-let g:buffet_powerline_separators = 1
+" let g:buffet_powerline_separators = 1
+let g:buffet_separator = "|"
+let g:buffet_noseparator = ""
 " \uf00a
 let g:buffet_tab_icon = ""
 " \uf0a8
 let g:buffet_left_trunc_icon = ""
 " \uf0a9
 let g:buffet_right_trunc_icon = ""
+" 
+let g:buffet_modified_icon = " ●"
 
 " key mappings to switch buffers/tabs
 

@@ -16,7 +16,7 @@ require("bufferline").setup{
         right_trunc_marker = '',
         diagnostics = false,
         diagnostics_update_in_insert = false,
-        separator_style = "slant",
+        -- separator_style = "slant",
     }
 }
 EOF
