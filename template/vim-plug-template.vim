@@ -22,11 +22,7 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-mark'
 Plug 'RRethy/vim-illuminate'
 " this plugin need golang
-if has('make')
-    Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
-else
-    Plug 'RRethy/vim-hexokinase', {'do': 'git submodule init && git submodule update && cd hexokinase/ && go build'}
-endif
+Plug 'RRethy/vim-hexokinase', {'do': has('make') ? 'make hexokinase' : 'git submodule init && git submodule update && cd hexokinase/ && go build'}
 if has('nvim-0.5')
     Plug 'nvim-lualine/lualine.nvim'
 else
@@ -62,7 +58,7 @@ Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 " vim-clap
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+Plug 'liuchengxu/vim-clap', {'do': { -> clap#installer#force_download() }}
 Plug 'vn-ki/coc-clap'
 
 " Syntax highlighting supplementary for programming languages
@@ -102,6 +98,6 @@ Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
 
 call plug#end()
