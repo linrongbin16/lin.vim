@@ -15,6 +15,7 @@ source $HOME/.vim/setting/lambdalisue-fern-renderer-nerdfont.vim.vim
 source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/liuchengxu-vista.vim.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
+source $HOME/.vim/setting/RRethy-vim-illuminate.vim
 source $HOME/.vim/setting/inkarkat-vim-mark.vim
 source $HOME/.vim/setting/jlanzarotta-bufexplorer.vim
 if has('nvim-0.5')
