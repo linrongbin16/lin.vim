@@ -27,6 +27,7 @@ EOF
 
 " macOS command-key
 nnoremap <silent> <expr> <D-1> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 1<CR>"
+nnoremap <silent> <expr> <D-2> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 2<CR>"
 nnoremap <silent> <expr> <D-3> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 3<CR>"
 nnoremap <silent> <expr> <D-4> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 4<CR>"
 nnoremap <silent> <expr> <D-5> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 5<CR>"
