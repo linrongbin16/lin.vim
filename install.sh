@@ -107,5 +107,3 @@ touch ~/.zshrc
 echo "source ~/.linvimrc" >> ~/.zshrc
 chsh -s $(which zsh)
 source ~/.zshrc 1>/dev/null 2>&1
-
-

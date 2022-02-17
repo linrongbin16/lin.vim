@@ -8,6 +8,7 @@
     "c",
     "cpp",
     "cmake",
+    "rust",
     "python",
     "xml",
     "html",
@@ -17,13 +18,10 @@
     "markdown",
     "javascript",
     "javascriptreact",
-    "jsx",
     "typescript",
     "typescriptreact",
-    "tsx",
     "ml",
-    "ocaml",
-    "rust"
+    "ocaml"
   ],
   "python.pythonPath": "python3",
   "python.formatting.provider": "yapf",
@@ -32,9 +30,7 @@
     "y": ["c", "cpp"],
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
-    "typescriptreact": ["typescript"],
-    "md": ["markdown"],
-    "ml": ["ocaml"]
+    "typescriptreact": ["typescript"]
   },
   "json.enable": true,
   "json.format.enable": false,
