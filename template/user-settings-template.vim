@@ -100,7 +100,7 @@ autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,types
 set colorcolumn=120
 
 " 10. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-sqlfluff', 'coc-tabnine']
 
 " 11. search engine key mappings for fzf.vim or vim-clap
 " by default key mappings are provided only for fzf.vim

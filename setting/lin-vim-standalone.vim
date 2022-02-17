@@ -108,3 +108,6 @@ set termguicolors
 
 " neovim python3
 let g:python3_host_prog='python3'
+
+" disable macvim key mappings
+let macvim_skip_cmd_opt_movement = 1

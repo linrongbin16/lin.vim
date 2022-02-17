@@ -22,27 +22,28 @@ require("bufferline").setup{
 EOF
 
 " key mappings to switch buffers
+" the expand('%') =~ 'fern' condition is for fern.vim explorer optimization
+" if cursor is in fern.vim explorer, it will <C-w><C-w> jump to buffer on the right side, then switch buffer
 
 " macOS command-key
-nnoremap <silent> <D-1> <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent> <D-2> <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent> <D-3> <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent> <D-4> <Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent> <D-5> <Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent> <D-6> <Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent> <D-7> <Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent> <D-8> <Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent> <D-9> <Cmd>BufferLineGoToBuffer 9<CR>
-nnoremap <silent> <D-0> <Cmd>BufferLineGoToBuffer 10<CR>
+nnoremap <silent> <expr> <D-1> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 1<CR>"
+nnoremap <silent> <expr> <D-3> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 3<CR>"
+nnoremap <silent> <expr> <D-4> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 4<CR>"
+nnoremap <silent> <expr> <D-5> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 5<CR>"
+nnoremap <silent> <expr> <D-6> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 6<CR>"
+nnoremap <silent> <expr> <D-7> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 7<CR>"
+nnoremap <silent> <expr> <D-8> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 8<CR>"
+nnoremap <silent> <expr> <D-9> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 9<CR>"
+nnoremap <silent> <expr> <D-0> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 10<CR>"
 
-" for other OS alt-key
-nnoremap <silent> <A-1> <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent> <A-2> <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent> <A-3> <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent> <A-4> <Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent> <A-5> <Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent> <A-6> <Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent> <A-7> <Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent> <A-8> <Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent> <A-9> <Cmd>BufferLineGoToBuffer 9<CR>
-nnoremap <silent> <A-0> <Cmd>BufferLineGoToBuffer 10<CR>
+" alt-key
+nnoremap <silent> <expr> <A-1> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 1<CR>"
+nnoremap <silent> <expr> <A-2> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 2<CR>"
+nnoremap <silent> <expr> <A-3> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 3<CR>"
+nnoremap <silent> <expr> <A-4> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 4<CR>"
+nnoremap <silent> <expr> <A-5> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 5<CR>"
+nnoremap <silent> <expr> <A-6> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 6<CR>"
+nnoremap <silent> <expr> <A-7> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 7<CR>"
+nnoremap <silent> <expr> <A-8> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 8<CR>"
+nnoremap <silent> <expr> <A-9> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 9<CR>"
+nnoremap <silent> <expr> <A-0> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 10<CR>"
