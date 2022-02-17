@@ -2,7 +2,7 @@ lua<<EOF
 require("bufferline").setup{
     options = {
         numbers = function(opts)
-            return string.format('%s·%s', opts.raise(opts.ordinal), opts.lower(opts.id))
+            return string.format('%s·%s', opts.ordinal, opts.raise(opts.id))
         end,
         close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
         right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -16,7 +16,7 @@ require("bufferline").setup{
         right_trunc_marker = '',
         diagnostics = false,
         diagnostics_update_in_insert = false,
-        -- separator_style = "slant",
+        separator_style = "slant",
     }
 }
 EOF
