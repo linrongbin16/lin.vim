@@ -79,7 +79,7 @@ if has("win32")
     set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
-    set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14
+    set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " linux, unix
     set guifont=Hack\ Nerd\ Font\ Mono\ 10
@@ -94,7 +94,7 @@ let g:fern#drawer_width=40
 
 " 8. indent with 2 space for some languages
 autocmd FileType c,cpp,lua setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
 " 9. Line length marker=120
 set colorcolumn=120
