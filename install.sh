@@ -51,9 +51,6 @@ source $HOME/.cargo/env
 rustup component add rust-docs
 rustup component add rust-std
 rustup component add rustfmt
-rustup component add rls
-rustup component add clippy
-rustup component add rust-analysis
 
 
 # install python3 pip packages

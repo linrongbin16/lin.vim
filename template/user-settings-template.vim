@@ -79,14 +79,10 @@ if has("win32")
     set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
-    " set guifont=CodeNewRoman\ Nerd\ Font\ Mono:h12
     set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14
-    " set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " linux, unix
     set guifont=Hack\ Nerd\ Font\ Mono\ 10
-    " FantasqueSansMono\ Nerd\ Font\ Mono\ 12
-    " CodeNewRoman\ Nerd\ Font\ Mono\ 10
 endif
 
 
@@ -104,7 +100,7 @@ autocmd FileType html,xml,xhtml,json setlocal tabstop=2 softtabstop=2 shiftwidth
 set colorcolumn=120
 
 " 10. coc.nvim plugin list
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
 " 11. search engine key mappings for fzf.vim or vim-clap
 " by default key mappings are provided only for fzf.vim
