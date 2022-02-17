@@ -42,13 +42,13 @@ nnoremap <Leader>p :r ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 " 3. Buffer operations
 
 " go to next buffer
-nmap <Leader>bn :bn<cr>
 nmap <Leader><Tab> :bn<cr>
+nmap <D-Right> :bn<CR>
+nmap <A-Right> :bn<CR>
 " go to previous buffer
-nmap <Leader>bp :bp<cr>
-nmap <Leader><S-Tab> :bn<cr>
-" close current buffer
-nmap <Leader>bd :bd<cr>
+nmap <Leader><S-Tab> :bp<cr>
+nmap <D-Left> :bp<CR>
+nmap <A-Left> :bp<CR>
 
 
 " 4. Filetype mapping
@@ -79,10 +79,14 @@ if has("win32")
     set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
-    set guifont=Hack\ Nerd\ Font\ Mono:h12
+    " set guifont=CodeNewRoman\ Nerd\ Font\ Mono:h12
+    set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14
+    " set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " linux, unix
     set guifont=Hack\ Nerd\ Font\ Mono\ 10
+    " FantasqueSansMono\ Nerd\ Font\ Mono\ 12
+    " CodeNewRoman\ Nerd\ Font\ Mono\ 10
 endif
 
 

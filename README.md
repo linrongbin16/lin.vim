@@ -32,7 +32,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Other Enhancements](#other-enhancements)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Easy Alignment](#easy-alignment-by-easy-align)
-    - [Easy Cursor Movement](#easy-cursor-movement-by-vim-easymotion)
+    - [Fast Cursor Movement](#fast-cursor-movement)
     - [Fast Repeat](#fast-repeat-by-vim-repeat)
     - [Fast Quotes Operation](#fast-quotes-operation-by-vim-surround)
     - [Match Brackets and HTML Tags](#match-brackets-and-html-tags-by-vim-matchup)
@@ -276,9 +276,8 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet), you could switch/close them by key mappings:
 
-- `<leader>bn`/`<leader><tab>` 🄽 - go to next buffer.
-- `<leader>bp`/`<leader><s-tab>` 🄽 - go to previous buffer.
-- `<leader>bd` 🄽 - close current buffer.
+- `<leader><tab>`/`<A-Right>`(`<D-Right>`) 🄽 - go to next buffer on the right.
+- `<leader><s-tab>`/`<A-Left>`(`<D-Left>`) 🄽 - go to previous buffer on the left.
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
 Alt-1 ~ Alt-9 are mapped to navigate 1 ~ 9 tabs, Alt-0 are mapped to navigate to the last tab.
@@ -294,8 +293,6 @@ For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing
 - `<A-8>`(`<D-8>`) 🄽 - go to tab-8
 - `<A-9>`(`<D-9>`) 🄽 - go to tab-9
 - `<A-0>`(`<D-0>`) 🄽 - go to tab-10
-- `<A-Left>`(`<D-Left>`) 🄽 - go to previous tab
-- `<A-Right>`(`<D-Right>`) 🄽 - go to next tab
 
 ### IDE-like Editing Features
 
@@ -406,9 +403,9 @@ You could configure these keys in **_user-settings.vim_**.
 - `vipga=` 🅅 - align visual-selected paragraph.
 - `gaip=` 🄽 - align inner paragraph.
 
-#### Easy Cursor Movement
+#### Fast Cursor Movement
 
-Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion), or [hop.nvim](https://github.com/phaazon/hop.nvim) in Neovim 0.5+.
+Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on Neovim 0.5+).
 See [Fast cursor movement](#fast-cursor-movement).
 
 - `<leader>f{char}` 🄽 - move to a single {char}.
