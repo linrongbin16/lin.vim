@@ -16,11 +16,12 @@ source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/liuchengxu-vista.vim.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
 source $HOME/.vim/setting/inkarkat-vim-mark.vim
-source $HOME/.vim/setting/bagrat-vim-buffet.vim
 source $HOME/.vim/setting/jlanzarotta-bufexplorer.vim
 if has('nvim-0.5')
+    source $HOME/.vim/setting/akinsho-bufferline.nvim.vim
     source $HOME/.vim/setting/nvim-lualine-lualine.nvim.vim
 else
+    source $HOME/.vim/setting/bagrat-vim-buffet.vim
     source $HOME/.vim/setting/itchyny-lightline.vim.vim
 endif
 

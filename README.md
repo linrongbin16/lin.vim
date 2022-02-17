@@ -42,6 +42,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
   - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
+- [Reference](#reference)
 - [Contribute](#contribute)
 
 ## Introduction
@@ -274,7 +275,7 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 #### Buffers/Tabs
 
-Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet), you could switch/close them by key mappings:
+Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) on Neovim 0.5+), you could switch/close them by key mappings:
 
 - `<leader><tab>`/`<A-Right>`(`<D-Right>`) 🄽 - go to next buffer on the right.
 - `<leader><s-tab>`/`<A-Left>`(`<D-Left>`) 🄽 - go to previous buffer on the left.
@@ -516,6 +517,10 @@ Options:
 ```
 
 Please try `--help` on **_vcmd_** commands for more usage.
+
+## Reference
+
+" Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
 
 ## Contribute
 

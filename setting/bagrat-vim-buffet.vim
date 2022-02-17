@@ -4,9 +4,12 @@ let g:buffet_show_index=1
 
 " better UI with devicons
 let g:buffet_powerline_separators = 1
-let g:buffet_tab_icon = "\uf00a"
-let g:buffet_left_trunc_icon = "\uf0a8"
-let g:buffet_right_trunc_icon = "\uf0a9"
+" \uf00a
+let g:buffet_tab_icon = ""
+" \uf0a8
+let g:buffet_left_trunc_icon = ""
+" \uf0a9
+let g:buffet_right_trunc_icon = ""
 
 " key mappings to switch buffers/tabs
 
@@ -21,8 +24,6 @@ nmap <D-7> <Plug>BuffetSwitch(7)
 nmap <D-8> <Plug>BuffetSwitch(8)
 nmap <D-9> <Plug>BuffetSwitch(9)
 nmap <D-0> <Plug>BuffetSwitch(10)
-nmap <D-Left> :bp<CR>
-nmap <D-Right> :bn<CR>
 
 " for other OS alt-key
 nmap <A-1> <Plug>BuffetSwitch(1)
@@ -35,5 +36,3 @@ nmap <A-7> <Plug>BuffetSwitch(7)
 nmap <A-8> <Plug>BuffetSwitch(8)
 nmap <A-9> <Plug>BuffetSwitch(9)
 nmap <A-0> <Plug>BuffetSwitch(10)
-nmap <A-Left> :bp<CR>
-nmap <A-Right> :bn<CR>

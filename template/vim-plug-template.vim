@@ -16,7 +16,11 @@ Plug 'yuki-yano/fern-preview.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'bagrat/vim-buffet'
+if has('nvim-0.5')
+    Plug 'akinsho/bufferline.nvim'
+else
+    Plug 'bagrat/vim-buffet'
+endif
 Plug 'jlanzarotta/bufexplorer'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-mark'
@@ -58,7 +62,7 @@ Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 " vim-clap
-Plug 'liuchengxu/vim-clap', {'do': { -> clap#installer#force_download() }}
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'vn-ki/coc-clap'
 
 " Syntax highlighting supplementary for programming languages
@@ -99,6 +103,6 @@ Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app && yarn install'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()
