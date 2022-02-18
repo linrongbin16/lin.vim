@@ -45,9 +45,6 @@ endif
 " HTML/XML
 source $HOME/.vim/setting/alvan-vim-closetag.vim
 
-" Markdown
-source $HOME/.vim/setting/plasticboy-vim-markdown.vim
-
 " 4) user setting
 if filereadable(expand('~/.vim/user-settings.vim'))
     source $HOME/.vim/user-settings.vim
