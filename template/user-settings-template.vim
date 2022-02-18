@@ -91,7 +91,7 @@ autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,types
 " 8. Line length marker=120
 set colorcolumn=120
 
-" 9. coc.nvim plugin list
+" 9. coc.nvim extensions
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
 " 10. search engine key mappings for fzf.vim or vim-clap
