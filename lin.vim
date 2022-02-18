@@ -19,7 +19,7 @@ source $HOME/.vim/setting/RRethy-vim-illuminate.vim
 source $HOME/.vim/setting/inkarkat-vim-mark.vim
 source $HOME/.vim/setting/jlanzarotta-bufexplorer.vim
 if has('nvim-0.5')
-    source $HOME/.vim/setting/akinsho-bufferline.nvim.vim
+    source $HOME/.vim/setting/romgrk-barbar.nvim.vim
     source $HOME/.vim/setting/nvim-lualine-lualine.nvim.vim
 else
     source $HOME/.vim/setting/bagrat-vim-buffet.vim

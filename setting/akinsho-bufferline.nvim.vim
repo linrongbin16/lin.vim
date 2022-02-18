@@ -46,3 +46,10 @@ nnoremap <silent> <expr> <A-7> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<C
 nnoremap <silent> <expr> <A-8> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 8<CR>"
 nnoremap <silent> <expr> <A-9> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 9<CR>"
 nnoremap <silent> <expr> <A-0> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<Cmd>BufferLineGoToBuffer 10<CR>"
+
+" go to next buffer
+nnoremap <expr> <Leader><Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+" go to previous buffer
+nnoremap <expr> <Leader><S-Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+" close current buffer without closing vim window
+nnoremap <expr> <Leader>bd (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":Bw<CR>"

@@ -15,9 +15,13 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'yuki-yano/fern-preview.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vista.vim'
-Plug 'ryanoasis/vim-devicons'
+if has('nvim')
+    Plug 'kyazdani42/nvim-web-devicons'
+else
+    Plug 'ryanoasis/vim-devicons'
+endif
 if has('nvim-0.5')
-    Plug 'akinsho/bufferline.nvim'
+    Plug 'romgrk/barbar.nvim'
 else
     Plug 'bagrat/vim-buffet'
 endif

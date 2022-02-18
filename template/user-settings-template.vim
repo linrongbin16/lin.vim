@@ -39,19 +39,7 @@ vnoremap <Leader>y :w! ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 nnoremap <Leader>p :r ~/.vim/.lin-vim-enhanced-copy-paste<CR>
 
 
-" 3. Buffer operations
-
-" go to next buffer
-nnoremap <expr> <Leader><Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-nnoremap <expr> <D-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-nnoremap <expr> <A-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-" go to previous buffer
-nnoremap <expr> <Leader><S-Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-nnoremap <expr> <D-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-nnoremap <expr> <A-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-
-
-" 4. Filetype mapping
+" 3. Filetype mapping
 autocmd BufRead,BufNewFile *.hql setlocal filetype=hive
 autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
 autocmd BufRead,BufNewFile *.hs setlocal filetype=haskell
@@ -64,7 +52,7 @@ autocmd BufRead,BufNewFile *.l setlocal filetype=flex
 autocmd BufRead,BufNewFile *.y setlocal filetype=bison
 
 
-" 5. GUI window size
+" 4. GUI window size
 if has('gui_running')
     set lines=999
     set columns=999
@@ -73,43 +61,47 @@ if has('gui_running')
     endif
 endif
 
-" 6. GUI fonts
+
+" 5. GUI fonts
 if has("win32")
     " win32
     set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
-    set guifont=Hack\ Nerd\ Font\ Mono:h12
+    " set guifont=CodeNewRoman\ Nerd\ Font\ Mono:h12
+    set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14
+    " set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " linux, unix
     set guifont=Hack\ Nerd\ Font\ Mono\ 10
+    " FantasqueSansMono\ Nerd\ Font\ Mono\ 12
+    " CodeNewRoman\ Nerd\ Font\ Mono\ 10
 endif
 
 
-" 7. Fern settings
-
+" 6. Fern settings
 " drawer width
 let g:fern#drawer_width=40
 
 
-" 8. indent with 2 space for some languages
+" 7. indent with 2 space for some languages
 autocmd FileType c,cpp,lua setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 
-" 9. Line length marker=120
+" 8. Line length marker=120
 set colorcolumn=120
 
-" 10. coc.nvim plugin list
+" 9. coc.nvim plugin list
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-sqlfluff', 'coc-tabnine']
 
-" 11. search engine key mappings for fzf.vim or vim-clap
+" 10. search engine key mappings for fzf.vim or vim-clap
 " by default key mappings are provided only for fzf.vim
 " if you want to disable key mappings for fzf.vim, please comment below line
 source $HOME/.vim/setting/junegunn-fzf.vim.vim
 " if you want to enable key mappings for vim-clap, please uncomment below line
 " source $HOME/.vim/setting/liuchengxu-vim-clap.vim
 
-" 12. other stuffs
+" 11. other stuffs
 
 " auto-pairs config
 let g:AutoPairs = {'[':']', '{':'}', "'":"'", '"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}

@@ -275,25 +275,33 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 #### Buffers/Tabs
 
-Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) on Neovim 0.5+), you could switch/close them by key mappings:
+Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on Neovim 0.5+), you could switch/close them by key mappings:
 
-- `<leader><tab>`/`<A-Right>`(`<D-Right>`) 🄽 - go to next buffer on the right.
-- `<leader><s-tab>`/`<A-Left>`(`<D-Left>`) 🄽 - go to previous buffer on the left.
+- `<leader><tab>`/`<A-.>`(`<D-.>`) 🄽 - go to next buffer on the right.
+- `<leader><s-tab>`/`<A-,>`(`<D-,>`) 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat **_Alt+,_** **_Alt+._**).
+- `<leader>bd` 🄽 - close current buffer and go to a nearest buffer without closing vim window.
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
-Alt-1 ~ Alt-9 are mapped to navigate 1 ~ 9 tabs, Alt-0 are mapped to navigate to the last tab.
+Alt-1 ~ Alt-9 are mapped to switch between 1 ~ 9 buffers, Alt-0 are mapped to navigate to the last buffer.
 For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing.
 
-- `<A-1>`(`<D-1>`) 🄽 - go to tab-1
-- `<A-2>`(`<D-2>`) 🄽 - go to tab-2
-- `<A-3>`(`<D-3>`) 🄽 - go to tab-3
-- `<A-4>`(`<D-4>`) 🄽 - go to tab-4
-- `<A-5>`(`<D-5>`) 🄽 - go to tab-5
-- `<A-6>`(`<D-6>`) 🄽 - go to tab-6
-- `<A-7>`(`<D-7>`) 🄽 - go to tab-7
-- `<A-8>`(`<D-8>`) 🄽 - go to tab-8
-- `<A-9>`(`<D-9>`) 🄽 - go to tab-9
-- `<A-0>`(`<D-0>`) 🄽 - go to tab-10
+- `<A-1>`(`<D-1>`) 🄽 - go to buffer-1.
+- `<A-2>`(`<D-2>`) 🄽 - go to buffer-2.
+- `<A-3>`(`<D-3>`) 🄽 - go to buffer-3.
+- `<A-4>`(`<D-4>`) 🄽 - go to buffer-4.
+- `<A-5>`(`<D-5>`) 🄽 - go to buffer-5.
+- `<A-6>`(`<D-6>`) 🄽 - go to buffer-6.
+- `<A-7>`(`<D-7>`) 🄽 - go to buffer-7.
+- `<A-8>`(`<D-8>`) 🄽 - go to buffer-8.
+- `<A-9>`(`<D-9>`) 🄽 - go to buffer-9.
+- `<A-0>`(`<D-0>`) 🄽 - go to the last buffer.
+
+For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **_mouse-clicking_** on buffers:
+
+- `<A-Right>`(`<D-Right>`) 🄽 - move current buffer to next position(on the right).
+- `<A-Left>`(`<D-Left>`) 🄽 - move current buffer to previous position(on the left).
+- `<LeftMouse>` 🄽 - go to selected buffer.
+- `<MiddleMouse>` 🄽 - close selected buffer.
 
 ### IDE-like Editing Features
 
