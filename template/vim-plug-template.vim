@@ -13,7 +13,6 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'yuki-yano/fern-preview.vim'
-Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/vista.vim'
 if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
@@ -21,8 +20,10 @@ else
     Plug 'ryanoasis/vim-devicons'
 endif
 if has('nvim-0.5')
+    Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'romgrk/barbar.nvim'
 else
+    Plug 'Yggdroot/indentLine'
     Plug 'bagrat/vim-buffet'
 endif
 Plug 'jlanzarotta/bufexplorer'

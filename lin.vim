@@ -12,7 +12,6 @@ source $HOME/.vim/setting/lin-vim-standalone.vim
 source $HOME/.vim/setting/lin-vim-colorscheme.vim
 source $HOME/.vim/setting/lambdalisue-fern.vim.vim
 source $HOME/.vim/setting/lambdalisue-fern-renderer-nerdfont.vim.vim
-source $HOME/.vim/setting/Yggdroot-indentLine.vim
 source $HOME/.vim/setting/liuchengxu-vista.vim.vim
 source $HOME/.vim/setting/RRethy-vim-hexokinase.vim
 source $HOME/.vim/setting/RRethy-vim-illuminate.vim
@@ -22,6 +21,7 @@ if has('nvim-0.5')
     source $HOME/.vim/setting/romgrk-barbar.nvim.vim
     source $HOME/.vim/setting/nvim-lualine-lualine.nvim.vim
 else
+    source $HOME/.vim/setting/Yggdroot-indentLine.vim
     source $HOME/.vim/setting/bagrat-vim-buffet.vim
     source $HOME/.vim/setting/itchyny-lightline.vim.vim
 endif
