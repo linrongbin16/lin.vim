@@ -35,16 +35,20 @@ nnoremap <silent> <expr> <A-0> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '')."<C
 nnoremap <expr> <Leader><Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
 nnoremap <expr> <D-.> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
 nnoremap <expr> <A-.> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
+nnoremap <expr> <D-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
+nnoremap <expr> <A-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
 " go to previous buffer
 nnoremap <expr> <Leader><S-Tab> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-nnoremap <expr> <D-,> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-nnoremap <expr> <A-,> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
+nnoremap <expr> <D-,> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
+nnoremap <expr> <A-,> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
+nnoremap <expr> <D-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
+nnoremap <expr> <A-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
 " close current buffer without closing vim window
 nnoremap <expr> <Leader>bd (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferClose<CR>"
 
 " re-order current buffer to previous(left)
-nnoremap <expr> <D-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-nnoremap <expr> <A-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
+nnoremap <expr> <D-S-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
+nnoremap <expr> <A-S-Left> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
 " re-order current buffer to next(right)
-nnoremap <expr> <D-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-nnoremap <expr> <A-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
+nnoremap <expr> <D-S-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
+nnoremap <expr> <A-S-Right> (expand('%') =~ 'fern' ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"

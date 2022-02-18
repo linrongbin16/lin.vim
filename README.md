@@ -277,8 +277,8 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on Neovim 0.5+), you could switch/close them by key mappings:
 
-- `<leader><tab>`/`<A-.>`(`<D-.>`) 🄽 - go to next buffer on the right.
-- `<leader><s-tab>`/`<A-,>`(`<D-,>`) 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat **_Alt+,_** **_Alt+._**).
+- `<leader><tab>`/`<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - go to next buffer on the right.
+- `<leader><s-tab>`/`<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat **_Alt+,_** **_Alt+._** or **_Command+,_** **_Command+._**).
 - `<leader>bd` 🄽 - close current buffer and go to a nearest buffer without closing vim window.
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
@@ -298,8 +298,8 @@ For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing
 
 For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **_mouse-clicking_** on buffers:
 
-- `<A-Right>`(`<D-Right>`) 🄽 - move current buffer to next position(on the right).
-- `<A-Left>`(`<D-Left>`) 🄽 - move current buffer to previous position(on the left).
+- `<A-S-Right>`(`<D-S-Right>`) 🄽 - move current buffer to next position(on the right).
+- `<A-S-Left>`(`<D-S-Left>`) 🄽 - move current buffer to previous position(on the left).
 - `<LeftMouse>` 🄽 - go to selected buffer.
 - `<MiddleMouse>` 🄽 - close selected buffer.
 
