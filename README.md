@@ -101,7 +101,7 @@ lin.vim solved such issues:
   - Best color schemes collected and randomly selected on (Neo)VIM start
   - Status line
   - Outline/Tags
-- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), C/C++/Python3/Rust language servers are embeded by default:
+- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(c/c++/python3/rust/markdown/html/xml/css/sass/scss/json/javascript/typescript/jsx/tsx) are embeded by default:
   - Code complete
   - (Optional) AI complete (by [TabNine](https://www.tabnine.com/))
   - Diagnostic
