@@ -18,6 +18,7 @@ source $HOME/.vim/setting/RRethy-vim-illuminate.vim
 source $HOME/.vim/setting/inkarkat-vim-mark.vim
 source $HOME/.vim/setting/jlanzarotta-bufexplorer.vim
 if has('nvim-0.5')
+    source $HOME/.vim/setting/lukas-reineke-indent-blankline.nvim.vim
     source $HOME/.vim/setting/romgrk-barbar.nvim.vim
     source $HOME/.vim/setting/nvim-lualine-lualine.nvim.vim
 else
@@ -37,6 +38,7 @@ source $HOME/.vim/setting/jremmen-vim-ripgrep.vim
 source $HOME/.vim/setting/haya14busa-incsearch.vim.vim
 source $HOME/.vim/setting/junegunn-vim-easy-align.vim
 if has('nvim-0.5')
+    source $HOME/.vim/setting/windwp-nvim-autopairs.vim
     source $HOME/.vim/setting/phaazon-hop.nvim.vim
 else
     source $HOME/.vim/setting/easymotion-vim-easymotion.vim

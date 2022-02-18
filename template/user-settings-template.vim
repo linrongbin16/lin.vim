@@ -100,8 +100,3 @@ let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists
 source $HOME/.vim/setting/junegunn-fzf.vim.vim
 " if you want to enable key mappings for vim-clap, please uncomment below line
 " source $HOME/.vim/setting/liuchengxu-vim-clap.vim
-
-" 11. other stuffs
-
-" auto-pairs config
-let g:AutoPairs = {'[':']', '{':'}', "'":"'", '"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`"}

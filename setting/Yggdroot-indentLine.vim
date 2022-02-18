@@ -1,5 +1,5 @@
 " use better character
-let g:indentLine_char='│'
+let g:indentLine_char='⎸'
 
 " fix quotes error for json,markdown files
 let g:vim_json_syntax_conceal = 0
