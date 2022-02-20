@@ -20,7 +20,7 @@ set noignorecase
 set modifiable
 set shortmess+=c
 set backspace=indent,eol,start
-set whichwrap+=<,>,[,]
+set whichwrap+=b,s,<,>,[,]
 set clipboard^=unnamed,unnamedplus
 set listchars=tab:>·,trail:~,extends:>,precedes:<
 " set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
