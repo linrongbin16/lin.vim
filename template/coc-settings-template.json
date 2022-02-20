@@ -23,6 +23,8 @@
     "ml",
     "ocaml"
   ],
+  "cmake.cmakePath": "cmake",
+  "cmake.formatter": "cmake-format",
   "python.pythonPath": "python3",
   "python.formatting.provider": "yapf",
   "snippets.extends": {
@@ -34,7 +36,5 @@
   },
   "json.enable": true,
   "json.format.enable": false,
-  "eslint.run": "onSave",
-  "cmake.cmakePath": "cmake",
-  "cmake.formatter": "cmake-format"
+  "eslint.run": "onSave"
 }
