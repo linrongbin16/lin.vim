@@ -77,6 +77,7 @@ set hlsearch
 
 " display
 set ruler
+set colorcolumn=120
 set showmatch
 set showcmd
 set wrap
@@ -96,13 +97,6 @@ set lazyredraw
 set ttyfast
 set regexpengine=1
 
-" disable GUI menu
-if has("gui_running")
-    " gvim toolbox
-    set guioptions-=T
-    " gvim menu
-    set guioptions-=m
-endif
 
 " fix maxmatchparen memory issue
 set mmp=10000

@@ -1,13 +1,11 @@
 " lin.vim
 
-" 1) vim plugins
+" VIM Plugins
 source $HOME/.vim/plugin.vim
 
-" 2) standalone settings
+" VIM Settings
 source $HOME/.vim/setting/linrongbin16/standalone.vim
 source $HOME/.vim/setting/linrongbin16/colorscheme.vim
-
-" 3) vim plugin settings
 
 " UI
 source $HOME/.vim/setting/lambdalisue/fern.vim.vim
@@ -52,7 +50,18 @@ endif
 source $HOME/.vim/setting/haya14busa/incsearch.vim.vim
 source $HOME/.vim/setting/junegunn/vim-easy-align.vim
 
-" 4) user setting
+" GUI
+source $HOME/.vim/setting/linrongbin16/gui.vim
+" Hot Key F1 ~ F10
+source $HOME/.vim/setting/linrongbin16/hotkey.vim
+" Enhanced Copy Paste
+source $HOME/.vim/setting/linrongbin16/enhanced-copy-paste.vim
+" FileType Mappings
+source $HOME/.vim/setting/linrongbin16/filetype-map.vim
+" Indent Width
+source $HOME/.vim/setting/linrongbin16/indent-width.vim
+
+" Other User Settings
 if filereadable(expand('~/.vim/user-settings.vim'))
     source $HOME/.vim/user-settings.vim
 endif

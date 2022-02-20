@@ -134,7 +134,7 @@ lin.vim solved such issues:
  |+command              Command line utilities(vcmd) implemented in python3.
  |+install              Installation scripts for all platforms.
  |+setting              VimL script settings.
- |+template             Templates for user-settings.vim, coc-settings.json, vim-plug.vim and .linvimrc.
+ |+template             Templates for ~/.vim/user-settings.vim, ~/.vim/coc-settings.json, ~/.vim/plugin.vim and ~/.linvimrc.
  |`install.sh           UNIX/Linux/MacOS bash installation script.
  |`install.ps1          Windows PowerShell installation script.
  |`LICENSE              The license file.
@@ -252,7 +252,7 @@ In this section, VIM edit mode are specified with:
 - `F8` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
-You could configure these keys in **_user-settings.vim_**.
+You could configure these keys in **_~/.vim/setting/linrongbin16/hotkey.vim_**.
 
 ### UI
 
@@ -271,6 +271,7 @@ File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim
 - `<bs>` 🄽 - leave directory and goto upper directory.
 - `<F5>` 🄽 - reload file explorer.
 
+You could configure fern explorer's width in **_~/.vim/setting/lambdalisue/fern.vim.vim_**.
 Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) fore more key mappings.
 
 #### Buffers/Tabs
@@ -335,7 +336,7 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 
 By default search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`, ...
 
-But if you want, just edit **_user-settings.vim_**, disable(comment) the line `source $HOME/.vim/setting/junegunn-fzf.vim.vim`(which provide key mappings for fzf.vim), and enable(uncomment) the line `" source $HOME/.vim/setting/liuchengxu-vim-clap.vim`(which provide key mappings for vim-clap). Both fzf.vim and vim-clap's key mappings are functioned almost in the same way.
+But if you want, just edit **_~/.vim/lin.vim_**, disable(comment) the line `source $HOME/.vim/setting/junegunn/fzf.vim.vim`(which provide key mappings for fzf.vim), and enable(uncomment) the line `" source $HOME/.vim/setting/liuchengxu/vim-clap.vim`(which provide key mappings for vim-clap). Both fzf.vim and vim-clap's key mappings are functioned almost in the same way.
 
 #### Text Search
 
@@ -405,7 +406,7 @@ Enhanced copy-paste are supported when you want copy/paste between different vim
 
 Copied content will be stored in a text file, then you could paste them to other vim instances.
 
-You could configure these keys in **_user-settings.vim_**.
+You could configure these key mappings in **_~/.vim/setting/linrongbin16/enhanced-copy-paste.vim_**.
 
 #### Easy Alignment by [easy-align](https://github.com/junegunn/vim-easy-align)
 
@@ -460,11 +461,12 @@ Make a word or something highlight/marked could be quite useful in some cases:
 
 ### Customization
 
-Please custom your own settings in **_user-settings.vim_** and **_coc-settings.json_**.
+Please add more settings in **_~/.vim/user-settings.vim_** and **_~/.vim/coc-settings.json_**.
 
 #### GUI Fonts
 
-[Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only downloaded on Windows and need manually install). Please manually install other fonts and configure font settings in `~/.vim/user-settings.vim` if you want to customize gui fonts.
+[Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only downloaded on Windows and need manually install).
+Please manually install other fonts and configure font settings in **_~/.vim/setting/linrongbin16/gui.vim_** if you want to customize gui fonts.
 
 ### Command Line Utility (vcmd)
 

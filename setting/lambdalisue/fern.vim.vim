@@ -2,6 +2,8 @@
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * ++nested Fern -stay -keep -toggle -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
+" drawer width
+let g:fern#drawer_width=40
 " show hidden files
 let g:fern#default_hidden=1
 
