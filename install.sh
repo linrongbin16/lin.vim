@@ -74,7 +74,7 @@ else
 fi
 
 # install user custom
-cp ~/.vim/template/vim-plug-template.vim ~/.vim/vim-plug.vim
+cp ~/.vim/template/plugin-template.vim ~/.vim/plugin.vim
 cp ~/.vim/template/user-settings-template.vim ~/.vim/user-settings.vim
 cp ~/.vim/template/coc-settings-template.json ~/.vim/coc-settings.json
 cp ~/.vim/template/ginit-template.vim ~/.vim/ginit.vim

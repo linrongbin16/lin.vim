@@ -1,12 +1,11 @@
 " open fern file explorer on vim start
-
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * ++nested Fern -stay -keep -toggle -drawer %:h | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
 " show hidden files
 let g:fern#default_hidden=1
 
-" mappings for fern explorer
+" key mappings for fern explorer
 function! s:fern_settings() abort
     nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
     nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
@@ -20,3 +19,6 @@ augroup FernCustom
   autocmd!
   autocmd FileType fern call s:fern_settings()
 augroup END
+
+" icon render
+let g:fern#renderer = "nerdfont"
