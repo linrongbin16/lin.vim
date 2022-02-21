@@ -14,7 +14,7 @@ endif
 
 set background=dark
 
-function NextRandomColor()
+function NextColorScheme()
     try
         if has("gui_running")
             let idx = localtime() % len(s:gui_color_schemes)
@@ -29,4 +29,4 @@ function NextRandomColor()
     endtry
 endfunction
 
-call NextRandomColor()
+call NextColorScheme()

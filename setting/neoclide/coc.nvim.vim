@@ -30,17 +30,14 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-" use `gd` to go to definition
+" go to definition
 nmap <silent> gd <Plug>(coc-definition)
-" use `gy` to go to type definition
+" go to type definition
 nmap <silent> gy <Plug>(coc-type-definition)
-" use `gi` to go to implementation
+" go to implementation
 nmap <silent> gi <Plug>(coc-implementation)
-" use `gr` to go to references
+" go to references
 nmap <silent> gr <Plug>(coc-references)
-
-" Use `K` to hover
-nnoremap <silent> K :call CocActionAsync('doHover')<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -55,8 +52,8 @@ endfunction
 " highlight current symbol
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" use `<leader>rs` to rename symbol
-nmap <leader>rs  <Plug>(coc-rename)
+" hover symbol
+nnoremap K :call CocActionAsync('doHover')<CR>
 
 augroup mycocgroup
   autocmd!
@@ -64,15 +61,19 @@ augroup mycocgroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" use `<leader>cs` to apply codeAction to the selected code.
-xmap <leader>cs  <Plug>(coc-codeaction-selected)
-nmap <leader>cs  <Plug>(coc-codeaction-selected)
+" rename symbol
+nmap <leader>rs  <Plug>(coc-rename)
 
-" use `<leader>ca` to apply codeAction to the current buffer
+" run code format (async) on current buffer or visual selection
+nmap <leader>cf  <Plug>(coc-format)
+xmap <leader>cf  <Plug>(coc-format-selected)
+
+" apply code action on the current buffer or visual selection
 nmap <leader>ca  <Plug>(coc-codeaction)
+xmap <leader>ca  <Plug>(coc-codeaction-selected)
 
-" use `<leader>cf` to apply auto-fix problem on the current line
-" xmap <leader>cf  <Plug>(coc-fix-current)
+" apply auto-fix to problem on the current line
+xmap <leader>qf  <Plug>(coc-fix-current)
 
-" use `<leader>cl` to run codeLens on current line
-" nmap <leader>cl  <Plug>(coc-codelens-action)
+" run code lens on current line
+nmap <leader>cl  <Plug>(coc-codelens-action)

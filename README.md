@@ -242,14 +242,9 @@ In this section, VIM edit mode are specified with:
 
 - `F1` 🄽 - toggle(open/close) fern file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
 - `F2` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
-- `F3`/`SHIFT-F3` 🄽 - format/sync-format current file.
+- `F3` 🄽 - open markdown preview in browser, see [Markdown preview](#markdown-preview).
 - `F4` 🄽 - switch between C/C++ header and source files.
-- `F5` 🄽 - run code actions on current file.
-- `SHFIT-F5` 🄽 - run code actions on selected code.
-- `F6` 🄽 - hover symbol.
-- `SHIFT-F6` 🄽 - rename symbol.
-- `F7` 🄽 - open markdown preview window in browser, see [Markdown preview](#markdown-preview).
-- `F8` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
+- `F9` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
 You could configure these keys in **_~/.vim/setting/linrongbin16/hotkey.vim_**.
@@ -322,15 +317,20 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 - `gy` 🄽 - go to type(function) definition.
 - `gi` 🄽 - go to implemention.
 - `gr` 🄽 - go to references.
+
+#### Symbols (by coc.nvim)
+
 - `K` 🄽 - show hover(symbol definition).
+- `<leader>rs` 🄽 - rename symbol.
 
-#### Quick Code Actions/Lens (by coc.nvim)
+#### Code Format/Actions/Lens (by coc.nvim)
 
-- `<leader>rs`/`<s-F6>` 🄽 - rename symbol.
-- `<leader>ca`/`<F5>` 🄽 - run code actions on current buffer.
-- `<leader>cs`/`<s-F5>` 🄽 - run code actions on selected code.
-  <!-- - `<leader>cl` 🄽 - run code lens on current line. -->
-  <!-- - `<leader>cf` 🄽 - apply quick fix on current line. -->
+- `<leader>cf` 🄽 - format code on current buffer.
+- `<leader>cf` 🅅 - format code on visual selected code.
+- `<leader>ca` 🄽 - run code actions on current buffer.
+- `<leader>ca` 🅅 - run code actions on visual selected code.
+- `<leader>cl` 🄽 - run code lens on current line.
+- `<leader>qf` 🄽 - apply quick fix on current line.
 
 ### Search
 
