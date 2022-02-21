@@ -38,12 +38,6 @@ if has('nvim-0.6')
 endif
 
 " UI
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'jlanzarotta/bufexplorer'
 if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons'
 else
@@ -58,6 +52,12 @@ else
   Plug 'itchyny/lightline.vim'
   Plug 'Yggdroot/indentLine'
 endif
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'yuki-yano/fern-preview.vim'
+Plug 'jlanzarotta/bufexplorer'
 
 " Highlight
 Plug 'inkarkat/vim-ingo-library'

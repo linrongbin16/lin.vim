@@ -10,8 +10,6 @@ source $HOME/.vim/setting/linrongbin16/standalone.vim
 source $HOME/.vim/setting/linrongbin16/colorscheme.vim
 
 " UI
-source $HOME/.vim/setting/lambdalisue/fern.vim.vim
-source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 if has('nvim-0.5')
   source $HOME/.vim/setting/romgrk/barbar.nvim.vim
   source $HOME/.vim/setting/nvim-lualine/lualine.nvim.vim
@@ -20,6 +18,8 @@ else
   source $HOME/.vim/setting/itchyny/lightline.vim.vim
   source $HOME/.vim/setting/Yggdroot/indentLine.vim
 endif
+source $HOME/.vim/setting/lambdalisue/fern.vim.vim
+source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 
 " Highlight
 source $HOME/.vim/setting/inkarkat/vim-mark.vim
