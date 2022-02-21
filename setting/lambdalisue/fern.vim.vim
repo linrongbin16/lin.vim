@@ -19,7 +19,7 @@ function! s:fern_settings() abort
   " fern key mapping
   " nmap <buffer><nowait> ? <Plug>(fern-action-help)
   " nmap <buffer><nowait> . <Plug>(fern-action-repeat)
-  " nmap <buffer><nowait> R <Plug>(fern-action-reload)
+  nmap <buffer><nowait> R <Plug>(fern-action-reload)
   " nmap <buffer><nowait> h <Plug>(fern-action-collapse)
   " nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
   " nmap <buffer><nowait> <CR> <Plug>(fern-action-enter)
