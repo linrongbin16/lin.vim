@@ -27,38 +27,47 @@ let g:lightline = {
 
 
 function! LightLineFileName() abort
-    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-    if &modified
-        let filename = filename . '[+]'
-    endif
-    if &readonly
-        let filename = filename . '[-]'
-    endif
-    return filename
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  if &modified
+    let filename = filename . '[+]'
+  endif
+  if &readonly
+    let filename = filename . '[-]'
+  endif
+  return filename
 endfunction
 
 function! LightLineCocStatus() abort
-    let coc_status = coc#status()
-    if empty(coc_status)
-        return ''
-    else
-        return coc_status
-    endif
+  let coc_status = coc#status()
+  if empty(coc_status)
+    return ''
+  else
+    return coc_status
+  endif
 endfunction
 
 " integrate statusline with git
 function! LightLineGitStatus() abort
-    let git_branch = get(g:, 'coc_git_status', '')
-    if empty(git_branch)
-        return ''
-    endif
-    let git_changes = get(b:, 'coc_git_status', '')
-    if empty(git_changes)
-        return git_branch
-    else
-        return git_branch . git_changes
-    endif
+  let git_branch = gitbranch#name()
+  if empty(git_branch)
+    return ''
+  endif
+  let [a,m,r] = GitGutterGetHunkSummary()
+  if a == 0 && m == 0 && r == 0
+    return printf(' %s', git_branch)
+  endif
+  let msgs = []
+  if a != 0
+    call add(msgs, printf('+%d', a))
+  endif
+  if m != 0
+    call add(msgs, printf('~%d', m))
+  endif
+  if r != 0
+    call add(msgs, printf('-%d', r))
+  endif
+  return printf(' %s %s', git_branch, join(msgs, ' '))
 endfunction
 
-" update coc status when it's changed
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+" update lightline when gitgutter and coc's status are changed
+autocmd User GitGutter,GitGutterStage,CocStatusChange,CocDiagnosticChange call lightline#update()

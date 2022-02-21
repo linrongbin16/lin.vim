@@ -1,5 +1,5 @@
 " default extensions
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sqlfluff', 'coc-tabnine']
 
 " use `<tab>` `<c-n>` `<PnDown>` to select next suggestion
 " use `<s-tab>` `<c-p>` `<PnUp>` to select previous suggestion
