@@ -9,7 +9,7 @@ let g:fern#default_hidden=1
 " icon render
 let g:fern#renderer = "nerdfont"
 " disable default key mapping
-" let g:fern#disable_default_mappings=1
+let g:fern#disable_default_mappings=1
 
 
 
@@ -17,24 +17,29 @@ let g:fern#renderer = "nerdfont"
 function! s:fern_settings() abort
 
   " fern key mapping
-  " nmap <buffer><nowait> ? <Plug>(fern-action-help)
-  " nmap <buffer><nowait> . <Plug>(fern-action-repeat)
+  nmap <buffer><nowait> ? <Plug>(fern-action-help)
+  nmap <buffer><nowait> . <Plug>(fern-action-repeat)
   nmap <buffer><nowait> R <Plug>(fern-action-reload)
-  " nmap <buffer><nowait> h <Plug>(fern-action-collapse)
-  " nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
-  " nmap <buffer><nowait> <CR> <Plug>(fern-action-enter)
-  " nmap <buffer><nowait> <BS> <Plug>(fern-action-leave)
-  " nmap <buffer><nowait> s <Plug>(fern-action-open:system)
-  " nmap <buffer><nowait> N <Plug>(fern-action-new-leaf)
-  " nmap <buffer><nowait> K <Plug>(fern-action-new-branch)
-  " nmap <buffer><nowait> c <Plug>(fern-action-copy)
-  " nmap <buffer><nowait> m <Plug>(fern-action-move)
-  " nmap <buffer><nowait> D <Plug>(fern-action-remove)
+  nmap <buffer><nowait> h <Plug>(fern-action-collapse)
+  nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
+  nmap <buffer><nowait> <CR> <Plug>(fern-action-enter)
+  nmap <buffer><nowait> <BS> <Plug>(fern-action-leave)
+  nmap <buffer><nowait> s <Plug>(fern-action-open:system)
+  nmap <buffer><nowait> N <Plug>(fern-action-new-leaf)
+  nmap <buffer><nowait> K <Plug>(fern-action-new-branch)
+  nmap <buffer><nowait> c <Plug>(fern-action-copy)
+  nmap <buffer><nowait> m <Plug>(fern-action-move)
+  nmap <buffer><nowait> r <Plug>(fern-action-move)
+  nmap <buffer><nowait> D <Plug>(fern-action-remove)
+  nmap <buffer><nowait> C <Plug>(fern-action-clipboard-copy)
+  nmap <buffer><nowait> X <Plug>(fern-action-clipboard-move)
+  nmap <buffer><nowait> V <Plug>(fern-action-clipboard-pate)
+  nmap <buffer><nowait> P <Plug>(fern-action-clipboard-pate)
 
   " enhanced preview key mapping
   nmap <buffer> <Tab> <Plug>(fern-action-preview:toggle)
-  " nmap <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
-  " nmap <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+  nmap <buffer> <C-j> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <buffer> <C-k> <Plug>(fern-action-preview:scroll:up:half)
   nmap <buffer> <expr> <Plug>(my-fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
   nmap <buffer> q <Plug>(my-fern-quit-or-close-preview)
 endfunction
