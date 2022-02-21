@@ -52,11 +52,15 @@ else
   Plug 'itchyny/lightline.vim'
   Plug 'Yggdroot/indentLine'
 endif
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-Plug 'yuki-yano/fern-preview.vim'
+if has('nvim-0.6')
+  Plug 'kyazdani42/nvim-tree.lua'
+else
+  Plug 'lambdalisue/fern.vim'
+  Plug 'lambdalisue/nerdfont.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/fern-git-status.vim'
+  Plug 'yuki-yano/fern-preview.vim'
+endif
 Plug 'jlanzarotta/bufexplorer'
 
 " Highlight

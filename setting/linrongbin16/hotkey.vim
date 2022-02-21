@@ -1,5 +1,9 @@
 " open/close file explorer
-nnoremap <F1> :<C-u>Fern -stay -keep -toggle . -drawer<CR>
+if has('nvim-0.6')
+  nnoremap <F1> :<C-u>NvimTreeToggle<CR>
+else
+  nnoremap <F1> :<C-u>Fern -stay -keep -toggle . -drawer<CR>
+endif
 " open/close vista
 nnoremap <F2> :<C-u>Vista!!<CR>
 " open browser to preview markdown

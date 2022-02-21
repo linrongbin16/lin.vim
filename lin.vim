@@ -18,7 +18,11 @@ else
   source $HOME/.vim/setting/itchyny/lightline.vim.vim
   source $HOME/.vim/setting/Yggdroot/indentLine.vim
 endif
-source $HOME/.vim/setting/lambdalisue/fern.vim.vim
+if has('nvim-0.6')
+  source $HOME/.vim/setting/kyazdani42/nvim-tree.lua.vim
+else
+  source $HOME/.vim/setting/lambdalisue/fern.vim.vim
+endif
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 
 " Highlight
