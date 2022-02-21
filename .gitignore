@@ -15,8 +15,8 @@ sessions
 plugged
 
 # user settings
-vim-plug.vim
-user-settings.vim
+plugin.vim
+setting.vim
 coc-settings.json
 command/*.db
 command/*.ignore

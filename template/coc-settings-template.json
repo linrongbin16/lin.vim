@@ -22,6 +22,7 @@
   ],
   "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
+  "yank.highlight.duration": 0,
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format",
   "python.pythonPath": "python3",
