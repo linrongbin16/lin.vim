@@ -47,7 +47,8 @@ function! s:fern_settings() abort
   " nmap <buffer> q <Plug>(my-fern-quit-or-close-preview)
 endfunction
 
-augroup FernCustom
+augroup FernExplorerCustom
   autocmd!
   autocmd FileType fern call s:fern_settings()
+  autocmd FileType fern call glyph_palette#apply()
 augroup END

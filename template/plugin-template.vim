@@ -1,42 +1,11 @@
 "" ---- vim-plug.vim ----
 
 if has('win32') || has('win64')
-    set runtimepath^=~/.vim
+  set runtimepath^=~/.vim
 endif
 
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
-
-" UI
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'liuchengxu/vista.vim'
-if has('nvim')
-    Plug 'kyazdani42/nvim-web-devicons'
-else
-    Plug 'ryanoasis/vim-devicons'
-endif
-if has('nvim-0.5')
-    Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'romgrk/barbar.nvim'
-else
-    Plug 'Yggdroot/indentLine'
-    Plug 'bagrat/vim-buffet'
-endif
-Plug 'jlanzarotta/bufexplorer'
-Plug 'inkarkat/vim-ingo-library'
-Plug 'inkarkat/vim-mark'
-Plug 'RRethy/vim-illuminate'
-" this plugin need golang
-Plug 'RRethy/vim-hexokinase', {'do': has('make') ? 'make hexokinase' : 'git submodule init && git submodule update && cd hexokinase/ && go build'}
-if has('nvim-0.5')
-    Plug 'nvim-lualine/lualine.nvim'
-else
-    Plug 'itchyny/lightline.vim'
-endif
 
 " Color Theme
 Plug 'altercation/vim-colors-solarized'
@@ -61,29 +30,61 @@ Plug 'sainnhe/sonokai'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'kaicataldo/material.vim'
 if has('nvim-0.5')
-    Plug 'folke/tokyonight.nvim', {'branch': 'main'}
-    Plug 'projekt0n/github-nvim-theme'
+  Plug 'folke/tokyonight.nvim', {'branch': 'main'}
+  Plug 'projekt0n/github-nvim-theme'
 endif
 if has('nvim-0.6')
-    Plug 'rebelot/kanagawa.nvim'
+  Plug 'rebelot/kanagawa.nvim'
 endif
 
-" Language Server
+" UI
+if has('nvim')
+  Plug 'kyazdani42/nvim-web-devicons'
+else
+  Plug 'ryanoasis/vim-devicons'
+endif
+if has('nvim-0.5')
+  Plug 'romgrk/barbar.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+else
+  Plug 'bagrat/vim-buffet'
+  Plug 'itchyny/lightline.vim'
+  Plug 'Yggdroot/indentLine'
+endif
+if has('nvim-0.6')
+  Plug 'kyazdani42/nvim-tree.lua'
+else
+  Plug 'lambdalisue/nerdfont.vim'
+  Plug 'lambdalisue/glyph-palette.vim'
+  Plug 'lambdalisue/fern.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/fern-git-status.vim'
+  Plug 'lambdalisue/fern-hijack.vim'
+endif
+Plug 'jlanzarotta/bufexplorer'
+
+" Highlight
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-mark'
+Plug 'RRethy/vim-illuminate'
+Plug 'RRethy/vim-hexokinase', {'do': has('make') ? 'make hexokinase' : 'git submodule init && git submodule update && cd hexokinase/ && go build'}
+
+" Tags
+Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
-" fzf and coc.nvim
+
+" Language Server and Search Engine
 Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-" vim-clap
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
 Plug 'vn-ki/coc-clap'
 
-" Syntax highlighting supplementary for programming languages
+" Other Language Support
 " Flex, Bison
 Plug 'justinmk/vim-syntax-extra', {'for': ['lex', 'flex', 'yacc', 'bison']}
-" Followings are from vim-polyglot, but don't use it directly since it's
-" contains too much plugins and cannot integrate well with this
 " LLVM
 Plug 'rhysd/vim-llvm'
 " PowerShell
@@ -94,29 +95,27 @@ Plug 'uarun/vim-protobuf'
 Plug 'zebradil/hive.vim'
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+" HTML Tag
+Plug 'andymass/vim-matchup'
+Plug 'alvan/vim-closetag'
+" Markdown Preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Comment
-" Plug 'preservim/nerdcommenter'
 Plug 'tomtom/tcomment_vim'
 
-" Keyboard Operation
+" Editing Support
 if has('nvim-0.5')
-    Plug 'phaazon/hop.nvim'
+  Plug 'phaazon/hop.nvim'
+  Plug 'windwp/nvim-autopairs'
 else
-    Plug 'easymotion/vim-easymotion'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'jiangmiao/auto-pairs'
 endif
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'jiangmiao/auto-pairs'
-
-" HTML, XML tag
-Plug 'andymass/vim-matchup'
-Plug 'alvan/vim-closetag'
-
-" Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()

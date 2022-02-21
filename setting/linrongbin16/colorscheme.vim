@@ -1,18 +1,23 @@
-let s:gui_color_schemes=['darkblue', 'solarized', 'molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'one', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'base16-default-dark', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'nightfox', 'material']
-let s:term_color_schemes=['molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'gruvbox', 'rigel', 'apprentice', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'nightfox', 'material']
+let s:gui_color_schemes=['darkblue', 'solarized8', 'molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'rigel', 'apprentice', 'base16-default-dark', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'nightfox', 'material']
+let s:term_color_schemes=['molokai', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'codedark', 'rigel', 'apprentice', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'nightfox', 'material']
+
+if has('nvim-0.6')
+  call add(s:gui_color_schemes, 'kanagawa')
+  call add(s:term_color_schemes, 'kanagawa')
+endif
 
 if has('nvim-0.5')
-    call add(s:gui_color_schemes, 'tokyonight')
-    call add(s:gui_color_schemes, 'github_dark')
-    call add(s:term_color_schemes, 'tokyonight')
-    call add(s:term_color_schemes, 'github_dark')
-endif
-if has('nvim-0.6')
-    call add(s:gui_color_schemes, 'kanagawa')
-    call add(s:term_color_schemes, 'kanagawa')
+  call add(s:gui_color_schemes, 'tokyonight')
+  call add(s:gui_color_schemes, 'github_dark')
+  call add(s:term_color_schemes, 'tokyonight')
+  call add(s:term_color_schemes, 'github_dark')
 endif
 
 set background=dark
+
+" for material
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'default'
 
 function NextColorScheme()
     try
