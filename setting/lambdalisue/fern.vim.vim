@@ -22,6 +22,9 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> R <Plug>(fern-action-reload)
   nmap <buffer><nowait> h <Plug>(fern-action-collapse)
   nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
+  nmap <buffer><nowait> <C-v> <Plug>(fern-action-open:vsplit)
+  nmap <buffer><nowait> <C-x> <Plug>(fern-action-open:split)
+  nmap <buffer><nowait> <C-t> <Plug>(fern-action-open:tabedit)
   nmap <buffer><nowait> <CR> <Plug>(fern-action-enter)
   nmap <buffer><nowait> <BS> <Plug>(fern-action-leave)
   nmap <buffer><nowait> s <Plug>(fern-action-open:system)
@@ -38,8 +41,8 @@ function! s:fern_settings() abort
 
   " enhanced preview key mapping
   nmap <buffer> <Tab> <Plug>(fern-action-preview:toggle)
-  nmap <buffer> <C-j> <Plug>(fern-action-preview:scroll:down:half)
-  nmap <buffer> <C-k> <Plug>(fern-action-preview:scroll:up:half)
+  " nmap <buffer> <C-j> <Plug>(fern-action-preview:scroll:down:half)
+  " nmap <buffer> <C-k> <Plug>(fern-action-preview:scroll:up:half)
   nmap <buffer> <expr> <Plug>(my-fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
   nmap <buffer> q <Plug>(my-fern-quit-or-close-preview)
 endfunction

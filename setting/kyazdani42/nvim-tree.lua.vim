@@ -3,9 +3,9 @@ local key_mappings = {
   { key = {"l", "o", "<2-LeftMouse>"},    action = "edit" },
   { key = {"O"},                          action = "" }, -- edit_no_picker
   { key = {"<Return>"},                   action = "cd" },
-  { key = "<C-v>",                        action = "" }, -- vsplit
-  { key = "<C-x>",                        action = "" }, -- split
-  { key = "<C-t>",                        action = "" }, -- tabnew
+  { key = "<C-v>",                        action = "vsplit" },
+  { key = "<C-x>",                        action = "split" },
+  { key = "<C-t>",                        action = "tabnew" },
   { key = "<",                            action = "prev_sibling" },
   { key = ">",                            action = "next_sibling" },
   { key = "gp",                           action = "parent_node" },

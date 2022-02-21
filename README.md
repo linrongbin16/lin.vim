@@ -253,21 +253,38 @@ You could configure these keys in **_~/.vim/setting/linrongbin16/hotkey.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim), you could use key mappings on the file explorer left side:
+File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)), you could use key mappings on the file explorer left side:
 
-- `N/K` 🄽 - create new file/directory.
-- `m` 🄽 - move file/directory.
-- `c` 🄽 - copy file/directory.
-- `R` 🄽 - rename file/directory.
-- `D` 🄽 - delete file/directory to trash.
+Transfer and Open Files:
+
 - `h` 🄽 - leave or collapse directory.
 - `l` 🄽 - open or expand directory.
-- `<cr>` 🄽 - open file or cd into directory.
-- `<bs>` 🄽 - leave directory and goto upper directory.
-- `<F5>` 🄽 - reload file explorer.
+- `<CR>` 🄽 - open file or cd into directory.
+- `<BS>` 🄽 - leave directory and goto upper directory.
+- `<Tab>` 🄽 - preview.
+- `<C-v>` 🄽 - open file in `vsplit`.
+- `<C-x>` 🄽 - open file in `split`.
+- `<C-t>` 🄽 - open file in new tab.
 
-You could configure fern explorer's width in **_~/.vim/setting/lambdalisue/fern.vim.vim_**.
-Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) fore more key mappings.
+Create/Delete/Copy/Paste/Cut:
+
+- `N`/`K` 🄽 - create new file/directory.
+- `m`/`r` 🄽 - move/rename file/directory.
+- `c` 🄽 - copy file/directory.
+- `C` 🄽 - copy file/directory into internal clipboard.
+- `X` 🄽 - cut file/directory into internal clipboard.
+- `V`/`P` 🄽 - paste internal clipboard file/directory to current directory.
+- `D` 🄽 - delete file/directory to trash.
+- `R` 🄽 - reload file explorer.
+
+Others:
+
+- `?` 🄽 - open/close(toggle) help.
+- `.` 🄽 - repeat last operation.
+- `s` 🄽 - open file in system file manager(such as Finder in macOS).
+
+You could editing **_~/.vim/setting/lambdalisue/fern.vim.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
+Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
 
 #### Buffers/Tabs
 
