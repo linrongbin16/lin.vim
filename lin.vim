@@ -64,6 +64,6 @@ source $HOME/.vim/setting/linrongbin16/filetype-map.vim
 source $HOME/.vim/setting/linrongbin16/indent-width.vim
 
 " Other User Settings
-if filereadable(expand('~/.vim/user-settings.vim'))
-  source $HOME/.vim/user-settings.vim
+if filereadable(expand('~/.vim/setting.vim'))
+  source $HOME/.vim/setting.vim
 endif
