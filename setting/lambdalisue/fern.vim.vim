@@ -40,11 +40,11 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> P <Plug>(fern-action-clipboard-pate)
 
   " enhanced preview key mapping
-  nmap <buffer> <Tab> <Plug>(fern-action-preview:toggle)
+  " nmap <buffer> <Tab> <Plug>(fern-action-preview:toggle)
   " nmap <buffer> <C-j> <Plug>(fern-action-preview:scroll:down:half)
   " nmap <buffer> <C-k> <Plug>(fern-action-preview:scroll:up:half)
-  nmap <buffer> <expr> <Plug>(my-fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
-  nmap <buffer> q <Plug>(my-fern-quit-or-close-preview)
+  " nmap <buffer> <expr> <Plug>(my-fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
+  " nmap <buffer> q <Plug>(my-fern-quit-or-close-preview)
 endfunction
 
 augroup FernCustom

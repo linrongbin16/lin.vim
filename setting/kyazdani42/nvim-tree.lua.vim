@@ -1,7 +1,7 @@
 lua<<EOF
 local key_mappings = {
   { key = {"l", "o", "<2-LeftMouse>"},    action = "edit" },
-  { key = {"O"},                          action = "" }, -- edit_no_picker
+  -- { key = {"O"},                          action = "edit_no_picker" },
   { key = {"<Return>"},                   action = "cd" },
   { key = "<C-v>",                        action = "vsplit" },
   { key = "<C-x>",                        action = "split" },
@@ -10,14 +10,14 @@ local key_mappings = {
   { key = ">",                            action = "next_sibling" },
   { key = "gp",                           action = "parent_node" },
   { key = "h",                            action = "close_node" },
-  { key = "<Tab>",                        action = "preview" },
+  -- { key = "<Tab>",                        action = "preview" },
   { key = "<C-k>",                        action = "first_sibling" },
   { key = "<C-j>",                        action = "last_sibling" },
   { key = "I",                            action = "toggle_ignored" },
   { key = "H",                            action = "toggle_dotfiles" },
   { key = "R",                            action = "refresh" },
   { key = {"N", "K"},                     action = "create" },
-  { key = "d",                            action = "" }, -- remove
+  -- { key = "d",                            action = "remove" },
   { key = "D",                            action = "trash" },
   { key = {"r", "m"},                     action = "rename" },
   { key = "X",                            action = "cut" },
@@ -30,7 +30,7 @@ local key_mappings = {
   { key = "]c",                           action = "next_git_item" },
   { key = "<BS>",                         action = "dir_up" },
   { key = "s",                            action = "system_open" },
-  { key = "q",                            action = "" }, -- close
+  -- { key = "q",                            action = "close" },
   { key = "?",                            action = "toggle_help" },
 }
 
@@ -42,7 +42,7 @@ require'nvim-tree'.setup {
   auto_close           = false,
   auto_reload_on_write = true,
   open_on_tab          = false,
-  hijack_cursor        = false,
+  hijack_cursor        = true,
   update_cwd           = false,
   hijack_unnamed_buffer_when_opening = false,
   hijack_directories   = {
@@ -78,12 +78,11 @@ require'nvim-tree'.setup {
   },
   view = {
     width = 40,
-    height = 30,
     hide_root_folder = false,
     side = 'left',
-    auto_resize = false,
+    auto_resize = true,
     mappings = {
-      custom_only = false,
+      custom_only = true,
       list = key_mappings,
     },
     number = false,
