@@ -11,6 +11,7 @@ endif
 
 " editing
 set autoread
+autocmd FocusGained * checktime
 set autowrite
 set noundofile
 set nobackup
@@ -91,12 +92,11 @@ set termguicolors
 set cmdheight=2
 set laststatus=2
 set updatetime=200
-" merge sign and number column into one
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" if has("nvim-0.5.0") || has("patch-8.1.1564")
+"   set signcolumn=number
+" else
+set signcolumn=yes
+" endif
 
 " optimization rendering
 set lazyredraw
