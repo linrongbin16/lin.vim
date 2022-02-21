@@ -6,65 +6,65 @@ let g:clap_theme = 'material_design_dark'
 " 1. text kinds of search
 
 " search text
-nnoremap <silent> <space>gr :Clap grep2<CR>
+nnoremap <silent> <space>gr :<C-u>Clap grep2<CR>
 " search lines on opened buffers
-nnoremap <silent> <space>l :Clap lines<CR>
+nnoremap <silent> <space>l :<C-u>Clap lines<CR>
 " search text on tags
-nnoremap <silent> <space>t :Clap tags<CR>
+nnoremap <silent> <space>t :<C-u>Clap tags<CR>
 " search search history
-nnoremap <silent> <space>sh :Clap search_history<CR>
+nnoremap <silent> <space>sh :<C-u>Clap search_history<CR>
 " search vim command history
-nnoremap <silent> <space>ch :Clap command_history<CR>
+nnoremap <silent> <space>ch :<C-u>Clap command_history<CR>
 " search symbol dummy jumps
-nnoremap <silent> <space>j :Clap dumb_jump<CR>
+nnoremap <silent> <space>j :<C-u>Clap dumb_jump<CR>
 " search yank history
-nnoremap <silent> <space>y :Clap yanks<CR>
+nnoremap <silent> <space>y :<C-u>Clap yanks<CR>
 
 " 2. files kinds of search
 
 " search files
-nnoremap <silent> <space>f :Clap files<CR>
-nnoremap <silent> <C-p> :Clap files<CR>
+nnoremap <silent> <space>f :<C-u>Clap files<CR>
+nnoremap <silent> <C-p> :<C-u>Clap files<CR>
 " search files order by most recently used
-nnoremap <silent> <space>r :Clap recent_files<CR>
+nnoremap <silent> <space>r :<C-u>Clap recent_files<CR>
 " search opened buffers
-nnoremap <silent> <space>b :Clap buffers<CR>
+nnoremap <silent> <space>b :<C-u>Clap buffers<CR>
 " search history files(v:oldfiles) and opened buffers
-nnoremap <silent> <space>hf :Clap history<CR>
+nnoremap <silent> <space>hf :<C-u>Clap history<CR>
 
 " 3. git kinds of search
 
 " search git commits
-nnoremap <silent> <space>gc :Clap commits<CR>
+nnoremap <silent> <space>gc :<C-u>Clap commits<CR>
 " search git files
-nnoremap <silent> <space>gf :Clap gfiles<CR>
+nnoremap <silent> <space>gf :<C-u>Clap gfiles<CR>
 " search git diff files (git status)
-nnoremap <silent> <space>gs :Clap git_diff_files<CR>
-nnoremap <silent> <space>gd :Clap git_diff_files<CR>
+nnoremap <silent> <space>gs :<C-u>Clap git_diff_files<CR>
+nnoremap <silent> <space>gd :<C-u>Clap git_diff_files<CR>
 
 
 " 4. other kinds of search
 
 " search marks
-nnoremap <silent> <space>mk :Clap marks<CR>
+nnoremap <silent> <space>mk :<C-u>Clap marks<CR>
 " search maps
-nnoremap <silent> <space>mp :Clap maps<CR>
+nnoremap <silent> <space>mp :<C-u>Clap maps<CR>
 " search vim commands
-nnoremap <silent> <space>vc :Clap command<CR>
+nnoremap <silent> <space>vc :<C-u>Clap command<CR>
 " search help tags
-nnoremap <silent> <space>ht :Clap help_tags<CR>
+nnoremap <silent> <space>ht :<C-u>Clap help_tags<CR>
 " search lvy-like file explorer
-nnoremap <silent> <space>e :Clap filer<CR>
+nnoremap <silent> <space>e :<C-u>Clap filer<CR>
 
 
 " 5. coc.nvim kinds of search
 " search symbols based on coc.nvim language server
-nnoremap <silent> <space>cs :Clap coc_symbols<CR>
+nnoremap <silent> <space>cs :<C-u>Clap coc_symbols<CR>
 " search diagnostics based on coc.nvim language server
-nnoremap <silent> <space>cd :Clap coc_diagnostics<CR>
+nnoremap <silent> <space>cd :<C-u>Clap coc_diagnostics<CR>
 " search symbol outlines based on coc.nvim language server
-nnoremap <silent> <space>co :Clap coc_outline<CR>
+nnoremap <silent> <space>co :<C-u>Clap coc_outline<CR>
 " search commands based on coc.nvim
-nnoremap <silent> <space>cc :Clap coc_commands<CR>
+nnoremap <silent> <space>cc :<C-u>Clap coc_commands<CR>
 " search location based on coc.nvim
-nnoremap <silent> <space>cl :Clap coc_location<CR>
+nnoremap <silent> <space>cl :<C-u>Clap coc_location<CR>
