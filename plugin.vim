@@ -1,7 +1,7 @@
 "" ---- vim-plug.vim ----
 
 if has('win32') || has('win64')
-    set runtimepath^=~/.vim
+  set runtimepath^=~/.vim
 endif
 
 source ~/.vim/autoload/plug.vim
@@ -30,11 +30,11 @@ Plug 'sainnhe/sonokai'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'kaicataldo/material.vim'
 if has('nvim-0.5')
-    Plug 'folke/tokyonight.nvim', {'branch': 'main'}
-    Plug 'projekt0n/github-nvim-theme'
+  Plug 'folke/tokyonight.nvim', {'branch': 'main'}
+  Plug 'projekt0n/github-nvim-theme'
 endif
 if has('nvim-0.6')
-    Plug 'rebelot/kanagawa.nvim'
+  Plug 'rebelot/kanagawa.nvim'
 endif
 
 " UI
@@ -45,18 +45,18 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'yuki-yano/fern-preview.vim'
 Plug 'jlanzarotta/bufexplorer'
 if has('nvim')
-    Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'kyazdani42/nvim-web-devicons'
 else
-    Plug 'ryanoasis/vim-devicons'
+  Plug 'ryanoasis/vim-devicons'
 endif
 if has('nvim-0.5')
-    Plug 'romgrk/barbar.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'romgrk/barbar.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 else
-    Plug 'bagrat/vim-buffet'
-    Plug 'itchyny/lightline.vim'
-    Plug 'Yggdroot/indentLine'
+  Plug 'bagrat/vim-buffet'
+  Plug 'itchyny/lightline.vim'
+  Plug 'Yggdroot/indentLine'
 endif
 
 " Highlight
@@ -101,11 +101,11 @@ Plug 'tomtom/tcomment_vim'
 
 " Editing Support
 if has('nvim-0.5')
-    Plug 'phaazon/hop.nvim'
-    Plug 'windwp/nvim-autopairs'
+  Plug 'phaazon/hop.nvim'
+  Plug 'windwp/nvim-autopairs'
 else
-    Plug 'easymotion/vim-easymotion'
-    Plug 'jiangmiao/auto-pairs'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'jiangmiao/auto-pairs'
 endif
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-repeat'

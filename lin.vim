@@ -13,12 +13,12 @@ source $HOME/.vim/setting/linrongbin16/colorscheme.vim
 source $HOME/.vim/setting/lambdalisue/fern.vim.vim
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 if has('nvim-0.5')
-    source $HOME/.vim/setting/romgrk/barbar.nvim.vim
-    source $HOME/.vim/setting/nvim-lualine/lualine.nvim.vim
+  source $HOME/.vim/setting/romgrk/barbar.nvim.vim
+  source $HOME/.vim/setting/nvim-lualine/lualine.nvim.vim
 else
-    source $HOME/.vim/setting/bagrat/vim-buffet.vim
-    source $HOME/.vim/setting/itchyny/lightline.vim.vim
-    source $HOME/.vim/setting/Yggdroot/indentLine.vim
+  source $HOME/.vim/setting/bagrat/vim-buffet.vim
+  source $HOME/.vim/setting/itchyny/lightline.vim.vim
+  source $HOME/.vim/setting/Yggdroot/indentLine.vim
 endif
 
 " Highlight
@@ -44,10 +44,10 @@ source $HOME/.vim/setting/alvan/vim-closetag.vim
 
 " Editing Support
 if has('nvim-0.5')
-    source $HOME/.vim/setting/phaazon/hop.nvim.vim
-    source $HOME/.vim/setting/windwp/nvim-autopairs.vim
+  source $HOME/.vim/setting/phaazon/hop.nvim.vim
+  source $HOME/.vim/setting/windwp/nvim-autopairs.vim
 else
-    source $HOME/.vim/setting/easymotion/vim-easymotion.vim
+  source $HOME/.vim/setting/easymotion/vim-easymotion.vim
 endif
 source $HOME/.vim/setting/haya14busa/incsearch.vim.vim
 source $HOME/.vim/setting/junegunn/vim-easy-align.vim
@@ -65,5 +65,5 @@ source $HOME/.vim/setting/linrongbin16/indent-width.vim
 
 " Other User Settings
 if filereadable(expand('~/.vim/user-settings.vim'))
-    source $HOME/.vim/user-settings.vim
+  source $HOME/.vim/user-settings.vim
 endif
