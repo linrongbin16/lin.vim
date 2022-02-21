@@ -5,6 +5,8 @@ source $HOME/.vim/plugin.vim
 
 " VIM Settings
 source $HOME/.vim/setting/linrongbin16/standalone.vim
+
+" Color Scheme
 source $HOME/.vim/setting/linrongbin16/colorscheme.vim
 
 " UI
