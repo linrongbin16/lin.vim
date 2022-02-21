@@ -8,17 +8,15 @@ source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
 " Color Theme
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'tomasr/molokai'
 Plug 'crusoexia/vim-monokai'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'morhetz/gruvbox'
 Plug 'Rigellute/rigel'
 Plug 'romainl/Apprentice'
 Plug 'chriskempson/base16-vim'
@@ -28,7 +26,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
 Plug 'EdenEast/nightfox.nvim'
-Plug 'kaicataldo/material.vim'
+Plug 'kaicataldo/material.vim', {'branch': 'main'}
 if has('nvim-0.5')
   Plug 'folke/tokyonight.nvim', {'branch': 'main'}
   Plug 'projekt0n/github-nvim-theme'
@@ -46,10 +44,14 @@ endif
 if has('nvim-0.5')
   Plug 'romgrk/barbar.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
 else
   Plug 'bagrat/vim-buffet'
   Plug 'itchyny/lightline.vim'
+  Plug 'itchyny/vim-gitbranch'
+  Plug 'airblade/vim-gitgutter'
   Plug 'Yggdroot/indentLine'
 endif
 if has('nvim-0.6')
