@@ -1,8 +1,5 @@
 {
-  "diagnostic.level": "warning",
   "coc.preferences.extensionUpdateCheck": "daily",
-  "suggest.minTriggerInputLength": 1,
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "c",
@@ -23,6 +20,8 @@
     "ml",
     "ocaml"
   ],
+  "diagnostic.level": "warning",
+  "suggest.minTriggerInputLength": 1,
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format",
   "python.pythonPath": "python3",
