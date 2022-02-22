@@ -43,15 +43,4 @@ If (Test-Path $env:UserProfile\AppData\Local\nvim\init.vim) {
 cmd /c mklink %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\.vim
 cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
 
-# Install vim plugins
-gvim -c "PlugInstall" -c "qall"
-
-# Check if command exists
-function Check-Command($cmdname) {
-    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
-}
-
-# Install neovim plugins if nvim.exe exists
-if (Check-Command -cmdname 'nvim') {
-    nvim -c "PlugInstall" -c "qall"
-}
+Write-Host "[lin.vim] Please manually open (Neo)vim and type `:PlugInstall` to install (Neo)vim plugins"

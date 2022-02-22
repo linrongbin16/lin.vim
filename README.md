@@ -202,10 +202,13 @@ You could also install these dependencies with other windows package manager suc
 4. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
 5. Install [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack.zip`, please manually install the following fonts:
+
    - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
    - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+
+6. Open (Neo)vim and type `:PlugInstall` to install (neo)vim plugins.
 
 ### Notice
 
