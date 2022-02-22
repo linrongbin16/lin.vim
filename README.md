@@ -350,7 +350,7 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 
 By default search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`, ...
 
-But if you want, just edit **_~/.vim/lin.vim_**, disable(comment) the line `source $HOME/.vim/setting/junegunn/fzf.vim.vim`(which provide key mappings for fzf.vim), and enable(uncomment) the line `" source $HOME/.vim/setting/liuchengxu/vim-clap.vim`(which provide key mappings for vim-clap). Both fzf.vim and vim-clap's key mappings are functioned almost in the same way.
+But if you want to use vim-clap, just edit **_~/.vim/lin.vim_**, disable(comment) the line `source $HOME/.vim/setting/junegunn/fzf.vim.vim`(which provide key mappings for fzf.vim), and enable(uncomment) the line `" source $HOME/.vim/setting/liuchengxu/vim-clap.vim`(which provide key mappings for vim-clap). Both fzf.vim and vim-clap's key mappings are functioned almost in the same way.
 
 #### Text Search
 
