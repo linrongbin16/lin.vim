@@ -227,7 +227,6 @@ Notice: installation needs access of websites below, and make sure they're avail
 
 - [github.com](https://github.com/)
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/)
-- [crates.io](https://crates.io/)
 
 ## User Guide
 
