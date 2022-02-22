@@ -51,4 +51,5 @@ augroup FernExplorerCustom
   autocmd!
   autocmd FileType fern call s:fern_settings()
   autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType fern setl nonumber
 augroup END
