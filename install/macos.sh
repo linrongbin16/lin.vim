@@ -4,9 +4,6 @@ brew upgrade
 export HOMEBREW_NO_AUTO_UPDATE=1
 brew install macvim
 brew install neovim
-if [ ! -f /bin/zsh ]; then
-    brew install zsh
-fi
 brew install curl-openssl
 brew install wget
 brew install llvm

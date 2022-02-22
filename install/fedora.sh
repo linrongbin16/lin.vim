@@ -5,7 +5,6 @@ sudo dnf install -y gvim
 sudo dnf install -y neovim
 sudo dnf install -y curl
 sudo dnf install -y wget
-sudo dnf install -y zsh
 sudo dnf install -y gcc
 sudo dnf install -y g++
 sudo dnf install -y clang

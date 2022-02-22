@@ -14,7 +14,7 @@ function check_sudo() {
 # backup old .linvimrc
 if [ -f ~/.linvimrc ]; then
     LINVIMRC_BAK=~/.linvimrc.$(date +%s)
-    echo "[lin.vim] back up .linvimrc to $LINVIMRC_BAK"
+    echo "[lin.vim] Back up .linvimrc to $LINVIMRC_BAK"
     mv ~/.linvimrc $LINVIMRC_BAK
 fi
 
@@ -103,7 +103,13 @@ nvim -c "PlugInstall" -c "qall"
 
 # install environment
 cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc
-touch ~/.zshrc
-echo "source ~/.linvimrc" >> ~/.zshrc
-chsh -s $(which zsh)
-source ~/.zshrc 1>/dev/null 2>&1
+if [ -f ~/.bashrc ]; then
+    echo "[lin.vim] Install ~/.linvimrc to ~/.bashrc"
+    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.bashrc
+    source ~/.bashrc 1>/dev/null 2>&1
+fi
+if [ -f ~/.zshrc ]; then
+    echo "[lin.vim] Install ~/.linvimrc to ~/.zshrc"
+    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.zshrc
+    source ~/.zshrc 1>/dev/null 2>&1
+fi

@@ -6,7 +6,6 @@ sudo apt-get install -y libcanberra-gtk-module
 sudo apt-get install -y neovim
 sudo apt-get install -y curl
 sudo apt-get install -y wget
-sudo apt-get install -y zsh
 sudo apt-get install -y gcc
 sudo apt-get install -y g++
 sudo apt-get install -y make

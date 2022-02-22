@@ -5,7 +5,6 @@ yes | sudo pacman -S gvim
 yes | sudo pacman -S neovim
 yes | sudo pacman -S curl
 yes | sudo pacman -S wget
-yes | sudo pacman -S zsh
 yes | sudo pacman -S gcc
 yes | sudo pacman -S clang
 yes | sudo pacman -S make
