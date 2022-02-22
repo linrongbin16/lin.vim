@@ -93,7 +93,7 @@ lin.vim solved such issues:
   - Windows
   - macOS
   - Linux(Ubuntu/Debian/Fedora/Manjaro)
-- Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.5+ is strongly recommended for better performance.
+- Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.6+ is strongly recommended for better performance and experience.
 - Modern editor UI features:
   - File explorer
   - Buffers/tabs explorer
@@ -103,7 +103,7 @@ lin.vim solved such issues:
   - Outline/Tags
 - IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(c/c++/python3/rust/markdown/html/xml/css/sass/scss/json/javascript/typescript/jsx/tsx) are embeded by default:
   - Code complete
-  - (Optional) AI complete (by [TabNine](https://www.tabnine.com/))
+  - (Optional) AI complete by [TabNine](https://www.tabnine.com/)
   - Diagnostic
   - Lint
   - Code format
@@ -134,19 +134,19 @@ lin.vim solved such issues:
  |+command              Command line utilities(vcmd) implemented in python3.
  |+install              Installation scripts for all platforms.
  |+setting              VimL script settings.
- |+template             Templates for ~/.vim/user-settings.vim, ~/.vim/coc-settings.json, ~/.vim/plugin.vim and ~/.linvimrc.
- |`install.sh           UNIX/Linux/MacOS bash installation script.
- |`install.ps1          Windows PowerShell installation script.
+ |+template             Templates for ~/.vim/plugin.vim, ~/.vim/coc-settings.json, ~/.vim/setting.vim and ~/.linvimrc.
+ |`install.sh           UNIX/Linux/MacOS shell install script.
+ |`install.ps1          Windows PowerShell install script.
  |`LICENSE              The license file.
  |`lin.vim              The .vimrc file.
- |`README.md            Readme wiki.
+ |`README.md            The readme document.
 ```
 
 ## Installation
 
 ### Requirements
 
-lin.vim needs at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not supported), Nodejs 10.12+. Its installation has been tested on these platforms:
+lin.vim need at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not supported), Nodejs 10.12+. Its installation has been tested on these platforms:
 
 - MacOS Catalina 10.15.7 with Macvim 8.2, python 3.9+, node v15.x+
 - Windows 10 with Vim 8.2, python 3.8+, node v15+
@@ -253,7 +253,7 @@ You could configure these keys in **_~/.vim/setting/linrongbin16/hotkey.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)), you could use key mappings on the file explorer left side:
+File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on Neovim 0.6+), you could use key mappings on the file explorer left side:
 
 Transfer and Open Files:
 
