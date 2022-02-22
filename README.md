@@ -261,7 +261,6 @@ Transfer and Open Files:
 - `l` 🄽 - open or expand directory.
 - `<CR>` 🄽 - open file or cd into directory.
 - `<BS>` 🄽 - leave directory and goto upper directory.
-- `<Tab>` 🄽 - preview.
 - `<C-v>` 🄽 - open file in `vsplit`.
 - `<C-x>` 🄽 - open file in `split`.
 - `<C-t>` 🄽 - open file in new tab.
