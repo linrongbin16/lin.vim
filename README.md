@@ -215,7 +215,7 @@ You could also install these dependencies with other windows package manager suc
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
 - git, curl, wget
-- (g)vim/neovim (macvim is installed on macOS)
+- vim/neovim/gvim (macvim is installed on macOS)
 - llvm (clang, clang++, clangd, clang-format)
 - rust
 - golang
