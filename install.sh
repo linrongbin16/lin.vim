@@ -108,8 +108,18 @@ if [ -f ~/.bashrc ]; then
     echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.bashrc
     source ~/.bashrc 1>/dev/null 2>&1
 fi
+if [ -f ~/.kshrc ]; then
+    echo "[lin.vim] Install ~/.linvimrc to ~/.kshrc"
+    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.kshrc
+    source ~/.kshrc 1>/dev/null 2>&1
+fi
 if [ -f ~/.zshrc ]; then
     echo "[lin.vim] Install ~/.linvimrc to ~/.zshrc"
     echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.zshrc
     source ~/.zshrc 1>/dev/null 2>&1
+fi
+if [ -f ~/.fishrc ]; then
+    echo "[lin.vim] Install ~/.linvimrc to ~/.fishrc"
+    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.fishrc
+    source ~/.fishrc 1>/dev/null 2>&1
 fi

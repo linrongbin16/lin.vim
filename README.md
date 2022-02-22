@@ -125,7 +125,7 @@ lin.vim solved such issues:
   - vconf: easier configuration for generate `compile_commands.json`/`compile_flags.txt` for clangd, ssh-keys, faster china mirrors for homebrew/npm/pip3/ubuntu/debian/fedora/manjaro
   - vpack: earier compression/extraction, no need to remember tons of options on tar/zip/7z
   - vtime: earier translation with seconds/milliseconds integer and local/UTC timezone, no need to remember tons of options
-- Use [zsh](https://www.zsh.org/) for macOS/Linux with pretty colorscheme, and also a `~/.linvimrc` is installed for environment variable management.
+- Install `~/.linvimrc` as a environment variable management.
 - Custom configuration.
 
 ### Project Structure
