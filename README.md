@@ -181,6 +181,7 @@ lin.vim need at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not su
    - [golang](https://go.dev/dl/): add `go.exe` in `$env.Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env.Path`
    - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env.Path`
+   - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` in `$env.Path`
    - (Optional for better fzf.vim preview) [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env.Path`
    - (Optional for better fzf.vim file search performance) [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env.Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env.Path`

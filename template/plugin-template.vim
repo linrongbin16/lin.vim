@@ -77,7 +77,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Language Server and Search Engine
-Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
