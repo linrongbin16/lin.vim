@@ -1,6 +1,6 @@
 # lin.vim : Lin Rongbin's (Neo)Vim Distribution
 
-lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
+lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
 # Table of Contents
 
@@ -53,11 +53,11 @@ lin.vim is focused on and only on editing, it doesn't compile/package/debug proj
 
 lin.vim solved such issues:
 
-- Solved the difficulty of choosing/grouping/configuring plugins, a list of plugins are embeded and well configured which meets most needs.
+- Solved the difficulty of choosing/grouping/configuring plugins, a set of plugins are embeded and well configured which meets most needs.
 - Solved the difficulty of repeatable install work on different OS and machines, installation has been made easier by one line command (not on Windows for now).
 - Solved the performance/feature/UI-looking issue on (Neo)VIM, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
-- Solved the repeatable daily shell command line work by offering a set of command line utilities implemented by python3, include vfile/vgit/vgp/vencode/vip/vpack/vtime/vconf/etc.
-- Detailed wiki for almost everything so nothing been confused.
+- Solved the repeatable daily shell command line work, a set of command line utilities implemented by python3 are provided, include vfile/vgit/vgp/vencode/vip/vpack/vtime/vconf/etc.
+- Documented almost everything so nothing been confused.
 - Customization ability for special needs.
 
 ### Screenshots
