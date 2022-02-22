@@ -49,7 +49,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 lin.vim is aimed to out of box, IDE-like editing features, high performance, light weight and friendly to most (Neo)VIM users.
 
-lin.vim is focused on and only on editing, it doesn't compiling/packaging/debugging projects, not a tutorial for new (Neo)VIM users neither.
+lin.vim is focused on and only on editing, it doesn't compile/package/debug projects, not tutorial for new (Neo)VIM users neither.
 
 lin.vim solved such issues:
 
