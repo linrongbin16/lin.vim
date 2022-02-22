@@ -221,7 +221,6 @@ You could also install these dependencies with other windows package manager suc
 - python3, pip3
 - nodejs, npm
 - universal-ctags
-- zsh (not installed on Windows)
 - hack nerd font (only download on Windows, need manually installation)
 
 Notice: installation needs access of websites below, and make sure they're available:
