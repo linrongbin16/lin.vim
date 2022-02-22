@@ -108,8 +108,8 @@ lin.vim solved such issues:
   - Lint
   - Code format
   - Jump between symbols
-  - Code Lens
   - Code Actions
+  - Code Lens
 - Search engine features supported by [fzf.vim](https://github.com/junegunn/fzf.vim). [vim-clap](https://github.com/liuchengxu/vim-clap) is also installed, both `:Fzf` and `:Clap` are available, but key mappings are only provide for fzf.vim by default:
   - Text search on text/lines/tags/search-histories/command-histories/yank-histories
   - File search on files/buffers/history-files
