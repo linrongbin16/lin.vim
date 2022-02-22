@@ -342,10 +342,8 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 
 #### Code Format/Actions/Lens (by coc.nvim)
 
-- `<leader>cf` 🄽 - format code on current buffer.
-- `<leader>cf` 🅅 - format code on visual selected code.
-- `<leader>ca` 🄽 - run code actions on current buffer.
-- `<leader>ca` 🅅 - run code actions on visual selected code.
+- `<leader>cf` 🄽🅅 - format code on current buffer or visual selected code.
+- `<leader>ca` 🄽🅅 - run code actions on current buffer or visual selected code.
 - `<leader>cl` 🄽 - run code lens on current line.
 - `<leader>qf` 🄽 - apply quick fix on current line.
 
