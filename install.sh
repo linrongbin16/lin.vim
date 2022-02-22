@@ -54,7 +54,7 @@ rustup component add rustfmt
 
 
 # install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
+sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click trash-cli
 
 # install nodejs npm packages
 sudo npm install -g yarn prettier neovim

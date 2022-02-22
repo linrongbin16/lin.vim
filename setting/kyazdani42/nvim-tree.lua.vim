@@ -17,8 +17,8 @@ local key_mappings = {
   { key = "H",                            action = "toggle_dotfiles" },
   { key = "R",                            action = "refresh" },
   { key = {"N", "K"},                     action = "create" },
-  { key = "D",                            action = "remove" },
-  -- { key = "D",                            action = "trash" },
+  -- { key = "D",                            action = "remove" },
+  { key = "D",                            action = "trash" },
   { key = {"r", "m"},                     action = "rename" },
   { key = "X",                            action = "cut" },
   { key = "C",                            action = "copy" },
@@ -90,7 +90,7 @@ require'nvim-tree'.setup {
     signcolumn = "yes"
   },
   trash = {
-    cmd = "trash",
+    cmd = "trash-put",
     require_confirm = true
   },
   actions = {
