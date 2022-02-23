@@ -11,7 +11,7 @@ nnoremap <F3> :<C-u>MarkdownPreview<CR>
 " switch between C/C++ header source
 nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
 " next color scheme
-nnoremap <F9> :<C-u>call NextColorScheme()<CR>
+nnoremap <F9> :<C-u>call NextColorScheme(v:true)<CR>
 " open buffer explorer
 nnoremap <silent> <F10> :<C-u>BufExplorer<CR>
 " close buffer explorer if it's opened

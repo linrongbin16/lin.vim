@@ -162,36 +162,62 @@ lin.vim need at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not su
 
 ### Windows
 
-1. Install [Visual Studio](https://www.visualstudio.com/) with at least these options:
+The goal of installation on windows is to install as a native windows software, without dependencies such as [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MYSY2](https://www.msys2.org/) for reasons:
+
+- Native software has better performance.
+- WSL is actually a ubuntu virtual machine, lin.vim will just install and run like in ubuntu.
+- MYSY2 seems download almost everything of GNU ecosystem which is too heavy, while [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands.
+
+While installation steps could be a little bit complicated actually:
+
+1. Install [Visual Studio](https://www.visualstudio.com/) with at least these components:
 
    - .NET Desktop Development
    - Visual C++ Desktop Development
    - Common Windows Platform Development
 
-2. Install third party dependencies (x64 is preferred):
+2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with especially these options:
 
-   - [git](https://git-scm.com/downloads): add `git.exe` in `$env:Path`
+   - In the 3rd **\_Select Components\_** step, enable/choose **_Associate .sh files to be run with Bash_**
+   - In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
+   - In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
+
+Notice: if you are using WSL, `bash.exe` from `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by Git for Windows. Make sure Git for Windows PATH environment is ahead of `C:\Windows\System32` so `bash.exe` from Git for Windows (`wsl.exe` could connect to WSL as well) will be first detected on Command Prompt and PowerShell.
+
+After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `find.exe`, `cat.exe` should be found as well.
+
+One more thing should be noticed is that there's a `vim.exe` provided by Git for Windows as well, don't use it, just use `gvim.exe` installed by yourself.
+
+3. Install other third party dependencies (x64 is preferred):
+
    - (Optional) [make](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` in `$env:Path`
-   - [cmake](https://cmake.org/download/): add `cmake.exe` in `$env.Path`
-   - [gvim](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` in `$env.Path`
-   - (Recommended) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` in `$env.Path`
-   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them in `$env.Path`
-   - [llvm](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env.Path`
-   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env.Path`
-   - [golang](https://go.dev/dl/): add `go.exe` in `$env.Path`
-   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env.Path`
-   - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env.Path`
-   - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` in `$env.Path`
-   - (Optional for better fzf.vim preview) [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env.Path`
-   - (Optional for better fzf.vim file search performance) [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env.Path`
-   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env.Path`
-   - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env.Path`
+   - [cmake](https://cmake.org/download/): add `cmake.exe` in `$env:Path`
+   - [gvim](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` in `$env:Path`
+   - (Recommended) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` in `$env:Path`
+   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them in `$env:Path`
+   - [llvm](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env:Path`
+   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env:Path`
+   - [golang](https://go.dev/dl/): add `go.exe` in `$env:Path`
+   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env:Path`
+   - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env:Path`
+   - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` in `$env:Path`
+   - (Optional for fzf preview) [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env:Path`
+   - (Optional for fzf preview) [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env:Path`
+   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env:Path`
+   - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env:Path`
 
 Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
 
-You could also install these dependencies with other windows package manager such as [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/), just make sure these commands are available in `$env.Path`.
+You could also install these dependencies with other windows package manager such as [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/), just make sure these commands are available in `$env:Path`.
 
-3. Install following components as administrator:
+4. Install [Hack Nerd Font (end with _Mono Windows Compatible.ttf_)](https://github.com/ryanoasis/nerd-fonts/releases):
+
+   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+
+5. Install following components as administrator:
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
@@ -199,16 +225,7 @@ You could also install these dependencies with other windows package manager suc
     $ .\install.ps1
 ```
 
-4. Add `$env:UserProfile\.vim\command` in `$env:Path`.
-
-5. Install [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases), `install.ps1` script will automatically download and save it as `$env:UserProfile\.vim\guifonts\Hack.zip`, please manually install the following fonts:
-
-   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
-
-6. Open (Neo)vim and type `:PlugInstall` to install (neo)vim plugins.
+6. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
 ### Notice
 
@@ -275,7 +292,8 @@ Create/Delete/Copy/Paste/Cut:
 - `C` 🄽 - copy file/directory into internal clipboard.
 - `X` 🄽 - cut file/directory into internal clipboard.
 - `V`/`P` 🄽 - paste internal clipboard file/directory to current directory.
-- `D` 🄽 - delete file/directory to trash.
+- `d` 🄽 - delete file/directory (with `trash-put` command from [trash-cli](https://github.com/andreafrancia/trash-cli)) to trash. Notice this feature is not working on Windows.
+- `D` 🄽 - remove file/directory (possibly with `rm` command) forever.
 - `R` 🄽 - reload file explorer.
 
 Others:

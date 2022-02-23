@@ -19,19 +19,24 @@ set background=dark
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 
-function NextColorScheme()
+function NextColorScheme(force_redraw)
     try
         if has("gui_running")
             let idx = localtime() % len(s:gui_color_schemes)
             execute 'colorscheme ' .s:gui_color_schemes[idx]
-            execute 'syntax sync fromstart'
+            if force_redraw
+              execute 'syntax sync fromstart'
+            endif
         else
             let idx = localtime() % len(s:term_color_schemes)
             execute 'colorscheme ' .s:term_color_schemes[idx]
-            execute 'syntax sync fromstart'
+            if force_redraw
+              execute 'syntax sync fromstart'
+            endif
         endif
         catch
     endtry
 endfunction
 
-call NextColorScheme()
+" initialize color scheme for vim start
+call NextColorScheme(v:false)

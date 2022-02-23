@@ -98,8 +98,8 @@ fi
 ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
 # install vim plugins
-vim -c "PlugInstall" -c "qall"
-nvim -c "PlugInstall" -c "qall"
+vim -E -c "PlugInstall" -c "qall"
+nvim -E -c "PlugInstall" -c "qall"
 
 # install environment
 cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc
