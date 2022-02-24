@@ -15,7 +15,6 @@ let g:fern#disable_default_mappings=1
 
 " key mappings for fern explorer
 function! s:fern_settings() abort
-
   " fern key mapping
   nmap <buffer><nowait> ? <Plug>(fern-action-help)
   nmap <buffer><nowait> . <Plug>(fern-action-repeat)
@@ -28,8 +27,8 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> <CR> <Plug>(fern-action-enter)
   nmap <buffer><nowait> <BS> <Plug>(fern-action-leave)
   nmap <buffer><nowait> s <Plug>(fern-action-open:system)
-  nmap <buffer><nowait> N <Plug>(fern-action-new-leaf)
-  nmap <buffer><nowait> K <Plug>(fern-action-new-branch)
+  nmap <buffer><nowait> N <Plug>(fern-action-new-file)
+  nmap <buffer><nowait> K <Plug>(fern-action-new-dir)
   nmap <buffer><nowait> c <Plug>(fern-action-copy)
   nmap <buffer><nowait> m <Plug>(fern-action-move)
   nmap <buffer><nowait> r <Plug>(fern-action-move)
