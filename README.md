@@ -277,8 +277,7 @@ Create/Delete/Copy/Paste/Cut:
 - `C` 🄽 - copy file/directory into internal clipboard.
 - `X` 🄽 - cut file/directory into internal clipboard.
 - `V`/`P` 🄽 - paste internal clipboard file/directory to current directory.
-- `d` 🄽 - delete file/directory (with `trash-put` from [trash-cli](https://github.com/andreafrancia/trash-cli)) to trash. Notice this feature is not working on Windows.
-- `D` 🄽 - remove file/directory (possibly with `rm`) forever.
+- `D` 🄽 - delete file/directory.
 - `R` 🄽 - reload file explorer.
 
 Others:

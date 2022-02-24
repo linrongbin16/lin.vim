@@ -18,7 +18,7 @@ local key_mappings = {
   { key = "R",                            action = "refresh" },
   { key = {"N", "K"},                     action = "create" },
   { key = "D",                            action = "remove" },
-  { key = "d",                            action = "trash" },
+  -- { key = "d",                            action = "trash" },
   { key = {"r", "m"},                     action = "rename" },
   { key = "X",                            action = "cut" },
   { key = "C",                            action = "copy" },

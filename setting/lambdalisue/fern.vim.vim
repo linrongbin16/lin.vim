@@ -34,7 +34,6 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> m <Plug>(fern-action-move)
   nmap <buffer><nowait> r <Plug>(fern-action-move)
   nmap <buffer><nowait> D <Plug>(fern-action-remove)
-  nmap <buffer><nowait> d <Plug>(fern-action-trash)
   nmap <buffer><nowait> C <Plug>(fern-action-clipboard-copy)
   nmap <buffer><nowait> X <Plug>(fern-action-clipboard-move)
   nmap <buffer><nowait> V <Plug>(fern-action-clipboard-pate)
