@@ -11,13 +11,6 @@ function check_sudo() {
     sudo echo "[lin.vim] Install for $1" || { echo "[lin.vim] sudo not found"; exit 1; }
 }
 
-# backup old .linvimrc
-if [ -f ~/.linvimrc ]; then
-    LINVIMRC_BAK=~/.linvimrc.$(date +%s)
-    echo "[lin.vim] Back up .linvimrc to $LINVIMRC_BAK"
-    mv ~/.linvimrc $LINVIMRC_BAK
-fi
-
 if [ $(uname) == "Linux" ]; then
     if cat /etc/*release | grep ^NAME | grep Ubuntu 1>/dev/null 2>&1; then
         check_sudo "Ubuntu"
@@ -97,29 +90,6 @@ if [ -f ~/.config/nvim/init.vim ]; then
 fi
 ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
 
-# install vim plugins
+# install (neo)vim plugins
 vim -E -c "PlugInstall" -c "qall"
 nvim -E -c "PlugInstall" -c "qall"
-
-# install environment
-cp ~/.vim/template/linvimrc-template.sh ~/.linvimrc
-if [ -f ~/.bashrc ]; then
-    echo "[lin.vim] Install ~/.linvimrc to ~/.bashrc"
-    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.bashrc
-    source ~/.bashrc 1>/dev/null 2>&1
-fi
-if [ -f ~/.kshrc ]; then
-    echo "[lin.vim] Install ~/.linvimrc to ~/.kshrc"
-    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.kshrc
-    source ~/.kshrc 1>/dev/null 2>&1
-fi
-if [ -f ~/.zshrc ]; then
-    echo "[lin.vim] Install ~/.linvimrc to ~/.zshrc"
-    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.zshrc
-    source ~/.zshrc 1>/dev/null 2>&1
-fi
-if [ -f ~/.fishrc ]; then
-    echo "[lin.vim] Install ~/.linvimrc to ~/.fishrc"
-    echo "[ -f ~/.linvimrc ] && source ~/.linvimrc" >> ~/.fishrc
-    source ~/.fishrc 1>/dev/null 2>&1
-fi

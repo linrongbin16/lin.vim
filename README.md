@@ -41,7 +41,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Highlight(Mark) specific words](#highlight-mark-specific-words)
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
-  - [Command Line Utility (vcmd)](#command-line-utility-vcmd)
 - [Reference](#reference)
 - [Contribute](#contribute)
 
@@ -56,7 +55,6 @@ lin.vim solved such issues:
 - Solved the difficulty of choosing/grouping/configuring plugins, a set of plugins are embeded and well configured which meets most needs.
 - Solved the difficulty of repeatable install work on different OS and machines, installation has been made easier by one line command (not on Windows for now).
 - Solved the performance/feature/UI-looking issue on (Neo)VIM, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
-- Solved the repeatable daily shell command line work, a set of command line utilities implemented by python3 are provided, include vfile/vgit/vgp/vencode/vip/vpack/vtime/vconf/etc.
 - Documented almost everything so nothing been confused.
 - Customization ability for special needs.
 
@@ -116,25 +114,14 @@ lin.vim solved such issues:
   - Git search on commits/uncommit-changes
   - Coc.nvim integrated search on symbols/outline/diagnostics/yank
   - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags
-- Command line utilities works on multiple OS platforms, implemented by python3 for easier daily work:
-  - vgit: better git operations, no need to remember tons of options, better interactive UI for user
-  - vgp: better text searches implement by ripgrep, no need to remember tons of options, easier management on `~/.ignore` files
-  - vfile: better file operations(delete/content-replace/encoding-convert)
-  - vip: easier IPv4 IPv6 address validator and translation with integer
-  - vencode: easier Base64/URL encoder/decoder
-  - vconf: easier configuration for generate `compile_commands.json`/`compile_flags.txt` for clangd, ssh-keys, faster china mirrors for homebrew/npm/pip3/ubuntu/debian/fedora/manjaro
-  - vpack: earier compression/extraction, no need to remember tons of options on tar/zip/7z
-  - vtime: earier translation with seconds/milliseconds integer and local/UTC timezone, no need to remember tons of options
-- Install `~/.linvimrc` as a environment variable management.
 - Custom configuration.
 
 ### Project Structure
 
 ```
- |+command              Command line utilities(vcmd) implemented in python3.
  |+install              Installation scripts for all platforms.
  |+setting              VimL script settings.
- |+template             Templates for ~/.vim/plugin.vim, ~/.vim/coc-settings.json, ~/.vim/setting.vim and ~/.linvimrc.
+ |+template             Templates for ~/.vim/plugin.vim, ~/.vim/coc-settings.json and ~/.vim/setting.vim.
  |`install.sh           UNIX/Linux/MacOS shell install script.
  |`install.ps1          Windows PowerShell install script.
  |`LICENSE              The license file.
@@ -182,7 +169,7 @@ While installation steps could be a little bit complicated actually:
    - In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
    - In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
 
-Notice: if you are using WSL, `bash.exe` from `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by Git for Windows. Make sure Git for Windows PATH environment is ahead of `C:\Windows\System32` so `bash.exe` from Git for Windows (`wsl.exe` could connect to WSL as well) will be first detected on Command Prompt and PowerShell.
+Notice: if you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by Git for Windows. Make sure Git for Windows PATH environment is ahead of `C:\Windows\System32` so `bash.exe` from Git for Windows (`wsl.exe` could connect to WSL as well) will be first detected on Command Prompt and PowerShell.
 
 After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `find.exe`, `cat.exe` should be found as well.
 
@@ -224,8 +211,6 @@ You could also install these dependencies with other windows package manager suc
     $ cd $env:UserProfile\.vim
     $ .\install.ps1
 ```
-
-6. Add `$env:UserProfile\.vim\command` in `$env:Path`.
 
 ### Notice
 
@@ -292,8 +277,8 @@ Create/Delete/Copy/Paste/Cut:
 - `C` 🄽 - copy file/directory into internal clipboard.
 - `X` 🄽 - cut file/directory into internal clipboard.
 - `V`/`P` 🄽 - paste internal clipboard file/directory to current directory.
-- `d` 🄽 - delete file/directory (with `trash-put` command from [trash-cli](https://github.com/andreafrancia/trash-cli)) to trash. Notice this feature is not working on Windows.
-- `D` 🄽 - remove file/directory (possibly with `rm` command) forever.
+- `d` 🄽 - delete file/directory (with `trash-put` from [trash-cli](https://github.com/andreafrancia/trash-cli)) to trash. Notice this feature is not working on Windows.
+- `D` 🄽 - remove file/directory (possibly with `rm`) forever.
 - `R` 🄽 - reload file explorer.
 
 Others:
@@ -501,66 +486,6 @@ Please add more settings in **_~/.vim/user-settings.vim_** and **_~/.vim/coc-set
 
 [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only downloaded on Windows and need manually install).
 Please manually install other fonts and configure font settings in **_~/.vim/setting/linrongbin16/gui.vim_** if you want to customize gui fonts.
-
-### Command Line Utility (vcmd)
-
-A bunch of command line utilities (named **_vcmd_**) are implemented by python3 to speed up daily work.
-Here's an example:
-
-```
-$ vgit --help
-Usage: vgit [OPTIONS] [ARGS]...
-
-  Dummy UI for git
-
-  Example:
-
-  $ vgit -ps
-  [vcmd] choose remote repository 'origin'[0] (by default 0):
-  [vcmd] choose branch (by default master):
-  [vcmd] enter comment: test vgit -ps
-  [vcmd] git push to origin/master with '[vcmd] git push at test vgit -ps', yes? Y
-  [master 0995109] [vcmd] git push at test vgit -ps
-   2 files changed, 80 insertions(+), 42 deletions(-)
-  Enumerating objects: 9, done.
-  Counting objects: 100% (9/9), done.
-  Delta compression using up to 12 threads
-  Compressing objects: 100% (5/5), done.
-  Writing objects: 100% (5/5), 2.21 KiB | 1.10 MiB/s, done.
-  Total 5 (delta 4), reused 0 (delta 0)
-  remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
-  To https://github.com/linrongbin16/lin.vim
-     9ff7a14..0995109  master -> master
-
-Options:
-  -b, --branch [local|remote|all|this|create|switch|delete]
-                                  branch operations, use
-                                  `local/remote/all/this` to display
-                                  local/remote/all branches, use
-                                  `create/move/delete` to create/switch/delete
-                                  with branches
-  -pl, --pull                     pull, use --force to pull force
-  -ps, --push                     push, use --force to push force
-  -f, --force                     pull/push force
-  -d, --discard                   discard local changes
-  --reset TEXT                    reset N previous commits(you need to push
-                                  force to override remote repository)
-  --revert TEXT                   revert N previous commits(use new commit
-                                  instead of push force)
-  -p, --proxy [add|switch|none|purge|show]
-                                  proxy configuration, use `add` to add new ip
-                                  proxy, use `switch` to switch between
-                                  different ip proxies, use `none` to disable
-                                  ip proxy, use `purge` to remove all
-                                  configured ip proxies(and disable currently
-                                  using ip proxy if exist), use `show` to
-                                  display configured ip proxies and currently
-                                  using ip proxy if exist
-  --debug                         debug mode
-  --help                          Show this message and exit.
-```
-
-Please try `--help` on **_vcmd_** commands for more usage.
 
 ## Reference
 
