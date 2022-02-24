@@ -52,11 +52,11 @@ sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakel
 # install nodejs npm packages
 sudo npm install -g yarn prettier neovim
 
-# install hack font
+# install hack nerd font
 if [ $(uname) == "Darwin" ]; then
     cd ~/Library/Fonts
     brew tap homebrew/cask-fonts
-    brew install --cask font-hack
+    brew install --cask font-hack-nerd-font
 else
    mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
     if [ ! -f Hack.zip ]; then

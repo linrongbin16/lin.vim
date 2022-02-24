@@ -480,12 +480,7 @@ Make a word or something highlight/marked could be quite useful in some cases:
 
 ### Customization
 
-Please add more settings in **_~/.vim/user-settings.vim_** and **_~/.vim/coc-settings.json_**.
-
-#### GUI Fonts
-
-[Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) is installed by default(only downloaded on Windows and need manually install).
-Please manually install other fonts and configure font settings in **_~/.vim/setting/linrongbin16/gui.vim_** if you want to customize gui fonts.
+Please add more settings in **_~/.vim/setting.vim_** and **_~/.vim/coc-settings.json_**.
 
 ## Reference
 
