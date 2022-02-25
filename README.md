@@ -119,10 +119,10 @@ lin.vim solved such issues:
 ### Project Structure
 
 ```
- |+install              Installation scripts for all platforms.
+ |+install              Installation scripts for different platforms.
  |+setting              VimL script settings.
  |+template             Templates for ~/.vim/plugin.vim, ~/.vim/coc-settings.json and ~/.vim/setting.vim.
- |`install.sh           UNIX/Linux/MacOS shell install script.
+ |`install.sh           UNIX/Linux/MacOS install script.
  |`install.ps1          Windows PowerShell install script.
  |`LICENSE              The license file.
  |`lin.vim              The .vimrc file.
