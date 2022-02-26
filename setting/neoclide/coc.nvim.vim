@@ -3,23 +3,20 @@ let g:coc_global_extensions = ['coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyr
 let g:coc_snippet_prev = '<TAB>'
 let g:coc_snippet_next = '<S-TAB>'
 
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 " use `<tab>` `<c-n>` `<PnDown>` to select next suggestion
 " use `<s-tab>` `<c-p>` `<PnUp>` to select previous suggestion
-
-" without coc-snippets
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-
-" with coc-snippets
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
+      \ pumvisible() ? "\<C-n>" :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
