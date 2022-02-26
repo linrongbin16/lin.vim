@@ -7,5 +7,5 @@ autocmd BufRead,BufNewFile makefile setlocal filetype=make
 autocmd BufRead,BufNewFile *.ll setlocal filetype=llvm
 autocmd BufRead,BufNewFile *.lex setlocal filetype=lex
 autocmd BufRead,BufNewFile *.yacc setlocal filetype=yacc
-autocmd BufRead,BufNewFile *.l setlocal filetype=flex
-autocmd BufRead,BufNewFile *.y setlocal filetype=bison
+autocmd BufRead,BufNewFile *.l setlocal filetype=lex
+autocmd BufRead,BufNewFile *.y setlocal filetype=yacc
