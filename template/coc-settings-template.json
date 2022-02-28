@@ -16,9 +16,7 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "ml",
-    "ocaml"
+    "typescriptreact"
   ],
   "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
