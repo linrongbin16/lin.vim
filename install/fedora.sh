@@ -26,7 +26,6 @@ sudo dnf install -y python3
 sudo dnf install -y python3-devel
 sudo dnf install -y python3-pip
 sudo dnf install -y python3-docutils
-sudo dnf install -y util-linux-user # for chsh
 
 # Node
 sudo dnf install -y nodejs
