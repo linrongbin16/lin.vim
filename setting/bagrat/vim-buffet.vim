@@ -47,19 +47,19 @@ if has('nvim-0.6')
   nmap <silent> <expr> <A-0> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
 
   " go to next buffer
-  nnoremap <expr> <Leader><Tab> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <D-.> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <A-.> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <D-Right> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <A-Right> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <Leader><Tab> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <D-.> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <A-.> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <D-Right> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <A-Right> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bn<CR>"
   " go to previous buffer
-  nnoremap <expr> <Leader><S-Tab> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <D-,> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <A-,> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <D-Left> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <A-Left> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <Leader><S-Tab> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <D-,> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <A-,> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <D-Left> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <A-Left> (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":bp<CR>"
   " close current buffer without closing vim window
-  nnoremap <expr> <Leader>bd (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":Bw<CR>"
+  nnoremap <silent> <expr> <Leader>bd (expand('%') ==# 'NvimTree' ? "\<c-w>\<c-w>" : '').":Bw<CR>"
 else
   nmap <silent> <expr> <D-1> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
   nmap <silent> <expr> <D-2> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
@@ -84,17 +84,17 @@ else
   nmap <silent> <expr> <A-0> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
 
   " go to next buffer
-  nnoremap <expr> <Leader><Tab> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <D-.> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <A-.> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <D-Right> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
-  nnoremap <expr> <A-Right> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <Leader><Tab> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <D-.> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <A-.> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <D-Right> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
+  nnoremap <silent> <expr> <A-Right> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bn<CR>"
   " go to previous buffer
-  nnoremap <expr> <Leader><S-Tab> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <D-,> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <A-,> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <D-Left> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
-  nnoremap <expr> <A-Left> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <Leader><S-Tab> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <D-,> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <A-,> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <D-Left> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
+  nnoremap <silent> <expr> <A-Left> (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":bp<CR>"
   " close current buffer without closing vim window
-  nnoremap <expr> <Leader>bd (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":Bw<CR>"
+  nnoremap <silent> <expr> <Leader>bd (expand('%') =~ 'fern://drawer' ? "\<c-w>\<c-w>" : '').":Bw<CR>"
 endif
