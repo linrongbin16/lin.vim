@@ -33,9 +33,8 @@ inoremap <silent><expr> <TAB>
 inoremap <silent><expr> <c-k> coc#refresh()
 
 " use `<cr>` to confirm the complete item
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " use `[d` and `]d` to navigate diagnostics
 " use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
