@@ -19,9 +19,10 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [File Explorer](#file-explorer)
     - [Buffers/Tabs](#buffers-tabs)
   - [IDE-like Editing Features](#ide-like-editing-features)
-    - [Code Complete](#code-complete-by-coc-nvim)
-    - [Jumps](#jumps-by-coc-nvim)
-    - [Quick Code Actions/Lens](#quick-code-actions-lens-by-coc-nvim)
+    - [Code Complete](#code-complete)
+    - [Jumps](#jumps)
+    - [Symbols](#symbols)
+    - [Code Format/Actions/Lens](#code-format-actions-lens)
   - [Search](#search)
     - [Text Search](#text-search)
     - [File Search](#file-search)
@@ -323,14 +324,14 @@ For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **
 
 The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a try(also it eats lots of memory), type `:CocCommand tabnine.openHub` to login and enable after installation.
 
-#### Code Complete (by coc.nvim)
+#### Code Complete
 
 - `<c-n>`/`<tab>`/`<down>` 🄸 - navigate to next suggestion.
 - `<c-p>`/`<s-tab>`/`<up>` 🄸 - navigate to previous suggestion.
 - `<cr>` 🄸 - select current suggestion or expand current snippet.
 - `<esc>`/`<c-[>` 🄸 - quit suggestion.
 
-#### Jumps (by coc.nvim)
+#### Jumps
 
 - `[d` 🄽 - go to previous diagnostic location.
 - `]d` 🄽 - go to next diagnostic location.
@@ -339,12 +340,12 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 - `gi` 🄽 - go to implemention.
 - `gr` 🄽 - go to references.
 
-#### Symbols (by coc.nvim)
+#### Symbols
 
 - `K` 🄽 - show hover(symbol definition).
 - `<leader>rs` 🄽 - rename symbol.
 
-#### Code Format/Actions/Lens (by coc.nvim)
+#### Code Format/Actions/Lens
 
 - `<leader>cf` 🄽🅅 - format code on current buffer or visual selected code.
 - `<leader>ca` 🄽🅅 - run code actions on current buffer or visual selected code.
