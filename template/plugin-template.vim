@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 
 " Color Theme
 Plug 'lifepillar/vim-solarized8'
-Plug 'tomasr/molokai'
 Plug 'crusoexia/vim-monokai'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'KeitaNakamura/neodark.vim'
@@ -18,7 +17,6 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'Rigellute/rigel'
-Plug 'romainl/Apprentice'
 Plug 'chriskempson/base16-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'sainnhe/edge'
@@ -34,6 +32,9 @@ endif
 if has('nvim-0.6')
   Plug 'rebelot/kanagawa.nvim'
 endif
+" Colors not working well with tabline
+" Plug 'tomasr/molokai'
+" Plug 'romainl/Apprentice'
 
 " UI
 if has('nvim')

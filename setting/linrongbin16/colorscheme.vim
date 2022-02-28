@@ -1,6 +1,10 @@
-let s:my_colors=['darkblue', 'solarized8', 'base16-default-dark', 'molokai', 'monokai', 'dracula', 'neodark', 'srcery',
-      \ 'palenight', 'onedark', 'codedark', 'rigel', 'apprentice', 'jellybeans', 'sonokai', 'everforest',
-      \ 'gruvbox-material', 'edge', 'nightfox', 'material']
+let s:my_colors=['darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery',
+      \ 'palenight', 'onedark', 'codedark', 'rigel', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge',
+      \ 'nightfox', 'material']
+
+" colors that not working well with tabline
+" molokai
+" apprentice
 
 if has('nvim-0.6')
   call add(s:my_colors, 'kanagawa')
