@@ -326,9 +326,9 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 
 #### Code Complete
 
-- `<c-n>`/`<down>` 🄸 - navigate to next suggestion.
-- `<c-p>`/`<up>` 🄸 - navigate to previous suggestion.
-- `<tab>`/`<cr>` 🄸 - select current suggestion or expand current snippet.
+- `<tab>`/`<c-n>`/`<down>` 🄸 - navigate to next suggestion.
+- `<s-tab>`/`<c-p>`/`<up>` 🄸 - navigate to previous suggestion.
+- `<cr>` 🄸 - select current suggestion or expand current snippet.
 - `<esc>`/`<c-[>` 🄸 - close suggestion.
 
 #### Jumps
