@@ -3,31 +3,34 @@ let g:coc_global_extensions = ['coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyr
 let g:coc_snippet_prev = '<TAB>'
 let g:coc_snippet_next = '<S-TAB>'
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  let col = col('.') - 1x
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" use `<tab>` `<c-n>` `<PnDown>` to select next suggestion
-" use `<s-tab>` `<c-p>` `<PnUp>` to select previous suggestion
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+
+" use `<c-n>` `<PnDown>` to select next suggestion
+" use `<c-p>` `<PnUp>` to select previous suggestion
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ?
+      \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-" use `<c-space>` to trigger complete
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" use `<c-k>` to force trigger complete
+inoremap <silent><expr> <c-k> coc#refresh()
 
 " use `<cr>` to confirm the complete item
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
