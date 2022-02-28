@@ -4,7 +4,7 @@ let g:coc_snippet_prev = '<TAB>'
 let g:coc_snippet_next = '<S-TAB>'
 
 function! s:check_back_space() abort
-  let col = col('.') - 1x
+  let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
