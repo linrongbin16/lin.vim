@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-brew upgrade
-export HOMEBREW_NO_AUTO_UPDATE=1
 brew install macvim
 brew install neovim
 brew install curl-openssl
