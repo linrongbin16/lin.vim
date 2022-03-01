@@ -330,6 +330,7 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 - `<c-p>`/`<up>` 🄸 - navigate to previous suggestion.
 - `<tab>`/`<cr>` 🄸 - confirm current suggestion or snippet.
 - `<esc>`/`<c-[>` 🄸 - close suggestion.
+- `<c-k>` 🄸 - force trigger suggestion.
 
 #### Jumps
 
