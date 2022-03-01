@@ -2,8 +2,8 @@
 let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
-  \             ['LightLineFileName'],
-  \             ['LightLineGitStatus', 'LightLineCurrentFunction', 'LightLineCocStatus'] ],
+  \             ['LightLineFileName' ],
+  \             ['LightLineGitStatus', 'LightLineCocStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -13,9 +13,9 @@ let g:lightline = {
   \   'lineinfo': ' %3l:%-2v',
   \ },
   \ 'component_function': {
-  \   'LightLineFileName'   : 'LightLineFileName',
-  \   'LightLineGitStatus'  : 'LightLineGitStatus',
-  \   'LightLineCocStatus'  : 'LightLineCocStatus',
+  \   'LightLineFileName'         : 'LightLineFileName',
+  \   'LightLineGitStatus'        : 'LightLineGitStatus',
+  \   'LightLineCocStatus'        : 'LightLineCocStatus',
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -35,6 +35,14 @@ function! LightLineFileName() abort
     let filename = filename . '[-]'
   endif
   return filename
+endfunction
+
+function! LightLineCurrentFunction() abort
+  let function_name = get(b:, 'coc_current_function', '')
+  if empty(function_name)
+    return ''
+  endif
+  return printf(' %s', function_name)
 endfunction
 
 function! LightLineCocStatus() abort
