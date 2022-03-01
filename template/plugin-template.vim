@@ -50,7 +50,6 @@ if has('nvim-0.5')
 else
   Plug 'bagrat/vim-buffet'
   Plug 'itchyny/lightline.vim'
-  Plug 'itchyny/vim-gitbranch'
   Plug 'Yggdroot/indentLine'
 endif
 if has('nvim-0.6')
