@@ -46,28 +46,17 @@ function! LightLineCocStatus() abort
   endif
 endfunction
 
-" integrate statusline with git
 function! LightLineGitStatus() abort
-  let git_branch = gitbranch#name()
+  let git_branch = get(g:, 'coc_git_status', '')
   if empty(git_branch)
     return ''
   endif
-  let [a,m,r] = GitGutterGetHunkSummary()
-  if a == 0 && m == 0 && r == 0
-    return printf(' %s', git_branch)
+  let git_changes = get(b:, 'coc_git_status', '')
+  if empty(git_changes)
+    return git_branch
   endif
-  let msgs = []
-  if a != 0
-    call add(msgs, printf('+%d', a))
-  endif
-  if m != 0
-    call add(msgs, printf('~%d', m))
-  endif
-  if r != 0
-    call add(msgs, printf('-%d', r))
-  endif
-  return printf(' %s %s', git_branch, join(msgs, ' '))
+  return printf('%s%s', git_branch, git_changes)
 endfunction
 
 " update lightline when gitgutter and coc's status are changed
-autocmd User GitGutter,GitGutterStage,CocStatusChange,CocDiagnosticChange call lightline#update()
+autocmd User CocGitStatusChange,CocStatusChange,CocDiagnosticChange call lightline#update()

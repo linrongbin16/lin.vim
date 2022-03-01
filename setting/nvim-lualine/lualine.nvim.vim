@@ -2,15 +2,15 @@
 
 lua << END
 local function LuaLineGitStatus()
-  local git_branch = vim.b.gitsigns_head
+  local git_branch = vim.g.coc_git_status
   if git_branch == nil or git_branch == '' then
     return ''
   end
-  local git_changes = vim.b.gitsigns_status
+  local git_changes = vim.b.coc_git_status
   if git_changes == nil or git_changes == '' then
-    return string.format(' %s', git_branch)
+    return string.format('%s', git_branch)
   else
-    return string.format(' %s %s', git_branch, git_changes)
+    return string.format('%s%s', git_branch, git_changes)
   end
 end
 local function LuaLineCocStatus()
