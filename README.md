@@ -352,6 +352,15 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 - `<leader>cl` 🄽 - run code lens on current line.
 - `<leader>qf` 🄽 - apply quick fix on current line.
 
+#### Git
+
+- `[g` 🄽 - go to previous git chunk.
+- `]g` 🄽 - go to next git chunk.
+- `[c` 🄽 - go to previous git conflict.
+- `]c` 🄽 - go to next git conflict.
+- `<leader>gs` 🄽 - show git chunk differences under current position.
+- `<leader>gc` 🄽 - show git commits that contains current position.
+
 ### Search
 
 By default search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`, ...
