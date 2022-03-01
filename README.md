@@ -22,7 +22,10 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Code Complete](#code-complete)
     - [Jumps](#jumps)
     - [Symbols](#symbols)
-    - [Code Format/Actions/Lens](#code-format-actions-lens)
+    - [Code Format](#code-format)
+    - [Code Actions](#code-actions)
+    - [Code Lens](#code-lens)
+    - [Git](#git)
   - [Search](#search)
     - [Text Search](#text-search)
     - [File Search](#file-search)
@@ -346,12 +349,18 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 - `K` 🄽 - show hover(symbol definition).
 - `<leader>rs` 🄽 - rename symbol.
 
-#### Code Format/Actions/Lens
+#### Code Format
 
 - `<leader>cf` 🄽🅅 - format code on current buffer or visual selected code.
+
+#### Code Actions
+
 - `<leader>ca` 🄽🅅 - run code actions on current buffer or visual selected code.
-- `<leader>cl` 🄽 - run code lens on current line.
 - `<leader>qf` 🄽 - apply quick fix on current line.
+
+#### Code Lens
+
+- `<leader>cl` 🄽 - run code lens on current line.
 
 #### Git
 
