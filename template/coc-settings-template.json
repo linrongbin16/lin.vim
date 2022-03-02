@@ -5,7 +5,6 @@
     "c",
     "cpp",
     "cmake",
-    "rust",
     "python",
     "xml",
     "html",
@@ -16,24 +15,32 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "rust"
   ],
-  "diagnostic.level": "warning",
   "suggest.minTriggerInputLength": 1,
   "suggest.noselect": false,
-  "yank.highlight.duration": 0,
-  "cmake.cmakePath": "cmake",
-  "cmake.formatter": "cmake-format",
+  "suggest.selection": "recentlyUsedByPrefix",
+  "suggest.languageSourcePriority": 99,
+  "yank.highlight.enable": false,
+  "yank.list.maxsize": 100,
+  "yank.priority": 90,
+  "tabnine.priority": 95,
+  "tabnine.limit": 5,
   "python.pythonPath": "python3",
   "python.formatting.provider": "yapf",
   "snippets.extends": {
-    "l": ["c", "cpp"],
-    "y": ["c", "cpp"],
+    "lex": ["c", "cpp"],
+    "flex": ["c", "cpp"],
+    "yacc": ["c", "cpp"],
+    "bison": ["c", "cpp"],
     "cpp": ["c"],
     "javascriptreact": ["javascript"],
-    "typescriptreact": ["typescript"]
+    "typescriptreact": ["javascript", "typescript"]
   },
   "json.enable": true,
   "json.format.enable": false,
+  "cmake.cmakePath": "cmake",
+  "cmake.formatter": "cmake-format",
   "eslint.run": "onSave"
 }
