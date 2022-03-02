@@ -18,10 +18,10 @@
     "typescriptreact",
     "rust"
   ],
-  "suggest.minTriggerInputLength": 1,
   "suggest.noselect": false,
   "suggest.selection": "recentlyUsedByPrefix",
   "suggest.languageSourcePriority": 99,
+  "suggest.minTriggerInputLength": 1,
   "yank.highlight.enable": false,
   "yank.list.maxsize": 100,
   "yank.priority": 90,
