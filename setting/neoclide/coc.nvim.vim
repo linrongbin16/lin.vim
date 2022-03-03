@@ -1,13 +1,13 @@
 " default extensions
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sql', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-pairs', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sql', 'coc-tabnine']
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" use `<tab>` `<c-n>` `<Down>` to navigate next suggestion
-" use `<tab>` `<c-p>` `<Up>` to navigate previous suggestion
+" use `<Tab>` `<C-n>` `<Down>` to navigate next suggestion
+" use `<S-Tab>` `<C-p>` `<Up>` to navigate previous suggestion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :

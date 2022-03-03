@@ -49,7 +49,7 @@ source $HOME/.vim/setting/alvan/vim-closetag.vim
 " Editing Support
 if has('nvim-0.5')
   source $HOME/.vim/setting/phaazon/hop.nvim.vim
-  source $HOME/.vim/setting/windwp/nvim-autopairs.vim
+  " source $HOME/.vim/setting/windwp/nvim-autopairs.vim
 else
   source $HOME/.vim/setting/easymotion/vim-easymotion.vim
 endif

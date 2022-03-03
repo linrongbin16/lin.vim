@@ -111,10 +111,10 @@ Plug 'tomtom/tcomment_vim'
 " Editing Support
 if has('nvim-0.5')
   Plug 'phaazon/hop.nvim'
-  Plug 'windwp/nvim-autopairs'
+  " Plug 'windwp/nvim-autopairs'
 else
   Plug 'easymotion/vim-easymotion'
-  Plug 'jiangmiao/auto-pairs'
+  " Plug 'jiangmiao/auto-pairs'
 endif
 Plug 'chaoren/vim-wordmotion'
 Plug 'mattn/emmet-vim'
