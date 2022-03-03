@@ -1,28 +1,32 @@
 " default extensions
 let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sql', 'coc-tabnine']
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" use `<c-n>` `<PnDown>` to select next suggestion
-" use `<c-p>` `<PnUp>` to select previous suggestion
+" use `<tab>` `<c-n>` `<Down>` to navigate next suggestion
+" use `<tab>` `<c-p>` `<Up>` to navigate previous suggestion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ coc#jumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" use `<c-f>` to jump to next snippet position in insert mode
+let g:coc_snippet_next = '<C-f>'
+" use `<c-b>` to jump to previous snippet position in insert mode
+let g:coc_snippet_prev = '<C-b>'
 
 " use `<c-k>` to force trigger complete
 inoremap <silent><expr> <c-k> coc#refresh()
 
 " use `<cr>` to confirm the complete item
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+      \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+"      \ coc#expandable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand',''])\<CR>" :
 
 " use `[d` and `]d` to navigate diagnostics
 " use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
