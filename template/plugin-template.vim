@@ -81,10 +81,10 @@ else
   Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 endif
 Plug 'junegunn/fzf.vim' " needed for previews
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-Plug 'vn-ki/coc-clap'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'antoinemadec/coc-fzf'
+" Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+" Plug 'vn-ki/coc-clap'
 
 " Other Language Support
 " Flex, Bison
@@ -111,10 +111,10 @@ Plug 'tomtom/tcomment_vim'
 " Editing Support
 if has('nvim-0.5')
   Plug 'phaazon/hop.nvim'
-  " Plug 'windwp/nvim-autopairs'
+  Plug 'windwp/nvim-autopairs'
 else
   Plug 'easymotion/vim-easymotion'
-  " Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs'
 endif
 Plug 'chaoren/vim-wordmotion'
 Plug 'mattn/emmet-vim'

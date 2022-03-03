@@ -1,5 +1,5 @@
 " default extensions
-let g:coc_global_extensions = ['coc-git', 'coc-pairs', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier']
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -8,7 +8,6 @@ endfunction
 
 " use `<Tab>` `<C-n>` `<Down>` to navigate next suggestion
 " use `<S-Tab>` `<C-p>` `<Up>` to navigate previous suggestion
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -27,8 +26,6 @@ inoremap <silent><expr> <c-k> coc#refresh()
 " use `<cr>` to confirm the complete item
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
       \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-"      \ coc#expandable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand',''])\<CR>" :
 
 " use `[d` and `]d` to navigate diagnostics
 " use `:CocDiagnostics` to get all diagnostics of current buffer in location list.

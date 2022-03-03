@@ -112,7 +112,7 @@ lin.vim solved such issues:
   - Jump between symbols
   - Code Actions
   - Code Lens
-- Search engine features supported by [fzf.vim](https://github.com/junegunn/fzf.vim). [vim-clap](https://github.com/liuchengxu/vim-clap) is also installed, both `:Fzf` and `:Clap` are available, but key mappings are only provide for fzf.vim by default:
+- Search engine features supported default by [fzf.vim](https://github.com/junegunn/fzf.vim):
   - Text search on text/lines/tags/search-histories/command-histories/yank-histories
   - File search on files/buffers/history-files
   - Git search on commits/uncommit-changes
@@ -377,58 +377,47 @@ The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a
 
 By default search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`, ...
 
-But if you want to use vim-clap, just edit **_~/.vim/lin.vim_**, disable(comment) the line `source $HOME/.vim/setting/junegunn/fzf.vim.vim`(which provide key mappings for fzf.vim), and enable(uncomment) the line `" source $HOME/.vim/setting/liuchengxu/vim-clap.vim`(which provide key mappings for vim-clap). Both fzf.vim and vim-clap's key mappings are functioned almost in the same way.
-
 #### Text Search
 
-- `<space>gr` 🄽 - search text by `:FzfRg` or `:Clap grep2`.
-- `<space>l` 🄽 - search lines on opened buffers by `:FzfLines` or `:Clap lines`.
-- `<space>t` 🄽 - search tags by `:FzfTags` or `:Clap tags`.
-- `<space>y` 🄽 - search yank history by `:CocFzfList yank` or `:Clap yanks`, Notice yank search in fzf.vim is implemented by coc-fzf.
-- `<space>sh` 🄽 - search search history by `:FzfHistory/` or `:Clap search_history`.
-- `<space>ch` 🄽 - search vim command history by `:FzfHistory:` or `:Clap command_history`.
+- `<space>gr` 🄽 - search text by `:FzfRg`.
+- `<space>l` 🄽 - search lines on opened buffers by `:FzfLines`.
+- `<space>t` 🄽 - search tags by `:FzfTags`.
+- `<space>y` 🄽 - search yank history by `:CocFzfList yank`.
+- `<space>sh` 🄽 - search search history by `:FzfHistory/`.
+- `<space>ch` 🄽 - search vim command history by `:FzfHistory:`.
 
 #### File Search
 
 Implement by fzf.vim.
 
-- `<space>f`/`<c-p>` 🄽 - search files by `:FzfFiles` or `:Clap files`.
-- `<space>b` 🄽 - search opened buffers by `:FzfBuffers` or `:Clap buffers`.
-- `<space>hf` 🄽 - search history files (v:oldfiles) and opened buffers by `:FzfHistory` or `:Clap history`.
+- `<space>f`/`<c-p>` 🄽 - search files by `:FzfFiles`.
+- `<space>b` 🄽 - search opened buffers by `:FzfBuffers`.
+- `<space>hf` 🄽 - search history files (v:oldfiles) and opened buffers by `:FzfHistory`.
 
 #### Git Search
 
 Implement by fzf.vim.
 
-- `<space>gc` 🄽 - search git commits by `:FzfCommits` or `:Clap commits`.
-- `<space>gf` 🄽 - search git files rby `:FzfGFile` or `:Clap gfiles`.
-- `<space>gs` 🄽 - search git status(also diff files by preview) by `:FzfGFiles?` or `:Clap git_diff_files`.
+- `<space>gc` 🄽 - search git commits by `:FzfCommits`.
+- `<space>gf` 🄽 - search git files rby `:FzfGFile`.
+- `<space>gs` 🄽 - search git status(also diff files by preview) by `:FzfGFiles?`.
 
 #### Other Search
 
-- `<space>mk` 🄽 - search marks by `:FzfMarks` or `:Clap marks`.
-- `<space>mp` 🄽 - search normal mode vim key mappings by `:FzfMaps` or `:Clap maps`.
-- `<space>vc` 🄽 - search vim commands by `:FzfCommands` or `:Clap command`.
-- `<space>ht` 🄽 - search help tags by `:FzfHelptags` or `:Clap help_tags`.
+- `<space>mk` 🄽 - search marks by `:FzfMarks`.
+- `<space>mp` 🄽 - search normal mode vim key mappings by `:FzfMaps`.
+- `<space>vc` 🄽 - search vim commands by `:FzfCommands`.
+- `<space>ht` 🄽 - search help tags by `:FzfHelptags`.
 
 #### Coc.nvim Search
 
 Key mappings are configured with prefix char `c` after `<space>`.
 
-- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols` or `:Clap coc_symbols`, Notice coc-fzf's symbols only work on NeoVIM, it fallback to `:CocList symbols` on VIM.
-- `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics` or `:Clap coc_diagnostics`.
-- `<space>co` 🄽 - search outline/tags by `:CocFzfList outline` or `:Clap coc_outline`.
-- `<space>cc` 🄽 - search commands by `:CocFzfList commands` or `:Clap coc_commands`.
-- `<space>cl` 🄽 - search location by `:CocFzfList location` or `:Clap coc_location`.
-
-#### Enhanced key mappings for vim-clap
-
-Since vim-clap provide more search sources, lin.vim also provide more key mappings for it (only when you enabled vim-clap key mappings).
-
-- `<space>j` 🄽 - search dumb jump locations by `:Clap dumb_jump`.
-- `<space>r` 🄽 - search files order by most recently used by `:Clap recent_files`.
-- `<space>gd` 🄽 - search git diff files by `:Clap git_diff_files`, same with `<space>gs`.
-- `<space>e` 🄽 - search lvy-like file explorer by `:Clap filer`.
+- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`. Notice coc-fzf's symbols only work on NeoVIM, it fallback to `:CocList symbols` on VIM.
+- `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics`.
+- `<space>co` 🄽 - search outline/tags by `:CocFzfList outline`.
+- `<space>cc` 🄽 - search commands by `:CocFzfList commands`.
+- `<space>cl` 🄽 - search location by `:CocFzfList location`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
