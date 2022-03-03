@@ -51,8 +51,8 @@ function! s:show_documentation()
   endif
 endfunction
 
-" highlight current symbol
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" highlight current symbol, we use vim-illuminate instead of this
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " hover symbol
 nnoremap K :call CocActionAsync('doHover')<CR>
