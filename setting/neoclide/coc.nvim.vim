@@ -1,5 +1,5 @@
 " default extensions
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-pairs', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-sql', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-git', 'coc-pairs', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier', 'coc-tabnine']
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -15,9 +15,9 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 " use `<c-f>` to jump to next snippet position in insert mode
-let g:coc_snippet_next = '<C-f>'
+" let g:coc_snippet_next = '<C-f>'
 " use `<c-b>` to jump to previous snippet position in insert mode
-let g:coc_snippet_prev = '<C-b>'
+" let g:coc_snippet_prev = '<C-b>'
 
 " use `<c-k>` to force trigger complete
 inoremap <silent><expr> <c-k> coc#refresh()
