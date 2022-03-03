@@ -8,16 +8,18 @@ endfunction
 
 " use `<Tab>` `<C-n>` `<Down>` to navigate next suggestion
 " use `<S-Tab>` `<C-p>` `<Up>` to navigate previous suggestion
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 " use `<c-f>` to jump to next snippet position in insert mode
-" let g:coc_snippet_next = '<C-f>'
+let g:coc_snippet_next = '<C-f>'
 " use `<c-b>` to jump to previous snippet position in insert mode
-" let g:coc_snippet_prev = '<C-b>'
+let g:coc_snippet_prev = '<C-b>'
 
 " use `<c-k>` to force trigger complete
 inoremap <silent><expr> <c-k> coc#refresh()
