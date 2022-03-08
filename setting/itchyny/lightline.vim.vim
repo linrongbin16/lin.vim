@@ -3,7 +3,7 @@ let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
   \             ['LightLineFileName' ],
-  \             ['LightLineGitStatus', 'LightLineCocStatus'] ],
+  \             ['LightLineGitStatus', 'LightLineCocStatus', 'LightLineGutentagsStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -16,6 +16,7 @@ let g:lightline = {
   \   'LightLineFileName'         : 'LightLineFileName',
   \   'LightLineGitStatus'        : 'LightLineGitStatus',
   \   'LightLineCocStatus'        : 'LightLineCocStatus',
+  \   'LightLineGutentagsStatus'  : 'LightLineGutentagsStatus',
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -66,5 +67,21 @@ function! LightLineGitStatus() abort
   return printf('%s%s', git_branch, git_changes)
 endfunction
 
-" update lightline when gitgutter and coc's status are changed
-autocmd User CocGitStatusChange,CocStatusChange,CocDiagnosticChange call lightline#update()
+function! LightLineGutentagsStatus() abort
+  let tags_status = gutentags#statusline()
+  if empty(tags_status)
+    return ''
+  endif
+  return tags_status
+endfunction
+
+" update lightline
+augroup MyGutentagsStatusLineRefresher
+  autocmd!
+  autocmd User GutentagsUpdating call lightline#update()
+  autocmd User GutentagsUpdated call lightline#update()
+  autocmd User CocGitStatusChange call lightline#update()
+  autocmd User CocStatusChange call lightline#update()
+  autocmd User CocDiagnosticChange call lightline#update()
+augroup END
+

@@ -34,6 +34,13 @@ end
 local function LuaLineCharHexValue()
   return '0x%B'
 end
+local function LuaLineGutentagsStatus()
+  local tags_status = vim.fn['gutentags#statusline']()
+  if tags_status == nil or tags_status == '' then
+    return ''
+  end
+  return tags_status
+end
 require('lualine').setup{
     options = {
         icons_enabled = false,
@@ -46,7 +53,7 @@ require('lualine').setup{
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename' },
-        lualine_c = { LuaLineGitStatus, LuaLineCocStatus },
+        lualine_c = { LuaLineGitStatus, LuaLineCocStatus, LuaLineGutentagsStatus },
         lualine_x = { 'fileformat', 'encoding', 'filetype', LuaLineCharHexValue },
         lualine_y = { 'progress' },
         lualine_z = { LuaLineCursorLocation },
