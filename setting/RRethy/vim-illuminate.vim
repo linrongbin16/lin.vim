@@ -1,5 +1,5 @@
 " highlight delay
-let g:Illuminate_delay = 0
+let g:Illuminate_delay = 500
 
 " highlight group
 augroup illuminate_augroup
