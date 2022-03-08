@@ -101,7 +101,8 @@ set signcolumn=yes
 " optimization rendering
 set lazyredraw
 set ttyfast
-set regexpengine=1
+" set regexpengine=1
+" set re=0
 
 
 " fix maxmatchparen memory issue
