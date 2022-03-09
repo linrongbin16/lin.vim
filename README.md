@@ -468,7 +468,7 @@ Enhancement for add/remove quotes operation.
 
 Enhancement for brackets(pairs) and html tags.
 
-#### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) and [vim-closetag](https://github.com/alvan/vim-closetag)
+#### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [nvim-autopairs](https://github.com/windwp/nvim-autopairs) on Neovim 0.5+) and [vim-closetag](https://github.com/alvan/vim-closetag)
 
 Enhancement for auto close brackets(pairs) and html tags.
 
@@ -513,6 +513,27 @@ These language servers are installed by default:
 
 - Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
 - coc-tabnine Uncaught exception: Error: spawn somewhere/coc/tabnine/binary/TabNine EACCES issue: https://github.com/neoclide/coc-tabnine/issues/24
+- Color Schemes:
+  - [solarized](https://github.com/lifepillar/vim-solarized8)
+  - [monokai](https://github.com/crusoexia/vim-monokai)
+  - [dracula](https://github.com/dracula/vim)
+  - [neodark](https://github.com/KeitaNakamura/neodark.vim)
+  - [srcery](https://github.com/srcery-colors/srcery-vim)
+  - [palenight](https://github.com/drewtempelmeyer/palenight.vim)
+  - [onedark](https://github.com/joshdick/onedark.vim)
+  - [code-dark](https://github.com/tomasiser/vim-code-dark)
+  - [rigel](https://github.com/Rigellute/rigel)
+  - [base16](https://github.com/chriskempson/base16-vim)
+  - [jellybeans](https://github.com/nanotech/jellybeans.vim)
+  - [edge](https://github.com/sainnhe/edge)
+  - [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+  - [everforest](https://github.com/sainnhe/everforest)
+  - [sonokai](https://github.com/sainnhe/sonokai)
+  - [nightfox](https://github.com/EdenEast/nightfox.nvim)
+  - [material](https://github.com/kaicataldo/material.vim)
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on Neovim 0.5+)
+  - [github](https://github.com/projekt0n/github-nvim-theme) (Only on Neovim 0.5+)
+  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on Neovim 0.6+)
 
 ## Contribute
 
