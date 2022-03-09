@@ -237,6 +237,7 @@ Notice: installation needs access of websites below, and make sure they're avail
 
 - [github.com](https://github.com/)
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/)
+- [go.dev](https://go.dev)
 
 ## User Guide
 
