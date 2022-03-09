@@ -1,10 +1,5 @@
 Write-Host "[lin.vim] Install for Windows"
 
-# Install rust components
-rustup component add rust-docs
-rustup component add rust-std
-rustup component add rustfmt
-
 # Install python3 pip packages
 pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 

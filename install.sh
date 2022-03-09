@@ -41,10 +41,6 @@ fi
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 source $HOME/.cargo/env
-rustup component add rust-docs
-rustup component add rust-std
-rustup component add rustfmt
-
 
 # install python3 pip packages
 sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click

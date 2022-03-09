@@ -502,6 +502,7 @@ These language servers are installed by default:
 - c/c++
 - python3 (python2 is not supported)
 - rust
+- go
 - html/xml/markdown
 - css/sass/scss/less
 - json
@@ -510,6 +511,7 @@ These language servers are installed by default:
 ## Reference
 
 - Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
+- coc-tabnine Uncaught exception: Error: spawn somewhere/coc/tabnine/binary/TabNine EACCES issue: https://github.com/neoclide/coc-tabnine/issues/24
 
 ## Contribute
 
