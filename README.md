@@ -45,6 +45,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
     - [Highlight(Mark) specific words](#highlight-mark-specific-words)
   - [Customization](#customization)
     - [GUI Fonts](#gui-fonts)
+- [Embed Language Servers](#embeded-language-servers)
 - [Reference](#reference)
 - [Contribute](#contribute)
 
@@ -103,8 +104,8 @@ lin.vim solved such issues:
   - Best color schemes collected and randomly selected on (Neo)VIM start
   - Status line
   - Outline/Tags
-- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(c/c++/python3/rust/markdown/html/xml/css/sass/scss/json/javascript/typescript/jsx/tsx) are embeded by default:
-  - Code complete, [TabNine](https://www.tabnine.com/) (AI Complete Engine) is strongly recommended
+- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embed Language Servers](#embeded-language-servers)) are embeded by default:
+  - Code complete ([TabNine](https://www.tabnine.com/) - the AI complete engine is strongly recommended)
   - Diagnostic
   - Lint
   - Code format
@@ -494,9 +495,21 @@ Make a word or something highlight/marked could be quite useful in some cases:
 
 Please add more settings in **_~/.vim/setting.vim_** and **_~/.vim/coc-settings.json_**.
 
+## Embeded Language Servers
+
+These language servers are installed by default:
+
+- c/c++
+- python3 (python2 is not supported)
+- rust
+- html/xml/markdown
+- css/sass/scss/less
+- json
+- javascript/typescript/jsx/tsx
+
 ## Reference
 
-" Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
+- Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
 
 ## Contribute
 
