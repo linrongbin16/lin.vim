@@ -12,7 +12,7 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Requirements](#requirements)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
-  - [Notice](#notice)
+  - [Software Confliction](#software-confliction)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [UI](#ui)
@@ -145,6 +145,12 @@ lin.vim need at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not su
 - Fedora Workstation 32 with with Vim 8.2, python 3.8+, node v12+
 - Manjaro 20.2 with with Vim 8.2, python 3.8+, node v15+
 
+Access of below websites are required, please make sure they're available:
+
+- [github.com](https://github.com/)
+- [raw.githubusercontent.com](https://raw.githubusercontent.com/)
+- [go.dev](https://go.dev)
+
 ### UNIX, Linux, MacOS
 
 ```bash
@@ -216,7 +222,7 @@ You could also install these dependencies with other windows package manager suc
     $ .\install.ps1
 ```
 
-### Notice
+### Software Confliction
 
 [install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
 
@@ -232,12 +238,6 @@ You could also install these dependencies with other windows package manager suc
 - nodejs, npm
 - universal-ctags
 - hack nerd font (only download on Windows, need manually installation)
-
-Notice: installation needs access of websites below, and make sure they're available:
-
-- [github.com](https://github.com/)
-- [raw.githubusercontent.com](https://raw.githubusercontent.com/)
-- [go.dev](https://go.dev)
 
 ## User Guide
 
