@@ -191,21 +191,21 @@ One more thing should be noticed is that there's a `vim.exe` provided by Git for
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env:Path`
    - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env:Path`
    - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` in `$env:Path`
-   - (Optional for fzf preview) [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env:Path`
-   - (Optional for fzf preview) [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env:Path`
+   - [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env:Path`
+   - [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env:Path`
    - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env:Path`
 
 Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
 
-You could also install these dependencies with other windows package manager such as [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/), just make sure these commands are available in `$env:Path`.
+You could also install these dependencies with other windows package manager such as [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/), just make sure above commands are available in `$env:Path`.
 
-4. Install [Hack Nerd Font (end with _Mono Windows Compatible.ttf_)](https://github.com/ryanoasis/nerd-fonts/releases):
+4. Install [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/releases):
 
-   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Nerd Font Complete Mono.ttf`
+   - `Hack Bold Italic Nerd Font Complete Mono.ttf`
+   - `Hack Italic Nerd Font Complete Mono.ttf`
+   - `Hack Regular Nerd Font Complete Mono.ttf`
 
 5. Install following components as administrator:
 
