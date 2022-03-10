@@ -16,7 +16,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "rust"
+    "rust",
+    "go"
   ],
   "suggest.minTriggerInputLength": 1,
   "suggest.noselect": false,
@@ -25,10 +26,6 @@
   "yank.highlight.enable": false,
   "yank.list.maxsize": 100,
   "yank.priority": 90,
-  "tabnine.priority": 95,
-  "tabnine.limit": 5,
-  "python.pythonPath": "python3",
-  "python.formatting.provider": "yapf",
   "snippets.extends": {
     "lex": ["c", "cpp"],
     "flex": ["c", "cpp"],
@@ -42,5 +39,7 @@
   "json.format.enable": false,
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format",
+  "python.pythonPath": "python3",
+  "python.formatting.provider": "yapf",
   "eslint.run": "onSave"
 }

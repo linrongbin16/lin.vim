@@ -105,7 +105,7 @@ lin.vim solved such issues:
   - Status line
   - Outline/Tags
 - IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embed Language Servers](#embeded-language-servers)) are embeded by default:
-  - Code complete ([TabNine](https://www.tabnine.com/) - the AI complete engine is strongly recommended)
+  - Code complete
   - Diagnostic
   - Lint
   - Code format
@@ -326,10 +326,6 @@ For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **
 
 ### IDE-like Editing Features
 
-The AI-Complete Engine [TabNine](https://www.tabnine.com/) is definitely worth a try(although it eats lots of memory).
-
-Install TabNine with `:CocInstall coc-tabnine`, then login with `:CocCommand tabnine.openHub` and enjoy :).
-
 #### Code Complete
 
 - `<tab>`/`<c-n>`/`<down>` 🄸 - navigate to next suggestion.
@@ -512,7 +508,6 @@ These language servers are installed by default:
 ## Reference
 
 - Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
-- coc-tabnine Uncaught exception: Error: spawn somewhere/coc/tabnine/binary/TabNine EACCES issue: https://github.com/neoclide/coc-tabnine/issues/24
 - Color Schemes:
   - [solarized](https://github.com/lifepillar/vim-solarized8)
   - [monokai](https://github.com/crusoexia/vim-monokai)
