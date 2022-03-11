@@ -55,17 +55,22 @@ Function InstallNvimPluginIfExist() {
     }
 }
 
-Message -msg "install dependencies for windows"
+Function Main() {
+    Message -msg "install dependencies for windows"
 
-# install dependencies
-Pip3Dependency
-NpmDependency
+    # install dependencies
+    Pip3Dependency
+    NpmDependency
 
-# install files
-InstallTemplates
-InstallVimrc
-InstallNvimInit
+    # install files
+    InstallTemplates
+    InstallVimrc
+    InstallNvimInit
 
-# install plugins
-InstallNvimPluginIfExist
-InstallVimPlugin
+    # install plugins
+    InstallNvimPluginIfExist
+    InstallVimPlugin
+}
+
+
+Main
