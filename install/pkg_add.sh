@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-VIM_HOME=$2
-INSTALL_HOME=$1
+VIM_HOME=$1
+INSTALL_HOME=$2
