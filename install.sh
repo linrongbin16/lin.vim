@@ -75,7 +75,7 @@ function guifont_dependency() {
                 exit 1
             fi
         fi
-        unzip -o font_file
+        unzip -o $font_file
     fi
 }
 
