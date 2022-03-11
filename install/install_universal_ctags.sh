@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-VIM_HOME=$2
-INSTALL_HOME=$1
-
+VIM_HOME=$1
+INSTALL_HOME=$2
 UNIVERSAL_CTAGS=$VIM_HOME/universal-ctags
 
 cd $VIM_HOME
