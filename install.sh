@@ -42,7 +42,9 @@ function platform_dependency() {
 }
 
 function rust_dependency() {
-    $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+    if ! type "rustc" >/dev/null 2>&1; then
+        $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+    fi
     source $HOME/.cargo/env
 }
 
