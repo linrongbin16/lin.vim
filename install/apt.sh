@@ -27,6 +27,7 @@ $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y p7zip-full" "7z"
 
 # Python3
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y python3 python3-dev python3-venv python3-pip python3-docutils" "python3"
+$INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y python3 python3-dev python3-venv python3-pip python3-docutils" "pip3"
 
 # Node
 if ! type "node" > /dev/null; then
