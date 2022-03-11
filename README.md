@@ -99,10 +99,10 @@ lin.vim solved such issues:
 - Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.6+ is strongly recommended for better performance and experience.
 - Modern editor UI features:
   - File explorer
-  - Buffers/tabs explorer
   - Pretty icons
-  - Best color schemes collected and randomly selected on (Neo)VIM start
+  - Best color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on (Neo)VIM start
   - Status line
+  - Tab line and buffer explorer
   - Outline/Tags
 - IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embed Language Servers](#embeded-language-servers)) are embeded by default:
   - Code complete
