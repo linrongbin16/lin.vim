@@ -137,19 +137,21 @@ lin.vim solved such issues:
 
 ### Requirements
 
-lin.vim need at least Vim 8.1+ or Neovim 0.4.2+, Python 3.6+ (Python 2 is not supported), Nodejs 10.12+. Its installation has been tested on these platforms:
+lin.vim need at least vim 8.1+ or neovim 0.4.2+, clang/gcc, python 3.6+ (python 2 is not supported), node 10.12+. Its installation has been tested on these platforms:
 
-- MacOS Catalina 10.15.7 with Macvim 8.2, python 3.9+, node v15.x+
-- Windows 10 with Vim 8.2, python 3.8+, node v15+
-- Ubuntu 20.04 LTS with Vim 8.1, python 3.8+, node v14+
-- Fedora Workstation 32 with with Vim 8.2, python 3.8+, node v12+
-- Manjaro 20.2 with with Vim 8.2, python 3.8+, node v15+
+- MacOS Catalina 10.15.7 with macvim 8.2, python 3.9+, node v15.x+
+- Windows 10 with vim 8.2, python 3.8+, node v15+
+- Ubuntu 20.04 LTS with vim 8.1, python 3.8+, node v14+
+- Fedora Workstation 32 with with vim 8.2, python 3.8+, node v12+
+- Manjaro 20.2 with with vim 8.2, python 3.8+, node v15+
 
 Access of below websites are required, please make sure they're available:
 
 - [github.com](https://github.com/)
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/)
 - [go.dev](https://go.dev)
+
+For macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirement.
 
 ### UNIX, Linux, MacOS
 
@@ -529,6 +531,8 @@ These language servers are installed by default:
   - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on Neovim 0.5+)
   - [github](https://github.com/projekt0n/github-nvim-theme) (Only on Neovim 0.5+)
   - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on Neovim 0.6+)
+- [LunarVim](https://github.com/LunarVim/LunarVim):
+  - GPL3 license placed since its installation scripts referenced
 
 ## Contribute
 

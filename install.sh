@@ -1,91 +1,128 @@
 #!/usr/bin/env bash
 
-function check_download() {
-    if [ $1 -ne 0 ]; then
-        echo "[lin.vim] Download \"$2\" failed! Please check your network and try again."
-        exit 3
-    fi
+set -eo pipefail
+
+VIM_HOME=$HOME/.vim
+CONFIG_HOME=$HOME/.config
+NVIM_HOME=$CONFIG_HOME/nvim
+INSTALL_HOME=$VIM_HOME/install
+TEMPLATE_HOME=$VIM_HOME/template
+OS="$(uname -s)"
+
+function platform_dependency() {
+    case "$OS" in
+        Linux)
+            if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
+                $INSTALL_HOME/pacman.sh "$VIM_HOME" "$INSTALL_HOME"
+            elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
+                $INSTALL_HOME/dnf.sh  "$VIM_HOME" "$INSTALL_HOME"
+            # elif [ -f "/etc/gentoo-release" ]; then
+            #     RECOMMEND_INSTALL="emerge install -y"
+            else # assume apt
+                $INSTALL_HOME/apt.sh  "$VIM_HOME" "$INSTALL_HOME"
+            fi
+            ;;
+        FreeBSD)
+            $INSTALL_HOME/pkg.sh  "$VIM_HOME" "$INSTALL_HOME"
+            ;;
+        NetBSD)
+            $INSTALL_HOME/pkgin.sh  "$VIM_HOME" "$INSTALL_HOME"
+            ;;
+        OpenBSD)
+            $INSTALL_HOME/pkg_add.sh  "$VIM_HOME" "$INSTALL_HOME"
+            ;;
+        Darwin)
+            $INSTALL_HOME/brew.sh  "$VIM_HOME" "$INSTALL_HOME"
+            ;;
+        *)
+            $INSTALL_HOME/message.sh "OS $OS is not supported, exit..."
+            exit 1
+            ;;
+    esac
 }
 
-function check_sudo() {
-    sudo echo "[lin.vim] Install for $1" || { echo "[lin.vim] sudo not found"; exit 1; }
+function rust_dependency() {
+    $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+    source $HOME/.cargo/env
 }
 
-if [ $(uname) == "Linux" ]; then
-    if cat /etc/*release | grep ^NAME | grep Ubuntu 1>/dev/null 2>&1; then
-        check_sudo "Ubuntu"
-        bash ~/.vim/install/ubuntu.sh
-    elif cat /etc/*release | grep ^NAME | grep Fedora 1>/dev/null 2>&1; then
-        check_sudo "Fedora"
-        bash ~/.vim/install/fedora.sh
-    elif cat /etc/*release | grep ^NAME | grep Manjaro 1>/dev/null 2>&1; then
-        check_sudo "Manjaro"
-        bash ~/.vim/install/manjaro.sh
+function pip3_dependency() {
+    # install python3 pip packages
+    sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
+}
+
+function npm_dependency() {
+    # install nodejs npm packages
+    sudo npm install -g yarn prettier neovim
+}
+
+function guifont_dependency() {
+    local font_file=Hack.zip
+    local font_version=v2.1.0
+    local font_download_url=https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file
+    if [ "$OS" == "Darwin" ]; then
+        cd ~/Library/Fonts
+        brew tap homebrew/cask-fonts
+        brew install --cask font-hack-nerd-font
     else
-        echo "[lin.vim] OS not support, exiting installation!"
-        exit 3
+       mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+        if [ ! -f $font_file ]; then
+            wget $font_download_url
+            if [ $? -ne 0 ]; then
+                $INSTALL_HOME/message.sh "download $font_file failed, exit..."
+                exit 1
+            fi
+        fi
+        unzip -o font_file
     fi
-elif [ $(uname) == "FreeBSD" ]; then
-    check_sudo "FreeBSD"
-    bash ~/.vim/install/bsd.sh
-elif [ $(uname) == "Darwin" ]; then
-    check_sudo "MacOS"
-    bash ~/.vim/install/macos.sh
-else
-    echo "[lin.vim] Unknown OS $(uname), exit..."
-    exit 3
-fi
+}
 
-# install rust interactively with default settings
-# if you need customize rust installer, please use below
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-source $HOME/.cargo/env
+function install_templates() {
+    cp $TEMPLATE_HOME/plugin-template.vim $VIM_HOME/plugin.vim
+    cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
+    cp $TEMPLATE_HOME/ginit-template.vim $VIM_HOME/ginit.vim
+    cp $TEMPLATE_HOME/setting-template.vim $VIM_HOME/setting.vim
+}
 
-# install python3 pip packages
-sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
-
-# install nodejs npm packages
-sudo npm install -g yarn prettier neovim
-
-# install hack nerd font
-if [ $(uname) == "Darwin" ]; then
-    cd ~/Library/Fonts
-    brew tap homebrew/cask-fonts
-    brew install --cask font-hack-nerd-font
-else
-   mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-    if [ ! -f Hack.zip ]; then
-        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+function install_vimrc() {
+    if [ -f $HOME/.vimrc ]; then
+        mv $HOME/.vimrc $HOME/.vimrc.$(date +"%Y-%m-%d.%H-%M-%S")
     fi
-    check_download $? "Hack Nerd Fonts"
-    unzip -o Hack.zip
-fi
+    ln -s $VIM_HOME/lin.vim $HOME/.vimrc
+}
 
-# install user custom
-cp ~/.vim/template/plugin-template.vim ~/.vim/plugin.vim
-cp ~/.vim/template/coc-settings-template.json ~/.vim/coc-settings.json
-cp ~/.vim/template/ginit-template.vim ~/.vim/ginit.vim
-cp ~/.vim/template/setting-template.vim ~/.vim/setting.vim
+function install_nvim_init() {
+    mkdir -p $CONFIG_HOME
+    if [ -d $NVIM_HOME ]; then
+        mv $NVIM_HOME $CONFIG_HOME/nvim.$(date +"%Y-%m-%d.$H-%M-%S")
+    fi
+    ln -s $VIM_HOME $NVIM_HOME
+    if [ -f $NVIM_HOME/init.vim ]; then
+        rm $NVIM_HOME/init.vim
+    fi
+    ln -s $NVIM_HOME/lin.vim $NVIM_HOME/init.vim
+}
 
+function install_vim_plugin() {
+    vim -E -c "PlugInstall" -c "qall"
+}
 
-# install .vimrc file
-if [ -f ~/.vimrc ]; then
-    rm ~/.vimrc
-fi
-ln -s ~/.vim/lin.vim ~/.vimrc
+function install_nvim_plugin() {
+    nvim -E -c "PlugInstall" -c "qall"
+}
 
-# install nvim init.vim file
-mkdir -p ~/.config
-if [ -d ~/.config/nvim ]; then
-    rm ~/.config/nvim
-fi
-ln -s ~/.vim ~/.config/nvim
-if [ -f ~/.config/nvim/init.vim ]; then
-    rm ~/.config/nvim/init.vim
-fi
-ln -s ~/.vim/lin.vim ~/.config/nvim/init.vim
+# install dependencies
+platform_dependency
+rust_dependency
+pip3_dependency
+npm_dependency
+guifont_dependency
 
-# install (neo)vim plugins
-vim -E -c "PlugInstall" -c "qall"
-nvim -E -c "PlugInstall" -c "qall"
+# install files
+install_templates
+install_vimrc
+install_nvim_init
+
+# install plugins
+install_vim_plugin
+install_nvim_plugin
