@@ -31,7 +31,7 @@ $INSTALL_HOME/install_or_skip.sh "sudo dnf install -y nodejs npm" "node"
 
 # Ctags
 # Ctags
-if ! type "ctags" > /dev/null; then
+if ! type "ctags" >/dev/null 2>&1; then
     sudo dnf install -y libseccomp-devel
     sudo dnf install -y jansson-devel
     sudo dnf install -y libyaml-devel

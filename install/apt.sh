@@ -39,7 +39,7 @@ fi
 
 
 # Ctags
-if ! type "ctags" > /dev/null; then
+if ! type "ctags" >/dev/null 2>&1; then
     sudo apt-get install -y libseccomp-dev
     sudo apt-get install -y libjansson-dev
     sudo apt-get install -y libyaml-dev
