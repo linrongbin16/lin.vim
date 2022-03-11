@@ -177,7 +177,7 @@ While installation steps could be a little bit complicated actually:
 
 2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with especially these options:
 
-   - In the 3rd **\_Select Components\_** step, enable/choose **_Associate .sh files to be run with Bash_**
+   - In the 3rd **_Select Components_** step, enable/choose **_Associate .sh files to be run with Bash_**
    - In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
    - In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
 
