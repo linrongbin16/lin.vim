@@ -510,6 +510,7 @@ These language servers are installed by default:
 ## Reference
 
 - Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
+- IDE-like defaults for neovim: [LunarVim](https://github.com/LunarVim/LunarVim)
 - Color Schemes:
   - [solarized](https://github.com/lifepillar/vim-solarized8)
   - [monokai](https://github.com/crusoexia/vim-monokai)
@@ -531,8 +532,6 @@ These language servers are installed by default:
   - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on Neovim 0.5+)
   - [github](https://github.com/projekt0n/github-nvim-theme) (Only on Neovim 0.5+)
   - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on Neovim 0.6+)
-- [LunarVim](https://github.com/LunarVim/LunarVim):
-  - GPL3 license placed since its installation scripts referenced
 
 ## Contribute
 
