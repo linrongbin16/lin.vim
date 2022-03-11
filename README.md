@@ -358,7 +358,7 @@ For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **
 
 #### Code Actions
 
-- `<leader>ca` 🄽🅅 - run code actions on current buffer or visual selected code.
+- `<leader>ca` 🄽🅅 - run code actions on current cursor position or visual selected code.
 - `<leader>qf` 🄽 - apply quick fix on current line.
 
 #### Code Lens

@@ -70,8 +70,8 @@ nmap <leader>rs  <Plug>(coc-rename)
 nmap <leader>cf  <Plug>(coc-format)
 xmap <leader>cf  <Plug>(coc-format-selected)
 
-" apply code action on the current buffer or visual selection
-nmap <leader>ca  <Plug>(coc-codeaction)
+" apply code action on current cursor position or visual selection
+nmap <leader>ca  <Plug>(coc-codeaction-cursor)
 xmap <leader>ca  <Plug>(coc-codeaction-selected)
 
 " apply auto-fix to problem on the current line
