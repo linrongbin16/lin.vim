@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 $VIM_HOME="$env:UserProfile\.vim"
 $APPDATA_LOCAL_HOME="$env:UserProfile\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
