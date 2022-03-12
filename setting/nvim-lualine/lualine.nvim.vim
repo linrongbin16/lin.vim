@@ -1,6 +1,9 @@
 " only enable statusline, disable tabline
 
 lua << END
+local function trim6(s)
+   return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
+end
 local function LuaLineGitStatus()
   local git_branch = vim.g.coc_git_status
   if git_branch == nil or git_branch == '' then
@@ -8,9 +11,9 @@ local function LuaLineGitStatus()
   end
   local git_changes = vim.b.coc_git_status
   if git_changes == nil or git_changes == '' then
-    return string.format('%s', git_branch)
+    return string.format('%s', trim6(git_branch))
   else
-    return string.format('%s%s', git_branch, git_changes)
+    return string.format('%s %s', git_branch, trim6(git_changes))
   end
 end
 local function LuaLineCurrentFunction()

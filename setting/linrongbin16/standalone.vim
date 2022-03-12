@@ -27,6 +27,16 @@ set listchars=tab:>·,trail:~,extends:>,precedes:<
 " set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
+" persisted undo
+if has('persistent_undo')
+  let undo_dir = expand('~/.vim/cache/undo')
+  if !isdirectory(undo_dir)
+     silent! call mkdir(undo_dir, 'p')
+  endif
+  let &undodir = undo_dir
+  set undofile
+endif
+
 " file encoding
 " set fileformat=unix
 " set fileformats=unix,dos,mac
@@ -98,12 +108,11 @@ set updatetime=200
 set signcolumn=yes
 " endif
 
-" optimization rendering
+" render optimization
 set lazyredraw
 set ttyfast
 " set regexpengine=1
 " set re=0
-
 
 " fix maxmatchparen memory issue
 set mmp=10000

@@ -13,6 +13,7 @@ sessions
 
 # plugins
 plugged
+cache
 
 # user settings
 plugin.vim

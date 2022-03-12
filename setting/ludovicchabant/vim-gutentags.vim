@@ -52,14 +52,14 @@ let g:gutentags_ctags_exclude = [
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
 
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
+let s:tags_dir = expand('~/.vim/cache/tags')
+let g:gutentags_cache_dir = s:tags_dir
 
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
+if !isdirectory(s:tags_dir)
+   silent! call mkdir(s:tags_dir, 'p')
 endif

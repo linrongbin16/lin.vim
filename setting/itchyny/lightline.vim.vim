@@ -64,7 +64,7 @@ function! LightLineGitStatus() abort
   if empty(git_changes)
     return git_branch
   endif
-  return printf('%s%s', git_branch, git_changes)
+  return printf('%s %s', git_branch, trim(git_changes))
 endfunction
 
 function! LightLineGutentagsStatus() abort
