@@ -52,7 +52,7 @@ let g:gutentags_ctags_exclude = [
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
 
-let s:tags_dir = expand('~/.vim/cache/tags')
+let s:tags_dir = expand('~/.cache/vim-tags')
 let g:gutentags_cache_dir = s:tags_dir
 
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
