@@ -61,5 +61,5 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 if !isdirectory(s:tags_dir)
-   silent! call mkdir(s:tags_dir, 'p')
+   silent! call mkdir(s:tags_dir, "p", 0700)
 endif

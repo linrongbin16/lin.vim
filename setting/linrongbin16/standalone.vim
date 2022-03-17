@@ -31,7 +31,7 @@ set list
 if has('persistent_undo')
   let undo_dir = expand('~/.cache/vim-undo')
   if !isdirectory(undo_dir)
-     silent! call mkdir(undo_dir, 'p')
+     silent! call mkdir(undo_dir, "p", 0700)
   endif
   let &undodir = undo_dir
   set undofile

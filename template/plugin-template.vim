@@ -122,5 +122,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'mbbill/undotree'
 
 call plug#end()
