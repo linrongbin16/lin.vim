@@ -65,8 +65,6 @@ endif
 Plug 'jlanzarotta/bufexplorer'
 
 " Highlight
-Plug 'inkarkat/vim-ingo-library'
-Plug 'inkarkat/vim-mark'
 Plug 'RRethy/vim-illuminate'
 Plug 'RRethy/vim-hexokinase', {'do': has('make') ? 'make hexokinase' : 'git submodule init && git submodule update && cd hexokinase/ && go build'}
 

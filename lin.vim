@@ -26,7 +26,6 @@ endif
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 
 " Highlight
-source $HOME/.vim/setting/inkarkat/vim-mark.vim
 source $HOME/.vim/setting/RRethy/vim-hexokinase.vim
 source $HOME/.vim/setting/RRethy/vim-illuminate.vim
 
