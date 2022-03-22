@@ -29,7 +29,11 @@ set list
 
 " persisted undo
 if has('persistent_undo')
-  let undo_dir = expand('~/.cache/vim-undo')
+  if has('nvim')
+    let undo_dir = expand('~/.cache/nvim-undo')
+  else
+    let undo_dir = expand('~/.cache/vim-undo')
+  endif
   if !isdirectory(undo_dir)
      silent! call mkdir(undo_dir, "p", 0700)
   endif
