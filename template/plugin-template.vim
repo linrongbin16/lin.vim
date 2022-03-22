@@ -103,10 +103,8 @@ Plug 'alvan/vim-closetag'
 " Markdown Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
-" Comment
-Plug 'tomtom/tcomment_vim'
-
 " Editing Support
+Plug 'tomtom/tcomment_vim'
 if has('nvim-0.5')
   Plug 'phaazon/hop.nvim'
   Plug 'windwp/nvim-autopairs'
