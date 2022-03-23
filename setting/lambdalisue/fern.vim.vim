@@ -11,6 +11,8 @@ let g:fern#renderer = "nerdfont"
 " disable default key mapping
 let g:fern#disable_default_mappings=1
 
+let g:fern#renderer#nerdfont#leading="  "
+
 
 
 " key mappings for fern explorer
@@ -51,4 +53,5 @@ augroup FernExplorerCustom
   autocmd FileType fern call s:fern_settings()
   autocmd FileType fern call glyph_palette#apply()
   autocmd FileType fern setl nonumber
+  autocmd FileType fern setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 augroup END
