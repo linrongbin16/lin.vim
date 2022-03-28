@@ -126,3 +126,6 @@ let g:python3_host_prog='python3'
 
 " disable macvim GUI key mappings
 let macvim_skip_cmd_opt_movement=1
+
+" disable syntax highlighting sync on big file for better lantency
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syn sync clear | endif
