@@ -12,7 +12,6 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
   - [Requirements](#requirements)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
-  - [Software Confliction](#software-confliction)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [UI](#ui)
@@ -137,21 +136,37 @@ lin.vim solved such issues:
 
 ### Requirements
 
-lin.vim need at least vim 8.1+ or neovim 0.4.2+, clang/gcc, python 3.6+ (python 2 is not supported), node 10.12+. Its installation has been tested on these platforms:
+lin.vim requires these softwares:
 
-- MacOS Catalina 10.15.7 with macvim 8.2, python 3.9+, node v15.x+
-- Windows 10 with vim 8.2, python 3.8+, node v15+
-- Ubuntu 20.04 LTS with vim 8.1, python 3.8+, node v14+
-- Fedora Workstation 32 with with vim 8.2, python 3.8+, node v12+
-- Manjaro 20.2 with with vim 8.2, python 3.8+, node v15+
+- vim, nvim
+- clang/gcc, make, cmake
+- python3 and pip3 (python 2.x is not supported)
+- node and npm
+- golang
+- rustc and cargo
+- curl
+- universal-ctags
+- unzip
 
-Access of below websites are required, please make sure they're available:
+Please make sure above commands are available in $PATH.
+
+If you don't know how to install these requirements, requirements installation scripts for different UNIX/Linux platforms are also provide:
+
+- `install/apt.sh` for debian/ubuntu based linux
+- `install/brew.sh` for macOS homebrew
+- `install/dnf.sh` for fedora/redhat based linuxx
+- `install/pacman.sh` for archlinux based linuxx
+
+They use system software manager to install the missing requirements.
+Notice: for macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as a pre-requirement.
+
+Access of below websites are required as well, please make sure they're available:
 
 - [github.com](https://github.com/)
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/)
-- [go.dev](https://go.dev)
-
-For macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirement.
+- [go.dev](https://go.dev/)
+- [www.rust-lang.org](https://www.rust-lang.org/)
+- [crates.io](https://crates.io/)
 
 ### UNIX, Linux, MacOS
 
@@ -161,7 +176,7 @@ For macOS please install [Xcode](https://guide.macports.org/chunked/installing.h
 
 ### Windows
 
-The goal of installation on windows is to install as a native windows software, without dependencies such as [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MYSY2](https://www.msys2.org/) for reasons:
+The goal of installation on windows is to install as a native windows software, without dependencies such as [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MYSY2](https://www.msys2.org/) for below reasons:
 
 - Native software has better performance.
 - WSL is actually a ubuntu virtual machine, lin.vim will just install and run like in ubuntu.
@@ -185,7 +200,7 @@ Notice: if you are using WSL, `C:\Windows\System32\bash.exe` could lead you to W
 
 After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `find.exe`, `cat.exe` should be found as well.
 
-One more thing should be noticed is that there's a `vim.exe` provided by Git for Windows as well, don't use it, just use `gvim.exe` installed by yourself.
+One more thing should be noticed is that there's an old-version `vim.exe` provided by Git for Windows as well, don't use it, use `gvim.exe` installed by yourself.
 
 3. Install other third party dependencies (x64 is preferred):
 
@@ -193,7 +208,7 @@ One more thing should be noticed is that there's a `vim.exe` provided by Git for
    - [cmake](https://cmake.org/download/): add `cmake.exe` in `$env:Path`
    - [gvim](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` in `$env:Path`
    - (Recommended) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` in `$env:Path`
-   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them in `$env:Path`
+   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add them in `$env:Path`
    - [llvm](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env:Path`
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env:Path`
    - [golang](https://go.dev/dl/): add `go.exe` in `$env:Path`
@@ -203,7 +218,6 @@ One more thing should be noticed is that there's a `vim.exe` provided by Git for
    - [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env:Path`
    - [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env:Path`
-   - [7z](https://www.7-zip.org/download.html): add `7z.exe` in `$env:Path`
 
 Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
 
@@ -223,23 +237,6 @@ You could also install these dependencies with other windows package manager suc
     $ cd $env:UserProfile\.vim
     $ .\install.ps1
 ```
-
-### Software Confliction
-
-[install.sh](https://github.com/linrongbin16/lin.vim/blob/master/install.sh) will install third party dependencies automatically through package manager, which could conflict with your systems:
-
-- git, curl, wget
-- vim/neovim/gvim (macvim is installed on macOS)
-- llvm (clang, clang++, clangd, clang-format)
-- rust
-- golang
-- autoconf, automake, make, cmake (make is optional on windows, gcc/g++ is additionally installed on Linux)
-- ripgrep(rg), bat, fd
-- zip, unzip, bzip2, p7zip (7z installed on Windows as an alternative)
-- python3, pip3
-- nodejs, npm
-- universal-ctags
-- hack nerd font (only download on Windows, need manually installation)
 
 ## User Guide
 

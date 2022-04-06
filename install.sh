@@ -9,43 +9,99 @@ INSTALL_HOME=$VIM_HOME/install
 TEMPLATE_HOME=$VIM_HOME/template
 OS="$(uname -s)"
 
-function platform_dependency() {
+function detect_platform() {
     case "$OS" in
         Linux)
             if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL_HOME/pacman.sh "$VIM_HOME" "$INSTALL_HOME"
+                $INSTALL_HOME/message.sh "install dependencies for archlinux/artix based linux"
             elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL_HOME/dnf.sh  "$VIM_HOME" "$INSTALL_HOME"
-            # elif [ -f "/etc/gentoo-release" ]; then
-            #     RECOMMEND_INSTALL="emerge install -y"
-            else # assume apt
-                $INSTALL_HOME/apt.sh  "$VIM_HOME" "$INSTALL_HOME"
+                $INSTALL_HOME/message.sh "install dependencies for fedora/redhat based linux"
+            elif [ -f "/etc/gentoo-release" ]; then
+                $INSTALL_HOME/message.sh "install dependencies for gentoo based linux"
+            else
+                # assume apt
+                $INSTALL_HOME/message.sh "install dependencies for debian/ubuntu based linux"
             fi
             ;;
         FreeBSD)
-            $INSTALL_HOME/pkg.sh  "$VIM_HOME" "$INSTALL_HOME"
+            $INSTALL_HOME/message.sh "install dependencies for freebsd"
             ;;
         NetBSD)
-            $INSTALL_HOME/pkgin.sh  "$VIM_HOME" "$INSTALL_HOME"
+            $INSTALL_HOME/message.sh "install dependencies for netbsd"
             ;;
         OpenBSD)
-            $INSTALL_HOME/pkg_add.sh  "$VIM_HOME" "$INSTALL_HOME"
+            $INSTALL_HOME/message.sh "install dependencies for openbsd"
             ;;
         Darwin)
-            $INSTALL_HOME/brew.sh  "$VIM_HOME" "$INSTALL_HOME"
+            $INSTALL_HOME/message.sh "install dependencies for macos"
             ;;
         *)
-            $INSTALL_HOME/message.sh "OS $OS is not supported, exit..."
+            $INSTALL_HOME/message.sh "OS $OS not supported, exit..."
             exit 1
             ;;
     esac
 }
 
-function rust_dependency() {
-    if ! type "rustc" >/dev/null 2>&1; then
-        $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+function check_command_exist() {
+    if type "$1" >/dev/null 2>&1; then
+        $INSTALL_HOME/message.sh "check $1 - installed"
+    else
+        $INSTALL_HOME/message.sh "check $1 - not found, exit..."
+        exit 1
     fi
-    source $HOME/.cargo/env
+}
+
+function check_optional_command_exist() {
+    if type "$1" >/dev/null 2>&1; then
+        $INSTALL_HOME/message.sh "check $1 - installed"
+    else
+        $INSTALL_HOME/message.sh "check $1 - not found, skip..."
+    fi
+}
+
+function check_either_two_commands_exist() {
+    if type "$1" >/dev/null 2>&1; then
+        $INSTALL_HOME/message.sh "check $1 - installed"
+    elif type "$2" >/dev/null 2>&1; then
+        $INSTALL_HOME/message.sh "check $2 - installed"
+    else
+        $INSTALL_HOME/message.sh "check $1 or $2 - not found, exit..."
+        exit 1
+    fi
+}
+
+function check_dependencies() {
+    check_command_exist git
+    check_command_exist curl
+    check_command_exist vim
+    check_command_exist nvim
+    check_either_two_commands_exist gcc clang
+    check_command_exist make
+    check_command_exist cmake
+    check_command_exist rustc
+    check_command_exist cargo
+    check_command_exist go
+    check_command_exist python3
+    check_command_exist pip3
+    check_command_exist node
+    check_command_exist npm
+    check_command_exist ctags
+    check_command_exist unzip
+}
+
+function install_rust_dependency_if_not_exist() {
+    if type "$1" >/dev/null 2>&1; then
+        $INSTALL_HOME/message.sh "check $1 - installed"
+    else
+        $INSTALL_HOME/message.sh "check $1 - not found, install with cargo..."
+        eval "$2"
+    fi
+}
+
+function rust_dependency() {
+    install_rust_dependency_if_not_exist rg "cargo install ripgrep"
+    install_rust_dependency_if_not_exist bat "cargo install --locked bat"
+    install_rust_dependency_if_not_exist fd "cargo install fd-find"
 }
 
 function pip3_dependency() {
@@ -59,24 +115,21 @@ function npm_dependency() {
 }
 
 function guifont_dependency() {
+    if [ "$OS" == "Darwin" ]; then
+        cd ~/Library/Fonts
+    else
+        mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+    fi
     local font_file=Hack.zip
     local font_version=v2.1.0
     local font_download_url=https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file
-    if [ "$OS" == "Darwin" ]; then
-        cd ~/Library/Fonts
-        brew tap homebrew/cask-fonts
-        brew install --cask font-hack-nerd-font
-    else
-       mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-        if [ ! -f $font_file ]; then
-            wget $font_download_url
-            if [ $? -ne 0 ]; then
-                $INSTALL_HOME/message.sh "download $font_file failed, exit..."
-                exit 1
-            fi
+    if [ ! -f $font_file ]; then
+        curl $font_download_url -o $font_file
+        if [ $? -ne 0 ]; then
+            $INSTALL_HOME/message.sh "download $font_file failed, skip..."
         fi
-        unzip -o $font_file
     fi
+    unzip -o $font_file
 }
 
 function install_templates() {
@@ -115,7 +168,8 @@ function install_nvim_plugin() {
 
 function main() {
     # install dependencies
-    platform_dependency
+    detect_platform
+    check_dependencies
     rust_dependency
     pip3_dependency
     npm_dependency
