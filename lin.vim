@@ -63,8 +63,6 @@ source $HOME/.vim/setting/linrongbin16/hotkey.vim
 source $HOME/.vim/setting/linrongbin16/enhanced-copy-paste.vim
 " FileType Mappings
 source $HOME/.vim/setting/linrongbin16/filetype-map.vim
-" Indent Width
-source $HOME/.vim/setting/linrongbin16/indent-width.vim
 
 " Other User Settings
 if filereadable(expand('~/.vim/setting.vim'))

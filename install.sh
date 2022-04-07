@@ -13,27 +13,27 @@ function detect_platform() {
     case "$OS" in
         Linux)
             if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL_HOME/message.sh "install dependencies for archlinux/artix based linux"
+                $INSTALL_HOME/message.sh "install for archlinux/artix based linux"
             elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL_HOME/message.sh "install dependencies for fedora/redhat based linux"
+                $INSTALL_HOME/message.sh "install for fedora/redhat based linux"
             elif [ -f "/etc/gentoo-release" ]; then
-                $INSTALL_HOME/message.sh "install dependencies for gentoo based linux"
+                $INSTALL_HOME/message.sh "install for gentoo based linux"
             else
                 # assume apt
-                $INSTALL_HOME/message.sh "install dependencies for debian/ubuntu based linux"
+                $INSTALL_HOME/message.sh "install for debian/ubuntu based linux"
             fi
             ;;
         FreeBSD)
-            $INSTALL_HOME/message.sh "install dependencies for freebsd"
+            $INSTALL_HOME/message.sh "install for freebsd"
             ;;
         NetBSD)
-            $INSTALL_HOME/message.sh "install dependencies for netbsd"
+            $INSTALL_HOME/message.sh "install for netbsd"
             ;;
         OpenBSD)
-            $INSTALL_HOME/message.sh "install dependencies for openbsd"
+            $INSTALL_HOME/message.sh "install for openbsd"
             ;;
         Darwin)
-            $INSTALL_HOME/message.sh "install dependencies for macos"
+            $INSTALL_HOME/message.sh "install for macos"
             ;;
         *)
             $INSTALL_HOME/message.sh "OS $OS not supported, exit..."
