@@ -150,15 +150,12 @@ lin.vim requires these softwares:
 
 Please make sure above commands are available in $PATH.
 
-If you don't know how to install these requirements, requirements installation scripts for different UNIX/Linux platforms are also provide:
+You can use below scripts to install missing requirements with system package manager:
 
 - `install/apt.sh` for debian/ubuntu based linux
-- `install/brew.sh` for macOS homebrew
+- `install/brew.sh` for macOS homebrew, install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements
 - `install/dnf.sh` for fedora/redhat based linuxx
 - `install/pacman.sh` for archlinux based linuxx
-
-They use system software manager to install the missing requirements.
-Notice: for macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as a pre-requirement.
 
 Access of below websites are required as well, please make sure they're available:
 
