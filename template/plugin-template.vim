@@ -47,10 +47,13 @@ if has('nvim-0.5')
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
 else
   Plug 'bagrat/vim-buffet'
   Plug 'itchyny/lightline.vim'
   Plug 'Yggdroot/indentLine'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'itchyny/vim-gitbranch'
 endif
 if has('nvim-0.6')
   Plug 'kyazdani42/nvim-tree.lua'
@@ -78,7 +81,7 @@ if has('win32') || has('win64')
 else
   Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 endif
-Plug 'junegunn/fzf.vim' " needed for previews
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 " Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }

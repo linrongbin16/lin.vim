@@ -1,6 +1,3 @@
-" default extensions
-let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-go', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier']
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -82,12 +79,12 @@ nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " coc-git operations
 " navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
-" show chunk diff at current position
-nmap <leader>gs <Plug>(coc-git-chunkinfo)
-" show commit contains current position
-nmap <leader>gc <Plug>(coc-git-commit)
+" nmap [g <Plug>(coc-git-prevchunk)
+" nmap ]g <Plug>(coc-git-nextchunk)
+" " navigate conflicts of current buffer
+" nmap [c <Plug>(coc-git-prevconflict)
+" nmap ]c <Plug>(coc-git-nextconflict)
+" " show chunk diff at current position
+" nmap <leader>gs <Plug>(coc-git-chunkinfo)
+" " show commit contains current position
+" nmap <leader>gc <Plug>(coc-git-commit)

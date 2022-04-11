@@ -1,6 +1,6 @@
 # lin.vim : Lin Rongbin's (Neo)Vim Distribution
 
-lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
+lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
 # Table of Contents
 
@@ -50,15 +50,15 @@ lin.vim is a highly configured [VIM](https://www.vim.org/)/[Neovim](https://neov
 
 ## Introduction
 
-lin.vim is aimed to out of box, IDE-like editing features, high performance, light weight and friendly to most (Neo)VIM users.
+lin.vim is aimed to out of box, IDE-like editing features, high performance, light weight and friendly to most users.
 
-lin.vim is focused on and only on editing, it doesn't compile/package/debug projects, not tutorial for new (Neo)VIM users neither.
+lin.vim is focused on and only on editing, it doesn't compile/package/debug projects, not tutorial for new vim users neither.
 
 lin.vim solved such issues:
 
 - Solved the difficulty of choosing/grouping/configuring plugins, a set of plugins are embeded and well configured which meets most needs.
 - Solved the difficulty of repeatable install work on different OS and machines, installation has been made easier by one line command (not on Windows for now).
-- Solved the performance/feature/UI-looking issue on (Neo)VIM, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
+- Solved the performance/feature/UI-looking issue, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
 - Documented almost everything so nothing been confused.
 - Customization ability for special needs.
 
@@ -95,11 +95,11 @@ lin.vim solved such issues:
   - Windows
   - macOS
   - Linux(Ubuntu/Debian/Fedora/Manjaro)
-- Support both [VIM](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.6+ is strongly recommended for better performance and experience.
+- Support both [Vim](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.6+ is strongly recommended for better performance and experience.
 - Modern editor UI features:
   - File explorer
   - Pretty icons
-  - Best color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on (Neo)VIM start
+  - Best color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on start
   - Status line
   - Tab line and buffer explorer
   - Outline/Tags
@@ -240,7 +240,7 @@ You could also install these dependencies with other windows package manager suc
 
 ## User Guide
 
-In this section, VIM edit mode are specified with:
+In this section, Vim edit mode are specified with:
 
 - 🄽 - Normal Mode
 - 🅅 - Visual Mode
@@ -364,16 +364,12 @@ For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **
 
 #### Git
 
-- `[g` 🄽 - go to previous git chunk.
-- `]g` 🄽 - go to next git chunk.
-- `[c` 🄽 - go to previous git conflict.
-- `]c` 🄽 - go to next git conflict.
-- `<leader>gs` 🄽 - show git chunk differences under current position.
-- `<leader>gc` 🄽 - show git commits that contains current position.
+- `[c` 🄽 - go to previous git chunk.
+- `]c` 🄽 - go to next git chunk.
 
 ### Search
 
-By default search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`, ...
+Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://github.com/antoinemadec/coc-fzf), all fzf commands are configured with prefix **Fzf**, for example `:Files` are renamed to `:FzfFiles`, `:Rg` are renamed to `:FzfRg`.
 
 #### Text Search
 

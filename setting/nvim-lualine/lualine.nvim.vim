@@ -2,47 +2,47 @@
 
 lua << END
 local function trim6(s)
-   return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
+    return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
 end
 local function LuaLineGitStatus()
-  local git_branch = vim.g.coc_git_status
-  if git_branch == nil or git_branch == '' then
-    return ''
-  end
-  local git_changes = vim.b.coc_git_status
-  if git_changes == nil or git_changes == '' then
-    return string.format('%s', trim6(git_branch))
-  else
-    return string.format('%s %s', git_branch, trim6(git_changes))
-  end
+    local git_branch = vim.b.gitsigns_head
+    if git_branch == nil or git_branch == '' then
+        return ''
+    end
+    local git_status = vim.b.gitsigns_status
+    if git_status == nil or git_status == '' then
+        return string.format(' %s', trim6(git_branch))
+    else
+        return string.format(' %s %s', git_branch, git_status)
+    end
 end
 local function LuaLineCurrentFunction()
-  local function_name = vim.b.coc_current_function
-  if function_name == nil or function_name == '' then
-    return ''
-  end
-  return string.format(' %s', function_name)
+    local function_name = vim.b.coc_current_function
+    if function_name == nil or function_name == '' then
+        return ''
+    end
+    return string.format(' %s', function_name)
 end
 local function LuaLineCocStatus()
-  local coc_status = vim.fn['coc#status']()
-  if coc_status == nil or coc_status == '' then
-    return ''
-  else
-    return coc_status
-  end
+    local coc_status = vim.fn['coc#status']()
+    if coc_status == nil or coc_status == '' then
+        return ''
+    else
+        return coc_status
+    end
 end
 local function LuaLineCursorLocation()
-  return ' %3l:%-2v'
+    return ' %3l:%-2v'
 end
 local function LuaLineCharHexValue()
-  return '0x%B'
+    return '0x%B'
 end
 local function LuaLineGutentagsStatus()
-  local tags_status = vim.fn['gutentags#statusline']()
-  if tags_status == nil or tags_status == '' then
-    return ''
-  end
-  return tags_status
+    local tags_status = vim.fn['gutentags#statusline']()
+    if tags_status == nil or tags_status == '' then
+        return ''
+    end
+    return tags_status
 end
 require('lualine').setup{
     options = {
