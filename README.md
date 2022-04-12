@@ -9,7 +9,7 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
   - [Feature](#feature)
   - [Project Structure](#project-structure)
 - [Installation](#installation)
-  - [Requirements](#requirements)
+  - [Requirements & Limitations](#requirements-limitations)
   - [UNIX, Linux, MacOS](#unix-linux-macos)
   - [Windows](#windows)
 - [User Guide](#user-guide)
@@ -134,9 +134,9 @@ lin.vim solved such issues:
 
 ## Installation
 
-### Requirements
+### Requirements & Limitations
 
-lin.vim requires these softwares:
+lin.vim requires below softwares:
 
 - vim, nvim
 - clang/gcc, make, cmake
@@ -144,18 +144,18 @@ lin.vim requires these softwares:
 - node and npm
 - golang
 - rustc and cargo
-- curl
+- curl, wget
 - universal-ctags
 - unzip
 
-Please make sure above commands are available in $PATH.
-
-You can use below scripts to install missing requirements with system package manager:
+The install script `install.sh` will automatically install these requirements if missing with system package managers:
 
 - `install/apt.sh` for debian/ubuntu based linux
 - `install/brew.sh` for macOS homebrew, install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements
 - `install/dnf.sh` for fedora/redhat based linuxx
 - `install/pacman.sh` for archlinux based linuxx
+
+Gentoo based linux, freebsd/netbsd/openbsd and other Linux/UNIX system are not supported yet.
 
 Access of below websites are required as well, please make sure they're available:
 

@@ -9,108 +9,51 @@ INSTALL_HOME=$VIM_HOME/install
 TEMPLATE_HOME=$VIM_HOME/template
 OS="$(uname -s)"
 
-function detect_platform() {
+function platform_dependency() {
     case "$OS" in
         Linux)
             if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL_HOME/message.sh "install for archlinux/artix based linux"
+                $INSTALL_HOME/pacman.sh
             elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL_HOME/message.sh "install for fedora/redhat based linux"
+                $INSTALL_HOME/dnf.sh
             elif [ -f "/etc/gentoo-release" ]; then
-                $INSTALL_HOME/message.sh "install for gentoo based linux"
+                $INSTALL_HOME/emerge.sh
             else
                 # assume apt
-                $INSTALL_HOME/message.sh "install for debian/ubuntu based linux"
+                $INSTALL_HOME/apt.sh
             fi
             ;;
         FreeBSD)
-            $INSTALL_HOME/message.sh "install for freebsd"
+            $INSTALL_HOME/pkg.sh
             ;;
         NetBSD)
-            $INSTALL_HOME/message.sh "install for netbsd"
+            $INSTALL_HOME/pkgin.sh
             ;;
         OpenBSD)
-            $INSTALL_HOME/message.sh "install for openbsd"
+            $INSTALL_HOME/pkg_add.sh
             ;;
         Darwin)
-            $INSTALL_HOME/message.sh "install for macos"
+            $INSTALL_HOME/brew.sh
             ;;
         *)
-            $INSTALL_HOME/message.sh "OS $OS not supported, exit..."
+            $INSTALL_HOME/message.sh "OS $OS is not supported, exit..."
             exit 1
             ;;
     esac
 }
 
-function check_command_exist() {
-    if type "$1" >/dev/null 2>&1; then
-        $INSTALL_HOME/message.sh "check $1 - installed"
-    else
-        $INSTALL_HOME/message.sh "check $1 - not found, exit..."
-        exit 1
-    fi
-}
-
-function check_optional_command_exist() {
-    if type "$1" >/dev/null 2>&1; then
-        $INSTALL_HOME/message.sh "check $1 - installed"
-    else
-        $INSTALL_HOME/message.sh "check $1 - not found, skip..."
-    fi
-}
-
-function check_either_two_commands_exist() {
-    if type "$1" >/dev/null 2>&1; then
-        $INSTALL_HOME/message.sh "check $1 - installed"
-    elif type "$2" >/dev/null 2>&1; then
-        $INSTALL_HOME/message.sh "check $2 - installed"
-    else
-        $INSTALL_HOME/message.sh "check $1 or $2 - not found, exit..."
-        exit 1
-    fi
-}
-
-function check_dependencies() {
-    check_command_exist git
-    check_command_exist curl
-    check_command_exist vim
-    check_command_exist nvim
-    check_either_two_commands_exist gcc clang
-    check_command_exist make
-    check_command_exist cmake
-    check_command_exist rustc
-    check_command_exist cargo
-    check_command_exist go
-    check_command_exist python3
-    check_command_exist pip3
-    check_command_exist node
-    check_command_exist npm
-    check_command_exist ctags
-    check_command_exist unzip
-}
-
-function install_rust_dependency_if_not_exist() {
-    if type "$1" >/dev/null 2>&1; then
-        $INSTALL_HOME/message.sh "check $1 - installed"
-    else
-        $INSTALL_HOME/message.sh "check $1 - not found, install with cargo..."
-        eval "$2"
-    fi
-}
-
 function rust_dependency() {
-    install_rust_dependency_if_not_exist rg "cargo install ripgrep"
-    install_rust_dependency_if_not_exist bat "cargo install --locked bat"
-    install_rust_dependency_if_not_exist fd "cargo install fd-find"
+    if ! type "rustc" >/dev/null 2>&1; then
+        $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+    fi
+    source $HOME/.cargo/env
 }
 
 function pip3_dependency() {
-    # install python3 pip packages
     sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 }
 
 function npm_dependency() {
-    # install nodejs npm packages
     sudo npm install -g yarn prettier neovim
 }
 
@@ -168,8 +111,7 @@ function install_nvim_plugin() {
 
 function main() {
     # install dependencies
-    detect_platform
-    check_dependencies
+    platform_dependency
     rust_dependency
     pip3_dependency
     npm_dependency

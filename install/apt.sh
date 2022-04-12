@@ -31,7 +31,7 @@ $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y python3 python3-dev py
 
 # Node
 if ! type "node" > /dev/null; then
-    $INSTALL_HOME/message.sh "install universal-ctags from deb.nodesource.com..."
+    $INSTALL_HOME/message.sh "install nodejs from deb.nodesource.com..."
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
@@ -45,8 +45,8 @@ if ! type "ctags" >/dev/null 2>&1; then
     sudo apt-get install -y libjansson-dev
     sudo apt-get install -y libyaml-dev
     sudo apt-get install -y libxml2-dev
-    $INSTALL_HOME/message.sh "install universal-ctags from github..."
-    $INSTALL_HOME/install_universal_ctags.sh "$VIM_HOME" "$INSTALL_HOME"
+    $INSTALL_HOME/message.sh "install universal-ctags from source..."
+    $INSTALL_HOME/install_universal_ctags.sh
 else
     $INSTALL_HOME/message_skip.sh "ctags"
 fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-VIM_HOME=$1
-INSTALL_HOME=$2
+VIM_HOME=$HOME/.vim
+INSTALL_HOME=$VIM_HOME/install
 UNIVERSAL_CTAGS=$VIM_HOME/universal-ctags
 
 cd $VIM_HOME
