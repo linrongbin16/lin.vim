@@ -41,7 +41,7 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
     - [Auto Close Brackets and HTML Tags](#auto-close-brackets-and-html-tags)
     - [Easy Comment](#easy-comment)
   - [Customization](#customization)
-- [Embed Language Servers](#embeded-language-servers)
+- [Embeded Language Servers](#embeded-language-servers)
 - [Reference](#reference)
 - [Contribute](#contribute)
 
@@ -100,7 +100,7 @@ lin.vim solved such issues:
   - Status line
   - Tab line and buffer explorer
   - Outline/Tags
-- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embed Language Servers](#embeded-language-servers)) are embeded by default:
+- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embeded Language Servers](#embeded-language-servers)) are embeded by default:
   - Code complete
   - Diagnostic
   - Lint
