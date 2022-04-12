@@ -59,20 +59,21 @@ function npm_dependency() {
 
 function guifont_dependency() {
     if [ "$OS" == "Darwin" ]; then
-        cd ~/Library/Fonts
+        brew tap homebrew/cask-fonts
+        brew install --cask font-hack-nerd-font
     else
         mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-    fi
-    local font_file=Hack.zip
-    local font_version=v2.1.0
-    local font_download_url=https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file
-    if [ ! -f $font_file ]; then
-        curl $font_download_url -o $font_file
-        if [ $? -ne 0 ]; then
-            $INSTALL_HOME/message.sh "download $font_file failed, skip..."
+        local font_file=Hack.zip
+        local font_version=v2.1.0
+        local font_download_url=https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file
+        if [ ! -f $font_file ]; then
+            curl $font_download_url -o $font_file
+            if [ $? -ne 0 ]; then
+                $INSTALL_HOME/message.sh "download $font_file failed, skip..."
+            fi
         fi
+        unzip -o $font_file
     fi
-    unzip -o $font_file
 }
 
 function install_templates() {
