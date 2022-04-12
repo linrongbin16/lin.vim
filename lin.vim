@@ -55,7 +55,6 @@ else
   source $HOME/.vim/setting/easymotion/vim-easymotion.vim
 endif
 source $HOME/.vim/setting/haya14busa/incsearch.vim.vim
-source $HOME/.vim/setting/junegunn/vim-easy-align.vim
 
 " GUI
 source $HOME/.vim/setting/linrongbin16/gui.vim

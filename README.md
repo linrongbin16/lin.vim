@@ -95,11 +95,11 @@ lin.vim solved such issues:
   - Windows
   - macOS
   - Linux(Ubuntu/Debian/Fedora/Manjaro)
-- Support both [Vim](https://www.vim.org/) and [Neovim](https://neovim.io/), Neovim 0.6+ is strongly recommended for better performance and experience.
+- Support both [Vim](https://www.vim.org/) and [Neovim](https://neovim.io/), neovim 0.6+ is strongly recommended for better performance and experience.
 - Modern editor UI features:
   - File explorer
   - Pretty icons
-  - Best color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on start
+  - Pretty color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on start
   - Status line
   - Tab line and buffer explorer
   - Outline/Tags
@@ -237,7 +237,7 @@ Notice:
 
 ## User Guide
 
-In this section, Vim editting modes are specified with:
+In this section, vim editing modes are specified with:
 
 - 🄽 - Normal Mode
 - 🅅 - Visual Mode
@@ -258,7 +258,7 @@ You could configure these keys in **_~/.vim/setting/linrongbin16/hotkey.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on Neovim 0.6+), you could use key mappings on the file explorer left side:
+File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.6+), you could use key mappings on the file explorer left side:
 
 Transfer and Open Files:
 
@@ -292,7 +292,7 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 #### Buffers/Tabs
 
-Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on Neovim 0.5+), you could switch/close them by key mappings:
+Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on neovim 0.5+), you could switch/close them by key mappings:
 
 - `<leader><tab>`/`<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - go to next buffer on the right.
 - `<leader><s-tab>`/`<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat **_Alt+,_** **_Alt+._** or **_Command+,_** **_Command+._**).
@@ -313,7 +313,7 @@ For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing
 - `<A-9>`(`<D-9>`) 🄽 - go to buffer-9.
 - `<A-0>`(`<D-0>`) 🄽 - go to the last buffer.
 
-For Neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **_mouse-clicking_** on buffers:
+For neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **_mouse-clicking_** on buffers:
 
 - `<A-S-Right>`(`<D-S-Right>`) 🄽 - move current buffer to next position(on the right).
 - `<A-S-Left>`(`<D-S-Left>`) 🄽 - move current buffer to previous position(on the left).
@@ -400,7 +400,7 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 Key mappings are configured with prefix char `c` after `<space>`.
 
-- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`. Notice coc-fzf's symbols only work on NeoVIM, it fallback to `:CocList symbols` on VIM.
+- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`. Notice coc-fzf's symbols only work on neovim, it fallback to `:CocList symbols` on vim.
 - `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics`.
 - `<space>co` 🄽 - search outline/tags by `:CocFzfList outline`.
 - `<space>cc` 🄽 - search commands by `:CocFzfList commands`.
@@ -408,31 +408,20 @@ Key mappings are configured with prefix char `c` after `<space>`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
-#### Rg Search
-
-`:Rg` command is still supported by [vim-ripgrep](https://github.com/jremmen/vim-ripgrep) as an old-style search method.
-
-### Other Enhancements
+### Editing Support
 
 #### Enhanced Copy Paste
 
-Enhanced copy-paste are supported when you want copy/paste between different vim instances.
+when you want copy/paste between different vim instances. Use enhanced copy-paste to stored text content in a file cache:
 
-- `<leader>y` 🅅 - copy visual-selected text to locale machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
-- `<leader>p` 🄽 - paste text saved from local machine cache `~/.vim/.lin-vim-enhanced-copy-paste`.
-
-Copied content will be stored in a text file, then you could paste them to other vim instances.
+- `<leader>y` 🅅 - copy visual-selected text to `~/.vim/.enhanced-copy-paste-cache`.
+- `<leader>p` 🄽 - paste text saved from `~/.vim/.enhanced-copy-paste-cache`.
 
 You could configure these key mappings in **_~/.vim/setting/linrongbin16/enhanced-copy-paste.vim_**.
 
-#### Easy Alignment by [easy-align](https://github.com/junegunn/vim-easy-align)
-
-- `vipga=` 🅅 - align visual-selected paragraph.
-- `gaip=` 🄽 - align inner paragraph.
-
 #### Fast Cursor Movement
 
-Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on Neovim 0.5+).
+Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
 See [Fast cursor movement](#fast-cursor-movement).
 
 - `<leader>f{char}` 🄽 - move to a single {char}.
@@ -452,7 +441,7 @@ Enhancement for add/remove quotes operation.
 
 Enhancement for brackets(pairs) and html tags.
 
-#### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [nvim-autopairs](https://github.com/windwp/nvim-autopairs) on Neovim 0.5+) and [vim-closetag](https://github.com/alvan/vim-closetag)
+#### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [nvim-autopairs](https://github.com/windwp/nvim-autopairs) on neovim 0.5+) and [vim-closetag](https://github.com/alvan/vim-closetag)
 
 Enhancement for auto close brackets(pairs) and html tags.
 
@@ -466,15 +455,6 @@ The most popular key mappings are:
 - `gc` 🅅 - toggle(comment/uncomment) visual selected blocks.
 - `gc{motion}` 🄽 - toggle(comment/uncomment) from current line with motion such as **_jkhl_**.
 - `gc<Count>{motion}` 🄽 - toggle(comment/uncomment) from current line with **_Count_** motion repeat.
-
-#### Highlight/Mark words by [vim-mark](https://github.com/inkarkat/vim-mark) and [vim-ingo-library](https://github.com/inkarkat/vim-ingo-library)
-
-Make a word or something highlight/marked could be quite useful in some cases:
-
-- `<leader>m` 🄽 - mark/clear a (marked) word under cursor.
-- `<leader>n` 🄽 - clear a mark under cursor.
-- `<leader>M` 🄽 - disable/enable all marks.
-- `<leader>N` 🄽 - clear all marks.
 
 ### Customization
 
@@ -515,9 +495,9 @@ These language servers are installed by default:
   - [sonokai](https://github.com/sainnhe/sonokai)
   - [nightfox](https://github.com/EdenEast/nightfox.nvim)
   - [material](https://github.com/kaicataldo/material.vim)
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on Neovim 0.5+)
-  - [github](https://github.com/projekt0n/github-nvim-theme) (Only on Neovim 0.5+)
-  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on Neovim 0.6+)
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on neovim 0.5+)
+  - [github](https://github.com/projekt0n/github-nvim-theme) (Only on neovim 0.5+)
+  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on neovim 0.6+)
 
 ## Contribute
 
