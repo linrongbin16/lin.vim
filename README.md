@@ -379,15 +379,11 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 #### File Search
 
-Implement by fzf.vim.
-
 - `<space>f`/`<c-p>` 🄽 - search files by `:FzfFiles`.
 - `<space>b` 🄽 - search opened buffers by `:FzfBuffers`.
 - `<space>hf` 🄽 - search history files (v:oldfiles) and opened buffers by `:FzfHistory`.
 
 #### Git Search
-
-Implement by fzf.vim.
 
 - `<space>gc` 🄽 - search git commits by `:FzfCommits`.
 - `<space>gf` 🄽 - search git files rby `:FzfGFile`.
