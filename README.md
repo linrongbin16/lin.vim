@@ -34,16 +34,13 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
     - [Rg Search](#rg-search)
   - [Other Enhancements](#other-enhancements)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
-    - [Easy Alignment](#easy-alignment-by-easy-align)
     - [Fast Cursor Movement](#fast-cursor-movement)
-    - [Fast Repeat](#fast-repeat-by-vim-repeat)
-    - [Fast Quotes Operation](#fast-quotes-operation-by-vim-surround)
-    - [Match Brackets and HTML Tags](#match-brackets-and-html-tags-by-vim-matchup)
-    - [Auto Close Brackets and HTML Tags](#auto-close-brackets-and-html-tags-by-auto-pairs-and-vim-closetag)
+    - [Fast Repeat](#fast-repeat)
+    - [Fast Quotes Operation](#fast-quotes-operation)
+    - [Match Brackets and HTML Tags](#match-brackets-and-html-tags)
+    - [Auto Close Brackets and HTML Tags](#auto-close-brackets-and-html-tags)
     - [Easy Comment](#easy-comment)
-    - [Highlight(Mark) specific words](#highlight-mark-specific-words)
   - [Customization](#customization)
-    - [GUI Fonts](#gui-fonts)
 - [Embed Language Servers](#embeded-language-servers)
 - [Reference](#reference)
 - [Contribute](#contribute)
@@ -421,7 +418,6 @@ You could configure these key mappings in **_~/.vim/setting/linrongbin16/enhance
 
 #### Fast Cursor Movement
 
-Fast cursor movement is supported by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
 See [Fast cursor movement](#fast-cursor-movement).
 
 - `<leader>f{char}` 🄽 - move to a single {char}.
@@ -429,32 +425,40 @@ See [Fast cursor movement](#fast-cursor-movement).
 - `<leader>w` 🄽 - move to word.
 - `<leader>l` 🄽 - move to line.
 
-#### Fast Repeat by [vim-repeat](https://github.com/tpope/vim-repeat)
+Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
+
+#### Fast Repeat
 
 Enhancement for `.` operation.
 
-#### Fast Quotes Operation by [vim-surround](https://github.com/tpope/vim-surround)
+Support by [vim-repeat](https://github.com/tpope/vim-repeat).
+
+#### Fast Quotes Operation
 
 Enhancement for add/remove quotes operation.
 
-#### Match Brackets and HTML Tags by [vim-matchup](https://github.com/andymass/vim-matchup)
+Support by [vim-surround](https://github.com/tpope/vim-surround)
+
+#### Match Brackets and HTML Tags
 
 Enhancement for brackets(pairs) and html tags.
 
-#### Auto Close Brackets and HTML Tags by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [nvim-autopairs](https://github.com/windwp/nvim-autopairs) on neovim 0.5+) and [vim-closetag](https://github.com/alvan/vim-closetag)
+Support by [vim-matchup](https://github.com/andymass/vim-matchup).
+
+#### Auto Close Brackets and HTML Tags
 
 Enhancement for auto close brackets(pairs) and html tags.
 
+Support by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [nvim-autopairs](https://github.com/windwp/nvim-autopairs) on neovim 0.5+) and [vim-closetag](https://github.com/alvan/vim-closetag).
+
 #### Easy Comment
-
-Easy comment is supported by [tcomment_vim](https://github.com/tomtom/tcomment_vim).
-
-The most popular key mappings are:
 
 - `gcc` 🄽 - toggle(comment/uncomment) current line.
 - `gc` 🅅 - toggle(comment/uncomment) visual selected blocks.
 - `gc{motion}` 🄽 - toggle(comment/uncomment) from current line with motion such as **_jkhl_**.
 - `gc<Count>{motion}` 🄽 - toggle(comment/uncomment) from current line with **_Count_** motion repeat.
+
+Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim).
 
 ### Customization
 
