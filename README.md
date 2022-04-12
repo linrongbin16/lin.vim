@@ -9,8 +9,8 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
   - [Feature](#feature)
   - [Project Structure](#project-structure)
 - [Installation](#installation)
-  - [Requirements & Limitations](#requirements-limitations)
-  - [UNIX, Linux, MacOS](#unix-linux-macos)
+  - [Requirements](#requirements)
+  - [UNIX/Linux/MacOS](#unix%2Flinux%2Fmacos)
   - [Windows](#windows)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
@@ -134,7 +134,7 @@ lin.vim solved such issues:
 
 ## Installation
 
-### Requirements & Limitations
+### Requirements
 
 lin.vim requires below softwares:
 
@@ -148,7 +148,7 @@ lin.vim requires below softwares:
 - universal-ctags
 - unzip
 
-The install script `install.sh` will automatically install these requirements if missing with system package managers:
+The install script `install.sh` will automatically install these requirements with system package managers:
 
 - `install/apt.sh` for debian/ubuntu based linux
 - `install/brew.sh` for macOS homebrew, install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements
@@ -165,7 +165,7 @@ Access of below websites are required as well, please make sure they're availabl
 - [www.rust-lang.org](https://www.rust-lang.org/)
 - [crates.io](https://crates.io/)
 
-### UNIX, Linux, MacOS
+### UNIX/Linux/MacOS
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
@@ -173,13 +173,11 @@ Access of below websites are required as well, please make sure they're availabl
 
 ### Windows
 
-The goal of installation on windows is to install as a native windows software, without dependencies such as [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MYSY2](https://www.msys2.org/) for below reasons:
+The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MYSY2](https://www.msys2.org/) for below reasons:
 
-- Native software has better performance.
-- WSL is actually a ubuntu virtual machine, lin.vim will just install and run like in ubuntu.
-- MYSY2 seems download almost everything of GNU ecosystem which is too heavy, while [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands.
-
-While installation steps could be a little bit complicated actually:
+- Native executable file has better performance, WSL/MYSY2 either use portable GNU shell or ubuntu virtual machine, which is quite slow and heavy.
+- Supporting WSL backend mode (actually remote mode) like vscode is too heavy development work.
+- [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, lin.vim use it directly.
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with at least these components:
 
@@ -189,15 +187,16 @@ While installation steps could be a little bit complicated actually:
 
 2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with especially these options:
 
-   - In the 3rd **_Select Components_** step, enable/choose **_Associate .sh files to be run with Bash_**
+   - In the 3rd **_Select Components_** step, enable **_Associate .sh files to be run with Bash_**
    - In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
    - In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
 
-Notice: if you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by Git for Windows. Make sure Git for Windows PATH environment is ahead of `C:\Windows\System32` so `bash.exe` from Git for Windows (`wsl.exe` could connect to WSL as well) will be first detected on Command Prompt and PowerShell.
-
 After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `find.exe`, `cat.exe` should be found as well.
 
-One more thing should be noticed is that there's an old-version `vim.exe` provided by Git for Windows as well, don't use it, use `gvim.exe` installed by yourself.
+Notice:
+
+- if you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by Git for Windows. Make sure Git for Windows PATH environment is ahead of `C:\Windows\System32` so `bash.exe` from Git for Windows (`wsl.exe` could connect to WSL as well) will be first detected on Command Prompt.
+- Don't use old-version `vim.exe` provided by Git for Windows, use `gvim.exe` provided by followed steps.
 
 3. Install other third party dependencies (x64 is preferred):
 
@@ -216,9 +215,10 @@ One more thing should be noticed is that there's an old-version `vim.exe` provid
    - [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env:Path`
 
-Notice: installed python3 version must be compatible with gvim/neovim's libpython3.so version, or gvim/neovim will not detect python3. Please use `gvim --version` to find its libpython3.so version.
+Notice:
 
-You could also install these dependencies with other windows package manager such as [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/), just make sure above commands are available in `$env:Path`.
+- Python3 version must be compatible with gvim/neovim's libpython3.so version, or it will not been loaded. Please use `gvim --version` to find its libpython3.so version.
+- Install these dependencies with a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) is another option, just make sure they're available.
 
 4. Install [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/releases):
 
@@ -237,7 +237,7 @@ You could also install these dependencies with other windows package manager suc
 
 ## User Guide
 
-In this section, Vim edit mode are specified with:
+In this section, Vim editting modes are specified with:
 
 - 🄽 - Normal Mode
 - 🅅 - Visual Mode
