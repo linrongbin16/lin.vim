@@ -92,7 +92,7 @@ set hlsearch
 
 " display
 set ruler
-set colorcolumn=120
+" set colorcolumn=120
 set showmatch
 set showcmd
 set wrap
