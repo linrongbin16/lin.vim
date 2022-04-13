@@ -58,8 +58,6 @@ source $HOME/.vim/setting/haya14busa/incsearch.vim.vim
 
 " GUI
 source $HOME/.vim/setting/linrongbin16/gui.vim
-" Hot Key F1 ~ F10
-source $HOME/.vim/setting/linrongbin16/hotkey.vim
 " Enhanced Copy Paste
 source $HOME/.vim/setting/linrongbin16/enhanced-copy-paste.vim
 " FileType Mappings

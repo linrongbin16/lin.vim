@@ -17,6 +17,7 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
   - [UI](#ui)
     - [File Explorer](#file-explorer)
     - [Buffers/Tabs](#buffers-tabs)
+    - [Font](#font)
   - [IDE-like Editing Features](#ide-like-editing-features)
     - [Code Complete](#code-complete)
     - [Jumps](#jumps)
@@ -144,6 +145,7 @@ lin.vim requires below softwares:
 - curl, wget
 - universal-ctags
 - unzip
+- hack nerd font
 
 The install script `install.sh` will automatically install these requirements with system package managers:
 
@@ -152,15 +154,13 @@ The install script `install.sh` will automatically install these requirements wi
 - `install/dnf.sh` for fedora/redhat based linuxx
 - `install/pacman.sh` for archlinux based linuxx
 
-Gentoo based linux, freebsd/netbsd/openbsd and other Linux/UNIX system are not supported yet.
+Other Linux/UNIX systems(Gentoo based linux, bsd, etc) are not supported yet.
 
 Access of below websites are required as well, please make sure they're available:
 
-- [github.com](https://github.com/)
-- [raw.githubusercontent.com](https://raw.githubusercontent.com/)
-- [go.dev](https://go.dev/)
-- [www.rust-lang.org](https://www.rust-lang.org/)
-- [crates.io](https://crates.io/)
+- github: [github.com](https://github.com/), [raw.githubusercontent.com](https://raw.githubusercontent.com/)
+- rust: [www.rust-lang.org](https://www.rust-lang.org/), [crates.io](https://crates.io/)
+- golang: [go.dev](https://go.dev/)
 
 ### UNIX/Linux/MacOS
 
@@ -217,7 +217,7 @@ Notice:
 - Python3 version must be compatible with gvim/neovim's libpython3.so version, or it will not been loaded. Please use `gvim --version` to find its libpython3.so version.
 - Install these dependencies with a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) is another option, just make sure they're available.
 
-4. Install [Hack Nerd Font Complete Mono](https://github.com/ryanoasis/nerd-fonts/releases):
+4. Install [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases):
 
    - `Hack Bold Nerd Font Complete Mono.ttf`
    - `Hack Bold Italic Nerd Font Complete Mono.ttf`
@@ -249,7 +249,7 @@ In this section, vim editing modes are specified with:
 - `F9` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
-You could configure these keys in **_~/.vim/setting/linrongbin16/hotkey.vim_**.
+You could configure these keys in **_~/.vim/setting.vim_**.
 
 ### UI
 
@@ -316,6 +316,10 @@ For neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **
 - `<A-S-Left>`(`<D-S-Left>`) 🄽 - move current buffer to previous position(on the left).
 - `<LeftMouse>` 🄽 - go to selected buffer.
 - `<MiddleMouse>` 🄽 - close selected buffer.
+
+#### Font
+
+lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) by default. Please manually install other nerd fonts and configure in **_~/.vim/setting.vim_** for other options.
 
 ### IDE-like Editing Features
 
