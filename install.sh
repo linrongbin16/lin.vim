@@ -79,7 +79,6 @@ function guifont_dependency() {
 function install_templates() {
     cp $TEMPLATE_HOME/plugin-template.vim $VIM_HOME/plugin.vim
     cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
-    cp $TEMPLATE_HOME/ginit-template.vim $VIM_HOME/ginit.vim
     cp $TEMPLATE_HOME/setting-template.vim $VIM_HOME/setting.vim
 }
 

@@ -20,7 +20,6 @@ Function NpmDependency() {
 Function InstallTemplates() {
     Copy-Item $TEMPLATE_HOME\plugin-template.vim -Destination $VIM_HOME\plugin.vim
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
-    Copy-Item $TEMPLATE_HOME\ginit-template.vim -Destination $VIM_HOME\ginit.vim
     Copy-Item $TEMPLATE_HOME\setting-template.vim -Destination $VIM_HOME\setting.vim
 }
 
