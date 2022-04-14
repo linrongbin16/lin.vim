@@ -91,7 +91,6 @@ augroup MyGutentagsStatusLineRefresher
   autocmd!
   autocmd User GutentagsUpdating call lightline#update()
   autocmd User GutentagsUpdated call lightline#update()
-  autocmd User CocGitStatusChange call lightline#update()
   autocmd User CocStatusChange call lightline#update()
   autocmd User CocDiagnosticChange call lightline#update()
 augroup END
