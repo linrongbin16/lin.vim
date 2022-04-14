@@ -121,5 +121,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'haya14busa/incsearch.vim'
 Plug 'mbbill/undotree'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
