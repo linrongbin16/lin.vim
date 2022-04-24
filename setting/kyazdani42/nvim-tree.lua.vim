@@ -13,7 +13,7 @@ local key_mappings = {
   -- { key = "<Tab>",                        action = "preview" },
   { key = "<C-k>",                        action = "first_sibling" },
   { key = "<C-j>",                        action = "last_sibling" },
-  { key = "I",                            action = "toggle_ignored" },
+  { key = "I",                            action = "toggle_git_ignored" },
   { key = "H",                            action = "toggle_dotfiles" },
   { key = "R",                            action = "refresh" },
   { key = {"N", "K"},                     action = "create" },
