@@ -1,37 +1,49 @@
 lua<<EOF
 local key_mappings = {
-  { key = {"l", "o", "<2-LeftMouse>"},    action = "edit" },
-  -- { key = {"O"},                          action = "edit_no_picker" },
-  { key = {"<Return>"},                   action = "cd" },
-  { key = "<C-v>",                        action = "vsplit" },
-  { key = "<C-x>",                        action = "split" },
-  { key = "<C-t>",                        action = "tabnew" },
-  { key = "<",                            action = "prev_sibling" },
-  { key = ">",                            action = "next_sibling" },
-  { key = "gp",                           action = "parent_node" },
-  { key = "h",                            action = "close_node" },
-  -- { key = "<Tab>",                        action = "preview" },
-  { key = "<C-k>",                        action = "first_sibling" },
-  { key = "<C-j>",                        action = "last_sibling" },
-  { key = "I",                            action = "toggle_git_ignored" },
-  { key = "H",                            action = "toggle_dotfiles" },
-  { key = "R",                            action = "refresh" },
-  { key = {"N", "K"},                     action = "create" },
-  { key = "D",                            action = "remove" },
-  -- { key = "d",                            action = "trash" },
-  { key = {"r", "m"},                     action = "rename" },
-  { key = "X",                            action = "cut" },
-  { key = "C",                            action = "copy" },
-  { key = {"V", "P"},                     action = "paste" },
-  { key = "y",                            action = "copy_name" },
-  { key = "Y",                            action = "copy_path" },
-  { key = "gy",                           action = "copy_absolute_path" },
-  { key = "[c",                           action = "prev_git_item" },
-  { key = "]c",                           action = "next_git_item" },
-  { key = "<BS>",                         action = "dir_up" },
-  { key = "s",                            action = "system_open" },
-  -- { key = "q",                            action = "close" },
-  { key = "?",                            action = "toggle_help" },
+  -- navigation
+  { key = {"l", "o", "<2-LeftMouse>", "l"}, action = "edit" },
+  { key = "h",              action = "close_node" },
+  { key = "<CR>",           action = "cd" },
+  { key = "<BS>",           action = "dir_up" },
+
+  -- split
+  { key = "<C-v>",          action = "vsplit" },
+  { key = "<C-x>",          action = "split" },
+  { key = "<C-t>",          action = "tabnew" },
+
+  -- refresh
+  { key = "R",              action = "refresh" },
+
+  -- create/delete/rename
+  { key = {"N", "K"},       action = "create" },
+  { key = {"r", "m"},       action = "rename" },
+  { key = "d",              action = "trash" },
+  { key = "D",              action = "remove" },
+
+  -- copy/paste/cut
+  { key = "X",              action = "cut" },
+  { key = "C",              action = "copy" },
+  { key = {"V", "P"},       action = "paste" },
+  { key = "y",              action = "copy_name" },
+  { key = "Y",              action = "copy_path" },
+  { key = "gy",             action = "copy_absolute_path" },
+
+  -- open in system
+  { key = "s",              action = "system_open" },
+
+  -- help
+  { key = "?",              action = "toggle_help" },
+
+  -- git chunk
+  { key = "[c",             action = "prev_git_item" },
+  { key = "]c",             action = "next_git_item" },
+
+  -- nvim-tree.lua specific funtions
+  { key = "<",              action = "prev_sibling" },
+  { key = ">",              action = "next_sibling" },
+  { key = "gp",             action = "parent_node" },
+  { key = "<C-k>",          action = "first_sibling" },
+  { key = "<C-j>",          action = "last_sibling" },
 }
 
 require'nvim-tree'.setup {
@@ -90,7 +102,7 @@ require'nvim-tree'.setup {
     signcolumn = "yes"
   },
   trash = {
-    cmd = "trash-put",
+    cmd = "trash",
     require_confirm = true
   },
   actions = {

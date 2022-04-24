@@ -257,9 +257,9 @@ You could configure these keys in **_~/.vim/setting.vim_**.
 
 File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.6+), you could use key mappings on the file explorer left side:
 
-Transfer and Open Files:
+Navigation:
 
-- `h` 🄽 - leave or collapse directory.
+- `h` 🄽 - collapse directory.
 - `l` 🄽 - open or expand directory.
 - `<CR>` 🄽 - open file or cd into directory.
 - `<BS>` 🄽 - leave directory and goto upper directory.
@@ -271,18 +271,17 @@ Create/Delete/Copy/Paste/Cut:
 
 - `N`/`K` 🄽 - create new file/directory.
 - `m`/`r` 🄽 - move/rename file/directory.
-- `c` 🄽 - copy file/directory.
 - `C` 🄽 - copy file/directory into internal clipboard.
 - `X` 🄽 - cut file/directory into internal clipboard.
 - `V`/`P` 🄽 - paste internal clipboard file/directory to current directory.
-- `D` 🄽 - delete file/directory.
+- `d` 🄽 - trash file/directory to system trash-bin, only works on Windows/macOS.
+- `D` 🄽 - delete file/directory with `rm`.
 - `R` 🄽 - reload file explorer.
 
 Others:
 
-- `?` 🄽 - open/close(toggle) help.
-- `.` 🄽 - repeat last operation.
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).
+- `?` 🄽 - open/close(toggle) help.
 
 You could editing **_~/.vim/setting/lambdalisue/fern.vim.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
 Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
