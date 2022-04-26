@@ -243,9 +243,10 @@ In this section, vim editing modes are specified with:
 ### Hot Key
 
 - `F1` 🄽 - toggle(open/close) fern file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
-- `F2` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
-- `F3` 🄽 - open markdown preview in browser, see [Markdown preview](#markdown-preview).
+- `F2` 🄽 - toggle(open/close) undo tree.
+- `F3` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
 - `F4` 🄽 - switch between C/C++ header and source files.
+- `F8` 🄽 - open markdown preview.
 - `F9` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
