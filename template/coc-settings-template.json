@@ -35,7 +35,13 @@
   "yank.highlight.enable": false,
   "yank.list.maxsize": 100,
   "yank.priority": 90,
-  "clangd.arguments": ["-header-insertion=never"],
+  "clangd.arguments": [
+    "-header-insertion=never",
+    "--background-index",
+    "--limit-references=100",
+    "--limit-results=20",
+    "-j=20"
+  ],
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format",
   "python.pythonPath": "python3",
