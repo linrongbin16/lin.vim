@@ -84,8 +84,6 @@ endif
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
-" Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
-" Plug 'vn-ki/coc-clap'
 
 " Other Language Support
 " Flex, Bison
