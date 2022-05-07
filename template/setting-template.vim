@@ -5,7 +5,7 @@ let g:python3_host_prog='python3'
 let g:coc_global_extensions = ['coc-snippets', 'coc-yank', 'coc-lists', 'coc-pyright', 'coc-clangd', 'coc-rust-analyzer', 'coc-go', 'coc-cmake', 'coc-html', 'coc-xml', 'coc-json', 'coc-css', 'coc-tsserver', '@yaegassy/coc-volar', 'coc-eslint', 'coc-prettier']
 
 """ guifont
-if has("win32")
+if has("win32") || has("win64")
     " win32
     set guifont=Hack\ NF:h9
 elseif has("mac")
