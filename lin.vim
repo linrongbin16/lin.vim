@@ -37,6 +37,7 @@ source $HOME/.vim/setting/ludovicchabant/vim-gutentags.vim
 
 " Language Server and Search Engine
 source $HOME/.vim/setting/neoclide/coc.nvim.vim
+" source $HOME/.vim/setting/hrsh7th/nvim-cmp.vim
 " by default key mappings are provided only for fzf.vim
 " if you want to disable key mappings for fzf.vim, please comment below line
 source $HOME/.vim/setting/junegunn/fzf.vim.vim
