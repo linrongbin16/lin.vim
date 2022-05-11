@@ -4,6 +4,26 @@ lua <<EOF
 
 local cmp = require'cmp'
 
+local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
+local select_next_or_fallback = function(fallback)
+    if cmp.visible() then
+        cmp.select_next_item()
+    else
+        fallback()
+    end
+end
+
+local select_prev_or_fallback = function(fallback)
+    if cmp.visible() then
+        cmp.select_prev_item()
+    else
+        fallback()
+    end
+end
+
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -21,80 +41,26 @@ cmp.setup({
     },
 
     mapping = cmp.mapping.preset.insert({
-    ["<Tab>"] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    cmp.complete()
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    fallback()
-                end
-            end,
-            s = function(fallback)
+        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i'}),
+        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i'}),
+        ["<Tab>"] = cmp.mapping(select_next_or_fallback, { "i", "s" }),
+        ["<C-n>"] = cmp.mapping(select_next_or_fallback, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(select_prev_or_fallback, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(select_prev_or_fallback, { "i", "s" }),
+        ['<C-f>'] = cmp.mapping(function(fallback)
+            if vim.fn["vsnip#jumpable"](1) == 1 then
+                feedkey("<Plug>(vsnip-jump-next)", "")
+            else
                 fallback()
             end
-        }),
-        ["<S-Tab>"] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    cmp.complete()
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-                else
-                    fallback()
-                end
-            end,
-            s = function(fallback)
+        end, {"i", "s"}),
+        ['<C-b>'] = cmp.mapping(function(fallback)
+            if vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
+            else
                 fallback()
             end
-        }),
-        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-        ['<C-n>'] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    fallback()
-                end
-            end
-        }),
-        ['<C-p>'] = cmp.mapping({
-            c = function()
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    vim.api.nvim_feedkeys(t('<Up>'), 'n', true)
-                end
-            end,
-            i = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-                else
-                    fallback()
-                end
-            end
-        }),
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        end, {"i", "s"}),
         ['<C-k>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -114,7 +80,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
-        -- { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
         { name = 'buffer' },
     })
@@ -123,16 +89,14 @@ cmp.setup.filetype('gitcommit', {
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
-    completion = { autocomplete = false },
     sources = {
-        { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
+        { name = 'buffer' }
     }
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    completion = { autocomplete = false },
     sources = cmp.config.sources({
         { name = 'path' }
     }, {
@@ -150,7 +114,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require'lspconfig'.clangd.setup {
     capabilities = capabilities,
     cmd = {
-        "clangd", 
+        "clangd",
         "--header-insertion=never",
         "--background-index",
         "--limit-references=100",
