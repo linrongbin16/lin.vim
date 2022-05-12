@@ -3,6 +3,7 @@ let bufferline.icons = 'both'
 let bufferline.animation = v:false
 let bufferline.clickable = v:true
 let bufferline.no_name_title = '[No Name]'
+let bufferline.maximum_length = 80
 
 " use Meta+? key mappings to navigate buffers, for macOS Meta is Command key,
 " for other OS Meta is Alt key.
