@@ -36,6 +36,7 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
   - [Other Enhancements](#other-enhancements)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Fast Cursor Movement](#fast-cursor-movement)
+    - [Word Movement](#word-movement)
     - [Fast Repeat](#fast-repeat)
     - [Fast Quotes Operation](#fast-quotes-operation)
     - [Match Brackets and HTML Tags](#match-brackets-and-html-tags)
@@ -435,6 +436,17 @@ See [Fast cursor movement](#fast-cursor-movement).
 - `<leader>l` 🄽 - move to line.
 
 Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
+
+#### Word Movement
+
+Better word movement enhancement.
+
+- `W` 🄽 - move forward to a single word.
+- `B` 🄽 - move backward to a single word.
+- `E` 🄽 - move forward to the end of a single word.
+- `gE` 🄽 - move backward to the end of a single word.
+
+Support by [vim-wordmotion](https://github.com/chaoren/vim-wordmotion).
 
 #### Fast Repeat
 
