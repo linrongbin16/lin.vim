@@ -39,8 +39,8 @@
     "-j=20",
     "--header-insertion=never",
     "--background-index",
-    "--limit-references=100",
-    "--limit-results=20",
+    "--limit-references=500",
+    "--limit-results=50",
     "--pch-storage=memory"
   ],
   "cmake.cmakePath": "cmake",
