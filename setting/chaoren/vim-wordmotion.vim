@@ -3,12 +3,12 @@
 " we map w/b to the compatible move behaviour, while use W/B to move just a
 " word when need
 let g:wordmotion_mappings = {
-        \ 'w': '<Plug>WordMotion_W',
-        \ 'W': '<Plug>WordMotion_w',
-        \ 'e': '<Plug>WordMotion_E',
-        \ 'E': '<Plug>WordMotion_e',
-        \ 'b': '<Plug>WordMotion_B',
-        \ 'B': '<Plug>WordMotion_b',
-        \ 'ge': '<Plug>WordMotion_gE',
-        \ 'gE': '<Plug>WordMotion_ge',
+        \ 'w': 'W',
+        \ 'W': 'w',
+        \ 'e': 'E',
+        \ 'E': 'e',
+        \ 'b': 'B',
+        \ 'B': 'b',
+        \ 'ge': 'gE',
+        \ 'gE': 'ge',
       \ }
