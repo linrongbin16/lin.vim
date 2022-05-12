@@ -55,6 +55,7 @@ if has('nvim-0.5')
 else
   source $HOME/.vim/setting/easymotion/vim-easymotion.vim
 endif
+source $HOME/.vim/setting/chaoren/vim-wordmotion.vim
 source $HOME/.vim/setting/haya14busa/incsearch.vim.vim
 
 " GUI

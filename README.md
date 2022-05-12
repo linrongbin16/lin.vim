@@ -279,6 +279,11 @@ Create/Delete/Copy/Paste/Cut:
 - `D` 🄽 - delete file/directory with `rm`.
 - `R` 🄽 - reload file explorer.
 
+Resize Width:
+
+- `<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - make explorer bigger.
+- `<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - make explorer smaller.
+
 Others:
 
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).

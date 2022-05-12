@@ -13,8 +13,6 @@ let g:fern#disable_default_mappings=1
 
 let g:fern#renderer#nerdfont#leading="  "
 
-
-
 " key mappings for fern explorer
 function! s:fern_settings() abort
   " fern key mapping
@@ -53,6 +51,16 @@ function! s:fern_settings() abort
 
   " help
   nmap <buffer><nowait> ? <Plug>(fern-action-help)
+
+  " resize explorer width
+  nmap <buffer><nowait> <D-,> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <D-.> <Plug>(fern-action-zoom:half)
+  nmap <buffer><nowait> <A-,> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <A-.> <Plug>(fern-action-zoom:half)
+  nmap <buffer><nowait> <D-Left> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <D-Right> <Plug>(fern-action-zoom:half)
+  nmap <buffer><nowait> <A-Left> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <A-Right> <Plug>(fern-action-zoom:half)
 
   " enhanced preview key mapping
   " nmap <buffer> <Tab> <Plug>(fern-action-preview:toggle)

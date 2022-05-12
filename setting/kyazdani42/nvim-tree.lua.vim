@@ -140,3 +140,21 @@ require'nvim-tree'.setup {
 }
 EOF
 
+function! s:nvim_tree_settings() abort
+  " key mapping
+
+  " resize explorer width
+  nnoremap <buffer> <D-,> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <buffer> <D-.> :<C-u>NvimTreeResize +10<CR>
+  nnoremap <buffer> <A-,> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <buffer> <A-.> :<C-u>NvimTreeResize +10<CR>
+  nnoremap <buffer> <D-Left> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <buffer> <D-Right> :<C-u>NvimTreeResize +10<CR>
+  nnoremap <buffer> <A-Left> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <buffer> <A-Right> :<C-u>NvimTreeResize +10<CR>
+endfunction
+
+augroup MyNvimTreeGroup
+  autocmd!
+  autocmd FileType NvimTree call s:nvim_tree_settings()
+augroup END
