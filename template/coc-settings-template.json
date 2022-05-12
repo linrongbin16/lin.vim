@@ -34,7 +34,7 @@
   },
   "yank.highlight.enable": false,
   "yank.list.maxsize": 100,
-  "yank.priority": 90,
+  "yank.priority": 30,
   "clangd.arguments": [
     "-j=20",
     "--header-insertion=never",
