@@ -15,14 +15,14 @@ function! s:coc_explorer_settings()
       setl statusline=coc-explorer
 
       " resize explorer width
-      " nnoremap <buffer> <D-,> :CocCommand explorer<CR> :CocCommand explorer --width=40<CR>
-      " nnoremap <buffer> <D-.> :CocCommand explorer<CR> :CocCommand explorer --width=80<CR>
-      " nnoremap <buffer> <A-,> :CocCommand explorer<CR> :CocCommand explorer --width=40<CR>
-      " nnoremap <buffer> <A-.> :CocCommand explorer<CR> CocCommand explorer --width=80<CR>
-      " nnoremap <buffer> <D-Left> :CocCommand explorer<CR> :CocCommand explorer --width=40<CR>
-      " nnoremap <buffer> <D-Right> :CocCommand explorer<CR> :CocCommand explorer --width=80<CR>
-      " nnoremap <buffer> <A-Left> :CocCommand explorer<CR> :CocCommand explorer --width=40<CR>
-      " nnoremap <buffer> <A-Right> :CocCommand explorer<CR> :CocCommand explorer --width=80<CR>
+      nnoremap <buffer> <D-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
+      nnoremap <buffer> <D-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
+      nnoremap <buffer> <A-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
+      nnoremap <buffer> <A-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
+      nnoremap <buffer> <D-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
+      nnoremap <buffer> <D-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
+      nnoremap <buffer> <A-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
+      nnoremap <buffer> <A-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
   endif
 
 endfunction
