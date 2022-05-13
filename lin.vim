@@ -34,7 +34,7 @@ source $HOME/.vim/setting/RRethy/vim-illuminate.vim
 
 " Tags
 source $HOME/.vim/setting/liuchengxu/vista.vim.vim
-source $HOME/.vim/setting/ludovicchabant/vim-gutentags.vim
+" source $HOME/.vim/setting/ludovicchabant/vim-gutentags.vim
 
 " Language Server and Search Engine
 source $HOME/.vim/setting/neoclide/coc.nvim.vim
