@@ -56,7 +56,7 @@ require('lualine').setup{
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename' },
-        lualine_c = { LuaLineGitStatus, LuaLineCocStatus, LuaLineGutentagsStatus },
+        lualine_c = { LuaLineGitStatus, LuaLineCocStatus },
         lualine_x = { 'fileformat', 'encoding', 'filetype', LuaLineCharHexValue },
         lualine_y = { 'progress' },
         lualine_z = { LuaLineCursorLocation },
