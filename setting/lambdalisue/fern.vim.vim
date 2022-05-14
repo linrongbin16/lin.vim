@@ -16,7 +16,7 @@ let g:fern#renderer#nerdfont#leading="  "
 " key mappings for fern explorer
 function! s:fern_settings() abort
   " fern key mapping
-  
+
   " navigation
   nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
   nmap <buffer><nowait> h <Plug>(fern-action-collapse)

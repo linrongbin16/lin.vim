@@ -2,7 +2,6 @@
 let g:fzf_command_prefix = 'Fzf'
 
 " make coc-fzf behavior same with fzf.vim
-
 let g:coc_fzf_preview = ''
 let g:coc_fzf_opts = []
 
