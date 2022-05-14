@@ -73,7 +73,7 @@ Plug 'RRethy/vim-hexokinase', {'do': has('make') ? 'make hexokinase' : 'git subm
 
 " Tags
 Plug 'liuchengxu/vista.vim'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Language Server and Search Engine
 if has('win32') || has('win64')

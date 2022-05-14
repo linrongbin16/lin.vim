@@ -3,7 +3,7 @@ let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
   \             ['LightLineFileName' ],
-  \             ['LightLineGitStatus', 'LightLineCocStatus'] ],
+  \             ['LightLineGitStatus', 'LightLineCocStatus', 'LightLineGutentagsStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
