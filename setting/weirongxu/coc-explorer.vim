@@ -15,14 +15,14 @@ function! s:coc_explorer_settings()
       setl statusline=coc-explorer
 
       " resize explorer width
-      nnoremap <buffer> <D-h> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [-10])<CR>
-      nnoremap <buffer> <D-l> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [10])<CR>
-      nnoremap <buffer> <A-h> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [-10])<CR>
-      nnoremap <buffer> <A-l> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [10])<CR>
-      nnoremap <buffer> <D-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [-10])<CR>
-      nnoremap <buffer> <D-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [10])<CR>
-      nnoremap <buffer> <A-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [-10])<CR>
-      nnoremap <buffer> <A-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['adjustSize'], [10])<CR>
+      nnoremap <silent> <buffer> <D-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <D-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
+      nnoremap <silent> <buffer> <A-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <A-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
+      nnoremap <silent> <buffer> <D-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <D-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
+      nnoremap <silent> <buffer> <A-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <A-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
   endif
 
 endfunction

@@ -143,10 +143,6 @@ function! s:nvim_tree_settings() abort
   " key mapping
 
   " resize explorer width
-  nnoremap <silent> <buffer> <D-h> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <D-l> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <A-h> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <A-l> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <D-,> :<C-u>NvimTreeResize -10<CR>
   nnoremap <silent> <buffer> <D-.> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <A-,> :<C-u>NvimTreeResize -10<CR>
