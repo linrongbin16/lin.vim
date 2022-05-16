@@ -15,14 +15,14 @@ function! s:coc_explorer_settings()
       setl statusline=coc-explorer
 
       " resize explorer width
-      nnoremap <buffer> <D-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
-      nnoremap <buffer> <D-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
-      nnoremap <buffer> <A-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
-      nnoremap <buffer> <A-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
-      nnoremap <buffer> <D-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
-      nnoremap <buffer> <D-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
-      nnoremap <buffer> <A-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [40])<CR>
-      nnoremap <buffer> <A-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', ['resize'], [80])<CR>
+      nnoremap <silent> <buffer> <D-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <D-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
+      nnoremap <silent> <buffer> <A-,> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <A-.> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
+      nnoremap <silent> <buffer> <D-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <D-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
+      nnoremap <silent> <buffer> <A-Left> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['-10x-10']}])<CR>
+      nnoremap <silent> <buffer> <A-Right> :call CocActionAsync('runCommand', 'explorer.doAction', 'closest', [{'name': 'adjustSize', 'args': ['10x10']}])<CR>
   endif
 
 endfunction
@@ -32,4 +32,5 @@ augroup CocExplorerCustom
     autocmd BufEnter * call <SID>coc_explorer_settings()
 augroup END
 
+" open explorer after vim start
 autocmd User CocNvimInit :CocCommand explorer

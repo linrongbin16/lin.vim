@@ -265,17 +265,17 @@ Navigation:
 - `l` 🄽 - open or expand directory.
 - `<CR>` 🄽 - open file or cd into directory.
 - `<BS>` 🄽 - leave directory and goto upper directory.
-- `<C-v>` 🄽 - open file in `vsplit`.
-- `<C-x>` 🄽 - open file in `split`.
-- `<C-t>` 🄽 - open file in new tab.
+- `e` 🄽 - open file in `split`.
+- `E` 🄽 - open file in `vsplit`.
+- `t` 🄽 - open file in new tab.
 
 Create/Delete/Copy/Paste/Cut:
 
 - `N`/`K` 🄽 - create new file/directory.
 - `m`/`r` 🄽 - move/rename file/directory.
-- `C` 🄽 - copy file/directory into internal clipboard.
-- `X` 🄽 - cut file/directory into internal clipboard.
-- `V`/`P` 🄽 - paste internal clipboard file/directory to current directory.
+- `<C-c>` 🄽 - copy file/directory into internal clipboard just like in Windows.
+- `<C-x>` 🄽 - cut file/directory into internal clipboard just like in Windows.
+- `<C-v>` 🄽 - paste internal clipboard file/directory to current directory just like in Windows.
 - `d` 🄽 - trash file/directory to system trash-bin, only works on Windows/macOS.
 - `D` 🄽 - delete file/directory with `rm`.
 - `R` 🄽 - reload file explorer.
@@ -287,6 +287,8 @@ Resize Width:
 
 Others:
 
+- `y` 🄽 - copy file name string.
+- `Y` 🄽 - copy absolute file path string.
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).
 - `?` 🄽 - open/close(toggle) help.
 

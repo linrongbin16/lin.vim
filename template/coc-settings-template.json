@@ -35,6 +35,63 @@
   "yank.highlight.enable": false,
   "yank.list.maxsize": 100,
   "yank.priority": 30,
+  "explorer.toggle": true,
+  "explorer.sources": [
+    {
+      "name": "file",
+      "expand": true
+    },
+    {
+      "name": "buffer",
+      "expand": true
+    }
+  ],
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.buffer.showHiddenBuffers": true,
+  "explorer.keyMappings.global": {
+    "i": false,
+
+    "<2-LeftMouse>": [
+      "expandable?",
+      ["expanded?", "collapse", "expand"],
+      "open"
+    ],
+    "o": ["wait", "expanded?", "collapse", "expand"],
+    "h": ["wait", "collapse"],
+    "l": ["wait", "expandable?", "expand", "open"],
+    "gl": ["wait", "expand:recursive"],
+    "gh": ["wait", "collapse:recursive"],
+    "<cr>": ["wait", "expandable?", "cd", "open"],
+    "<bs>": ["wait", "gotoParent"],
+
+    "e": "open:split",
+    "E": "open:vsplit",
+    "t": "open:tab",
+
+    "R": "refresh",
+
+    "N": "addFile",
+    "K": "addDirectory",
+    "r": "rename",
+    "m": "rename",
+    "d": "delete",
+    "D": "deleteForever",
+
+    "<C-x>": "cutFile",
+    "<C-c>": "copyFile",
+    "<C-v>": "pasteFile",
+    "Y": "copyFilepath",
+    "y": "copyFilename",
+
+    "s": "systemExecute",
+
+    "<esc>": "esc",
+    "?": "help",
+
+    "[c": ["wait", "markPrev:git"],
+    "]c": ["wait", "markNext:git"]
+  },
   "clangd.arguments": [
     "-j=20",
     "--header-insertion=never",
