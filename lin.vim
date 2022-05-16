@@ -23,8 +23,8 @@ endif
 if has('nvim-0.6')
     source $HOME/.vim/setting/kyazdani42/nvim-tree.lua.vim
 else
-    source $HOME/.vim/setting/lambdalisue/fern.vim.vim
-    " source $HOME/.vim/setting/weirongxu/coc-explorer.vim
+    " source $HOME/.vim/setting/lambdalisue/fern.vim.vim
+    source $HOME/.vim/setting/weirongxu/coc-explorer.vim
 endif
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 

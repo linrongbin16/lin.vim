@@ -282,8 +282,8 @@ Create/Delete/Copy/Paste/Cut:
 
 Resize Width:
 
-- `<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - make explorer bigger.
-- `<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - make explorer smaller.
+- `<A-h>`(`<D-h>`)/`<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - make explorer bigger.
+- `<A-l>`(`<D-l>`)/`<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - make explorer smaller.
 
 Others:
 

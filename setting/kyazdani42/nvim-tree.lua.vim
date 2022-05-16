@@ -31,9 +31,9 @@ local key_mappings = {
   { key = "<BS>",           action = "dir_up" },
 
   -- split
-  { key = "<C-v>",          action = "vsplit" },
-  { key = "<C-x>",          action = "split" },
-  { key = "<C-t>",          action = "tabnew" },
+  { key = "e",              action = "split" },
+  { key = "E",              action = "vsplit" },
+  { key = "t",              action = "tabnew" },
 
   -- refresh
   { key = "R",              action = "refresh" },
@@ -45,12 +45,11 @@ local key_mappings = {
   { key = "D",              action = "remove" },
 
   -- copy/paste/cut
-  { key = "X",              action = "cut" },
-  { key = "C",              action = "copy" },
-  { key = {"V", "P"},       action = "paste" },
+  { key = "<C-x>",          action = "cut" },
+  { key = "<C-c>",          action = "copy" },
+  { key = "<C-v>",          action = "paste" },
   { key = "y",              action = "copy_name" },
-  { key = "Y",              action = "copy_path" },
-  { key = "gy",             action = "copy_absolute_path" },
+  { key = "Y",              action = "copy_absolute_path" },
 
   -- open in system
   { key = "s",              action = "system_open" },
@@ -144,6 +143,10 @@ function! s:nvim_tree_settings() abort
   " key mapping
 
   " resize explorer width
+  nnoremap <silent> <buffer> <D-h> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <silent> <buffer> <D-l> :<C-u>NvimTreeResize +10<CR>
+  nnoremap <silent> <buffer> <A-h> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <silent> <buffer> <A-l> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <D-,> :<C-u>NvimTreeResize -10<CR>
   nnoremap <silent> <buffer> <D-.> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <A-,> :<C-u>NvimTreeResize -10<CR>
