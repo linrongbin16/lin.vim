@@ -32,4 +32,5 @@ augroup CocExplorerCustom
     autocmd BufEnter * call <SID>coc_explorer_settings()
 augroup END
 
+" open explorer after vim start
 autocmd User CocNvimInit :CocCommand explorer
