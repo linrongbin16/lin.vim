@@ -257,7 +257,7 @@ You could configure these keys in **_~/.vim/setting.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [coc-explorer](https://github.com/weirongxu/coc-explorer) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.6+), you could use key mappings on the file explorer left side:
+File explorer is supported by [coc-explorer](https://github.com/weirongxu/coc-explorer) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
 
 Navigation:
 
@@ -271,7 +271,7 @@ Navigation:
 
 Create/Delete/Copy/Paste/Cut:
 
-- `N`/`K` 🄽 - create new file/directory.
+- `a`/`A` 🄽 - create new file/directory.
 - `m`/`r` 🄽 - move/rename file/directory.
 - `<C-c>` 🄽 - copy file/directory into internal clipboard just like in Windows.
 - `<C-x>` 🄽 - cut file/directory into internal clipboard just like in Windows.
@@ -285,8 +285,14 @@ Resize Width:
 - `<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - make explorer bigger.
 - `<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - make explorer smaller.
 
+Preview:
+
+- `P` 🄽 - preview file content.
+- `I` 🄽 - preview file info.
+
 Others:
 
+- `H` 🄽 - toggle dotfiles hidden.
 - `y` 🄽 - copy file name string.
 - `Y` 🄽 - copy absolute file path string.
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).

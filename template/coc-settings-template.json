@@ -71,8 +71,8 @@
 
     "R": "refresh",
 
-    "N": "addFile",
-    "K": "addDirectory",
+    "a": "addFile",
+    "A": "addDirectory",
     "r": "rename",
     "m": "rename",
     "d": "delete",
@@ -90,7 +90,12 @@
     "?": "help",
 
     "[c": ["wait", "markPrev:git"],
-    "]c": ["wait", "markNext:git"]
+    "]c": ["wait", "markNext:git"],
+
+    "P": "preview:content",
+    "I": "preview:labeling",
+
+    "H": "toggleHidden"
   },
   "clangd.arguments": [
     "-j=20",

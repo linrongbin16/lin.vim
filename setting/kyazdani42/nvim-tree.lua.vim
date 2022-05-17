@@ -39,7 +39,7 @@ local key_mappings = {
   { key = "R",              action = "refresh" },
 
   -- create/delete/rename
-  { key = {"N", "K"},       action = "create" },
+  { key = {"a", "A"},       action = "create" },
   { key = {"r", "m"},       action = "rename" },
   { key = "d",              action = "trash" },
   { key = "D",              action = "remove" },
@@ -60,6 +60,13 @@ local key_mappings = {
   -- git chunk
   { key = "[c",             action = "prev_git_item" },
   { key = "]c",             action = "next_git_item" },
+
+  -- preview
+  { key = "P",              action = "preview" },
+  { key = "I",              action = "toggle_file_info" },
+
+  -- toggle dotfiles
+  { key = {"H"},           action = "toggle_dotfiles" },
 
   -- nvim-tree.lua specific funtions
   { key = "<",              action = "prev_sibling" },
