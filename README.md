@@ -243,7 +243,7 @@ In this section, vim editing modes are specified with:
 
 ### Hot Key
 
-- `F1` 🄽 - toggle(open/close) fern file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
+- `F1` 🄽 - toggle(open/close) file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
 - `F2` 🄽 - toggle(open/close) undo tree.
 - `F3` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
 - `F4` 🄽 - switch between C/C++ header and source files.
@@ -257,7 +257,7 @@ You could configure these keys in **_~/.vim/setting.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.6+), you could use key mappings on the file explorer left side:
+File explorer is supported by [coc-explorer](https://github.com/weirongxu/coc-explorer) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.6+), you could use key mappings on the file explorer left side:
 
 Navigation:
 
@@ -277,7 +277,7 @@ Create/Delete/Copy/Paste/Cut:
 - `<C-x>` 🄽 - cut file/directory into internal clipboard just like in Windows.
 - `<C-v>` 🄽 - paste internal clipboard file/directory to current directory just like in Windows.
 - `d` 🄽 - trash file/directory to system trash-bin, only works on Windows/macOS.
-- `D` 🄽 - delete file/directory with `rm`.
+- `D` 🄽 - force delete file/directory, possiblely implemented with `rm`.
 - `R` 🄽 - reload file explorer.
 
 Resize Width:
@@ -292,8 +292,8 @@ Others:
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).
 - `?` 🄽 - open/close(toggle) help.
 
-You could editing **_~/.vim/setting/lambdalisue/fern.vim.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
-Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
+You could editing **_~/.vim/setting/weirongxu/coc-explorer.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
+Please refer to [coc-explorer - Custom mappings example](https://github.com/weirongxu/coc-explorer#custom-mappings-example) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
 
 #### Buffers/Tabs
 
