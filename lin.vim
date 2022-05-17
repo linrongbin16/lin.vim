@@ -20,7 +20,7 @@ else
     source $HOME/.vim/setting/Yggdroot/indentLine.vim
     source $HOME/.vim/setting/airblade/vim-gitgutter.vim
 endif
-if has('nvim-0.6')
+if has('nvim-0.7')
     source $HOME/.vim/setting/kyazdani42/nvim-tree.lua.vim
 else
     " source $HOME/.vim/setting/lambdalisue/fern.vim.vim

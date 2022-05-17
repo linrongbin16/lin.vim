@@ -55,15 +55,8 @@ else
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/vim-gitbranch'
 endif
-if has('nvim-0.6')
+if has('nvim-0.7')
   Plug 'kyazdani42/nvim-tree.lua'
-else
-  Plug 'lambdalisue/nerdfont.vim'
-  Plug 'lambdalisue/glyph-palette.vim'
-  Plug 'lambdalisue/fern.vim'
-  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-  Plug 'lambdalisue/fern-git-status.vim'
-  Plug 'lambdalisue/fern-hijack.vim'
 endif
 Plug 'jlanzarotta/bufexplorer'
 
