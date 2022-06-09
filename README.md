@@ -56,7 +56,7 @@ lin.vim is focused on and only on editing, it doesn't compile/package/debug proj
 lin.vim solved such issues:
 
 - Solved the difficulty of choosing/grouping/configuring plugins, a set of plugins are embeded and well configured which meets most needs.
-- Solved the difficulty of repeatable install work on different OS and machines, installation has been made easier by one line command (not on Windows for now).
+- Solved the difficulty of duplicate installation on different OS and machines, installation has been made easier by one line command (not on Windows for now).
 - Solved the performance/feature/UI-looking issue, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
 - Documented almost everything so nothing been confused.
 - Customization ability for special needs.
