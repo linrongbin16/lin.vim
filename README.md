@@ -55,10 +55,11 @@ lin.vim is focused on and only on editing, it doesn't compile/package/debug proj
 
 lin.vim solved such issues:
 
-- Solved the difficulty of choosing/grouping/configuring plugins, a set of plugins are embeded and well configured which meets most needs.
-- Solved the difficulty of duplicate installation on different OS and machines, installation has been made easier by one line command (not on Windows for now).
-- Solved the performance/feature/UI-looking issue, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/), pretty colorschemes/UI/icons to make you happy working.
-- Documented almost everything so nothing been confused.
+- Solved the difficulty of choosing/grouping/configuring plugins, a set of plugins are embeded and well configured to most needs.
+- Solved the difficulty of duplicate installation on different OS and machines, it's been made easier by one line command (not on Windows for now).
+- Solved the difficulty of balance between performance and features, only carefully chosen plugins are installed, try to be a modern editor just like [vscode](https://code.visualstudio.com/).
+- Solved the UI-looking issue of original (neo)vim, make you happy working with pretty colorschemes/UI/icons.
+- Document everything so nothing is confused.
 - Customization ability for special needs.
 
 ### Screenshots
@@ -116,6 +117,7 @@ lin.vim solved such issues:
   - Git search on commits/uncommit-changes
   - Coc.nvim integrated search on symbols/outline/diagnostics/yank
   - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags
+- Other editing featuers (see [Other Enhancements](#other-enhancements))
 - Custom configuration.
 
 ### Project Structure
@@ -171,7 +173,7 @@ Access of below websites are required as well, please make sure they're availabl
 
 ### Windows
 
-The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MYSY2](https://www.msys2.org/) for below reasons:
+The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
 
 - Native executable file has better performance, WSL/MYSY2 either use portable GNU shell or ubuntu virtual machine, which is quite slow and heavy.
 - Supporting WSL backend mode (actually remote mode) like vscode is too heavy development work.
@@ -216,7 +218,7 @@ Notice:
 Notice:
 
 - Python3 version must be compatible with gvim/neovim's libpython3.so version, or it will not been loaded. Please use `gvim --version` to find its libpython3.so version.
-- Install these dependencies with a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) is another option, just make sure they're available.
+- Install these dependencies with a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) is another option, just make sure they're available in `$env:Path`.
 
 4. Install [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases):
 
@@ -225,7 +227,7 @@ Notice:
    - `Hack Italic Nerd Font Complete Mono.ttf`
    - `Hack Regular Nerd Font Complete Mono.ttf`
 
-5. Install following components as administrator:
+5. Install **lin.vim** as administrator:
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
@@ -235,7 +237,7 @@ Notice:
 
 ## User Guide
 
-In this section, vim editing modes are specified with:
+In this section, vim editing mode are specified with:
 
 - 🄽 - Normal Mode
 - 🅅 - Visual Mode
