@@ -12,6 +12,8 @@ $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y libcanberra-gtk-module
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y neovim" "nvim"
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y curl" "curl"
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y wget" "wget"
+$INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y autoconf" "autoconf"
+$INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y automake" "automake"
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y cmake" "cmake"
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y clang" "clang"
 $INSTALL_HOME/install_or_skip.sh "sudo apt-get install -y clang-format" "clang-format"
