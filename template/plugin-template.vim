@@ -44,14 +44,17 @@ else
 endif
 if has('nvim-0.5')
   Plug 'romgrk/barbar.nvim'
-  Plug 'nvim-lualine/lualine.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'lewis6991/gitsigns.nvim'
 else
   Plug 'bagrat/vim-buffet'
-  Plug 'itchyny/lightline.vim'
   Plug 'Yggdroot/indentLine'
+endif
+if has('nvim-0.5') && !has('win32') && !has('win64')
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
+else
+  Plug 'itchyny/lightline.vim'
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/vim-gitbranch'
 endif
