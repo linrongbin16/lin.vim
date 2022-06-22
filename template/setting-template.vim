@@ -7,7 +7,7 @@ let g:coc_global_extensions = ['coc-explorer', 'coc-snippets', 'coc-yank', 'coc-
 """ guifont
 if has("win32") || has("win64")
     " win32
-    set guifont=Hack\ Nerd\ Font\ Mono:h9
+    set guifont=Hack\ NF:h9
 elseif has("mac")
     " macos
     set guifont=Hack\ Nerd\ Font\ Mono:h12

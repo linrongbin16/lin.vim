@@ -220,12 +220,12 @@ Notice:
 - Python3 version must be compatible with gvim/neovim's libpython3.so version, or it will not been loaded. Please use `gvim --version` to find its libpython3.so version.
 - Install these dependencies with a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) is another option, just make sure they're available in `$env:Path`.
 
-4. Install [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases):
+4. Install [Hack Nerd Font Mono Windows Compatible](https://github.com/ryanoasis/nerd-fonts/releases):
 
-   - `Hack Bold Nerd Font Complete Mono.ttf`
-   - `Hack Bold Italic Nerd Font Complete Mono.ttf`
-   - `Hack Italic Nerd Font Complete Mono.ttf`
-   - `Hack Regular Nerd Font Complete Mono.ttf`
+   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
+   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
 
 5. Install **lin.vim** as administrator:
 
