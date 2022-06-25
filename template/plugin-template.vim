@@ -44,7 +44,6 @@ else
 endif
 if has('nvim-0.5')
   Plug 'romgrk/barbar.nvim'
-  Plug 'nvim-lua/plenary.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
 else
   Plug 'bagrat/vim-buffet'
