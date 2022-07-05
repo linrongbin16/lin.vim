@@ -13,27 +13,27 @@ function platform_dependency() {
     case "$OS" in
         Linux)
             if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL_HOME/pacman.sh
+                $INSTALL_HOME/pacman.sh "$INSTALL_HOME"
             elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL_HOME/dnf.sh
+                $INSTALL_HOME/dnf.sh "$INSTALL_HOME"
             elif [ -f "/etc/gentoo-release" ]; then
-                $INSTALL_HOME/emerge.sh
+                $INSTALL_HOME/emerge.sh "$INSTALL_HOME"
             else
                 # assume apt
-                $INSTALL_HOME/apt.sh
+                $INSTALL_HOME/apt.sh "$INSTALL_HOME"
             fi
             ;;
         FreeBSD)
-            $INSTALL_HOME/pkg.sh
+            $INSTALL_HOME/pkg.sh "$INSTALL_HOME"
             ;;
         NetBSD)
-            $INSTALL_HOME/pkgin.sh
+            $INSTALL_HOME/pkgin.sh "$INSTALL_HOME"
             ;;
         OpenBSD)
-            $INSTALL_HOME/pkg_add.sh
+            $INSTALL_HOME/pkg_add.sh "$INSTALL_HOME"
             ;;
         Darwin)
-            $INSTALL_HOME/brew.sh
+            $INSTALL_HOME/brew.sh "$INSTALL_HOME"
             ;;
         *)
             $INSTALL_HOME/message.sh "OS $OS is not supported, exit..."
