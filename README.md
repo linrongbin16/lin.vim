@@ -163,7 +163,7 @@ Access of below websites are required as well, please make sure they're availabl
 
 - github: [github.com](https://github.com/), [raw.githubusercontent.com](https://raw.githubusercontent.com/)
 - rust: [www.rust-lang.org](https://www.rust-lang.org/), [crates.io](https://crates.io/)
-- golang: [go.dev](https://go.dev/)
+- golang: [go.dev](https://go.dev/) and [googlestorageapi.com](https://googlestorageapi.com)
 
 ### UNIX/Linux/MacOS
 
