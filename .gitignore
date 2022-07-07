@@ -25,3 +25,6 @@ command/*.ignore
 # neovim
 init.vim
 ginit.vim
+
+# universal-ctags
+universal-ctags
