@@ -92,32 +92,32 @@ lin.vim solved such issues:
 
 - Automatically installation (not on windows for now).
 - Works on multiple OS platforms:
-  - Windows
-  - macOS
-  - Linux(Ubuntu/Debian/Fedora/Manjaro)
+  - Windows.
+  - macOS.
+  - Linux(Ubuntu/Debian/Fedora/Manjaro).
 - Support both [Vim](https://www.vim.org/) and [Neovim](https://neovim.io/), neovim 0.6+ is strongly recommended for better performance and experience.
 - Modern editor UI features:
-  - File explorer
-  - Pretty icons
-  - Pretty color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on start
-  - Status line
-  - Tab line and buffer explorer
-  - Outline/Tags
+  - File explorer.
+  - Pretty icons.
+  - Pretty color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on start.
+  - Status line.
+  - Tab line and buffer explorer.
+  - Outline/Tags.
 - IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embeded Language Servers](#embeded-language-servers)) are embeded by default:
-  - Code complete
-  - Diagnostic
-  - Lint
-  - Code format
-  - Jump between symbols
-  - Code Actions
-  - Code Lens
+  - Code complete.
+  - Diagnostic.
+  - Lint.
+  - Code format.
+  - Jump between symbols.
+  - Code Actions.
+  - Code Lens.
 - Search engine features supported default by [fzf.vim](https://github.com/junegunn/fzf.vim):
-  - Text search on text/lines/tags/search-histories/command-histories/yank-histories
-  - File search on files/buffers/history-files
-  - Git search on commits/uncommit-changes
-  - Coc.nvim integrated search on symbols/outline/diagnostics/yank
-  - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags
-- Other editing featuers (see [Other Enhancements](#other-enhancements))
+  - Text search on text/lines/tags/search-histories/command-histories/yank-histories.
+  - File search on files/buffers/history-files.
+  - Git search on commits/uncommit-changes.
+  - Coc.nvim integrated search on symbols/outline/diagnostics/yank.
+  - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags.
+- Other editing featuers (see [Other Enhancements](#other-enhancements)).
 - Custom configuration.
 
 ### Project Structure
@@ -139,33 +139,35 @@ lin.vim solved such issues:
 
 lin.vim requires below softwares:
 
-- vim, nvim
-- clang/gcc, make, cmake
-- python3 and pip3 (python 2.x is not supported)
-- node and npm
-- golang
-- rustc and cargo
-- curl, wget
-- universal-ctags
-- unzip
-- hack nerd font
+- [vim](https://github.com/vim/vim), [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
+- [clang](https://clang.llvm.org/)/[gcc](https://gcc.gnu.org/), [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
+- [python3](https://www.python.org/), python 2.x is not support.
+- [nodejs](https://nodejs.org/)
+- [golang](https://go.dev/)
+- [rust](https://www.rust-lang.org/)
+- [curl](https://curl.se/), [wget](https://www.gnu.org/software/wget/)
+- [universal-ctags](https://github.com/universal-ctags/ctags)
+- [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip)
+- Optional [unzip](https://linux.die.net/man/1/unzip), [bzip2](https://sourceforge.net/projects/bzip2/) and [p7zip](http://p7zip.sourceforge.net/)
 
-The install script `install.sh` will automatically install these requirements with system package managers:
-
-- `install/apt.sh` for debian/ubuntu based linux
-- `install/brew.sh` for macOS homebrew, install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements
-- `install/dnf.sh` for fedora/redhat based linuxx
-- `install/pacman.sh` for archlinux based linuxx
-
-Other Linux/UNIX systems(Gentoo based linux, bsd, etc) are not supported yet.
-
-Access of below websites are required as well, please make sure they're available:
+Access of below domains are required as well, please make sure they're available:
 
 - github: [github.com](https://github.com/), [raw.githubusercontent.com](https://raw.githubusercontent.com/)
 - rust: [www.rust-lang.org](https://www.rust-lang.org/), [crates.io](https://crates.io/)
-- golang: [go.dev](https://go.dev/) and [googlestorageapi.com](https://googlestorageapi.com)
+- golang: [go.dev](https://go.dev/) and [storage.googleapis.com](https://storage.googleapis.com)
 
 ### UNIX/Linux/MacOS
+
+The install script `install.sh` will automatically install above softwares with system package managers:
+
+- `install/apt.sh` for apt (debian/ubuntu based linux)
+- `install/brew.sh` for brew (macOS), please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements
+- `install/dnf.sh` for dnf (fedora/redhat based linux)
+- `install/pacman.sh` for pacman (archlinux based linux)
+
+Other \*NIX systems(Gentoo, BSD, etc) are not supported yet.
+
+Install by one line command:
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
@@ -191,7 +193,7 @@ The goal of installation on windows is to install native executable file, no [WS
    - In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
    - In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
 
-After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `find.exe`, `cat.exe` should be found as well.
+After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `bzip2.exe`, `unzip.exe` should be found as well.
 
 Notice:
 
@@ -200,17 +202,18 @@ Notice:
 
 3. Install other third party dependencies (x64 is preferred):
 
-   - (Optional) [make](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` in `$env:Path`
-   - [cmake](https://cmake.org/download/): add `cmake.exe` in `$env:Path`
-   - [gvim](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` in `$env:Path`
-   - (Recommended) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` in `$env:Path`
-   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add them in `$env:Path`
-   - [llvm](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` in `$env:Path`
-   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env:Path`
-   - [golang](https://go.dev/dl/): add `go.exe` in `$env:Path`
-   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env:Path`
-   - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` in `$env:Path`
-   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env:Path`
+   - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
+   - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
+   - (Recommended) [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` to `$env:Path`
+   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`
+   - [clang](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` to `$env:Path`
+   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
+   - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
+   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
+   - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` to `$env:Path`
+   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
+   - (Optional) [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
+   - (Optional) [7z](https://www.7-zip.org/): add `7z.exe` to `$env:Path`.
 
 Notice:
 

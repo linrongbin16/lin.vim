@@ -15,7 +15,6 @@ Function RustDependency() {
     cargo install --lock bat
 }
 
-
 Function Pip3Dependency() {
     pip3 install --upgrade pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 }
@@ -79,6 +78,5 @@ Function Main() {
     InstallNvimPluginIfExist
     InstallVimPlugin
 }
-
 
 Main
