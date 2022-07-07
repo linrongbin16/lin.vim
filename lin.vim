@@ -51,6 +51,8 @@ source $HOME/.vim/setting/junegunn/fzf.vim.vim
 
 " HTML Tag
 source $HOME/.vim/setting/alvan/vim-closetag.vim
+" C#
+source $HOME/.vim/setting/OmniSharp/omnisharp-vim.vim
 
 " Editing Support
 if has('nvim-0.5')
