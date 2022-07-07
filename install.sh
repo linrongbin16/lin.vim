@@ -47,6 +47,9 @@ function rust_dependency() {
         $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     fi
     source $HOME/.cargo/env
+    cargo install ripgrep
+    cargo install fd-find
+    cargo install --lock bat
 }
 
 function pip3_dependency() {
