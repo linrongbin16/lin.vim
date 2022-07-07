@@ -52,6 +52,12 @@ function rust_dependency() {
     cargo install --lock bat
 }
 
+function golang_dependency() {
+    # see https://github.com/canha/golang-tools-install-script
+    wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash
+    export PATH=$HOME/.go/bin:$PATH
+}
+
 function pip3_dependency() {
     sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 }
@@ -116,6 +122,7 @@ function main() {
     # install dependencies
     platform_dependency
     rust_dependency
+    golang_dependency
     pip3_dependency
     npm_dependency
     guifont_dependency

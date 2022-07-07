@@ -209,10 +209,7 @@ Notice:
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` in `$env:Path`
    - [golang](https://go.dev/dl/): add `go.exe` in `$env:Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` in `$env:Path`
-   - [ripgrep](https://github.com/BurntSushi/ripgrep/releases): add `rg.exe` in `$env:Path`
    - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` in `$env:Path`
-   - [bat](https://github.com/sharkdp/bat): add `bat.exe` in `$env:Path`
-   - [fd](https://github.com/sharkdp/fd): add `fd.exe` in `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` in `$env:Path`
 
 Notice:

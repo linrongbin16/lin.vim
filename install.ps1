@@ -9,6 +9,13 @@ Function Message($msg) {
     Write-Host "[lin.vim] - $msg"
 }
 
+Function RustDependency() {
+    cargo install ripgrep
+    cargo install fd-find
+    cargo install --lock bat
+}
+
+
 Function Pip3Dependency() {
     pip3 install --upgrade pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
 }
