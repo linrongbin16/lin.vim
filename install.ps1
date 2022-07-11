@@ -66,6 +66,7 @@ Function Main() {
     Message -msg "install dependencies for windows"
 
     # install dependencies
+    RustDependency
     Pip3Dependency
     NpmDependency
 
