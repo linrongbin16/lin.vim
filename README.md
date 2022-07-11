@@ -111,7 +111,7 @@ lin.vim solved such issues:
   - Jump between symbols.
   - Code Actions.
   - Code Lens.
-- Search engine features supported default by [fzf.vim](https://github.com/junegunn/fzf.vim):
+- Search engine features supported by [fzf.vim](https://github.com/junegunn/fzf.vim):
   - Text search on text/lines/tags/search-histories/command-histories/yank-histories.
   - File search on files/buffers/history-files.
   - Git search on commits/uncommit-changes.
