@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-VIM_HOME=$HOME/.vim
-INSTALL_HOME=$VIM_HOME/install
-UNIVERSAL_CTAGS=$VIM_HOME/universal-ctags
+VIM=$HOME/.vim
+INSTALL=$VIM/install
+UNIVERSAL_CTAGS=$VIM/universal-ctags
 
-cd $VIM_HOME
+cd $VIM
 git clone https://github.com/universal-ctags/ctags.git $UNIVERSAL_CTAGS
 cd $UNIVERSAL_CTAGS
 ./autogen.sh
