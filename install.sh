@@ -2,41 +2,41 @@
 
 set -eo pipefail
 
-VIM_HOME=$HOME/.vim
-CONFIG_HOME=$HOME/.config
-NVIM_HOME=$CONFIG_HOME/nvim
-INSTALL_HOME=$VIM_HOME/install
-TEMPLATE_HOME=$VIM_HOME/template
+VIM=$HOME/.vim
+CONFIG=$HOME/.config
+NVIM=$CONFIG/nvim
+INSTALL=$VIM/install
+TEMPLATE=$VIM/template
 OS="$(uname -s)"
 
 function platform_dependency() {
     case "$OS" in
         Linux)
             if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL_HOME/pacman.sh "$INSTALL_HOME"
+                $INSTALL/pacman.sh "$INSTALL"
             elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL_HOME/dnf.sh "$INSTALL_HOME"
+                $INSTALL/dnf.sh "$INSTALL"
             elif [ -f "/etc/gentoo-release" ]; then
-                $INSTALL_HOME/emerge.sh "$INSTALL_HOME"
+                $INSTALL/emerge.sh "$INSTALL"
             else
                 # assume apt
-                $INSTALL_HOME/apt.sh "$INSTALL_HOME"
+                $INSTALL/apt.sh "$INSTALL"
             fi
             ;;
         FreeBSD)
-            $INSTALL_HOME/pkg.sh "$INSTALL_HOME"
+            $INSTALL/pkg.sh "$INSTALL"
             ;;
         NetBSD)
-            $INSTALL_HOME/pkgin.sh "$INSTALL_HOME"
+            $INSTALL/pkgin.sh "$INSTALL"
             ;;
         OpenBSD)
-            $INSTALL_HOME/pkg_add.sh "$INSTALL_HOME"
+            $INSTALL/pkg_add.sh "$INSTALL"
             ;;
         Darwin)
-            $INSTALL_HOME/brew.sh "$INSTALL_HOME"
+            $INSTALL/brew.sh "$INSTALL"
             ;;
         *)
-            $INSTALL_HOME/message.sh "OS $OS is not supported, exit..."
+            $INSTALL/message.sh "OS $OS is not supported, exit..."
             exit 1
             ;;
     esac
@@ -44,7 +44,7 @@ function platform_dependency() {
 
 function rust_dependency() {
     if ! type "rustc" >/dev/null 2>&1; then
-        $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+        $INSTALL/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     fi
     source $HOME/.cargo/env
     cargo install ripgrep
@@ -78,7 +78,7 @@ function guifont_dependency() {
         if [ ! -f $font_file ]; then
             curl $font_download_url -o $font_file
             if [ $? -ne 0 ]; then
-                $INSTALL_HOME/message.sh "download $font_file failed, skip..."
+                $INSTALL/message.sh "download $font_file failed, skip..."
             fi
         fi
         unzip -o $font_file
@@ -86,28 +86,28 @@ function guifont_dependency() {
 }
 
 function install_templates() {
-    cp $TEMPLATE_HOME/plugin-template.vim $VIM_HOME/plugin.vim
-    cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
-    cp $TEMPLATE_HOME/setting-template.vim $VIM_HOME/setting.vim
+    cp $TEMPLATE/plugin-template.vim $VIM/plugin.vim
+    cp $TEMPLATE/coc-settings-template.json $VIM/coc-settings.json
+    cp $TEMPLATE/setting-template.vim $VIM/setting.vim
 }
 
 function install_vimrc() {
     if [ -f $HOME/.vimrc ]; then
         mv $HOME/.vimrc $HOME/.vimrc.$(date +"%Y-%m-%d.%H-%M-%S")
     fi
-    ln -s $VIM_HOME/lin.vim $HOME/.vimrc
+    ln -s $VIM/lin.vim $HOME/.vimrc
 }
 
 function install_nvim_init() {
-    mkdir -p $CONFIG_HOME
-    if [ -d $NVIM_HOME ]; then
-        mv $NVIM_HOME $CONFIG_HOME/nvim.$(date +"%Y-%m-%d.$H-%M-%S")
+    mkdir -p $CONFIG
+    if [ -d $NVIM ]; then
+        mv $NVIM $CONFIG/nvim.$(date +"%Y-%m-%d.$H-%M-%S")
     fi
-    ln -s $VIM_HOME $NVIM_HOME
-    if [ -f $NVIM_HOME/init.vim ]; then
-        rm $NVIM_HOME/init.vim
+    ln -s $VIM $NVIM
+    if [ -f $NVIM/init.vim ]; then
+        rm $NVIM/init.vim
     fi
-    ln -s $NVIM_HOME/lin.vim $NVIM_HOME/init.vim
+    ln -s $NVIM/lin.vim $NVIM/init.vim
 }
 
 function install_vim_plugin() {

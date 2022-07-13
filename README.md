@@ -189,9 +189,9 @@ The goal of installation on windows is to install native executable file, no [WS
 
 2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with especially these options:
 
-   - In the 3rd **_Select Components_** step, enable **_Associate .sh files to be run with Bash_**
-   - In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
-   - In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
+   1. In the 3rd **_Select Components_** step, enable **_Associate .sh files to be run with Bash_**
+   2. In the 7th **_Adjusting your PATH environment_** step, choose **_Use Git and optional Unix tools from the Command Prompt_**
+   3. In the 11th **_Configuring the terminal emulator to use with Git Bash_** step, choose **_Use Windows's default console window_**
 
 After git installation, `git.exe` should be found in `$env:Path`, Unix/Linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `bzip2.exe`, `unzip.exe` should be found as well.
 
