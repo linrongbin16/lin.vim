@@ -12,7 +12,7 @@ Function Message($msg) {
 Function RustDependency() {
     cargo install ripgrep
     cargo install fd-find
-    cargo install --lock bat
+    cargo install --locked bat
 }
 
 Function Pip3Dependency() {

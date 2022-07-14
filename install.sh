@@ -49,7 +49,7 @@ function rust_dependency() {
     source $HOME/.cargo/env
     cargo install ripgrep
     cargo install fd-find
-    cargo install --lock bat
+    cargo install --locked bat
 }
 
 function golang_dependency() {
