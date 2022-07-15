@@ -9,3 +9,4 @@ autocmd BufRead,BufNewFile *.lex setlocal filetype=lex
 autocmd BufRead,BufNewFile *.yacc setlocal filetype=yacc
 autocmd BufRead,BufNewFile *.l setlocal filetype=lex
 autocmd BufRead,BufNewFile *.y setlocal filetype=yacc
+autocmd BufRead,BufNewFile *.json setlocal filetype=jsonc
