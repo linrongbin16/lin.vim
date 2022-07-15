@@ -32,7 +32,7 @@ endif
 if has('nvim-0.6')
   Plug 'rebelot/kanagawa.nvim'
 endif
-" Colors not working well with tabline
+" Not working well with tabline
 " Plug 'tomasr/molokai'
 " Plug 'romainl/Apprentice'
 
@@ -45,22 +45,21 @@ endif
 if has('nvim-0.5')
   Plug 'romgrk/barbar.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
 else
   Plug 'bagrat/vim-buffet'
   Plug 'Yggdroot/indentLine'
-endif
-if has('nvim-0.5') && !has('win32') && !has('win64')
-  Plug 'nvim-lualine/lualine.nvim'
-  Plug 'lewis6991/gitsigns.nvim'
-else
   Plug 'itchyny/lightline.vim'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'itchyny/vim-gitbranch'
 endif
 if has('nvim-0.7')
   Plug 'kyazdani42/nvim-tree.lua'
 endif
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/vim-gitbranch'
 Plug 'jlanzarotta/bufexplorer'
+
+" Not working correctly on windows, so use vim-gitgutter + vim-gitbranch
+" Plug 'lewis6991/gitsigns.nvim'
 
 " Highlight
 Plug 'RRethy/vim-illuminate'

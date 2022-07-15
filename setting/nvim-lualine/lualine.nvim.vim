@@ -4,7 +4,7 @@ lua << END
 local function trim6(s)
     return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
 end
-local function LuaLineGitStatus()
+local function ll_git_status_by_git_signs()
     local git_branch = vim.b.gitsigns_head
     if git_branch == nil or git_branch == '' then
         return ''
@@ -16,14 +16,42 @@ local function LuaLineGitStatus()
         return string.format(' %s %s', git_branch, git_status)
     end
 end
-local function LuaLineCurrentFunction()
+local function ll_git_status_by_git_gutter()
+    local git_branch = vim.fn['gitbranch#name']()
+    if git_branch == nil or git_branch == '' then
+        return ''
+    end
+    local summary = vim.fn['GitGutterGetHunkSummary']()
+    if summary == nil or #summary < 3 then
+        return string.format(' %s', git_branch)
+    end
+    local git_status = {}
+    local added = summary[1]
+    if added > 0 then
+        table.insert(git_status, string.format('+%d', added))
+    end
+    local modified = summary[2]
+    if modified > 0 then
+        table.insert(git_status, string.format('~%d', modified))
+    end
+    local removed = summary[3]
+    if removed > 0 then
+        table.insert(git_status, string.format('-%d', removed))
+    end
+    if #git_status > 0 then
+        return string.format(' %s %s', git_branch, table.concat(git_status, " "))
+    else
+        return string.format(' %s', git_branch)
+    end
+end
+local function ll_current_function_name()
     local function_name = vim.b.coc_current_function
     if function_name == nil or function_name == '' then
         return ''
     end
     return string.format(' %s', function_name)
 end
-local function LuaLineCocStatus()
+local function ll_coc_status()
     local coc_status = vim.fn['coc#status']()
     if coc_status == nil or coc_status == '' then
         return ''
@@ -31,13 +59,13 @@ local function LuaLineCocStatus()
         return coc_status
     end
 end
-local function LuaLineCursorLocation()
+local function ll_cursor_location()
     return ' %3l:%-2v'
 end
-local function LuaLineCharHexValue()
+local function ll_char_hex()
     return '0x%B'
 end
-local function LuaLineGutentagsStatus()
+local function ll_gutentags_status()
     local tags_status = vim.fn['gutentags#statusline']()
     if tags_status == nil or tags_status == '' then
         return ''
@@ -56,10 +84,10 @@ require('lualine').setup{
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename' },
-        lualine_c = { LuaLineGitStatus, LuaLineCocStatus, LuaLineGutentagsStatus },
-        lualine_x = { 'fileformat', 'encoding', 'filetype', LuaLineCharHexValue },
+        lualine_c = { ll_git_status_by_git_gutter, ll_coc_status, ll_gutentags_status },
+        lualine_x = { 'fileformat', 'encoding', 'filetype', ll_char_hex },
         lualine_y = { 'progress' },
-        lualine_z = { LuaLineCursorLocation },
+        lualine_z = { ll_cursor_location },
     },
     inactive_secions = {},
     tabline = {},

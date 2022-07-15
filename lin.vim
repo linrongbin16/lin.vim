@@ -12,16 +12,11 @@ source $HOME/.vim/setting/linrongbin16/colorscheme.vim
 " UI
 if has('nvim-0.5')
     source $HOME/.vim/setting/romgrk/barbar.nvim.vim
+    source $HOME/.vim/setting/nvim-lualine/lualine.nvim.vim
 else
     source $HOME/.vim/setting/bagrat/vim-buffet.vim
     source $HOME/.vim/setting/Yggdroot/indentLine.vim
-endif
-if has('nvim-0.5') && !has('win32') && !has('win64')
-    source $HOME/.vim/setting/nvim-lualine/lualine.nvim.vim
-    source $HOME/.vim/setting/lewis6991/gitsigns.nvim.vim
-else
     source $HOME/.vim/setting/itchyny/lightline.vim.vim
-    source $HOME/.vim/setting/airblade/vim-gitgutter.vim
 endif
 if has('nvim-0.7')
     source $HOME/.vim/setting/kyazdani42/nvim-tree.lua.vim
@@ -29,6 +24,7 @@ else
     " source $HOME/.vim/setting/lambdalisue/fern.vim.vim
     source $HOME/.vim/setting/weirongxu/coc-explorer.vim
 endif
+source $HOME/.vim/setting/airblade/vim-gitgutter.vim
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 
 " Highlight
