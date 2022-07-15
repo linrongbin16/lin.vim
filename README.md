@@ -161,12 +161,16 @@ Please make sure access of below domains are available:
 > - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip).
 > - [unzip](https://linux.die.net/man/1/unzip), [bzip2](https://sourceforge.net/projects/bzip2/) and [p7zip](http://p7zip.sourceforge.net/).
 >
-> For now supported platforms are (Other \*NIX systems(Gentoo, BSD, etc) are not supported yet):
+> For now supported platforms are :
 >
 > - apt: debian/ubuntu based linux.
 > - dnf: fedora/centos based linux.
 > - pacman: archlinux based linux.
-> - brew: macOS, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
+> - brew: macOS.
+>
+> Other \*NIX systems (such as gentoo, bsd, etc) are not supported yet.
+
+For macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
@@ -247,7 +251,7 @@ Install with a package manager (such as [chocolatey](https://chocolatey.org/) an
 
 ![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
 
-## User Guide
+# User Guide
 
 In this section, vim editing mode are specified with:
 
@@ -255,7 +259,7 @@ In this section, vim editing mode are specified with:
 - 🅅 - Visual Mode
 - 🄸 - Insert Mode
 
-### Hot Key
+## Hot Key
 
 - `F1` 🄽 - toggle(open/close) file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
 - `F2` 🄽 - toggle(open/close) undo tree.
@@ -267,7 +271,7 @@ In this section, vim editing mode are specified with:
 
 You could configure these keys in **_~/.vim/setting.vim_**.
 
-### UI
+## UI
 
 #### File Explorer
 
@@ -349,7 +353,7 @@ For neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **
 
 lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) by default. Please manually install other nerd fonts and configure in **_~/.vim/setting.vim_** for other options.
 
-### IDE-like Editing Features
+## IDE-like Editing
 
 #### Code Complete
 
@@ -437,7 +441,7 @@ Key mappings are configured with prefix char `c` after `<space>`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
-### Editing Support
+## Editing Support
 
 #### Enhanced Copy Paste
 
@@ -503,11 +507,11 @@ Support by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [n
 
 Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim).
 
-### Customization
+## Customization
 
-Please add more settings in **_~/.vim/setting.vim_** and **_~/.vim/coc-settings.json_**.
+Please add plugins in `~/.vim/plugin.vim`, add settings in `~/.vim/setting.vim` and `~/.vim/coc-settings.json`.
 
-## Embeded Language Servers
+# Embeded Language Servers
 
 These language servers are installed by default:
 
@@ -520,7 +524,7 @@ These language servers are installed by default:
 - json
 - javascript/typescript/jsx/tsx
 
-## Reference
+# Reference
 
 - Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
 - IDE-like defaults for neovim: [LunarVim](https://github.com/LunarVim/LunarVim)
@@ -546,7 +550,7 @@ These language servers are installed by default:
   - [github](https://github.com/projekt0n/github-nvim-theme) (Only on neovim 0.5+)
   - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on neovim 0.6+)
 
-## Contribute
+# Contribute
 
 Please open issue/PR for anything about lin.vim.
 
