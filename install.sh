@@ -67,7 +67,6 @@ function npm_dependency() {
 }
 
 function guifont_dependency() {
-    set -x
     if [ "$OS" == "Darwin" ]; then
         brew tap homebrew/cask-fonts
         brew install --cask font-hack-nerd-font
