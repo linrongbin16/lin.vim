@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eo pipefail
-
 VIM=$HOME/.vim
 CONFIG=$HOME/.config
 NVIM=$CONFIG/nvim
