@@ -2,8 +2,8 @@
 let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
-  \             ['ll_filename' ],
-  \             ['ll_git_status', 'll_coc_status', 'll_gutentags_status'] ],
+  \             ['LightLineFileName' ],
+  \             ['LightLineGitStatus', 'LightLineCocStatus', 'LightLineGutentagsStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -13,10 +13,10 @@ let g:lightline = {
   \   'lineinfo': ' %3l:%-2v',
   \ },
   \ 'component_function': {
-  \   'll_filename'         : 'll_filename',
-  \   'll_git_status'       : 'll_git_status',
-  \   'll_coc_status'       : 'll_coc_status',
-  \   'll_gutentags_status' : 'll_gutentags_status',
+  \   'LightLineFileName'         : 'LightLineFileName',
+  \   'LightLineGitStatus'       : 'LightLineGitStatus',
+  \   'LightLineCocStatus'       : 'LightLineCocStatus',
+  \   'LightLineGutentagsStatus' : 'LightLineGutentagsStatus',
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -27,7 +27,7 @@ let g:lightline = {
   \ }
 
 
-function! ll_filename() abort
+function! LightLineFileName() abort
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   if &modified
     let filename = filename . '[+]'
@@ -38,7 +38,7 @@ function! ll_filename() abort
   return filename
 endfunction
 
-function! ll_current_function_name() abort
+function! LightLineCurrentFunction() abort
   let function_name = get(b:, 'coc_current_function', '')
   if empty(function_name)
     return ''
@@ -46,7 +46,7 @@ function! ll_current_function_name() abort
   return printf(' %s', function_name)
 endfunction
 
-function! ll_coc_status() abort
+function! LightLineCocStatus() abort
   let coc_status = coc#status()
   if empty(coc_status)
     return ''
@@ -55,7 +55,7 @@ function! ll_coc_status() abort
   endif
 endfunction
 
-function! ll_git_status() abort
+function! LightLineGitStatus() abort
   let git_branch = gitbranch#name()
   if empty(git_branch)
     return ''
@@ -78,7 +78,7 @@ function! ll_git_status() abort
   endif
 endfunction
 
-function! ll_gutentags_status() abort
+function! LightLineGutentagsStatus() abort
   let tags_status = gutentags#statusline()
   if empty(tags_status)
     return ''

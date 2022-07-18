@@ -4,7 +4,7 @@ lua << END
 local function trim6(s)
     return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
 end
-local function ll_git_status_by_git_signs()
+local function lualine_git_status_by_git_signs()
     local git_branch = vim.b.gitsigns_head
     if git_branch == nil or git_branch == '' then
         return ''
@@ -16,7 +16,7 @@ local function ll_git_status_by_git_signs()
         return string.format(' %s %s', git_branch, git_status)
     end
 end
-local function ll_git_status_by_git_gutter()
+local function lualine_git_status_by_git_gutter()
     local git_branch = vim.fn['gitbranch#name']()
     if git_branch == nil or git_branch == '' then
         return ''
@@ -44,14 +44,14 @@ local function ll_git_status_by_git_gutter()
         return string.format(' %s', git_branch)
     end
 end
-local function ll_current_function_name()
+local function lualine_current_function_name()
     local function_name = vim.b.coc_current_function
     if function_name == nil or function_name == '' then
         return ''
     end
     return string.format(' %s', function_name)
 end
-local function ll_coc_status()
+local function lualine_coc_status()
     local coc_status = vim.fn['coc#status']()
     if coc_status == nil or coc_status == '' then
         return ''
@@ -59,13 +59,13 @@ local function ll_coc_status()
         return coc_status
     end
 end
-local function ll_cursor_location()
+local function lualine_cursor_location()
     return ' %3l:%-2v'
 end
-local function ll_char_hex()
+local function lualine_char_hex()
     return '0x%B'
 end
-local function ll_gutentags_status()
+local function lualine_gutentags_status()
     local tags_status = vim.fn['gutentags#statusline']()
     if tags_status == nil or tags_status == '' then
         return ''
@@ -84,10 +84,10 @@ require('lualine').setup{
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename' },
-        lualine_c = { ll_git_status_by_git_gutter, ll_coc_status, ll_gutentags_status },
-        lualine_x = { 'fileformat', 'encoding', 'filetype', ll_char_hex },
+        lualine_c = { lualine_git_status_by_git_gutter, lualine_coc_status, lualine_gutentags_status },
+        lualine_x = { 'fileformat', 'encoding', 'filetype', lualine_char_hex },
         lualine_y = { 'progress' },
-        lualine_z = { ll_cursor_location },
+        lualine_z = { lualine_cursor_location },
     },
     inactive_secions = {},
     tabline = {},

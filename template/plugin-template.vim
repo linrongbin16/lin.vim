@@ -42,17 +42,15 @@ if has('nvim')
 else
   Plug 'ryanoasis/vim-devicons'
 endif
-if has('nvim-0.5')
+if has('nvim-0.7')
   Plug 'romgrk/barbar.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'kyazdani42/nvim-tree.lua'
 else
   Plug 'bagrat/vim-buffet'
   Plug 'Yggdroot/indentLine'
   Plug 'itchyny/lightline.vim'
-endif
-if has('nvim-0.7')
-  Plug 'kyazdani42/nvim-tree.lua'
 endif
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
