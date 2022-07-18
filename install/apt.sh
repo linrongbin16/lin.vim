@@ -41,7 +41,6 @@ if ! type "ctags" >/dev/null 2>&1; then
     sudo apt-get install -y libjansson-dev
     sudo apt-get install -y libyaml-dev
     sudo apt-get install -y libxml2-dev
-    $INSTALL/msg.sh "install universal-ctags from source..."
     $INSTALL/install_universal_ctags.sh
 else
     $INSTALL/msg.sh "\'ctags\' already exist, skip..."

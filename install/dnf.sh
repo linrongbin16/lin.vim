@@ -33,7 +33,6 @@ if ! type "ctags" >/dev/null 2>&1; then
     sudo dnf install -y jansson-devel
     sudo dnf install -y libyaml-devel
     sudo dnf install -y libxml2-devel
-    $INSTALL/msg.sh "install universal-ctags from source..."
     $INSTALL/install_universal_ctags.sh
 else
     $INSTALL/message_skip.sh "ctags"
