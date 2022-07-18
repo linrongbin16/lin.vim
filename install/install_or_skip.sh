@@ -6,5 +6,5 @@ TARGET="$2"
 if ! type "$TARGET" >/dev/null 2>&1; then
     eval "$COMMAND"
 else
-    $INSTALL/msg.sh "\'${TARGET}\' already exist, skip...\n"
+    $INSTALL/msg.sh "\'${TARGET}\' already exist, skip..."
 fi
