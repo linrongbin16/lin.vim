@@ -36,7 +36,7 @@ function platform_dependency() {
             $INSTALL/brew.sh
             ;;
         *)
-            $INSTALL/message.sh "$OS is not supported, exit..."
+            $INSTALL/msg.sh "$OS is not supported, exit..."
             exit 1
             ;;
     esac
@@ -76,10 +76,16 @@ function guifont_dependency() {
         local font_file=Hack.zip
         local font_version=v2.1.0
         local font_download_url=https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file
+        if [ -f $font_file ]; then
+            unzip -o $font_file
+            if [ $? -ne 0 ]; then
+                rm $font_file
+            fi
+        fi
         if [ ! -f $font_file ]; then
             curl $font_download_url -o $font_file
             if [ $? -ne 0 ]; then
-                $INSTALL/message.sh "download $font_file failed, skip..."
+                $INSTALL/msg.sh "download $font_file failed, skip..."
             fi
         fi
         unzip -o $font_file
