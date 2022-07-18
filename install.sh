@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -eo pipefail
 
@@ -13,30 +13,30 @@ function platform_dependency() {
     case "$OS" in
         Linux)
             if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL/pacman.sh "$INSTALL"
+                $INSTALL/pacman.sh
             elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL/dnf.sh "$INSTALL"
+                $INSTALL/dnf.sh
             elif [ -f "/etc/gentoo-release" ]; then
-                $INSTALL/emerge.sh "$INSTALL"
+                $INSTALL/emerge.sh
             else
                 # assume apt
-                $INSTALL/apt.sh "$INSTALL"
+                $INSTALL/apt.sh
             fi
             ;;
         FreeBSD)
-            $INSTALL/pkg.sh "$INSTALL"
+            $INSTALL/pkg.sh
             ;;
         NetBSD)
-            $INSTALL/pkgin.sh "$INSTALL"
+            $INSTALL/pkgin.sh
             ;;
         OpenBSD)
-            $INSTALL/pkg_add.sh "$INSTALL"
+            $INSTALL/pkg_add.sh
             ;;
         Darwin)
-            $INSTALL/brew.sh "$INSTALL"
+            $INSTALL/brew.sh
             ;;
         *)
-            $INSTALL/message.sh "OS $OS is not supported, exit..."
+            $INSTALL/message.sh "$OS is not supported, exit..."
             exit 1
             ;;
     esac
@@ -47,9 +47,7 @@ function rust_dependency() {
         $INSTALL/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     fi
     source $HOME/.cargo/env
-    cargo install ripgrep
-    cargo install fd-find
-    cargo install --locked bat
+    $INSTALL/install_cargo_commands.sh
 }
 
 function golang_dependency() {
@@ -59,7 +57,7 @@ function golang_dependency() {
 }
 
 function pip3_dependency() {
-    sudo pip3 install pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
+    sudo pip3 install --upgrade pyOpenSSL neovim pynvim pep8 flake8 pylint yapf chardet cmakelang cmake-language-server click
 }
 
 function npm_dependency() {

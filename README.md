@@ -152,10 +152,10 @@ Please make sure access of below domains are available:
 > - [git](https://git-scm.com/).
 > - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
 > - [clang](https://clang.llvm.org/) ([gcc](https://gcc.gnu.org/) for linux), [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
-> - [python3](https://www.python.org/) (python 2.x is not support).
-> - [node.js](https://nodejs.org/).
+> - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
+> - [node.js](https://nodejs.org/) and some npm packages.
 > - [golang](https://go.dev/).
-> - [rust](https://www.rust-lang.org/).
+> - [rust](https://www.rust-lang.org/) and some modern commands.
 > - [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
 > - [universal-ctags](https://github.com/universal-ctags/ctags).
 > - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip).
@@ -216,7 +216,6 @@ This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
    - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
-   - [fzf](https://github.com/junegunn/fzf/releases): add `fzf.exe` to `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
    - [7-zip](https://www.7-zip.org/): add `7z.exe` to `$env:Path`.
 

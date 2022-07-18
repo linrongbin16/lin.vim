@@ -1,12 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 VIM=$HOME/.vim
 INSTALL=$VIM/install
-UNIVERSAL_CTAGS=$VIM/universal-ctags
+CTAGS=$VIM/universal-ctags
 
+$INSTALL/msg.sh "install universal-ctags from source..."
 cd $VIM
-git clone https://github.com/universal-ctags/ctags.git $UNIVERSAL_CTAGS
-cd $UNIVERSAL_CTAGS
+git clone https://github.com/universal-ctags/ctags.git $CTAGS
+cd $CTAGS
 ./autogen.sh
 ./configure
 make

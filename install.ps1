@@ -16,7 +16,7 @@ Function RustDependency() {
 }
 
 Function Pip3Dependency() {
-    pip3 install --upgrade pyOpenSSL pep8 flake8 pylint yapf chardet neovim pynvim cmakelang cmake-language-server click
+    pip3 install --upgrade pyOpenSSL neovim pynvim pep8 flake8 pylint yapf chardet cmakelang cmake-language-server click
 }
 
 Function NpmDependency() {

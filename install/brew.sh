@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 INSTALL=~/.vim/install
 
-$INSTALL/message.sh "install dependencies with brew"
+$INSTALL/msg.sh "install dependencies with brew"
 
 brew update
 $INSTALL/install_or_skip.sh "brew install macvim" "gvim"
@@ -16,11 +16,11 @@ $INSTALL/install_or_skip.sh "brew install zip" "zip"
 $INSTALL/install_or_skip.sh "brew install bzip2" "bzip2"
 $INSTALL/install_or_skip.sh "brew install p7zip" "7z"
 
-# Python3
+# python3
 $INSTALL/install_or_skip.sh "brew install python3" "python3"
 
-# Node
+# nodejs
 $INSTALL/install_or_skip.sh "brew install node" "node"
 
-# Ctags
+# ctags
 $INSTALL/install_or_skip.sh "brew install --HEAD universal-ctags/universal-ctags/universal-ctags" "ctags"

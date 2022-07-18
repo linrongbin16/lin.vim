@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-INSTALL_COMMAND="$1"
-INSTALL_TARGET="$2"
+COMMAND="$1"
+TARGET="$2"
 
-if ! type "$INSTALL_TARGET" >/dev/null 2>&1; then
-    eval "$INSTALL_COMMAND"
+if ! type "$TARGET" >/dev/null 2>&1; then
+    eval "$COMMAND"
 else
-    printf "[lin.vim] - \'%s\' already exist, skip...\n" "$INSTALL_TARGET"
+    $INSTALL/msg.sh "\'${TARGET}\' already exist, skip...\n"
 fi

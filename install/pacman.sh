@@ -2,7 +2,7 @@
 
 INSTALL=$HOME/.vim/install
 
-$INSTALL/message.sh "install dependencies with pacman"
+$INSTALL/msg.sh "install dependencies with pacman"
 
 sudo pacman -Syy
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S base-devel" "gcc"

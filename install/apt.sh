@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 INSTALL=~/.vim/install
 
-$INSTALL/message.sh "install dependencies with apt"
+$INSTALL/msg.sh "install dependencies with apt"
 
 sudo apt-get update
 $INSTALL/install_or_skip.sh "sudo apt-get install -y build-essential" "gcc"
@@ -20,28 +20,28 @@ $INSTALL/install_or_skip.sh "sudo apt-get install -y unzip" "unzip"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y zip" "zip"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y p7zip-full" "7z"
 
-# Python3
+# python3
 $INSTALL/install_or_skip.sh "sudo apt-get install -y python3 python3-dev python3-venv python3-pip python3-docutils" "python3"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y python3 python3-dev python3-venv python3-pip python3-docutils" "pip3"
 
-# Node
+# nodejs
 if ! type "node" > /dev/null; then
-    $INSTALL/message.sh "install nodejs from deb.nodesource.com..."
+    $INSTALL/msg.sh "install nodejs from deb.nodesource.com..."
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
-    $INSTALL/message_skip.sh "node"
+    $INSTALL/msg.sh "\'node\' already exist, skip..."
 fi
 
 
-# Ctags
+# ctags
 if ! type "ctags" >/dev/null 2>&1; then
     sudo apt-get install -y libseccomp-dev
     sudo apt-get install -y libjansson-dev
     sudo apt-get install -y libyaml-dev
     sudo apt-get install -y libxml2-dev
-    $INSTALL/message.sh "install universal-ctags from source..."
+    $INSTALL/msg.sh "install universal-ctags from source..."
     $INSTALL/install_universal_ctags.sh
 else
-    $INSTALL/message_skip.sh "ctags"
+    $INSTALL/msg.sh "\'ctags\' already exist, skip..."
 fi
