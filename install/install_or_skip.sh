@@ -1,5 +1,6 @@
 #!/bin/bash
 
+INSTALL=~/.vim/install
 COMMAND="$1"
 TARGET="$2"
 
