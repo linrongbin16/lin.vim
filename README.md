@@ -51,7 +51,7 @@ lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neov
 
 Aim to be out of box, IDE-like editing experience, high performance, light weight and friendly to most users.
 
-Focused on and only on editing, not compile/package/debug projects, or tutorial for new vim users.
+Focused on and only on editing, no compile/package/debug projects, or tutorial for new vim users.
 
 Solved below issues:
 
