@@ -47,7 +47,9 @@ function rust_dependency() {
         $INSTALL/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     fi
     source $HOME/.cargo/env
-    $INSTALL/install_cargo_commands.sh
+    cargo install ripgrep
+    cargo install fd-find
+    cargo install --locked bat
 }
 
 function golang_dependency() {
