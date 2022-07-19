@@ -82,8 +82,6 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'justinmk/vim-syntax-extra', {'for': ['lex', 'flex', 'yacc', 'bison']}
 " LLVM
 Plug 'rhysd/vim-llvm'
-" PowerShell
-Plug 'PProvost/vim-ps1'
 " Protobuf
 Plug 'uarun/vim-protobuf'
 " Hive

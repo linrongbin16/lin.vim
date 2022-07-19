@@ -102,7 +102,7 @@ Solved below issues:
   - Status line.
   - Tab line and buffer explorer.
   - Outline/Tags.
-- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a set of language servers(see [Embeded Language Servers](#embeded-language-servers)) are embeded by default:
+- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a bunch of language servers(see [Embeded Language Servers](#embeded-language-servers)) embeded by default:
   - Code complete.
   - Diagnostic.
   - Lint.
@@ -122,14 +122,15 @@ Solved below issues:
 ### Project Structure
 
 ```
- |+install              Installation scripts for different platforms.
- |+setting              VimL script settings.
- |+template             Templates for ~/.vim/plugin.vim, ~/.vim/coc-settings.json and ~/.vim/setting.vim.
- |`install.sh           UNIX/Linux/MacOS install script.
- |`install.ps1          Windows PowerShell install script.
- |`LICENSE              The license file.
- |`lin.vim              The .vimrc file.
- |`README.md            The readme document.
+ |+install          Installation scripts.
+ |+setting          VimL scripts.
+ |+template         Configuration templates.
+ |`install.sh       Install script on *UNIX.
+ |`install.ps1      Install script on Windows.
+ |`GPL3_LICENSE     License.
+ |`MIT_LICENSE      License.
+ |`lin.vim          The .vimrc file.
+ |`README.md        Readme document.
 ```
 
 # Installation
@@ -518,6 +519,8 @@ These language servers are installed by default:
 - python3 (python2 is not supported)
 - rust
 - go
+- c#(.net)
+- powershell
 - html/xml/markdown
 - css/sass/scss/less
 - json
