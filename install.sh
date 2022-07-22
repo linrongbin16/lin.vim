@@ -41,10 +41,9 @@ function platform_dependency() {
 }
 
 function rust_dependency() {
-    if ! type "rustc" >/dev/null 2>&1; then
-        $INSTALL/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
-    fi
+    $INSTALL/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     source $HOME/.cargo/env
+    $INSTALL/msg.sh "install modern rust commands with cargo"
     cargo install ripgrep
     cargo install fd-find
     cargo install --locked bat
@@ -52,50 +51,53 @@ function rust_dependency() {
 
 function golang_dependency() {
     # see https://github.com/canha/golang-tools-install-script
-    wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash
+    $INSTALL/install_or_skip.sh "wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash" "go"
     export PATH=$HOME/.go/bin:$PATH
 }
 
 function pip3_dependency() {
+    $INSTALL/msg.sh "install python packages with pip3"
     sudo pip3 install --upgrade pyOpenSSL neovim pynvim pep8 flake8 pylint yapf chardet cmakelang cmake-language-server click
 }
 
 function npm_dependency() {
+    $INSTALL/msg.sh "install node packages with npm"
     sudo npm install -g yarn prettier neovim
 }
 
 function guifont_dependency() {
     if [ "$OS" == "Darwin" ]; then
+        $INSTALL/msg.sh "install hack nerd font with brew"
         brew tap homebrew/cask-fonts
         brew install --cask font-hack-nerd-font
     else
+        $INSTALL/msg.sh "install hack nerd font from github"
         mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
         local font_file=Hack.zip
         local font_version=v2.1.0
-        local font_download_url=https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file
+        local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file"
         if [ -f $font_file ]; then
+            rm $font_file
+        fi
+        curl -L $font_url -o $font_file
+        if [ $? -ne 0 ]; then
+            $INSTALL/msg.sh "failed to download $font_file, skip..."
+        else
             unzip -o $font_file
-            if [ $? -ne 0 ]; then
-                rm $font_file
-            fi
+            $INSTALL/msg.sh "install hack nerd font from github - done"
         fi
-        if [ ! -f $font_file ]; then
-            curl $font_download_url -o $font_file
-            if [ $? -ne 0 ]; then
-                $INSTALL/msg.sh "download $font_file failed, skip..."
-            fi
-        fi
-        unzip -o $font_file
     fi
 }
 
 function install_templates() {
+    $INSTALL/msg.sh "install configurations from templates"
     cp $TEMPLATE/plugin-template.vim $VIM/plugin.vim
     cp $TEMPLATE/coc-settings-template.json $VIM/coc-settings.json
     cp $TEMPLATE/setting-template.vim $VIM/setting.vim
 }
 
 function install_vimrc() {
+    $INSTALL/msg.sh "install .vimrc for vim"
     if [ -f $HOME/.vimrc ]; then
         mv $HOME/.vimrc $HOME/.vimrc.$(date +"%Y-%m-%d.%H-%M-%S")
     fi
@@ -103,6 +105,7 @@ function install_vimrc() {
 }
 
 function install_nvim_init() {
+    $INSTALL/msg.sh "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
     mkdir -p $CONFIG
     if [ -d $NVIM ]; then
         mv $NVIM $CONFIG/nvim.$(date +"%Y-%m-%d.$H-%M-%S")
@@ -115,10 +118,12 @@ function install_nvim_init() {
 }
 
 function install_vim_plugin() {
+    $INSTALL/msg.sh "install vim plugins"
     vim -E -c "PlugInstall" -c "qall"
 }
 
 function install_nvim_plugin() {
+    $INSTALL/msg.sh "install neovim plugins"
     nvim -E -c "PlugInstall" -c "qall"
 }
 
