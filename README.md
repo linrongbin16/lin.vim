@@ -394,8 +394,12 @@ lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) b
 
 #### Git
 
-- `[c` 🄽 - go to previous git chunk.
-- `]c` 🄽 - go to next git chunk.
+- `[g` 🄽 - go to previous git chunk in current buffer.
+- `]g` 🄽 - go to next git chunk in current buffer.
+- `[c` 🄽 - go to previous git conflict in current buffer.
+- `]c` 🄽 - go to next git conflict in current buffer.
+- `<leader>gs` 🄽 - show git chunk info.
+- `<leader>gc` 🄽 - show git commit info.
 
 ### Search
 
