@@ -21,7 +21,7 @@ else
     " source $HOME/.vim/setting/lambdalisue/fern.vim.vim
     source $HOME/.vim/setting/weirongxu/coc-explorer.vim
 endif
-source $HOME/.vim/setting/airblade/vim-gitgutter.vim
+" source $HOME/.vim/setting/airblade/vim-gitgutter.vim
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 
 " Highlight
