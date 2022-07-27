@@ -31,7 +31,7 @@ if ! type "node" > /dev/null; then
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
-    $INSTALL/msg.sh "\'node\' already exist, skip..."
+    $INSTALL/msg.sh "'node' already exist, skip..."
 fi
 
 
@@ -43,5 +43,5 @@ if ! type "ctags" >/dev/null 2>&1; then
     sudo apt-get install -y libxml2-dev
     $INSTALL/install_universal_ctags.sh
 else
-    $INSTALL/msg.sh "\'ctags\' already exist, skip..."
+    $INSTALL/msg.sh "'ctags' already exist, skip..."
 fi
