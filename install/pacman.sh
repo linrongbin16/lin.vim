@@ -20,6 +20,8 @@ $INSTALL/install_or_skip.sh "yes | sudo pacman -S unzip" "unzip"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S zip" "zip"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S bzip2" "bzip2"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S p7zip" "7z"
+$INSTALL/install_or_skip.sh "yes | sudo pacman -S xclip" "xclip"
+$INSTALL/install_or_skip.sh "yes | sudo pacman -S wl-clipboard" "wl-copy"
 
 # Python3
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S python python-pip" "python3"
