@@ -15,7 +15,6 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'tomasiser/vim-code-dark'
 Plug 'Rigellute/rigel'
 Plug 'chriskempson/base16-vim'
 Plug 'nanotech/jellybeans.vim'
@@ -32,7 +31,10 @@ endif
 if has('nvim-0.6')
   Plug 'rebelot/kanagawa.nvim'
 endif
-" Not working well with tabline
+
+""" Colors that not working well with tabline plugins (barbar.nvim or vim-buffet).
+""" The active and non-active tabs don't have a high-contrast difference.
+" Plug 'tomasiser/vim-code-dark'
 " Plug 'tomasr/molokai'
 " Plug 'romainl/Apprentice'
 

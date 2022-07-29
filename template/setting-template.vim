@@ -1,4 +1,4 @@
-" neovim path
+""" python3 host
 let g:python3_host_prog='python3'
 
 """ default coc extensions
@@ -6,13 +6,13 @@ let g:coc_global_extensions = ['coc-explorer', 'coc-git', 'coc-snippets', 'coc-y
 
 """ guifont
 if has("win32") || has("win64")
-    " win32
+    " for Windows
     set guifont=Hack\ NF:h9
 elseif has("mac")
-    " macos
+    " for macOS
     set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
-    " linux, unix
+    " for other *NIX
     set guifont=Hack\ Nerd\ Font\ Mono\ 10
 endif
 
@@ -42,6 +42,6 @@ nnoremap <silent> <F12> :<C-u>call NextColorSchemeAndSync()<CR>
 
 """ add more settings here...
 
-" indent
+" 2 spaces indent for specific languages
 " autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 " autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab

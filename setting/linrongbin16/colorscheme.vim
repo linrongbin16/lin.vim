@@ -1,5 +1,5 @@
 let s:my_colors=['darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery',
-      \ 'palenight', 'onedark', 'codedark', 'rigel', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge',
+      \ 'palenight', 'onedark', 'rigel', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge',
       \ 'nightfox', 'material']
 
 " colors that not working well with tabline
