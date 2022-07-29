@@ -1,26 +1,16 @@
-# log
-*.log
-
 # runtime files
 .DS_Store
 .netrwhist
-__pycache__
-tags
-tags.lock
-tags.temp
-.enhanced-copy-paste-cache
 sessions
+.enhanced-copy-paste-cache
 
 # plugins
 plugged
-cache
 
 # user settings
 plugin.vim
 setting.vim
 coc-settings.json
-command/*.db
-command/*.ignore
 
 # neovim
 init.vim

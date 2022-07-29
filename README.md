@@ -532,29 +532,29 @@ These language servers are installed by default:
 
 # Reference
 
-- Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
-- IDE-like defaults for neovim: [LunarVim](https://github.com/LunarVim/LunarVim)
+- Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet.
+- IDE-like defaults for neovim: [LunarVim](https://github.com/LunarVim/LunarVim).
 - Color Schemes:
-  - [solarized](https://github.com/lifepillar/vim-solarized8)
-  - [monokai](https://github.com/crusoexia/vim-monokai)
-  - [dracula](https://github.com/dracula/vim)
-  - [neodark](https://github.com/KeitaNakamura/neodark.vim)
-  - [srcery](https://github.com/srcery-colors/srcery-vim)
-  - [palenight](https://github.com/drewtempelmeyer/palenight.vim)
-  - [onedark](https://github.com/joshdick/onedark.vim)
-  - [code-dark](https://github.com/tomasiser/vim-code-dark)
-  - [rigel](https://github.com/Rigellute/rigel)
-  - [base16](https://github.com/chriskempson/base16-vim)
-  - [jellybeans](https://github.com/nanotech/jellybeans.vim)
-  - [edge](https://github.com/sainnhe/edge)
-  - [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
-  - [everforest](https://github.com/sainnhe/everforest)
-  - [sonokai](https://github.com/sainnhe/sonokai)
-  - [nightfox](https://github.com/EdenEast/nightfox.nvim)
-  - [material](https://github.com/kaicataldo/material.vim)
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on neovim 0.5+)
-  - [github](https://github.com/projekt0n/github-nvim-theme) (Only on neovim 0.5+)
-  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on neovim 0.6+)
+  - [solarized](https://github.com/lifepillar/vim-solarized8).
+  - [monokai](https://github.com/crusoexia/vim-monokai).
+  - [dracula](https://github.com/dracula/vim).
+  - [neodark](https://github.com/KeitaNakamura/neodark.vim).
+  - [srcery](https://github.com/srcery-colors/srcery-vim).
+  - [palenight](https://github.com/drewtempelmeyer/palenight.vim).
+  - [onedark](https://github.com/joshdick/onedark.vim).
+  - [code-dark](https://github.com/tomasiser/vim-code-dark).
+  - [rigel](https://github.com/Rigellute/rigel).
+  - [base16](https://github.com/chriskempson/base16-vim).
+  - [jellybeans](https://github.com/nanotech/jellybeans.vim).
+  - [edge](https://github.com/sainnhe/edge).
+  - [gruvbox-material](https://github.com/sainnhe/gruvbox-material).
+  - [everforest](https://github.com/sainnhe/everforest).
+  - [sonokai](https://github.com/sainnhe/sonokai).
+  - [nightfox](https://github.com/EdenEast/nightfox.nvim).
+  - [material](https://github.com/kaicataldo/material.vim).
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on neovim 0.5+).
+  - [github](https://github.com/projekt0n/github-nvim-theme) (Only on neovim 0.5+).
+  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on neovim 0.6+).
 
 # Contribute
 
