@@ -13,7 +13,7 @@ elseif has("mac")
     set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " for other *NIX
-    set guifont=Hack\ Nerd\ Font\ Mono\ 10
+    set guifont=Hack\ Nerd\ Font\ Mono:h10
 endif
 
 """ hotkeys
