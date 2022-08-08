@@ -36,10 +36,7 @@ source $HOME/.vim/setting/ludovicchabant/vim-gutentags.vim
 source $HOME/.vim/setting/neoclide/coc.nvim.vim
 
 " Search Engine
-" by default key mappings are provided only for fzf.vim
-" if you want to disable key mappings for fzf.vim, please comment below line
 source $HOME/.vim/setting/junegunn/fzf.vim.vim
-" if you want to enable key mappings for vim-clap, please uncomment below line
 " source $HOME/.vim/setting/liuchengxu/vim-clap.vim
 
 " HTML Tag
@@ -64,7 +61,7 @@ source $HOME/.vim/setting/linrongbin16/enhanced-copy-paste.vim
 " FileType Mappings
 source $HOME/.vim/setting/linrongbin16/filetype-map.vim
 
-" Other User Settings
+" User Settings
 if filereadable(expand('~/.vim/setting.vim'))
     source $HOME/.vim/setting.vim
 endif
