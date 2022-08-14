@@ -70,11 +70,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Language Server and Search Engine
-if has('win32') || has('win64')
-  Plug 'junegunn/fzf'
-else
-  Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
-endif
+Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
