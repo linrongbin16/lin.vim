@@ -1,6 +1,8 @@
-# lin.vim : Lin Rongbin's (Neo)Vim Distribution
+# lin.vim : Lin Rongbin's (Neo)vim Distribution
 
-lin.vim is a highly configured [Vim](https://www.vim.org/)/[Neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
+lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
+
+_It's recommended to use [lin.nvim](https://github.com/linrongbin16/lin.nvim) for better experience and performance. This project is not actively maintained for now._
 
 # Table of Contents
 
@@ -123,7 +125,7 @@ Solved below issues:
 
 ```
  |+install          Installation scripts.
- |+setting          VimL scripts.
+ |+setting          vimL scripts.
  |+template         Configuration templates.
  |`install.sh       Install script on *UNIX.
  |`install.ps1      Install script on Windows.
