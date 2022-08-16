@@ -22,14 +22,14 @@ Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 Plug 'sainnhe/sonokai'
-Plug 'EdenEast/nightfox.nvim'
 Plug 'kaicataldo/material.vim', {'branch': 'main'}
 if has('nvim-0.5')
-  Plug 'folke/tokyonight.nvim', {'branch': 'main'}
-  Plug 'projekt0n/github-nvim-theme'
+    Plug 'EdenEast/nightfox.nvim'
+    Plug 'folke/tokyonight.nvim', {'branch': 'main'}
+    Plug 'projekt0n/github-nvim-theme'
 endif
 if has('nvim-0.6')
-  Plug 'rebelot/kanagawa.nvim'
+    Plug 'rebelot/kanagawa.nvim'
 endif
 
 """ Colors that not working well with tabline plugins (barbar.nvim or vim-buffet).
@@ -40,19 +40,19 @@ endif
 
 " UI
 if has('nvim')
-  Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'kyazdani42/nvim-web-devicons'
 else
-  Plug 'ryanoasis/vim-devicons'
+    Plug 'ryanoasis/vim-devicons'
 endif
 if has('nvim-0.7')
-  Plug 'romgrk/barbar.nvim'
-  Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'nvim-lualine/lualine.nvim'
-  Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'romgrk/barbar.nvim'
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'nvim-lualine/lualine.nvim'
+    Plug 'kyazdani42/nvim-tree.lua'
 else
-  Plug 'bagrat/vim-buffet'
-  Plug 'Yggdroot/indentLine'
-  Plug 'itchyny/lightline.vim'
+    Plug 'bagrat/vim-buffet'
+    Plug 'Yggdroot/indentLine'
+    Plug 'itchyny/lightline.vim'
 endif
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
@@ -97,11 +97,11 @@ Plug 'OmniSharp/omnisharp-vim'
 " Editing Support
 Plug 'tomtom/tcomment_vim'
 if has('nvim-0.5')
-  Plug 'phaazon/hop.nvim'
-  Plug 'windwp/nvim-autopairs'
+    Plug 'phaazon/hop.nvim'
+    Plug 'windwp/nvim-autopairs'
 else
-  Plug 'easymotion/vim-easymotion'
-  Plug 'jiangmiao/auto-pairs'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'jiangmiao/auto-pairs'
 endif
 Plug 'chaoren/vim-wordmotion'
 Plug 'mattn/emmet-vim'
