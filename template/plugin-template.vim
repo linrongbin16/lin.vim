@@ -60,7 +60,9 @@ Plug 'jlanzarotta/bufexplorer'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
-Plug 'f-person/git-blame.nvim'
+if has('nvim-0.5')
+    Plug 'f-person/git-blame.nvim'
+endif
 
 " Highlight
 Plug 'RRethy/vim-illuminate'
