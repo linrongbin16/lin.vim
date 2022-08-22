@@ -2,16 +2,12 @@
 
 lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
-_It's recommended to use [lin.nvim](https://github.com/linrongbin16/lin.nvim) for better experience and performance. This project is not actively maintained for now._
-
 # Table of Contents
 
 - [Introduction](#introduction)
   - [Screenshots](#screenshots)
   - [Feature](#feature)
-  - [Project Structure](#project-structure)
 - [Installation](#installation)
-  - [Network Access Requirements](#network-access-requirements)
   - [UNIX/Linux/MacOS](#unixlinuxmacos)
   - [Windows](#windows)
 - [User Guide](#user-guide)
@@ -121,25 +117,9 @@ Solved below issues:
 - Other editing featuers (see [Other Enhancements](#other-enhancements)).
 - Custom configuration.
 
-### Project Structure
-
-```
- |+install          Installation scripts.
- |+setting          vimL scripts.
- |+template         Configuration templates.
- |`install.sh       Install script on *UNIX.
- |`install.ps1      Install script on Windows.
- |`GPL3_LICENSE     License.
- |`MIT_LICENSE      License.
- |`lin.vim          The .vimrc file.
- |`README.md        Readme document.
-```
-
 # Installation
 
-## Network Access Requirements
-
-Please make sure access of below domains are available:
+Before installation, please make sure access of below domains are available:
 
 - [github.com](https://github.com/).
 - [raw.githubusercontent.com](https://raw.githubusercontent.com/).
@@ -150,11 +130,13 @@ Please make sure access of below domains are available:
 
 ## UNIX/Linux/MacOS
 
+For macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
+
 > `install.sh` will automatically install below softwares with system package managers:
 >
 > - [git](https://git-scm.com/).
 > - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
-> - [clang](https://clang.llvm.org/) ([gcc](https://gcc.gnu.org/) for linux), [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
+> - [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for linux), [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
 > - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
 > - [node.js](https://nodejs.org/) and some npm packages.
 > - [golang](https://go.dev/).
@@ -164,16 +146,14 @@ Please make sure access of below domains are available:
 > - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip).
 > - [unzip](https://linux.die.net/man/1/unzip), [bzip2](https://sourceforge.net/projects/bzip2/) and [p7zip](http://p7zip.sourceforge.net/).
 >
-> For now supported platforms are :
+> For now supported platforms are:
 >
 > - apt: debian/ubuntu based linux.
 > - dnf: fedora/centos based linux.
 > - pacman: archlinux based linux.
 > - brew: macOS.
 >
-> Other \*NIX systems (such as gentoo, bsd, etc) are not supported yet.
-
-For macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
+> Other \*NIX systems such as gentoo, bsd are not supported yet.
 
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
@@ -213,7 +193,6 @@ This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp
    - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
    - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` to `$env:Path`
    - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
-     - **Notice:** python3 version must be compatible with gvim's compiled libpython3.so version, or it won't be loaded, please use `gvim --version` to find its libpython3.so version.
    - [clang](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` to `$env:Path`
    - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`

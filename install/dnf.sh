@@ -29,6 +29,13 @@ $INSTALL/install_or_skip.sh "sudo dnf install -y python3 python3-devel python3-p
 # nodejs
 $INSTALL/install_or_skip.sh "sudo dnf install -y nodejs npm" "node"
 
+# neovim
+if ! type "nvim" >/dev/null 2>&1; then
+    $INSTALL/install_neovim.sh
+else
+    $INSTALL/msg.sh "'nvim' already exist, skip..."
+fi
+
 # ctags
 if ! type "ctags" >/dev/null 2>&1; then
     sudo dnf install -y libseccomp-devel

@@ -8,7 +8,6 @@ sudo apt-get update
 $INSTALL/install_or_skip.sh "sudo apt-get install -y build-essential" "gcc"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y vim" "vim"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y libcanberra-gtk-module vim-gtk" "gvim"
-$INSTALL/install_or_skip.sh "sudo apt-get install -y neovim" "nvim"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y curl" "curl"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y wget" "wget"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y autoconf" "autoconf"
@@ -36,6 +35,12 @@ else
     $INSTALL/msg.sh "'node' already exist, skip..."
 fi
 
+# neovim
+if ! type "nvim" >/dev/null 2>&1; then
+    $INSTALL/install_neovim.sh
+else
+    $INSTALL/msg.sh "'nvim' already exist, skip..."
+fi
 
 # ctags
 if ! type "ctags" >/dev/null 2>&1; then
