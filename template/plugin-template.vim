@@ -34,7 +34,6 @@ endif
 
 """ colors that not working well with tabline plugins (barbar.nvim or vim-buffet).
 """ the active and non-active tabs don't have a high-contrast difference.
-"
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'tomasr/molokai'
 " Plug 'romainl/Apprentice'
@@ -54,6 +53,10 @@ else
     Plug 'bagrat/vim-buffet'
     Plug 'Yggdroot/indentLine'
     Plug 'itchyny/lightline.vim'
+    Plug 'lambdalisue/fern.vim'
+    Plug 'lambdalisue/nerdfont.vim'
+    Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+    Plug 'lambdalisue/glyph-palette.vim'
 endif
 Plug 'jlanzarotta/bufexplorer'
 
