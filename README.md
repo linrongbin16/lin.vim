@@ -254,8 +254,6 @@ You could configure these keys in **_~/.vim/setting.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
-
 Navigation:
 
 - `h` 🄽 - collapse directory.
@@ -295,12 +293,12 @@ _For neovim 0.7+ only_:
 - `y` 🄽 - copy file name string.
 - `Y` 🄽 - copy absolute file path string.
 
+Support by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
+
 You could editing **_~/.vim/setting/lambdalisue/fern.vim.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
 Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
 
 #### Buffers/Tabs
-
-Buffers/tabs is supported by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on neovim 0.5+), you could switch/close them by key mappings:
 
 - `<leader><tab>`/`<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - go to next buffer on the right.
 - `<leader><s-tab>`/`<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat **_Alt+,_** **_Alt+._** or **_Command+,_** **_Command+._**).
@@ -327,6 +325,8 @@ _For neovim 0.5+ only_:
 - `<A-S-Left>`(`<D-S-Left>`) 🄽 - move current buffer to previous position(on the left).
 - `<LeftMouse>` 🄽 - go to selected buffer.
 - `<MiddleMouse>` 🄽 - close selected buffer.
+
+Support by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on neovim 0.5+).
 
 #### Font
 
