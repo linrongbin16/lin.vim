@@ -30,7 +30,6 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Git Search](#git-search)
     - [Other Search](#other-search)
     - [Coc.nvim Search](#coc-nvim-search)
-    - [Rg Search](#rg-search)
   - [Other Enhancements](#other-enhancements)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Fast Cursor Movement](#fast-cursor-movement)
@@ -502,8 +501,6 @@ These language servers are installed by default:
 - python3 (python2 is not supported)
 - rust
 - go
-- c#(.net)
-- powershell
 - html/xml/markdown
 - css/sass/scss/less
 - json
