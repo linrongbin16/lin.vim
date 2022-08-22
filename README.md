@@ -531,9 +531,9 @@ These language servers are installed by default:
   - [sonokai](https://github.com/sainnhe/sonokai).
   - [nightfox](https://github.com/EdenEast/nightfox.nvim).
   - [material](https://github.com/kaicataldo/material.vim).
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) (Only on neovim 0.5+).
-  - [github](https://github.com/projekt0n/github-nvim-theme) (Only on neovim 0.5+).
-  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (Only on neovim 0.6+).
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+ only).
+  - [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+ only).
+  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+ only).
 
 # Contribute
 
