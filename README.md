@@ -4,7 +4,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
 
 _[Neovim](https://neovim.io/) 0.7+ is highly recommended for best experience and performance._
 
-_[Neovide](https://github.com/neovide/neovide), a super fast GUI client for neovim._
+_[Neovide](https://github.com/neovide/neovide) is highly recommended as a super fast GUI client for neovim._
 
 # Table of Contents
 
