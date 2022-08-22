@@ -2,6 +2,10 @@
 
 lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neovim.io/) integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
+_[Neovim](https://neovim.io/) 0.7+ is highly recommended for best experience and performance._
+
+_[Neovide](https://github.com/neovide/neovide), a super fast GUI client for neovim._
+
 # Table of Contents
 
 - [Introduction](#introduction)
