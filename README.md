@@ -483,12 +483,17 @@ Support by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [n
 
 #### Easy Comment
 
-- `gcc` 🄽 - toggle(comment/uncomment) current line.
-- `gc` 🅅 - toggle(comment/uncomment) visual selected blocks.
-- `gc{motion}` 🄽 - toggle(comment/uncomment) from current line with motion such as **_jkhl_**.
-- `gc<Count>{motion}` 🄽 - toggle(comment/uncomment) from current line with **_Count_** motion repeat.
+Normal mode:
 
-Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim).
+- `gcc` 🄽 - toggle current line using linewise comment.
+- `gc{motion}` 🄽 - toggle from current line with motion (jkhl) using linewise comment.
+- `gc<Count>{motion}` 🄽 - toggle from current line with motion repeat _<Count>_ times using linewise comment.
+
+Virual Mode:
+
+- `gc` 🅅 - toggle visual selected code using linewise comment.
+
+Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [Comment.nvim](https://github.com/numToStr/Comment.nvim) on neovim).
 
 ## Customization
 
