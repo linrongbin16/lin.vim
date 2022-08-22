@@ -45,7 +45,7 @@ source $HOME/.vim/setting/neoclide/coc.nvim.vim
 " HTML Tag
 source $HOME/.vim/setting/alvan/vim-closetag.vim
 " C#
-source $HOME/.vim/setting/OmniSharp/omnisharp-vim.vim
+" source $HOME/.vim/setting/OmniSharp/omnisharp-vim.vim
 
 " Editing Support
 if has('nvim')

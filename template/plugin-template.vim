@@ -101,7 +101,7 @@ Plug 'alvan/vim-closetag'
 " Markdown Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " C#
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 
 " Editing Support
 if has('nvim')
