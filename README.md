@@ -287,7 +287,7 @@ Others:
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).
 - `?` 🄽 - open/close(toggle) help.
 
-_For neovim 0.7+ Only_:
+_For neovim 0.7+ only_:
 
 - `P` 🄽 - preview file content.
 - `I` 🄽 - preview file info.
@@ -321,7 +321,7 @@ For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing
 - `<A-9>`(`<D-9>`) 🄽 - go to buffer-9.
 - `<A-0>`(`<D-0>`) 🄽 - go to the last buffer.
 
-_For neovim 0.5+ only, you could **re-ordering** and **mouse-clicking** on buffers_:
+_For neovim 0.5+ only_:
 
 - `<A-S-Right>`(`<D-S-Right>`) 🄽 - move current buffer to next position(on the right).
 - `<A-S-Left>`(`<D-S-Left>`) 🄽 - move current buffer to previous position(on the left).
@@ -373,12 +373,12 @@ lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) b
 
 #### Git
 
-- `[g` 🄽 - go to previous git chunk in current buffer.
-- `]g` 🄽 - go to next git chunk in current buffer.
-- `[c` 🄽 - go to previous git conflict in current buffer.
-- `]c` 🄽 - go to next git conflict in current buffer.
-- `<leader>gs` 🄽 - show git chunk info.
-- `<leader>gc` 🄽 - show git commit info.
+- `]c` 🄽 - go to next git chunk in current buffer.
+- `[c` 🄽 - go to previous git chunk in current buffer.
+
+_For neovim 0.5+ only_:
+
+- `<leader>gb` 🄽 - toggle git blame info on current line.
 
 ### Search
 
@@ -416,7 +416,7 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 Key mappings are configured with prefix char `c` after `<space>`.
 
-- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`. Notice coc-fzf's symbols only work on neovim, it fallback to `:CocList symbols` on vim.
+- `<space>cs` 🄽 - search symbols by `:CocFzfList symbols`.
 - `<space>cd` 🄽 - search diagnostics by `:CocFzfList diagnostics`.
 - `<space>co` 🄽 - search outline/tags by `:CocFzfList outline`.
 - `<space>cc` 🄽 - search commands by `:CocFzfList commands`.
