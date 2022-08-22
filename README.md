@@ -33,7 +33,7 @@ _[Neovide](https://github.com/neovide/neovide) is highly recommended as a super 
     - [File Search](#file-search)
     - [Git Search](#git-search)
     - [Other Search](#other-search)
-    - [Coc.nvim Search](#coc-nvim-search)
+    - [Coc.nvim Search](#cocnvim-search)
   - [Editing Enhancement](#editing-enhancement)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Fast Cursor Movement](#fast-cursor-movement)
@@ -424,7 +424,7 @@ Key mappings are configured with prefix char `c` after `<space>`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
-## Editing Enahncement
+## Editing Enhancement
 
 #### Enhanced Copy Paste
 
