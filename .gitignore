@@ -15,6 +15,7 @@ coc-settings.json
 # neovim
 init.vim
 ginit.vim
+neovim
 
 # universal-ctags
 universal-ctags
