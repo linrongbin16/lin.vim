@@ -8,6 +8,7 @@ sudo dnf check-update
 $INSTALL/install_or_skip.sh "sudo dnf group install -y \"Development Tools\"" "gcc" "g++"
 $INSTALL/install_or_skip.sh "sudo dnf install -y vim" "vim"
 $INSTALL/install_or_skip.sh "sudo dnf install -y gvim" "gvim"
+$INSTALL/install_or_skip.sh "sudo dnf install -y neovim" "nvim"
 $INSTALL/install_or_skip.sh "sudo dnf install -y curl" "curl"
 $INSTALL/install_or_skip.sh "sudo dnf install -y wget" "wget"
 $INSTALL/install_or_skip.sh "sudo dnf install -y autoconf" "autoconf"
@@ -22,13 +23,6 @@ $INSTALL/install_or_skip.sh "sudo dnf install -y python3 python3-devel python3-p
 
 # nodejs
 $INSTALL/install_or_skip.sh "sudo dnf install -y nodejs npm" "node"
-
-# neovim
-if ! type "nvim" >/dev/null 2>&1; then
-    $INSTALL/install_neovim.sh
-else
-    $INSTALL/msg.sh "'nvim' already exist, skip..."
-fi
 
 # ctags
 if ! type "ctags" >/dev/null 2>&1; then
