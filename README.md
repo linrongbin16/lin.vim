@@ -49,7 +49,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
 
 Aim to be out of box, IDE-like editing experience, high performance, light weight and friendly to most users.
 
-Focused on and only on editing, no compile/package/debug projects, or tutorial for new vim users.
+Focus on and only on editing, no compiling/packaging/debuging.
 
 Solved below issues:
 
@@ -92,7 +92,7 @@ Solved below issues:
   - Windows.
   - macOS.
   - Linux(Ubuntu/Debian/Fedora/Manjaro).
-- Support both [vim](https://www.vim.org/) and [neovim](https://neovim.io/), neovim 0.6+ is strongly recommended for better performance and experience.
+- Support both [vim](https://www.vim.org/) and [neovim](https://neovim.io/), latest major version of neovim is strongly recommended for better performance and experience.
 - Modern editor UI features:
   - File explorer.
   - Pretty icons.
@@ -130,8 +130,6 @@ Before installation, please make sure access of below domains are available:
 
 ## UNIX/Linux/MacOS
 
-For macOS please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
-
 > `install.sh` will automatically install below softwares with system package managers:
 >
 > - [git](https://git-scm.com/).
@@ -148,10 +146,10 @@ For macOS please install [Xcode](https://guide.macports.org/chunked/installing.h
 >
 > For now supported platforms are:
 >
-> - apt: debian/ubuntu based linux.
-> - dnf: fedora/centos based linux.
-> - pacman: archlinux based linux.
-> - brew: macOS.
+> - Debian/ubuntu based linux: use `apt` as software installer.
+> - Fedora/centos based linux: use `dnf` as software installer.
+> - Archlinux based linux: use `pacman` as software installer.
+> - MacOS: use homebrew as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
 >
 > Other \*NIX systems such as gentoo, bsd are not supported yet.
 

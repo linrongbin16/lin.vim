@@ -32,8 +32,9 @@ if has('nvim-0.6')
     Plug 'rebelot/kanagawa.nvim'
 endif
 
-""" Colors that not working well with tabline plugins (barbar.nvim or vim-buffet).
-""" The active and non-active tabs don't have a high-contrast difference.
+""" colors that not working well with tabline plugins (barbar.nvim or vim-buffet).
+""" the active and non-active tabs don't have a high-contrast difference.
+"
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'tomasr/molokai'
 " Plug 'romainl/Apprentice'
@@ -54,28 +55,30 @@ else
     Plug 'Yggdroot/indentLine'
     Plug 'itchyny/lightline.vim'
 endif
-Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/vim-gitbranch'
 Plug 'jlanzarotta/bufexplorer'
 
-" Not working correctly on windows, so use vim-gitgutter + vim-gitbranch
-" Plug 'lewis6991/gitsigns.nvim'
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/vim-gitbranch'
+Plug 'f-person/git-blame.nvim'
 
 " Highlight
 Plug 'RRethy/vim-illuminate'
-Plug 'RRethy/vim-hexokinase', {'do': has('make') ? 'make hexokinase' : 'git submodule init && git submodule update && cd hexokinase/ && go build'}
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
 " Tags
 Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
-" Language Server and Search Engine
+" Search Engine
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+
+" Language Server 
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 
-" Other Language Support
+" Programming Language Support
 " Flex, Bison
 Plug 'justinmk/vim-syntax-extra', {'for': ['lex', 'flex', 'yacc', 'bison']}
 " LLVM
@@ -95,7 +98,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'OmniSharp/omnisharp-vim'
 
 " Editing Support
-Plug 'tomtom/tcomment_vim'
+if has('nvim')
+    Plug 'numToStr/Comment.nvim'
+else
+    Plug 'tomtom/tcomment_vim'
+endif
 if has('nvim-0.5')
     Plug 'phaazon/hop.nvim'
     Plug 'windwp/nvim-autopairs'
