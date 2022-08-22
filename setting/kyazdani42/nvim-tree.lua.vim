@@ -14,7 +14,7 @@ local compatible_keymap = {
   -- refresh
   { key = "R",              action = "refresh" },
 
-  -- create/delete/rename
+  -- create/rename/delete
   { key = {"a", "A"},       action = "create" },
   { key = {"r", "m"},       action = "rename" },
   { key = "d",              action = "trash" },

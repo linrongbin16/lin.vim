@@ -21,8 +21,7 @@ endif
 if has('nvim-0.7')
   nnoremap <F1> :<C-u>NvimTreeToggle<CR>
 else
-  " nnoremap <F1> :<C-u>Fern -keep -toggle . -drawer<CR>
-  nnoremap <F1> :<C-u>CocCommand explorer<CR>
+  nnoremap <F1> :<C-u>Fern -keep -toggle . -drawer<CR>
 endif
 " toggle (open/close) undo tree
 nnoremap <F2> :<C-u>UndotreeToggle<CR>

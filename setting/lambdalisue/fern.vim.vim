@@ -24,27 +24,25 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> <BS> <Plug>(fern-action-leave)
 
   " split
-  nmap <buffer><nowait> <C-v> <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> <C-x> <Plug>(fern-action-open:split)
-  nmap <buffer><nowait> <C-t> <Plug>(fern-action-open:tabedit)
+  nmap <buffer><nowait> e <Plug>(fern-action-open:split)
+  nmap <buffer><nowait> E <Plug>(fern-action-open:vsplit)
+  nmap <buffer><nowait> t <Plug>(fern-action-open:tabedit)
 
   " refresh
   nmap <buffer><nowait> R <Plug>(fern-action-reload)
 
-  " create/delete/rename
-  nmap <buffer><nowait> N <Plug>(fern-action-new-file)
-  nmap <buffer><nowait> K <Plug>(fern-action-new-dir)
+  " create/rename/delete
+  nmap <buffer><nowait> a <Plug>(fern-action-new-file)
+  nmap <buffer><nowait> A <Plug>(fern-action-new-dir)
+  nmap <buffer><nowait> r <Plug>(fern-action-move)
+  nmap <buffer><nowait> m <Plug>(fern-action-move)
   nmap <buffer><nowait> d <Plug>(fern-action-trash)
   nmap <buffer><nowait> D <Plug>(fern-action-remove)
-  nmap <buffer><nowait> m <Plug>(fern-action-move)
-  nmap <buffer><nowait> r <Plug>(fern-action-move)
-
-  nmap <buffer><nowait> C <Plug>(fern-action-clipboard-copy)
 
   " copy/paste/cut
-  nmap <buffer><nowait> X <Plug>(fern-action-clipboard-move)
-  nmap <buffer><nowait> V <Plug>(fern-action-clipboard-pate)
-  nmap <buffer><nowait> P <Plug>(fern-action-clipboard-pate)
+  nmap <buffer><nowait> <C-c> <Plug>(fern-action-clipboard-copy)
+  nmap <buffer><nowait> <C-x> <Plug>(fern-action-clipboard-move)
+  nmap <buffer><nowait> <C-v> <Plug>(fern-action-clipboard-pate)
 
   " open in system
   nmap <buffer><nowait> s <Plug>(fern-action-open:system)

@@ -254,7 +254,7 @@ You could configure these keys in **_~/.vim/setting.vim_**.
 
 #### File Explorer
 
-File explorer is supported by [coc-explorer](https://github.com/weirongxu/coc-explorer) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
+File explorer is supported by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
 
 Navigation:
 
@@ -275,28 +275,28 @@ Create/Delete/Copy/Paste/Cut:
 - `<C-v>` 🄽 - paste internal clipboard file/directory to current directory just like in Windows.
 - `d` 🄽 - trash file/directory to system trash-bin, only works on Windows/macOS.
 - `D` 🄽 - force delete file/directory, possiblely implemented with `rm`.
-- `R` 🄽 - reload file explorer.
+- `R` 🄽 - refresh file explorer.
 
 Resize Width:
 
 - `<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - make explorer bigger.
 - `<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - make explorer smaller.
 
-Preview:
-
-- `P` 🄽 - preview file content.
-- `I` 🄽 - preview file info.
-
 Others:
 
-- `H` 🄽 - toggle dotfiles hidden.
-- `y` 🄽 - copy file name string.
-- `Y` 🄽 - copy absolute file path string.
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).
 - `?` 🄽 - open/close(toggle) help.
 
-You could editing **_~/.vim/setting/weirongxu/coc-explorer.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
-Please refer to [coc-explorer - Custom mappings example](https://github.com/weirongxu/coc-explorer#custom-mappings-example) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
+_For neovim 0.7+ Only_:
+
+- `P` 🄽 - preview file content.
+- `I` 🄽 - preview file info.
+- `H` 🄽 - toggle dotfiles hidden.
+- `y` 🄽 - copy file name string.
+- `Y` 🄽 - copy absolute file path string.
+
+You could editing **_~/.vim/setting/lambdalisue/fern.vim.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
+Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
 
 #### Buffers/Tabs
 
@@ -321,7 +321,7 @@ For macOS, Command-1 ~ Command-9 and Command-0 are configured for the same thing
 - `<A-9>`(`<D-9>`) 🄽 - go to buffer-9.
 - `<A-0>`(`<D-0>`) 🄽 - go to the last buffer.
 
-For neovim 0.5+ using barbar.nvim, especially you could **_re-ordering_** and **_mouse-clicking_** on buffers:
+_For neovim 0.5+ only, you could **re-ordering** and **mouse-clicking** on buffers_:
 
 - `<A-S-Right>`(`<D-S-Right>`) 🄽 - move current buffer to next position(on the right).
 - `<A-S-Left>`(`<D-S-Left>`) 🄽 - move current buffer to previous position(on the left).
