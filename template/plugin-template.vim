@@ -57,6 +57,7 @@ else
     Plug 'lambdalisue/nerdfont.vim'
     Plug 'lambdalisue/fern-renderer-nerdfont.vim'
     Plug 'lambdalisue/glyph-palette.vim'
+    Plug 'lambdalisue/fern-git-status.vim'
 endif
 Plug 'jlanzarotta/bufexplorer'
 
