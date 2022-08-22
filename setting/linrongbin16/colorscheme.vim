@@ -27,7 +27,7 @@ function NextColorScheme()
   execute 'colorscheme ' . s:mycolors[idx]
 endfunction
 
-function NextColorSchemeAndSync()
+function NextColorSchemeSync()
   let idx = localtime() % len(s:mycolors)
   execute 'colorscheme ' . s:mycolors[idx]
   execute 'syntax sync fromstart'

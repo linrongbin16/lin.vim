@@ -36,7 +36,7 @@ nnoremap <silent> <S-F10> :<C-u>ToggleBufExplorer<CR>
 " open browser to preview markdown
 nnoremap <F11> :<C-u>MarkdownPreview<CR>
 " next color scheme
-nnoremap <silent> <F12> :<C-u>call NextColorSchemeAndSync()<CR>
+nnoremap <silent> <F12> :<C-u>call NextColorSchemeSync()<CR>
 
 
 """ add more settings here...

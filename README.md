@@ -30,7 +30,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Git Search](#git-search)
     - [Other Search](#other-search)
     - [Coc.nvim Search](#coc-nvim-search)
-  - [Other Enhancements](#other-enhancements)
+  - [Editing Enhancement](#editing-enhancement)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Fast Cursor Movement](#fast-cursor-movement)
     - [Word Movement](#word-movement)
@@ -50,13 +50,13 @@ Aim to be out of box, IDE-like editing experience, high performance, light weigh
 
 Focus on and only on editing, no compiling/packaging/debuging.
 
-Solved below issues:
+Solve below issues:
 
 - Difficulty to choose/coordinate/configure plugins: embeded a set of plugins and well configured.
-- Duplicate installation on different OS and machines: all is done by one line command (not on Windows for now).
-- Balance between features and performance: plugins are chosen carefully, while try to cover most modern editor features just like [vscode](https://code.visualstudio.com/).
-- Original naive UI-looking: pretty colorschemes/UI/icons integrated.
-- Customization: `plugin.vim` and `setting.vim` files provided for special needs.
+- Duplicate installation on different OS and machines: all done by one line command (not on Windows for now).
+- Goal and non-goal: plugins are chosen carefully for best performance, while try to cover most modern editor features just like [vscode](https://code.visualstudio.com/).
+- Naive UI-looking: pretty colorschemes/UI/icons integrated.
+- Customization: `plugin.vim`, `setting.vim` and `coc-settings.json` files provided for special needs.
 
 ## Screenshots
 
@@ -91,11 +91,11 @@ Solved below issues:
   - Windows.
   - macOS.
   - Linux(Ubuntu/Debian/Fedora/Manjaro).
-- Support both [vim](https://www.vim.org/) and [neovim](https://neovim.io/), latest major version of neovim is strongly recommended for better performance and experience.
+- Support both [vim](https://www.vim.org/) and [neovim](https://neovim.io/), neovim 0.7+ is strongly recommended for best performance and experience.
 - Modern editor UI features:
   - File explorer.
-  - Pretty icons.
-  - Pretty color schemes (see [Color Schemes - Reference](#reference)) collected and randomly selected on start.
+  - Icons.
+  - Color schemes (see [Color Schemes - Reference](#reference)) randomly selected on start.
   - Status line.
   - Tab line and buffer explorer.
   - Outline/Tags.
@@ -113,7 +113,7 @@ Solved below issues:
   - Git search on commits/uncommit-changes.
   - Coc.nvim integrated search on symbols/outline/diagnostics/yank.
   - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags.
-- Other editing featuers (see [Other Enhancements](#other-enhancements)).
+- Other editing enahncements (see [Editing Enahncement](#editing-enhancement)).
 - Custom configuration.
 
 # Installation
@@ -148,7 +148,7 @@ Before installation, please make sure access of below domains are available:
 > - Debian/ubuntu based linux: use `apt` as software installer.
 > - Fedora/centos based linux: use `dnf` as software installer.
 > - Archlinux based linux: use `pacman` as software installer.
-> - MacOS: use homebrew as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
+> - MacOS: use `brew` as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
 >
 > Other \*NIX systems such as gentoo, bsd are not supported yet.
 
@@ -160,9 +160,9 @@ Before installation, please make sure access of below domains are available:
 
 > The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
 >
-> - Native executable file has better performance, WSL/MYSY2 either use portable GNU shell or ubuntu virtual machine, which is quite slow and heavy.
-> - Supporting WSL backend mode (actually remote mode) like vscode is too heavy development work.
-> - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, lin.vim use it directly.
+> - Native executable file has better performance, WSL (actually a virtual machine) is quite slow and heavy.
+> - Supporting WSL backend mode (like vscode) is too heavy development work.
+> - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, we could leverage it.
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components checked:
 
@@ -217,15 +217,15 @@ Install with a package manager (such as [chocolatey](https://chocolatey.org/) an
 
 #### Notice
 
-1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by [Git for Windows](https://git-scm.com/). Make sure git environment path is ahead of `C:\Windows\System32` (`wsl.exe` could connect to WSL as well, so no need to worry about losing `bash.exe`), so `bash.exe` from git will be first detected on `$env:Path`.
+1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by [Git for Windows](https://git-scm.com/). Make sure git environment path is ahead of `C:\Windows\System32` (`wsl.exe` could connect to WSL as well, so no need to worry about losing `bash.exe`), so git bash will be first detected on `$env:Path`.
 
 ![install-windows-notice-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-git-path.png)
 
-2. Installed python3 version must be compatible with gvim's libpython3.so version, or it will not been loaded. Latest vim8.2 is compiled with python3.10. Please use `gvim --version` to find its libpython3.so version.
+2. Python3 version must be compatible with gvim's libpython3.so version, or it will not been loaded. Latest vim 8.2-9 is compiled with python3.10. Please use `gvim --version` to find its libpython3.so version.
 
 ![install-windows-notice-python3-version-compatible.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-python3-version-compatible.png)
 
-3. Don't use old-version `vim.exe` provided by [Git for Windows](https://git-scm.com/), use `gvim.exe` provided by [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases). Or you could move `gvim.exe` environment path up than `git.exe`, this could make sure `vim.exe` provided by [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) be first detected on `$env:Path`.
+3. Don't use old-version `vim.exe` provided by [Git for Windows](https://git-scm.com/), use `gvim.exe` provided by [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases). Or you could move `gvim.exe` environment path ahead of [Git for Windows](https://git-scm.com/), this could make sure `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) be first detected on `$env:Path`.
 
 ![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
 
@@ -423,7 +423,7 @@ Key mappings are configured with prefix char `c` after `<space>`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
-## Editing Support
+## Editing Enahncement
 
 #### Enhanced Copy Paste
 
