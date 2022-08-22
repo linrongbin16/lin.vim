@@ -145,7 +145,6 @@ Before installation, please make sure access of below domains are available:
 > - [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
 > - [universal-ctags](https://github.com/universal-ctags/ctags).
 > - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip).
-> - [unzip](https://linux.die.net/man/1/unzip), [bzip2](https://sourceforge.net/projects/bzip2/) and [p7zip](http://p7zip.sourceforge.net/).
 >
 > For now supported platforms are:
 >
@@ -190,19 +189,17 @@ This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp
 
 3. Install other dependencies (x64 is preferred):
 
-   - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
    - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
-   - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe`, `nvim-qt.exe` to `$env:Path`
-   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
-   - [clang](https://releases.llvm.org/): add `clang.exe`, `clang++.exe`, `clangd.exe`, `clang-tidy.exe`, `clang-format.exe` to `$env:Path`
+   - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` to `$env:Path`
+   - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
    - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
+   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
    - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
-   - [7-zip](https://www.7-zip.org/): add `7z.exe` to `$env:Path`.
 
-Install with a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
+Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
 4. Install [Hack NF](https://github.com/ryanoasis/nerd-fonts/releases):
 
