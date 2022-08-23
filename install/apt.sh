@@ -6,8 +6,6 @@ $INSTALL/msg.sh "install dependencies with apt"
 
 sudo apt-get update
 $INSTALL/install_or_skip.sh "sudo apt-get install -y build-essential" "gcc"
-$INSTALL/install_or_skip.sh "sudo apt-get install -y vim" "vim"
-$INSTALL/install_or_skip.sh "sudo apt-get install -y libcanberra-gtk-module vim-gtk" "gvim"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y curl" "curl"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y wget" "wget"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y autoconf" "autoconf"
@@ -17,16 +15,18 @@ $INSTALL/install_or_skip.sh "sudo apt-get install -y cmake" "cmake"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y xclip" "xclip"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y wl-clipboard" "wl-copy"
 
+# vim
+$INSTALL/msg.sh "install 'vim' from ppa:jonathonf/vim..."
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install -y vim vim-gtk3
+
 # neovim
-if ! type "nvim" >/dev/null 2>&1; then
-    $INSTALL/msg.sh "install 'nvim' from ppa:neovim-ppa/stable..."
-    sudo apt-get install -y software-properties-common
-    sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt-get update
-    sudo apt-get install -y neovim
-else
-    $INSTALL/msg.sh "'nvim' already exist, skip..."
-fi
+$INSTALL/msg.sh "install 'nvim' from ppa:neovim-ppa/stable..."
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install -y neovim
 
 # python3
 $INSTALL/install_or_skip.sh "sudo apt-get install -y python3 python3-dev python3-venv python3-pip python3-docutils" "python3"
