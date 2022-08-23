@@ -29,14 +29,14 @@ nnoremap <F2> :<C-u>UndotreeToggle<CR>
 nnoremap <F3> :<C-u>Vista!!<CR>
 " switch between C/C++ header source
 nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
+" open browser to preview markdown
+nnoremap <F8> :<C-u>MarkdownPreview<CR>
+" next color scheme
+nnoremap <silent> <F9> :<C-u>call NextColorSchemeSync()<CR>
 " open buffer explorer
 nnoremap <silent> <F10> :<C-u>BufExplorer<CR>
 " close buffer explorer if it's opened
 nnoremap <silent> <S-F10> :<C-u>ToggleBufExplorer<CR>
-" open browser to preview markdown
-nnoremap <F11> :<C-u>MarkdownPreview<CR>
-" next color scheme
-nnoremap <silent> <F12> :<C-u>call NextColorSchemeSync()<CR>
 
 
 """ add more settings here...
