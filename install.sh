@@ -7,6 +7,22 @@ INSTALL=$VIM/install
 TEMPLATE=$VIM/template
 OS="$(uname -s)"
 
+function try_backup() {
+    local src=$1
+    if [ -d $src || -f $src ]; then
+        $INSTALL/msg.sh "backup '$src' to '$target'"
+        mv $src $src.$(date +"%Y-%m-%d.%H-%M-%S")
+    fi
+}
+
+function try_delete() {
+    local src=$1
+    if [ -d $src || -f $src ]; then
+        $INSTALL/msg.sh "remove '$src'"
+        rm -rf $src
+    fi
+}
+
 function platform_dependency() {
     case "$OS" in
         Linux)
@@ -97,22 +113,16 @@ function install_templates() {
 
 function install_vimrc() {
     $INSTALL/msg.sh "install .vimrc for vim"
-    if [ -f $HOME/.vimrc ]; then
-        mv $HOME/.vimrc $HOME/.vimrc.$(date +"%Y-%m-%d.%H-%M-%S")
-    fi
+    try_backup($HOME/.vimrc)
     ln -s $VIM/lin.vim $HOME/.vimrc
 }
 
 function install_nvim_init() {
     $INSTALL/msg.sh "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
     mkdir -p $CONFIG
-    if [ -d $NVIM ]; then
-        mv $NVIM $CONFIG/nvim.$(date +"%Y-%m-%d.$H-%M-%S")
-    fi
+    try_backup($NVIM)
     ln -s $VIM $NVIM
-    if [ -f $NVIM/init.vim ]; then
-        rm $NVIM/init.vim
-    fi
+    try_delete($NVIM/init.vim)
     ln -s $VIM/lin.vim $NVIM/init.vim
 }
 

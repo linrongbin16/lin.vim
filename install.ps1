@@ -18,6 +18,22 @@ Function InstallOrSkip($command, $target) {
     }
 }
 
+Function TryBackup($src) {
+    If (Test-Path $src) {
+        $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss"
+        $target=-join($src, $now)
+        Message -msg "backup '$src' to '$target'"
+        Rename-Item $src $target
+    }
+}
+
+Function TryDelete($src) {
+    If (Test-Path $src) {
+        Message -msg "delete '$src'"
+        (Get-Item $src).Delete()
+    }
+}
+
 Function RustDependency() {
     Message -msg "install modern rust commands with cargo"
     InstallOrSkip -command "cargo install ripgrep" -target "rg"
@@ -44,22 +60,15 @@ Function InstallTemplates() {
 
 Function InstallVimrc() {
     Message -msg "install .vimrc for vim"
-    If (Test-Path $env:UserProfile\_vimrc) {
-        (Get-Item $env:UserProfile\_vimrc).Delete()
-    }
+    TryBackup -src "$env:UserProfile\_vimrc"
     cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
 }
 
 Function InstallNvimInit() {
-    Message -msg "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
-    New-Item -ItemType Directory -Force -Path $APPDATA_LOCAL_HOME
-    If (Test-Path $NVIM_HOME\init.vim) {
-        (Get-Item $NVIM_HOME\init.vim).Delete()
-    }
-    If (Test-Path $NVIM_HOME) {
-        (Get-Item $NVIM_HOME).Delete()
-    }
+    Message -msg "install $APPDATA_LOCAL_HOME/nvim and $APPDATA_LOCAL_HOME/nvim/init.vim for neovim"
+    TryBackup -src "$NVIM_HOME"
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\.vim
+    TryDelete -src "$NVIM_HOME\init.vim"
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
 }
 
