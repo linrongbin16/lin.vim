@@ -113,7 +113,7 @@ function install_nvim_init() {
     if [ -f $NVIM/init.vim ]; then
         rm $NVIM/init.vim
     fi
-    ln -s $NVIM/lin.vim $NVIM/init.vim
+    ln -s $VIM/lin.vim $NVIM/init.vim
 }
 
 function install_vim_plugin() {
