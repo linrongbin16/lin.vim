@@ -44,3 +44,14 @@ nnoremap <silent> <F12> :<C-u>call NextColorSchemeSync()<CR>
 " 2 spaces indent for specific languages
 " autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 " autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+
+
+""" neovide
+" let g:neovide_refresh_rate=60
+" let g:neovide_transparency=1.0
+" let g:neovide_scroll_animation_length=0.0
+" let g:neovide_remember_window_size=v:true
+" let g:neovide_input_use_logo=v:false  " v:true on macOS
+" let g:neovide_cursor_animation_length=0.0
+" let g:neovide_cursor_trail_length=0.0
+" let g:neovide_cursor_antialiasing=v:true
