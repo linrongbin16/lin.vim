@@ -113,16 +113,16 @@ function install_templates() {
 
 function install_vimrc() {
     $INSTALL/msg.sh "install .vimrc for vim"
-    try_backup($HOME/.vimrc)
+    try_backup $HOME/.vimrc
     ln -s $VIM/lin.vim $HOME/.vimrc
 }
 
 function install_nvim_init() {
     $INSTALL/msg.sh "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
     mkdir -p $CONFIG
-    try_backup($NVIM)
+    try_backup $NVIM
     ln -s $VIM $NVIM
-    try_delete($NVIM/init.vim)
+    try_delete $NVIM/init.vim
     ln -s $VIM/lin.vim $NVIM/init.vim
 }
 
