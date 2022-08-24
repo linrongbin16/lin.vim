@@ -21,7 +21,7 @@ Function InstallOrSkip($command, $target) {
 Function TryBackup($src) {
     If (Test-Path $src) {
         $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss"
-        $target=-join($src, $now)
+        $target=-join($src, ".", $now)
         Message -msg "backup '$src' to '$target'"
         Rename-Item $src $target
     }
