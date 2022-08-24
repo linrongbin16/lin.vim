@@ -90,11 +90,11 @@ nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " coc-git operations
 " navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
+nmap [c <Plug>(coc-git-prevchunk)
 " " navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
+" nmap [c <Plug>(coc-git-prevconflict)
+" nmap ]c <Plug>(coc-git-nextconflict)
 " " show chunk diff at current position
 nmap <leader>gs <Plug>(coc-git-chunkinfo)
 " " show commit contains current position

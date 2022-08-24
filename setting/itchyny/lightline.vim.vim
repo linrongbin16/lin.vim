@@ -56,26 +56,12 @@ function! LightLineCocStatus() abort
 endfunction
 
 function! LightLineGitStatus() abort
-    let branch = gitbranch#name()
+    let branch = get(g:,'coc_git_status','')
     if empty(branch)
         return ''
     endif
-    let [a,m,r] = GitGutterGetHunkSummary()
-    let changes = []
-    if a > 0
-        call add(changes, printf('+%d', a))
-    endif
-    if m > 0
-      call add(changes, printf('~%d', m))
-    endif
-    if r > 0
-      call add(changes, printf('-%d', r))
-    endif
-    if empty(changes)
-        return printf(' %s', branch)
-    else
-        return printf(' %s %s', branch, join(changes))
-    endif
+    let changes = get(b:,'coc_git_status','')
+    return printf('%s%s', branch, changes)
 endfunction
 
 function! LightLineGutentagsStatus() abort
