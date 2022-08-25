@@ -1,2 +1,2 @@
-" call nearest method or function at vim start up
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" Call nearest method or function at vim start up
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
