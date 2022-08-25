@@ -5,9 +5,12 @@ INSTALL=$HOME/.vim/install
 $INSTALL/msg.sh "install dependencies with pacman"
 
 sudo pacman -Syy
+
+# vim and neovim
+yes | sudo pacman -Rs vim
+yes | sudo pacman -S gvim
+
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S base-devel" "gcc"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -Rs vim" "vim"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S gvim" "gvim"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S neovim" "nvim"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S curl" "curl"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S wget" "wget"
