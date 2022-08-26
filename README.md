@@ -116,7 +116,7 @@ Solve below issues:
   - Git search on commits/uncommit-changes.
   - Coc.nvim integrated search on symbols/outline/diagnostics/yank.
   - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags.
-- Other editing enahncements (see [Editing Enahncement](#editing-enhancement)).
+- Other editing enhancements (see [Editing Enahncement](#editing-enhancement)).
 - Custom configuration.
 
 # Installation
@@ -325,8 +325,8 @@ _For neovim 0.5+ only_:
 
 - `<D-S-Right>` 🄽 - move current buffer to next position(right side).
 - `<D-S-Left>` 🄽 - move current buffer to previous position(left side).
-- `<LeftMouse>` 🄽 - go to selected buffer.
-- `<MiddleMouse>` 🄽 - close selected buffer.
+- `<LeftMouse>` 🄽 - go to target buffer.
+- `<MiddleMouse>` 🄽 - close target buffer.
 
 Support by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on neovim 0.5+).
 
@@ -362,11 +362,11 @@ lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) b
 
 #### Code Format
 
-- `<leader>cf` 🄽🅅 - format code on current buffer or visual selected code.
+- `<leader>cf` 🄽🅅 - format code on current buffer or visual-selected code.
 
 #### Code Actions
 
-- `<leader>ca` 🄽🅅 - run code actions on current cursor position or visual selected code.
+- `<leader>ca` 🄽🅅 - run code actions on current cursor position or visual-selected code.
 - `<leader>qf` 🄽 - apply quick fix on current line.
 
 #### Code Lens
@@ -495,7 +495,7 @@ Normal mode:
 
 Virual Mode:
 
-- `gc` 🅅 - toggle visual selected code using linewise comment.
+- `gc` 🅅 - toggle visual-selected code using linewise comment.
 
 Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [Comment.nvim](https://github.com/numToStr/Comment.nvim) on neovim).
 
