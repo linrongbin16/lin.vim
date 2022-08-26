@@ -238,6 +238,10 @@ In this section, vim editing mode are specified with:
 - 🅅 - Visual Mode
 - 🄸 - Insert Mode
 
+Vim key are specified with:
+
+- `D` - Meta-Key (Command-Key on macOS, Alt-Key on other os).
+
 ## Hot Key
 
 - `F1` 🄽 - toggle(open/close) file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
@@ -277,8 +281,8 @@ Create/Delete/Copy/Paste/Cut:
 
 Resize Width:
 
-- `<A-Right>`(`<D-Right>`)/`<A-.>`(`<D-.>`) 🄽 - make explorer bigger.
-- `<A-Left>`(`<D-Left>`)/`<A-,>`(`<D-,>`) 🄽 - make explorer smaller.
+- `<D-Right>`/`<D-.>` 🄽 - make explorer bigger.
+- `<D-Left>`/`<D-,>` 🄽 - make explorer smaller.
 
 Others:
 

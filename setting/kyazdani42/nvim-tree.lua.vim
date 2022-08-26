@@ -96,12 +96,12 @@ function! s:nvim_tree_settings() abort
 
   " resize explorer width
   nnoremap <silent> <buffer> <D-,> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <D-.> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <A-,> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <silent> <buffer> <D-.> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <A-.> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <D-Left> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <D-Right> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <A-Left> :<C-u>NvimTreeResize -10<CR>
+  nnoremap <silent> <buffer> <D-Right> :<C-u>NvimTreeResize +10<CR>
   nnoremap <silent> <buffer> <A-Right> :<C-u>NvimTreeResize +10<CR>
 endfunction
 
