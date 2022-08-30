@@ -2,6 +2,7 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
+    "jsonc",
     "c",
     "cpp",
     "cmake",
