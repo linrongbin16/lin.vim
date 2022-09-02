@@ -28,18 +28,18 @@ set listchars=tab:>·,trail:~,extends:>,precedes:<
 set list
 
 " persisted undo
-if has('persistent_undo')
-  if has('nvim')
-    let undo_dir = expand('~/.cache/nvim-undo')
-  else
-    let undo_dir = expand('~/.cache/vim-undo')
-  endif
-  if !isdirectory(undo_dir)
-     silent! call mkdir(undo_dir, "p", 0700)
-  endif
-  let &undodir = undo_dir
-  set undofile
-endif
+" if has('persistent_undo')
+"   if has('nvim')
+"     let undo_dir = expand('~/.cache/nvim-undo')
+"   else
+"     let undo_dir = expand('~/.cache/vim-undo')
+"   endif
+"   if !isdirectory(undo_dir)
+"      silent! call mkdir(undo_dir, "p", 0700)
+"   endif
+"   let &undodir = undo_dir
+"   set undofile
+" endif
 
 " file encoding
 " set fileformat=unix
