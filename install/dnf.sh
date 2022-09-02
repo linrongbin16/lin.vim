@@ -10,7 +10,7 @@ sudo dnf check-update
 sudo dnf install -y vim
 sudo dnf install -y gvim
 
-$INSTALL/install_or_skip.sh "sudo dnf group install -y \"Development Tools\"" "gcc" "g++"
+$INSTALL/install_or_skip.sh "sudo dnf group install -y \"Development Tools\"" "gcc"
 $INSTALL/install_or_skip.sh "sudo dnf install -y neovim" "nvim"
 $INSTALL/install_or_skip.sh "sudo dnf install -y curl" "curl"
 $INSTALL/install_or_skip.sh "sudo dnf install -y wget" "wget"

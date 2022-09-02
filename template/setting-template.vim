@@ -38,13 +38,11 @@ nnoremap <silent> <F10> :<C-u>BufExplorer<CR>
 " close buffer explorer if it's opened
 nnoremap <silent> <S-F10> :<C-u>ToggleBufExplorer<CR>
 
-
 """ add more settings here...
 
 " 2 spaces indent for specific languages
 " autocmd FileType c,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 " autocmd FileType html,xml,xhtml,json,javascript,typescript,javascriptreact,typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-
 
 """ neovide
 " let g:neovide_refresh_rate=60
