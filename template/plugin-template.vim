@@ -46,18 +46,21 @@ else
 endif
 if has('nvim-0.7')
     Plug 'romgrk/barbar.nvim'
-    Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
     Plug 'kyazdani42/nvim-tree.lua'
 else
     Plug 'bagrat/vim-buffet'
-    Plug 'Yggdroot/indentLine'
-    Plug 'itchyny/lightline.vim'
     Plug 'lambdalisue/fern.vim'
     Plug 'lambdalisue/nerdfont.vim'
     Plug 'lambdalisue/fern-renderer-nerdfont.vim'
     Plug 'lambdalisue/glyph-palette.vim'
     Plug 'lambdalisue/fern-git-status.vim'
+endif
+if has('nvim-0.5')
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'nvim-lualine/lualine.nvim'
+else
+    Plug 'Yggdroot/indentLine'
+    Plug 'itchyny/lightline.vim'
 endif
 Plug 'jlanzarotta/bufexplorer'
 
@@ -114,6 +117,7 @@ else
     Plug 'easymotion/vim-easymotion'
     Plug 'jiangmiao/auto-pairs'
 endif
+Plug 'justinmk/vim-sneak'
 Plug 'chaoren/vim-wordmotion'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
