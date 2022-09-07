@@ -3,29 +3,24 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" use `<Tab>` `<C-n>` `<Down>` to navigate next suggestion
-" use `<S-Tab>` `<C-p>` `<Up>` to navigate previous suggestion
-inoremap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#pum#next(1):
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<S-TAB>"
-
-" old version coc configration
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
+" use `<Tab>`/`<S-Tab>` to navigate between suggestions
 "
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" inoremap <silent><expr> <TAB>
+" 	\ coc#pum#visible() ? coc#pum#next(1):
+" 	\ <SID>check_back_space() ? "\<TAB>" :
+" 	\ coc#refresh()
+"
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<S-TAB>"
 
-" use `<cr>` to confirm the complete item
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
-      \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" use `<cr>` and `<TAB>` to confirm the complete item
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm():
+    \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" old version coc configration
-inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+inoremap <silent><expr> <TAB>
+	\ coc#pum#visible() ? coc#_select_confirm():
+	\ <SID>check_back_space() ? "\<TAB>" :
+    \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " use `<c-f>` to jump to next snippet position in insert mode
 let g:coc_snippet_next = '<C-f>'

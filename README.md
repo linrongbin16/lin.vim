@@ -49,7 +49,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
 
 # Introduction
 
-Aim to be out of box, IDE-like editing experience, high performance, light weight and friendly to most users.
+Aim to be out of box, IDE-like editing experience, high performance, light weight, highly compatible behaviour and friendly to most users.
 
 Focus on and only on editing, no compiling/packaging/debuging.
 
@@ -57,7 +57,7 @@ Solve below issues:
 
 - Difficulty to choose/coordinate/configure plugins: embeded a set of plugins and well configured.
 - Duplicate installation on different OS and machines: all done by one line command (not on Windows for now).
-- Goal and non-goal: plugins are chosen carefully for best performance, while try to cover most modern editor features just like [vscode](https://code.visualstudio.com/).
+- Goal and non-goal: plugins are chosen carefully for best performance, but still try to be a modern editor just like [vscode](https://code.visualstudio.com/).
 - Naive UI-looking: pretty colorschemes/UI/icons integrated.
 - Customization: `plugin.vim`, `setting.vim` and `coc-settings.json` files provided for special needs.
 
@@ -338,13 +338,13 @@ lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) b
 
 #### Code Complete
 
-- `<tab>`/`<c-n>`/`<down>` 🄸 - navigate to next suggestion.
-- `<s-tab>`/`<c-p>`/`<up>` 🄸 - navigate to previous suggestion.
-- `<cr>` 🄸 - confirm current suggestion or snippet.
+- `<c-n>`/`<down>` 🄸 - navigate to next suggestion.
+- `<c-p>`/`<up>` 🄸 - navigate to previous suggestion.
+- `<tab>`/`<cr>` 🄸 - confirm current suggestion or snippet.
 - `<esc>`/`<c-[>` 🄸 - close suggestion.
-- `<c-k>` 🄸 - force trigger suggestion.
 - `<c-f>` 🄸 - jump to next snippet position.
 - `<c-b>` 🄸 - jump to previous snippet position.
+- `<c-k>` 🄸 - force trigger suggestion.
 
 #### Jumps
 

@@ -17,7 +17,6 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'Rigellute/rigel'
 Plug 'chriskempson/base16-vim'
-Plug 'nanotech/jellybeans.vim'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
@@ -32,11 +31,11 @@ if has('nvim-0.6')
     Plug 'rebelot/kanagawa.nvim'
 endif
 
-""" colors that not working well with tabline plugins (barbar.nvim or vim-buffet).
-""" the active and non-active tabs don't have a high-contrast difference.
+""" some colors that not working well with other plugins:
 " Plug 'tomasiser/vim-code-dark'
 " Plug 'tomasr/molokai'
 " Plug 'romainl/Apprentice'
+" Plug 'nanotech/jellybeans.vim'
 
 " UI
 if has('nvim')
