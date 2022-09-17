@@ -55,9 +55,8 @@ Focus on and only on editing, no compiling/packaging/debuging.
 
 Solve below issues:
 
-- Difficulty to choose/coordinate/configure plugins: embeded a set of plugins and well configured.
+- Difficulty of choose and configure plugins: a set of plugins installed, well configured and cooperated with each other. Every plugin is carefully selected for best performance, and still try to cover most modern editor features (just like [vscode](https://code.visualstudio.com/)).
 - Duplicate installation on different OS and machines: all done by one line command (not on Windows for now).
-- Goal and non-goal: plugins are chosen carefully for best performance, but still try to cover most modern editor features just like [vscode](https://code.visualstudio.com/).
 - Naive UI-looking: pretty colorschemes/UI/icons integrated.
 - Customization: `plugin.vim`, `setting.vim` and `coc-settings.json` files provided for special needs.
 
