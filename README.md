@@ -57,7 +57,7 @@ Solve below issues:
 
 - Difficulty to choose/coordinate/configure plugins: embeded a set of plugins and well configured.
 - Duplicate installation on different OS and machines: all done by one line command (not on Windows for now).
-- Goal and non-goal: plugins are chosen carefully for best performance, but still try to be a modern editor just like [vscode](https://code.visualstudio.com/).
+- Goal and non-goal: plugins are chosen carefully for best performance, but still try to cover most modern editor features just like [vscode](https://code.visualstudio.com/).
 - Naive UI-looking: pretty colorschemes/UI/icons integrated.
 - Customization: `plugin.vim`, `setting.vim` and `coc-settings.json` files provided for special needs.
 
