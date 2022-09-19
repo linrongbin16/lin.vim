@@ -1,6 +1,5 @@
 let s:mycolors=['darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery',
-      \ 'palenight', 'onedark', 'rigel', 'jellybeans', 'sonokai', 'everforest', 'gruvbox-material', 'edge',
-      \ 'material']
+      \ 'palenight', 'onedark', 'rigel', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'material']
 
 " colors that not working well with tabline
 " molokai
