@@ -2,9 +2,6 @@
 
 lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neovim.io/) distribution integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
-- _[Neovim](https://neovim.io/) 0.7+ is highly recommended for best experience and performance._
-- _[Neovide](https://github.com/neovide/neovide) is highly recommended as a super fast GUI client for neovim._
-
 # Table of Contents
 
 - [Introduction](#introduction)
@@ -49,16 +46,16 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
 
 # Introduction
 
-Aim to be out of box, IDE-like editing experience, high performance, light weight and friendly to most users.
-
-Focus on and only on editing, no compiling/packaging/debuging.
+Aim to be out of box, IDE-like editing experience, high performance, light weight and friendly to most users. Focus on and only on editing, no compiling/packaging/debuging.
 
 Solve below issues:
 
-- Difficulty of choose and configure plugins: a set of plugins installed, well configured and cooperated with each other. Every plugin is carefully selected for best performance, and still try to cover most modern editor features (just like [vscode](https://code.visualstudio.com/)).
-- Duplicate installation on different OS and machines: all done by one line command (not on Windows for now).
-- Naive UI-looking: pretty colorschemes/UI/icons integrated.
-- Customization: `plugin.vim`, `setting.vim` and `coc-settings.json` files provided for special needs.
+- Time-costing study and configure vim scripts - All behaviors are configured like a modern editor(just like [vscode](https://code.visualstudio.com/)).
+- Lack of programming language support and IDE-like features - [coc.nvim](https://github.com/neoclide/coc.nvim) and a set of plugins are installed, with a bunch of language servers embeded.
+- Don't know install/choose/configure plugins: All plugins are selected carefully and well cooperated with each other. Provide best performance and user experience, cover most modern editor features(again, just like vscode).
+- Time-costing repeat installation on different machines and OS - All done by one-line command (not on Windows for now), All behaviors are the same(the only difference is use meta-key on macOS instead of alt-key on Windows/Linux).
+- Naive UI-looking and lack of icons/colorschemes - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
+- Special customization - Open `~/.vimrc` and `~/.vim` to edit plugins, settings. Or add a new programming language with coc.nvim.
 
 ## Screenshots
 
@@ -88,8 +85,8 @@ Solve below issues:
 
 ### Feature
 
-- Automatically installation (not on windows for now).
-- Works on multiple OS platforms:
+- One-line command installation (not on windows for now).
+- Work on multiple OS platforms:
   - Windows.
   - macOS.
   - Linux(Ubuntu/Debian/Fedora/Manjaro).
