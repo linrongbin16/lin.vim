@@ -159,8 +159,7 @@ Before installation, please make sure access of below domains are available:
 > The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
 >
 > - Native executable file has better performance, WSL (actually a virtual machine) is quite slow and heavy.
-> - Supporting WSL backend mode (like vscode) is too heavy development work.
-> - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, we could leverage it.
+> - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, we could leverage that.
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components checked:
 
