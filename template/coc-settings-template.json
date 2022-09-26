@@ -47,7 +47,7 @@
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format",
   "python.pythonPath": "python3",
-  "python.formatting.provider": "yapf",
+  "python.formatting.provider": "black",
   "json.enable": true,
   "json.format.enable": false,
   "eslint.run": "onSave",
