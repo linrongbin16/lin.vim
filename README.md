@@ -53,7 +53,7 @@ Solve below issues:
 - Time-costing study and configure vim scripts - All behaviors are configured like a modern editor(just like [vscode](https://code.visualstudio.com/)).
 - Lack of programming language support or IDE-like features - [coc.nvim](https://github.com/neoclide/coc.nvim) and a set of plugins are installed, with a bunch of language servers embeded.
 - Don't know how to install/choose/configure plugins: All plugins are selected carefully and well cooperated with each other. Provide best performance and user experience, cover most modern editor features(again, just like vscode).
-- Time-costing repeat installation on different machines and OS - All done by one-line command (not on Windows for now), All behaviors are the same(the only difference is use cmd-key on macOS instead of alt-key on Windows/Linux).
+- Time-costing repeat installation on different machines and OS - All done by one-line command (not on Windows for now), all behaviors are the same(the only difference is use cmd-key on macOS instead of alt-key on Windows/Linux).
 - Naive UI-looking and lack of icons/colorschemes - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
 - Special customization - Open and edit `~/.vimrc` `~/.vim/plugin.vim` `~/.vim/setting.vim`, or add a new language server with coc configuration `~/.vim/coc-settings.json`.
 
