@@ -523,19 +523,17 @@ These language servers are installed by default:
   - [srcery](https://github.com/srcery-colors/srcery-vim).
   - [palenight](https://github.com/drewtempelmeyer/palenight.vim).
   - [onedark](https://github.com/joshdick/onedark.vim).
-  - [code-dark](https://github.com/tomasiser/vim-code-dark).
   - [rigel](https://github.com/Rigellute/rigel).
   - [base16](https://github.com/chriskempson/base16-vim).
-  - [jellybeans](https://github.com/nanotech/jellybeans.vim).
   - [edge](https://github.com/sainnhe/edge).
   - [gruvbox-material](https://github.com/sainnhe/gruvbox-material).
   - [everforest](https://github.com/sainnhe/everforest).
   - [sonokai](https://github.com/sainnhe/sonokai).
-  - [nightfox](https://github.com/EdenEast/nightfox.nvim).
   - [material](https://github.com/kaicataldo/material.vim).
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+ only).
-  - [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+ only).
-  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+ only).
+  - [nightfox](https://github.com/EdenEast/nightfox.nvim) (for neovim 0.5+).
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+).
+  - [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+).
+  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+).
 
 # Contribute
 
