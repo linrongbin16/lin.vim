@@ -44,6 +44,7 @@
     "--limit-results=50",
     "--pch-storage=memory"
   ],
+  "clangd.inlayHints.enable": false,
   "cmake.cmakePath": "cmake",
   "cmake.formatter": "cmake-format",
   "python.pythonPath": "python3",
