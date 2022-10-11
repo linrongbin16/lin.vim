@@ -60,7 +60,8 @@ else
     source $HOME/.vim/setting/easymotion/vim-easymotion.vim
 endif
 source $HOME/.vim/setting/chaoren/vim-wordmotion.vim
-source $HOME/.vim/setting/haya14busa/incsearch.vim.vim
+source $HOME/.vim/setting/haya14busa/is.vim.vim
+source $HOME/.vim/setting/haya14busa/vim-asterisk.vim
 
 " GUI
 source $HOME/.vim/setting/linrongbin16/gui.vim

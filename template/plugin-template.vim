@@ -121,8 +121,9 @@ Plug 'chaoren/vim-wordmotion'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'haya14busa/incsearch.vim'
 Plug 'mbbill/undotree'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'haya14busa/is.vim'
+Plug 'haya14busa/vim-asterisk'
 
 call plug#end()
