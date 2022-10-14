@@ -224,6 +224,8 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
 
 ![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
 
+4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python provide by windows application store. Please see: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
+
 # User Guide
 
 In this section, vim editing mode are specified with:
