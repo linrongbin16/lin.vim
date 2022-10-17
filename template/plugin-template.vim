@@ -124,6 +124,5 @@ Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'haya14busa/is.vim'
-Plug 'haya14busa/vim-asterisk'
 
 call plug#end()
