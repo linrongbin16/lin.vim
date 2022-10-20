@@ -139,7 +139,7 @@ Before installation, please make sure access of below domains are available:
 > - [rust](https://www.rust-lang.org/) and some modern commands.
 > - [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
 > - [universal-ctags](https://github.com/universal-ctags/ctags).
-> - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip).
+> - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 >
 > For now supported platforms are:
 >

@@ -7,7 +7,7 @@ let g:coc_global_extensions = ['coc-git', 'coc-snippets', 'coc-yank', 'coc-lists
 """ guifont
 if has("win32") || has("win64")
     " for Windows
-    set guifont=Hack\ NF:h9
+    set guifont=Hack\ NFM:h9
 elseif has("mac")
     " for macOS
     set guifont=Hack\ Nerd\ Font\ Mono:h12

@@ -89,7 +89,7 @@ function guifont_dependency() {
         $INSTALL/msg.sh "install hack nerd font from github"
         mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
         local font_file=Hack.zip
-        local font_version=v2.1.0
+        local font_version=v2.2.2
         local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file"
         if [ -f $font_file ]; then
             rm $font_file
