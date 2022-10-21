@@ -36,7 +36,7 @@ Function TryBackup() {
         [Parameter(Mandatory = $true)][String]$target
     )
     If (Test-Path $target) {
-        $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss"
+        $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
         $backup=-join($target, ".", $now)
         Message "backup '$target' to '$backup'"
         Rename-Item $target $backup

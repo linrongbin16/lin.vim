@@ -11,7 +11,7 @@ function try_backup() {
     local src=$1
     if [ -d $src || -f $src ]; then
         $INSTALL/msg.sh "backup '$src' to '$target'"
-        mv $src $src.$(date +"%Y-%m-%d.%H-%M-%S")
+        mv $src $src.$(date +"%Y-%m-%d.%H-%M-%S.%6N")
     fi
 }
 
