@@ -72,7 +72,7 @@ function golang_dependency() {
 
 function pip3_dependency() {
     $INSTALL/msg.sh "install python packages with pip3"
-    sudo pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint yapf chardet cmakelang cmake-language-server click
+    sudo pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
 }
 
 function npm_dependency() {

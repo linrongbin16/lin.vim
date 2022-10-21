@@ -43,7 +43,7 @@ Function RustDependency() {
 
 Function Pip3Dependency() {
     Message -msg "install python packages with pip3"
-    pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint yapf chardet cmakelang cmake-language-server click
+    pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
 }
 
 Function NpmDependency() {
