@@ -9,7 +9,7 @@ OS="$(uname -s)"
 
 function try_backup() {
     local src=$1
-    if [ -d $src || -f $src ]; then
+    if [ -f "$src" ]; then
         $INSTALL/msg.sh "backup '$src' to '$target'"
         mv $src $src.$(date +"%Y-%m-%d.%H-%M-%S.%6N")
     fi
@@ -17,7 +17,7 @@ function try_backup() {
 
 function try_delete() {
     local src=$1
-    if [ -d $src || -f $src ]; then
+    if [ -f "$src" ]; then
         $INSTALL/msg.sh "remove '$src'"
         rm -rf $src
     fi
