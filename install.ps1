@@ -87,9 +87,9 @@ Function InstallVimrc() {
 
 Function InstallNvimInit() {
     Message "install $APPDATA_LOCAL_HOME/nvim and $APPDATA_LOCAL_HOME/nvim/init.vim for neovim"
+    TryBackup "$NVIM_HOME\init.vim"
     TryBackup "$NVIM_HOME"
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\.vim
-    TryDelete "$NVIM_HOME\init.vim"
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
 }
 

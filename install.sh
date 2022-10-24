@@ -120,9 +120,9 @@ function install_vimrc() {
 function install_nvim_init() {
     $INSTALL/msg.sh "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
     mkdir -p $CONFIG
+    try_backup $NVIM/init.vim
     try_backup $NVIM
     ln -s $VIM $NVIM
-    try_delete $NVIM/init.vim
     ln -s $VIM/lin.vim $NVIM/init.vim
 }
 
