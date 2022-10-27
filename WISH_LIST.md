@@ -1,6 +1,8 @@
-# Feature Wish List
+# Wish List
 
-This page is for adding wish features(plugins), or removing don't want features(plugins). Please contribute this page to make lin.vim better.
+This page is for adding wish features(plugins), or removing don't want features(plugins).
+Please submit PR to this page to add your wishes.
+I will open related votes to discuss the pros and cons, and make change.
 
 # Contents
 
