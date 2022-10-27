@@ -50,12 +50,12 @@ Aim to be out of box, IDE-like editing experience, high performance, light weigh
 
 Solve below issues:
 
-- Time-costing study and configure vim scripts - All behaviors configured follow vim community's best practice or most popular modern editors(just like [vscode](https://code.visualstudio.com/)).
-- Lack of programming language support or IDE-like features - [coc.nvim](https://github.com/neoclide/coc.nvim) and a set of plugins are installed, with a bunch of language servers embeded.
-- Don't know how to install/choose/configure plugins: All plugins are selected carefully and well cooperated with each other. Provide best performance and user experience, cover most modern editor features(again, just like vscode).
-- Time-costing repeat installation on different machines and OS - All done by one-line command (not on Windows for now), all behaviors are the same(the only difference is use cmd-key on macOS instead of alt-key on Windows/Linux).
-- Naive UI-looking and lack of icons/colorschemes - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
-- Special customization - Open and edit `~/.vimrc` `~/.vim/plugin.vim` `~/.vim/setting.vim`, or add a new language server with coc configuration `~/.vim/coc-settings.json`.
+- Time-costing vim configurations - All behaviors follow community's best practice and most popular editors(just like [vscode](https://code.visualstudio.com/)).
+- Lack of IDE-like features - [Coc.nvim](https://github.com/neoclide/coc.nvim) and a bunch of language servers and extensions are embeded.
+- Don't know how to choose/configure/manage vim plugins: All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
+- Repeat installation on different OS and machines - All done by one-line command(not on Windows for now), all installations behave the same(the only difference is use Command-Key on macOS instead of Alt-Key on Windows/Linux).
+- Naive UI - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
+- Custom needs - Open and edit `~/.vimrc` `~/.vim/plugin.vim` `~/.vim/setting.vim`, or add new coc configuration in `~/.vim/coc-settings.json`.
 
 ## Screenshots
 
@@ -195,13 +195,7 @@ This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp
 
 Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
-4. Install [Hack NF](https://github.com/ryanoasis/nerd-fonts/releases):
-
-   - `Hack Bold Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Bold Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Italic Nerd Font Complete Mono Windows Compatible.ttf`
-   - `Hack Regular Nerd Font Complete Mono Windows Compatible.ttf`
-
+4. Install [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 5. Finally run below commands in powershell:
 
 ```powershell
@@ -216,7 +210,7 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
 
 ![install-windows-notice-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-git-path.png)
 
-2. Python3 version must be compatible with gvim's libpython3.so version, or it will not been loaded. Latest vim 8.2-9 is compiled with python3.10. Please use `gvim --version` to find its libpython3.so version.
+2. Python3 version must be compatible with gvim's libpython3.so version, or it will not been loaded. Please use `gvim --version` to find its libpython3.so version.
 
 ![install-windows-notice-python3-version-compatible.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-python3-version-compatible.png)
 
