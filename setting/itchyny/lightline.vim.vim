@@ -38,13 +38,13 @@ function! LightLineFileName() abort
     return filename
 endfunction
 
-function! LightLineCurrentFunction() abort
-    let function_name = get(b:, 'coc_current_function', '')
-    if empty(function_name)
-        return ''
-    endif
-    return printf(' %s', function_name)
-endfunction
+" function! LightLineCurrentFunction() abort
+"     let function_name = get(b:, 'coc_current_function', '')
+"     if empty(function_name)
+"         return ''
+"     endif
+"     return printf(' %s', function_name)
+" endfunction
 
 function! LightLineCocStatus() abort
     let coc_status = coc#status()

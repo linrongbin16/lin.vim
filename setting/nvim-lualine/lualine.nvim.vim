@@ -15,13 +15,13 @@ local function LuaLineGitStatus()
     end
     return string.format('%s%s', branch, changes)
 end
-local function LuaLineCurrentFunction()
-    local function_name = vim.b.coc_current_function
-    if function_name == nil or function_name == '' then
-        return ''
-    end
-    return string.format(' %s', function_name)
-end
+-- local function LuaLineCurrentFunction()
+--     local function_name = vim.b.coc_current_function
+--     if function_name == nil or function_name == '' then
+--         return ''
+--     end
+--     return string.format(' %s', function_name)
+-- end
 local function LuaLineCocStatus()
     local coc_status = vim.fn['coc#status']()
     if coc_status == nil or coc_status == '' then
