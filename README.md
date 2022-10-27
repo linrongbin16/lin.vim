@@ -535,6 +535,8 @@ These language servers are installed by default:
 
 Please open issue/PR for anything about lin.vim.
 
+Please open PR to this [Feature Wish List]() page for any wish or don't want list, to submit your suggestions about lin.vim.
+
 Like lin.vim? Consider
 
 <a href="https://www.buymeacoffee.com/linrongbin16" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
