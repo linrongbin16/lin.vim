@@ -535,7 +535,7 @@ These language servers are installed by default:
 
 Please open issue/PR for anything about lin.vim.
 
-Please open PR to the [WISH_LIST.md]() page for any wish or don't want list, to submit your suggestions about lin.vim.
+Please open PR to the [WISH_LIST.md](https://github.com/linrongbin16/lin.vim/blob/master/WISH_LIST.md) page for any wish or don't want list, to submit your suggestions about lin.vim.
 
 Like lin.vim? Consider
 
