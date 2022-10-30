@@ -80,8 +80,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 
-" Language Server 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Language Server
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 
 " Programming Language Support
