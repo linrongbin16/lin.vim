@@ -1,11 +1,9 @@
-#Requires -RunAsAdministrator
-
 $VIM_HOME="$env:UserProfile\.vim"
 $APPDATA_LOCAL_HOME="$env:UserProfile\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
 $TEMPLATE_HOME="$VIM_HOME\template"
 
-Function Message() {
+function Message() {
     [CmdletBinding()]
     Param
     (
@@ -14,7 +12,7 @@ Function Message() {
     Write-Host "[lin.vim] - $message"
 }
 
-Function InstallOrSkip() {
+function InstallOrSkip() {
     [CmdletBinding()]
     Param
     (
@@ -29,13 +27,13 @@ Function InstallOrSkip() {
     }
 }
 
-Function TryBackup() {
+function TryBackup() {
     [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $true)][String]$target
     )
-    If (Test-Path $target) {
+    if (Test-Path $target) {
         $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
         $backup=-join($target, ".", $now)
         Message "backup '$target' to '$backup'"
@@ -43,49 +41,49 @@ Function TryBackup() {
     }
 }
 
-Function TryDelete() {
+function TryDelete() {
     [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $true)][String]$target
     )
-    If (Test-Path $target) {
+    if (Test-Path $target) {
         Message "delete '$target'"
         (Get-Item $target).Delete()
     }
 }
 
-Function RustDependency() {
+function RustDependency() {
     Message "install modern rust commands with cargo"
     InstallOrSkip -command "cargo install ripgrep" -target "rg"
     InstallOrSkip -command "cargo install fd-find" -target "fd"
     InstallOrSkip -command "cargo install --locked bat" -target "bat"
 }
 
-Function Pip3Dependency() {
+function Pip3Dependency() {
     Message "install python packages with pip3"
     pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
 }
 
-Function NpmDependency() {
+function NpmDependency() {
     Message "install node packages with npm"
     npm install -g yarn prettier neovim
 }
 
-Function InstallTemplates() {
+function InstallTemplates() {
     Message "install configurations from templates"
     Copy-Item $TEMPLATE_HOME\plugin-template.vim -Destination $VIM_HOME\plugin.vim
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
     Copy-Item $TEMPLATE_HOME\setting-template.vim -Destination $VIM_HOME\setting.vim
 }
 
-Function InstallVimrc() {
+function InstallVimrc() {
     Message "install .vimrc for vim"
     TryBackup "$env:UserProfile\_vimrc"
     cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
 }
 
-Function InstallNvimInit() {
+function InstallNvimInit() {
     Message "install $APPDATA_LOCAL_HOME/nvim and $APPDATA_LOCAL_HOME/nvim/init.vim for neovim"
     TryBackup "$NVIM_HOME\init.vim"
     TryBackup "$NVIM_HOME"
@@ -93,17 +91,17 @@ Function InstallNvimInit() {
     cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
 }
 
-Function InstallVimPlugin() {
+function InstallVimPlugin() {
     Message "install vim plugins"
     gvim -E -c "PlugInstall" -c "qall"
 }
 
-Function InstallNvimPlugin() {
+function InstallNvimPlugin() {
     Message "install neovim plugins"
     nvim -E -c "PlugInstall" -c "qall"
 }
 
-Function Main() {
+function Main() {
     Message "install dependencies for windows"
 
     # install dependencies
@@ -119,6 +117,23 @@ Function Main() {
     # install plugins
     InstallNvimPlugin
     InstallVimPlugin
+}
+
+# Get the ID and security principal of the current user account
+$currentID = [System.Security.Principal.WindowsIdentity]::GetCurrent();
+$currentPrincipal = New-Object System.Security.Principal.WindowsPrincipal($currentID);
+# Get the security principal for the administrator role
+$adminRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator;
+
+# If we are not running as an administrator, relaunch as administrator
+if (!($currentPrincipal.IsInRole($adminRole)))
+{
+    # Create a new process that run as administrator
+    $installer=$script:MyInvocation.MyCommand.Path
+    Start-Process powershell "& '$installer'" -Verb RunAs
+
+    # Exit from the current process
+    Exit;
 }
 
 Main
