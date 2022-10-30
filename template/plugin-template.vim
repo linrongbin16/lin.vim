@@ -1,7 +1,7 @@
 "" ---- vim-plug.vim ----
 
 if has('win32') || has('win64')
-  set runtimepath^=~/.vim
+    set runtimepath^=~/.vim
 endif
 
 source ~/.vim/autoload/plug.vim
