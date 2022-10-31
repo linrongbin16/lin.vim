@@ -26,6 +26,8 @@ endif
 source $HOME/.vim/setting/jlanzarotta/bufexplorer.vim
 
 " Git
+source $HOME/.vim/setting/airblade/vim-gitgutter.vim
+source $HOME/.vim/setting/itchyny/vim-gitbranch.vim
 if has('nvim-0.5')
     source $HOME/.vim/setting/f-person/git-blame.nvim.vim
 endif

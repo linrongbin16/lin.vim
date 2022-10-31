@@ -8,9 +8,11 @@ It is for better performance on some old devices, which lacks of CPU, memory or 
 
 Full mode is default mode, enable all features.
 It is for best user experience, while consumes more CPU, memory and graphics.
-You could use extra without options to disable some specific feature.
+In full mode you could use `--without-xxx` options to disable some specific feature.
 
-Notice: `--without-all-language --without-highlight --without-color` is equivalent to `--limit`.
+Notice: 
+The `--without-xxx` options are not compatible with `--basic` or `--limit` options.
+The `--without-all-language --without-highlight --without-color` option is equivalent to `--limit`.
 
 -h,--help                       Show help message.
 -b,--basic                      Basic mode.

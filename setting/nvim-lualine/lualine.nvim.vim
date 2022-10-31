@@ -23,11 +23,38 @@ end
 --     return string.format(' %s', function_name)
 -- end
 local function LuaLineCocStatus()
-    local coc_status = vim.fn['coc#status']()
-    if coc_status == nil or coc_status == '' then
+    -- coc-git
+    -- local coc_status = vim.fn['coc#status']()
+    -- if coc_status == nil or coc_status == '' then
+    --     return ''
+    -- else
+    --     return coc_status
+    -- end
+
+    -- vim-gitbranch + vim-gitgutter
+    local branch = vim.fn['gitbranch#name']()
+    if branch == nil or branch == '' then
         return ''
+    end
+    -- summary = [a, m, r]
+    local summary = vim.fn['GitGutterGetHunkSummary']()
+    if summary == nil then
+        return string.format(' %s', branch)
+    end
+    local changes = {}
+    if summary[1] > 0 then
+        changes[#changes+1]=string.format('+%d', summary[1])
+    end
+    if summary[2] > 0 then
+        changes[#changes+1]=string.format('~%d', summary[2])
+    end
+    if summary[3] > 0 then
+        changes[#changes+1]=string.format('-%d', summary[3])
+    end
+    if next(changes) == nil then
+        return string.format(' %s', branch)
     else
-        return coc_status
+        return string.format(' %s %s', branch, table.concat(changes, ' '))
     end
 end
 local function LuaLineCursorPosition()

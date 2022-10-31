@@ -368,8 +368,6 @@ lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) b
 
 - `]c` 🄽 - go to next git chunk in current buffer.
 - `[c` 🄽 - go to previous git chunk in current buffer.
-- `<leader>gs` 🄽 - show git chunk info on current line.
-- `<leader>gc` 🄽 - show git commit info on current line.
 
 _For neovim 0.5+ only_:
 

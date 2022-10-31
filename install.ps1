@@ -178,6 +178,36 @@ function ParseOptions() {
             $OPT_WITHOUT_BASH=$True
             $OPT_WITHOUT_HIGHLIGHT=$True
             $OPT_WITHOUT_COLOR=$True
+        } elseif ($opt -eq "--without-cxx") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_CXX=$True
+        } elseif ($opt -eq "--without-python") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_PYTHON=$True
+        } elseif ($opt -eq "--without-markdown") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_MARKDOWN=$True
+        } elseif ($opt -eq "--without-json") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_JSON=$True
+        } elseif ($opt -eq "--without-javascript") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_JAVASCRIPT=$True
+        } elseif ($opt -eq "--without-powershell") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_POWERSHELL=$True
+        } elseif ($opt -eq "--without-bash") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_BASH=$True
+        } elseif ($opt -eq "--without-highlight") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_HIGHLIGHT=$True
+        } elseif ($opt -eq "--without-color") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_COLOR=$True
+        } elseif ($opt -eq "--without-git") {
+            CheckNoBasicOption $hasBasicOption $opt
+            $OPT_WITHOUT_GIT=$True
         } else {
             Message "unknown options! please try .\install.ps1 --help for more information"
             Exit

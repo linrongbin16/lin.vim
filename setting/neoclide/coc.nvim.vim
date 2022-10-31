@@ -83,14 +83,17 @@ xmap <leader>qf  <Plug>(coc-fix-current)
 " run code lens on current line
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
-" coc-git operations
-" navigate chunks of current buffer
-nmap ]c <Plug>(coc-git-nextchunk)
-nmap [c <Plug>(coc-git-prevchunk)
-" " navigate conflicts of current buffer
+""" coc-git operations
+""" navigate chunks of current buffer
+" nmap ]c <Plug>(coc-git-nextchunk)
+" nmap [c <Plug>(coc-git-prevchunk)
+
+""" navigate conflicts of current buffer
 " nmap [c <Plug>(coc-git-prevconflict)
 " nmap ]c <Plug>(coc-git-nextconflict)
-" " show chunk diff at current position
-nmap <leader>gs <Plug>(coc-git-chunkinfo)
-" " show commit contains current position
-nmap <leader>gc <Plug>(coc-git-commit)
+
+""" show chunk diff at current position
+" nmap <leader>gs <Plug>(coc-git-chunkinfo)
+
+""" show commit contains current position
+" nmap <leader>gc <Plug>(coc-git-commit)

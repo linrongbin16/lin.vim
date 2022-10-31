@@ -64,6 +64,8 @@ endif
 Plug 'jlanzarotta/bufexplorer'
 
 " Git
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/vim-gitbranch'
 if has('nvim-0.5')
     Plug 'f-person/git-blame.nvim'
 endif
