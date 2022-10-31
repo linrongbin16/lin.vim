@@ -7,6 +7,19 @@ INSTALL=$VIM/install
 TEMPLATE=$VIM/template
 OS="$(uname -s)"
 
+OPT_BASIC=0
+OPT_FULL=1
+OPT_DISABLE_CXX=0
+OPT_DISABLE_PYTHON=0
+OPT_DISABLE_MARKDOWN=0
+OPT_DISABLE_JSON=0
+OPT_DISABLE_JAVASCRIPT=0
+OPT_DISABLE_POWERSHELL=0
+OPT_DISABLE_BASH=0
+OPT_DISABLE_SPELLCHECK=0
+OPT_DISABLE_HIGHLIGHT=0
+OPT_DISABLE_COLOR=0
+
 function try_backup() {
     local src=$1
     if [ -f "$src" ]; then
@@ -132,20 +145,28 @@ function install_nvim_init() {
 
 function show_help() {
 cat << EOF
-Usage: ./install.sh [options] [arguments]
+Usage: ./install.sh [options]
 
-Install lin.vim in one-line command.
+Installer has 3 modes: basic, limit and full.
+
+Basic mode only install pure vim script settings, no vim plugins or any other third party softwares.
+It is for production environment, which lacks of software sources or user authentication.
+
+Limit mode installs limited features, no extra highlights, colors or all other language supports.
+It is for better performance on some old devices, which lacks of CPU, memory or graphics.
+
+Full mode is default mode, enable all features.
+It is for best user experience, while consumes more CPU, memory and graphics.
+You could use extra disable options to disable some specific feature.
+Notice `--disable-all-language --disable-highlight --disable-color` is equivalent to `--limit`.
 
 -h,--help       Show help message.
 
 -b,--basic      Install pure vim script settings, no vim plugins or any other third party softwares.
                 This mode is for production environment, which lacks of third party support.
 
--l,--limit      Install limited features, no extra highlight, extra colors and other language supports.
+-l,--limit      Install limited features, no extra highlight, extra colors, all other language supports.
                 This mode is for old devices, disable some features for better performance.
-
--f,--full       Install full features with all plugins and extensions. this is the default mode.
-                This mode is for best user experience, while consumes more CPU, memory and graphics.
 
 --disable-cxx                   Disable c/c++/cmake support.
 --disable-python                Disable python support.
@@ -153,15 +174,139 @@ Install lin.vim in one-line command.
 --disable-json                  Disable json support.
 --disable-javascript            Disable javascript support.
 --disable-powershell            Disable powershell support.
+--disable-bash                  Disable linux bash support.
+--disable-spellcheck            Disable english spell check.
 --disable-all-language          Disable all language supports above.
 
---disable-highlight             Disable extra highlights such as cursor highlight, fzf preview syntax highlight, etc.
---disable-color                 Disable extra colors such as RGB colors, random colorschemes, etc.
---disable-spellcheck            Disable english spell check.
+--disable-highlight             Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
+--disable-color                 Disable extra colors such as RGBs, random colorschemes, etc.
 EOF
 }
 
+function check_no_basic_option() {
+    local has_basic_option
+    local input_option
+    has_basic_option=$1
+    input_option=$2
+    if [ $has_basic_option -eq 1 ]; then
+        $INSTALL/msg.sh "error! cannot use $input_option along with --basic"
+        exit 0
+    fi
+}
+
+function check_no_limit_option() {
+    local has_limit_option
+    local input_option
+    has_limit_option=$1
+    input_option=$2
+    if [ $has_limit_option -eq 1 ]; then
+        $INSTALL/msg.sh "error! cannot use $input_option along with --limit"
+        exit 0
+    fi
+}
+
+function parse_options() {
+    local options
+    options=$(getopt -l "help,basic,limit,disable-cxx,disable-python,disable-json,disable-javascript,disable-powershell,disable-all-language,disable-highlight,disable-color,disable-spellcheck" -o "hbl" -a -- "$@")
+    eval set -- "$options"
+
+    local has_basic_option=0
+    local has_limit_option=0
+
+    while true
+    do
+    case "$1" in
+    -h|--help)
+        show_help
+        exit 0
+        ;;
+    -b|--basic)
+        shift
+        has_basic_option=1
+        check_no_limit_option $has_limit_option "$1"
+
+        OPT_BASIC=1
+        OPT_FULL=0
+        ;;
+    -l|--limit) 
+        shift
+        has_limit_option=1
+        check_no_basic_option $has_basic_option "$1"
+
+        OPT_BASIC=0
+        OPT_FULL=1
+        OPT_DISABLE_CXX=1
+        OPT_DISABLE_PYTHON=1
+        OPT_DISABLE_MARKDOWN=1
+        OPT_DISABLE_JSON=1
+        OPT_DISABLE_JAVASCRIPT=1
+        OPT_DISABLE_POWERSHELL=1
+        OPT_DISABLE_BASH=1
+        OPT_DISABLE_SPELLCHECK=1
+        OPT_DISABLE_HIGHLIGHT=1
+        OPT_DISABLE_COLOR=1
+        ;;
+    --disable-cxx) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_CXX=1
+        ;;
+    --disable-python) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_PYTHON=1
+        ;;
+    --disable-markdown) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_MARKDOWN=1
+        ;;
+    --disable-json) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_JSON=1
+        ;;
+    --disable-javascript) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_JAVASCRIPT=1
+        ;;
+    --disable-powershell) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_POWERSHELL=1
+        ;;
+    --disable-bash) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_BASH=1
+        ;;
+    --disable-spellcheck) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_SPELLCHECK=1
+        ;;
+    --disable-highlight) 
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_HIGHLIGHT=1
+        ;;
+    --disable-color)
+        shift
+        check_no_basic_option $has_basic_option "$1"
+        OPT_DISABLE_COLOR=1
+        ;;
+    *)
+        $INSTALL/msg.sh "unknown options! please try --help for more information"
+        exit 0
+        ;;
+    esac
+    shift
+    done
+}
+
 function main() {
+    parse_options
 
     # install dependencies
     platform_dependency

@@ -10,6 +10,9 @@ plugged
 # user settings
 plugin.vim
 setting.vim
+setting-color.vim
+setting-highlight.vim
+setting-language.vim
 coc-settings.json
 
 # neovim
