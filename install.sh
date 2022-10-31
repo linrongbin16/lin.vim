@@ -115,6 +115,8 @@ function install_vimrc() {
     $INSTALL/msg.sh "install .vimrc for vim"
     try_backup $HOME/.vimrc
     ln -s $VIM/lin.vim $HOME/.vimrc
+    $INSTALL/msg.sh "install vim plugins"
+    vim -E -c "PlugInstall" -c "qall"
 }
 
 function install_nvim_init() {
@@ -124,19 +126,43 @@ function install_nvim_init() {
     try_backup $NVIM
     ln -s $VIM $NVIM
     ln -s $VIM/lin.vim $NVIM/init.vim
-}
-
-function install_vim_plugin() {
-    $INSTALL/msg.sh "install vim plugins"
-    vim -E -c "PlugInstall" -c "qall"
-}
-
-function install_nvim_plugin() {
     $INSTALL/msg.sh "install neovim plugins"
     nvim -E -c "PlugInstall" -c "qall"
 }
 
+function show_help() {
+cat << EOF
+Usage: ./install.sh [options] [arguments]
+
+Install lin.vim in one-line command.
+
+-h,--help       Show help message.
+
+-b,--basic      Install pure vim script settings, no vim plugins or any other third party softwares.
+                This mode is for production environment, which lacks of third party support.
+
+-l,--limit      Install limited features, no extra highlight, extra colors and other language supports.
+                This mode is for old devices, disable some features for better performance.
+
+-f,--full       Install full features with all plugins and extensions. this is the default mode.
+                This mode is for best user experience, while consumes more CPU, memory and graphics.
+
+--disable-cxx                   Disable c/c++/cmake support.
+--disable-python                Disable python support.
+--disable-markdown              Disable markdown support.
+--disable-json                  Disable json support.
+--disable-javascript            Disable javascript support.
+--disable-powershell            Disable powershell support.
+--disable-all-language          Disable all language supports above.
+
+--disable-highlight             Disable extra highlights such as cursor highlight, fzf preview syntax highlight, etc.
+--disable-color                 Disable extra colors such as RGB colors, random colorschemes, etc.
+--disable-spellcheck            Disable english spell check.
+EOF
+}
+
 function main() {
+
     # install dependencies
     platform_dependency
     rust_dependency
@@ -149,10 +175,6 @@ function main() {
     install_templates
     install_vimrc
     install_nvim_init
-
-    # install plugins
-    install_vim_plugin
-    install_nvim_plugin
 }
 
 main
