@@ -11,7 +11,9 @@ param (
     [Parameter(HelpMessage="Disable bash support")][switch]$WithoutBash = $False,
     [Parameter(HelpMessage="Disable extra highlights")][switch]$WithoutHighlight = $False,
     [Parameter(HelpMessage="Disable extra colors")][switch]$WithoutColor = $False,
-    [Parameter(HelpMessage="Disable git support")][switch]$WithoutGit = $False
+    [Parameter(HelpMessage="Only one static colorscheme")][String]$OnlyColor = "", 
+    [Parameter(HelpMessage="Only support vim")][switch]$OnlyVim = $False,
+    [Parameter(HelpMessage="Only support neovim")][switch]$OnlyNeovim = $False,
 )
 
 $VIM_HOME="$env:USERPROFILE\.vim"
@@ -20,11 +22,14 @@ $APPDATA_LOCAL_HOME="$env:USERPROFILE\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
 $TEMPLATE_HOME="$VIM_HOME\template"
 
-. $INSTALL_HOME\PluginInstaller.ps1
-. $INSTALL_HOME\SettingInstaller.ps1
-
 $OPT_FULL=$True # default mode
 $MODE_NAME="full"
+
+$PLUGIN_FILE="$VIM_HOME\plugin.vim"
+$SETTING_FILE="$VIM_HOME\setting.vim"
+
+
+# common utils
 
 function Message() {
     [CmdletBinding()]
@@ -81,6 +86,47 @@ function TryDelete() {
     }
 }
 
+function ClearFile() {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $True)][String]$target
+    )
+    if (Test-Path $target) {
+        Message "clear '$target'"
+        Clear-Content -Path $target
+    } else {
+        New-Item -Path $target
+    }
+}
+
+function BeginInstallPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-header-template.vim" | Add-Content -Path $PLUGIN
+}
+
+function EndInstallPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-footer-template.vim" | Add-Content -Path $PLUGIN
+}
+
+function BeginInstallCocExtension() {
+    Get-Content -Path "$TEMPLATE_HOME\setting-language-header.vim" | Add-Content -Path $SETTING_LANGUAGE
+}
+
+function EndInstallCocExtension() {
+    Get-Content -Path "$TEMPLATE_HOME\setting-language-footer.vim" | Add-Content -Path $SETTING_LANGUAGE
+}
+
+function InstallCocExtension() {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $True)][String]$extension
+    )
+    Add-Content -Path $SETTING_LANGUAGE -Value "$extension,"
+}
+
+# third party dependency
+
 function RustDependency() {
     Message "install modern rust commands with cargo"
     InstallOrSkip -command "cargo install ripgrep" -target "rg"
@@ -102,14 +148,18 @@ function NpmDependency() {
     npm install -g yarn prettier neovim
 }
 
-function InstallTemplates() {
+# template
+
+function InstallTemplate() {
     Message "install configurations from templates"
     Copy-Item $TEMPLATE_HOME\plugin-template.vim -Destination $VIM_HOME\plugin.vim
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
     Copy-Item $TEMPLATE_HOME\setting-template.vim -Destination $VIM_HOME\setting.vim
 }
 
-function InstallVimrc() {
+# vim
+
+function InstallVim() {
     [CmdletBinding()]
     Param
     (
@@ -118,9 +168,14 @@ function InstallVimrc() {
     Message "install .vimrc for vim"
     TryBackup "$env:USERPROFILE\_vimrc"
     cmd /c mklink $env:USERPROFILE\_vimrc $vimrc
+
+    Message "install vim plugins"
+    gvim -E -c "PlugInstall" -c "qall"
 }
 
-function InstallNvimInit() {
+# neovim
+
+function InstallNeovim() {
     [CmdletBinding()]
     Param
     (
@@ -132,21 +187,14 @@ function InstallNvimInit() {
     TryBackup "$NVIM_HOME"
     cmd /c mklink $APPDATA_LOCAL_HOME\nvim $nvimHome
     cmd /c mklink $APPDATA_LOCAL_HOME\nvim\init.vim $nvimInit
-}
 
-function InstallVimPlugin() {
-    Message "install vim plugins"
-    gvim -E -c "PlugInstall" -c "qall"
-}
-
-function InstallNvimPlugin() {
     Message "install neovim plugins"
     nvim -E -c "PlugInstall" -c "qall"
 }
 
-function InstallBasic() {
-    InstallVimrc "$env:USERPROFILE\.vim\setting\linrongbin16\standalone.vim"
-    InstallNvimInit -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\setting\linrongbin16\standalone.vim"
+function BasicInstaller() {
+    InstallVim "$env:USERPROFILE\.vim\setting\linrongbin16\standalone.vim"
+    InstallNeovim -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\setting\linrongbin16\standalone.vim"
 }
 
 function ShowHelp() {
@@ -165,8 +213,7 @@ In full mode you could use `--without-xxx` options to disable some specific feat
 
 Notice: 
 The \`-WithoutAllLanguage -WithoutHighlight -WithoutColor\` option is equivalent to \`-Limit\`.
-The \`-WithoutXXX\` (except for \`-WithoutGit\` \`-WithoutVim\` \`-WithoutNeovim\`) options cannot specify with \`-Basic\` or \`-Limit\` options at the same time.
-The \`-WithoutVim\` \`-WithoutNeovim\` cannot specify at same time.
+The \`-WithoutXXX\` options cannot specify with \`-Basic\` or \`-Limit\` options at the same time.
 
 -Help                           Show help message.
 -Basic                          Basic mode.
@@ -184,9 +231,9 @@ The \`-WithoutVim\` \`-WithoutNeovim\` cannot specify at same time.
 -WithoutHighlight               Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
 -WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
 
--WithoutGit                     Disable git support.
--WithoutVim                     Disable vim support.
--WithoutNeovim                  Disable neovim support.
+-OnlyColor [name]               Only one static colorscheme, not random colorschemes.
+-OnlyVim                        Only support vim.
+-OnlyNeovim                     Only support neovim.
 "@
 }
 
@@ -265,16 +312,13 @@ function ParseOptions() {
         CheckNoBasicOption "-WithoutColor"
         CheckNoLimitOption "-WithoutColor"
     }
-    if ($WithoutGit) {
-        CheckNoBasicOption "-WithoutGit"
-    }
 }
 
 function Main() {
     Message "install with mode - $MODE_NAME"
 
     if ($Basic) {
-        InstallBasic
+        BasicInstaller
         Return;
     }
 
@@ -285,13 +329,9 @@ function Main() {
     NpmDependency
 
     # install files
-    InstallTemplates
-    InstallVimrc "$env:USERPROFILE\.vim\lin.vim"
-    InstallNvimInit -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
-
-    # install plugins
-    InstallNvimPlugin
-    InstallVimPlugin
+    InstallTemplate
+    InstallVim "$env:USERPROFILE\.vim\lin.vim"
+    InstallNeovim -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
 }
 
 ParseOptions
