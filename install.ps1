@@ -14,11 +14,14 @@ param (
     [Parameter(HelpMessage="Disable git support")][switch]$WithoutGit = $False
 )
 
-$VIM_HOME="$env:UserProfile\.vim"
+$VIM_HOME="$env:USERPROFILE\.vim"
 $INSTALL_HOME="$VIM_HOME\install"
-$APPDATA_LOCAL_HOME="$env:UserProfile\AppData\Local"
+$APPDATA_LOCAL_HOME="$env:USERPROFILE\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
 $TEMPLATE_HOME="$VIM_HOME\template"
+
+. $INSTALL_HOME\PluginInstaller.ps1
+. $INSTALL_HOME\SettingInstaller.ps1
 
 $OPT_FULL=$True # default mode
 $MODE_NAME="full"
@@ -82,7 +85,11 @@ function RustDependency() {
     Message "install modern rust commands with cargo"
     InstallOrSkip -command "cargo install ripgrep" -target "rg"
     InstallOrSkip -command "cargo install fd-find" -target "fd"
-    InstallOrSkip -command "cargo install --locked bat" -target "bat"
+
+    if ($WithoutHighlight) {
+        # fzf preview syntax highlight
+        InstallOrSkip -command "cargo install --locked bat" -target "bat"
+    }
 }
 
 function Pip3Dependency() {
@@ -103,17 +110,28 @@ function InstallTemplates() {
 }
 
 function InstallVimrc() {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $True)][String]$vimrc
+    )
     Message "install .vimrc for vim"
-    TryBackup "$env:UserProfile\_vimrc"
-    cmd /c mklink %USERPROFILE%\_vimrc %USERPROFILE%\.vim\lin.vim
+    TryBackup "$env:USERPROFILE\_vimrc"
+    cmd /c mklink $env:USERPROFILE\_vimrc $vimrc
 }
 
 function InstallNvimInit() {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $True)][String]$nvimHome,
+        [Parameter(Mandatory = $True)][String]$nvimInit
+    )
     Message "install $APPDATA_LOCAL_HOME/nvim and $APPDATA_LOCAL_HOME/nvim/init.vim for neovim"
     TryBackup "$NVIM_HOME\init.vim"
     TryBackup "$NVIM_HOME"
-    cmd /c mklink %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\.vim
-    cmd /c mklink %USERPROFILE%\AppData\Local\nvim\init.vim %USERPROFILE%\.vim\lin.vim
+    cmd /c mklink $APPDATA_LOCAL_HOME\nvim $nvimHome
+    cmd /c mklink $APPDATA_LOCAL_HOME\nvim\init.vim $nvimInit
 }
 
 function InstallVimPlugin() {
@@ -124,6 +142,11 @@ function InstallVimPlugin() {
 function InstallNvimPlugin() {
     Message "install neovim plugins"
     nvim -E -c "PlugInstall" -c "qall"
+}
+
+function InstallBasic() {
+    InstallVimrc "$env:USERPROFILE\.vim\setting\linrongbin16\standalone.vim"
+    InstallNvimInit -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\setting\linrongbin16\standalone.vim"
 }
 
 function ShowHelp() {
@@ -141,8 +164,9 @@ It is for best user experience, while consumes more CPU, memory and graphics.
 In full mode you could use `--without-xxx` options to disable some specific feature.
 
 Notice: 
-The \`-WithoutXXX\` options are not compatible with \`-Basic\` or \`-Limit\` options.
 The \`-WithoutAllLanguage -WithoutHighlight -WithoutColor\` option is equivalent to \`-Limit\`.
+The \`-WithoutXXX\` (except for \`-WithoutGit\` \`-WithoutVim\` \`-WithoutNeovim\`) options cannot specify with \`-Basic\` or \`-Limit\` options at the same time.
+The \`-WithoutVim\` \`-WithoutNeovim\` cannot specify at same time.
 
 -Help                           Show help message.
 -Basic                          Basic mode.
@@ -159,7 +183,10 @@ The \`-WithoutAllLanguage -WithoutHighlight -WithoutColor\` option is equivalent
 
 -WithoutHighlight               Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
 -WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
+
 -WithoutGit                     Disable git support.
+-WithoutVim                     Disable vim support.
+-WithoutNeovim                  Disable neovim support.
 "@
 }
 
@@ -245,17 +272,22 @@ function ParseOptions() {
 
 function Main() {
     Message "install with mode - $MODE_NAME"
-    Message "install dependencies for windows"
+
+    if ($Basic) {
+        InstallBasic
+        Return;
+    }
 
     # install dependencies
+    Message "install dependencies for windows"
     RustDependency
     Pip3Dependency
     NpmDependency
 
     # install files
     InstallTemplates
-    InstallVimrc
-    InstallNvimInit
+    InstallVimrc "$env:USERPROFILE\.vim\lin.vim"
+    InstallNvimInit -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
 
     # install plugins
     InstallNvimPlugin

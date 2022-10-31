@@ -13,6 +13,7 @@ setting.vim
 setting-color.vim
 setting-highlight.vim
 setting-language.vim
+setting-git.vim
 coc-settings.json
 
 # neovim
