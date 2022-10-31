@@ -1,0 +1,31 @@
+Install in one-line command with 3 modes: basic, limit and full.
+
+Basic mode only install pure vim script settings, no vim plugins or any other third party softwares.
+It is for production environment, which lacks of software sources or user authentication.
+
+Limit mode installs limited features, no extra highlights, colors or all other language supports.
+It is for better performance on some old devices, which lacks of CPU, memory or graphics.
+
+Full mode is default mode, enable all features.
+It is for best user experience, while consumes more CPU, memory and graphics.
+You could use extra without options to disable some specific feature.
+
+Notice: `--without-all-language --without-highlight --without-color` is equivalent to `--limit`.
+
+-h,--help                       Show help message.
+-b,--basic                      Basic mode.
+-l,--limit                      Limit mode.
+
+--without-cxx                   Disable c/c++/cmake support.
+--without-python                Disable python support.
+--without-markdown              Disable markdown support.
+--without-json                  Disable json support.
+--without-javascript            Disable javascript support.
+--without-powershell            Disable powershell support.
+--without-bash                  Disable linux bash support.
+--without-all-language          Disable all language supports above.
+
+--without-highlight             Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
+--without-color                 Disable extra colors such as RGBs, random colorschemes, etc.
+--without-git                   Disable git support.
+
