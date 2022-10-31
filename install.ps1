@@ -36,8 +36,13 @@ function TryBackup() {
     if (Test-Path $target) {
         $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
         $backup=-join($target, ".", $now)
-        Message "backup '$target' to '$backup'"
-        Rename-Item $target $backup
+        try {
+            Copy-Item $target -Destination $backup
+            (Get-Item $target).Delete()
+            Message "backup '$target' to '$backup'"
+        } catch {
+            Message "error! failed to backup '$target' to '$backup', exception:$_"
+        }
     }
 }
 
