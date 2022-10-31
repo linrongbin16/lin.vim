@@ -1,21 +1,27 @@
+param (
+    [Parameter(HelpMessage="Show help message")][switch]$Help = $False,
+    [Parameter(HelpMessage="Basic mode")][switch]$Basic = $False,
+    [Parameter(HelpMessage="Limit mode")][switch]$Limit = $False,
+    [Parameter(HelpMessage="Disable c/c++/cmake support")][switch]$WithoutCxx = $False,
+    [Parameter(HelpMessage="Disable python support")][switch]$WithoutPython = $False,
+    [Parameter(HelpMessage="Disable markdown support")][switch]$WithoutMarkdown = $False,
+    [Parameter(HelpMessage="Disable json support")][switch]$WithoutJson = $False,
+    [Parameter(HelpMessage="Disable javascript support")][switch]$WithoutJavascript = $False,
+    [Parameter(HelpMessage="Disable powershell support")][switch]$WithoutPowershell = $False,
+    [Parameter(HelpMessage="Disable bash support")][switch]$WithoutBash = $False,
+    [Parameter(HelpMessage="Disable extra highlights")][switch]$WithoutHighlight = $False,
+    [Parameter(HelpMessage="Disable extra colors")][switch]$WithoutColor = $False,
+    [Parameter(HelpMessage="Disable git support")][switch]$WithoutGit = $False
+)
+
 $VIM_HOME="$env:UserProfile\.vim"
 $INSTALL_HOME="$VIM_HOME\install"
 $APPDATA_LOCAL_HOME="$env:UserProfile\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
 $TEMPLATE_HOME="$VIM_HOME\template"
 
-$OPT_BASIC=$False
 $OPT_FULL=$True # default mode
-$OPT_WITHOUT_CXX=$False
-$OPT_WITHOUT_PYTHON=$False
-$OPT_WITHOUT_MARKDOWN=$False
-$OPT_WITHOUT_JSON=$False
-$OPT_WITHOUT_JAVASCRIPT=$False
-$OPT_WITHOUT_POWERSHELL=$False
-$OPT_WITHOUT_BASH=$False
-$OPT_WITHOUT_HIGHLIGHT=$False
-$OPT_WITHOUT_COLOR=$False
-$OPT_WITHOUT_GIT=$False
+$MODE_NAME="full"
 
 function Message() {
     [CmdletBinding()]
@@ -121,18 +127,50 @@ function InstallNvimPlugin() {
 }
 
 function ShowHelp() {
-    Get-Content $INSTALL_HOME/help_message.txt | Write-Host
+    Write-Host @"
+Install in one-line command with 3 modes: basic, limit and full.
+
+Basic mode only install pure vim script settings, no vim plugins or any other third party softwares.
+It is for production environment, which lacks of software sources or user authentication.
+
+Limit mode installs limited features, no extra highlights, colors or all other language supports.
+It is for better performance on some old devices, which lacks of CPU, memory or graphics.
+
+Full mode is default mode, enable all features.
+It is for best user experience, while consumes more CPU, memory and graphics.
+In full mode you could use `--without-xxx` options to disable some specific feature.
+
+Notice: 
+The \`-WithoutXXX\` options are not compatible with \`-Basic\` or \`-Limit\` options.
+The \`-WithoutAllLanguage -WithoutHighlight -WithoutColor\` option is equivalent to \`-Limit\`.
+
+-Help                           Show help message.
+-Basic                          Basic mode.
+-Limit                          Limit mode.
+
+-WithoutCxx                     Disable c/c++/cmake support.
+-WithoutPython                  Disable python support.
+-WithoutMarkdown                Disable markdown support.
+-WithoutJson                    Disable json support.
+-WithoutJavascript              Disable javascript support.
+-WithoutPowershell              Disable powershell support.
+-WithoutBash                    Disable linux bash support.
+-WithoutAllLanguage             Disable all language supports above.
+
+-WithoutHighlight               Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
+-WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
+-WithoutGit                     Disable git support.
+"@
 }
 
 function CheckNoBasicOption() {
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory = $True)][Boolean]$hasBasicOption,
         [Parameter(Mandatory = $True)][String]$inputOption
     )
-    if ($hasBasicOption) {
-        Message "error! cannot use $inputOption along with -basic $True"
+    if ($Basic) {
+        Message "error! cannot use $inputOption along with -Basic"
         Exit
     }
 }
@@ -141,79 +179,72 @@ function CheckNoLimitOption() {
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory = $True)][Boolean]$hasLimitOption,
         [Parameter(Mandatory = $True)][String]$inputOption
     )
-    if ($hasLimitOption) {
-        Message "error! cannot use $inputOption along with -limit $True"
+    if ($Limit) {
+        Message "error! cannot use $inputOption along with -Limit"
         Exit
     }
 }
 
 function ParseOptions() {
-    $hasBasicOption=$False
-    $hasLimitOption=$False
-    Write-Host "args:$args"
-    for ($i = 0; $i -lt $args.Count; $i++) {
-        $opt = $args[ $i ]
-        Write-Host "args[ $i ]:$opt"
-        if (($opt -eq "-b") -or ($opt -eq "--basic")) {
-            $hasBasicOption=$true
-            CheckNoLimitOption $hasLimitOption $opt
-            $OPT_BASIC=$True
-            $OPT_FULL=$False
-        } elseif (($opt -eq "-l") -or ($opt -eq "--limit")) {
-            $hasLimitOption=$true
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_BASIC=$False
-            $OPT_FULL=$True
-            $OPT_WITHOUT_CXX=$True
-            $OPT_WITHOUT_PYTHON=$True
-            $OPT_WITHOUT_MARKDOWN=$True
-            $OPT_WITHOUT_JSON=$True
-            $OPT_WITHOUT_JAVASCRIPT=$True
-            $OPT_WITHOUT_POWERSHELL=$True
-            $OPT_WITHOUT_BASH=$True
-            $OPT_WITHOUT_HIGHLIGHT=$True
-            $OPT_WITHOUT_COLOR=$True
-        } elseif ($opt -eq "--without-cxx") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_CXX=$True
-        } elseif ($opt -eq "--without-python") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_PYTHON=$True
-        } elseif ($opt -eq "--without-markdown") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_MARKDOWN=$True
-        } elseif ($opt -eq "--without-json") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_JSON=$True
-        } elseif ($opt -eq "--without-javascript") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_JAVASCRIPT=$True
-        } elseif ($opt -eq "--without-powershell") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_POWERSHELL=$True
-        } elseif ($opt -eq "--without-bash") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_BASH=$True
-        } elseif ($opt -eq "--without-highlight") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_HIGHLIGHT=$True
-        } elseif ($opt -eq "--without-color") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_COLOR=$True
-        } elseif ($opt -eq "--without-git") {
-            CheckNoBasicOption $hasBasicOption $opt
-            $OPT_WITHOUT_GIT=$True
-        } else {
-            Message "unknown options! please try .\install.ps1 --help for more information"
-            Exit
-        }
+    if ($Help) {
+        ShowHelp;
+        Exit;
+    }
+    if ($Basic) {
+        CheckNoLimitOption "-Basic"
+        $OPT_FULL=$False
+        $MODE_NAME="basic"
+    }
+    if ($Limit) {
+        CheckNoBasicOption "-Limit"
+        $OPT_FULL=$True
+        $MODE_NAME="limit"
+    }
+    if ($WithoutCxx) {
+        CheckNoBasicOption "-WithoutCxx"
+        CheckNoLimitOption "-WithoutCxx"
+    }
+    if ($WithoutPython) {
+        CheckNoBasicOption "-WithoutPython"
+        CheckNoLimitOption "-WithoutPython"
+    }
+    if ($WithoutMarkdown) {
+        CheckNoBasicOption "-WithoutMarkdown"
+        CheckNoLimitOption "-WithoutMarkdown"
+    }
+    if ($WithoutJson) {
+        CheckNoBasicOption "-WithoutJson"
+        CheckNoLimitOption "-WithoutJson"
+    }
+    if ($WithoutJavascript) {
+        CheckNoBasicOption "-WithoutJavascript"
+        CheckNoLimitOption "-WithoutJavascript"
+    }
+    if ($WithoutPowershell) {
+        CheckNoBasicOption "-WithoutPowershell"
+        CheckNoLimitOption "-WithoutPowershell"
+    }
+    if ($WithoutBash) {
+        CheckNoBasicOption "-WithoutBash"
+        CheckNoLimitOption "-WithoutBash"
+    }
+    if ($WithoutHighlight) {
+        CheckNoBasicOption "-WithoutHighlight"
+        CheckNoLimitOption "-WithoutHighlight"
+    }
+    if ($WithoutColor) {
+        CheckNoBasicOption "-WithoutColor"
+        CheckNoLimitOption "-WithoutColor"
+    }
+    if ($WithoutGit) {
+        CheckNoBasicOption "-WithoutGit"
     }
 }
 
 function Main() {
+    Message "install with mode - $MODE_NAME"
     Message "install dependencies for windows"
 
     # install dependencies
@@ -231,14 +262,7 @@ function Main() {
     InstallVimPlugin
 }
 
-Write-Host "args:$args"
-for ($i = 0; $i -lt $args.Count; $i++) {
-    $opt = $args[ $i ]
-    if (($opt -eq "-h") -or ($opt -eq "--help")) {
-        ShowHelp;
-        Exit;
-    }
-}
+ParseOptions
 
 # Get the ID and security principal of the current user account
 $currentID = [System.Security.Principal.WindowsIdentity]::GetCurrent();
@@ -257,5 +281,4 @@ if (!($currentPrincipal.IsInRole($adminRole)))
     Exit;
 }
 
-ParseOptions $args
 Main

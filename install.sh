@@ -7,6 +7,7 @@ INSTALL_HOME=$VIM_HOME/install
 TEMPLATE_HOME=$VIM_HOME/template
 OS="$(uname -s)"
 
+MODE_NAME='full'
 OPT_BASIC=0
 OPT_FULL=1 # default mode
 OPT_WITHOUT_CXX=0
@@ -144,7 +145,40 @@ function install_nvim_init() {
 }
 
 function show_help() {
-    cat $INSTALL_HOME/help_message.txt
+cat <<EOF
+Install in one-line command with 3 modes: basic, limit and full.
+
+Basic mode only install pure vim script settings, no vim plugins or any other third party softwares.
+It is for production environment, which lacks of software sources or user authentication.
+
+Limit mode installs limited features, no extra highlights, colors or all other language supports.
+It is for better performance on some old devices, which lacks of CPU, memory or graphics.
+
+Full mode is default mode, enable all features.
+It is for best user experience, while consumes more CPU, memory and graphics.
+In full mode you could use `--without-xxx` options to disable some specific feature.
+
+Notice: 
+The `--without-xxx` options are not compatible with `--basic` or `--limit` options.
+The `--without-all-language --without-highlight --without-color` option is equivalent to `--limit`.
+
+-h,--help                       Show help message.
+-b,--basic                      Basic mode.
+-l,--limit                      Limit mode.
+
+--without-cxx                   Disable c/c++/cmake support.
+--without-python                Disable python support.
+--without-markdown              Disable markdown support.
+--without-json                  Disable json support.
+--without-javascript            Disable javascript support.
+--without-powershell            Disable powershell support.
+--without-bash                  Disable linux bash support.
+--without-all-language          Disable all language supports above.
+
+--without-highlight             Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
+--without-color                 Disable extra colors such as RGBs, random colorschemes, etc.
+--without-git                   Disable git support.
+EOF
 }
 
 function check_no_basic_option() {
@@ -189,6 +223,7 @@ function parse_options() {
         has_basic_option=1
         check_no_limit_option $has_limit_option "$1"
 
+        MODE_NAME='basic'
         OPT_BASIC=1
         OPT_FULL=0
         ;;
@@ -197,6 +232,7 @@ function parse_options() {
         has_limit_option=1
         check_no_basic_option $has_basic_option "$1"
 
+        MODE_NAME='limit'
         OPT_BASIC=0
         OPT_FULL=1
         OPT_WITHOUT_CXX=1
@@ -212,46 +248,55 @@ function parse_options() {
     --without-cxx) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_CXX=1
         ;;
     --without-python) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_PYTHON=1
         ;;
     --without-markdown) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_MARKDOWN=1
         ;;
     --without-json) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_JSON=1
         ;;
     --without-javascript) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_JAVASCRIPT=1
         ;;
     --without-powershell) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_POWERSHELL=1
         ;;
     --without-bash) 
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_BASH=1
         ;;
-    --without-highlight) 
+    --without-highlight)
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_HIGHLIGHT=1
         ;;
     --without-color)
         shift
         check_no_basic_option $has_basic_option "$1"
+        check_no_limit_option $has_limit_option "$1"
         OPT_WITHOUT_COLOR=1
         ;;
     --without-git)
@@ -272,6 +317,7 @@ function main() {
     parse_options
 
     # install dependencies
+    $INSTALL_HOME/msg.sh "install with mode - $MODE_NAME"
     platform_dependency
     rust_dependency
     golang_dependency
