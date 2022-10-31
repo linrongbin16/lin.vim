@@ -151,20 +151,18 @@ function CheckNoLimitOption() {
 }
 
 function ParseOptions() {
-    $help=$False
     $hasBasicOption=$False
     $hasLimitOption=$False
+    Write-Host "args:$args"
     for ($i = 0; $i -lt $args.Count; $i++) {
         $opt = $args[ $i ]
-        if ($opt -eq "-h" || $opt -eq "--help") {
-            $help=$True
-                break
-        } elseif ($opt -eq "-b" || $opt -eq "--basic") {
+        Write-Host "args[ $i ]:$opt"
+        if (($opt -eq "-b") -or ($opt -eq "--basic")) {
             $hasBasicOption=$true
             CheckNoLimitOption $hasLimitOption $opt
             $OPT_BASIC=$True
             $OPT_FULL=$False
-        } elseif ($opt -eq "-l" || $opt -eq "--limit") {
+        } elseif (($opt -eq "-l") -or ($opt -eq "--limit")) {
             $hasLimitOption=$true
             CheckNoBasicOption $hasBasicOption $opt
             $OPT_BASIC=$False
@@ -213,10 +211,6 @@ function ParseOptions() {
             Exit
         }
     }
-    if ($help) {
-        ShowHelp
-        Exit
-    }
 }
 
 function Main() {
@@ -237,6 +231,15 @@ function Main() {
     InstallVimPlugin
 }
 
+Write-Host "args:$args"
+for ($i = 0; $i -lt $args.Count; $i++) {
+    $opt = $args[ $i ]
+    if (($opt -eq "-h") -or ($opt -eq "--help")) {
+        ShowHelp;
+        Exit;
+    }
+}
+
 # Get the ID and security principal of the current user account
 $currentID = [System.Security.Principal.WindowsIdentity]::GetCurrent();
 $currentPrincipal = New-Object System.Security.Principal.WindowsPrincipal($currentID);
@@ -248,10 +251,11 @@ if (!($currentPrincipal.IsInRole($adminRole)))
 {
     # Create a new process that run as administrator
     $installer=$script:MyInvocation.MyCommand.Path
-    Start-Process powershell "& '$installer' @args" -Verb RunAs
+    Start-Process powershell "& '$installer' $args" -Verb RunAs
 
     # Exit from the current process
     Exit;
 }
 
+ParseOptions $args
 Main
