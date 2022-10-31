@@ -31,6 +31,3 @@ function NextColorSchemeSync()
   execute 'colorscheme ' . s:mycolors[idx]
   execute 'syntax sync fromstart'
 endfunction
-
-" initialize color scheme for vim start
-call NextColorScheme()

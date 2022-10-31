@@ -7,36 +7,6 @@ endif
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
-" Color Theme
-Plug 'lifepillar/vim-solarized8'
-Plug 'crusoexia/vim-monokai'
-Plug 'dracula/vim', {'as': 'dracula'}
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'srcery-colors/srcery-vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'Rigellute/rigel'
-Plug 'chriskempson/base16-vim'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/sonokai'
-Plug 'kaicataldo/material.vim', {'branch': 'main'}
-if has('nvim-0.5')
-    Plug 'EdenEast/nightfox.nvim'
-    Plug 'folke/tokyonight.nvim', {'branch': 'main'}
-    Plug 'projekt0n/github-nvim-theme'
-endif
-if has('nvim-0.6')
-    Plug 'rebelot/kanagawa.nvim'
-endif
-
-""" some colors that not working well with other plugins:
-" Plug 'tomasiser/vim-code-dark'
-" Plug 'tomasr/molokai'
-" Plug 'romainl/Apprentice'
-" Plug 'nanotech/jellybeans.vim'
-
 " UI
 if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
@@ -70,10 +40,6 @@ if has('nvim-0.5')
     Plug 'f-person/git-blame.nvim'
 endif
 
-" Highlight
-Plug 'RRethy/vim-illuminate'
-Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
-
 " Tags
 Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
@@ -100,8 +66,6 @@ Plug 'neovimhaskell/haskell-vim'
 " HTML Tag
 Plug 'andymass/vim-matchup'
 Plug 'alvan/vim-closetag'
-" Markdown Preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " C#
 " Plug 'OmniSharp/omnisharp-vim'
 

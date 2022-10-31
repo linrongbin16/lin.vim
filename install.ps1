@@ -28,7 +28,6 @@ $MODE_NAME="full"
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
 
-
 # common utils
 
 function Message() {
@@ -93,36 +92,10 @@ function ClearFile() {
         [Parameter(Mandatory = $True)][String]$target
     )
     if (Test-Path $target) {
-        Message "clear '$target'"
         Clear-Content -Path $target
     } else {
         New-Item -Path $target
     }
-}
-
-function BeginInstallPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-header-template.vim" | Add-Content -Path $PLUGIN
-}
-
-function EndInstallPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-footer-template.vim" | Add-Content -Path $PLUGIN
-}
-
-function BeginInstallCocExtension() {
-    Get-Content -Path "$TEMPLATE_HOME\setting-language-header.vim" | Add-Content -Path $SETTING_LANGUAGE
-}
-
-function EndInstallCocExtension() {
-    Get-Content -Path "$TEMPLATE_HOME\setting-language-footer.vim" | Add-Content -Path $SETTING_LANGUAGE
-}
-
-function InstallCocExtension() {
-    [CmdletBinding()]
-    Param
-    (
-        [Parameter(Mandatory = $True)][String]$extension
-    )
-    Add-Content -Path $SETTING_LANGUAGE -Value "$extension,"
 }
 
 # third party dependency
@@ -155,6 +128,106 @@ function InstallTemplate() {
     Copy-Item $TEMPLATE_HOME\plugin-template.vim -Destination $VIM_HOME\plugin.vim
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
     Copy-Item $TEMPLATE_HOME\setting-template.vim -Destination $VIM_HOME\setting.vim
+}
+
+function BeginInstallPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-header-template.vim" | Add-Content -Path $PLUGIN_FILE
+}
+
+function EndInstallPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-footer-template.vim" | Add-Content -Path $PLUGIN_FILE
+}
+
+function InstallHighlightPlugins() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-highlight-template.vim" | Add-Content -Path $PLUGIN_FILE
+}
+
+function InstallColorPlugins() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-color-template.vim" | Add-Content -Path $PLUGIN_FILE
+}
+
+function InstallMarkdownPlugins() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-markdown-template.vim" | Add-Content -Path $PLUGIN_FILE
+}
+
+function InstallCommonPlugins() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin-template.vim" | Add-Content -Path $PLUGIN_FILE
+}
+
+function BeginInstallCocGlobalExtension() {
+    Get-Content -Path "$TEMPLATE_HOME\setting-coc-global-extension-header.vim" | Add-Content -Path $SETTING_FILE
+}
+
+function EndInstallCocGlobalExtension() {
+    Get-Content -Path "$TEMPLATE_HOME\setting-coc-global-extension-footer.vim" | Add-Content -Path $SETTING_FILE
+}
+
+function InstallCocGlobalExtension() {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $True)][String]$extension
+    )
+    Add-Content -Path $SETTING_FILE -Value "'$extension', "
+}
+
+function InstallPluginTemplate() {
+    ClearFile $PLUGIN_FILE
+    BeginInstallPlugin
+    if (-not $WithoutHighlight) {
+        # enable highlight feature
+        InstallHighlightPlugins
+    }
+    if (-not $WithoutColor) {
+        # enable color feature
+        InstallColorPlugins
+    }
+    if (-not $WithoutMarkdown) {
+        # enable markdown feature
+        InstallMarkdownPlugins
+    }
+    InstallCommonPlugins
+    EndInstallPlugin
+}
+
+function InstallCocGlobalExtensionTemplate() {
+    Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
+}
+
+function InstallSettingTemplate() {
+    ClearFile $SETTING_FILE
+
+    InstallCocGlobalExtensionTemplate
+    BeginInstallCocGlobalExtension
+    InstallCocGlobalExtension 'coc-snippets'
+    InstallCocGlobalExtension 'coc-yank'
+    InstallCocGlobalExtension 'coc-lists'
+    InstallCocGlobalExtension 'coc-html'
+    InstallCocGlobalExtension 'coc-xml'
+    InstallCocGlobalExtension 'coc-css'
+    if (-not $WithoutCxx) {
+        InstallCocGlobalExtension 'coc-clangd'
+        InstallCocGlobalExtension 'coc-cmake'
+    }
+    if (-not $WithoutPython) {
+        InstallCocGlobalExtension 'coc-pyright'
+    }
+    if (-not $WithoutJson) {
+        InstallCocGlobalExtension 'coc-json'
+    }
+    if (-not $WithoutJavascript) {
+        InstallCocGlobalExtension 'coc-tsserver'
+        InstallCocGlobalExtension '@yaegassy/coc-volar'
+        InstallCocGlobalExtension 'coc-eslint'
+        InstallCocGlobalExtension 'coc-prettier'
+    }
+    if (-not $WithoutPowershell) {
+        InstallCocGlobalExtension 'coc-powershell'
+    }
+    if (-not $WithoutBash) {
+        InstallCocGlobalExtension 'coc-sh'
+    }
+    EndInstallCocGlobalExtension
 }
 
 # vim
