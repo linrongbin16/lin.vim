@@ -494,7 +494,7 @@ function ParseOptions() {
 }
 
 function Main() {
-    Message "install with mode - $global:MODE_NAME"
+    Message "install with mode: $global:MODE_NAME"
 
     if ($global:OPT_BASIC) {
         BasicInstaller
@@ -511,6 +511,8 @@ function Main() {
     InstallTemplate
     InstallVim "$env:USERPROFILE\.vim\lin.vim"
     InstallNeovim -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
+
+    Message "install with mode: $global:MODE_NAME - done"
 }
 
 ParseOptions
