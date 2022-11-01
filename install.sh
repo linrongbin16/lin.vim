@@ -303,8 +303,9 @@ cat <<EOF
 In full mode you could use `--without-xxx` options to disable some specific feature.
 
 Notice:
-The `--without-all-language --without-highlight --without-color` option is equivalent to `--limit`.
-The `--without-xxx` options cannot specify with `--basic` or `--limit` options at the same time.
+The `--without-all-language --without-highlight --without-color` options is equivalent to `--limit`.
+The `--without-xxx` option cannot specify with `--basic` or `--limit` at the same time.
+The `--without-color` option cannot specify with `--static-color \[name\]` at the same time.
 
 -h,--help                       Show help message.
 -b,--basic                      Basic mode.

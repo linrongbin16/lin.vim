@@ -347,8 +347,9 @@ function ShowHelp() {
 In full mode you could use `-WithoutXXX` options to disable some specific feature.
 
 Notice:
-The \`-WithoutAllLanguage -WithoutHighlight -WithoutColor\` option is equivalent to \`-Limit\`.
-The \`-WithoutXXX\` options cannot specify with \`-Basic\` or \`-Limit\` options at the same time.
+The ``-WithoutAllLanguage -WithoutHighlight -WithoutColor`` options is equivalent to ``-Limit``.
+The ``-WithoutXXX`` option cannot specify with ``-Basic`` or ``-Limit`` at the same time.
+The ``-WithoutColor`` option cannot specify with ``-StaticColor`` at the same time.
 
 -Help                           Show help message.
 -Basic                          Basic mode.
