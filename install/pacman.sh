@@ -11,6 +11,7 @@ yes | sudo pacman -Rs vim
 yes | sudo pacman -S gvim
 
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S base-devel" "gcc"
+$INSTALL/install_or_skip.sh "yes | sudo pacman -S base-devel" "make"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S neovim" "nvim"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S curl" "curl"
 $INSTALL/install_or_skip.sh "yes | sudo pacman -S wget" "wget"

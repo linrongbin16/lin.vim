@@ -20,6 +20,7 @@ sudo apt-get update
 sudo apt-get install -y neovim
 
 $INSTALL/install_or_skip.sh "sudo apt-get install -y build-essential" "gcc"
+$INSTALL/install_or_skip.sh "sudo apt-get install -y build-essential" "make"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y curl" "curl"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y wget" "wget"
 $INSTALL/install_or_skip.sh "sudo apt-get install -y autoconf" "autoconf"
@@ -53,3 +54,8 @@ if ! type "ctags" >/dev/null 2>&1; then
 else
     $INSTALL/msg_skip.sh 'ctags'
 fi
+
+# locale
+sudo locale-gen en_US
+sudo locale-gen en_US.UTF-8
+sudo update-locale
