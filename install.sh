@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+set -x
+
 VIM_HOME=$HOME/.vim
 CONFIG_HOME=$HOME/.config
 NVIM_HOME=$CONFIG_HOME/nvim
@@ -294,7 +297,7 @@ function install_neovim() {
 }
 
 function basic_installer() {
-
+    echo 1
 }
 
 function show_help() {
@@ -343,7 +346,7 @@ function check_no_option() {
 
 function parse_options() {
     local options
-    options=$(getopt -l "help,basic,limit,without-cxx,without-python,without-rust,without-go,without-json,without-javascript,without-bash,without-all-language,without-highlight,without-color,static-color:,only-vim,only-neovim" -o "hbl" -a -- "$@")
+    options=$(getopt -l "help,basic,limit,without-cxx,without-python,without-rust,without-go,without-json,without-javascript,without-bash,without-all-language,without-highlight,without-color,static-color::,only-vim,only-neovim" -o "hbl" -a -- "$@")
     eval set -- "$options"
 
     local basic=0
