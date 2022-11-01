@@ -21,12 +21,12 @@ set background=dark
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 
-function NextColorScheme()
+function NextRandomColorScheme()
   let idx = localtime() % len(s:mycolors)
   execute 'colorscheme ' . s:mycolors[idx]
 endfunction
 
-function NextColorSchemeSync()
+function NextRandomColorSchemeSync()
   let idx = localtime() % len(s:mycolors)
   execute 'colorscheme ' . s:mycolors[idx]
   execute 'syntax sync fromstart'

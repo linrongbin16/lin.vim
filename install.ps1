@@ -1,3 +1,5 @@
+ #Requires -RunAsAdministrator
+
 param (
     [Parameter(HelpMessage="Show help message")][switch]$Help = $False,
     [Parameter(HelpMessage="Basic mode")][switch]$Basic = $False,
@@ -9,12 +11,15 @@ param (
     [Parameter(HelpMessage="Disable javascript support")][switch]$WithoutJavascript = $False,
     [Parameter(HelpMessage="Disable powershell support")][switch]$WithoutPowershell = $False,
     [Parameter(HelpMessage="Disable bash support")][switch]$WithoutBash = $False,
+    [Parameter(HelpMessage="Disable all language support")][switch]$WithoutAllLanguage = $False,
     [Parameter(HelpMessage="Disable extra highlights")][switch]$WithoutHighlight = $False,
     [Parameter(HelpMessage="Disable extra colors")][switch]$WithoutColor = $False,
-    [Parameter(HelpMessage="Only one static colorscheme")][String]$OnlyColor = "", 
+    [Parameter(HelpMessage="Only one static colorscheme")][String]$StaticColor= "",
     [Parameter(HelpMessage="Only support vim")][switch]$OnlyVim = $False,
-    [Parameter(HelpMessage="Only support neovim")][switch]$OnlyNeovim = $False,
+    [Parameter(HelpMessage="Only support neovim")][switch]$OnlyNeovim = $False
 )
+
+Set-PSDebug -Trace 1
 
 $VIM_HOME="$env:USERPROFILE\.vim"
 $INSTALL_HOME="$VIM_HOME\install"
@@ -27,6 +32,7 @@ $MODE_NAME="full"
 
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
+$COLORSCHEMES=@('darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'rigel', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'material')
 
 # common utils
 
@@ -64,11 +70,16 @@ function TryBackup() {
         $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
         $backup=-join($target, ".", $now)
         try {
-            Copy-Item $target -Destination $backup
-            (Get-Item $target).Delete()
+            Rename-Item $target $backup
             Message "backup '$target' to '$backup'"
         } catch {
-            Message "error! failed to backup '$target' to '$backup', exception:$_"
+            try {
+                Copy-Item $target -Destination $backup -Recurse
+                (Get-Item $target).Delete()
+                Message "backup '$target' to '$backup'"
+            } catch {
+                Message "error! failed to backup '$target' to '$backup', exception:$_"
+            }
         }
     }
 }
@@ -98,6 +109,15 @@ function ClearFile() {
     }
 }
 
+function IsEmptyString() {
+    [CmdletBinding()]
+    Param
+    (
+        [String]$value
+    )
+    Return $value -notmatch '\S'
+}
+
 # third party dependency
 
 function RustDependency() {
@@ -123,111 +143,140 @@ function NpmDependency() {
 
 # template
 
-function InstallTemplate() {
-    Message "install configurations from templates"
-    Copy-Item $TEMPLATE_HOME\plugin-template.vim -Destination $VIM_HOME\plugin.vim
-    Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
-    Copy-Item $TEMPLATE_HOME\setting-template.vim -Destination $VIM_HOME\setting.vim
-}
-
 function BeginInstallPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-header-template.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\header.vim" | Add-Content -Path $PLUGIN_FILE
 }
 
 function EndInstallPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-footer-template.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\footer.vim" | Add-Content -Path $PLUGIN_FILE
 }
 
-function InstallHighlightPlugins() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-highlight-template.vim" | Add-Content -Path $PLUGIN_FILE
+function InstallHighlightPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin\highlight.vim" | Add-Content -Path $PLUGIN_FILE
 }
 
-function InstallColorPlugins() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-color-template.vim" | Add-Content -Path $PLUGIN_FILE
+function InstallColorPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin\color.vim" | Add-Content -Path $PLUGIN_FILE
 }
 
-function InstallMarkdownPlugins() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-markdown-template.vim" | Add-Content -Path $PLUGIN_FILE
+function InstallMarkdownPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin\markdown.vim" | Add-Content -Path $PLUGIN_FILE
 }
 
-function InstallCommonPlugins() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin-template.vim" | Add-Content -Path $PLUGIN_FILE
+function InstallCommonPlugin() {
+    Get-Content -Path "$TEMPLATE_HOME\plugin\common.vim" | Add-Content -Path $PLUGIN_FILE
 }
 
-function BeginInstallCocGlobalExtension() {
-    Get-Content -Path "$TEMPLATE_HOME\setting-coc-global-extension-header.vim" | Add-Content -Path $SETTING_FILE
+function BeginInstallCocGlobalExtensionSetting() {
+    Add-Content -Path $SETTING_FILE -Value ""
+    Add-Content -Path $SETTING_FILE -Value '" Coc global extensions'
+    Add-Content -Path $SETTING_FILE -Value "let g:coc_global_extensions = [" -NoNewline
 }
 
-function EndInstallCocGlobalExtension() {
-    Get-Content -Path "$TEMPLATE_HOME\setting-coc-global-extension-footer.vim" | Add-Content -Path $SETTING_FILE
+function EndInstallCocGlobalExtensionSetting() {
+    Add-Content -Path $SETTING_FILE -Value "]"
 }
 
-function InstallCocGlobalExtension() {
+function InstallRandomColorSchemeSetting() {
+    Get-Content -Path "$TEMPLATE_HOME\setting\random-colorscheme.vim" | Add-Content -Path $SETTING_FILE
+}
+
+function AddCocGlobalExtensionSetting() {
     [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $True)][String]$extension
     )
-    Add-Content -Path $SETTING_FILE -Value "'$extension', "
+    Add-Content -Path $SETTING_FILE -Value "'$extension', " -NoNewline
+}
+
+function InstallStaticColorSchemeSettings() {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $True)][String]$color
+    )
+    Add-Content -Path $SETTING_FILE -Value ""
+    Add-Content -Path $SETTING_FILE -Value '""" Static colorscheme'
+    Add-Content -Path $SETTING_FILE -Value "colorscheme $color"
+}
+
+function InstallCommonSettings() {
+    Get-Content -Path "$TEMPLATE_HOME\setting\common.vim" | Add-Content -Path $SETTING_FILE
 }
 
 function InstallPluginTemplate() {
     ClearFile $PLUGIN_FILE
     BeginInstallPlugin
-    if (-not $WithoutHighlight) {
-        # enable highlight feature
-        InstallHighlightPlugins
-    }
     if (-not $WithoutColor) {
         # enable color feature
-        InstallColorPlugins
+        InstallColorPlugin
+    }
+    if (-not $WithoutHighlight) {
+        # enable highlight feature
+        InstallHighlightPlugin
     }
     if (-not $WithoutMarkdown) {
         # enable markdown feature
-        InstallMarkdownPlugins
+        InstallMarkdownPlugin
     }
-    InstallCommonPlugins
+    InstallCommonPlugin
     EndInstallPlugin
-}
-
-function InstallCocGlobalExtensionTemplate() {
-    Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
 }
 
 function InstallSettingTemplate() {
     ClearFile $SETTING_FILE
 
-    InstallCocGlobalExtensionTemplate
-    BeginInstallCocGlobalExtension
-    InstallCocGlobalExtension 'coc-snippets'
-    InstallCocGlobalExtension 'coc-yank'
-    InstallCocGlobalExtension 'coc-lists'
-    InstallCocGlobalExtension 'coc-html'
-    InstallCocGlobalExtension 'coc-xml'
-    InstallCocGlobalExtension 'coc-css'
+    Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
+
+    BeginInstallCocGlobalExtensionSetting
+    AddCocGlobalExtensionSetting 'coc-snippets'
+    AddCocGlobalExtensionSetting 'coc-yank'
+    AddCocGlobalExtensionSetting 'coc-lists'
+    AddCocGlobalExtensionSetting 'coc-html'
+    AddCocGlobalExtensionSetting 'coc-xml'
     if (-not $WithoutCxx) {
-        InstallCocGlobalExtension 'coc-clangd'
-        InstallCocGlobalExtension 'coc-cmake'
+        AddCocGlobalExtensionSetting 'coc-clangd'
+        AddCocGlobalExtensionSetting 'coc-cmake'
     }
     if (-not $WithoutPython) {
-        InstallCocGlobalExtension 'coc-pyright'
+        AddCocGlobalExtensionSetting 'coc-pyright'
     }
     if (-not $WithoutJson) {
-        InstallCocGlobalExtension 'coc-json'
+        AddCocGlobalExtensionSetting 'coc-json'
     }
     if (-not $WithoutJavascript) {
-        InstallCocGlobalExtension 'coc-tsserver'
-        InstallCocGlobalExtension '@yaegassy/coc-volar'
-        InstallCocGlobalExtension 'coc-eslint'
-        InstallCocGlobalExtension 'coc-prettier'
+        AddCocGlobalExtensionSetting 'coc-tsserver'
+        AddCocGlobalExtensionSetting 'coc-css'
+        AddCocGlobalExtensionSetting '@yaegassy/coc-volar'
+        AddCocGlobalExtensionSetting 'coc-eslint'
+        AddCocGlobalExtensionSetting 'coc-prettier'
     }
     if (-not $WithoutPowershell) {
-        InstallCocGlobalExtension 'coc-powershell'
+        AddCocGlobalExtensionSetting 'coc-powershell'
     }
     if (-not $WithoutBash) {
-        InstallCocGlobalExtension 'coc-sh'
+        AddCocGlobalExtensionSetting 'coc-sh'
     }
-    EndInstallCocGlobalExtension
+    EndInstallCocGlobalExtensionSetting
+
+    if (-not (IsEmptyString $StaticColor)) {
+        InstallStaticColorSchemeSettings $StaticColor
+    } elseif (-not $WithoutColor) {
+        InstallRandomColorSchemeSetting
+    }
+
+    InstallCommonSettings
+}
+
+function InstallTemplate() {
+    Message "install configurations"
+    # Copy-Item $TEMPLATE_HOME\plugin-template.vim -Destination $VIM_HOME\plugin.vim
+    # Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
+    # Copy-Item $TEMPLATE_HOME\setting-template.vim -Destination $VIM_HOME\setting.vim
+
+    InstallPluginTemplate
+    InstallSettingTemplate
 }
 
 # vim
@@ -238,8 +287,14 @@ function InstallVim() {
     (
         [Parameter(Mandatory = $True)][String]$vimrc
     )
-    Message "install .vimrc for vim"
+
+    if ($OnlyNeovim) {
+        Message "skip install .vimrc and plugins for vim"
+        Return
+    }
+
     TryBackup "$env:USERPROFILE\_vimrc"
+    Message "install .vimrc for vim"
     cmd /c mklink $env:USERPROFILE\_vimrc $vimrc
 
     Message "install vim plugins"
@@ -255,6 +310,12 @@ function InstallNeovim() {
         [Parameter(Mandatory = $True)][String]$nvimHome,
         [Parameter(Mandatory = $True)][String]$nvimInit
     )
+
+    if ($OnlyVim) {
+        Message "skip install $APPDATA_LOCAL_HOME/nvim, $APPDATA_LOCAL_HOME/nvim/init.vim and plugins for neovim"
+        Return
+    }
+
     Message "install $APPDATA_LOCAL_HOME/nvim and $APPDATA_LOCAL_HOME/nvim/init.vim for neovim"
     TryBackup "$NVIM_HOME\init.vim"
     TryBackup "$NVIM_HOME"
@@ -282,9 +343,9 @@ It is for better performance on some old devices, which lacks of CPU, memory or 
 
 Full mode is default mode, enable all features.
 It is for best user experience, while consumes more CPU, memory and graphics.
-In full mode you could use `--without-xxx` options to disable some specific feature.
+In full mode you could use `-WithoutXXX` options to disable some specific feature.
 
-Notice: 
+Notice:
 The \`-WithoutAllLanguage -WithoutHighlight -WithoutColor\` option is equivalent to \`-Limit\`.
 The \`-WithoutXXX\` options cannot specify with \`-Basic\` or \`-Limit\` options at the same time.
 
@@ -304,7 +365,8 @@ The \`-WithoutXXX\` options cannot specify with \`-Basic\` or \`-Limit\` options
 -WithoutHighlight               Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
 -WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
 
--OnlyColor [name]               Only one static colorscheme, not random colorschemes.
+-StaticColor [name]             Use static colorscheme, not random colorschemes.
+                                Candidates are: $COLORSCHEMES.
 -OnlyVim                        Only support vim.
 -OnlyNeovim                     Only support neovim.
 "@
@@ -334,10 +396,52 @@ function CheckNoLimitOption() {
     }
 }
 
+function ValidateOptions() {
+    $Options = @{}
+    $Options.Add("-Help".ToLower(), $True)
+    $Options.Add("-Basic".ToLower(), $True)
+    $Options.Add("-Limit".ToLower(), $True)
+    $Options.Add("-WithoutCxx".ToLower(), $True)
+    $Options.Add("-WithoutPython".ToLower(), $True)
+    $Options.Add("-WithoutMarkdown".ToLower(), $True)
+    $Options.Add("-WithoutJson".ToLower(), $True)
+    $Options.Add("-WithoutJavascript".ToLower(), $True)
+    $Options.Add("-WithoutPowershell".ToLower(), $True)
+    $Options.Add("-WithoutBash".ToLower(), $True)
+    $Options.Add("-WithoutAllLanguage".ToLower(), $True)
+    $Options.Add("-WithoutHighlight".ToLower(), $True)
+    $Options.Add("-WithoutColor".ToLower(), $True)
+    $Options.Add("-OnlyVim".ToLower(), $True)
+    $Options.Add("-OnlyNeovim".ToLower(), $True)
+    $i = 0
+    $argsLength = $args.Length
+    Write-Host "args ($argsLength):$args"
+    while ($i -lt $args.Length) {
+        $opt = $args[ $i ];
+        Write-Host "args[ $i ]:$opt"
+        if ($Options.Contains($opt.ToLower())) {
+            $i++
+        } elseif ($opt.ToLower() -eq "-StaticColor".ToLower()) {
+            $i++
+            if ($i -ge $args.Length) {
+                Return $False
+            }
+            $i++
+        } else {
+            Return $False
+        }
+    }
+    Return $True
+}
+
 function ParseOptions() {
     if ($Help) {
-        ShowHelp;
-        Exit;
+        ShowHelp
+        Exit
+    }
+    if (-not (ValidateOptions)) {
+        Message "unknown options! please try .\install.ps1 -Help for more information."
+        Exit
     }
     if ($Basic) {
         CheckNoLimitOption "-Basic"
@@ -349,41 +453,21 @@ function ParseOptions() {
         $OPT_FULL=$True
         $MODE_NAME="limit"
     }
-    if ($WithoutCxx) {
-        CheckNoBasicOption "-WithoutCxx"
-        CheckNoLimitOption "-WithoutCxx"
+    if ($WithoutAllLanguage) {
+        $WithoutCxx=$True
+        $WithoutPython=$True
+        $WithoutMarkdown=$True
+        $WithoutJson=$True
+        $WithoutJavascript=$True
+        $WithoutPowershell=$True
+        $WithoutBash=$True
     }
-    if ($WithoutPython) {
-        CheckNoBasicOption "-WithoutPython"
-        CheckNoLimitOption "-WithoutPython"
-    }
-    if ($WithoutMarkdown) {
-        CheckNoBasicOption "-WithoutMarkdown"
-        CheckNoLimitOption "-WithoutMarkdown"
-    }
-    if ($WithoutJson) {
-        CheckNoBasicOption "-WithoutJson"
-        CheckNoLimitOption "-WithoutJson"
-    }
-    if ($WithoutJavascript) {
-        CheckNoBasicOption "-WithoutJavascript"
-        CheckNoLimitOption "-WithoutJavascript"
-    }
-    if ($WithoutPowershell) {
-        CheckNoBasicOption "-WithoutPowershell"
-        CheckNoLimitOption "-WithoutPowershell"
-    }
-    if ($WithoutBash) {
-        CheckNoBasicOption "-WithoutBash"
-        CheckNoLimitOption "-WithoutBash"
-    }
-    if ($WithoutHighlight) {
-        CheckNoBasicOption "-WithoutHighlight"
-        CheckNoLimitOption "-WithoutHighlight"
-    }
-    if ($WithoutColor) {
-        CheckNoBasicOption "-WithoutColor"
-        CheckNoLimitOption "-WithoutColor"
+    if (-not (IsEmptyString $StaticColor)) {
+        if (-not $COLORSCHEMES.Contains($StaticColor)) {
+            Message "error! unknown colorscheme $StaticColor"
+            Message "please use candidates: $COLORSCHEMES"
+            Exit
+        }
     }
 }
 
@@ -409,21 +493,21 @@ function Main() {
 
 ParseOptions
 
-# Get the ID and security principal of the current user account
-$currentID = [System.Security.Principal.WindowsIdentity]::GetCurrent();
-$currentPrincipal = New-Object System.Security.Principal.WindowsPrincipal($currentID);
-# Get the security principal for the administrator role
-$adminRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator;
-
-# If we are not running as an administrator, relaunch as administrator
-if (!($currentPrincipal.IsInRole($adminRole)))
-{
-    # Create a new process that run as administrator
-    $installer=$script:MyInvocation.MyCommand.Path
-    Start-Process powershell "& '$installer' $args" -Verb RunAs
-
-    # Exit from the current process
-    Exit;
-}
+# # Get the ID and security principal of the current user account
+# $currentID = [System.Security.Principal.WindowsIdentity]::GetCurrent();
+# $currentPrincipal = New-Object System.Security.Principal.WindowsPrincipal($currentID);
+# # Get the security principal for the administrator role
+# $adminRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator;
+#
+# # If we are not running as an administrator, relaunch as administrator
+# if (!($currentPrincipal.IsInRole($adminRole)))
+# {
+#     # Create a new process that run as administrator
+#     $installer=$script:MyInvocation.MyCommand.Path
+#     Start-Process powershell "& '$installer' $args" -Verb RunAs
+#
+#     # Exit from the current process
+#     Exit;
+# }
 
 Main

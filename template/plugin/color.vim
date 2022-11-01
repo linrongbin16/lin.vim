@@ -1,3 +1,4 @@
+
 " Color Theme
 Plug 'lifepillar/vim-solarized8'
 Plug 'crusoexia/vim-monokai'
@@ -27,4 +28,3 @@ endif
 " Plug 'tomasr/molokai'
 " Plug 'romainl/Apprentice'
 " Plug 'nanotech/jellybeans.vim'
-

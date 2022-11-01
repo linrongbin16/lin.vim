@@ -9,6 +9,10 @@ source $HOME/.vim/setting/linrongbin16/standalone.vim
 " Color Scheme
 source $HOME/.vim/setting/linrongbin16/colorscheme.vim
 
+" Highlight
+source $HOME/.vim/setting/RRethy/vim-hexokinase.vim
+source $HOME/.vim/setting/RRethy/vim-illuminate.vim
+
 " UI
 if has('nvim-0.7')
     source $HOME/.vim/setting/romgrk/barbar.nvim.vim
@@ -31,10 +35,6 @@ source $HOME/.vim/setting/itchyny/vim-gitbranch.vim
 if has('nvim-0.5')
     source $HOME/.vim/setting/f-person/git-blame.nvim.vim
 endif
-
-" Highlight
-source $HOME/.vim/setting/RRethy/vim-hexokinase.vim
-source $HOME/.vim/setting/RRethy/vim-illuminate.vim
 
 " Tags
 source $HOME/.vim/setting/liuchengxu/vista.vim.vim

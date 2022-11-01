@@ -1,11 +1,3 @@
-"" ---- vim-plug.vim ----
-
-if has('win32') || has('win64')
-    set runtimepath^=~/.vim
-endif
-
-source ~/.vim/autoload/plug.vim
-call plug#begin('~/.vim/plugged')
 
 " UI
 if has('nvim')
@@ -90,5 +82,3 @@ Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'haya14busa/is.vim'
-
-call plug#end()
