@@ -19,7 +19,8 @@ param (
     [Parameter(HelpMessage="Only support neovim")][switch]$OnlyNeovim = $False
 )
 
-Set-PSDebug -Trace 1
+# Debug
+# Set-PSDebug -Trace 1
 
 $VIM_HOME="$env:USERPROFILE\.vim"
 $INSTALL_HOME="$VIM_HOME\install"
