@@ -27,8 +27,22 @@ $APPDATA_LOCAL_HOME="$env:USERPROFILE\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
 $TEMPLATE_HOME="$VIM_HOME\template"
 
-$OPT_FULL=$True # default mode
-$MODE_NAME="full"
+$MODE_NAME="full" # default mode
+$OPT_FULL=$True
+$OPT_BASIC=$False
+$OPT_WITHOUT_CXX=$False
+$OPT_WITHOUT_PYTHON=$False
+$OPT_WITHOUT_MARKDOWN=$False
+$OPT_WITHOUT_JSON=$False
+$OPT_WITHOUT_JAVASCRIPT=$False
+$OPT_WITHOUT_POWERSHELL=$False
+$OPT_WITHOUT_BASH=$False
+$OPT_WITHOUT_ALL_LANGUAGE=$False
+$OPT_WITHOUT_HIGHLIGHT=$False
+$OPT_WITHOUT_COLOR=$False
+$OPT_STATIC_COLOR=""
+$OPT_ONLY_VIM=""
+$OPT_ONLY_NEOVIM=""
 
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
@@ -69,18 +83,8 @@ function TryBackup() {
     if (Test-Path $target) {
         $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
         $backup=-join($target, ".", $now)
-        try {
-            Rename-Item $target $backup
-            Message "backup '$target' to '$backup'"
-        } catch {
-            try {
-                Copy-Item $target -Destination $backup -Recurse
-                (Get-Item $target).Delete()
-                Message "backup '$target' to '$backup'"
-            } catch {
-                Message "error! failed to backup '$target' to '$backup', exception:$_"
-            }
-        }
+        Rename-Item $target $backup
+        Message "backup '$target' to '$backup'"
     }
 }
 
@@ -125,7 +129,7 @@ function RustDependency() {
     InstallOrSkip -command "cargo install ripgrep" -target "rg"
     InstallOrSkip -command "cargo install fd-find" -target "fd"
 
-    if ($WithoutHighlight) {
+    if ($global:OPT_WITHOUT_COLOR) {
         # fzf preview syntax highlight
         InstallOrSkip -command "cargo install --locked bat" -target "bat"
     }
@@ -208,15 +212,15 @@ function InstallCommonSettings() {
 function InstallPluginTemplate() {
     ClearFile $PLUGIN_FILE
     BeginInstallPlugin
-    if (-not $WithoutColor) {
+    if (-not $global:OPT_WITHOUT_COLOR) {
         # enable color feature
         InstallColorPlugin
     }
-    if (-not $WithoutHighlight) {
+    if (-not $global:OPT_WITHOUT_HIGHLIGHT) {
         # enable highlight feature
         InstallHighlightPlugin
     }
-    if (-not $WithoutMarkdown) {
+    if (-not $global:OPT_WITHOUT_MARKDOWN) {
         # enable markdown feature
         InstallMarkdownPlugin
     }
@@ -235,34 +239,36 @@ function InstallSettingTemplate() {
     AddCocGlobalExtensionSetting 'coc-lists'
     AddCocGlobalExtensionSetting 'coc-html'
     AddCocGlobalExtensionSetting 'coc-xml'
-    if (-not $WithoutCxx) {
+    Write-Host "global:OPT_WITHOUT_CXX:$global:OPT_WITHOUT_CXX"
+    if (-not $global:OPT_WITHOUT_CXX) {
         AddCocGlobalExtensionSetting 'coc-clangd'
         AddCocGlobalExtensionSetting 'coc-cmake'
     }
-    if (-not $WithoutPython) {
+    Write-Host "global:OPT_WITHOUT_PYTHON:$global:OPT_WITHOUT_PYTHON"
+    if (-not $global:OPT_WITHOUT_PYTHON) {
         AddCocGlobalExtensionSetting 'coc-pyright'
     }
-    if (-not $WithoutJson) {
+    if (-not $global:OPT_WITHOUT_JSON) {
         AddCocGlobalExtensionSetting 'coc-json'
     }
-    if (-not $WithoutJavascript) {
+    if (-not $global:OPT_WITHOUT_JAVASCRIPT) {
         AddCocGlobalExtensionSetting 'coc-tsserver'
         AddCocGlobalExtensionSetting 'coc-css'
         AddCocGlobalExtensionSetting '@yaegassy/coc-volar'
         AddCocGlobalExtensionSetting 'coc-eslint'
         AddCocGlobalExtensionSetting 'coc-prettier'
     }
-    if (-not $WithoutPowershell) {
+    if (-not $global:OPT_WITHOUT_POWERSHELL) {
         AddCocGlobalExtensionSetting 'coc-powershell'
     }
-    if (-not $WithoutBash) {
+    if (-not $global:OPT_WITHOUT_BASH) {
         AddCocGlobalExtensionSetting 'coc-sh'
     }
     EndInstallCocGlobalExtensionSetting
 
-    if (-not (IsEmptyString $StaticColor)) {
-        InstallStaticColorSchemeSettings $StaticColor
-    } elseif (-not $WithoutColor) {
+    if (-not (IsEmptyString $global:OPT_STATIC_COLOR)) {
+        InstallStaticColorSchemeSettings $global:OPT_STATIC_COLOR
+    } elseif (-not $global:OPT_WITHOUT_COLOR) {
         InstallRandomColorSchemeSetting
     }
 
@@ -288,7 +294,7 @@ function InstallVim() {
         [Parameter(Mandatory = $True)][String]$vimrc
     )
 
-    if ($OnlyNeovim) {
+    if ($global:OPT_ONLY_NEOVIM) {
         Message "skip install .vimrc and plugins for vim"
         Return
     }
@@ -311,13 +317,13 @@ function InstallNeovim() {
         [Parameter(Mandatory = $True)][String]$nvimInit
     )
 
-    if ($OnlyVim) {
+    if ($global:OPT_ONLY_VIM) {
         Message "skip install $APPDATA_LOCAL_HOME/nvim, $APPDATA_LOCAL_HOME/nvim/init.vim and plugins for neovim"
         Return
     }
 
     Message "install $APPDATA_LOCAL_HOME/nvim and $APPDATA_LOCAL_HOME/nvim/init.vim for neovim"
-    TryBackup "$NVIM_HOME\init.vim"
+    TryDelete "$NVIM_HOME\init.vim"
     TryBackup "$NVIM_HOME"
     cmd /c mklink $APPDATA_LOCAL_HOME\nvim $nvimHome
     cmd /c mklink $APPDATA_LOCAL_HOME\nvim\init.vim $nvimInit
@@ -372,30 +378,6 @@ The \`-WithoutXXX\` options cannot specify with \`-Basic\` or \`-Limit\` options
 "@
 }
 
-function CheckNoBasicOption() {
-    [CmdletBinding()]
-    Param
-    (
-        [Parameter(Mandatory = $True)][String]$inputOption
-    )
-    if ($Basic) {
-        Message "error! cannot use $inputOption along with -Basic"
-        Exit
-    }
-}
-
-function CheckNoLimitOption() {
-    [CmdletBinding()]
-    Param
-    (
-        [Parameter(Mandatory = $True)][String]$inputOption
-    )
-    if ($Limit) {
-        Message "error! cannot use $inputOption along with -Limit"
-        Exit
-    }
-}
-
 function ValidateOptions() {
     $Options = @{}
     $Options.Add("-Help".ToLower(), $True)
@@ -443,25 +425,6 @@ function ParseOptions() {
         Message "unknown options! please try .\install.ps1 -Help for more information."
         Exit
     }
-    if ($Basic) {
-        CheckNoLimitOption "-Basic"
-        $OPT_FULL=$False
-        $MODE_NAME="basic"
-    }
-    if ($Limit) {
-        CheckNoBasicOption "-Limit"
-        $OPT_FULL=$True
-        $MODE_NAME="limit"
-    }
-    if ($WithoutAllLanguage) {
-        $WithoutCxx=$True
-        $WithoutPython=$True
-        $WithoutMarkdown=$True
-        $WithoutJson=$True
-        $WithoutJavascript=$True
-        $WithoutPowershell=$True
-        $WithoutBash=$True
-    }
     if (-not (IsEmptyString $StaticColor)) {
         if (-not $COLORSCHEMES.Contains($StaticColor)) {
             Message "error! unknown colorscheme $StaticColor"
@@ -469,12 +432,61 @@ function ParseOptions() {
             Exit
         }
     }
+    if ($Basic) {
+        if ($Limit) {
+            Message "error! cannot use -Basic along with -Limit"
+            Exit
+        }
+        $global:MODE_NAME="basic"
+        $global:OPT_BASIC=$True
+        $global:OPT_FULL=$False
+    }
+    if ($Limit) {
+        if ($Basic) {
+            Message "error! cannot use -Limit along with -Basic"
+            Exit
+        }
+        $global:MODE_NAME="limit"
+        $global:OPT_BASIC=$False
+        $global:OPT_FULL=$True
+        $global:OPT_WITHOUT_ALL_LANGUAGE=$True
+        $global:OPT_WITHOUT_HIGHLIGHT=$True
+        $global:OPT_WITHOUT_COLOR=$True
+    }
+    $global:OPT_WITHOUT_CXX=$WithoutCxx
+    $global:OPT_WITHOUT_PYTHON=$WithoutPython
+    $global:OPT_WITHOUT_MARKDOWN=$WithoutMarkdown
+    $global:OPT_WITHOUT_JSON=$WithoutJson
+    $global:OPT_WITHOUT_JAVASCRIPT=$WithoutJavascript
+    $global:OPT_WITHOUT_POWERSHELL=$WithoutPowershell
+    $global:OPT_WITHOUT_BASH=$WithoutBash
+    if ($WithoutAllLanguage) {
+        $global:OPT_WITHOUT_ALL_LANGUAGE=$True
+    }
+    if ($global:OPT_WITHOUT_ALL_LANGUAGE) {
+        $global:OPT_WITHOUT_CXX=$True
+        $global:OPT_WITHOUT_PYTHON=$True
+        $global:OPT_WITHOUT_MARKDOWN=$True
+        $global:OPT_WITHOUT_JSON=$True
+        $global:OPT_WITHOUT_JAVASCRIPT=$True
+        $global:OPT_WITHOUT_POWERSHELL=$True
+        $global:OPT_WITHOUT_BASH=$True
+    }
+    if ($WithoutHighlight) {
+        $global:OPT_WITHOUT_HIGHLIGHT=$True
+    }
+    if ($WithoutColor) {
+        $global:OPT_WITHOUT_COLOR=$True
+    }
+    $global:OPT_STATIC_COLOR=$StaticColor
+    $global:OPT_ONLY_VIM=$OnlyVim
+    $global:OPT_ONLY_NEOVIM=$OnlyNeovim
 }
 
 function Main() {
-    Message "install with mode - $MODE_NAME"
+    Message "install with mode - $global:MODE_NAME"
 
-    if ($Basic) {
+    if ($global:OPT_BASIC) {
         BasicInstaller
         Return;
     }
