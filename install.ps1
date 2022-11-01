@@ -6,11 +6,12 @@ param (
     [Parameter(HelpMessage="Limit mode")][switch]$Limit = $False,
     [Parameter(HelpMessage="Disable c/c++/cmake support")][switch]$WithoutCxx = $False,
     [Parameter(HelpMessage="Disable python support")][switch]$WithoutPython = $False,
+    [Parameter(HelpMessage="Disable rust support")][switch]$WithoutRust = $False,
+    [Parameter(HelpMessage="Disable golang support")][switch]$WithoutGo = $False,
     [Parameter(HelpMessage="Disable markdown support")][switch]$WithoutMarkdown = $False,
     [Parameter(HelpMessage="Disable json support")][switch]$WithoutJson = $False,
     [Parameter(HelpMessage="Disable javascript support")][switch]$WithoutJavascript = $False,
     [Parameter(HelpMessage="Disable powershell support")][switch]$WithoutPowershell = $False,
-    [Parameter(HelpMessage="Disable bash support")][switch]$WithoutBash = $False,
     [Parameter(HelpMessage="Disable all language support")][switch]$WithoutAllLanguage = $False,
     [Parameter(HelpMessage="Disable extra highlights")][switch]$WithoutHighlight = $False,
     [Parameter(HelpMessage="Disable extra colors")][switch]$WithoutColor = $False,
@@ -33,17 +34,18 @@ $global:OPT_FULL=$True
 $global:OPT_BASIC=$False
 $global:OPT_WITHOUT_CXX=$False
 $global:OPT_WITHOUT_PYTHON=$False
+$global:OPT_WITHOUT_RUST=$False
+$global:OPT_WITHOUT_GO=$False
 $global:OPT_WITHOUT_MARKDOWN=$False
 $global:OPT_WITHOUT_JSON=$False
 $global:OPT_WITHOUT_JAVASCRIPT=$False
 $global:OPT_WITHOUT_POWERSHELL=$False
-$global:OPT_WITHOUT_BASH=$False
 $global:OPT_WITHOUT_ALL_LANGUAGE=$False
 $global:OPT_WITHOUT_HIGHLIGHT=$False
 $global:OPT_WITHOUT_COLOR=$False
 $global:OPT_STATIC_COLOR=""
-$global:OPT_ONLY_VIM=""
-$global:OPT_ONLY_NEOVIM=""
+$global:OPT_ONLY_VIM=$False
+$global:OPT_ONLY_NEOVIM=$False
 
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
@@ -130,7 +132,7 @@ function RustDependency() {
     InstallOrSkip -command "cargo install ripgrep" -target "rg"
     InstallOrSkip -command "cargo install fd-find" -target "fd"
 
-    if ($global:OPT_WITHOUT_COLOR) {
+    if (-not $global:OPT_WITHOUT_COLOR) {
         # fzf preview syntax highlight
         InstallOrSkip -command "cargo install --locked bat" -target "bat"
     }
@@ -195,7 +197,7 @@ function AddCocGlobalExtensionSetting() {
     Add-Content -Path $SETTING_FILE -Value "'$extension', " -NoNewline
 }
 
-function InstallStaticColorSchemeSettings() {
+function InstallStaticColorSchemeSetting() {
     [CmdletBinding()]
     Param
     (
@@ -206,14 +208,13 @@ function InstallStaticColorSchemeSettings() {
     Add-Content -Path $SETTING_FILE -Value "colorscheme $color"
 }
 
-function InstallCommonSettings() {
+function InstallCommonSetting() {
     Get-Content -Path "$TEMPLATE_HOME\setting\common.vim" | Add-Content -Path $SETTING_FILE
 }
 
 function InstallPluginTemplate() {
     ClearFile $PLUGIN_FILE
     BeginInstallPlugin
-    Write-Host "OPT_WITHOUT_COLOR-5:$global:OPT_WITHOUT_COLOR"
     if (-not $global:OPT_WITHOUT_COLOR) {
         # enable color feature
         InstallColorPlugin
@@ -248,6 +249,12 @@ function InstallSettingTemplate() {
     if (-not $global:OPT_WITHOUT_PYTHON) {
         AddCocGlobalExtensionSetting 'coc-pyright'
     }
+    if (-not $global:OPT_WITHOUT_RUST) {
+        AddCocGlobalExtensionSetting 'coc-rust-analyzer'
+    }
+    if (-not $global:OPT_WITHOUT_GO) {
+        AddCocGlobalExtensionSetting 'coc-go'
+    }
     if (-not $global:OPT_WITHOUT_JSON) {
         AddCocGlobalExtensionSetting 'coc-json'
     }
@@ -261,18 +268,15 @@ function InstallSettingTemplate() {
     if (-not $global:OPT_WITHOUT_POWERSHELL) {
         AddCocGlobalExtensionSetting 'coc-powershell'
     }
-    if (-not $global:OPT_WITHOUT_BASH) {
-        AddCocGlobalExtensionSetting 'coc-sh'
-    }
     EndInstallCocGlobalExtensionSetting
 
     if (-not (IsEmptyString $global:OPT_STATIC_COLOR)) {
-        InstallStaticColorSchemeSettings $global:OPT_STATIC_COLOR
+        InstallStaticColorSchemeSetting $global:OPT_STATIC_COLOR
     } elseif (-not $global:OPT_WITHOUT_COLOR) {
         InstallRandomColorSchemeSetting
     }
 
-    InstallCommonSettings
+    InstallCommonSetting
 }
 
 function InstallTemplate() {
@@ -338,17 +342,8 @@ function BasicInstaller() {
 }
 
 function ShowHelp() {
+    Get-Content -Path "$INSTALL_HOME\help_message.txt" | Write-Host
     Write-Host @"
-Install in one-line command with 3 modes: basic, limit and full.
-
-Basic mode only install pure vim script settings, no vim plugins or any other third party softwares.
-It is for production environment, which lacks of software sources or user authentication.
-
-Limit mode installs limited features, no extra highlights, colors or all other language supports.
-It is for better performance on some old devices, which lacks of CPU, memory or graphics.
-
-Full mode is default mode, enable all features.
-It is for best user experience, while consumes more CPU, memory and graphics.
 In full mode you could use `-WithoutXXX` options to disable some specific feature.
 
 Notice:
@@ -361,11 +356,12 @@ The \`-WithoutXXX\` options cannot specify with \`-Basic\` or \`-Limit\` options
 
 -WithoutCxx                     Disable c/c++/cmake support.
 -WithoutPython                  Disable python support.
+-WithoutRust                    Disable rust support.
+-WithoutGo                      Disable golang support.
 -WithoutMarkdown                Disable markdown support.
 -WithoutJson                    Disable json support.
 -WithoutJavascript              Disable javascript support.
 -WithoutPowershell              Disable powershell support.
--WithoutBash                    Disable linux bash support.
 -WithoutAllLanguage             Disable all language supports above.
 
 -WithoutHighlight               Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
@@ -389,7 +385,6 @@ function ValidateOptions() {
     $Options.Add("-WithoutJson".ToLower(), $True)
     $Options.Add("-WithoutJavascript".ToLower(), $True)
     $Options.Add("-WithoutPowershell".ToLower(), $True)
-    $Options.Add("-WithoutBash".ToLower(), $True)
     $Options.Add("-WithoutAllLanguage".ToLower(), $True)
     $Options.Add("-WithoutHighlight".ToLower(), $True)
     $Options.Add("-WithoutColor".ToLower(), $True)
@@ -443,8 +438,6 @@ function ParseOptions() {
         $global:OPT_BASIC=$True
         $global:OPT_FULL=$False
     }
-    Write-Host "Limit-1:$Limit"
-    Write-Host "OPT_WITHOUT_COLOR-1:$global:OPT_WITHOUT_COLOR"
     if ($Limit) {
         if ($Basic) {
             Message "error! cannot use -Limit along with -Basic"
@@ -457,37 +450,33 @@ function ParseOptions() {
         $global:OPT_WITHOUT_HIGHLIGHT=$True
         $global:OPT_WITHOUT_COLOR=$True
     }
-    Write-Host "Limit-2:$Limit"
-    Write-Host "OPT_WITHOUT_COLOR-2:$global:OPT_WITHOUT_COLOR"
     $global:OPT_WITHOUT_CXX=$WithoutCxx
     $global:OPT_WITHOUT_PYTHON=$WithoutPython
+    $global:OPT_WITHOUT_RUST=$WithoutRust
+    $global:OPT_WITHOUT_GO=$WithoutGo
     $global:OPT_WITHOUT_MARKDOWN=$WithoutMarkdown
     $global:OPT_WITHOUT_JSON=$WithoutJson
     $global:OPT_WITHOUT_JAVASCRIPT=$WithoutJavascript
     $global:OPT_WITHOUT_POWERSHELL=$WithoutPowershell
-    $global:OPT_WITHOUT_BASH=$WithoutBash
     if ($WithoutAllLanguage) {
         $global:OPT_WITHOUT_ALL_LANGUAGE=$True
     }
     if ($global:OPT_WITHOUT_ALL_LANGUAGE) {
         $global:OPT_WITHOUT_CXX=$True
         $global:OPT_WITHOUT_PYTHON=$True
+        $global:OPT_WITHOUT_RUST=$True
+        $global:OPT_WITHOUT_GO=$True
         $global:OPT_WITHOUT_MARKDOWN=$True
         $global:OPT_WITHOUT_JSON=$True
         $global:OPT_WITHOUT_JAVASCRIPT=$True
         $global:OPT_WITHOUT_POWERSHELL=$True
-        $global:OPT_WITHOUT_BASH=$True
     }
     if ($WithoutHighlight) {
         $global:OPT_WITHOUT_HIGHLIGHT=$True
     }
-    Write-Host "WithoutColor-3:$WithoutColor"
-    Write-Host "OPT_WITHOUT_COLOR-3:$global:OPT_WITHOUT_COLOR"
     if ($WithoutColor) {
         $global:OPT_WITHOUT_COLOR=$True
     }
-    Write-Host "WithoutColor-4:$WithoutColor"
-    Write-Host "OPT_WITHOUT_COLOR-4:$global:OPT_WITHOUT_COLOR"
     $global:OPT_STATIC_COLOR=$StaticColor
     $global:OPT_ONLY_VIM=$OnlyVim
     $global:OPT_ONLY_NEOVIM=$OnlyNeovim
@@ -498,19 +487,18 @@ function Main() {
 
     if ($global:OPT_BASIC) {
         BasicInstaller
-        Return;
+    } else {
+        # install dependencies
+        Message "install dependencies for windows"
+        RustDependency
+        Pip3Dependency
+        NpmDependency
+
+        # install files
+        InstallTemplate
+        InstallVim "$env:USERPROFILE\.vim\lin.vim"
+        InstallNeovim -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
     }
-
-    # install dependencies
-    Message "install dependencies for windows"
-    RustDependency
-    Pip3Dependency
-    NpmDependency
-
-    # install files
-    InstallTemplate
-    InstallVim "$env:USERPROFILE\.vim\lin.vim"
-    InstallNeovim -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
 
     Message "install with mode: $global:MODE_NAME - done"
 }

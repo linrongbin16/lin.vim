@@ -1,0 +1,10 @@
+Install in one-line command with 3 modes: basic, limit and full.
+
+Basic mode only install pure vim script settings, no vim plugins or any other third party softwares.
+It is for production environment, which lacks of software sources or user authentication.
+
+Limit mode installs limited features, no extra highlights, colors or all other language supports.
+It is for better performance on some old devices, which lacks of CPU, memory or graphics.
+
+Full mode is default mode, enable all features.
+It is for best user experience, while consumes more CPU, memory and graphics.
