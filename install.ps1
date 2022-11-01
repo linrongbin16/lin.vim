@@ -27,22 +27,22 @@ $APPDATA_LOCAL_HOME="$env:USERPROFILE\AppData\Local"
 $NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
 $TEMPLATE_HOME="$VIM_HOME\template"
 
-$MODE_NAME="full" # default mode
-$OPT_FULL=$True
-$OPT_BASIC=$False
-$OPT_WITHOUT_CXX=$False
-$OPT_WITHOUT_PYTHON=$False
-$OPT_WITHOUT_MARKDOWN=$False
-$OPT_WITHOUT_JSON=$False
-$OPT_WITHOUT_JAVASCRIPT=$False
-$OPT_WITHOUT_POWERSHELL=$False
-$OPT_WITHOUT_BASH=$False
-$OPT_WITHOUT_ALL_LANGUAGE=$False
-$OPT_WITHOUT_HIGHLIGHT=$False
-$OPT_WITHOUT_COLOR=$False
-$OPT_STATIC_COLOR=""
-$OPT_ONLY_VIM=""
-$OPT_ONLY_NEOVIM=""
+$global:MODE_NAME="full" # default mode
+$global:OPT_FULL=$True
+$global:OPT_BASIC=$False
+$global:OPT_WITHOUT_CXX=$False
+$global:OPT_WITHOUT_PYTHON=$False
+$global:OPT_WITHOUT_MARKDOWN=$False
+$global:OPT_WITHOUT_JSON=$False
+$global:OPT_WITHOUT_JAVASCRIPT=$False
+$global:OPT_WITHOUT_POWERSHELL=$False
+$global:OPT_WITHOUT_BASH=$False
+$global:OPT_WITHOUT_ALL_LANGUAGE=$False
+$global:OPT_WITHOUT_HIGHLIGHT=$False
+$global:OPT_WITHOUT_COLOR=$False
+$global:OPT_STATIC_COLOR=""
+$global:OPT_ONLY_VIM=""
+$global:OPT_ONLY_NEOVIM=""
 
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
@@ -212,6 +212,7 @@ function InstallCommonSettings() {
 function InstallPluginTemplate() {
     ClearFile $PLUGIN_FILE
     BeginInstallPlugin
+    Write-Host "OPT_WITHOUT_COLOR-5:$global:OPT_WITHOUT_COLOR"
     if (-not $global:OPT_WITHOUT_COLOR) {
         # enable color feature
         InstallColorPlugin
@@ -239,12 +240,10 @@ function InstallSettingTemplate() {
     AddCocGlobalExtensionSetting 'coc-lists'
     AddCocGlobalExtensionSetting 'coc-html'
     AddCocGlobalExtensionSetting 'coc-xml'
-    Write-Host "global:OPT_WITHOUT_CXX:$global:OPT_WITHOUT_CXX"
     if (-not $global:OPT_WITHOUT_CXX) {
         AddCocGlobalExtensionSetting 'coc-clangd'
         AddCocGlobalExtensionSetting 'coc-cmake'
     }
-    Write-Host "global:OPT_WITHOUT_PYTHON:$global:OPT_WITHOUT_PYTHON"
     if (-not $global:OPT_WITHOUT_PYTHON) {
         AddCocGlobalExtensionSetting 'coc-pyright'
     }
@@ -397,10 +396,8 @@ function ValidateOptions() {
     $Options.Add("-OnlyNeovim".ToLower(), $True)
     $i = 0
     $argsLength = $args.Length
-    Write-Host "args ($argsLength):$args"
     while ($i -lt $args.Length) {
         $opt = $args[ $i ];
-        Write-Host "args[ $i ]:$opt"
         if ($Options.Contains($opt.ToLower())) {
             $i++
         } elseif ($opt.ToLower() -eq "-StaticColor".ToLower()) {
@@ -431,6 +428,10 @@ function ParseOptions() {
             Message "please use candidates: $COLORSCHEMES"
             Exit
         }
+        if ($WithoutColor) {
+            Message "error! cannot use -StaticColor along with -WithoutColor"
+            Exit
+        }
     }
     if ($Basic) {
         if ($Limit) {
@@ -441,6 +442,8 @@ function ParseOptions() {
         $global:OPT_BASIC=$True
         $global:OPT_FULL=$False
     }
+    Write-Host "Limit-1:$Limit"
+    Write-Host "OPT_WITHOUT_COLOR-1:$global:OPT_WITHOUT_COLOR"
     if ($Limit) {
         if ($Basic) {
             Message "error! cannot use -Limit along with -Basic"
@@ -453,6 +456,8 @@ function ParseOptions() {
         $global:OPT_WITHOUT_HIGHLIGHT=$True
         $global:OPT_WITHOUT_COLOR=$True
     }
+    Write-Host "Limit-2:$Limit"
+    Write-Host "OPT_WITHOUT_COLOR-2:$global:OPT_WITHOUT_COLOR"
     $global:OPT_WITHOUT_CXX=$WithoutCxx
     $global:OPT_WITHOUT_PYTHON=$WithoutPython
     $global:OPT_WITHOUT_MARKDOWN=$WithoutMarkdown
@@ -475,9 +480,13 @@ function ParseOptions() {
     if ($WithoutHighlight) {
         $global:OPT_WITHOUT_HIGHLIGHT=$True
     }
+    Write-Host "WithoutColor-3:$WithoutColor"
+    Write-Host "OPT_WITHOUT_COLOR-3:$global:OPT_WITHOUT_COLOR"
     if ($WithoutColor) {
         $global:OPT_WITHOUT_COLOR=$True
     }
+    Write-Host "WithoutColor-4:$WithoutColor"
+    Write-Host "OPT_WITHOUT_COLOR-4:$global:OPT_WITHOUT_COLOR"
     $global:OPT_STATIC_COLOR=$StaticColor
     $global:OPT_ONLY_VIM=$OnlyVim
     $global:OPT_ONLY_NEOVIM=$OnlyNeovim
