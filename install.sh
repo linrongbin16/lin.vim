@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+# debug
 set -x
 
 VIM_HOME=$HOME/.vim
@@ -106,7 +107,9 @@ function rust_dependency() {
 function golang_dependency() {
     # see https://github.com/canha/golang-tools-install-script
     $INSTALL_HOME/install_or_skip.sh "wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash" "go"
-    export PATH=$HOME/.go/bin:$PATH
+    if [ -d $HOME/.go/bin ]; then
+        export PATH=$HOME/.go/bin:$PATH
+    fi
 }
 
 function pip3_dependency() {
@@ -303,12 +306,12 @@ function basic_installer() {
 function show_help() {
     cat $INSTALL_HOME/help_message.txt
 cat <<EOF
-In full mode you could use `--without-xxx` options to disable some specific feature.
+In full mode you could use \`--without-xxx\` options to disable some specific feature.
 
 Notice:
-The `--without-all-language --without-highlight --without-color` options is equivalent to `--limit`.
-The `--without-xxx` option cannot specify with `--basic` or `--limit` at the same time.
-The `--without-color` option cannot specify with `--static-color \[name\]` at the same time.
+The '--without-all-language --without-highlight --without-color' options is equivalent to '--limit'.
+The '--without-xxx' option cannot specify with '--basic' or '--limit' at the same time.
+The '--without-color' option cannot specify with '--static-color \[name\]' at the same time.
 
 -h,--help                       Show help message.
 -b,--basic                      Basic mode.
@@ -345,105 +348,100 @@ function check_no_option() {
 }
 
 function parse_options() {
-    local options
-    options=$(getopt -l "help,basic,limit,without-cxx,without-python,without-rust,without-go,without-json,without-javascript,without-bash,without-all-language,without-highlight,without-color,static-color::,only-vim,only-neovim" -o "hbl" -a -- "$@")
-    eval set -- "$options"
-
     local basic=0
     local limit=0
 
-    while true
-    do
-    case "$1" in
-    -h|--help)
-        show_help
-        exit 0
-        ;;
-    -b|--basic)
-        basic=1
-        check_no_option $limit "--limit" "$1"
+    while [ $# -gt 0 ]; do
+        case "$1" in
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        -b|--basic)
+            basic=1
+            check_no_option $limit "--limit" "$1"
 
-        MODE_NAME='basic'
-        OPT_BASIC=1
-        OPT_FULL=0
-        ;;
-    -l|--limit) 
-        limit=1
-        check_no_option $basic "--basic" "$1"
+            MODE_NAME='basic'
+            OPT_BASIC=1
+            OPT_FULL=0
+            ;;
+        -l|--limit) 
+            limit=1
+            check_no_option $basic "--basic" "$1"
 
-        MODE_NAME='limit'
-        OPT_BASIC=0
-        OPT_FULL=1
-        OPT_WITHOUT_ALL_LANGUAGE=1
-        OPT_WITHOUT_HIGHLIGHT=1
-        OPT_WITHOUT_COLOR=1
-        ;;
-    --without-cxx) 
-        OPT_WITHOUT_CXX=1
-        ;;
-    --without-python) 
-        OPT_WITHOUT_PYTHON=1
-        ;;
-    --without-rust) 
-        OPT_WITHOUT_RUST=1
-        ;;
-    --without-go) 
-        OPT_WITHOUT_GO=1
-        ;;
-    --without-markdown) 
-        OPT_WITHOUT_MARKDOWN=1
-        ;;
-    --without-json) 
-        OPT_WITHOUT_JSON=1
-        ;;
-    --without-javascript) 
-        OPT_WITHOUT_JAVASCRIPT=1
-        ;;
-    --without-bash) 
-        OPT_WITHOUT_BASH=1
-        ;;
-    --without-all-language)
-        OPT_WITHOUT_ALL_LANGUAGE=1
-        ;;
-    --without-highlight)
-        OPT_WITHOUT_HIGHLIGHT=1
-        ;;
-    --without-color)
-        OPT_WITHOUT_COLOR=1
-        # if static color is not empty string
-        if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
-            $INSTALL_HOME/msg.sh "error! cannot use --without-color along with --static-color"
+            MODE_NAME='limit'
+            OPT_BASIC=0
+            OPT_FULL=1
+            OPT_WITHOUT_ALL_LANGUAGE=1
+            OPT_WITHOUT_HIGHLIGHT=1
+            OPT_WITHOUT_COLOR=1
+            ;;
+        --without-cxx) 
+            OPT_WITHOUT_CXX=1
+            ;;
+        --without-python) 
+            OPT_WITHOUT_PYTHON=1
+            ;;
+        --without-rust) 
+            OPT_WITHOUT_RUST=1
+            ;;
+        --without-go) 
+            OPT_WITHOUT_GO=1
+            ;;
+        --without-markdown) 
+            OPT_WITHOUT_MARKDOWN=1
+            ;;
+        --without-json) 
+            OPT_WITHOUT_JSON=1
+            ;;
+        --without-javascript) 
+            OPT_WITHOUT_JAVASCRIPT=1
+            ;;
+        --without-bash) 
+            OPT_WITHOUT_BASH=1
+            ;;
+        --without-all-language)
+            OPT_WITHOUT_ALL_LANGUAGE=1
+            ;;
+        --without-highlight)
+            OPT_WITHOUT_HIGHLIGHT=1
+            ;;
+        --without-color)
+            OPT_WITHOUT_COLOR=1
+            # if static color is not empty string
+            if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
+                $INSTALL_HOME/msg.sh "error! cannot use --without-color along with --static-color"
+                exit 1
+            fi
+            ;;
+        --static-color)
+            shift
+            OPT_STATIC_COLOR="$1"
+            if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
+                # if static color not in COLORSCHEMES
+                if [ ! $( printf '%s\0' "${COLORSCHEMES[@]}" | grep -Fxqz -- "$OPT_STATIC_COLOR" ) ]; then
+                    $INSTALL_HOME/msg.sh "error! unknown colorscheme $OPT_STATIC_COLOR"
+                    $INSTALL_HOME/msg.sh "please use candidates: $COLORSCHEMES"
+                    exit 1
+                fi
+                if [ $OPT_WITHOUT_COLOR -gt 0 ]; then
+                    $INSTALL_HOME/msg.sh "error! cannot use --static-color along with --without-color"
+                    exit 1
+                fi
+            fi
+            ;;
+        --only-vim)
+            OPT_ONLY_VIM=1
+            ;;
+        --only-neovim)
+            OPT_ONLY_NEOVIM=1
+            ;;
+        *)
+            $INSTALL_HOME/msg.sh "unknown options! please try ./install.sh --help for more information"
             exit 1
-        fi
-        ;;
-    --static-color)
+            ;;
+        esac
         shift
-        OPT_STATIC_COLOR="$1"
-        if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
-            # if static color not in COLORSCHEMES
-            if [ ! $( printf '%s\0' "${COLORSCHEMES[@]}" | grep -Fxqz -- "$OPT_STATIC_COLOR" ) ]; then
-                $INSTALL_HOME/msg.sh "error! unknown colorscheme $OPT_STATIC_COLOR"
-                $INSTALL_HOME/msg.sh "please use candidates: $COLORSCHEMES"
-                exit 1
-            fi
-            if [ $OPT_WITHOUT_COLOR -gt 0 ]; then
-                $INSTALL_HOME/msg.sh "error! cannot use --static-color along with --without-color"
-                exit 1
-            fi
-        fi
-        ;;
-    --only-vim)
-        OPT_ONLY_VIM=1
-        ;;
-    --only-neovim)
-        OPT_ONLY_NEOVIM=1
-        ;;
-    *)
-        $INSTALL_HOME/msg.sh "unknown options! please try ./install.sh --help for more information"
-        exit 1
-        ;;
-    esac
-    shift
     done
 
     if [ $OPT_WITHOUT_ALL_LANGUAGE -gt 0 ]; then
@@ -459,7 +457,7 @@ function parse_options() {
 }
 
 function main() {
-    $INSTALL_HOME/msg.sh "install with mode: $MODE_NAME"
+    $INSTALL_HOME/msg.sh "install with $MODE_NAME mode"
 
     if [ $OPT_BASIC -gt 0 ]; then
         basic_installer
@@ -478,8 +476,8 @@ function main() {
         install_neovim
     fi
 
-    $INSTALL_HOME/msg.sh "install with mode: $MODE_NAME - done"
+    $INSTALL_HOME/msg.sh "install with $MODE_NAME mode - done"
 }
 
-parse_options
+parse_options "$@"
 main

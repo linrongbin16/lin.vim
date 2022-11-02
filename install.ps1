@@ -344,12 +344,12 @@ function BasicInstaller() {
 function ShowHelp() {
     Get-Content -Path "$INSTALL_HOME\help_message.txt" | Write-Host
     Write-Host @"
-In full mode you could use `-WithoutXXX` options to disable some specific feature.
+In full mode you could use '-WithoutXXX' options to disable some specific feature.
 
 Notice:
-The ``-WithoutAllLanguage -WithoutHighlight -WithoutColor`` options is equivalent to ``-Limit``.
-The ``-WithoutXXX`` option cannot specify with ``-Basic`` or ``-Limit`` at the same time.
-The ``-WithoutColor`` option cannot specify with ``-StaticColor`` at the same time.
+The '-WithoutAllLanguage -WithoutHighlight -WithoutColor' options is equivalent to '-Limit'.
+The '-WithoutXXX' option cannot specify with '-Basic' or '-Limit' at the same time.
+The '-WithoutColor' option cannot specify with '-StaticColor' at the same time.
 
 -Help                           Show help message.
 -Basic                          Basic mode.
@@ -484,7 +484,7 @@ function ParseOptions() {
 }
 
 function Main() {
-    Message "install with mode: $global:MODE_NAME"
+    Message "install with $global:MODE_NAME mode"
 
     if ($global:OPT_BASIC) {
         BasicInstaller
@@ -501,7 +501,7 @@ function Main() {
         InstallNeovim -nvimHome "$env:USERPROFILE\.vim" -nvimInit "$env:USERPROFILE\.vim\lin.vim"
     }
 
-    Message "install with mode: $global:MODE_NAME - done"
+    Message "install with $global:MODE_NAME mode - done"
 }
 
 ParseOptions
