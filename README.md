@@ -158,7 +158,7 @@ Before installation, please make sure access of below sites are available:
 
 The `install.sh` (and `install.ps1`) support 3 modes:
 
-- Full mode: the default mode of `install.sh`, it install all features for best user experience, which consumes unignorable CPU, memory and graphics.
+- Full mode: the default mode, it install all features for best user experience, which consumes unignorable CPU, memory and graphics.
 - Limit mode: for low performance devices (such as old PC), use `./install.sh --limit` option to install, it disable extra highlights, colors and most coc extensions.
 - Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication, use `./install.sh --basic` option to install, it only install pure vim configurations, without any third party softwares or vim plugins.
 
