@@ -1,5 +1,5 @@
 
-    Install lin.vim with 3 modes: full, limit and basic.
+    Install lin.vim with 3 modes: full (default), limit and basic.
 
 Usage: ./install.sh [options]
 
