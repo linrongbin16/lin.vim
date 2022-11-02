@@ -306,7 +306,7 @@ function show_help() {
     cat $INSTALL_HOME/help_message.txt
 cat <<EOF
 Notice:
-In full or limit mode, you could use '--without-xxx' options to disable some specific feature.
+In full mode, you could use '--without-xxx' options to disable some specific feature.
 The '--without-all-language --without-highlight --without-color' options is equivalent to '--limit'.
 The '--without-xxx' option cannot specify with '--basic' at the same time.
 The '--without-color' option cannot specify with '--static-color [name]' at the same time.
