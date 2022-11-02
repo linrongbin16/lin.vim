@@ -154,13 +154,15 @@ Before installation, please make sure access of below sites are available:
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
-Notice the `install.sh` script has 3 mode: full, limit and basic.
+#### Notice
 
-By default `install.sh` script use full mode: enables all features for best user experience, which consumes unignorable CPU, memory and graphics.
+The `install.sh` (and `install.ps1`) suport 3 modes: full, limit and basic.
 
-For lower performance or older devices, use `./install.sh --limit` option to install limit mode, it will disable extra highlights, colors and other language servers.
+By default `install.sh` use full mode, it enables all features for best user experience, which consumes unignorable CPU, memory and graphics.
 
-For extremely restricted environment, which has limited software resources or lack of user authentication (such as production environment), use `./install.sh --basic` option to install basic mode, it only install pure vim configurations, without any third party softwares or vim plugins.
+For low performance environment (such as old devices), use `./install.sh --limit` option to install limit mode, it will disable extra highlights, colors and other language servers.
+
+For extremely restricted environment (such as production environment), which has limited network access or user authentication, use `./install.sh --basic` option to install basic mode, it will only install pure vim configurations, without any third party softwares or vim plugins.
 
 Please try `./install.sh --help` (or `.\install.ps1 -Help`) for more information.
 
