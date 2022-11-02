@@ -154,6 +154,18 @@ Before installation, please make sure access of below sites are available:
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
+#### Notice
+
+The `install.sh` (and `install.ps1`) suport 3 modes: full, limit and basic.
+
+By default `install.sh` use full mode, it enables all features for best user experience, which consumes unignorable CPU, memory and graphics.
+
+For low performance environment (such as old devices), use `./install.sh --limit` option to install limit mode, it will disable extra highlights, colors and other language servers.
+
+For extremely restricted environment (such as production environment), which has limited network access or user authentication, use `./install.sh --basic` option to install basic mode, it will only install pure vim configurations, without any third party softwares or vim plugins.
+
+Please try `./install.sh --help` (or `.\install.ps1 -Help`) for more information.
+
 ## Windows
 
 > The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
@@ -368,8 +380,6 @@ lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) b
 
 - `]c` 🄽 - go to next git chunk in current buffer.
 - `[c` 🄽 - go to previous git chunk in current buffer.
-- `<leader>gs` 🄽 - show git chunk info on current line.
-- `<leader>gc` 🄽 - show git commit info on current line.
 
 _For neovim 0.5+ only_:
 
