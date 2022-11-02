@@ -344,11 +344,11 @@ function BasicInstaller() {
 function ShowHelp() {
     Get-Content -Path "$INSTALL_HOME\help_message.txt" | Write-Host
     Write-Host @"
-In full mode you could use '-WithoutXXX' options to disable some specific feature.
 
 Notice:
+In full or limit mode, you could use '-WithoutXXX' options to disable some specific feature.
 The '-WithoutAllLanguage -WithoutHighlight -WithoutColor' options is equivalent to '-Limit'.
-The '-WithoutXXX' option cannot specify with '-Basic' or '-Limit' at the same time.
+The '-WithoutXXX' option cannot specify with '-Basic' at the same time.
 The '-WithoutColor' option cannot specify with '-StaticColor' at the same time.
 
 -Help                           Show help message.

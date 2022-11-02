@@ -1,8 +1,7 @@
 #!/bin/bash
 
-
 # debug
-set -x
+# set -x
 
 VIM_HOME=$HOME/.vim
 CONFIG_HOME=$HOME/.config
@@ -25,12 +24,12 @@ OPT_WITHOUT_BASH=0
 OPT_WITHOUT_ALL_LANGUAGE=0
 OPT_WITHOUT_HIGHLIGHT=0
 OPT_WITHOUT_COLOR=0
-OPT_STATIC_COLOR=0
+OPT_STATIC_COLOR=''
 OPT_ONLY_VIM=0
 OPT_ONLY_NEOVIM=0
 
-PLUGIN_FILE=$VIM_HOME\plugin.vim
-SETTING_FILE=$VIM_HOME\setting.vim
+PLUGIN_FILE=$VIM_HOME/plugin.vim
+SETTING_FILE=$VIM_HOME/setting.vim
 COLORSCHEMES=("darkblue" "solarized8" "base16-default-dark" "monokai" "dracula" "neodark" "srcery" "palenight" "onedark" "rigel" "sonokai" "everforest" "gruvbox-material" "edge" "material")
 
 function try_backup() {
@@ -306,12 +305,11 @@ function basic_installer() {
 function show_help() {
     cat $INSTALL_HOME/help_message.txt
 cat <<EOF
-In full mode you could use \`--without-xxx\` options to disable some specific feature.
-
 Notice:
+In full or limit mode, you could use '--without-xxx' options to disable some specific feature.
 The '--without-all-language --without-highlight --without-color' options is equivalent to '--limit'.
-The '--without-xxx' option cannot specify with '--basic' or '--limit' at the same time.
-The '--without-color' option cannot specify with '--static-color \[name\]' at the same time.
+The '--without-xxx' option cannot specify with '--basic' at the same time.
+The '--without-color' option cannot specify with '--static-color [name]' at the same time.
 
 -h,--help                       Show help message.
 -b,--basic                      Basic mode.
@@ -331,7 +329,7 @@ The '--without-color' option cannot specify with '--static-color \[name\]' at th
 --without-color                 Disable extra colors such as RGBs, random colorschemes, etc.
 
 --static-color [name]           Use static colorscheme, not random colorschemes.
-                                Candidates are: $COLORSCHEMES.
+                                Candidates are: ${COLORSCHEMES[@]}.
 --only-vim                      Only support vim.
 --only-neovim                   Only support neovim.
 EOF
@@ -445,14 +443,14 @@ function parse_options() {
     done
 
     if [ $OPT_WITHOUT_ALL_LANGUAGE -gt 0 ]; then
-        $OPT_WITHOUT_CXX=1
-        $OPT_WITHOUT_PYTHON=1
-        $OPT_WITHOUT_RUST=1
-        $OPT_WITHOUT_GO=1
-        $OPT_WITHOUT_MARKDOWN=1
-        $OPT_WITHOUT_JSON=1
-        $OPT_WITHOUT_JAVASCRIPT=1
-        $OPT_WITHOUT_BASH=1
+        OPT_WITHOUT_CXX=1
+        OPT_WITHOUT_PYTHON=1
+        OPT_WITHOUT_RUST=1
+        OPT_WITHOUT_GO=1
+        OPT_WITHOUT_MARKDOWN=1
+        OPT_WITHOUT_JSON=1
+        OPT_WITHOUT_JAVASCRIPT=1
+        OPT_WITHOUT_BASH=1
     fi
 }
 
@@ -471,7 +469,7 @@ function main() {
         guifont_dependency
 
         # install files
-        install_templates
+        install_template
         install_vim
         install_neovim
     fi
