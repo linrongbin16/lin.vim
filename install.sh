@@ -332,6 +332,7 @@ The '--without-color' option cannot specify with '--static-color [name]' at the 
                                 Candidates are: ${COLORSCHEMES[@]}.
 --only-vim                      Only support vim.
 --only-neovim                   Only support neovim.
+
 EOF
 }
 
