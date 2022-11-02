@@ -7,14 +7,14 @@ $INSTALL/msg.sh "install dependencies with apt"
 sudo apt-get update
 
 # vim
-$INSTALL/msg.sh "install 'vim' from ppa:jonathonf/vim..."
+$INSTALL/msg.sh "install 'vim' from ppa:jonathonf/vim"
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:jonathonf/vim
 sudo apt-get update
 sudo apt-get install -y vim vim-gtk3
 
 # neovim
-$INSTALL/msg.sh "install 'nvim' from ppa:neovim-ppa/stable..."
+$INSTALL/msg.sh "install 'nvim' from ppa:neovim-ppa/stable"
 sudo add-apt-repository -y ppa:neovim-ppa/stable
 sudo apt-get update
 sudo apt-get install -y neovim
