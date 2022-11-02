@@ -156,7 +156,7 @@ Before installation, please make sure access of below sites are available:
 
 #### Notice
 
-The `install.sh` (and `install.ps1`) suport 3 modes: full, limit and basic.
+The `install.sh` (and `install.ps1`) support 3 modes: full, limit and basic.
 
 By default `install.sh` use full mode, it enables all features for best user experience, which consumes unignorable CPU, memory and graphics.
 
