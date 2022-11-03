@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-INSTALL=~/.vim/install
+INSTALL_HOME=~/.vim/install

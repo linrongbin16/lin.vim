@@ -151,7 +151,9 @@ Before installation, please make sure access of below sites are available:
 > Other \*NIX systems such as gentoo, bsd are not supported yet.
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
+    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim
+    $ cd ~/.vim
+    $ ./install.sh
 ```
 
 #### Notice
