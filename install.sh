@@ -32,31 +32,13 @@ PLUGIN_FILE=$VIM_HOME/plugin.vim
 SETTING_FILE=$VIM_HOME/setting.vim
 COLORSCHEMES=("darkblue" "solarized8" "base16-default-dark" "monokai" "dracula" "neodark" "srcery" "palenight" "onedark" "rigel" "sonokai" "everforest" "gruvbox-material" "edge" "material")
 
-function try_backup() {
-    local src=$1
-    if [ -f "$src" ]; then
-        $INSTALL_HOME/msg.sh "backup '$src' to '$target'"
-        mv $src $src.$(date +"%Y-%m-%d.%H-%M-%S.%6N")
-    fi
-}
-
-function try_delete() {
-    local src=$1
-    if [ -f "$src" ]; then
-        $INSTALL_HOME/msg.sh "remove '$src'"
-        rm -rf $src
-    fi
-}
+source $INSTALL_HOME/util.sh
 
 # test if array contains element
 # printf '%s\0' "${myarray[@]}" | grep -Fxqz -- 'myelement'
 
 # test if string is empty or whitespace
 # [[ -z "${mystring// }" ]]
-
-function clear_file() {
-    echo ''>$1
-}
 
 # dependency
 
@@ -87,47 +69,47 @@ function platform_dependency() {
             $INSTALL_HOME/brew.sh
             ;;
         *)
-            $INSTALL_HOME/msg.sh "$OS is not supported, exit..."
+            message "$OS is not supported, exit..."
             exit 1
             ;;
     esac
 }
 
 function rust_dependency() {
-    $INSTALL_HOME/install_or_skip.sh "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
+    install_or_skip "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     source $HOME/.cargo/env
-    $INSTALL_HOME/install_or_skip.sh "cargo install ripgrep" "rg"
-    $INSTALL_HOME/install_or_skip.sh "cargo install fd-find" "fd"
+    install_or_skip "cargo install ripgrep" "rg"
+    install_or_skip "cargo install fd-find" "fd"
     if [ $OPT_WITHOUT_COLOR -eq 0 ]; then
-        $INSTALL_HOME/install_or_skip.sh "cargo install --locked bat" "bat"
+        install_or_skip "cargo install --locked bat" "bat"
     fi
 }
 
 function golang_dependency() {
     # see https://github.com/canha/golang-tools-install-script
-    $INSTALL_HOME/install_or_skip.sh "wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash" "go"
+    install_or_skip "wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash" "go"
     if [ -d $HOME/.go/bin ]; then
         export PATH=$HOME/.go/bin:$PATH
     fi
 }
 
 function pip3_dependency() {
-    $INSTALL_HOME/msg.sh "install python packages with pip3"
+    message "install python packages with pip3"
     sudo pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
 }
 
 function npm_dependency() {
-    $INSTALL_HOME/msg.sh "install node packages with npm"
+    message "install node packages with npm"
     sudo npm install -g yarn prettier neovim
 }
 
 function guifont_dependency() {
     if [ "$OS" == "Darwin" ]; then
-        $INSTALL_HOME/msg.sh "install hack nerd font with brew"
+        message "install hack nerd font with brew"
         brew tap homebrew/cask-fonts
         brew install --cask font-hack-nerd-font
     else
-        $INSTALL_HOME/msg.sh "install hack nerd font from github"
+        message "install hack nerd font from github"
         mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
         local font_file=Hack.zip
         local font_version=v2.2.2
@@ -137,10 +119,10 @@ function guifont_dependency() {
         fi
         curl -L $font_url -o $font_file
         if [ $? -ne 0 ]; then
-            $INSTALL_HOME/msg.sh "failed to download $font_file, skip..."
+            message "failed to download $font_file, skip..."
         else
             unzip -o $font_file
-            $INSTALL_HOME/msg.sh "install hack nerd font from github - done"
+            message "install hack nerd font from github - done"
         fi
     fi
 }
@@ -268,7 +250,7 @@ function install_setting_template() {
 }
 
 function install_template() {
-    $INSTALL_HOME/msg.sh "install configurations"
+    message "install configurations"
     # cp $TEMPLATE_HOME/plugin-template.vim $VIM_HOME/plugin.vim
     # cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
     # cp $TEMPLATE_HOME/setting-template.vim $VIM_HOME/setting.vim
@@ -278,23 +260,23 @@ function install_template() {
 }
 
 function install_vim() {
-    $INSTALL_HOME/msg.sh "install .vimrc for vim"
+    message "install .vimrc for vim"
     try_backup $HOME/.vimrc
     ln -s $VIM_HOME/lin.vim $HOME/.vimrc
 
-    $INSTALL_HOME/msg.sh "install vim plugins"
+    message "install vim plugins"
     vim -E -c "PlugInstall" -c "qall"
 }
 
 function install_neovim() {
-    $INSTALL_HOME/msg.sh "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
+    message "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
     mkdir -p $CONFIG_HOME
     try_delete $NVIM_HOME/init.vim
     try_backup $NVIM_HOME
     ln -s $VIM_HOME $NVIM_HOME
     ln -s $VIM_HOME/lin.vim $NVIM_HOME/init.vim
 
-    $INSTALL_HOME/msg.sh "install neovim plugins"
+    message "install neovim plugins"
     nvim -E -c "PlugInstall" -c "qall"
 }
 
@@ -341,7 +323,7 @@ function check_no_option() {
     local opt_name=$2
     local input=$3
     if [ $opt_value -eq 1 ]; then
-        $INSTALL_HOME/msg.sh "error! cannot use $input along with $opt_name"
+        error_message "cannot use $input along with $opt_name"
         exit 1
     fi
 }
@@ -409,7 +391,7 @@ function parse_options() {
             OPT_WITHOUT_COLOR=1
             # if static color is not empty string
             if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
-                $INSTALL_HOME/msg.sh "error! cannot use --without-color along with --static-color"
+                error_message "cannot use --without-color along with --static-color"
                 exit 1
             fi
             ;;
@@ -419,12 +401,12 @@ function parse_options() {
             if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
                 # if static color not in COLORSCHEMES
                 if [ ! $( printf '%s\0' "${COLORSCHEMES[@]}" | grep -Fxqz -- "$OPT_STATIC_COLOR" ) ]; then
-                    $INSTALL_HOME/msg.sh "error! unknown colorscheme $OPT_STATIC_COLOR"
-                    $INSTALL_HOME/msg.sh "please use candidates: $COLORSCHEMES"
+                    error_message "unknown colorscheme $OPT_STATIC_COLOR"
+                    message "please use candidates: $COLORSCHEMES"
                     exit 1
                 fi
                 if [ $OPT_WITHOUT_COLOR -gt 0 ]; then
-                    $INSTALL_HOME/msg.sh "error! cannot use --static-color along with --without-color"
+                    error_message "error! cannot use --static-color along with --without-color"
                     exit 1
                 fi
             fi
@@ -436,7 +418,7 @@ function parse_options() {
             OPT_ONLY_NEOVIM=1
             ;;
         *)
-            $INSTALL_HOME/msg.sh "unknown options! please try ./install.sh --help for more information"
+            message "unknown options! please try ./install.sh --help for more information"
             exit 1
             ;;
         esac
@@ -456,7 +438,7 @@ function parse_options() {
 }
 
 function main() {
-    $INSTALL_HOME/msg.sh "install with $MODE_NAME mode"
+    message "install with $MODE_NAME mode"
 
     if [ $OPT_BASIC -gt 0 ]; then
         basic_installer
@@ -475,7 +457,7 @@ function main() {
         install_neovim
     fi
 
-    $INSTALL_HOME/msg.sh "install with $MODE_NAME mode - done"
+    message "install with $MODE_NAME mode - done"
 }
 
 parse_options "$@"

@@ -1,25 +1,25 @@
 #!/bin/bash
 
-INSTALL=~/.vim/install
+INSTALL_HOME=~/.vim/install
+source $INSTALL_HOME/util.sh
 
-$INSTALL/msg.sh "install dependencies with brew"
+message "install dependencies with brew"
 
 brew update
 
 # vim and neovim
-$INSTALL/install_or_skip.sh "brew install macvim" "gvim"
-$INSTALL/install_or_skip.sh "brew install neovim" "nvim"
-
-$INSTALL/install_or_skip.sh "brew install curl-openssl" "curl"
-$INSTALL/install_or_skip.sh "brew install wget" "wget"
-$INSTALL/install_or_skip.sh "brew install cmake" "cmake"
-$INSTALL/install_or_skip.sh "brew install pkg-config" "pkg-config"
+install_or_skip "brew install macvim" "gvim"
+install_or_skip "brew install neovim" "nvim"
+install_or_skip "brew install curl-openssl" "curl"
+install_or_skip "brew install wget" "wget"
+install_or_skip "brew install cmake" "cmake"
+install_or_skip "brew install pkg-config" "pkg-config"
 
 # python3
-$INSTALL/install_or_skip.sh "brew install python3" "python3"
+install_or_skip "brew install python3" "python3"
 
 # nodejs
-$INSTALL/install_or_skip.sh "brew install node" "node"
+install_or_skip "brew install node" "node"
 
 # ctags
-$INSTALL/install_or_skip.sh "brew install --HEAD universal-ctags/universal-ctags/universal-ctags" "ctags"
+install_or_skip "brew install --HEAD universal-ctags/universal-ctags/universal-ctags" "ctags"

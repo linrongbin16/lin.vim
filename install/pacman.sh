@@ -1,8 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-INSTALL=$HOME/.vim/install
+INSTALL_HOME=$HOME/.vim/install
+source $INSTALL_HOME/util.sh
 
-$INSTALL/msg.sh "install dependencies with pacman"
+message "install dependencies with pacman"
 
 sudo pacman -Syy
 
@@ -10,23 +11,23 @@ sudo pacman -Syy
 yes | sudo pacman -Rs vim
 yes | sudo pacman -S gvim
 
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S base-devel" "gcc"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S base-devel" "make"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S neovim" "nvim"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S curl" "curl"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S wget" "wget"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S autoconf" "autoconf"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S automake" "automake"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S pkg-config" "pkg-config"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S cmake" "cmake"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S xclip" "xclip"
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S wl-clipboard" "wl-copy"
+install_or_skip "yes | sudo pacman -S base-devel" "gcc"
+install_or_skip "yes | sudo pacman -S base-devel" "make"
+install_or_skip "yes | sudo pacman -S neovim" "nvim"
+install_or_skip "yes | sudo pacman -S curl" "curl"
+install_or_skip "yes | sudo pacman -S wget" "wget"
+install_or_skip "yes | sudo pacman -S autoconf" "autoconf"
+install_or_skip "yes | sudo pacman -S automake" "automake"
+install_or_skip "yes | sudo pacman -S pkg-config" "pkg-config"
+install_or_skip "yes | sudo pacman -S cmake" "cmake"
+install_or_skip "yes | sudo pacman -S xclip" "xclip"
+install_or_skip "yes | sudo pacman -S wl-clipboard" "wl-copy"
 
 # Python3
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S python python-pip" "python3"
+install_or_skip "yes | sudo pacman -S python python-pip" "python3"
 
 # Node
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S nodejs npm" "node"
+install_or_skip "yes | sudo pacman -S nodejs npm" "node"
 
 # Ctags
-$INSTALL/install_or_skip.sh "yes | sudo pacman -S ctags" "ctags"
+install_or_skip "yes | sudo pacman -S ctags" "ctags"
