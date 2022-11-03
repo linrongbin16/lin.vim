@@ -48,10 +48,10 @@ function try_delete() {
     fi
 }
 
-# array contains element
+# test if array contains element
 # printf '%s\0' "${myarray[@]}" | grep -Fxqz -- 'myelement'
 
-# test if string empty or whitespace
+# test if string is empty or whitespace
 # [[ -z "${mystring// }" ]]
 
 function clear_file() {
