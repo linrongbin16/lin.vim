@@ -7,7 +7,7 @@ function message() {
 
 
 function skip_message() {
-    local target=$1
+    local target="$1"
     message "'$target' already exist, skip..."
 }
 
@@ -17,7 +17,7 @@ function error_message() {
 }
 
 function try_backup() {
-    local src=$1
+    local src="$1"
     if [ -f "$src" ]; then
         local target=$src.$(date +"%Y-%m-%d.%H-%M-%S.%6N")
         message "backup '$src' to '$target'"
@@ -26,7 +26,7 @@ function try_backup() {
 }
 
 function try_delete() {
-    local src=$1
+    local src="$1"
     if [ -f "$src" ]; then
         message "remove '$src'"
         rm -rf $src
@@ -38,8 +38,8 @@ function clear_file() {
 }
 
 function install_or_skip() {
-    local $command=$1
-    local $target=$2
+    local $command="$1"
+    local $target="$2"
     if ! type "$target" >/dev/null 2>&1; then
         message "install '$target' with command: '$command'"
         eval "$command"
