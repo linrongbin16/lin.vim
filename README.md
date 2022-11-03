@@ -55,7 +55,6 @@ Solve below issues:
 - Don't know how to choose/configure/manage vim plugins: All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
 - Repeat installation on different OS and machines - All done by one-line command(not on Windows for now), all installations behave the same(the only difference is use Command-Key on macOS instead of Alt-Key on Windows/Linux).
 - Naive UI - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
-- Custom needs - Open and edit `~/.vimrc` `~/.vim/plugin.vim` `~/.vim/setting.vim`, or add new coc configuration in `~/.vim/coc-settings.json`.
 
 ## Screenshots
 
