@@ -17,8 +17,8 @@ function error_message() {
 }
 
 function try_backup() {
-    local src="$1"
-    if [ -f "$src" ]; then
+    local src=$1
+    if [[ -f "$src" || -d "$src" ]]; then
         local target=$src.$(date +"%Y-%m-%d.%H-%M-%S.%6N")
         message "backup '$src' to '$target'"
         mv $src $target
@@ -26,20 +26,20 @@ function try_backup() {
 }
 
 function try_delete() {
-    local src="$1"
-    if [ -f "$src" ]; then
+    local src=$1
+    if [[ -f "$src" || -d "$src" ]]; then
         message "remove '$src'"
         rm -rf $src
     fi
 }
 
-function clear_file() {
-    echo ''>$1
+function reset_file() {
+    echo -n ''>$1
 }
 
 function install_or_skip() {
-    local $command="$1"
-    local $target="$2"
+    local command="$1"
+    local target="$2"
     if ! type "$target" >/dev/null 2>&1; then
         message "install '$target' with command: '$command'"
         eval "$command"

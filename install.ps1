@@ -103,17 +103,13 @@ function TryDelete() {
     }
 }
 
-function ClearFile() {
+function ResetFile() {
     [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $True)][String]$target
     )
-    if (Test-Path $target) {
-        Clear-Content -Path $target
-    } else {
-        New-Item -Path $target
-    }
+    Write-Output '' >$target
 }
 
 function IsEmptyString() {
@@ -213,7 +209,7 @@ function InstallCommonSetting() {
 }
 
 function InstallPluginTemplate() {
-    ClearFile $PLUGIN_FILE
+    ResetFile $PLUGIN_FILE
     BeginInstallPlugin
     if (-not $global:OPT_WITHOUT_COLOR) {
         # enable color feature
@@ -232,7 +228,7 @@ function InstallPluginTemplate() {
 }
 
 function InstallSettingTemplate() {
-    ClearFile $SETTING_FILE
+    ResetFile $SETTING_FILE
 
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
 

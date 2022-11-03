@@ -184,7 +184,7 @@ function install_common_setting() {
 }
 
 function install_plugin_template() {
-    clear_file $PLUGIN_FILE
+    reset_file $PLUGIN_FILE
     begin_install_plugin
     if [ $OPT_WITHOUT_COLOR -eq 0 ]; then
         # enable color feature
@@ -203,7 +203,7 @@ function install_plugin_template() {
 }
 
 function install_setting_template() {
-    clear_file $SETTING_FILE
+    reset_file $SETTING_FILE
     cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
 
     begin_install_coc_global_extension_setting
@@ -271,7 +271,7 @@ function install_vim() {
 function install_neovim() {
     message "install ~/.config/nvim and ~/.config/nvim/init.vim for neovim"
     mkdir -p $CONFIG_HOME
-    try_delete $NVIM_HOME/init.vim
+    try_backup $NVIM_HOME/init.vim
     try_backup $NVIM_HOME
     ln -s $VIM_HOME $NVIM_HOME
     ln -s $VIM_HOME/lin.vim $NVIM_HOME/init.vim
