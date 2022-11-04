@@ -27,7 +27,7 @@ nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
 " open browser to preview markdown
 nnoremap <F8> :<C-u>MarkdownPreview<CR>
 " next color scheme
-nnoremap <silent> <F9> :<C-u>call NextColorSchemeSync()<CR>
+nnoremap <silent> <F9> :<C-u>call NextRandomColorSchemeSync()<CR>
 " open buffer explorer
 nnoremap <silent> <F10> :<C-u>BufExplorer<CR>
 " close buffer explorer if it's opened
