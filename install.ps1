@@ -49,7 +49,7 @@ $global:OPT_ONLY_NEOVIM=$False
 
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
-$COLORSCHEMES=@('darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'rigel', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'material')
+$COLOR_SCHEMES=@('darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'rigel', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'material', 'kanagawa', 'nightfox', 'tokyonight', 'github_dark')
 
 # common utils
 
@@ -364,7 +364,7 @@ The '-WithoutColor' option cannot specify with '-StaticColor [name]' at the same
 -WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
 
 -StaticColor [name]             Use static colorscheme, not random colorschemes.
-                                Candidates are: $COLORSCHEMES.
+                                Candidates are: $COLOR_SCHEMES.
 -OnlyVim                        Only support vim.
 -OnlyNeovim                     Only support neovim.
 "@
@@ -415,9 +415,9 @@ function ParseOptions() {
         Exit
     }
     if (-not (IsEmptyString $StaticColor)) {
-        if (-not $COLORSCHEMES.Contains($StaticColor)) {
+        if (-not $COLOR_SCHEMES.Contains($StaticColor)) {
             Message "error! unknown colorscheme $StaticColor"
-            Message "please use candidates: $COLORSCHEMES"
+            Message "please use candidates: $COLOR_SCHEMES"
             Exit
         }
         if ($WithoutColor) {

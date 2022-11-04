@@ -30,7 +30,7 @@ OPT_ONLY_NEOVIM=0
 
 PLUGIN_FILE=$VIM_HOME/plugin.vim
 SETTING_FILE=$VIM_HOME/setting.vim
-COLORSCHEMES=("darkblue" "solarized8" "base16-default-dark" "monokai" "dracula" "neodark" "srcery" "palenight" "onedark" "rigel" "sonokai" "everforest" "gruvbox-material" "edge" "material")
+COLOR_SCHEMES=("darkblue" "solarized8" "base16-default-dark" "monokai" "dracula" "neodark" "srcery" "palenight" "onedark" "rigel" "sonokai" "everforest" "gruvbox-material" "edge" "material" "kanagawa" "nightfox" "tokyonight" "github_dark")
 
 source $INSTALL_HOME/util.sh
 
@@ -311,7 +311,7 @@ The '--without-color' option cannot specify with '--static-color [name]' at the 
 --without-color                 Disable extra colors such as RGBs, random colorschemes, etc.
 
 --static-color [name]           Use static colorscheme, not random colorschemes.
-                                Candidates are: ${COLORSCHEMES[@]}.
+                                Candidates are: ${COLOR_SCHEMES[@]}.
 --only-vim                      Only support vim.
 --only-neovim                   Only support neovim.
 
@@ -399,10 +399,10 @@ function parse_options() {
             shift
             OPT_STATIC_COLOR="$1"
             if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
-                # if static color not in COLORSCHEMES
-                if [ ! $( printf '%s\0' "${COLORSCHEMES[@]}" | grep -Fxqz -- "$OPT_STATIC_COLOR" ) ]; then
+                # if static color not in COLOR_SCHEMES
+                if [ ! $( printf '%s\0' "${COLOR_SCHEMES[@]}" | grep -Fxqz -- "$OPT_STATIC_COLOR" ) ]; then
                     error_message "unknown colorscheme $OPT_STATIC_COLOR"
-                    message "please use candidates: $COLORSCHEMES"
+                    message "please use candidates: $COLOR_SCHEMES"
                     exit 1
                 fi
                 if [ $OPT_WITHOUT_COLOR -gt 0 ]; then
