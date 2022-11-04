@@ -90,7 +90,7 @@ Solve below issues:
   - macOS.
   - Linux(Ubuntu/Debian/Fedora/Manjaro).
 - Support both [vim](https://www.vim.org/) and [neovim](https://neovim.io/), neovim 0.7+ is strongly recommended for best performance and experience.
-- Modern editor UI features:
+- Modern editor UI:
   - File explorer.
   - Icons.
   - Color schemes (see [Color Schemes - Reference](#reference)) randomly selected on start.
@@ -105,7 +105,7 @@ Solve below issues:
   - Jump between symbols.
   - Code Actions.
   - Code Lens.
-- Search engine features supported by [fzf.vim](https://github.com/junegunn/fzf.vim):
+- Search engine supported by [fzf.vim](https://github.com/junegunn/fzf.vim):
   - Text search on text/lines/tags/search-histories/command-histories/yank-histories.
   - File search on files/buffers/history-files.
   - Git search on commits/uncommit-changes.
