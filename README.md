@@ -51,7 +51,7 @@ Aim to be out of box, IDE-like editing experience, high performance, light weigh
 Solve below issues:
 
 - Time-costing vim configurations - All behaviors follow community's best practice and most popular editors(just like [vscode](https://code.visualstudio.com/)).
-- Lack of IDE-like features - [Coc.nvim](https://github.com/neoclide/coc.nvim) and a bunch of language servers and extensions are embeded.
+- Lack of IDE-like editing features - [Coc.nvim](https://github.com/neoclide/coc.nvim) and a bunch of language servers and extensions are embeded.
 - Don't know how to choose/configure/manage vim plugins: All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
 - Duplicate installation on different OS and machines - All done by one-line command(not on Windows for now), all installations behave the same(the only difference is use Command-Key on macOS instead of Alt-Key on Windows/Linux).
 - Naive UI - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
