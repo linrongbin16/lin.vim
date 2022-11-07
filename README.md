@@ -106,11 +106,11 @@ Solve below issues:
   - Code Actions.
   - Code Lens.
 - Search engine supported by [fzf.vim](https://github.com/junegunn/fzf.vim):
-  - Text search on text/lines/tags/search-histories/command-histories/yank-histories.
-  - File search on files/buffers/history-files.
-  - Git search on commits/uncommit-changes.
-  - Coc.nvim integrated search on symbols/outline/diagnostics/yank.
-  - Other enhancement search on vim-marks/vim-key-mappings/vim-commands/help-tags.
+  - Text search.
+  - File search.
+  - Git search.
+  - Coc.nvim integrated search.
+  - Other search.
 - Other editing enhancements (see [Editing Enahncement](#editing-enhancement)).
 - Custom configuration.
 
