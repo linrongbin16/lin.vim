@@ -13,15 +13,7 @@ OS="$(uname -s)"
 MODE_NAME='full' # default mode
 OPT_FULL=1
 OPT_BASIC=0
-OPT_WITHOUT_CXX=0
-OPT_WITHOUT_PYTHON=0
-OPT_WITHOUT_RUST=0
-OPT_WITHOUT_GO=0
-OPT_WITHOUT_MARKDOWN=0
-OPT_WITHOUT_JSON=0
-OPT_WITHOUT_JAVASCRIPT=0
-OPT_WITHOUT_BASH=0
-OPT_WITHOUT_ALL_LANGUAGE=0
+OPT_WITHOUT_LANGUAGE_SERVER=0
 OPT_WITHOUT_HIGHLIGHT=0
 OPT_WITHOUT_COLOR=0
 OPT_STATIC_COLOR=''
@@ -30,7 +22,6 @@ OPT_ONLY_NEOVIM=0
 
 PLUGIN_FILE=$VIM_HOME/plugin.vim
 SETTING_FILE=$VIM_HOME/setting.vim
-COLOR_SCHEMES=("darkblue" "solarized8" "base16-default-dark" "monokai" "dracula" "neodark" "srcery" "palenight" "onedark" "rigel" "sonokai" "everforest" "gruvbox-material" "edge" "material" "kanagawa" "nightfox" "tokyonight" "github_dark")
 
 source $INSTALL_HOME/util.sh
 
@@ -207,35 +198,23 @@ function install_setting_template() {
     cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
 
     begin_install_coc_global_extension_setting
-    add_coc_global_extension_setting "coc-snippets"
     add_coc_global_extension_setting "coc-yank"
     add_coc_global_extension_setting "coc-lists"
-    add_coc_global_extension_setting "coc-html"
-    add_coc_global_extension_setting "coc-xml"
-    if [ $OPT_WITHOUT_CXX -eq 0 ]; then
+    if [ $OPT_WITHOUT_LANGUAGE_SERVER -eq 0 ]; then
+        add_coc_global_extension_setting "coc-snippets"
+        add_coc_global_extension_setting "coc-html"
+        add_coc_global_extension_setting "coc-xml"
         add_coc_global_extension_setting "coc-clangd"
         add_coc_global_extension_setting "coc-cmake"
-    fi
-    if [ $OPT_WITHOUT_PYTHON -eq 0 ]; then
         add_coc_global_extension_setting "coc-pyright"
-    fi
-    if [ $OPT_WITHOUT_RUST -eq 0 ]; then
         add_coc_global_extension_setting "coc-rust-analyzer"
-    fi
-    if [ $OPT_WITHOUT_GO -eq 0 ]; then
         add_coc_global_extension_setting "coc-go"
-    fi
-    if [ $OPT_WITHOUT_JSON -eq 0 ]; then
         add_coc_global_extension_setting "coc-json"
-    fi
-    if [ $OPT_WITHOUT_JAVASCRIPT -eq 0 ]; then
         add_coc_global_extension_setting "coc-tsserver"
         add_coc_global_extension_setting "coc-css"
         add_coc_global_extension_setting "@yaegassy/coc-volar"
         add_coc_global_extension_setting "coc-eslint"
         add_coc_global_extension_setting "coc-prettier"
-    fi
-    if [ $OPT_WITHOUT_BASH -eq 0 ]; then
         add_coc_global_extension_setting "coc-sh"
     fi
     end_install_coc_global_extension_setting
@@ -289,29 +268,19 @@ function show_help() {
 cat <<EOF
 Notice:
 In full mode, you could use '--without-xxx' options to disable some specific feature.
-The '--without-all-language --without-highlight --without-color' options is equivalent to '--limit'.
+The '--without-language-server --without-highlight --without-color' option is equivalent to '--limit'.
 The '--without-xxx' option cannot specify with '--basic' at the same time.
-The '--without-color' option cannot specify with '--static-color [name]' at the same time.
+The '--without-color' option cannot specify with '--static-color' at the same time.
 
 -h,--help                       Show help message.
 -b,--basic                      Basic mode.
 -l,--limit                      Limit mode.
 
---without-cxx                   Disable c/c++/cmake support.
---without-python                Disable python support.
---without-rust                  Disable rust support.
---without-go                    Disable golang support.
---without-markdown              Disable markdown support.
---without-json                  Disable json support.
---without-javascript            Disable javascript support.
---without-bash                  Disable linux bash support.
---without-all-language          Disable all language supports above.
+--without-language-server       Disable coc language servers.
+--without-highlight             Disable extra highlights.
+--without-color                 Disable extra colors and colorscheme.
 
---without-highlight             Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
---without-color                 Disable extra colors such as RGBs, random colorschemes, etc.
-
---static-color [name]           Use static colorscheme, not random colorschemes.
-                                Colorscheme suggestions: ${COLOR_SCHEMES[@]}.
+--static-color [name]           Use static colorscheme, not random ones.
 --only-vim                      Only support vim.
 --only-neovim                   Only support neovim.
 
@@ -353,36 +322,12 @@ function parse_options() {
             MODE_NAME='limit'
             OPT_BASIC=0
             OPT_FULL=1
-            OPT_WITHOUT_ALL_LANGUAGE=1
+            OPT_WITHOUT_LANGUAGE_SERVER=1
             OPT_WITHOUT_HIGHLIGHT=1
             OPT_WITHOUT_COLOR=1
             ;;
-        --without-cxx) 
-            OPT_WITHOUT_CXX=1
-            ;;
-        --without-python) 
-            OPT_WITHOUT_PYTHON=1
-            ;;
-        --without-rust) 
-            OPT_WITHOUT_RUST=1
-            ;;
-        --without-go) 
-            OPT_WITHOUT_GO=1
-            ;;
-        --without-markdown) 
-            OPT_WITHOUT_MARKDOWN=1
-            ;;
-        --without-json) 
-            OPT_WITHOUT_JSON=1
-            ;;
-        --without-javascript) 
-            OPT_WITHOUT_JAVASCRIPT=1
-            ;;
-        --without-bash) 
-            OPT_WITHOUT_BASH=1
-            ;;
-        --without-all-language)
-            OPT_WITHOUT_ALL_LANGUAGE=1
+        --without-language-server)
+            OPT_WITHOUT_LANGUAGE_SERVER=1
             ;;
         --without-highlight)
             OPT_WITHOUT_HIGHLIGHT=1
@@ -418,17 +363,6 @@ function parse_options() {
         esac
         shift
     done
-
-    if [ $OPT_WITHOUT_ALL_LANGUAGE -gt 0 ]; then
-        OPT_WITHOUT_CXX=1
-        OPT_WITHOUT_PYTHON=1
-        OPT_WITHOUT_RUST=1
-        OPT_WITHOUT_GO=1
-        OPT_WITHOUT_MARKDOWN=1
-        OPT_WITHOUT_JSON=1
-        OPT_WITHOUT_JAVASCRIPT=1
-        OPT_WITHOUT_BASH=1
-    fi
 }
 
 function main() {

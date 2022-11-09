@@ -1,23 +1,15 @@
  #Requires -RunAsAdministrator
 
 param (
-    [Parameter(HelpMessage="Show help message")][switch]$Help = $False,
-    [Parameter(HelpMessage="Basic mode")][switch]$Basic = $False,
-    [Parameter(HelpMessage="Limit mode")][switch]$Limit = $False,
-    [Parameter(HelpMessage="Disable c/c++/cmake support")][switch]$WithoutCxx = $False,
-    [Parameter(HelpMessage="Disable python support")][switch]$WithoutPython = $False,
-    [Parameter(HelpMessage="Disable rust support")][switch]$WithoutRust = $False,
-    [Parameter(HelpMessage="Disable golang support")][switch]$WithoutGo = $False,
-    [Parameter(HelpMessage="Disable markdown support")][switch]$WithoutMarkdown = $False,
-    [Parameter(HelpMessage="Disable json support")][switch]$WithoutJson = $False,
-    [Parameter(HelpMessage="Disable javascript support")][switch]$WithoutJavascript = $False,
-    [Parameter(HelpMessage="Disable powershell support")][switch]$WithoutPowershell = $False,
-    [Parameter(HelpMessage="Disable all language support")][switch]$WithoutAllLanguage = $False,
-    [Parameter(HelpMessage="Disable extra highlights")][switch]$WithoutHighlight = $False,
-    [Parameter(HelpMessage="Disable extra colors")][switch]$WithoutColor = $False,
-    [Parameter(HelpMessage="Only one static colorscheme")][String]$StaticColor= "",
-    [Parameter(HelpMessage="Only support vim")][switch]$OnlyVim = $False,
-    [Parameter(HelpMessage="Only support neovim")][switch]$OnlyNeovim = $False
+    [Parameter][switch]$Help = $False,
+    [Parameter][switch]$Basic = $False,
+    [Parameter][switch]$Limit = $False,
+    [Parameter][switch]$WithoutLanguageServer = $False,
+    [Parameter][switch]$WithoutHighlight = $False,
+    [Parameter][switch]$WithoutColor = $False,
+    [Parameter][String]$StaticColor= "",
+    [Parameter][switch]$OnlyVim = $False,
+    [Parameter][switch]$OnlyNeovim = $False
 )
 
 # Debug
@@ -32,15 +24,7 @@ $TEMPLATE_HOME="$VIM_HOME\template"
 $global:MODE_NAME="full" # default mode
 $global:OPT_FULL=$True
 $global:OPT_BASIC=$False
-$global:OPT_WITHOUT_CXX=$False
-$global:OPT_WITHOUT_PYTHON=$False
-$global:OPT_WITHOUT_RUST=$False
-$global:OPT_WITHOUT_GO=$False
-$global:OPT_WITHOUT_MARKDOWN=$False
-$global:OPT_WITHOUT_JSON=$False
-$global:OPT_WITHOUT_JAVASCRIPT=$False
-$global:OPT_WITHOUT_POWERSHELL=$False
-$global:OPT_WITHOUT_ALL_LANGUAGE=$False
+$global:OPT_WITHOUT_LANGUAGE_SERVER=$False
 $global:OPT_WITHOUT_HIGHLIGHT=$False
 $global:OPT_WITHOUT_COLOR=$False
 $global:OPT_STATIC_COLOR=""
@@ -49,7 +33,6 @@ $global:OPT_ONLY_NEOVIM=$False
 
 $PLUGIN_FILE="$VIM_HOME\plugin.vim"
 $SETTING_FILE="$VIM_HOME\setting.vim"
-$COLOR_SCHEMES=@('darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'rigel', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'material', 'kanagawa', 'nightfox', 'tokyonight', 'github_dark')
 
 # common utils
 
@@ -233,35 +216,23 @@ function InstallSettingTemplate() {
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
 
     BeginInstallCocGlobalExtensionSetting
-    AddCocGlobalExtensionSetting 'coc-snippets'
     AddCocGlobalExtensionSetting 'coc-yank'
     AddCocGlobalExtensionSetting 'coc-lists'
-    AddCocGlobalExtensionSetting 'coc-html'
-    AddCocGlobalExtensionSetting 'coc-xml'
-    if (-not $global:OPT_WITHOUT_CXX) {
+    if (-not $global:OPT_WITHOUT_LANGUAGE_SERVER) {
+        AddCocGlobalExtensionSetting 'coc-snippets'
+        AddCocGlobalExtensionSetting 'coc-html'
+        AddCocGlobalExtensionSetting 'coc-xml'
         AddCocGlobalExtensionSetting 'coc-clangd'
         AddCocGlobalExtensionSetting 'coc-cmake'
-    }
-    if (-not $global:OPT_WITHOUT_PYTHON) {
         AddCocGlobalExtensionSetting 'coc-pyright'
-    }
-    if (-not $global:OPT_WITHOUT_RUST) {
         AddCocGlobalExtensionSetting 'coc-rust-analyzer'
-    }
-    if (-not $global:OPT_WITHOUT_GO) {
         AddCocGlobalExtensionSetting 'coc-go'
-    }
-    if (-not $global:OPT_WITHOUT_JSON) {
         AddCocGlobalExtensionSetting 'coc-json'
-    }
-    if (-not $global:OPT_WITHOUT_JAVASCRIPT) {
         AddCocGlobalExtensionSetting 'coc-tsserver'
         AddCocGlobalExtensionSetting 'coc-css'
         AddCocGlobalExtensionSetting '@yaegassy/coc-volar'
         AddCocGlobalExtensionSetting 'coc-eslint'
         AddCocGlobalExtensionSetting 'coc-prettier'
-    }
-    if (-not $global:OPT_WITHOUT_POWERSHELL) {
         AddCocGlobalExtensionSetting 'coc-powershell'
     }
     EndInstallCocGlobalExtensionSetting
@@ -342,29 +313,19 @@ function ShowHelp() {
     Write-Host @"
 Notice:
 In full mode, you could use '-WithoutXXX' options to disable some specific feature.
-The '-WithoutAllLanguage -WithoutHighlight -WithoutColor' options is equivalent to '-Limit'.
+The '-WithoutLanguageServer -WithoutHighlight -WithoutColor' option is equivalent to '-Limit'.
 The '-WithoutXXX' option cannot specify with '-Basic' at the same time.
-The '-WithoutColor' option cannot specify with '-StaticColor [name]' at the same time.
+The '-WithoutColor' option cannot specify with '-StaticColor' at the same time.
 
 -Help                           Show help message.
 -Basic                          Basic mode.
 -Limit                          Limit mode.
 
--WithoutCxx                     Disable c/c++/cmake support.
--WithoutPython                  Disable python support.
--WithoutRust                    Disable rust support.
--WithoutGo                      Disable golang support.
--WithoutMarkdown                Disable markdown support.
--WithoutJson                    Disable json support.
--WithoutJavascript              Disable javascript support.
--WithoutPowershell              Disable powershell support.
--WithoutAllLanguage             Disable all language supports above.
+-WithoutLanguageServer          Disable coc language servers.
+-WithoutHighlight               Disable extra highlights.
+-WithoutColor                   Disable extra colors and colorschemes.
 
--WithoutHighlight               Disable extra highlights such as cursor word highlight, fzf preview syntax highlight, etc.
--WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
-
--StaticColor [name]             Use static colorscheme, not random colorschemes.
-                                Colorscheme suggestions: $COLOR_SCHEMES.
+-StaticColor [name]             Use static colorscheme, not random ones.
 -OnlyVim                        Only support vim.
 -OnlyNeovim                     Only support neovim.
 "@
@@ -375,13 +336,7 @@ function ValidateOptions() {
     $Options.Add("-Help".ToLower(), $True)
     $Options.Add("-Basic".ToLower(), $True)
     $Options.Add("-Limit".ToLower(), $True)
-    $Options.Add("-WithoutCxx".ToLower(), $True)
-    $Options.Add("-WithoutPython".ToLower(), $True)
-    $Options.Add("-WithoutMarkdown".ToLower(), $True)
-    $Options.Add("-WithoutJson".ToLower(), $True)
-    $Options.Add("-WithoutJavascript".ToLower(), $True)
-    $Options.Add("-WithoutPowershell".ToLower(), $True)
-    $Options.Add("-WithoutAllLanguage".ToLower(), $True)
+    $Options.Add("-WithoutLanguageServer".ToLower(), $True)
     $Options.Add("-WithoutHighlight".ToLower(), $True)
     $Options.Add("-WithoutColor".ToLower(), $True)
     $Options.Add("-OnlyVim".ToLower(), $True)
@@ -437,30 +392,12 @@ function ParseOptions() {
         $global:MODE_NAME="limit"
         $global:OPT_BASIC=$False
         $global:OPT_FULL=$True
-        $global:OPT_WITHOUT_ALL_LANGUAGE=$True
+        $global:OPT_WITHOUT_LANGUAGE_SERVER=$True
         $global:OPT_WITHOUT_HIGHLIGHT=$True
         $global:OPT_WITHOUT_COLOR=$True
     }
-    $global:OPT_WITHOUT_CXX=$WithoutCxx
-    $global:OPT_WITHOUT_PYTHON=$WithoutPython
-    $global:OPT_WITHOUT_RUST=$WithoutRust
-    $global:OPT_WITHOUT_GO=$WithoutGo
-    $global:OPT_WITHOUT_MARKDOWN=$WithoutMarkdown
-    $global:OPT_WITHOUT_JSON=$WithoutJson
-    $global:OPT_WITHOUT_JAVASCRIPT=$WithoutJavascript
-    $global:OPT_WITHOUT_POWERSHELL=$WithoutPowershell
-    if ($WithoutAllLanguage) {
-        $global:OPT_WITHOUT_ALL_LANGUAGE=$True
-    }
-    if ($global:OPT_WITHOUT_ALL_LANGUAGE) {
-        $global:OPT_WITHOUT_CXX=$True
-        $global:OPT_WITHOUT_PYTHON=$True
-        $global:OPT_WITHOUT_RUST=$True
-        $global:OPT_WITHOUT_GO=$True
-        $global:OPT_WITHOUT_MARKDOWN=$True
-        $global:OPT_WITHOUT_JSON=$True
-        $global:OPT_WITHOUT_JAVASCRIPT=$True
-        $global:OPT_WITHOUT_POWERSHELL=$True
+    if ($WithoutLanguageServer) {
+        $global:OPT_WITHOUT_LANGUAGE_SERVER=$True
     }
     if ($WithoutHighlight) {
         $global:OPT_WITHOUT_HIGHLIGHT=$True

@@ -40,8 +40,9 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Auto Close Brackets and HTML Tags](#auto-close-brackets-and-html-tags)
     - [Easy Comment](#easy-comment)
   - [Customization](#customization)
-- [Embeded Language Servers](#embeded-language-servers)
-- [Reference](#reference)
+- [Appendix](#appendix)
+  - [Embeded Language Servers](#embeded-language-servers)
+  - [Color Schemes](#color-schemes)
 - [Contribute](#contribute)
 
 # Introduction
@@ -93,7 +94,7 @@ Solve below issues:
 - Modern editor UI:
   - File explorer.
   - Icons.
-  - Color schemes (see [Color Schemes - Reference](#reference)) randomly selected on start.
+  - Color schemes (see [Color Schemes](#color-schemes)) randomly selected on start.
   - Status line.
   - Tab line and buffer explorer.
   - Outline/Tags.
@@ -503,9 +504,9 @@ Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [
 
 Please add plugins in `~/.vim/plugin.vim`, add settings in `~/.vim/setting.vim` and `~/.vim/coc-settings.json`.
 
-# Embeded Language Servers
+# Appendix
 
-These language servers are installed by default:
+## Embeded Language Servers
 
 - c/c++
 - python3 (python2 is not supported)
@@ -516,29 +517,26 @@ These language servers are installed by default:
 - json
 - javascript/typescript/jsx/tsx
 
-# Reference
+## Color Schemes
 
-- Nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet.
-- IDE-like defaults for neovim: [LunarVim](https://github.com/LunarVim/LunarVim).
-- Color Schemes:
-  - [solarized](https://github.com/lifepillar/vim-solarized8).
-  - [monokai](https://github.com/crusoexia/vim-monokai).
-  - [dracula](https://github.com/dracula/vim).
-  - [neodark](https://github.com/KeitaNakamura/neodark.vim).
-  - [srcery](https://github.com/srcery-colors/srcery-vim).
-  - [palenight](https://github.com/drewtempelmeyer/palenight.vim).
-  - [onedark](https://github.com/joshdick/onedark.vim).
-  - [rigel](https://github.com/Rigellute/rigel).
-  - [base16](https://github.com/chriskempson/base16-vim).
-  - [edge](https://github.com/sainnhe/edge).
-  - [gruvbox-material](https://github.com/sainnhe/gruvbox-material).
-  - [everforest](https://github.com/sainnhe/everforest).
-  - [sonokai](https://github.com/sainnhe/sonokai).
-  - [material](https://github.com/kaicataldo/material.vim).
-  - [nightfox](https://github.com/EdenEast/nightfox.nvim) (for neovim 0.5+).
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+).
-  - [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+).
-  - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+).
+- [solarized](https://github.com/lifepillar/vim-solarized8).
+- [monokai](https://github.com/crusoexia/vim-monokai).
+- [dracula](https://github.com/dracula/vim).
+- [neodark](https://github.com/KeitaNakamura/neodark.vim).
+- [srcery](https://github.com/srcery-colors/srcery-vim).
+- [palenight](https://github.com/drewtempelmeyer/palenight.vim).
+- [onedark](https://github.com/joshdick/onedark.vim).
+- [rigel](https://github.com/Rigellute/rigel).
+- [base16](https://github.com/chriskempson/base16-vim).
+- [edge](https://github.com/sainnhe/edge).
+- [gruvbox-material](https://github.com/sainnhe/gruvbox-material).
+- [everforest](https://github.com/sainnhe/everforest).
+- [sonokai](https://github.com/sainnhe/sonokai).
+- [material](https://github.com/kaicataldo/material.vim).
+- [nightfox](https://github.com/EdenEast/nightfox.nvim) (for neovim 0.5+).
+- [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+).
+- [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+).
+- [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+).
 
 # Contribute
 
