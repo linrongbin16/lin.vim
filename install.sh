@@ -311,7 +311,7 @@ The '--without-color' option cannot specify with '--static-color [name]' at the 
 --without-color                 Disable extra colors such as RGBs, random colorschemes, etc.
 
 --static-color [name]           Use static colorscheme, not random colorschemes.
-                                Candidates are: ${COLOR_SCHEMES[@]}.
+                                Colorscheme suggestions: ${COLOR_SCHEMES[@]}.
 --only-vim                      Only support vim.
 --only-neovim                   Only support neovim.
 
@@ -399,12 +399,6 @@ function parse_options() {
             shift
             OPT_STATIC_COLOR="$1"
             if [ ! -z "${OPT_STATIC_COLOR// }" ]; then
-                # if static color not in COLOR_SCHEMES
-                if [ ! $( printf '%s\0' "${COLOR_SCHEMES[@]}" | grep -Fxqz -- "$OPT_STATIC_COLOR" ) ]; then
-                    error_message "unknown colorscheme $OPT_STATIC_COLOR"
-                    message "please use candidates: $COLOR_SCHEMES"
-                    exit 1
-                fi
                 if [ $OPT_WITHOUT_COLOR -gt 0 ]; then
                     error_message "error! cannot use --static-color along with --without-color"
                     exit 1

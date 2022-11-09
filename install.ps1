@@ -364,7 +364,7 @@ The '-WithoutColor' option cannot specify with '-StaticColor [name]' at the same
 -WithoutColor                   Disable extra colors such as RGBs, random colorschemes, etc.
 
 -StaticColor [name]             Use static colorscheme, not random colorschemes.
-                                Candidates are: $COLOR_SCHEMES.
+                                Colorscheme suggestions: $COLOR_SCHEMES.
 -OnlyVim                        Only support vim.
 -OnlyNeovim                     Only support neovim.
 "@
@@ -415,11 +415,6 @@ function ParseOptions() {
         Exit
     }
     if (-not (IsEmptyString $StaticColor)) {
-        if (-not $COLOR_SCHEMES.Contains($StaticColor)) {
-            Message "error! unknown colorscheme $StaticColor"
-            Message "please use candidates: $COLOR_SCHEMES"
-            Exit
-        }
         if ($WithoutColor) {
             Message "error! cannot use -StaticColor along with -WithoutColor"
             Exit
