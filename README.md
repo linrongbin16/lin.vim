@@ -519,24 +519,24 @@ Please add plugins in `~/.vim/plugin.vim`, add settings in `~/.vim/setting.vim` 
 
 ## Color Schemes
 
-- [solarized](https://github.com/lifepillar/vim-solarized8).
-- [monokai](https://github.com/crusoexia/vim-monokai).
-- [dracula](https://github.com/dracula/vim).
-- [neodark](https://github.com/KeitaNakamura/neodark.vim).
-- [srcery](https://github.com/srcery-colors/srcery-vim).
-- [palenight](https://github.com/drewtempelmeyer/palenight.vim).
-- [onedark](https://github.com/joshdick/onedark.vim).
-- [rigel](https://github.com/Rigellute/rigel).
-- [base16](https://github.com/chriskempson/base16-vim).
-- [edge](https://github.com/sainnhe/edge).
-- [gruvbox-material](https://github.com/sainnhe/gruvbox-material).
-- [everforest](https://github.com/sainnhe/everforest).
-- [sonokai](https://github.com/sainnhe/sonokai).
-- [material](https://github.com/kaicataldo/material.vim).
-- [nightfox](https://github.com/EdenEast/nightfox.nvim) (for neovim 0.5+).
-- [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+).
-- [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+).
-- [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+).
+- [solarized](https://github.com/lifepillar/vim-solarized8)
+- [monokai](https://github.com/crusoexia/vim-monokai)
+- [dracula](https://github.com/dracula/vim)
+- [neodark](https://github.com/KeitaNakamura/neodark.vim)
+- [srcery](https://github.com/srcery-colors/srcery-vim)
+- [palenight](https://github.com/drewtempelmeyer/palenight.vim)
+- [onedark](https://github.com/joshdick/onedark.vim)
+- [rigel](https://github.com/Rigellute/rigel)
+- [base16](https://github.com/chriskempson/base16-vim)
+- [edge](https://github.com/sainnhe/edge)
+- [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+- [everforest](https://github.com/sainnhe/everforest)
+- [sonokai](https://github.com/sainnhe/sonokai)
+- [material](https://github.com/kaicataldo/material.vim)
+- [nightfox](https://github.com/EdenEast/nightfox.nvim) (for neovim 0.5+)
+- [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+)
+- [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+)
+- [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+)
 
 # Contribute
 
