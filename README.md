@@ -94,11 +94,11 @@ Solve below issues:
 - Modern editor UI:
   - File explorer.
   - Icons.
-  - Color schemes (see [Color Schemes](#color-schemes)) randomly selected on start.
+  - [Color schemes](#color-schemes) randomly selected on start.
   - Status line.
   - Tab line and buffer explorer.
   - Outline/Tags.
-- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), a bunch of language servers(see [Embeded Language Servers](#embeded-language-servers)) embeded by default:
+- IDE-like editing features supported by [coc.nvim](https://github.com/neoclide/coc.nvim), [a bunch of language servers](#embeded-language-servers) embeded by default:
   - Code complete.
   - Diagnostic.
   - Lint.
@@ -112,7 +112,7 @@ Solve below issues:
   - Git search.
   - Coc.nvim integrated search.
   - Other search.
-- Other editing enhancements (see [Editing Enahncement](#editing-enhancement)).
+- Other [editing enhancements](#editing-enhancement).
 - Custom configuration.
 
 # Installation
