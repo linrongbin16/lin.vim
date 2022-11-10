@@ -1,3 +1,3 @@
 
-" Random colorscheme selected on boot
+""" Random colorscheme selected on boot
 call NextRandomColorScheme()

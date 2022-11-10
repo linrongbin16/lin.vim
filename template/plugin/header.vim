@@ -1,5 +1,5 @@
 
-" --- plugin header ---
+""" --- plugin header ---
 
 if has('win32') || has('win64')
     set runtimepath^=~/.vim

@@ -11,7 +11,7 @@ let g:fern#renderer = "nerdfont"
 " disable default key mapping
 let g:fern#disable_default_mappings=1
 
-let g:fern#renderer#nerdfont#leading="  "
+let g:fern#renderer#nerdfont#leading=" │ "
 
 " key mappings for fern explorer
 function! s:fern_settings() abort
@@ -33,7 +33,9 @@ function! s:fern_settings() abort
 
   " create/rename/delete
   nmap <buffer><nowait> a <Plug>(fern-action-new-file)
+  nmap <buffer><nowait> N <Plug>(fern-action-new-file)
   nmap <buffer><nowait> A <Plug>(fern-action-new-dir)
+  nmap <buffer><nowait> K <Plug>(fern-action-new-dir)
   nmap <buffer><nowait> r <Plug>(fern-action-move)
   nmap <buffer><nowait> m <Plug>(fern-action-move)
   nmap <buffer><nowait> d <Plug>(fern-action-trash)

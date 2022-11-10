@@ -1,15 +1,15 @@
  #Requires -RunAsAdministrator
 
 param (
-    [Parameter][switch]$Help = $False,
-    [Parameter][switch]$Basic = $False,
-    [Parameter][switch]$Limit = $False,
-    [Parameter][switch]$WithoutLanguageServer = $False,
-    [Parameter][switch]$WithoutHighlight = $False,
-    [Parameter][switch]$WithoutColor = $False,
-    [Parameter][String]$StaticColor= "",
-    [Parameter][switch]$OnlyVim = $False,
-    [Parameter][switch]$OnlyNeovim = $False
+    [Parameter(Mandatory=$False)][switch]$Help = $False,
+    [Parameter(Mandatory=$False)][switch]$Basic = $False,
+    [Parameter(Mandatory=$False)][switch]$Limit = $False,
+    [Parameter(Mandatory=$False)][switch]$WithoutLanguageServer = $False,
+    [Parameter(Mandatory=$False)][switch]$WithoutHighlight = $False,
+    [Parameter(Mandatory=$False)][switch]$WithoutColor = $False,
+    [Parameter(Mandatory=$False)][String]$StaticColor= "",
+    [Parameter(Mandatory=$False)][switch]$OnlyVim = $False,
+    [Parameter(Mandatory=$False)][switch]$OnlyNeovim = $False
 )
 
 # Debug
@@ -202,7 +202,7 @@ function InstallPluginTemplate() {
         # enable highlight feature
         InstallHighlightPlugin
     }
-    if (-not $global:OPT_WITHOUT_MARKDOWN) {
+    if (-not $global:OPT_WITHOUT_LANGUAGE_SERVER) {
         # enable markdown feature
         InstallMarkdownPlugin
     }

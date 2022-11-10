@@ -185,7 +185,7 @@ function install_plugin_template() {
         # enable highlight feature
         install_highlight_plugin
     fi
-    if [ $OPT_WITHOUT_MARKDOWN -eq 0 ]; then
+    if [ $OPT_WITHOUT_LANGUAGE_SERVER -eq 0 ]; then
         # enable markdown feature
         install_markdown_plugin
     fi
