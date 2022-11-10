@@ -5,31 +5,16 @@ local function trim6(s)
     return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
 end
 local function LuaLineGitStatus()
-    local branch = vim.g.coc_git_status
-    if branch == nil or branch == '' then
-        return ''
-    end
-    local changes = vim.b.coc_git_status
-    if changes == nil or changes == '' then
-        changes = ''
-    end
-    return string.format('%s%s', branch, changes)
-end
--- local function LuaLineCurrentFunction()
---     local function_name = vim.b.coc_current_function
---     if function_name == nil or function_name == '' then
---         return ''
---     end
---     return string.format(' %s', function_name)
--- end
-local function LuaLineCocStatus()
     -- coc-git
-    -- local coc_status = vim.fn['coc#status']()
-    -- if coc_status == nil or coc_status == '' then
+    -- local branch = vim.g.coc_git_status
+    -- if branch == nil or branch == '' then
     --     return ''
-    -- else
-    --     return coc_status
     -- end
+    -- local changes = vim.b.coc_git_status
+    -- if changes == nil or changes == '' then
+    --     changes = ''
+    -- end
+    -- return string.format('%s%s', branch, changes)
 
     -- vim-gitbranch + vim-gitgutter
     local branch = vim.fn['gitbranch#name']()
@@ -55,6 +40,22 @@ local function LuaLineCocStatus()
         return string.format(' %s', branch)
     else
         return string.format(' %s %s', branch, table.concat(changes, ' '))
+    end
+end
+-- local function LuaLineCurrentFunction()
+--     local function_name = vim.b.coc_current_function
+--     if function_name == nil or function_name == '' then
+--         return ''
+--     end
+--     return string.format(' %s', function_name)
+-- end
+local function LuaLineCocStatus()
+    -- coc-git
+    local coc_status = vim.fn['coc#status']()
+    if coc_status == nil or coc_status == '' then
+        return ''
+    else
+        return coc_status
     end
 end
 local function LuaLineCursorPosition()
