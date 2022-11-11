@@ -1,5 +1,5 @@
 
-" Color Theme
+""" Color Theme
 Plug 'lifepillar/vim-solarized8'
 Plug 'crusoexia/vim-monokai'
 Plug 'dracula/vim', {'as': 'dracula'}

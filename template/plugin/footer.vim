@@ -1,4 +1,4 @@
 
-" --- plugin footer ---
+""" --- Plugin Footer ---
 
 call plug#end()
