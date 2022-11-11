@@ -272,7 +272,8 @@ Navigation:
 
 Create/Delete/Copy/Paste/Cut:
 
-- `a`/`A` 🄽 - create new file/directory.
+- `a`/`N` 🄽 - create new file.
+- `A`/`K` 🄽 - create new directory (Notice: [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) plugin on neovim need to add a slash `\` after folder name to create a new directory, [fern.vim](https://github.com/lambdalisue/fern.vim) on vim just need folder name itself, see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)).
 - `m`/`r` 🄽 - move/rename file/directory.
 - `<C-c>` 🄽 - copy file/directory into internal clipboard just like in Windows.
 - `<C-x>` 🄽 - cut file/directory into internal clipboard just like in Windows.
