@@ -20,8 +20,8 @@ OPT_STATIC_COLOR=''
 OPT_ONLY_VIM=0
 OPT_ONLY_NEOVIM=0
 
-PLUGIN_FILE=$VIM_HOME/plugin.vim
-SETTING_FILE=$VIM_HOME/setting.vim
+PLUGINS_FILE=$VIM_HOME/plugins.vim
+SETTINGS_FILE=$VIM_HOME/settings.vim
 
 source $INSTALL_HOME/util.sh
 
@@ -130,61 +130,61 @@ function install_dependencies() {
 # template
 
 function begin_install_plugin() {
-    cat $TEMPLATE_HOME/plugin/header.vim >> $PLUGIN_FILE
+    cat $TEMPLATE_HOME/plugin/header.vim >> $PLUGINS_FILE
 }
 
 function end_install_plugin() {
-    cat $TEMPLATE_HOME/plugin/footer.vim >> $PLUGIN_FILE
+    cat $TEMPLATE_HOME/plugin/footer.vim >> $PLUGINS_FILE
 }
 
 function install_highlight_plugin() {
-    cat $TEMPLATE_HOME/plugin/highlight.vim >> $PLUGIN_FILE
+    cat $TEMPLATE_HOME/plugin/highlight.vim >> $PLUGINS_FILE
 }
 
 function install_color_plugin() {
-    cat $TEMPLATE_HOME/plugin/color.vim >> $PLUGIN_FILE
+    cat $TEMPLATE_HOME/plugin/color.vim >> $PLUGINS_FILE
 }
 
 function install_markdown_plugin() {
-    cat $TEMPLATE_HOME/plugin/markdown.vim >> $PLUGIN_FILE
+    cat $TEMPLATE_HOME/plugin/markdown.vim >> $PLUGINS_FILE
 }
 
 function install_common_plugin() {
-    cat $TEMPLATE_HOME/plugin/common.vim >> $PLUGIN_FILE
+    cat $TEMPLATE_HOME/plugin/common.vim >> $PLUGINS_FILE
 }
 
 function begin_install_coc_global_extension_setting() {
-    echo "" >> $SETTING_FILE
-    echo '" Coc global extensions' >> $SETTING_FILE
-    printf "let g:coc_global_extensions = [" >> $SETTING_FILE
+    echo "" >> $SETTINGS_FILE
+    echo '" Coc global extensions' >> $SETTINGS_FILE
+    printf "let g:coc_global_extensions = [" >> $SETTINGS_FILE
 }
 
 function end_install_coc_global_extension_setting() {
-    echo "]" >> $SETTING_FILE
+    echo "]" >> $SETTINGS_FILE
 }
 
 function install_random_colorscheme_setting() {
-    cat $TEMPLATE_HOME/setting/random-colorscheme.vim >> $SETTING_FILE
+    cat $TEMPLATE_HOME/setting/random-colorscheme.vim >> $SETTINGS_FILE
 }
 
 function add_coc_global_extension_setting() {
     local extension=$1
-    printf "'$extension', " >> $SETTING_FILE
+    printf "'$extension', " >> $SETTINGS_FILE
 }
 
 function install_static_colorscheme_setting() {
     local color=$1
-    echo "" >> $SETTING_FILE
-    echo '""" Static colorscheme' >> $SETTING_FILE
-    echo "colorscheme $color" >> $SETTING_FILE
+    echo "" >> $SETTINGS_FILE
+    echo '""" Static colorscheme' >> $SETTINGS_FILE
+    echo "colorscheme $color" >> $SETTINGS_FILE
 }
 
 function install_common_setting() {
-    cat $TEMPLATE_HOME/setting/common.vim >> $SETTING_FILE
+    cat $TEMPLATE_HOME/setting/common.vim >> $SETTINGS_FILE
 }
 
 function install_plugin_template() {
-    reset_file $PLUGIN_FILE
+    reset_file $PLUGINS_FILE
     begin_install_plugin
     if [ $OPT_WITHOUT_COLOR -eq 0 ]; then
         # enable color feature
@@ -203,7 +203,7 @@ function install_plugin_template() {
 }
 
 function install_setting_template() {
-    reset_file $SETTING_FILE
+    reset_file $SETTINGS_FILE
     cp $TEMPLATE_HOME/coc-settings-template.json $VIM_HOME/coc-settings.json
 
     begin_install_coc_global_extension_setting

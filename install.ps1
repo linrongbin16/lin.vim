@@ -31,8 +31,8 @@ $global:OPT_STATIC_COLOR = ""
 $global:OPT_ONLY_VIM = $False
 $global:OPT_ONLY_NEOVIM = $False
 
-$PLUGIN_FILE = "$VIM_HOME\plugin.vim"
-$SETTING_FILE = "$VIM_HOME\setting.vim"
+$PLUGINS_FILE = "$VIM_HOME\plugins.vim"
+$SETTINGS_FILE = "$VIM_HOME\settings.vim"
 
 # common utils
 
@@ -138,41 +138,41 @@ function InstallDependencies() {
 # template
 
 function BeginInstallPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin\header.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\header.vim" | Add-Content -Path $PLUGINS_FILE
 }
 
 function EndInstallPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin\footer.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\footer.vim" | Add-Content -Path $PLUGINS_FILE
 }
 
 function InstallHighlightPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin\highlight.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\highlight.vim" | Add-Content -Path $PLUGINS_FILE
 }
 
 function InstallColorPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin\color.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\color.vim" | Add-Content -Path $PLUGINS_FILE
 }
 
 function InstallMarkdownPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin\markdown.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\markdown.vim" | Add-Content -Path $PLUGINS_FILE
 }
 
 function InstallCommonPlugin() {
-    Get-Content -Path "$TEMPLATE_HOME\plugin\common.vim" | Add-Content -Path $PLUGIN_FILE
+    Get-Content -Path "$TEMPLATE_HOME\plugin\common.vim" | Add-Content -Path $PLUGINS_FILE
 }
 
 function BeginInstallCocGlobalExtensionSetting() {
-    Add-Content -Path $SETTING_FILE -Value ""
-    Add-Content -Path $SETTING_FILE -Value '" Coc global extensions'
-    Add-Content -Path $SETTING_FILE -Value "let g:coc_global_extensions = [" -NoNewline
+    Add-Content -Path $SETTINGS_FILE -Value ""
+    Add-Content -Path $SETTINGS_FILE -Value '" Coc global extensions'
+    Add-Content -Path $SETTINGS_FILE -Value "let g:coc_global_extensions = [" -NoNewline
 }
 
 function EndInstallCocGlobalExtensionSetting() {
-    Add-Content -Path $SETTING_FILE -Value "]"
+    Add-Content -Path $SETTINGS_FILE -Value "]"
 }
 
 function InstallRandomColorSchemeSetting() {
-    Get-Content -Path "$TEMPLATE_HOME\setting\random-colorscheme.vim" | Add-Content -Path $SETTING_FILE
+    Get-Content -Path "$TEMPLATE_HOME\setting\random-colorscheme.vim" | Add-Content -Path $SETTINGS_FILE
 }
 
 function AddCocGlobalExtensionSetting() {
@@ -181,7 +181,7 @@ function AddCocGlobalExtensionSetting() {
     (
         [Parameter(Mandatory = $True)][String]$extension
     )
-    Add-Content -Path $SETTING_FILE -Value "'$extension', " -NoNewline
+    Add-Content -Path $SETTINGS_FILE -Value "'$extension', " -NoNewline
 }
 
 function InstallStaticColorSchemeSetting() {
@@ -190,17 +190,17 @@ function InstallStaticColorSchemeSetting() {
     (
         [Parameter(Mandatory = $True)][String]$color
     )
-    Add-Content -Path $SETTING_FILE -Value ""
-    Add-Content -Path $SETTING_FILE -Value '""" Static colorscheme'
-    Add-Content -Path $SETTING_FILE -Value "colorscheme $color"
+    Add-Content -Path $SETTINGS_FILE -Value ""
+    Add-Content -Path $SETTINGS_FILE -Value '""" Static colorscheme'
+    Add-Content -Path $SETTINGS_FILE -Value "colorscheme $color"
 }
 
 function InstallCommonSetting() {
-    Get-Content -Path "$TEMPLATE_HOME\setting\common.vim" | Add-Content -Path $SETTING_FILE
+    Get-Content -Path "$TEMPLATE_HOME\setting\common.vim" | Add-Content -Path $SETTINGS_FILE
 }
 
 function InstallPluginTemplate() {
-    ResetFile $PLUGIN_FILE
+    ResetFile $PLUGINS_FILE
     BeginInstallPlugin
     if (-not $global:OPT_WITHOUT_COLOR) {
         # enable color feature
@@ -219,7 +219,7 @@ function InstallPluginTemplate() {
 }
 
 function InstallSettingTemplate() {
-    ResetFile $SETTING_FILE
+    ResetFile $SETTINGS_FILE
 
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $env:USERPROFILE\vimfiles\coc-settings.json

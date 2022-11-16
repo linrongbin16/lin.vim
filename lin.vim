@@ -1,7 +1,7 @@
 " lin.vim
 
 " VIM Plugins
-source $HOME/.vim/plugin.vim
+source $HOME/.vim/plugins.vim
 
 " VIM Settings
 source $HOME/.vim/setting/linrongbin16/standalone.vim
@@ -71,4 +71,4 @@ source $HOME/.vim/setting/linrongbin16/enhanced-copy-paste.vim
 source $HOME/.vim/setting/linrongbin16/filetype-map.vim
 
 " User Settings
-source $HOME/.vim/setting.vim
+source $HOME/.vim/settings.vim
