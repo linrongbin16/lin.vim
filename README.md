@@ -452,6 +452,11 @@ See [Fast cursor movement](#fast-cursor-movement).
 
 Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion)(switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
 
+- `s{char}{char}` 🄽 - move to next {char}{char}.
+- `S{char}{char}` 🄽 - move to previous {char}{char}.
+
+Support by [vim-sneak](https://github.com/justinmk/vim-sneak).
+
 #### Word Movement
 
 Better word movement enhancement.
