@@ -215,6 +215,7 @@ function InstallSettingTemplate() {
     ResetFile $SETTING_FILE
 
     Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $VIM_HOME\coc-settings.json
+    Copy-Item $TEMPLATE_HOME\coc-settings-template.json -Destination $env:USERPROFILE\vimfiles\coc-settings.json
 
     BeginInstallCocGlobalExtensionSetting
     AddCocGlobalExtensionSetting 'coc-yank'
