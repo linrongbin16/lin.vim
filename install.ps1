@@ -128,6 +128,13 @@ function NpmDependency() {
     npm install -g yarn prettier neovim
 }
 
+function InstallDependencies() {
+    Message "install dependencies for windows"
+    RustDependency
+    Pip3Dependency
+    NpmDependency
+}
+
 # template
 
 function BeginInstallPlugin() {
@@ -422,11 +429,7 @@ function Main() {
         BasicInstaller
     }
     else {
-        # install dependencies
-        Message "install dependencies for windows"
-        RustDependency
-        Pip3Dependency
-        NpmDependency
+        InstallDependencies
 
         # install files
         InstallTemplate

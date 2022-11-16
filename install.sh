@@ -118,6 +118,15 @@ function guifont_dependency() {
     fi
 }
 
+function install_dependencies() {
+    platform_dependency
+    rust_dependency
+    golang_dependency
+    pip3_dependency
+    npm_dependency
+    guifont_dependency
+}
+
 # template
 
 function begin_install_plugin() {
@@ -371,13 +380,7 @@ function main() {
     if [ $OPT_BASIC -gt 0 ]; then
         basic_installer
     else
-        # install dependencies
-        platform_dependency
-        rust_dependency
-        golang_dependency
-        pip3_dependency
-        npm_dependency
-        guifont_dependency
+        install_dependencies
 
         # install files
         install_template
