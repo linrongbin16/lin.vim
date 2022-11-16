@@ -1,6 +1,6 @@
 
 
-" --- Plugin Header ---
+""" --- plugin header ---
 
 if has('win32') || has('win64')
     set runtimepath^=~/.vim
@@ -9,7 +9,7 @@ endif
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
-" Color Theme
+""" Color Theme
 Plug 'lifepillar/vim-solarized8'
 Plug 'crusoexia/vim-monokai'
 Plug 'dracula/vim', {'as': 'dracula'}
@@ -39,14 +39,14 @@ endif
 " Plug 'romainl/Apprentice'
 " Plug 'nanotech/jellybeans.vim'
 
-" Highlight
+""" Highlight
 Plug 'RRethy/vim-illuminate'
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 
-" Markdown Preview
+""" Markdown Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
-" UI
+""" UI
 if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
 else
@@ -72,26 +72,26 @@ else
 endif
 Plug 'jlanzarotta/bufexplorer'
 
-" Git
+""" Git
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
 if has('nvim-0.5')
     Plug 'f-person/git-blame.nvim'
 endif
 
-" Tags
+""" Tags
 Plug 'liuchengxu/vista.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
-" Search Engine
+""" Search Engine
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 
-" Language Server
+""" Language Server
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 
-" Programming Language Support
+""" Programming Language Support
 " Flex, Bison
 Plug 'justinmk/vim-syntax-extra', {'for': ['lex', 'flex', 'yacc', 'bison']}
 " LLVM
@@ -108,7 +108,7 @@ Plug 'alvan/vim-closetag'
 " C#
 " Plug 'OmniSharp/omnisharp-vim'
 
-" Editing Support
+""" Editing Support
 if has('nvim')
     Plug 'numToStr/Comment.nvim'
 else
@@ -128,8 +128,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/is.vim'
 
-" --- plugin footer ---
+""" --- plugin footer ---
 
 call plug#end()
