@@ -1,38 +1,38 @@
- #Requires -RunAsAdministrator
+#Requires -RunAsAdministrator
 
 param (
-    [Parameter(Mandatory=$False)][switch]$Help = $False,
-    [Parameter(Mandatory=$False)][switch]$Basic = $False,
-    [Parameter(Mandatory=$False)][switch]$Limit = $False,
-    [Parameter(Mandatory=$False)][switch]$WithoutLanguageServer = $False,
-    [Parameter(Mandatory=$False)][switch]$WithoutHighlight = $False,
-    [Parameter(Mandatory=$False)][switch]$WithoutColor = $False,
-    [Parameter(Mandatory=$False)][String]$StaticColor= "",
-    [Parameter(Mandatory=$False)][switch]$OnlyVim = $False,
-    [Parameter(Mandatory=$False)][switch]$OnlyNeovim = $False
+    [Parameter(Mandatory = $False)][switch]$Help = $False,
+    [Parameter(Mandatory = $False)][switch]$Basic = $False,
+    [Parameter(Mandatory = $False)][switch]$Limit = $False,
+    [Parameter(Mandatory = $False)][switch]$WithoutLanguageServer = $False,
+    [Parameter(Mandatory = $False)][switch]$WithoutHighlight = $False,
+    [Parameter(Mandatory = $False)][switch]$WithoutColor = $False,
+    [Parameter(Mandatory = $False)][String]$StaticColor = "",
+    [Parameter(Mandatory = $False)][switch]$OnlyVim = $False,
+    [Parameter(Mandatory = $False)][switch]$OnlyNeovim = $False
 )
 
 # Debug
 # Set-PSDebug -Trace 1
 
-$VIM_HOME="$env:USERPROFILE\.vim"
-$INSTALL_HOME="$VIM_HOME\install"
-$APPDATA_LOCAL_HOME="$env:USERPROFILE\AppData\Local"
-$NVIM_HOME="$APPDATA_LOCAL_HOME\nvim"
-$TEMPLATE_HOME="$VIM_HOME\template"
+$VIM_HOME = "$env:USERPROFILE\.vim"
+$INSTALL_HOME = "$VIM_HOME\install"
+$APPDATA_LOCAL_HOME = "$env:USERPROFILE\AppData\Local"
+$NVIM_HOME = "$APPDATA_LOCAL_HOME\nvim"
+$TEMPLATE_HOME = "$VIM_HOME\template"
 
-$global:MODE_NAME="full" # default mode
-$global:OPT_FULL=$True
-$global:OPT_BASIC=$False
-$global:OPT_WITHOUT_LANGUAGE_SERVER=$False
-$global:OPT_WITHOUT_HIGHLIGHT=$False
-$global:OPT_WITHOUT_COLOR=$False
-$global:OPT_STATIC_COLOR=""
-$global:OPT_ONLY_VIM=$False
-$global:OPT_ONLY_NEOVIM=$False
+$global:MODE_NAME = "full" # default mode
+$global:OPT_FULL = $True
+$global:OPT_BASIC = $False
+$global:OPT_WITHOUT_LANGUAGE_SERVER = $False
+$global:OPT_WITHOUT_HIGHLIGHT = $False
+$global:OPT_WITHOUT_COLOR = $False
+$global:OPT_STATIC_COLOR = ""
+$global:OPT_ONLY_VIM = $False
+$global:OPT_ONLY_NEOVIM = $False
 
-$PLUGIN_FILE="$VIM_HOME\plugin.vim"
-$SETTING_FILE="$VIM_HOME\setting.vim"
+$PLUGIN_FILE = "$VIM_HOME\plugin.vim"
+$SETTING_FILE = "$VIM_HOME\setting.vim"
 
 # common utils
 
@@ -54,7 +54,8 @@ function InstallOrSkip() {
     )
     if (Get-Command -Name $target -ErrorAction SilentlyContinue) {
         Message "'${target}' already exist, skip..."
-    } else {
+    }
+    else {
         Message "install '${target}' with command: '${command}'"
         Invoke-Expression $command
     }
@@ -67,8 +68,8 @@ function TryBackup() {
         [Parameter(Mandatory = $True)][String]$target
     )
     if (Test-Path $target) {
-        $now=Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
-        $backup=-join($target, ".", $now)
+        $now = Get-Date -Format "yyyy-MM-dd.HH-mm-ss.fffffff"
+        $backup = -join ($target, ".", $now)
         Rename-Item $target $backup
         Message "backup '$target' to '$backup'"
     }
@@ -239,7 +240,8 @@ function InstallSettingTemplate() {
 
     if (-not (IsEmptyString $global:OPT_STATIC_COLOR)) {
         InstallStaticColorSchemeSetting $global:OPT_STATIC_COLOR
-    } elseif (-not $global:OPT_WITHOUT_COLOR) {
+    }
+    elseif (-not $global:OPT_WITHOUT_COLOR) {
         InstallRandomColorSchemeSetting
     }
 
@@ -347,13 +349,15 @@ function ValidateOptions() {
         $opt = $args[ $i ];
         if ($Options.Contains($opt.ToLower())) {
             $i++
-        } elseif ($opt.ToLower() -eq "-StaticColor".ToLower()) {
+        }
+        elseif ($opt.ToLower() -eq "-StaticColor".ToLower()) {
             $i++
             if ($i -ge $args.Length) {
                 Return $False
             }
             $i++
-        } else {
+        }
+        else {
             Return $False
         }
     }
@@ -380,34 +384,34 @@ function ParseOptions() {
             Message "error! cannot use -Basic along with -Limit"
             Exit
         }
-        $global:MODE_NAME="basic"
-        $global:OPT_BASIC=$True
-        $global:OPT_FULL=$False
+        $global:MODE_NAME = "basic"
+        $global:OPT_BASIC = $True
+        $global:OPT_FULL = $False
     }
     if ($Limit) {
         if ($Basic) {
             Message "error! cannot use -Limit along with -Basic"
             Exit
         }
-        $global:MODE_NAME="limit"
-        $global:OPT_BASIC=$False
-        $global:OPT_FULL=$True
-        $global:OPT_WITHOUT_LANGUAGE_SERVER=$True
-        $global:OPT_WITHOUT_HIGHLIGHT=$True
-        $global:OPT_WITHOUT_COLOR=$True
+        $global:MODE_NAME = "limit"
+        $global:OPT_BASIC = $False
+        $global:OPT_FULL = $True
+        $global:OPT_WITHOUT_LANGUAGE_SERVER = $True
+        $global:OPT_WITHOUT_HIGHLIGHT = $True
+        $global:OPT_WITHOUT_COLOR = $True
     }
     if ($WithoutLanguageServer) {
-        $global:OPT_WITHOUT_LANGUAGE_SERVER=$True
+        $global:OPT_WITHOUT_LANGUAGE_SERVER = $True
     }
     if ($WithoutHighlight) {
-        $global:OPT_WITHOUT_HIGHLIGHT=$True
+        $global:OPT_WITHOUT_HIGHLIGHT = $True
     }
     if ($WithoutColor) {
-        $global:OPT_WITHOUT_COLOR=$True
+        $global:OPT_WITHOUT_COLOR = $True
     }
-    $global:OPT_STATIC_COLOR=$StaticColor
-    $global:OPT_ONLY_VIM=$OnlyVim
-    $global:OPT_ONLY_NEOVIM=$OnlyNeovim
+    $global:OPT_STATIC_COLOR = $StaticColor
+    $global:OPT_ONLY_VIM = $OnlyVim
+    $global:OPT_ONLY_NEOVIM = $OnlyNeovim
 }
 
 function Main() {
@@ -415,7 +419,8 @@ function Main() {
 
     if ($global:OPT_BASIC) {
         BasicInstaller
-    } else {
+    }
+    else {
         # install dependencies
         Message "install dependencies for windows"
         RustDependency
