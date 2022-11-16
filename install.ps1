@@ -278,7 +278,7 @@ function InstallVim() {
     cmd /c mklink $env:USERPROFILE\_vimrc $vimrc
 
     Message "install vim plugins"
-    gvim -E -c "PlugInstall" -c "qall"
+    cmd /c gvim -E -c "PlugInstall" -c "qall" /wait
 }
 
 # neovim
@@ -303,7 +303,7 @@ function InstallNeovim() {
     cmd /c mklink $APPDATA_LOCAL_HOME\nvim\init.vim $nvimInit
 
     Message "install neovim plugins"
-    nvim -E -c "PlugInstall" -c "qall"
+    cmd /c nvim -E -c "PlugInstall" -c "qall" /wait
 }
 
 function BasicInstaller() {
