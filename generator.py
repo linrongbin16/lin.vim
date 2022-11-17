@@ -546,7 +546,7 @@ class Render(Indentable):
             "kyazdani42",
             "nvim-web-devicons",
             if_has_="nvim",
-            comment="UI",
+            comment=["UI", "Icon"],
             paragraph=True,
         ),
         PluginContext("ryanoasis", "vim-devicons", else_=True, endif_=True),
