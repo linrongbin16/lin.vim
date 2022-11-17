@@ -472,7 +472,7 @@ class PluginContext:
         self.endif_ = endif_
 
     def to_str(self):
-        return f"{self.org}/{self.repo}".replace('.', '-')
+        return f"{self.org}/{self.repo}"
 
 
 class Render(Indentable):
@@ -798,7 +798,7 @@ class Render(Indentable):
                     IndentExpr(self.indent),
                 )
             )
-            setting_file = f"repository/{ctx.to_str()}/value.vim"
+            setting_file = f"repository/{ctx.to_str()}.vim"
             if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
                 vimrc_stmts.append(
                     VimrcSourceStmt(setting_file, IndentExpr(self.indent))
