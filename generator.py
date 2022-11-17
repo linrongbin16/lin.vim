@@ -859,7 +859,13 @@ class FileDumper:
         self.disable_vim = disable_vim
         self.disable_neovim = disable_neovim
 
-    def dump_configs(self):
+    def dump(self):
+        self.config()
+        self.vim_entry()
+        self.neovim_entry()
+        self.coc_settings()
+
+    def config(self):
         plugins_file = f"{VIM_DIR}/plugins.vim"
         settings_file = f"{VIM_DIR}/settings.vim"
         with open(plugins_file, "w") as fp:
@@ -869,7 +875,7 @@ class FileDumper:
         with open(VIMRC_FILE, "w") as fp:
             fp.write(self.vimrc_content)
 
-    def dump_vim_entry(self):
+    def vim_entry(self):
         if self.disable_vim:
             return
         message("install ~/.vimrc for vim")
@@ -881,15 +887,15 @@ class FileDumper:
         try_backup(vimrc_path)
         vimrc_path.symlink_to(VIMRC_FILE)
 
-    def dump_neovim_entry(self):
+    def neovim_entry(self):
         if self.disable_neovim:
             return
         if is_windows():
-            self.dump_neovim_entry_win()
+            self.neovim_entry_win()
         else:
-            self.dump_neovim_entry_unix()
+            self.neovim_entry_unix()
 
-    def dump_neovim_entry_unix(self):
+    def neovim_entry_unix(self):
         message("install ~/.config/nvim/init.vim for neovim")
         config_path = pathlib.Path(f"{HOME_DIR}/.config")
         nvim_path = pathlib.Path(f"{HOME_DIR}/.config/nvim")
@@ -900,7 +906,7 @@ class FileDumper:
         VIM_DIR.symlink_to(str(nvim_path), target_is_directory=True)
         VIMRC_FILE.symlink_to(str(init_path))
 
-    def dump_neovim_entry_win(self):
+    def neovim_entry_win(self):
         if self.disable_neovim:
             return
         message(
@@ -913,6 +919,13 @@ class FileDumper:
         try_backup(nvim_path)
         nvim_path.symlink_to(str(VIM_DIR), target_is_directory=True)
         init_path.symlink_to(str(VIMRC_FILE))
+
+    def coc_settings(self):
+        coc_dir = pathlib.Path(f"{HOME_DIR}/vimfiles") if is_windows() else VIM_DIR
+        coc_dir.mkdir(parents=True)
+        pathlib.Path(f"{VIM_DIR}/standalone/coc-settings.json").copy(
+            f"{coc_dir}/coc-settings.json"
+        )
 
 
 class CommandHelp(click.Command):
@@ -1030,9 +1043,7 @@ def generator(
         disable_vim_opt,
         disable_neovim_opt,
     )
-    dumper.dump_configs()
-    dumper.dump_vim_entry()
-    dumper.dump_neovim_entry()
+    dumper.dump()
 
 
 if __name__ == "__main__":
