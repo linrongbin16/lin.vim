@@ -1,4 +1,4 @@
-@REM @echo off
+@echo off
 
 set VIM_HOME=%USERPROFILE%\.vim
 set APPDATA_LOCAL_HOME=%USERPROFILE%\AppData\Local
@@ -12,7 +12,7 @@ set OPT_DISABLE_NEOVIM=0
 
 set INFO=[lin.vim] -
 set ERROR=[lin.vim] - error!
-set DEBUG=[lin.vim] - debug:
+@REM set DEBUG=[lin.vim] - debug:
 
 for %%a in (%*) do (
     if "%%~a" == "-h" (
@@ -56,7 +56,7 @@ if %OPT_BASIC% NEQ 0 (
 :install_basic
 SETLOCAL
 set basic_file=%USERPROFILE%\.vim\standalone\basic.vim
-echo %DEBUG% OPT_DISABLE_VIM: %OPT_DISABLE_VIM%
+@REM echo %DEBUG% OPT_DISABLE_VIM: %OPT_DISABLE_VIM%
 if %OPT_DISABLE_VIM% NEQ 1 (
     echo %INFO% install %USERPROFILE%\_vimrc for vim
     if exist %USERPROFILE%\_vimrc (
@@ -112,7 +112,15 @@ cmd /c npm install -g yarn prettier neovim
 
 @REM configs
 echo %INFO% install configs
-python3 %VIM_HOME%\generator.py "%*"
+set argCount=0
+for %%x in (%*) do (
+    set /A argCount+=1
+)
+if %argCount% GTR 0 (
+    python3 %VIM_HOME%\generator.py "%*"
+) else (
+    python3 %VIM_HOME%\generator.py
+)
 if %ERRORLEVEL% NEQ 0 (
     goto :eof
 )

@@ -6,6 +6,7 @@ import abc
 import platform
 import datetime
 import pathlib
+import sys
 
 HOME_DIR = pathlib.Path.home()
 VIM_DIR = pathlib.Path(f"{HOME_DIR}/.vim")
@@ -359,7 +360,7 @@ class SettingRandomColorStmt(Expr):
         self.comment_expr = TrippleQuoteCommentExpr(
             LiteralExpr("Random color scheme on startup")
         )
-        self.call_expr = CallExpr(FunctionCallExpr("NextRandomColorSchemeSync"))
+        self.call_expr = CallExpr(FunctionCallExpr(LiteralExpr("NextRandomColorSchemeSync")))
 
     def render(self):
         return f"""
@@ -1023,4 +1024,5 @@ def generator(
 
 
 if __name__ == "__main__":
+    print(sys.argv)
     generator()
