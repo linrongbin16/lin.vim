@@ -12,6 +12,7 @@ set OPT_DISABLE_NEOVIM=0
 
 set INFO=[lin.vim] -
 set ERROR=[lin.vim] - error!
+set DEBUG=[lin.vim] - debug:
 
 for %%a in (%*) do (
     if "%%~a" == "-h" (
@@ -55,31 +56,26 @@ if %OPT_BASIC% NEQ 0 (
 :install_basic
 SETLOCAL
 set basic_file=%USERPROFILE%\.vim\standalone\basic.vim
+echo %DEBUG% OPT_DISABLE_VIM: %OPT_DISABLE_VIM%
 if %OPT_DISABLE_VIM% NEQ 1 (
-    echo %INFO% install %USERPROFILE%\.vimrc for vim
-    set src=%USERPROFILE%\.vimrc
-    if exist %src% (
-        set dest=%src%.%date:/=-%.%time::=-%
-        echo %INFO% backup '%src%' to '%dest%'
-        mv %src% %desc%
+    echo %INFO% install %USERPROFILE%\_vimrc for vim
+    if exist %USERPROFILE%\_vimrc (
+        echo %INFO% backup '%USERPROFILE%\_vimrc' to '%USERPROFILE%\_vimrc.%date:/=-%.%time::=-%'
+        mv %USERPROFILE%\_vimrc %USERPROFILE%\_vimrc.%date:/=-%.%time::=-%
     )
-    cmd /c mklink %src% %basic_file%
+    cmd /c mklink %USERPROFILE%\_vimrc %basic_file%
 )
 if %OPT_DISABLE_NEOVIM% NEQ 1 (
     echo %INFO% install %USERPROFILE%\.config\nvim\init.vim for neovim
-    set src=%NVIM_HOME%\.init.vim
-    if exist %src% (
-        set dest=%src%.%date:/=-%.%time::=-%
-        echo %INFO% backup '%src%' to '%dest%'
-        mv %src% %desc%
+    if exist %NVIM_HOME%\init.vim (
+        echo %INFO% backup '%NVIM_HOME%\init.vim' to '%NVIM_HOME%\init.vim.%date:/=-%.%time::=-%'
+        mv %NVIM_HOME%\init.vim %NVIM_HOME%\init.vim.%date:/=-%.%time::=-%
     )
-    set src=%NVIM_HOME%
-    if exist %src% (
-        set dest=%src%.%date:/=-%.%time::=-%
-        echo %INFO% backup '%src%' to '%dest%'
-        mv %src% %desc%
+    if exist %NVIM_HOME% (
+        echo %INFO% backup '%NVIM_HOME%' to '%NVIM_HOME%.%date:/=-%.%time::=-%'
+        mv %NVIM_HOME% %NVIM_HOME%.%date:/=-%.%time::=-%
     )
-    cmd /c mklink %NVIM_HOME% %VIM_HOME%
+    cmd /c mklink /D %NVIM_HOME% %VIM_HOME%
     cmd /c mklink %NVIM_HOME%\init.vim %basic_file%
 )
 ENDLOCAL
@@ -92,21 +88,27 @@ echo %INFO% install modern rust commands with cargo
 where rg > nul 2> nul
 if %ERRORLEVEL% NEQ 0 (
     cargo install ripgrep
+) else (
+    echo %INFO% 'rg' already exist, skip...
 )
 where fd > nul 2> nul
 if %ERRORLEVEL% NEQ 0 (
     cargo install fd-find
+) else (
+    echo %INFO% 'fd' already exist, skip...
 )
 where bat > nul 2> nul
 if %ERRORLEVEL% NEQ 0 (
     cargo install --locked bat
+) else (
+    echo %INFO% 'bat' already exist, skip...
 )
 
 echo %INFO% install python packages with pip3
-pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
+cmd /c pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
 
 echo %INFO% install node packages with npm
-npm install -g yarn prettier neovim
+cmd /c npm install -g yarn prettier neovim
 
 @REM configs
 echo %INFO% install configs

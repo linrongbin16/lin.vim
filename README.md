@@ -254,7 +254,7 @@ Vim key are specified with:
 - `F9` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
 - `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
 
-You could configure these keys in **_~/.vim/setting.vim_**.
+You could configure these keys in **_~/.vim/settings.vim_**.
 
 ## UI
 
@@ -302,7 +302,7 @@ _For neovim 0.7+ only_:
 
 Support by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
 
-You could editing **_~/.vim/setting/lambdalisue/fern.vim.vim_** (or **_~/.vim/setting/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
+You could editing **_~/.vim/repository/lambdalisue/fern.vim/value.vim_** (or **_~/.vim/repository/kyazdani42/nvim-tree.lua/value.vim_**) to customize key mappings.
 Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
 
 #### Buffers/Tabs
@@ -336,7 +336,7 @@ Support by [vim-buffet](https://github.com/bagrat/vim-buffet)(switched to [barba
 
 #### Font
 
-lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) by default. Please manually install other nerd fonts and configure in **_~/.vim/setting.vim_** for other options.
+lin.vim use [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) by default. Please manually install other nerd fonts and configure in **_~/.vim/settings.vim_** for other options.
 
 ## IDE-like Editing
 
@@ -436,10 +436,10 @@ Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https:
 
 when you want copy/paste between different vim instances. Use enhanced copy-paste to stored text content in a file cache:
 
-- `<leader>y` 🅅 - copy visual-selected text to `~/.vim/.enhanced-copy-paste-cache`.
-- `<leader>p` 🄽 - paste text saved from `~/.vim/.enhanced-copy-paste-cache`.
+- `<leader>y` 🅅 - copy visual-selected text to `~/.vim/.copypaste`.
+- `<leader>p` 🄽 - paste text saved from `~/.vim/.copypaste`.
 
-You could configure these key mappings in **_~/.vim/setting/linrongbin16/enhanced-copy-paste.vim_**.
+You could configure these key mappings in **_~/.vim/standalone/copypaste.vim_**.
 
 #### Fast Cursor Movement
 
@@ -508,7 +508,7 @@ Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [
 
 ## Customization
 
-Please add plugins in `~/.vim/plugin.vim`, add settings in `~/.vim/setting.vim` and `~/.vim/coc-settings.json`.
+Please add plugins in `~/.vim/plugins.vim`, add settings in `~/.vim/settings.vim` and `~/.vim/coc-settings.json`.
 
 # Appendix
 

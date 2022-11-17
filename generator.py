@@ -233,7 +233,9 @@ class EmptyStmtExpr(Expr):
 
 class PluginHeaderStmt(Expr):
     def __init__(self):
-        self.header_comment = TrippleQuoteCommentExpr("---- Plugin Header ----")
+        self.header_comment = TrippleQuoteCommentExpr(
+            LiteralExpr("---- Plugin Header ----")
+        )
 
     def render(self):
         return f"""
@@ -246,22 +248,20 @@ endif
 source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 
-{self.header_comment.render()}
-
 """
 
 
 class PluginFooterStmt(Expr):
     def __init__(self):
-        self.footer_comment = TrippleQuoteCommentExpr("---- Plugin Footer ----")
+        self.footer_comment = TrippleQuoteCommentExpr(
+            LiteralExpr("---- Plugin Footer ----")
+        )
 
     def render(self):
         return f"""
 {self.footer_comment.render()}
 
 call plug#end()
-
-{self.footer_comment.render()}
 
 """
 
@@ -270,7 +270,7 @@ class PlugExpr(Expr):
     def __init__(self, org_expr, repo_expr, post_expr=None):
         assert isinstance(org_expr, LiteralExpr)
         assert isinstance(repo_expr, LiteralExpr)
-        assert isinstance(post_expr, LiteralExpr)
+        assert isinstance(post_expr, LiteralExpr) or post_expr is None
         self.org_expr = org_expr
         self.repo_expr = repo_expr
         self.post_expr = post_expr
@@ -283,7 +283,7 @@ class PlugExpr(Expr):
 
 class VimrcHeaderStmt(Expr):
     def __init__(self):
-        self.header_comment = TrippleQuoteCommentExpr("---- Vimrc ----")
+        self.header_comment = TrippleQuoteCommentExpr(LiteralExpr("---- Vimrc ----"))
 
     def render(self):
         return f"""
@@ -304,7 +304,7 @@ class SettingCocExtensionStmt(Expr):
     def __init__(
         self, disable_language=False, disable_sh=False, disable_powershell=False
     ) -> None:
-        self.comment = TrippleQuoteCommentExpr("Coc global extensions")
+        self.comment = TrippleQuoteCommentExpr(LiteralExpr("Coc global extensions"))
         extensions = [
             "coc-yank",
             "coc-lists",
@@ -344,7 +344,7 @@ let g:coc_global_extensions = [{','.join([e.render() for e in self.extensions_ex
 class SettingStaticColorStmt(Expr):
     def __init__(self, expr):
         assert isinstance(expr, LiteralExpr)
-        self.comment_expr = TrippleQuoteCommentExpr("Static color scheme")
+        self.comment_expr = TrippleQuoteCommentExpr(LiteralExpr("Static color scheme"))
         self.color_expr = ColorschemeExpr(expr)
 
     def render(self):
@@ -356,7 +356,9 @@ class SettingStaticColorStmt(Expr):
 
 class SettingRandomColorStmt(Expr):
     def __init__(self):
-        self.comment_expr = TrippleQuoteCommentExpr("Random color scheme on startup")
+        self.comment_expr = TrippleQuoteCommentExpr(
+            LiteralExpr("Random color scheme on startup")
+        )
         self.call_expr = CallExpr(FunctionCallExpr("NextRandomColorSchemeSync"))
 
     def render(self):
@@ -368,11 +370,13 @@ class SettingRandomColorStmt(Expr):
 
 class SettingStmt(Expr):
     def __init__(self):
-        self.guifont_comment = TrippleQuoteCommentExpr("GUI font")
-        self.hotkeys_comment = TrippleQuoteCommentExpr("Hot keys")
-        self.python3_host_comment = TrippleQuoteCommentExpr("Python3 host")
-        self.neovide_comment = TrippleQuoteCommentExpr("Neovide")
-        self.more_setting_comment = TrippleQuoteCommentExpr("Add more settings here...")
+        self.guifont_comment = TrippleQuoteCommentExpr(LiteralExpr("GUI font"))
+        self.hotkeys_comment = TrippleQuoteCommentExpr(LiteralExpr("Hot keys"))
+        self.python3_host_comment = TrippleQuoteCommentExpr(LiteralExpr("Python3 host"))
+        self.neovide_comment = TrippleQuoteCommentExpr(LiteralExpr("Neovide"))
+        self.more_setting_comment = TrippleQuoteCommentExpr(
+            LiteralExpr("Add more settings here...")
+        )
 
     def render(self):
         return f"""
@@ -685,7 +689,7 @@ class Render(Indentable):
         disable_ctrlkeys=False,
         disable_plugins=None,
     ):
-        Indentable.__init__()
+        Indentable.__init__(self)
         self.static_color = static_color
         self.disable_color = disable_color
         self.disable_highlight = disable_highlight
@@ -707,7 +711,9 @@ class Render(Indentable):
         if self.disable_ctrlkeys:
             vimrc_stmts.append(
                 StmtExpr(
-                    SingleQuoteCommentExpr("Windows ctrl+{a,s,x,c,v} keys disabled")
+                    SingleQuoteCommentExpr(
+                        LiteralExpr("Windows ctrl+{a,s,x,c,v} keys disabled")
+                    )
                 )
             )
         else:
@@ -732,9 +738,9 @@ class Render(Indentable):
                 vimrc_stmts.append(p)
             if ctx.comment:
                 c = (
-                    TrippleQuoteCommentExpr(LiteralExpr(ctx.comment))
+                    StmtExpr(TrippleQuoteCommentExpr(LiteralExpr(ctx.comment)))
                     if ctx.paragraph
-                    else SingleQuoteCommentExpr(LiteralExpr(ctx.comment))
+                    else StmtExpr(SingleQuoteCommentExpr(LiteralExpr(ctx.comment)))
                 )
                 plugin_stmts.append(c)
                 vimrc_stmts.append(c)
@@ -751,14 +757,12 @@ class Render(Indentable):
                 plugin_stmts.append(inh)
                 vimrc_stmts.append(inh)
             if ctx.elseif_has_:
-                self.increment_indent()
                 eh = StmtExpr(
                     ElseifExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_has_)))
                 )
                 plugin_stmts.append(eh)
                 vimrc_stmts.append(eh)
             if ctx.elseif_not_has_:
-                self.increment_indent()
                 enh = StmtExpr(
                     ElseifExpr(
                         NotExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_not_has_)))
@@ -767,7 +771,6 @@ class Render(Indentable):
                 plugin_stmts.append(enh)
                 vimrc_stmts.append(enh)
             if ctx.else_:
-                self.increment_indent()
                 e = StmtExpr(ElseExpr())
                 plugin_stmts.append(e)
                 vimrc_stmts.append(e)
@@ -782,11 +785,13 @@ class Render(Indentable):
                     IndentExpr(self.indent),
                 )
             )
-            setting_file = f"setting/{ctx.to_str()}/value.vim"
+            setting_file = f"repository/{ctx.to_str()}/value.vim"
             if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
                 vimrc_stmts.append(VimrcSourceStmt(setting_file))
             else:
-                vimrc_stmts.append(StmtExpr(SingleQuoteCommentExpr("Nothing here")))
+                vimrc_stmts.append(
+                    StmtExpr(SingleQuoteCommentExpr(LiteralExpr("Nothing here")))
+                )
             # below statement
             if ctx.endif_:
                 self.decrement_indent()
@@ -837,13 +842,23 @@ class FileDumper:
         if self.disable_vim:
             return
         message("install ~/.vimrc for vim")
-        vimrc_path = pathlib.Path(f"{HOME_DIR}/.vimrc")
+        vimrc_path = (
+            pathlib.Path(f"{HOME_DIR}/_vimrc")
+            if is_windows()
+            else pathlib.Path(f"{HOME_DIR}/.vimrc")
+        )
         try_backup(vimrc_path)
-        pathlib.Path(VIMRC_FILE).symlink_to(vimrc_path)
+        vimrc_path.symlink_to(VIMRC_FILE)
 
     def dump_neovim_entry(self):
         if self.disable_neovim:
             return
+        if is_windows():
+            self.dump_neovim_entry_win()
+        else:
+            self.dump_neovim_entry_unix()
+
+    def dump_neovim_entry_unix(self):
         message("install ~/.config/nvim/init.vim for neovim")
         config_path = pathlib.Path(f"{HOME_DIR}/.config")
         nvim_path = pathlib.Path(f"{HOME_DIR}/.config/nvim")
@@ -853,6 +868,18 @@ class FileDumper:
         config_path.mkdir(parents=True)
         VIM_DIR.symlink_to(str(nvim_path), target_is_directory=True)
         VIMRC_FILE.symlink_to(str(init_path))
+
+    def dump_neovim_entry_win(self):
+        if self.disable_neovim:
+            return
+        message(f"install {HOME_DIR}/AppData/Local/nvim/init.vim for neovim on windows")
+        appdata_local_path = pathlib.Path(f"{HOME_DIR}/AppData/Local")
+        nvim_path = pathlib.Path(f"{appdata_local_path}/nvim")
+        init_path = pathlib.Path(f"{nvim_path}/init.vim")
+        try_backup(init_path)
+        try_backup(nvim_path)
+        nvim_path.symlink_to(str(VIM_DIR), target_is_directory=True)
+        init_path.symlink_to(str(VIMRC_FILE))
 
 
 class CommandHelp(click.Command):
