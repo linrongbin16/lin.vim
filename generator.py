@@ -702,6 +702,7 @@ class Render(Indentable):
         plugin_stmts = [PluginHeaderStmt()]
         vimrc_stmts = [
             VimrcHeaderStmt(),
+            VimrcSourceStmt("plugins.vim"),
             VimrcSourceStmt("standalone/basic.vim"),
             VimrcSourceStmt("standalone/gui.vim"),
             VimrcSourceStmt("standalone/filetype.vim"),
