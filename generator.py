@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
+import sys
 import click
 import enum
 import abc
 import platform
 import datetime
 import pathlib
-import sys
+import shutil
 
 HOME_DIR = pathlib.Path.home()
 VIM_DIR = pathlib.Path(f"{HOME_DIR}/.vim")
@@ -922,9 +923,10 @@ class FileDumper:
 
     def coc_settings(self):
         coc_dir = pathlib.Path(f"{HOME_DIR}/vimfiles") if is_windows() else VIM_DIR
-        coc_dir.mkdir(parents=True)
-        pathlib.Path(f"{VIM_DIR}/standalone/coc-settings.json").copy(
-            f"{coc_dir}/coc-settings.json"
+        if not coc_dir.exists():
+            coc_dir.mkdir(parents=True)
+        shutil.copy(
+            f"{VIM_DIR}/standalone/coc-settings.json", f"{coc_dir}/coc-settings.json"
         )
 
 
