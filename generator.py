@@ -926,7 +926,7 @@ class FileDumper:
         if not coc_dir.exists():
             coc_dir.mkdir(parents=True)
         shutil.copy(
-            f"{VIM_DIR}/standalone/coc-settings.json", f"{coc_dir}/coc-settings.json"
+            f"{VIM_DIR}/standalone/coc-settings-template.json", f"{coc_dir}/coc-settings.json"
         )
 
 

@@ -1,0 +1,35 @@
+{
+  "coc.preferences.formatOnSave": true,
+  "inlayHint.enable": false,
+  "suggest.minTriggerInputLength": 1,
+  "suggest.languageSourcePriority": 99,
+  "snippets.extends": {
+    "lex": ["c", "cpp"],
+    "flex": ["c", "cpp"],
+    "yacc": ["c", "cpp"],
+    "bison": ["c", "cpp"],
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript", "typescript"]
+  },
+  "yank.highlight.enable": false,
+  "yank.list.maxsize": 100,
+  "yank.priority": 30,
+  "clangd.arguments": [
+    "-j=20",
+    "--header-insertion=never",
+    "--background-index",
+    "--limit-references=500",
+    "--limit-results=50",
+    "--pch-storage=memory"
+  ],
+  "cmake.cmakePath": "cmake",
+  "cmake.formatter": "cmake-format",
+  "python.pythonPath": "python3",
+  "python.formatting.provider": "black",
+  "json.enable": true,
+  "json.format.enable": false,
+  "eslint.run": "onSave",
+  "powershell.integratedConsole.showOnStartup": false,
+  "powershell.codeFolding.enable": false
+}
