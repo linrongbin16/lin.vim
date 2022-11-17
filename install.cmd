@@ -3,7 +3,7 @@
 set VIM_HOME=%USERPROFILE%\.vim
 set APPDATA_LOCAL_HOME=%USERPROFILE%\AppData\Local
 set NVIM_HOME=%APPDATA_LOCAL_HOME%\nvim
-set INSTALL_HOME=%VIM_HOME%\installers
+set INSTALL_HOME=%VIM_HOME%\installer
 
 set MODE_NAME=full
 set OPT_BASIC=0

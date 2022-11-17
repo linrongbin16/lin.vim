@@ -5,7 +5,7 @@ set -x
 
 VIM_HOME=$HOME/.vim
 NVIM_HOME=$HOME/.config/nvim
-INSTALL_HOME=$VIM_HOME/installers
+INSTALL_HOME=$VIM_HOME/installer
 OS="$(uname -s)"
 
 MODE_NAME='full' # default mode

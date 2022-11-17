@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_HOME=$HOME/.vim/installers
+INSTALL_HOME=$HOME/.vim/installer
 source $INSTALL_HOME/util.sh
 
 message "install dependencies with pacman"
