@@ -28,7 +28,7 @@ function try_backup() {
 function try_delete() {
     local src=$1
     if [[ -f "$src" || -d "$src" ]]; then
-        message "remove '$src'"
+        message "delete '$src'"
         rm -rf $src
     fi
 }

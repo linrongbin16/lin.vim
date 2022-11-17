@@ -54,9 +54,7 @@ rust_dependency() {
     source $HOME/.cargo/env
     install_or_skip "cargo install ripgrep" "rg"
     install_or_skip "cargo install fd-find" "fd"
-    if [ $OPT_WITHOUT_COLOR -eq 0 ]; then
-        install_or_skip "cargo install --locked bat" "bat"
-    fi
+    install_or_skip "cargo install --locked bat" "bat"
 }
 
 golang_dependency() {
@@ -127,18 +125,22 @@ install_full() {
 
 # basic
 install_basic_vimrc() {
-    message "install ~/.vimrc for vim"
-    try_backup $HOME/.vimrc
-    ln -s $VIM_HOME/standalone/basic.vim $HOME/.vimrc
+    if [ $OPT_DISABLE_VIM -ne 1 ]; then
+        message "install ~/.vimrc for vim"
+        try_backup $HOME/.vimrc
+        ln -s $VIM_HOME/standalone/basic.vim $HOME/.vimrc
+    fi
 }
 
 install_basic_neovim_init() {
-    message "install ~/.config/nvim/init.vim for neovim"
-    try_backup $NVIM_HOME/init.vim
-    try_backup $NVIM_HOME
-    mkdir -p $HOME/.config
-    ln -s $VIM_HOME $NVIM_HOME
-    ln -s $VIM_HOME/standalone/basic.vim $NVIM_HOME/init.vim
+    if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
+        message "install ~/.config/nvim/init.vim for neovim"
+        try_backup $NVIM_HOME/init.vim
+        try_backup $NVIM_HOME
+        mkdir -p $HOME/.config
+        ln -s $VIM_HOME $NVIM_HOME
+        ln -s $VIM_HOME/standalone/basic.vim $NVIM_HOME/init.vim
+    fi
 }
 
 install_basic() {
@@ -160,6 +162,9 @@ parse_options() {
         -b|--basic)
             MODE_NAME='basic'
             OPT_BASIC=1
+            ;;
+        -l|--limit)
+            MODE_NAME='limit'
             ;;
         --disable-vim)
             OPT_DISABLE_VIM=1
