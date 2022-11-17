@@ -293,8 +293,8 @@ class VimrcHeaderStmt(Expr):
 
 
 class VimrcSourceStmt(Expr):
-    def __init__(self, value):
-        self.stmt = StmtExpr(SourceExpr(LiteralExpr(f"$HOME/.vim/{value}")))
+    def __init__(self, value, indent=None):
+        self.stmt = StmtExpr(SourceExpr(LiteralExpr(f"$HOME/.vim/{value}")), indent)
 
     def render(self):
         return self.stmt.render()
@@ -713,7 +713,8 @@ class Render(Indentable):
                 StmtExpr(
                     SingleQuoteCommentExpr(
                         LiteralExpr("Windows ctrl+{a,s,x,c,v} keys disabled")
-                    )
+                    ),
+                    IndentExpr(self.indent),
                 )
             )
         else:
@@ -738,27 +739,38 @@ class Render(Indentable):
                 vimrc_stmts.append(p)
             if ctx.comment:
                 c = (
-                    StmtExpr(TrippleQuoteCommentExpr(LiteralExpr(ctx.comment)))
+                    StmtExpr(
+                        TrippleQuoteCommentExpr(LiteralExpr(ctx.comment)),
+                        IndentExpr(self.indent),
+                    )
                     if ctx.paragraph
-                    else StmtExpr(SingleQuoteCommentExpr(LiteralExpr(ctx.comment)))
+                    else StmtExpr(
+                        SingleQuoteCommentExpr(LiteralExpr(ctx.comment)),
+                        IndentExpr(self.indent),
+                    )
                 )
                 plugin_stmts.append(c)
                 vimrc_stmts.append(c)
             if ctx.if_has_:
                 self.increment_indent()
-                ih = StmtExpr(IfExpr(HasExpr(SingleQuoteStringExpr(ctx.if_has_))))
+                ih = StmtExpr(
+                    IfExpr(HasExpr(SingleQuoteStringExpr(ctx.if_has_))),
+                    IndentExpr(self.indent),
+                )
                 plugin_stmts.append(ih)
                 vimrc_stmts.append(ih)
             if ctx.if_not_has_:
                 self.increment_indent()
                 inh = StmtExpr(
-                    IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr(ctx.if_not_has_))))
+                    IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr(ctx.if_not_has_)))),
+                    IndentExpr(self.indent),
                 )
                 plugin_stmts.append(inh)
                 vimrc_stmts.append(inh)
             if ctx.elseif_has_:
                 eh = StmtExpr(
-                    ElseifExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_has_)))
+                    ElseifExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_has_))),
+                    IndentExpr(self.indent),
                 )
                 plugin_stmts.append(eh)
                 vimrc_stmts.append(eh)
@@ -766,12 +778,13 @@ class Render(Indentable):
                 enh = StmtExpr(
                     ElseifExpr(
                         NotExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_not_has_)))
-                    )
+                    ),
+                    IndentExpr(self.indent),
                 )
                 plugin_stmts.append(enh)
                 vimrc_stmts.append(enh)
             if ctx.else_:
-                e = StmtExpr(ElseExpr())
+                e = StmtExpr(ElseExpr(), IndentExpr(self.indent))
                 plugin_stmts.append(e)
                 vimrc_stmts.append(e)
             # plug statement
@@ -787,15 +800,20 @@ class Render(Indentable):
             )
             setting_file = f"repository/{ctx.to_str()}/value.vim"
             if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
-                vimrc_stmts.append(VimrcSourceStmt(setting_file))
+                vimrc_stmts.append(
+                    VimrcSourceStmt(setting_file, IndentExpr(self.indent))
+                )
             else:
                 vimrc_stmts.append(
-                    StmtExpr(SingleQuoteCommentExpr(LiteralExpr("Nothing here")))
+                    StmtExpr(
+                        SingleQuoteCommentExpr(LiteralExpr("Nothing here")),
+                        IndentExpr(self.indent),
+                    )
                 )
             # below statement
             if ctx.endif_:
                 self.decrement_indent()
-                plugin_stmts.append(StmtExpr(EndifExpr()))
+                plugin_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
         plugin_stmts.append(PluginFooterStmt())
         setting_stmts = [
             SettingCocExtensionStmt(
