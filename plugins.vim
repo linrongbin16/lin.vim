@@ -121,7 +121,6 @@ else
     Plug 'easymotion/vim-easymotion'
     Plug 'jiangmiao/auto-pairs'
 endif
-Plug 'justinmk/vim-sneak'
 Plug 'chaoren/vim-wordmotion'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'

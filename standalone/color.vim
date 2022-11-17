@@ -14,8 +14,6 @@ if has('nvim-0.5')
   call add(s:mycolors, 'github_dark')
 endif
 
-set background=dark
-
 " for material
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'

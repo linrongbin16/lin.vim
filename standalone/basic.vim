@@ -50,12 +50,6 @@ set termencoding=utf-8
 set encoding=utf-8
 language messages en_US.UTF-8
 
-" windows behave
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
 " mouse
 set mouse=a
 set selection=exclusive
@@ -91,6 +85,7 @@ set magic
 set hlsearch
 
 " display
+set background=dark
 set ruler
 " set colorcolumn=120
 set showmatch
