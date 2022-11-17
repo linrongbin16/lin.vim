@@ -50,6 +50,9 @@ class Indentable:
     def decrement_indent(self):
         self.indent = max(self.indent - 4, 0)
 
+    def to_left_indent(self):
+        return max(self.indent - 4, 0)
+
 
 class Expr(abc.ABC):
     @abc.abstractmethod
@@ -338,7 +341,7 @@ class SettingCocExtensionStmt(Expr):
     def render(self):
         return f"""
 {self.comment.render()}
-let g:coc_global_extensions = [{','.join([e.render() for e in self.extensions_expr])}]
+let g:coc_global_extensions = [{', '.join([e.render() for e in self.extensions_expr])}]
 """
 
 
@@ -360,7 +363,9 @@ class SettingRandomColorStmt(Expr):
         self.comment_expr = TrippleQuoteCommentExpr(
             LiteralExpr("Random color scheme on startup")
         )
-        self.call_expr = CallExpr(FunctionCallExpr(LiteralExpr("NextRandomColorSchemeSync")))
+        self.call_expr = CallExpr(
+            FunctionCallExpr(LiteralExpr("NextRandomColorSchemeSync"))
+        )
 
     def render(self):
         return f"""
@@ -628,7 +633,7 @@ class Render(Indentable):
             "numToStr",
             "Comment.nvim",
             if_has_="nvim",
-            comment="Editing enhancement",
+            comment=["Editing enhancement", "Commment"],
             paragraph=True,
             tag=PluginTag.EDITING,
         ),
@@ -740,39 +745,43 @@ class Render(Indentable):
                 plugin_stmts.append(p)
                 vimrc_stmts.append(p)
             if ctx.comment:
-                c = (
-                    StmtExpr(
-                        TrippleQuoteCommentExpr(LiteralExpr(ctx.comment)),
-                        IndentExpr(self.indent),
-                    )
-                    if ctx.paragraph
-                    else StmtExpr(
-                        SingleQuoteCommentExpr(LiteralExpr(ctx.comment)),
-                        IndentExpr(self.indent),
-                    )
+                comments = (
+                    ctx.comment if isinstance(ctx.comment, list) else [ctx.comment]
                 )
-                plugin_stmts.append(c)
-                vimrc_stmts.append(c)
+                for i, cmt in enumerate(comments):
+                    c = (
+                        StmtExpr(
+                            TrippleQuoteCommentExpr(LiteralExpr(cmt)),
+                            IndentExpr(self.indent),
+                        )
+                        if ctx.paragraph and i == 0
+                        else StmtExpr(
+                            SingleQuoteCommentExpr(LiteralExpr(cmt)),
+                            IndentExpr(self.indent),
+                        )
+                    )
+                    plugin_stmts.append(c)
+                    vimrc_stmts.append(c)
             if ctx.if_has_:
-                self.increment_indent()
                 ih = StmtExpr(
                     IfExpr(HasExpr(SingleQuoteStringExpr(ctx.if_has_))),
                     IndentExpr(self.indent),
                 )
                 plugin_stmts.append(ih)
                 vimrc_stmts.append(ih)
-            if ctx.if_not_has_:
                 self.increment_indent()
+            if ctx.if_not_has_:
                 inh = StmtExpr(
                     IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr(ctx.if_not_has_)))),
                     IndentExpr(self.indent),
                 )
                 plugin_stmts.append(inh)
                 vimrc_stmts.append(inh)
+                self.increment_indent()
             if ctx.elseif_has_:
                 eh = StmtExpr(
                     ElseifExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_has_))),
-                    IndentExpr(self.indent),
+                    IndentExpr(self.to_left_indent()),
                 )
                 plugin_stmts.append(eh)
                 vimrc_stmts.append(eh)
@@ -781,12 +790,12 @@ class Render(Indentable):
                     ElseifExpr(
                         NotExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_not_has_)))
                     ),
-                    IndentExpr(self.indent),
+                    IndentExpr(self.to_left_indent()),
                 )
                 plugin_stmts.append(enh)
                 vimrc_stmts.append(enh)
             if ctx.else_:
-                e = StmtExpr(ElseExpr(), IndentExpr(self.indent))
+                e = StmtExpr(ElseExpr(), IndentExpr(self.to_left_indent()))
                 plugin_stmts.append(e)
                 vimrc_stmts.append(e)
             # plug statement
@@ -894,7 +903,9 @@ class FileDumper:
     def dump_neovim_entry_win(self):
         if self.disable_neovim:
             return
-        message(f"install {HOME_DIR}/AppData/Local/nvim/init.vim for neovim on windows")
+        message(
+            f"install {HOME_DIR}\\AppData\\Local\\nvim\\init.vim for neovim on windows"
+        )
         appdata_local_path = pathlib.Path(f"{HOME_DIR}/AppData/Local")
         nvim_path = pathlib.Path(f"{appdata_local_path}/nvim")
         init_path = pathlib.Path(f"{nvim_path}/init.vim")
