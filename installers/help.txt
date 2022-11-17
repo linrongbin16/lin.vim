@@ -1,4 +1,4 @@
-Usage: ./install.sh [OPTIONS]
+Usage: ./install [OPTIONS]
 
   Install with 3 modes: full (default), limit and basic.
 

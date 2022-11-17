@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_HOME=~/.vim/install
+INSTALL_HOME=~/.vim/installers
 source $INSTALL_HOME/util.sh
 
 message "install dependencies with brew"
