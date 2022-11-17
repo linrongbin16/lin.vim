@@ -472,7 +472,7 @@ class PluginContext:
         self.endif_ = endif_
 
     def to_str(self):
-        return f"{self.org}/{self.repo}"
+        return f"{self.org}/{self.repo}".replace('.', '-')
 
 
 class Render(Indentable):
@@ -814,6 +814,7 @@ class Render(Indentable):
             if ctx.endif_:
                 self.decrement_indent()
                 plugin_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
+                vimrc_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
         plugin_stmts.append(PluginFooterStmt())
         setting_stmts = [
             SettingCocExtensionStmt(
