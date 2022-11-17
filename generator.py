@@ -810,7 +810,7 @@ class Render(Indentable):
         rendered_plugin = "".join([s.render() for s in plugin_stmts])
         rendered_vimrc = "".join([s.render() for s in vimrc_stmts])
         rendered_setting = "".join([s.render() for s in setting_stmts])
-        return rendered_plugin, rendered_vimrc, rendered_setting
+        return rendered_plugin, rendered_setting, rendered_vimrc
 
 
 class FileDumper:
