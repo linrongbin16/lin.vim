@@ -1,28 +1,42 @@
 #!/usr/bin/env python3
 
-
 import click
-import os
 import enum
 import abc
 import platform
-import shutil
+import datetime
+import pathlib
 
-HOME_DIR = os.path.expanduser("~")
-VIM_DIR = f"{HOME_DIR}/.vim"
-INSTALL_DIR = f"{VIM_DIR}/install"
-TEMPLATE_DIR = f"{VIM_DIR}/template"
-SETTING_DIR = f"{VIM_DIR}/setting"
-CONFIG_DIR = f"{HOME_DIR}/.config"
-NVIM_DIR = f"{CONFIG_DIR}/nvim"
-
-VIMRC_FILE = f"{VIM_DIR}/vimrc.vim"
-PLUGINS_FILE = f"{VIM_DIR}/plugins.vim"
-SETTINGS_FILE = f"{VIM_DIR}/settings.vim"
+HOME_DIR = pathlib.Path.home()
+VIM_DIR = pathlib.Path(f"{HOME_DIR}/.vim")
+VIMRC_FILE = pathlib.Path(f"{VIM_DIR}/vimrc.vim")
 
 
 def is_windows():
     return platform.system().lower().startswith("win")
+
+
+def message(*args):
+    print(f"[lin.vim] - {' '.join(args)}")
+
+
+def error_message(*args):
+    print(f"[lin.vim] - error! {' '.join(args)}")
+
+
+def try_backup(src):
+    assert isinstance(src, pathlib.Path)
+    if src.exists():
+        dest = f"{src}.{datetime.datetime.now().strftime('%Y-%m-%d.%H-%M-%S.%f')}"
+        message(f"backup '{src}' to '{dest}'")
+        src.rename(dest)
+
+
+def try_delete(src):
+    assert isinstance(src, pathlib.Path)
+    if src.exists():
+        message(f"delete '{src}'")
+        src.unlink(missing_ok=True)
 
 
 class Indentable:
@@ -387,6 +401,8 @@ nnoremap <F2> :<C-u>UndotreeToggle<CR>
 nnoremap <F3> :<C-u>Vista!!<CR>
 " Switch between C/C++ headers and sources
 nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
+" Toggle git blame
+nnoremap <F7> :<C-u>GitBlameToggle<CR>
 " Markdown preview
 nnoremap <F8> :<C-u>MarkdownPreview<CR>
 " Next random color scheme
@@ -416,6 +432,8 @@ nnoremap <S-F10> :<C-u>ToggleBufExplorer<CR>
 class PluginTag(enum.Enum):
     COLORSCHEME = 1
     HIGHLIGHT = 2
+    LANGUAGE = 3
+    EDITING = 4
 
 
 class PluginContext:
@@ -538,15 +556,24 @@ class Render(Indentable):
             "indent-blankline.nvim",
             if_has_="nvim-0.5",
             comment="Indentline",
+            tag=PluginTag.HIGHLIGHT,
         ),
-        PluginContext("Yggdroot", "indentLine", else_=True, endif_=True),
+        PluginContext(
+            "Yggdroot", "indentLine", else_=True, endif_=True, tag=PluginTag.HIGHLIGHT
+        ),
         PluginContext(
             "nvim-lualine", "lualine.nvim", if_has_="nvim-0.5", comment="Statusline"
         ),
         PluginContext("itchyny", "lightline.vim", else_=True, endif_=True),
         PluginContext("airblade", "vim-gitgutter", comment="Git", paragraph=True),
         PluginContext("itchyny", "vim-gitbranch"),
-        PluginContext("f-person", "git-blame.nvim", if_has_="nvim-0.5", endif_=True),
+        PluginContext(
+            "f-person",
+            "git-blame.nvim",
+            if_has_="nvim-0.5",
+            endif_=True,
+            tag=PluginTag.HIGHLIGHT,
+        ),
         PluginContext("liuchengxu", "vista.vim", comment="Tags", paragraph=True),
         PluginContext("ludovicchabant", "vim-gutentags"),
         PluginContext(
@@ -571,42 +598,81 @@ class Render(Indentable):
             post="{ 'do': 'cd app && yarn install' }",
             comment="Language support",
             paragraph=True,
+            tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "justinmk",
             "vim-syntax-extra",
             post="{'for': ['lex', 'flex', 'yacc', 'bison']}",
             comment="Lex/flex, yacc/bison",
+            tag=PluginTag.LANGUAGE,
         ),
-        PluginContext("rhysd", "vim-llvm", comment="LLVM"),
-        PluginContext("uarun", "vim-protobuf", comment="Protobuf"),
-        PluginContext("zebradil", "hive.vim", comment="Hive"),
-        PluginContext("neovimhaskell", "haskell-vim", comment="Haskell"),
-        PluginContext("andymass", "vim-matchup", comment="HTML tags"),
-        PluginContext("alvan", "vim-closetag"),
+        PluginContext("rhysd", "vim-llvm", comment="LLVM", tag=PluginTag.LANGUAGE),
+        PluginContext(
+            "uarun", "vim-protobuf", comment="Protobuf", tag=PluginTag.LANGUAGE
+        ),
+        PluginContext("zebradil", "hive.vim", comment="Hive", tag=PluginTag.LANGUAGE),
+        PluginContext(
+            "neovimhaskell", "haskell-vim", comment="Haskell", tag=PluginTag.LANGUAGE
+        ),
+        PluginContext(
+            "andymass", "vim-matchup", comment="HTML tags", tag=PluginTag.LANGUAGE
+        ),
+        PluginContext("alvan", "vim-closetag", tag=PluginTag.EDITING),
         PluginContext(
             "numToStr",
             "Comment.nvim",
             if_has_="nvim",
             comment="Editing enhancement",
             paragraph=True,
+            tag=PluginTag.EDITING,
         ),
-        PluginContext("tomtom", "tcomment_vim", else_=True, endif_=True),
         PluginContext(
-            "phaazon", "hop.nvim", if_has_="nvim-0.5", comment="Cursor motion"
+            "tomtom", "tcomment_vim", else_=True, endif_=True, tag=PluginTag.EDITING
         ),
-        PluginContext("easymotion", "vim-easymotion", else_=True, endif_=True),
         PluginContext(
-            "windwp", "nvim-autopairs", if_has_="nvim-0.5", comment="Auto pair"
+            "phaazon",
+            "hop.nvim",
+            if_has_="nvim-0.5",
+            comment="Cursor motion",
+            tag=PluginTag.EDITING,
         ),
-        PluginContext("jiangmiao", "auto-pairs", else_=True, endif_=True),
-        PluginContext("chaoren", "vim-wordmotion", comment="Word motion"),
-        PluginContext("mattn", "emmet-vim", comment="HTML"),
-        PluginContext("tpope", "vim-repeat"),
-        PluginContext("tpope", "vim-surround", comment="Quotes"),
-        PluginContext("mbbill", "undotree", comment="Undo"),
-        PluginContext("editorconfig", "editorconfig-vim", comment="Editor config"),
-        PluginContext("haya14busa", "incsearch.vim", comment="Incremental search"),
+        PluginContext(
+            "easymotion",
+            "vim-easymotion",
+            else_=True,
+            endif_=True,
+            tag=PluginTag.EDITING,
+        ),
+        PluginContext(
+            "windwp",
+            "nvim-autopairs",
+            if_has_="nvim-0.5",
+            comment="Auto pair",
+            tag=PluginTag.EDITING,
+        ),
+        PluginContext(
+            "jiangmiao", "auto-pairs", else_=True, endif_=True, tag=PluginTag.EDITING
+        ),
+        PluginContext(
+            "chaoren", "vim-wordmotion", comment="Word motion", tag=PluginTag.EDITING
+        ),
+        PluginContext("mattn", "emmet-vim", comment="HTML", tag=PluginTag.EDITING),
+        PluginContext("tpope", "vim-repeat", tag=PluginTag.EDITING),
+        PluginContext("tpope", "vim-surround", comment="Quotes", tag=PluginTag.EDITING),
+        PluginContext("mbbill", "undotree", comment="Undo", tag=PluginTag.EDITING),
+        PluginContext(
+            "editorconfig",
+            "editorconfig-vim",
+            comment="Editor config",
+            tag=PluginTag.EDITING,
+        ),
+        PluginContext(
+            "haya14busa",
+            "incsearch.vim",
+            comment="Incremental search",
+            tag=PluginTag.EDITING,
+        ),
     ]
 
     def __init__(
@@ -615,6 +681,7 @@ class Render(Indentable):
         disable_color=False,
         disable_highlight=False,
         disable_language=False,
+        disable_editing=False,
         disable_ctrlkeys=False,
         disable_plugins=None,
     ):
@@ -623,6 +690,7 @@ class Render(Indentable):
         self.disable_color = disable_color
         self.disable_highlight = disable_highlight
         self.disable_language = disable_language
+        self.disable_editing = disable_editing
         self.disable_ctrlkeys = disable_ctrlkeys
         self.disable_plugins = disable_plugins
 
@@ -646,8 +714,16 @@ class Render(Indentable):
             vimrc_stmts.append(VimrcSourceStmt("standalone/ctrlkeys.vim"))
         for ctx in Render.PLUGIN_CONTEXT:
             assert isinstance(ctx, PluginContext)
-            # skip disabled plugins
+            # skip disabled
             if self.disable_plugins and ctx.to_str() in self.disable_plugins:
+                continue
+            if self.disable_color and ctx.tag == PluginTag.COLORSCHEME:
+                continue
+            if self.disable_highlight and ctx.tag == PluginTag.HIGHLIGHT:
+                continue
+            if self.disable_language and ctx.tag == PluginTag.LANGUAGE:
+                continue
+            if self.disable_editing and ctx.tag == PluginTag.EDITING:
                 continue
             # above statement
             if ctx.paragraph:
@@ -707,7 +783,7 @@ class Render(Indentable):
                 )
             )
             setting_file = f"setting/{ctx.to_str()}/value.vim"
-            if os.path.exists(f"{HOME_DIR}/.vim/{setting_file}"):
+            if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
                 vimrc_stmts.append(VimrcSourceStmt(setting_file))
             else:
                 vimrc_stmts.append(StmtExpr(SingleQuoteCommentExpr("Nothing here")))
@@ -732,25 +808,62 @@ class Render(Indentable):
         return rendered_plugin, rendered_vimrc, rendered_setting
 
 
-class FileWriter:
-    def __init__(self, plugin_content, setting_content, vimrc_content) -> None:
+class FileDumper:
+    def __init__(
+        self,
+        plugin_content,
+        setting_content,
+        vimrc_content,
+        disable_vim=False,
+        disable_neovim=False,
+    ) -> None:
         self.plugin_content = plugin_content
         self.setting_content = setting_content
         self.vimrc_content = vimrc_content
+        self.disable_vim = disable_vim
+        self.disable_neovim = disable_neovim
 
-    def write_files(self):
-        PLUGINS_FILE = f"{VIM_DIR}/plugins.vim"
-        SETTINGS_FILE = f"{VIM_DIR}/settings.vim"
-        VIMRC_FILE = f"{VIM_DIR}/vimrc.vim"
-        with open(PLUGINS_FILE, "w") as fp:
+    def dump_configs(self):
+        plugins_file = f"{VIM_DIR}/plugins.vim"
+        settings_file = f"{VIM_DIR}/settings.vim"
+        with open(plugins_file, "w") as fp:
             fp.write(self.plugin_content)
-        with open(SETTINGS_FILE, "w") as fp:
+        with open(settings_file, "w") as fp:
             fp.write(self.setting_content)
         with open(VIMRC_FILE, "w") as fp:
             fp.write(self.vimrc_content)
 
+    def dump_vim_entry(self):
+        if self.disable_vim:
+            return
+        message("install ~/.vimrc for vim")
+        vimrc_path = pathlib.Path(f"{HOME_DIR}/.vimrc")
+        try_backup(vimrc_path)
+        pathlib.Path(VIMRC_FILE).symlink_to(vimrc_path)
 
-@click.command()
+    def dump_neovim_entry(self):
+        if self.disable_neovim:
+            return
+        message("install ~/.config/nvim/init.vim for neovim")
+        config_path = pathlib.Path(f"{HOME_DIR}/.config")
+        nvim_path = pathlib.Path(f"{HOME_DIR}/.config/nvim")
+        init_path = pathlib.Path(f"{HOME_DIR}/.config/nvim/init.vim")
+        try_backup(init_path)
+        try_backup(nvim_path)
+        config_path.mkdir(parents=True)
+        VIM_DIR.symlink_to(str(nvim_path), target_is_directory=True)
+        VIMRC_FILE.symlink_to(str(init_path))
+
+
+class CommandHelp(click.Command):
+    HELP_FILE = pathlib.Path(f"{VIM_DIR}/install/help.txt")
+
+    def format_help(self, ctx, formatter):
+        with open(CommandHelp.HELP_FILE, "r") as hf:
+            formatter.write(hf.read())
+
+
+@click.command(cls=CommandHelp)
 @click.option("-b", "--basic", "basic_opt", is_flag=True, help="Basic mode")
 @click.option("-l", "--limit", "limit_opt", is_flag=True, help="Limit mode")
 @click.option(
@@ -780,6 +893,12 @@ class FileWriter:
     help="Disable coc language server extensions",
 )
 @click.option(
+    "--disable-editing",
+    "disable_editing_opt",
+    is_flag=True,
+    help="Disable extra editing enhancement",
+)
+@click.option(
     "--disable-ctrl-keys",
     "disable_ctrl_keys_opt",
     is_flag=True,
@@ -789,7 +908,7 @@ class FileWriter:
     "--disable-plugin",
     "disable_plugin_opt",
     multiple=True,
-    help="Disable specific vim plugins",
+    help="Disable specific vim plugins in org/repo format from github",
 )
 @click.option(
     "--disable-vim",
@@ -810,6 +929,7 @@ def generator(
     disable_color_opt,
     disable_highlight_opt,
     disable_language_opt,
+    disable_editing_opt,
     disable_ctrl_keys_opt,
     disable_plugin_opt,
     disable_vim_opt,
@@ -820,11 +940,40 @@ def generator(
     Install with 3 modes: full (default), limit and basic.
 
     \b
-    notice:
-    \b
     In full mode, you could use '--disable-xxx' options to disable specific feature.
-    The '--disable-language --disable-highlight --disable-color' option is equivalent to '--limit'.
+    The '--disable-highlight --disable-color --disable-language --disable-editing' option is equivalent to '--limit'.
     The '--disable-color' option is conflict with '--static-color'.
 
     """
-    pass
+    if limit_opt:
+        disable_color_opt = True
+        disable_highlight_opt = True
+        disable_language_opt = True
+        disable_editing_opt = True
+    if static_color_opt and disable_color_opt:
+        error_message("cannot use --static-color along with --disable-color")
+        exit(1)
+    render = Render(
+        static_color_opt,
+        disable_color_opt,
+        disable_highlight_opt,
+        disable_language_opt,
+        disable_editing_opt,
+        disable_ctrl_keys_opt,
+        disable_plugin_opt,
+    )
+    plugin_content, setting_content, vimrc_content = render.render()
+    dumper = FileDumper(
+        plugin_content,
+        setting_content,
+        vimrc_content,
+        disable_vim_opt,
+        disable_neovim_opt,
+    )
+    dumper.dump_configs()
+    dumper.dump_vim_entry()
+    dumper.dump_neovim_entry()
+
+
+if __name__ == "__main__":
+    generator()
