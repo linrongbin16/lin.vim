@@ -818,6 +818,7 @@ class Render(Indentable):
                 plugin_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
                 vimrc_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
         plugin_stmts.append(PluginFooterStmt())
+        vimrc_stmts.append(VimrcSourceStmt("settings.vim"))
         setting_stmts = [
             SettingCocExtensionStmt(
                 self.disable_language, is_windows(), not is_windows()
