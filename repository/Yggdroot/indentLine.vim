@@ -1,4 +1,4 @@
-" use better character
+" Better icon
 let g:indentLine_char='│'
 
 " fix quotes error for json,markdown files
