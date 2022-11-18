@@ -679,7 +679,7 @@ class Render(Indentable):
             "andymass",
             "vim-matchup",
             top_clause=PluginClause.make_single_comment("HTML tag"),
-            tag=PluginTag.LANGUAGE,
+            tag=PluginTag.EDITING,
         ),
         PluginContext("alvan", "vim-closetag", tag=PluginTag.EDITING),
         PluginContext(
