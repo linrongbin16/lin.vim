@@ -25,17 +25,13 @@ function try_backup() {
     fi
 }
 
-function try_delete() {
-    local src=$1
-    if [[ -f "$src" || -d "$src" ]]; then
-        message "delete '$src'"
-        rm -rf $src
-    fi
-}
-
-function reset_file() {
-    echo -n ''>$1
-}
+# function try_delete() {
+#     local src=$1
+#     if [[ -f "$src" || -d "$src" ]]; then
+#         message "delete '$src'"
+#         rm -rf $src
+#     fi
+# }
 
 function install_or_skip() {
     local command="$1"

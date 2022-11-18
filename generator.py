@@ -32,11 +32,11 @@ def try_backup(src):
         message(f"backup '{src}' to '{dest}'")
 
 
-def try_delete(src):
-    assert isinstance(src, pathlib.Path)
-    if src.is_symlink() or src.exists():
-        src.unlink(missing_ok=True)
-        message(f"delete '{src}'")
+# def try_delete(src):
+#     assert isinstance(src, pathlib.Path)
+#     if src.is_symlink() or src.exists():
+#         src.unlink(missing_ok=True)
+#         message(f"delete '{src}'")
 
 
 class Indentable:

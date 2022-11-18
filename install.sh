@@ -156,35 +156,57 @@ for ((i=0; i < args_length; i++)); do
     -l|--limit)
         MODE_NAME='limit'
         ;;
+    -s|--static-color)
+        opt_static_color=1
+        j=$(($i+1))
+        # if no next arg
+        if [ $j -ge $args_length ]; then
+            error_message "option '$a' requires an argument."
+            exit 1
+        fi
+        next_a="${args[j]}"
+        if [ "${next_a:0:1}" == "-" ]; then
+            error_message "option '$a' requires an argument."
+            exit 1
+        fi
+        if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
+            error_message "cannot use '-s' or '--static-color' along with '--disable-color'."
+            exit 1
+        fi
+        ;;
+    --disable-plugin)
+        j=$(($i+1))
+        # if no next arg
+        if [ $j -ge $args_length ]; then
+            error_message "option '$a' requires an argument."
+            exit 1
+        fi
+        next_a="${args[j]}"
+        if [ "${next_a:0:1}" == "-" ]; then
+            error_message "option '$a' requires an argument."
+            exit 1
+        fi
+        ;;
+    --disable-color)
+        opt_disable_color=1
+        if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
+            error_message "cannot use '-s' or '--static-color' along with '--disable-color'."
+            exit 1
+        fi
+        ;;
+    --disable-highlight|--disable-language|--disable-editing|--disable-ctrl-keys)
+        ;;
     --disable-vim)
         OPT_DISABLE_VIM=1
         ;;
     --disable-neovim)
         OPT_DISABLE_NEOVIM=1
         ;;
-    -s|--static-color)
-        opt_static_color=1
-        j=$(($i+1))
-        # if no next arg
-        if [ $j -ge $args_length ]; then
-            error_message "option '-s' or '--static-color' requires an argument"
-            exit 1
-        fi
-        next_a="${args[j]}"
-        if [ "${next_a:0:1}" == "-" ]; then
-            error_message "option '-s' or '--static-color' requires an argument"
-            exit 1
-        fi
-        ;;
-    --disable-color)
-        opt_disable_color=1
-        ;;
+    *)
+        error_message "unknown option, please try --help for help message."
+        exit 1
     esac
 done
-if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
-    error_message "cannot use '-s' or '--static-color' along with '--disable-color'"
-    exit 1
-fi
 
 message "install with $MODE_NAME mode"
 if [ $OPT_BASIC -gt 0 ]; then
