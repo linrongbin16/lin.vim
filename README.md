@@ -227,11 +227,11 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
 
 The `install.sh` (and `install.ps1`) provide 3 installation modes:
 
-- Full mode (default mode): use just `./install.sh`. It install all features for best user experience, which consumes unignorable CPU, memory, disk and graphics.
+- Full mode (default mode): with `./install.sh`, it install all features for best user experience, which consumes unignorable CPU, memory, disk and graphics.
 - Limit mode: for low performance devices (such as old PC). With `./install.sh --limit`, it disable extra highlights, colorschemes, language support and editing enhancements.
 - Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication. With `./install.sh --basic`, it only install pure vim configurations, without any third party softwares or vim plugins.
 
-And more granular options:
+And many options:
 
 - Static colorscheme: `--static-color=TEXT` make colorscheme static, instead of random selection on startup. For example: `--static-color=darkblue`.
 - Disable colors: `--disable-color` disable colorscheme, and random selection on startup.
