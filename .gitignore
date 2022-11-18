@@ -2,15 +2,16 @@
 .DS_Store
 .netrwhist
 sessions
-.enhanced-copy-paste-cache
+.copypaste
 
 # plugins
 plugged
 
 # user settings
-plugin.vim
-setting.vim
+plugins.vim
+settings.vim
 coc-settings.json
+vimrc.vim
 
 # neovim
 init.vim
