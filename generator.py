@@ -348,67 +348,11 @@ class SettingRandomColorStmt(Expr):
 
 class SettingStmt(Expr):
     def __init__(self):
-        self.guifont_comment = TrippleQuoteCommentExpr(LiteralExpr("GUI font"))
-        self.hotkeys_comment = TrippleQuoteCommentExpr(LiteralExpr("Hot keys"))
-        self.python3_host_comment = TrippleQuoteCommentExpr(LiteralExpr("Python3 host"))
-        self.neovide_comment = TrippleQuoteCommentExpr(LiteralExpr("Neovide"))
-        self.more_setting_comment = TrippleQuoteCommentExpr(
-            LiteralExpr("Add more settings here...")
-        )
+        with open(f"{TEMPLATE_DIR}/settings-template.vim", "r") as fp:
+            self.content = fp.read()
 
     def render(self):
-        return f"""
-{self.guifont_comment.render()}
-if has("win32") || has("win64")
-    " for Windows
-    set guifont=Hack\\ NFM:h10
-elseif has("mac")
-    " for macOS
-    set guifont=Hack\\ Nerd\\ Font\\ Mono:h12
-else
-    " for other *NIX
-    set guifont=Hack\\ Nerd\\ Font\\ Mono:h10
-endif
-
-{self.hotkeys_comment.render()}
-" Toggle file explorer
-if has('nvim-0.7')
-    nnoremap <F1> :<C-u>NvimTreeToggle<CR>
-else
-    nnoremap <F1> :<C-u>Fern -keep -toggle . -drawer<CR>
-endif
-" Toggle undotree
-nnoremap <F2> :<C-u>UndotreeToggle<CR>
-" Toggle outline
-nnoremap <F3> :<C-u>Vista!!<CR>
-" Switch between C/C++ headers and sources
-nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
-" Toggle git blame
-nnoremap <F7> :<C-u>GitBlameToggle<CR>
-" Markdown preview
-nnoremap <F8> :<C-u>MarkdownPreview<CR>
-" Next random color scheme
-nnoremap <F9> :<C-u>call NextRandomColorSchemeSync()<CR>
-" Open bufexplorer
-nnoremap <F10> :<C-u>BufExplorer<CR>
-" Toggle(close) bufexplorer
-nnoremap <S-F10> :<C-u>ToggleBufExplorer<CR>
-
-{self.python3_host_comment.render()}
-" let g:python3_host_prog='python3'
-
-{self.neovide_comment.render()}
-" let g:neovide_refresh_rate=60
-" let g:neovide_transparency=1.0
-" let g:neovide_scroll_animation_length=0.0
-" let g:neovide_remember_window_size=v:true
-" let g:neovide_input_use_logo=v:false  " v:true on macOS
-" let g:neovide_cursor_animation_length=0.0
-" let g:neovide_cursor_trail_length=0.0
-" let g:neovide_cursor_antialiasing=v:true
-
-{self.more_setting_comment.render()}
-"""
+        return self.content
 
 
 class PluginTag(enum.Enum):
