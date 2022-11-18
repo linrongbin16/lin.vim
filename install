@@ -99,28 +99,13 @@ guifont_dependency() {
     fi
 }
 
-dependency() {
+install_dependency() {
     platform_dependency
     rust_dependency
     golang_dependency
     pip3_dependency
     npm_dependency
     guifont_dependency
-}
-
-# full
-install_full() {
-    message "install configs"
-    python3 $VIM_HOME/generator.py "$@"
-    if [ $? -ne 0 ]; then
-        exit 1
-    fi
-    if [ $OPT_DISABLE_VIM -ne 1 ]; then
-        vim -E -c "PlugInstall" -c "qall"
-    fi
-    if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
-        nvim -E -c "PlugInstall" -c "qall"
-    fi
 }
 
 # basic
@@ -152,41 +137,45 @@ show_help() {
     cat $INSTALL_HOME/help.txt
 }
 
-parse_options() {
-    while [ $# -gt 0 ]; do
-        case "$1" in
-        -h|--help)
-            show_help
-            exit 0
-            ;;
-        -b|--basic)
-            MODE_NAME='basic'
-            OPT_BASIC=1
-            ;;
-        -l|--limit)
-            MODE_NAME='limit'
-            ;;
-        --disable-vim)
-            OPT_DISABLE_VIM=1
-            ;;
-        --disable-neovim)
-            OPT_DISABLE_NEOVIM=1
-            ;;
-        esac
-        shift
-    done
-}
+# parse options
+while [ $# -gt 0 ]; do
+    case "$1" in
+    -h|--help)
+        show_help
+        exit 0
+        ;;
+    -b|--basic)
+        MODE_NAME='basic'
+        OPT_BASIC=1
+        ;;
+    -l|--limit)
+        MODE_NAME='limit'
+        ;;
+    --disable-vim)
+        OPT_DISABLE_VIM=1
+        ;;
+    --disable-neovim)
+        OPT_DISABLE_NEOVIM=1
+        ;;
+    esac
+    shift
+done
 
-main() {
-    message "install with $MODE_NAME mode"
-    if [ $OPT_BASIC -gt 0 ]; then
-        install_basic
-    else
-        dependency
-        install_full "$@"
+message "install with $MODE_NAME mode"
+if [ $OPT_BASIC -gt 0 ]; then
+    install_basic
+else
+    install_dependency
+    message "install configurations for vim"
+    python3 $VIM_HOME/generator.py "$@"
+    if [ $? -ne 0 ]; then
+        exit 1
     fi
-    message "install with $MODE_NAME mode - done"
-}
-
-parse_options "$@"
-main
+    if [ $OPT_DISABLE_VIM -ne 1 ]; then
+        vim -E -c "PlugInstall" -c "qall"
+    fi
+    if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
+        nvim -E -c "PlugInstall" -c "qall"
+    fi
+fi
+message "install with $MODE_NAME mode - done"

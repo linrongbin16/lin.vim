@@ -28,15 +28,15 @@ def try_backup(src):
     assert isinstance(src, pathlib.Path)
     if src.is_symlink() or src.exists():
         dest = f"{src}.{datetime.datetime.now().strftime('%Y-%m-%d.%H-%M-%S.%f')}"
-        message(f"backup '{src}' to '{dest}'")
         src.rename(dest)
+        message(f"backup '{src}' to '{dest}'")
 
 
 def try_delete(src):
     assert isinstance(src, pathlib.Path)
     if src.is_symlink() or src.exists():
-        message(f"delete '{src}'")
         src.unlink(missing_ok=True)
+        message(f"delete '{src}'")
 
 
 class Indentable:
