@@ -362,36 +362,70 @@ class PluginTag(enum.Enum):
     EDITING = 4
 
 
+class PluginClauseKind(enum.Enum):
+    PARAGRAPH = 1
+    COMMENT = 2
+    IF_HAS = 3
+    IF_NOT_HAS = 4
+    ELSEIF_HAS = 5
+    ELSEIF_NOT_HAS = 6
+    ELSE = 7
+    ENDIF = 8
+
+
+class PluginClause:
+    def __init__(self, kind, value=None):
+        assert isinstance(kind, PluginClauseKind)
+        assert isinstance(value, str) or value is None
+        self.kind = kind
+        self.value = value
+
+    @staticmethod
+    def make_paragraph():
+        return PluginClause(PluginClauseKind.PARAGRAPH)
+
+    @staticmethod
+    def make_single_comment(value):
+        return PluginClause(PluginClauseKind.COMMENT, value)
+
+    @staticmethod
+    def make_tripple_comment(value):
+        return PluginClause(PluginClauseKind.COMMENT, value)
+
+    @staticmethod
+    def make_if_has(value):
+        return PluginClause(PluginClauseKind.IF_HAS, value)
+
+    @staticmethod
+    def make_else():
+        return PluginClause(PluginClauseKind.ELSE)
+
+    @staticmethod
+    def make_endif():
+        return PluginClause(PluginClauseKind.ENDIF)
+
+
 class PluginContext:
     def __init__(
         self,
         org,
         repo,
         post=None,
-        if_has_=None,
-        if_not_has_=None,
-        elseif_has_=None,
-        elseif_not_has_=None,
-        else_=None,
-        endif_=None,
-        comment=None,
-        paragraph=None,
+        top_line=None,
+        bottom_line=None,
+        left_component=None,
+        right_component=None,
         tag=None,
     ) -> None:
         self.org = org
         self.repo = repo
         self.post = post
         self.tag = tag
-        # extra above statement
-        self.if_has_ = if_has_
-        self.if_not_has_ = if_not_has_
-        self.elseif_has_ = elseif_has_
-        self.elseif_not_has_ = elseif_not_has_
-        self.else_ = else_
-        self.comment = comment
-        self.paragraph = paragraph
-        # extra below statement
-        self.endif_ = endif_
+        # extra clauses
+        self.top_line = top_line  # more things above this line
+        self.bottom_line = bottom_line  # more things below this line
+        self.left_component = left_component  # more things on the left
+        self.right_component = right_component  # more things on the right
 
     def to_str(self):
         return f"{self.org}/{self.repo}"
@@ -402,8 +436,10 @@ class Render(Indentable):
         PluginContext(
             "lifepillar",
             "vim-solarized8",
-            comment="Color scheme",
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Color scheme"),
+            ],
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext("crusoexia", "vim-monokai", tag=PluginTag.COLORSCHEME),
@@ -427,7 +463,10 @@ class Render(Indentable):
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
-            "EdenEast", "nightfox.nvim", if_has_="nvim-0.5", tag=PluginTag.COLORSCHEME
+            "EdenEast",
+            "nightfox.nvim",
+            top_line=PluginClause.make_if_has("nvim-0.5"),
+            tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
             "folke",
@@ -436,20 +475,25 @@ class Render(Indentable):
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
-            "projekt0n", "github-nvim-theme", endif_=True, tag=PluginTag.COLORSCHEME
+            "projekt0n",
+            "github-nvim-theme",
+            bottom_line=[PluginClause.make_endif()],
+            tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
             "rebelot",
             "kanagawa.nvim",
-            if_has_="nvim-0.6",
-            endif_=True,
+            top_line=PluginClause.make_if_has("nvim-0.6"),
+            bottom_line=[PluginClause.make_endif()],
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
             "RRethy",
             "vim-illuminate",
-            comment="Highlight",
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Highlight"),
+            ],
             tag=PluginTag.HIGHLIGHT,
         ),
         PluginContext(
@@ -461,21 +505,46 @@ class Render(Indentable):
         PluginContext(
             "kyazdani42",
             "nvim-web-devicons",
-            if_has_="nvim",
-            comment=["UI", "Icon"],
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("UI"),
+                PluginClause.make_single_comment("Icon"),
+                PluginClause.make_if_has("nvim"),
+            ],
         ),
-        PluginContext("ryanoasis", "vim-devicons", else_=True, endif_=True),
-        PluginContext("romgrk", "barbar.nvim", if_has_="nvim-0.7", comment="Tabline"),
-        PluginContext("bagrat", "vim-buffet", else_=True, endif_=True),
         PluginContext(
-            "kyazdani42", "nvim-tree.lua", if_has_="nvim-0.7", comment="Explorer"
+            "ryanoasis",
+            "vim-devicons",
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
         ),
-        PluginContext("lambdalisue", "fern.vim", else_=True),
+        PluginContext(
+            "romgrk",
+            "barbar.nvim",
+            top_line=[
+                PluginClause.make_tripple_comment("Tabline"),
+                PluginClause.make_if_has("nvim-0.7"),
+            ],
+        ),
+        PluginContext(
+            "bagrat",
+            "vim-buffet",
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
+        ),
+        PluginContext(
+            "kyazdani42",
+            "nvim-tree.lua",
+            top_line=[
+                PluginClause.make_tripple_comment("Explorer"),
+                PluginClause.make_if_has("nvim-0.7"),
+            ],
+        ),
+        PluginContext("lambdalisue", "fern.vim", top_line=PluginClause.make_else()),
         PluginContext("lambdalisue", "nerdfont.vim"),
         PluginContext("lambdalisue", "fern-renderer-nerdfont.vim"),
         PluginContext("lambdalisue", "glyph-palette.vim"),
-        PluginContext("lambdalisue", "fern-git-status.vim", endif_=True),
+        PluginContext("lambdalisue", "fern-git-status.vim", bottom_line=PluginClause.make_endif()),
         PluginContext("jlanzarotta", "bufexplorer"),
         PluginContext(
             "lukas-reineke",
