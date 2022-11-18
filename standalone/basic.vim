@@ -1,3 +1,5 @@
+""" ---- Basic settings ----
+
 set runtimepath+=$HOME/.vim
 set nocompatible
 

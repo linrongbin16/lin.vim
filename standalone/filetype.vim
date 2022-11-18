@@ -1,4 +1,5 @@
-" filetype mapping
+""" ---- Filetyps mapping ----
+
 autocmd BufRead,BufNewFile *.hql setlocal filetype=hive
 autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
 autocmd BufRead,BufNewFile *.hs setlocal filetype=haskell

@@ -17,9 +17,15 @@ local function LuaLineGitStatus()
     -- return string.format('%s%s', branch, changes)
 
     -- vim-gitbranch + vim-gitgutter
+    if not vim.fn.exists('*gitbranch#name') then
+        return ''
+    end
     local branch = vim.fn['gitbranch#name']()
     if branch == nil or branch == '' then
         return ''
+    end
+    if not vim.fn.exists('*GitGutterGetHunkSummary') then
+        return string.format(' %s', branch)
     end
     -- summary = [a, m, r]
     local summary = vim.fn['GitGutterGetHunkSummary']()
@@ -50,7 +56,9 @@ end
 --     return string.format(' %s', function_name)
 -- end
 local function LuaLineCocStatus()
-    -- coc-git
+    if not vim.fn.exists('*coc#status') then
+        return ''
+    end
     local coc_status = vim.fn['coc#status']()
     if coc_status == nil or coc_status == '' then
         return ''
@@ -65,6 +73,9 @@ local function LuaLineCursorHexValue()
     return '0x%B'
 end
 local function LuaLineGutentagsStatus()
+    if not vim.fn.exists('*gutentags#statusline') then
+        return ''
+    end
     local tags_status = vim.fn['gutentags#statusline']()
     if tags_status == nil or tags_status == '' then
         return ''

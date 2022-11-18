@@ -48,6 +48,10 @@ endfunction
 " endfunction
 
 function! MyLightLineCocStatus() abort
+    if !exists("*coc#status")
+        return ''
+    endif
+
     let coc_status = coc#status()
     if empty(coc_status)
         return ''
@@ -66,9 +70,15 @@ function! MyLightLineGitStatus() abort
     " return printf('%s%s', branch, changes)
 
     """ vim-gitbranch + vim-gitgutter
+    if !exists("*gitbranch#name")
+        return ''
+    endif
     let branch = gitbranch#name()
     if empty(branch)
         return ''
+    endif
+    if !exists("*GitGutterGetHunkSummary")
+        return printf(' %s', branch)
     endif
     let [a,m,r] = GitGutterGetHunkSummary()
     let changes = []
@@ -89,6 +99,9 @@ function! MyLightLineGitStatus() abort
 endfunction
 
 function! MyLightLineGutentagsStatus() abort
+    if !exists("*gutentags#statusline")
+        return ''
+    endif
     let tags_status = gutentags#statusline()
     if empty(tags_status)
         return ''

@@ -1,3 +1,5 @@
+""" ---- GUI settings ----
+
 " disable menu
 if has("gui_running")
     " gvim toolbox

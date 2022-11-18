@@ -1,3 +1,5 @@
+""" ---- Enhanced copypaste ----
+
 " copy visual selection to cache
 vnoremap <Leader>y :w! ~/.vim/.copypaste<CR>
 " paste cache to cursor position
