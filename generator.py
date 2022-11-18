@@ -364,7 +364,8 @@ class PluginTag(enum.Enum):
 
 class PluginClauseKind(enum.Enum):
     PARAGRAPH = 1
-    COMMENT = 2
+    SINGLE_COMMENT = 2
+    TRIPPLE_COMMENT = 2
     IF_HAS = 3
     IF_NOT_HAS = 4
     ELSEIF_HAS = 5
@@ -386,11 +387,11 @@ class PluginClause:
 
     @staticmethod
     def make_single_comment(value):
-        return PluginClause(PluginClauseKind.COMMENT, value)
+        return PluginClause(PluginClauseKind.SINGLE_COMMENT, value)
 
     @staticmethod
     def make_tripple_comment(value):
-        return PluginClause(PluginClauseKind.COMMENT, value)
+        return PluginClause(PluginClauseKind.TRIPPLE_COMMENT, value)
 
     @staticmethod
     def make_if_has(value):
@@ -413,8 +414,6 @@ class PluginContext:
         post=None,
         top_line=None,
         bottom_line=None,
-        left_component=None,
-        right_component=None,
         tag=None,
     ) -> None:
         self.org = org
@@ -424,8 +423,6 @@ class PluginContext:
         # extra clauses
         self.top_line = top_line  # more things above this line
         self.bottom_line = bottom_line  # more things below this line
-        self.left_component = left_component  # more things on the left
-        self.right_component = right_component  # more things on the right
 
     def to_str(self):
         return f"{self.org}/{self.repo}"
@@ -544,128 +541,213 @@ class Render(Indentable):
         PluginContext("lambdalisue", "nerdfont.vim"),
         PluginContext("lambdalisue", "fern-renderer-nerdfont.vim"),
         PluginContext("lambdalisue", "glyph-palette.vim"),
-        PluginContext("lambdalisue", "fern-git-status.vim", bottom_line=PluginClause.make_endif()),
+        PluginContext(
+            "lambdalisue", "fern-git-status.vim", bottom_line=PluginClause.make_endif()
+        ),
         PluginContext("jlanzarotta", "bufexplorer"),
         PluginContext(
             "lukas-reineke",
             "indent-blankline.nvim",
-            if_has_="nvim-0.5",
-            comment="Indentline",
+            top_line=[
+                PluginClause.make_single_comment("Indentline"),
+                PluginClause.make_if_has("nvim-0.5"),
+            ],
             tag=PluginTag.HIGHLIGHT,
         ),
         PluginContext(
-            "Yggdroot", "indentLine", else_=True, endif_=True, tag=PluginTag.HIGHLIGHT
+            "Yggdroot",
+            "indentLine",
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
+            tag=PluginTag.HIGHLIGHT,
         ),
         PluginContext(
-            "nvim-lualine", "lualine.nvim", if_has_="nvim-0.5", comment="Statusline"
+            "nvim-lualine",
+            "lualine.nvim",
+            top_line=[
+                PluginClause.make_single_comment("Statusline"),
+                PluginClause.make_if_has("nvim-0.5"),
+            ],
         ),
-        PluginContext("itchyny", "lightline.vim", else_=True, endif_=True),
-        PluginContext("airblade", "vim-gitgutter", comment="Git", paragraph=True),
+        PluginContext(
+            "itchyny",
+            "lightline.vim",
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
+        ),
+        PluginContext(
+            "airblade",
+            "vim-gitgutter",
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Git"),
+            ],
+        ),
         PluginContext("itchyny", "vim-gitbranch"),
         PluginContext(
             "f-person",
             "git-blame.nvim",
-            if_has_="nvim-0.5",
-            endif_=True,
+            top_line=PluginClause.make_if_has("nvim-0.5"),
+            bottom_line=PluginClause.make_endif(),
             tag=PluginTag.HIGHLIGHT,
         ),
-        PluginContext("liuchengxu", "vista.vim", comment="Tags", paragraph=True),
+        PluginContext(
+            "liuchengxu",
+            "vista.vim",
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Tags"),
+            ],
+        ),
         PluginContext("ludovicchabant", "vim-gutentags"),
         PluginContext(
             "junegunn",
             "fzf",
             post="{'do': { -> fzf#install() }}",
-            comment="Search",
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Search"),
+            ],
         ),
         PluginContext("junegunn", "fzf.vim"),
         PluginContext(
             "neoclide",
             "coc.nvim",
             "{'branch': 'release'}",
-            comment="Language server",
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Language server"),
+            ],
         ),
         PluginContext("antoinemadec", "coc-fzf"),
         PluginContext(
             "iamcco",
             "markdown-preview.nvim",
             post="{ 'do': 'cd app && yarn install' }",
-            comment="Language support",
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Language support"),
+            ],
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "justinmk",
             "vim-syntax-extra",
             post="{'for': ['lex', 'flex', 'yacc', 'bison']}",
-            comment="Lex/flex, yacc/bison",
+            top_line=PluginClause.make_single_comment("Lex/flex, yacc/bison"),
             tag=PluginTag.LANGUAGE,
         ),
-        PluginContext("rhysd", "vim-llvm", comment="LLVM", tag=PluginTag.LANGUAGE),
         PluginContext(
-            "uarun", "vim-protobuf", comment="Protobuf", tag=PluginTag.LANGUAGE
-        ),
-        PluginContext("zebradil", "hive.vim", comment="Hive", tag=PluginTag.LANGUAGE),
-        PluginContext(
-            "neovimhaskell", "haskell-vim", comment="Haskell", tag=PluginTag.LANGUAGE
+            "rhysd",
+            "vim-llvm",
+            top_line=PluginClause.make_single_comment("LLVM"),
+            tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
-            "andymass", "vim-matchup", comment="HTML tags", tag=PluginTag.LANGUAGE
+            "uarun",
+            "vim-protobuf",
+            top_line=PluginClause.make_single_comment("Protobuf"),
+            tag=PluginTag.LANGUAGE,
+        ),
+        PluginContext(
+            "zebradil",
+            "hive.vim",
+            top_line=PluginClause.make_single_comment("Hive"),
+            tag=PluginTag.LANGUAGE,
+        ),
+        PluginContext(
+            "neovimhaskell",
+            "haskell-vim",
+            top_line=PluginClause.make_single_comment("Haskell"),
+            tag=PluginTag.LANGUAGE,
+        ),
+        PluginContext(
+            "andymass",
+            "vim-matchup",
+            top_line=PluginClause.make_single_comment("HTML tag"),
+            tag=PluginTag.LANGUAGE,
         ),
         PluginContext("alvan", "vim-closetag", tag=PluginTag.EDITING),
         PluginContext(
             "numToStr",
             "Comment.nvim",
-            if_has_="nvim",
-            comment=["Editing enhancement", "Commment"],
-            paragraph=True,
+            top_line=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("Editing enhancement"),
+                PluginClause.make_single_comment("Comment"),
+                PluginClause.make_if_has("nvim"),
+            ],
             tag=PluginTag.EDITING,
         ),
         PluginContext(
-            "tomtom", "tcomment_vim", else_=True, endif_=True, tag=PluginTag.EDITING
+            "tomtom",
+            "tcomment_vim",
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
+            tag=PluginTag.EDITING,
         ),
         PluginContext(
             "phaazon",
             "hop.nvim",
-            if_has_="nvim-0.5",
-            comment="Cursor motion",
+            top_line=[
+                PluginClause.make_single_comment("Cursor motion"),
+                PluginClause.make_if_has("nvim-0.5"),
+            ],
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "easymotion",
             "vim-easymotion",
-            else_=True,
-            endif_=True,
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "windwp",
             "nvim-autopairs",
-            if_has_="nvim-0.5",
-            comment="Auto pair",
+            top_line=[
+                PluginClause.make_single_comment("Auto pair"),
+                PluginClause.make_if_has("nvim-0.5"),
+            ],
             tag=PluginTag.EDITING,
         ),
         PluginContext(
-            "jiangmiao", "auto-pairs", else_=True, endif_=True, tag=PluginTag.EDITING
+            "jiangmiao",
+            "auto-pairs",
+            top_line=PluginClause.make_else(),
+            bottom_line=PluginClause.make_endif(),
+            tag=PluginTag.EDITING,
         ),
         PluginContext(
-            "chaoren", "vim-wordmotion", comment="Word motion", tag=PluginTag.EDITING
+            "chaoren",
+            "vim-wordmotion",
+            top_line=PluginClause.make_single_comment("Word motion"),
+            tag=PluginTag.EDITING,
         ),
-        PluginContext("mattn", "emmet-vim", comment="HTML", tag=PluginTag.EDITING),
+        PluginContext(
+            "mattn",
+            "emmet-vim",
+            top_line=PluginClause.make_single_comment("HTML"),
+            tag=PluginTag.EDITING,
+        ),
         PluginContext("tpope", "vim-repeat", tag=PluginTag.EDITING),
-        PluginContext("tpope", "vim-surround", comment="Quotes", tag=PluginTag.EDITING),
-        PluginContext("mbbill", "undotree", comment="Undo", tag=PluginTag.EDITING),
+        PluginContext("tpope", "vim-surround", tag=PluginTag.EDITING),
+        PluginContext(
+            "mbbill",
+            "undotree",
+            top_line=PluginClause.make_single_comment("Undo"),
+            tag=PluginTag.EDITING,
+        ),
         PluginContext(
             "editorconfig",
             "editorconfig-vim",
-            comment="Editor config",
+            top_line=PluginClause.make_single_comment("Editor config"),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "haya14busa",
             "incsearch.vim",
-            comment="Incremental search",
+            top_line=PluginClause.make_single_comment("Incremental search"),
             tag=PluginTag.EDITING,
         ),
     ]
@@ -690,21 +772,40 @@ class Render(Indentable):
         self.disable_plugins = disable_plugins
 
     def render(self):
-        plugin_stmts = [PluginHeaderStmt()]
-        vimrc_stmts = [
+        core_plugins, core_vimrcs = self.render_core()
+        plugin_states = self.render_plugin_states(core_plugins)
+        setting_states = self.render_setting_states()
+        vimrc_states = self.render_vimrc_states(core_vimrcs)
+        plugins_content = "".join([s.render() for s in plugin_states])
+        settings_content = "".join([s.render() for s in setting_states])
+        vimrc_content = "".join([s.render() for s in vimrc_states])
+        return plugins_content, settings_content, vimrc_content
+
+    # plugins.vim
+    def render_plugin_states(self, core_plugins):
+        plugin_states = []
+        plugin_states.append(PluginHeaderStmt())
+        plugin_states.extend(core_plugins)
+        plugin_states.append(PluginFooterStmt())
+        return plugin_states
+
+    # vimrc.vim
+    def render_vimrc_states(self, core_vimrcs):
+        vimrc_states = []
+        vimrc_states.append(
             StmtExpr(
                 TrippleQuoteCommentExpr(LiteralExpr("---- Vimrc ----")),
                 IndentExpr(self.indent),
-            ),
-            VimrcSourceStmt("plugins.vim"),
-            VimrcSourceStmt("standalone/basic.vim"),
-            VimrcSourceStmt("standalone/gui.vim"),
-            VimrcSourceStmt("standalone/filetype.vim"),
-            VimrcSourceStmt("standalone/color.vim"),
-            VimrcSourceStmt("standalone/copypaste.vim"),
-        ]
+            )
+        )
+        vimrc_states.append(VimrcSourceStmt("plugins.vim"))
+        vimrc_states.append(VimrcSourceStmt("standalone/basic.vim"))
+        vimrc_states.append(VimrcSourceStmt("standalone/gui.vim"))
+        vimrc_states.append(VimrcSourceStmt("standalone/filetype.vim"))
+        vimrc_states.append(VimrcSourceStmt("standalone/color.vim"))
+        vimrc_states.append(VimrcSourceStmt("standalone/copypaste.vim"))
         if self.disable_ctrlkeys:
-            vimrc_stmts.append(
+            vimrc_states.append(
                 StmtExpr(
                     SingleQuoteCommentExpr(
                         LiteralExpr("Windows ctrl+{a,s,x,c,v} keys disabled")
@@ -713,7 +814,38 @@ class Render(Indentable):
                 )
             )
         else:
-            vimrc_stmts.append(VimrcSourceStmt("standalone/ctrlkeys.vim"))
+            vimrc_states.append(VimrcSourceStmt("standalone/ctrlkeys.vim"))
+
+        vimrc_states.extend(core_vimrcs)
+
+        vimrc_states.append(EmptyStmtExpr())
+        vimrc_states.append(
+            StmtExpr(
+                TrippleQuoteCommentExpr(LiteralExpr("---- Custom settings ----")),
+                IndentExpr(self.indent),
+            )
+        )
+        vimrc_states.append(VimrcSourceStmt("settings.vim"))
+        return vimrc_states
+
+    # settings.vim
+    def render_setting_states(self):
+        setting_states = []
+        setting_states.append(
+            SettingCocExtensionStmt(self.disable_language, IS_WINDOWS, not IS_WINDOWS)
+        )
+        if self.static_color:
+            setting_states.append(
+                SettingStaticColorStmt(LiteralExpr(self.static_color))
+            )
+        elif not self.disable_color:
+            setting_states.append(SettingRandomColorStmt())
+        setting_states.append(SettingStmt())
+        return setting_states
+
+    def render_core(self):
+        plugin_states = []
+        vimrc_states = []
         for ctx in Render.PLUGIN_CONTEXT:
             assert isinstance(ctx, PluginContext)
             # skip disabled
@@ -727,67 +859,73 @@ class Render(Indentable):
                 continue
             if self.disable_editing and ctx.tag == PluginTag.EDITING:
                 continue
-            # above statement
-            if ctx.paragraph:
-                p = EmptyStmtExpr()
-                plugin_stmts.append(p)
-                vimrc_stmts.append(p)
-            if ctx.comment:
-                comments = (
-                    ctx.comment if isinstance(ctx.comment, list) else [ctx.comment]
+            # top
+            if ctx.top_line:
+                toplines = (
+                    ctx.top_line if isinstance(ctx.top_line, list) else [ctx.top_line]
                 )
-                for i, cmt in enumerate(comments):
-                    c = (
-                        StmtExpr(
-                            TrippleQuoteCommentExpr(LiteralExpr(cmt)),
+                for clause in toplines:
+                    assert isinstance(clause, PluginClause)
+                    if clause.kind == PluginClauseKind.PARAGRAPH:
+                        p = EmptyStmtExpr()
+                        plugin_states.append(p)
+                        vimrc_states.append(p)
+                    elif clause.kind == PluginClauseKind.SINGLE_COMMENT:
+                        c = StmtExpr(
+                            SingleQuoteCommentExpr(LiteralExpr(clause.value)),
                             IndentExpr(self.indent),
                         )
-                        if ctx.paragraph and i == 0
-                        else StmtExpr(
-                            SingleQuoteCommentExpr(LiteralExpr(cmt)),
+                        plugin_states.append(c)
+                        vimrc_states.append(c)
+                    elif clause.kind == PluginClauseKind.TRIPPLE_COMMENT:
+                        c = StmtExpr(
+                            TrippleQuoteCommentExpr(LiteralExpr(clause.value)),
                             IndentExpr(self.indent),
                         )
-                    )
-                    plugin_stmts.append(c)
-                    vimrc_stmts.append(c)
-            if ctx.if_has_:
-                ih = StmtExpr(
-                    IfExpr(HasExpr(SingleQuoteStringExpr(ctx.if_has_))),
-                    IndentExpr(self.indent),
-                )
-                plugin_stmts.append(ih)
-                vimrc_stmts.append(ih)
-                self.increment_indent()
-            if ctx.if_not_has_:
-                inh = StmtExpr(
-                    IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr(ctx.if_not_has_)))),
-                    IndentExpr(self.indent),
-                )
-                plugin_stmts.append(inh)
-                vimrc_stmts.append(inh)
-                self.increment_indent()
-            if ctx.elseif_has_:
-                eh = StmtExpr(
-                    ElseifExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_has_))),
-                    IndentExpr(self.to_left_indent()),
-                )
-                plugin_stmts.append(eh)
-                vimrc_stmts.append(eh)
-            if ctx.elseif_not_has_:
-                enh = StmtExpr(
-                    ElseifExpr(
-                        NotExpr(HasExpr(SingleQuoteStringExpr(ctx.elseif_not_has_)))
-                    ),
-                    IndentExpr(self.to_left_indent()),
-                )
-                plugin_stmts.append(enh)
-                vimrc_stmts.append(enh)
-            if ctx.else_:
-                e = StmtExpr(ElseExpr(), IndentExpr(self.to_left_indent()))
-                plugin_stmts.append(e)
-                vimrc_stmts.append(e)
-            # plug statement
-            plugin_stmts.append(
+                        plugin_states.append(c)
+                        vimrc_states.append(c)
+                    elif clause.kind == PluginClauseKind.IF_HAS:
+                        ih = StmtExpr(
+                            IfExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
+                            IndentExpr(self.indent),
+                        )
+                        plugin_states.append(ih)
+                        vimrc_states.append(ih)
+                        self.increment_indent()
+                    elif clause.kind == PluginClauseKind.IF_NOT_HAS:
+                        inh = StmtExpr(
+                            IfExpr(
+                                NotExpr(HasExpr(SingleQuoteStringExpr(clause.value)))
+                            ),
+                            IndentExpr(self.indent),
+                        )
+                        plugin_states.append(inh)
+                        vimrc_states.append(inh)
+                        self.increment_indent()
+                    elif clause.kind == PluginClauseKind.ELSEIF_HAS:
+                        eh = StmtExpr(
+                            ElseifExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
+                            IndentExpr(self.to_left_indent()),
+                        )
+                        plugin_states.append(eh)
+                        vimrc_states.append(eh)
+                    elif clause.kind == PluginClauseKind.ELSEIF_NOT_HAS:
+                        enh = StmtExpr(
+                            ElseifExpr(
+                                NotExpr(HasExpr(SingleQuoteStringExpr(clause.value)))
+                            ),
+                            IndentExpr(self.to_left_indent()),
+                        )
+                        plugin_states.append(enh)
+                        vimrc_states.append(enh)
+                    elif clause.kind == PluginClauseKind.ELSE:
+                        e = StmtExpr(ElseExpr(), IndentExpr(self.to_left_indent()))
+                        plugin_states.append(e)
+                        vimrc_states.append(e)
+                    else:
+                        assert False
+            # body
+            plugin_states.append(
                 StmtExpr(
                     PlugExpr(
                         LiteralExpr(ctx.org),
@@ -799,35 +937,34 @@ class Render(Indentable):
             )
             setting_file = f"repository/{ctx.to_str()}.vim"
             if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
-                vimrc_stmts.append(
+                vimrc_states.append(
                     VimrcSourceStmt(setting_file, IndentExpr(self.indent))
                 )
             else:
-                vimrc_stmts.append(
+                vimrc_states.append(
                     StmtExpr(
                         SingleQuoteCommentExpr(LiteralExpr("Nothing here")),
                         IndentExpr(self.indent),
                     )
                 )
-            # below statement
-            if ctx.endif_:
-                self.decrement_indent()
-                plugin_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
-                vimrc_stmts.append(StmtExpr(EndifExpr(), IndentExpr(self.indent)))
-        plugin_stmts.append(PluginFooterStmt())
-        vimrc_stmts.append(VimrcSourceStmt("settings.vim"))
-        setting_stmts = [
-            SettingCocExtensionStmt(self.disable_language, IS_WINDOWS, not IS_WINDOWS),
-        ]
-        if self.static_color:
-            setting_stmts.append(SettingStaticColorStmt(LiteralExpr(self.static_color)))
-        elif not self.disable_color:
-            setting_stmts.append(SettingRandomColorStmt())
-        setting_stmts.append(SettingStmt())
-        rendered_plugin = "".join([s.render() for s in plugin_stmts])
-        rendered_vimrc = "".join([s.render() for s in vimrc_stmts])
-        rendered_setting = "".join([s.render() for s in setting_stmts])
-        return rendered_plugin, rendered_setting, rendered_vimrc
+            # bottom line
+            if ctx.bottom_line:
+                bottomlines = (
+                    ctx.bottom_line
+                    if isinstance(ctx.bottom_line, list)
+                    else [ctx.bottom_line]
+                )
+                for clause in bottomlines:
+                    assert isinstance(clause, PluginClause)
+                    if clause.kind == PluginClauseKind.ENDIF:
+                        self.decrement_indent()
+                        e = StmtExpr(EndifExpr(), IndentExpr(self.indent))
+                        plugin_states.append(e)
+                        vimrc_states.append(e)
+                    else:
+                        assert False
+
+        return plugin_states, vimrc_states
 
 
 class FileDumper:
@@ -1013,10 +1150,10 @@ def generator(
         disable_ctrl_keys_opt,
         disable_plugin_opt,
     )
-    plugin_content, setting_content, vimrc_content = render.render()
+    plugins_content, settings_content, vimrc_content = render.render()
     dumper = FileDumper(
-        plugin_content,
-        setting_content,
+        plugins_content,
+        settings_content,
         vimrc_content,
         disable_vim_opt,
         disable_neovim_opt,
