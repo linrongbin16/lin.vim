@@ -19,6 +19,10 @@ function Message([string]$message) {
     Write-Host "[lin.vim] - $message"
 }
 
+function ErrorMessage([string] $message) {
+    Message "error! $message"
+}
+
 function InstallOrSkip([string]$command, [string]$target) {
     if (Get-Command -Name $target -ErrorAction SilentlyContinue) {
         Message "'${target}' already exist, skip..."
@@ -129,7 +133,10 @@ function ShowHelp() {
 #     Exit;
 # }
 
+# parse options
 $argsLength = $args.Length
+$optStaticColor = $False
+$optDisableColor = $False
 for ($i = 0; $i -lt $argsLength; $i++) {
     $a = $args[ $i ];
     if (($a -eq "-h") -or ($a -eq "--help")) {
@@ -149,6 +156,26 @@ for ($i = 0; $i -lt $argsLength; $i++) {
     if (($a -eq "--disable-neovim")) {
         $OPT_DISABLE_NEOVIM = $True
     }
+    if (($a -eq "-s") -or ($a -eq "--static-color")) {
+        $optStaticColor = $True
+        $j = $i + 1
+        if ($j -ge $argsLength) {
+            ErrorMessage "option '-s' or '--static-color' requires an argument"
+            exit 1
+        }
+        $nextArg = $args[ $j ];
+        if ( "$nextArg".Substring(0, 1) -eq "-") {
+            ErrorMessage "option '-s' or '--static-color' requires an argument"
+            exit 1
+        }
+    }
+    if ($a -eq "--disable-color") {
+        $optDisableColor = $True
+    }
+}
+if ($optStaticColor -and $optDisableColor) {
+    ErrorMessage "cannot use --static-color along with --disable-color"
+    exit 1
 }
 
 Message "install with $MODE_NAME mode"

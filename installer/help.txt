@@ -3,9 +3,9 @@ Usage: ./install [OPTIONS]
   Install with 3 modes: full (default), limit and basic.
 
 Notice:
-  In full mode, you could use '--disable-xxx' options to disable specific feature.
-  The '--disable-highlight --disable-color --disable-language --disable-editing' option is equivalent to '--limit'.
-  The '--disable-color' option is conflict with '--static-color'.
+  In full mode, you could use option '--disable-xxx' to disable some specific features.
+  Option '--disable-highlight --disable-color --disable-language --disable-editing' is equivalent to '--limit'.
+  Option '-s' or '--static-color' is conflict with '--disable-color'.
 
 Options:
   -b, --basic              Basic mode

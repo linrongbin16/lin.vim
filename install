@@ -138,8 +138,13 @@ show_help() {
 }
 
 # parse options
-while [ $# -gt 0 ]; do
-    case "$1" in
+opt_static_color=0
+opt_disable_color=0
+args_length=$#
+args=("$@")
+for ((i=0; i < args_length; i++)); do
+    a="${args[i]}"
+    case "$a" in
     -h|--help)
         show_help
         exit 0
@@ -157,9 +162,29 @@ while [ $# -gt 0 ]; do
     --disable-neovim)
         OPT_DISABLE_NEOVIM=1
         ;;
+    -s|--static-color)
+        opt_static_color=1
+        j=$(($i+1))
+        # if no next arg
+        if [ $j -ge $args_length ]; then
+            error_message "option '-s' or '--static-color' requires an argument"
+            exit 1
+        fi
+        next_a="${args[j]}"
+        if [ "${next_a:0:1}" == "-" ]; then
+            error_message "option '-s' or '--static-color' requires an argument"
+            exit 1
+        fi
+        ;;
+    --disable-color)
+        opt_disable_color=1
+        ;;
     esac
-    shift
 done
+if [ $opt_static_color -ne 0 && $opt_disable_color -ne 0 ]; then
+    error_message "cannot use '-s' or '--static-color' along with '--disable-color'"
+    exit 1
+fi
 
 message "install with $MODE_NAME mode"
 if [ $OPT_BASIC -gt 0 ]; then

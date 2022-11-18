@@ -1125,24 +1125,11 @@ def generator(
     disable_vim_opt,
     disable_neovim_opt,
 ):
-    """
-
-    Install with 3 modes: full (default), limit and basic.
-
-    \b
-    In full mode, you could use '--disable-xxx' options to disable specific feature.
-    The '--disable-highlight --disable-color --disable-language --disable-editing' option is equivalent to '--limit'.
-    The '--disable-color' option is conflict with '--static-color'.
-
-    """
     if limit_opt:
         disable_color_opt = True
         disable_highlight_opt = True
         disable_language_opt = True
         disable_editing_opt = True
-    if static_color_opt and disable_color_opt:
-        error_message("cannot use --static-color along with --disable-color")
-        exit(1)
     render = Render(
         static_color_opt,
         disable_color_opt,
