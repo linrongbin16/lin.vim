@@ -567,7 +567,7 @@ class Render(Indentable):
             "nvim-lualine",
             "lualine.nvim",
             top_line=[
-                PluginClause.make_single_comment("Statusline"),
+                PluginClause.make_tripple_comment("---- Statusline ----"),
                 PluginClause.make_if_has("nvim-0.5"),
             ],
         ),
