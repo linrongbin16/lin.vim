@@ -590,8 +590,9 @@ class Render(Indentable):
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Git ----"),
             ],
+            tag=PluginTag.EDITING,
         ),
-        PluginContext("itchyny", "vim-gitbranch"),
+        PluginContext("itchyny", "vim-gitbranch", tag=PluginTag.EDITING),
         PluginContext(
             "f-person",
             "git-blame.nvim",
