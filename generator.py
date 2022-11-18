@@ -1039,10 +1039,13 @@ class FileDumper:
     def config(self):
         plugins_file = f"{VIM_DIR}/plugins.vim"
         settings_file = f"{VIM_DIR}/settings.vim"
+        try_backup(pathlib.Path(plugins_file))
         with open(plugins_file, "w") as fp:
             fp.write(self.plugin_content)
+        try_backup(pathlib.Path(settings_file))
         with open(settings_file, "w") as fp:
             fp.write(self.setting_content)
+        try_backup(pathlib.Path(VIMRC_FILE))
         with open(VIMRC_FILE, "w") as fp:
             fp.write(self.vimrc_content)
         self.coc_settings()
@@ -1054,9 +1057,10 @@ class FileDumper:
         for d in coc_dirs:
             if not d.exists():
                 d.mkdir(parents=True)
+            coc_settings_file = f"{d}/coc-settings.json"
+            try_backup(pathlib.Path(coc_settings_file))
             shutil.copy(
-                f"{VIM_DIR}/template/coc-settings-template.json",
-                f"{d}/coc-settings.json",
+                f"{VIM_DIR}/template/coc-settings-template.json", coc_settings_file
             )
 
     def vimrc_entry(self):
