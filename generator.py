@@ -947,7 +947,10 @@ class Render(Indentable):
                     )
                 )
                 vimrc_stmts.append(
-                    Stmt(SingleQuoteCommentExpr("Empty"), IndentExpr(self.indent))
+                    Stmt(
+                        SingleQuoteCommentExpr(LiteralExpr("Empty")),
+                        IndentExpr(self.indent),
+                    )
                 )
             else:
                 # plugins
@@ -967,7 +970,10 @@ class Render(Indentable):
                     vimrc_stmts.append(VimrcStmt(setting_file, IndentExpr(self.indent)))
                 else:
                     vimrc_stmts.append(
-                        Stmt(SingleQuoteCommentExpr("Empty"), IndentExpr(self.indent))
+                        Stmt(
+                            SingleQuoteCommentExpr(LiteralExpr("Empty")),
+                            IndentExpr(self.indent),
+                        )
                     )
             # bottom
             if ctx.bottom_clause:
