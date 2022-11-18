@@ -160,9 +160,9 @@ Before installation, please make sure access of below sites are available:
 
 The `install.sh` (and `install.ps1`) support 3 modes:
 
-- Full mode: the default mode, it install all features for best user experience, which consumes unignorable CPU, memory and graphics.
-- Limit mode: for low performance devices (such as old PC), use `./install.sh --limit` option to install, it disable extra highlights, colors and most coc extensions.
-- Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication, use `./install.sh --basic` option to install, it only install pure vim configurations, without any third party softwares or vim plugins.
+- Full mode: the default mode, just use `./install.sh`, it install all features for best user experience, which consumes unignorable CPU, memory and graphics.
+- Limit mode: for low performance devices (such as old PC). With option `--limit` it disable extra highlights, colorschemes, most language servers and other editing supports.
+- Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication. With option `--basic` it only install pure vim configurations, without any third party softwares or vim plugins.
 
 Please try `./install.sh --help` (or `.\install.ps1 -Help`) for more information.
 
@@ -208,7 +208,7 @@ This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp
 Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
 4. Install [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
-5. Finally run below commands in powershell:
+5. Finally run below commands as administrator in powershell:
 
 ```powershell
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
