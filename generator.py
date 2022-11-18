@@ -11,6 +11,7 @@ import shutil
 
 HOME_DIR = pathlib.Path.home()
 VIM_DIR = pathlib.Path(f"{HOME_DIR}/.vim")
+TEMPLATE_DIR = pathlib.Path(f"{HOME_DIR}/.vim/template")
 VIMRC_FILE = pathlib.Path(f"{VIM_DIR}/vimrc.vim")
 
 IS_WINDOWS = platform.system().lower().startswith("win")
@@ -234,39 +235,22 @@ class EmptyStmtExpr(Expr):
         return "\n"
 
 
-class PluginHeaderStmt(Expr):
+class PluginHeaderStmt(LiteralExpr):
     def __init__(self):
-        self.header_comment = TrippleQuoteCommentExpr(
-            LiteralExpr("---- Plugin Header ----")
-        )
+        with open(f"{TEMPLATE_DIR}/plugins-header-template.vim", "r") as fp:
+            self.content = fp.read()
 
     def render(self):
-        return f"""
-{self.header_comment.render()}
-
-if has('win32') || has('win64')
-    set runtimepath^=~/.vim
-endif
-
-source ~/.vim/autoload/plug.vim
-call plug#begin('~/.vim/plugged')
-
-"""
+        return self.content
 
 
-class PluginFooterStmt(Expr):
+class PluginFooterStmt(LiteralExpr):
     def __init__(self):
-        self.footer_comment = TrippleQuoteCommentExpr(
-            LiteralExpr("---- Plugin Footer ----")
-        )
+        with open(f"{TEMPLATE_DIR}/plugins-footer-template.vim", "r") as fp:
+            self.content = fp.read()
 
     def render(self):
-        return f"""
-{self.footer_comment.render()}
-
-call plug#end()
-
-"""
+        return self.content
 
 
 class PlugExpr(Expr):
@@ -282,17 +266,6 @@ class PlugExpr(Expr):
         body = f"Plug '{self.org_expr.render()}/{self.repo_expr.render()}'"
         post = f", {self.post_expr.render()}" if self.post_expr else ""
         return f"{body}{post}"
-
-
-class VimrcHeaderStmt(Expr):
-    def __init__(self):
-        self.header_comment = TrippleQuoteCommentExpr(LiteralExpr("---- Vimrc ----"))
-
-    def render(self):
-        return f"""
-{self.header_comment.render()}
-
-"""
 
 
 class VimrcSourceStmt(Expr):
@@ -706,7 +679,10 @@ class Render(Indentable):
     def render(self):
         plugin_stmts = [PluginHeaderStmt()]
         vimrc_stmts = [
-            VimrcHeaderStmt(),
+            StmtExpr(
+                TrippleQuoteCommentExpr(LiteralExpr("---- Vimrc ----")),
+                IndentExpr(self.indent),
+            ),
             VimrcSourceStmt("plugins.vim"),
             VimrcSourceStmt("standalone/basic.vim"),
             VimrcSourceStmt("standalone/gui.vim"),
@@ -873,13 +849,16 @@ class FileDumper:
         self.coc_settings()
 
     def coc_settings(self):
-        coc_dir = pathlib.Path(f"{HOME_DIR}/vimfiles") if IS_WINDOWS else VIM_DIR
-        if not coc_dir.exists():
-            coc_dir.mkdir(parents=True)
-        shutil.copy(
-            f"{VIM_DIR}/template/coc-settings-template.json",
-            f"{coc_dir}/coc-settings.json",
-        )
+        coc_dirs = [VIM_DIR]
+        if IS_WINDOWS:
+            coc_dirs.append(pathlib.Path(f"{HOME_DIR}/vimfiles"))
+        for d in coc_dirs:
+            if not d.exists():
+                d.mkdir(parents=True)
+            shutil.copy(
+                f"{VIM_DIR}/template/coc-settings-template.json",
+                f"{d}/coc-settings.json",
+            )
 
     def vimrc_entry(self):
         if self.disable_vim:
