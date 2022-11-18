@@ -28,15 +28,18 @@ def error_message(*args):
 
 def try_backup(src):
     assert isinstance(src, pathlib.Path)
-    if src.exists():
+    message(f"debug - try_backup src:{src}")
+    if src.exists() or src.is_symlink():
+        message(f"debug - try_backup src:{src} - exists")
         dest = f"{src}.{datetime.datetime.now().strftime('%Y-%m-%d.%H-%M-%S.%f')}"
+        message(f"debug - try_backup src:{src}, dest:{dest}")
         message(f"backup '{src}' to '{dest}'")
         src.rename(dest)
 
 
 def try_delete(src):
     assert isinstance(src, pathlib.Path)
-    if src.exists():
+    if src.exists() or src.is_symlink():
         message(f"delete '{src}'")
         src.unlink(missing_ok=True)
 
@@ -864,7 +867,6 @@ class FileDumper:
         self.config()
         self.vim_entry()
         self.neovim_entry()
-        self.coc_settings()
 
     def config(self):
         plugins_file = f"{VIM_DIR}/plugins.vim"
@@ -875,16 +877,17 @@ class FileDumper:
             fp.write(self.setting_content)
         with open(VIMRC_FILE, "w") as fp:
             fp.write(self.vimrc_content)
+        self.coc_settings()
 
     def vim_entry(self):
         if self.disable_vim:
             return
-        message("install ~/.vimrc for vim")
-        vimrc_path = (
-            pathlib.Path(f"{HOME_DIR}/_vimrc")
-            if is_windows()
-            else pathlib.Path(f"{HOME_DIR}/.vimrc")
-        )
+        if is_windows():
+            message(f"install {HOME_DIR}\\_vimrc for vim")
+            vimrc_path = pathlib.Path(f"{HOME_DIR}\\_vimrc")
+        else:
+            message(f"install ~/.vimrc for vim")
+            vimrc_path = pathlib.Path(f"{HOME_DIR}/.vimrc")
         try_backup(vimrc_path)
         vimrc_path.symlink_to(VIMRC_FILE)
 
@@ -892,34 +895,19 @@ class FileDumper:
         if self.disable_neovim:
             return
         if is_windows():
-            self.neovim_entry_win()
+            message( f"install {HOME_DIR}\\AppData\\Local\\nvim\\init.vim for neovim on windows")
+            appdata_local_path = pathlib.Path(f"{HOME_DIR}/AppData/Local")
+            nvim_path = pathlib.Path(f"{appdata_local_path}/nvim")
+            nvim_init_path = pathlib.Path(f"{appdata_local_path}/nvim/init.vim")
         else:
-            self.neovim_entry_unix()
-
-    def neovim_entry_unix(self):
-        message("install ~/.config/nvim/init.vim for neovim")
-        config_path = pathlib.Path(f"{HOME_DIR}/.config")
-        nvim_path = pathlib.Path(f"{HOME_DIR}/.config/nvim")
-        init_path = pathlib.Path(f"{HOME_DIR}/.config/nvim/init.vim")
-        try_backup(init_path)
-        try_backup(nvim_path)
-        config_path.mkdir(parents=True)
-        VIM_DIR.symlink_to(str(nvim_path), target_is_directory=True)
-        VIMRC_FILE.symlink_to(str(init_path))
-
-    def neovim_entry_win(self):
-        if self.disable_neovim:
-            return
-        message(
-            f"install {HOME_DIR}\\AppData\\Local\\nvim\\init.vim for neovim on windows"
-        )
-        appdata_local_path = pathlib.Path(f"{HOME_DIR}/AppData/Local")
-        nvim_path = pathlib.Path(f"{appdata_local_path}/nvim")
-        init_path = pathlib.Path(f"{nvim_path}/init.vim")
-        try_backup(init_path)
+            message("install ~/.config/nvim/init.vim for neovim")
+            config_path = pathlib.Path(f"{HOME_DIR}/.config")
+            nvim_path = pathlib.Path(f"{config_path}/nvim")
+            nvim_init_path = pathlib.Path(f"{config_path}/nvim/init.vim")
+        try_backup(nvim_init_path)
         try_backup(nvim_path)
         nvim_path.symlink_to(str(VIM_DIR), target_is_directory=True)
-        init_path.symlink_to(str(VIMRC_FILE))
+        nvim_init_path.symlink_to(str(VIMRC_FILE))
 
     def coc_settings(self):
         coc_dir = pathlib.Path(f"{HOME_DIR}/vimfiles") if is_windows() else VIM_DIR
