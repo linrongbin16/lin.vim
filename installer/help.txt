@@ -10,7 +10,7 @@ Notice:
 Options:
   -b, --basic              Basic mode
   -l, --limit              Limit mode
-  -s, --static-color TEXT  Use static colorscheme instead of random selections
+  --static-color=TEXT      Use static colorscheme instead of random selections
   --disable-color          Disable extra colors such as colorschemes and
                            random selections
   --disable-highlight      Disable extra highlights such as RGB and cursor
@@ -18,7 +18,7 @@ Options:
   --disable-language       Disable coc language server extensions
   --disable-editing        Disable extra editing enhancement
   --disable-ctrl-keys      Disable windows ctrl+{a,s,x,c,v} keys
-  --disable-plugin TEXT    Disable specific vim plugins in org/repo format
+  --disable-plugin=TEXT    Disable specific vim plugins in org/repo format
                            from github
   --disable-vim            Only support neovim, disable vim
   --disable-neovim         Only support vim, disable neovim
