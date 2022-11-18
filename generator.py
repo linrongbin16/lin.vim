@@ -414,8 +414,8 @@ class PluginContext:
         org,
         repo,
         post=None,
-        top_line=None,
-        bottom_line=None,
+        top_clause=None,
+        bottom_clause=None,
         tag=None,
     ) -> None:
         self.org = org
@@ -423,8 +423,8 @@ class PluginContext:
         self.post = post
         self.tag = tag
         # extra clauses
-        self.top_line = top_line  # more things above this line
-        self.bottom_line = bottom_line  # more things below this line
+        self.top_clause = top_clause  # more things above this line
+        self.bottom_clause = bottom_clause  # more things below this line
 
     def __str__(self):
         return f"{self.org}/{self.repo}"
@@ -435,7 +435,7 @@ class Render(Indentable):
         PluginContext(
             "lifepillar",
             "vim-solarized8",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Color scheme ----"),
             ],
@@ -464,7 +464,7 @@ class Render(Indentable):
         PluginContext(
             "EdenEast",
             "nightfox.nvim",
-            top_line=PluginClause.make_if_has("nvim-0.5"),
+            top_clause=PluginClause.make_if_has("nvim-0.5"),
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
@@ -476,20 +476,20 @@ class Render(Indentable):
         PluginContext(
             "projekt0n",
             "github-nvim-theme",
-            bottom_line=[PluginClause.make_endif()],
+            bottom_clause=[PluginClause.make_endif()],
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
             "rebelot",
             "kanagawa.nvim",
-            top_line=PluginClause.make_if_has("nvim-0.6"),
-            bottom_line=[PluginClause.make_endif()],
+            top_clause=PluginClause.make_if_has("nvim-0.6"),
+            bottom_clause=[PluginClause.make_endif()],
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
             "RRethy",
             "vim-illuminate",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Highlight ----"),
             ],
@@ -504,7 +504,7 @@ class Render(Indentable):
         PluginContext(
             "kyazdani42",
             "nvim-web-devicons",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- UI ----"),
                 PluginClause.make_single_comment("Icon"),
@@ -514,13 +514,13 @@ class Render(Indentable):
         PluginContext(
             "ryanoasis",
             "vim-devicons",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
         ),
         PluginContext(
             "romgrk",
             "barbar.nvim",
-            top_line=[
+            top_clause=[
                 PluginClause.make_tripple_comment("---- Tabline ----"),
                 PluginClause.make_if_has("nvim-0.7"),
             ],
@@ -528,29 +528,31 @@ class Render(Indentable):
         PluginContext(
             "bagrat",
             "vim-buffet",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
         ),
         PluginContext(
             "kyazdani42",
             "nvim-tree.lua",
-            top_line=[
+            top_clause=[
                 PluginClause.make_tripple_comment("---- Explorer ----"),
                 PluginClause.make_if_has("nvim-0.7"),
             ],
         ),
-        PluginContext("lambdalisue", "fern.vim", top_line=PluginClause.make_else()),
+        PluginContext("lambdalisue", "fern.vim", top_clause=PluginClause.make_else()),
         PluginContext("lambdalisue", "nerdfont.vim"),
         PluginContext("lambdalisue", "fern-renderer-nerdfont.vim"),
         PluginContext("lambdalisue", "glyph-palette.vim"),
         PluginContext(
-            "lambdalisue", "fern-git-status.vim", bottom_line=PluginClause.make_endif()
+            "lambdalisue",
+            "fern-git-status.vim",
+            bottom_clause=PluginClause.make_endif(),
         ),
         PluginContext("jlanzarotta", "bufexplorer"),
         PluginContext(
             "lukas-reineke",
             "indent-blankline.nvim",
-            top_line=[
+            top_clause=[
                 PluginClause.make_single_comment("Indentline"),
                 PluginClause.make_if_has("nvim-0.5"),
             ],
@@ -559,14 +561,14 @@ class Render(Indentable):
         PluginContext(
             "Yggdroot",
             "indentLine",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.HIGHLIGHT,
         ),
         PluginContext(
             "nvim-lualine",
             "lualine.nvim",
-            top_line=[
+            top_clause=[
                 PluginClause.make_tripple_comment("---- Statusline ----"),
                 PluginClause.make_if_has("nvim-0.5"),
             ],
@@ -574,13 +576,13 @@ class Render(Indentable):
         PluginContext(
             "itchyny",
             "lightline.vim",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
         ),
         PluginContext(
             "airblade",
             "vim-gitgutter",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Git ----"),
             ],
@@ -589,14 +591,14 @@ class Render(Indentable):
         PluginContext(
             "f-person",
             "git-blame.nvim",
-            top_line=PluginClause.make_if_has("nvim-0.5"),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_if_has("nvim-0.5"),
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.HIGHLIGHT,
         ),
         PluginContext(
             "liuchengxu",
             "vista.vim",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Tags ----"),
             ],
@@ -606,7 +608,7 @@ class Render(Indentable):
             "junegunn",
             "fzf",
             post="{'do': { -> fzf#install() }}",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Search ----"),
             ],
@@ -616,17 +618,22 @@ class Render(Indentable):
             "neoclide",
             "coc.nvim",
             "{'branch': 'release'}",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Language server ----"),
             ],
+            tag=PluginTag.LANGUAGE,
         ),
-        PluginContext("antoinemadec", "coc-fzf"),
+        PluginContext(
+            "antoinemadec",
+            "coc-fzf",
+            tag=PluginTag.LANGUAGE,
+        ),
         PluginContext(
             "iamcco",
             "markdown-preview.nvim",
             post="{ 'do': 'cd app && yarn install' }",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Language support ----"),
             ],
@@ -636,44 +643,44 @@ class Render(Indentable):
             "justinmk",
             "vim-syntax-extra",
             post="{'for': ['lex', 'flex', 'yacc', 'bison']}",
-            top_line=PluginClause.make_single_comment("Lex/flex, yacc/bison"),
+            top_clause=PluginClause.make_single_comment("Lex/flex, yacc/bison"),
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "rhysd",
             "vim-llvm",
-            top_line=PluginClause.make_single_comment("LLVM"),
+            top_clause=PluginClause.make_single_comment("LLVM"),
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "uarun",
             "vim-protobuf",
-            top_line=PluginClause.make_single_comment("Protobuf"),
+            top_clause=PluginClause.make_single_comment("Protobuf"),
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "zebradil",
             "hive.vim",
-            top_line=PluginClause.make_single_comment("Hive"),
+            top_clause=PluginClause.make_single_comment("Hive"),
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "neovimhaskell",
             "haskell-vim",
-            top_line=PluginClause.make_single_comment("Haskell"),
+            top_clause=PluginClause.make_single_comment("Haskell"),
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
             "andymass",
             "vim-matchup",
-            top_line=PluginClause.make_single_comment("HTML tag"),
+            top_clause=PluginClause.make_single_comment("HTML tag"),
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext("alvan", "vim-closetag", tag=PluginTag.EDITING),
         PluginContext(
             "numToStr",
             "Comment.nvim",
-            top_line=[
+            top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Editing enhancement ----"),
                 PluginClause.make_single_comment("Comment"),
@@ -684,14 +691,14 @@ class Render(Indentable):
         PluginContext(
             "tomtom",
             "tcomment_vim",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "phaazon",
             "hop.nvim",
-            top_line=[
+            top_clause=[
                 PluginClause.make_single_comment("Cursor motion"),
                 PluginClause.make_if_has("nvim-0.5"),
             ],
@@ -700,14 +707,14 @@ class Render(Indentable):
         PluginContext(
             "easymotion",
             "vim-easymotion",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "windwp",
             "nvim-autopairs",
-            top_line=[
+            top_clause=[
                 PluginClause.make_single_comment("Auto pair"),
                 PluginClause.make_if_has("nvim-0.5"),
             ],
@@ -716,41 +723,46 @@ class Render(Indentable):
         PluginContext(
             "jiangmiao",
             "auto-pairs",
-            top_line=PluginClause.make_else(),
-            bottom_line=PluginClause.make_endif(),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "chaoren",
             "vim-wordmotion",
-            top_line=PluginClause.make_single_comment("Word motion"),
+            top_clause=PluginClause.make_single_comment("Word motion"),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "mattn",
             "emmet-vim",
-            top_line=PluginClause.make_single_comment("HTML"),
+            top_clause=PluginClause.make_single_comment("HTML"),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "mbbill",
             "undotree",
-            top_line=PluginClause.make_single_comment("Undo"),
+            top_clause=PluginClause.make_single_comment("Undo"),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "editorconfig",
             "editorconfig-vim",
-            top_line=PluginClause.make_single_comment("Editor config"),
+            top_clause=PluginClause.make_single_comment("Editor config"),
             tag=PluginTag.EDITING,
         ),
         PluginContext(
             "haya14busa",
             "incsearch.vim",
-            top_line=PluginClause.make_single_comment("Incremental search"),
+            top_clause=PluginClause.make_single_comment("Incremental search"),
             tag=PluginTag.EDITING,
         ),
-        PluginContext("tpope", "vim-repeat", tag=PluginTag.EDITING, top_line=PluginClause.make_single_comment("Other")),
+        PluginContext(
+            "tpope",
+            "vim-repeat",
+            tag=PluginTag.EDITING,
+            top_clause=PluginClause.make_single_comment("Other"),
+        ),
         PluginContext("tpope", "vim-surround", tag=PluginTag.EDITING),
     ]
 
@@ -850,23 +862,14 @@ class Render(Indentable):
         vimrc_states = []
         for ctx in Render.PLUGIN_CONTEXT:
             assert isinstance(ctx, PluginContext)
-            # skip disabled
-            if self.disable_plugins and str(ctx) in self.disable_plugins:
-                continue
-            if self.disable_color and ctx.tag == PluginTag.COLORSCHEME:
-                continue
-            if self.disable_highlight and ctx.tag == PluginTag.HIGHLIGHT:
-                continue
-            if self.disable_language and ctx.tag == PluginTag.LANGUAGE:
-                continue
-            if self.disable_editing and ctx.tag == PluginTag.EDITING:
-                continue
             # top
-            if ctx.top_line:
-                toplines = (
-                    ctx.top_line if isinstance(ctx.top_line, list) else [ctx.top_line]
+            if ctx.top_clause:
+                tclauses = (
+                    ctx.top_clause
+                    if isinstance(ctx.top_clause, list)
+                    else [ctx.top_clause]
                 )
-                for clause in toplines:
+                for clause in tclauses:
                     assert isinstance(clause, PluginClause)
                     if clause.kind == PluginClauseKind.PARAGRAPH:
                         p = EmptyStmtExpr()
@@ -927,36 +930,44 @@ class Render(Indentable):
                     else:
                         assert False
             # body
-            plugin_states.append(
-                StmtExpr(
-                    PlugExpr(
-                        LiteralExpr(ctx.org),
-                        LiteralExpr(ctx.repo),
-                        LiteralExpr(ctx.post) if ctx.post else None,
-                    ),
-                    IndentExpr(self.indent),
-                )
-            )
-            setting_file = f"repository/{ctx}.vim"
-            if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
-                vimrc_states.append(
-                    VimrcSourceStmt(setting_file, IndentExpr(self.indent))
-                )
+            if self.skip_disabled(ctx):
+                # skip disabled
+                continue
             else:
-                vimrc_states.append(
+                # plugins
+                plugin_states.append(
                     StmtExpr(
-                        SingleQuoteCommentExpr(SourceExpr(LiteralExpr(f"$HOME/.vim/{setting_file}"))),
+                        PlugExpr(
+                            LiteralExpr(ctx.org),
+                            LiteralExpr(ctx.repo),
+                            LiteralExpr(ctx.post) if ctx.post else None,
+                        ),
                         IndentExpr(self.indent),
                     )
                 )
-            # bottom line
-            if ctx.bottom_line:
-                bottomlines = (
-                    ctx.bottom_line
-                    if isinstance(ctx.bottom_line, list)
-                    else [ctx.bottom_line]
+                # vimrc
+                setting_file = f"repository/{ctx}.vim"
+                if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
+                    vimrc_states.append(
+                        VimrcSourceStmt(setting_file, IndentExpr(self.indent))
+                    )
+                else:
+                    vimrc_states.append(
+                        StmtExpr(
+                            SingleQuoteCommentExpr(
+                                SourceExpr(LiteralExpr(f"$HOME/.vim/{setting_file}"))
+                            ),
+                            IndentExpr(self.indent),
+                        )
+                    )
+            # bottom
+            if ctx.bottom_clause:
+                bclauses = (
+                    ctx.bottom_clause
+                    if isinstance(ctx.bottom_clause, list)
+                    else [ctx.bottom_clause]
                 )
-                for clause in bottomlines:
+                for clause in bclauses:
                     assert isinstance(clause, PluginClause)
                     if clause.kind == PluginClauseKind.ENDIF:
                         self.decrement_indent()
@@ -967,6 +978,20 @@ class Render(Indentable):
                         assert False
 
         return plugin_states, vimrc_states
+
+    def skip_disabled(self, ctx):
+        if self.disable_plugins and str(ctx) in self.disable_plugins:
+            return True
+        if self.disable_color and ctx.tag == PluginTag.COLORSCHEME:
+            return True
+        if self.disable_highlight and ctx.tag == PluginTag.HIGHLIGHT:
+            return True
+        if self.disable_language and ctx.tag == PluginTag.LANGUAGE:
+            return True
+        if self.disable_editing and ctx.tag == PluginTag.EDITING:
+            return True
+        return False
+
 
 
 class FileDumper:
