@@ -678,7 +678,11 @@ class Render(Indentable):
         PluginContext(
             "andymass",
             "vim-matchup",
-            top_clause=PluginClause.make_single_comment("HTML tag"),
+            top_clause=[
+                PluginClause.make_paragraph(),
+                PluginClause.make_tripple_comment("---- Editing enhancement ----"),
+                PluginClause.make_single_comment("HTML tag"),
+            ],
             tag=PluginTag.EDITING,
         ),
         PluginContext("alvan", "vim-closetag", tag=PluginTag.EDITING),
@@ -686,8 +690,6 @@ class Render(Indentable):
             "numToStr",
             "Comment.nvim",
             top_clause=[
-                PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("---- Editing enhancement ----"),
                 PluginClause.make_single_comment("Comment"),
                 PluginClause.make_if_has("nvim"),
             ],
