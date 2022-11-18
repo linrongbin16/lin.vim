@@ -141,7 +141,7 @@ function RequiresAnArgumentError([string]$name) {
 }
 
 function CannotUseAlongStaticColorAndDisableColorError() {
-    ErrorMessage "cannot use '-s' or '--static-color' along with '--disable-color'."
+    ErrorMessage "cannot use '--static-color' along with '--disable-color'."
     exit 1
 }
 
@@ -166,7 +166,7 @@ for ($i = 0; $i -lt $argsLength; $i++) {
     elseif (($a -eq "-l") -or ($a -eq "--basic")) {
         $MODE_NAME = "limit"
     }
-    elseif (($a -eq "-s") -or ($a -eq "--static-color")) {
+    elseif ($a -eq "--static-color") {
         $optStaticColor = $True
         $j = $i + 1
         if ($j -ge $argsLength) {

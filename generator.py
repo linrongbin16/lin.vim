@@ -1057,7 +1057,6 @@ class CommandHelp(click.Command):
 @click.option("-b", "--basic", "basic_opt", is_flag=True, help="Basic mode")
 @click.option("-l", "--limit", "limit_opt", is_flag=True, help="Limit mode")
 @click.option(
-    "-s",
     "--static-color",
     "static_color_opt",
     default=None,

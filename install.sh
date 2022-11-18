@@ -145,7 +145,7 @@ requires_an_argument_error() {
 }
 
 cannot_use_along_static_color_and_disable_color_error() {
-    error_message "cannot use '-s' or '--static-color' along with '--disable-color'."
+    error_message "cannot use '--static-color' along with '--disable-color'."
     exit 1
 }
 
@@ -172,7 +172,7 @@ for ((i=0; i < args_length; i++)); do
     -l|--limit)
         MODE_NAME='limit'
         ;;
-    -s|--static-color)
+    --static-color)
         opt_static_color=1
         j=$(($i+1))
         # if no next arg
