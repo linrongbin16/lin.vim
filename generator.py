@@ -732,8 +732,6 @@ class Render(Indentable):
             top_line=PluginClause.make_single_comment("HTML"),
             tag=PluginTag.EDITING,
         ),
-        PluginContext("tpope", "vim-repeat", tag=PluginTag.EDITING),
-        PluginContext("tpope", "vim-surround", tag=PluginTag.EDITING),
         PluginContext(
             "mbbill",
             "undotree",
@@ -752,6 +750,8 @@ class Render(Indentable):
             top_line=PluginClause.make_single_comment("Incremental search"),
             tag=PluginTag.EDITING,
         ),
+        PluginContext("tpope", "vim-repeat", tag=PluginTag.EDITING, top_line=PluginClause.make_single_comment("Other")),
+        PluginContext("tpope", "vim-surround", tag=PluginTag.EDITING),
     ]
 
     def __init__(
@@ -945,7 +945,7 @@ class Render(Indentable):
             else:
                 vimrc_states.append(
                     StmtExpr(
-                        SingleQuoteCommentExpr(LiteralExpr("Nothing here")),
+                        SingleQuoteCommentExpr(SourceExpr(LiteralExpr(f"$HOME/.vim/{setting_file}"))),
                         IndentExpr(self.indent),
                     )
                 )
