@@ -138,6 +138,19 @@ show_help() {
 }
 
 # parse options
+
+requires_an_argument_error() {
+
+}
+
+cannot_use_along_static_color_and_disable_color_error() {
+
+}
+
+unknown_option_error() {
+
+}
+
 opt_static_color=0
 opt_disable_color=0
 args_length=$#

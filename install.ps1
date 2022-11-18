@@ -134,6 +134,22 @@ function ShowHelp() {
 # }
 
 # parse options
+
+function RequiresAnArgumentError([string]$name) {
+    ErrorMessage "option '$name' requires an argument."
+    exit 1
+}
+
+function CannotUseAlongStaticColorAndDisableColorError() {
+    ErrorMessage "cannot use '-s' or '--static-color' along with '--disable-color'."
+    exit 1
+}
+
+function UnknownOptionError() {
+    ErrorMessage "unknown option, please try --help for more information."
+    exit 1
+}
+
 $argsLength = $args.Length
 $optStaticColor = $False
 $optDisableColor = $False
@@ -154,36 +170,30 @@ for ($i = 0; $i -lt $argsLength; $i++) {
         $optStaticColor = $True
         $j = $i + 1
         if ($j -ge $argsLength) {
-            ErrorMessage "option '$a' requires an argument"
-            exit 1
+            RequiresAnArgumentError $a
         }
         $nextArg = $args[ $j ];
         if ( "$nextArg".Substring(0, 1) -eq "-") {
-            ErrorMessage "option '$a' requires an argument"
-            exit 1
+            RequiresAnArgumentError $a
         }
         if ($optStaticColor -and $optDisableColor) {
-            ErrorMessage "cannot use '-s' or '--static-color' along with '--disable-color'"
-            exit 1
+            CannotUseAlongStaticColorAndDisableColorError
         }
     }
     elseif ($a -eq "--disable-color") {
         $optDisableColor = $True
         if ($optStaticColor -and $optDisableColor) {
-            ErrorMessage "cannot use '-s' or '--static-color' along with '--disable-color'"
-            exit 1
+            CannotUseAlongStaticColorAndDisableColorError
         }
     }
     elseif ($a -eq "--disable-plugin") {
         $j = $i + 1
         if ($j -ge $argsLength) {
-            ErrorMessage "option '$a' requires an argument"
-            exit 1
+            RequiresAnArgumentError $a
         }
         $nextArg = $args[ $j ];
         if ( "$nextArg".Substring(0, 1) -eq "-") {
-            ErrorMessage "option '$a' requires an argument"
-            exit 1
+            RequiresAnArgumentError $a
         }
     }
     elseif (($a -eq "--disable-highlight") -or ($a -eq "--disable-language") -or ($a -eq "--disable-editing") -or ($a -eq "--disable-ctrl-keys")) {
@@ -196,8 +206,9 @@ for ($i = 0; $i -lt $argsLength; $i++) {
         $OPT_DISABLE_NEOVIM = $True
     }
     else {
-        ErrorMessage "unknown option, please try --help for help message."
-        exit 1
+        if (($a -ne "--disable-highlight") -and ($a -ne "--disable-language") -and ($a -ne "--disable-editing") -and ($a -ne "--disable-ctrl-keys")) {
+            UnknownOptionError
+        }
     }
 }
 
