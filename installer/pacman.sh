@@ -8,9 +8,8 @@ message "install dependencies with pacman"
 sudo pacman -Syy
 
 # vim and neovim
-yes | sudo pacman -Rs vim
-yes | sudo pacman -S gvim
-
+install_or_skip "yes | sudo pacman -Rs vim" "vim"
+install_or_skip "yes | sudo pacman -S gvim" "gvim"
 install_or_skip "yes | sudo pacman -S base-devel" "gcc"
 install_or_skip "yes | sudo pacman -S base-devel" "make"
 install_or_skip "yes | sudo pacman -S neovim" "nvim"

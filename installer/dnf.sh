@@ -8,9 +8,8 @@ message "install dependencies with dnf"
 sudo dnf check-update
 
 # vim and neovim
-sudo dnf install -y vim
-sudo dnf install -y gvim
-
+install_or_skip "sudo dnf install -y vim" "vim"
+install_or_skip "sudo dnf install -y gvim" "gvim"
 install_or_skip "sudo dnf group install -y \"Development Tools\"" "gcc"
 install_or_skip "sudo dnf group install -y \"Development Tools\"" "make"
 install_or_skip "sudo dnf install -y neovim" "nvim"
