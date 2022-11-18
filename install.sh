@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # debug
-set -x
+# set -x
 
 VIM_HOME=$HOME/.vim
 NVIM_HOME=$HOME/.config/nvim
@@ -181,7 +181,7 @@ for ((i=0; i < args_length; i++)); do
         ;;
     esac
 done
-if [ $opt_static_color -ne 0 && $opt_disable_color -ne 0 ]; then
+if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
     error_message "cannot use '-s' or '--static-color' along with '--disable-color'"
     exit 1
 fi
