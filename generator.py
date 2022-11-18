@@ -13,9 +13,7 @@ HOME_DIR = pathlib.Path.home()
 VIM_DIR = pathlib.Path(f"{HOME_DIR}/.vim")
 VIMRC_FILE = pathlib.Path(f"{VIM_DIR}/vimrc.vim")
 
-
-def is_windows():
-    return platform.system().lower().startswith("win")
+IS_WINDOWS = platform.system().lower().startswith("win")
 
 
 def message(*args):
@@ -28,18 +26,15 @@ def error_message(*args):
 
 def try_backup(src):
     assert isinstance(src, pathlib.Path)
-    message(f"debug - try_backup src:{src}")
-    if src.exists() or src.is_symlink():
-        message(f"debug - try_backup src:{src} - exists")
+    if src.is_symlink() or src.exists():
         dest = f"{src}.{datetime.datetime.now().strftime('%Y-%m-%d.%H-%M-%S.%f')}"
-        message(f"debug - try_backup src:{src}, dest:{dest}")
         message(f"backup '{src}' to '{dest}'")
         src.rename(dest)
 
 
 def try_delete(src):
     assert isinstance(src, pathlib.Path)
-    if src.exists() or src.is_symlink():
+    if src.is_symlink() or src.exists():
         message(f"delete '{src}'")
         src.unlink(missing_ok=True)
 
@@ -833,9 +828,7 @@ class Render(Indentable):
         plugin_stmts.append(PluginFooterStmt())
         vimrc_stmts.append(VimrcSourceStmt("settings.vim"))
         setting_stmts = [
-            SettingCocExtensionStmt(
-                self.disable_language, is_windows(), not is_windows()
-            ),
+            SettingCocExtensionStmt(self.disable_language, IS_WINDOWS, not IS_WINDOWS),
         ]
         if self.static_color:
             setting_stmts.append(SettingStaticColorStmt(LiteralExpr(self.static_color)))
@@ -865,8 +858,8 @@ class FileDumper:
 
     def dump(self):
         self.config()
-        self.vim_entry()
-        self.neovim_entry()
+        self.vimrc_entry()
+        self.neovim_init_vim_entry()
 
     def config(self):
         plugins_file = f"{VIM_DIR}/plugins.vim"
@@ -879,11 +872,20 @@ class FileDumper:
             fp.write(self.vimrc_content)
         self.coc_settings()
 
-    def vim_entry(self):
+    def coc_settings(self):
+        coc_dir = pathlib.Path(f"{HOME_DIR}/vimfiles") if IS_WINDOWS else VIM_DIR
+        if not coc_dir.exists():
+            coc_dir.mkdir(parents=True)
+        shutil.copy(
+            f"{VIM_DIR}/template/coc-settings-template.json",
+            f"{coc_dir}/coc-settings.json",
+        )
+
+    def vimrc_entry(self):
         if self.disable_vim:
             return
-        if is_windows():
-            message(f"install {HOME_DIR}\\_vimrc for vim")
+        if IS_WINDOWS:
+            message(f"install {HOME_DIR}\\_vimrc for vim on windows")
             vimrc_path = pathlib.Path(f"{HOME_DIR}\\_vimrc")
         else:
             message(f"install ~/.vimrc for vim")
@@ -891,32 +893,25 @@ class FileDumper:
         try_backup(vimrc_path)
         vimrc_path.symlink_to(VIMRC_FILE)
 
-    def neovim_entry(self):
+    def neovim_init_vim_entry(self):
         if self.disable_neovim:
             return
-        if is_windows():
-            message( f"install {HOME_DIR}\\AppData\\Local\\nvim\\init.vim for neovim on windows")
+        if IS_WINDOWS:
+            message(
+                f"install {HOME_DIR}\\AppData\\Local\\nvim\\init.vim for neovim on windows"
+            )
             appdata_local_path = pathlib.Path(f"{HOME_DIR}/AppData/Local")
             nvim_path = pathlib.Path(f"{appdata_local_path}/nvim")
-            nvim_init_path = pathlib.Path(f"{appdata_local_path}/nvim/init.vim")
+            nvim_init_vim_path = pathlib.Path(f"{appdata_local_path}/nvim/init.vim")
         else:
             message("install ~/.config/nvim/init.vim for neovim")
             config_path = pathlib.Path(f"{HOME_DIR}/.config")
             nvim_path = pathlib.Path(f"{config_path}/nvim")
-            nvim_init_path = pathlib.Path(f"{config_path}/nvim/init.vim")
-        try_backup(nvim_init_path)
+            nvim_init_vim_path = pathlib.Path(f"{config_path}/nvim/init.vim")
+        try_backup(nvim_init_vim_path)
         try_backup(nvim_path)
         nvim_path.symlink_to(str(VIM_DIR), target_is_directory=True)
-        nvim_init_path.symlink_to(str(VIMRC_FILE))
-
-    def coc_settings(self):
-        coc_dir = pathlib.Path(f"{HOME_DIR}/vimfiles") if is_windows() else VIM_DIR
-        if not coc_dir.exists():
-            coc_dir.mkdir(parents=True)
-        shutil.copy(
-            f"{VIM_DIR}/template/coc-settings-template.json",
-            f"{coc_dir}/coc-settings.json",
-        )
+        nvim_init_vim_path.symlink_to(str(VIMRC_FILE))
 
 
 class CommandHelp(click.Command):
