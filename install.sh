@@ -144,18 +144,11 @@ requires_an_argument_error() {
     exit 1
 }
 
-cannot_use_along_static_color_and_disable_color_error() {
-    error_message "cannot use '--static-color' along with '--disable-color'."
-    exit 1
-}
-
 unknown_option_error() {
     error_message "unknown option, please try --help for more information."
     exit 1
 }
 
-opt_static_color=0
-opt_disable_color=0
 args_length=$#
 args=("$@")
 for ((i=0; i < args_length; i++)); do
@@ -172,21 +165,7 @@ for ((i=0; i < args_length; i++)); do
     -l|--limit)
         MODE_NAME='limit'
         ;;
-    --static-color*)
-        opt_static_color=1
-        if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
-            cannot_use_along_static_color_and_disable_color_error
-        fi
-        ;;
-    --disable-color)
-        opt_disable_color=1
-        if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
-            cannot_use_along_static_color_and_disable_color_error
-        fi
-        ;;
-    --disable-plugin*)
-        ;;
-    --disable-highlight|--disable-language|--disable-editing|--disable-ctrl-keys)
+    --static-color*|--disable-plugin*|--disable-highlight|--disable-language|--disable-editing|--disable-ctrl-keys|--disable-color)
         # nothing here
         ;;
     --disable-vim)

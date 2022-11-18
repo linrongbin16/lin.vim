@@ -140,19 +140,12 @@ function RequiresAnArgumentError([string]$name) {
     exit 1
 }
 
-function CannotUseAlongStaticColorAndDisableColorError() {
-    ErrorMessage "cannot use '--static-color' along with '--disable-color'."
-    exit 1
-}
-
 function UnknownOptionError() {
     ErrorMessage "unknown option, please try --help for more information."
     exit 1
 }
 
 $argsLength = $args.Length
-$optStaticColor = $False
-$optDisableColor = $False
 
 for ($i = 0; $i -lt $argsLength; $i++) {
     $a = $args[ $i ];
@@ -167,19 +160,7 @@ for ($i = 0; $i -lt $argsLength; $i++) {
     elseif ($a.StartsWith("-l") -or $a.StartsWith("--limit")) {
         $MODE_NAME = "limit"
     }
-    elseif ($a.StartsWith("--static-color")) {
-        $optStaticColor = $True
-        if ($optStaticColor -and $optDisableColor) {
-            CannotUseAlongStaticColorAndDisableColorError
-        }
-    }
-    elseif ($a.StartsWith("--disable-color")) {
-        $optDisableColor = $True
-        if ($optStaticColor -and $optDisableColor) {
-            CannotUseAlongStaticColorAndDisableColorError
-        }
-    }
-    elseif ($a.StartsWith("--disable-highlight") -or $a.StartsWith("--disable-language") -or $a.StartsWith("--disable-editing") -or $a.StartsWith("--disable-ctrl-keys") -or $a.StartsWith("--disable-plugin")) {
+    elseif ($a.StartsWith("--static-color") -or $a.StartsWith("--disable-color") -or $a.StartsWith("--disable-highlight") -or $a.StartsWith("--disable-language") -or $a.StartsWith("--disable-editing") -or $a.StartsWith("--disable-ctrl-keys") -or $a.StartsWith("--disable-plugin")) {
         # Nothing here
     }
     elseif ($a.StartsWith("--disable-vim")) {
