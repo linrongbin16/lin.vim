@@ -1,13 +1,13 @@
 """ ---- GUI font ----
 if has("win32") || has("win64")
     " for Windows
-    set guifont=Hack\\ NFM:h10
+    set guifont=Hack\ NFM:h10
 elseif has("mac")
     " for macOS
-    set guifont=Hack\\ Nerd\\ Font\\ Mono:h12
+    set guifont=Hack\ Nerd\ Font\ Mono:h12
 else
     " for other *NIX
-    set guifont=Hack\\ Nerd\\ Font\\ Mono:h10
+    set guifont=Hack\ Nerd\ Font\ Mono:h10
 endif
 
 """ ---- Hot keys ----
