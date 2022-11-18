@@ -10,6 +10,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
 - [Installation](#installation)
   - [UNIX/Linux/MacOS](#unixlinuxmacos)
   - [Windows](#windows)
+  - [More Options](#more-options)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [UI](#ui)
@@ -156,16 +157,6 @@ Before installation, please make sure access of below sites are available:
     $ ./install.sh
 ```
 
-#### Notice
-
-The `install.sh` (and `install.ps1`) support 3 modes:
-
-- Full mode (default mode): use just `./install.sh`. It install all features for best user experience, which consumes unignorable CPU, memory, disk and graphics.
-- Limit mode: for low performance devices (such as old PC). With `./install.sh --limit`, it disable extra highlights, colorschemes, most language servers and other editing supports.
-- Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication. With `./install.sh --basic`, it only install pure vim configurations, without any third party softwares or vim plugins.
-
-Please try `./install.sh --help` (or `.\install.ps1 --help`) for more information.
-
 ## Windows
 
 > The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
@@ -231,6 +222,31 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
 ![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
 
 4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python provide by windows application store. Please see: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
+
+## More Options
+
+The `install.sh` (and `install.ps1`) provide 3 installation modes:
+
+- Full mode (default mode): use just `./install.sh`. It install all features for best user experience, which consumes unignorable CPU, memory, disk and graphics.
+- Limit mode: for low performance devices (such as old PC). With `./install.sh --limit`, it disable extra highlights, colorschemes, language support and editing enhancements.
+- Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication. With `./install.sh --basic`, it only install pure vim configurations, without any third party softwares or vim plugins.
+
+And more granular options:
+
+- Static colorscheme: `--static-color=TEXT` make colorscheme static, instead of random selection on startup. For example: `--static-color=darkblue`.
+- Disable colors: `--disable-color` disable colorscheme, and random selection on startup.
+- Disable highlights: `--disable-highlight` disable extra highlights. Such as RGB and same word mark under cursor, etc.
+- Disable language support: `--disable-language` disable language support. Such as auto complete and language servers, etc.
+- Disable editing enhancement: `--disable-editing` disable editing enhancements. Such as easy comment, cursor motion, etc.
+- Disable windows ctrl keys: `--disable-ctrl-keys` disable windows behaviour. Such as ctrl+{a,s,x,c,v} keys, etc.
+- Disable vim plugins: `--disable-plugin=TEXT` disable vim plugins from github specified as 'organization/repository', this ption could be used multiple times. For example: `--disable-plugin=RRethy/vim-hexokinase --disable-plugin=alvan/vim-closetag`.
+- No .vimrc for vim: `--disable-vim` don't install .vimrc file for vim, use neovim only.
+- No nvim/init.vim for neovim: `--disable-neovim` don't install nvim folder and nvim/init.vim file for neovim, use vim only.
+
+Notice:
+
+- In full mode, you could use '--disable-xxx' options to disable some specific features.
+- Option '--disable-highlight --disable-color --disable-language --disable-editing' is equivalent to '--limit'.
 
 # User Guide
 

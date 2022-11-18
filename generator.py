@@ -1114,55 +1114,55 @@ class CommandHelp(click.Command):
     "static_color_opt",
     default=None,
     show_default=True,
-    help="Use static colorscheme instead of random selections",
+    help="Use static colorscheme",
 )
 @click.option(
     "--disable-color",
     "disable_color_opt",
     is_flag=True,
-    help="Disable extra colors such as colorschemes and random selections",
+    help="Disable extra colors",
 )
 @click.option(
     "--disable-highlight",
     "disable_highlight_opt",
     is_flag=True,
-    help="Disable extra highlights such as RGB and cursor word",
+    help="Disable extra highlights",
 )
 @click.option(
     "--disable-language",
     "disable_language_opt",
     is_flag=True,
-    help="Disable coc language server extensions",
+    help="Disable language support",
 )
 @click.option(
     "--disable-editing",
     "disable_editing_opt",
     is_flag=True,
-    help="Disable extra editing enhancement",
+    help="Disable editing enhancement",
 )
 @click.option(
     "--disable-ctrl-keys",
     "disable_ctrl_keys_opt",
     is_flag=True,
-    help="Disable windows ctrl+{a,s,x,c,v} keys",
+    help="Disable windows ctrl keys",
 )
 @click.option(
     "--disable-plugin",
     "disable_plugin_opt",
     multiple=True,
-    help="Disable specific vim plugins in org/repo format from github",
+    help="Disable specific vim plugin",
 )
 @click.option(
     "--disable-vim",
     "disable_vim_opt",
     is_flag=True,
-    help="Only support neovim, disable vim",
+    help="No .vimrc file for vim",
 )
 @click.option(
     "--disable-neovim",
     "disable_neovim_opt",
     is_flag=True,
-    help="Only support vim, disable neovim",
+    help="No init.vim file neovim",
 )
 def generator(
     basic_opt,
