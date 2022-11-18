@@ -154,12 +154,6 @@ $argsLength = $args.Length
 $optStaticColor = $False
 $optDisableColor = $False
 
-function CheckConflictColorOptions() {
-    if ($optStaticColor -and $optDisableColor) {
-        CannotUseAlongStaticColorAndDisableColorError
-    }
-}
-
 for ($i = 0; $i -lt $argsLength; $i++) {
     $a = $args[ $i ];
     if ($a.StartsWith("-h") -or $a.StartsWith("--help")) {
@@ -175,11 +169,15 @@ for ($i = 0; $i -lt $argsLength; $i++) {
     }
     elseif ($a.StartsWith("--static-color")) {
         $optStaticColor = $True
-        CheckConflictColorOptions
+        if ($optStaticColor -and $optDisableColor) {
+            CannotUseAlongStaticColorAndDisableColorError
+        }
     }
     elseif ($a.StartsWith("--disable-color")) {
         $optDisableColor = $True
-        CheckConflictColorOptions
+        if ($optStaticColor -and $optDisableColor) {
+            CannotUseAlongStaticColorAndDisableColorError
+        }
     }
     elseif ($a.StartsWith("--disable-highlight") -or $a.StartsWith("--disable-language") -or $a.StartsWith("--disable-editing") -or $a.StartsWith("--disable-ctrl-keys") -or $a.StartsWith("--disable-plugin")) {
         # Nothing here

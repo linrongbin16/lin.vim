@@ -172,21 +172,11 @@ for ((i=0; i < args_length; i++)); do
     -l|--limit)
         MODE_NAME='limit'
         ;;
-    --static-color)
+    --static-color*)
         opt_static_color=1
-        j=$(($i+1))
-        # if no next arg
-        if [ $j -ge $args_length ]; then
-            requires_an_argument_error "$a"
-        fi
-        next_arg="${args[j]}"
-        if [ "${next_arg:0:1}" == "-" ]; then
-            requires_an_argument_error "$a"
-        fi
         if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
             cannot_use_along_static_color_and_disable_color_error
         fi
-        i=$j
         ;;
     --disable-color)
         opt_disable_color=1
@@ -194,17 +184,7 @@ for ((i=0; i < args_length; i++)); do
             cannot_use_along_static_color_and_disable_color_error
         fi
         ;;
-    --disable-plugin)
-        j=$(($i+1))
-        # if no next arg
-        if [ $j -ge $args_length ]; then
-            requires_an_argument_error "$a"
-        fi
-        next_arg="${args[j]}"
-        if [ "${next_arg:0:1}" == "-" ]; then
-            requires_an_argument_error "$a"
-        fi
-        i=$j
+    --disable-plugin*)
         ;;
     --disable-highlight|--disable-language|--disable-editing|--disable-ctrl-keys)
         # nothing here
