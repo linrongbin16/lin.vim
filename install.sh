@@ -179,10 +179,17 @@ for ((i=0; i < args_length; i++)); do
         if [ $j -ge $args_length ]; then
             requires_an_argument_error "$a"
         fi
-        next_a="${args[j]}"
-        if [ "${next_a:0:1}" == "-" ]; then
+        next_arg="${args[j]}"
+        if [ "${next_arg:0:1}" == "-" ]; then
             requires_an_argument_error "$a"
         fi
+        if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
+            cannot_use_along_static_color_and_disable_color_error
+        fi
+        i=$j
+        ;;
+    --disable-color)
+        opt_disable_color=1
         if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
             cannot_use_along_static_color_and_disable_color_error
         fi
@@ -193,18 +200,14 @@ for ((i=0; i < args_length; i++)); do
         if [ $j -ge $args_length ]; then
             requires_an_argument_error "$a"
         fi
-        next_a="${args[j]}"
-        if [ "${next_a:0:1}" == "-" ]; then
+        next_arg="${args[j]}"
+        if [ "${next_arg:0:1}" == "-" ]; then
             requires_an_argument_error "$a"
         fi
-        ;;
-    --disable-color)
-        opt_disable_color=1
-        if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
-            cannot_use_along_static_color_and_disable_color_error
-        fi
+        i=$j
         ;;
     --disable-highlight|--disable-language|--disable-editing|--disable-ctrl-keys)
+        # nothing here
         ;;
     --disable-vim)
         OPT_DISABLE_VIM=1

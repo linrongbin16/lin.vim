@@ -206,7 +206,7 @@ class ColorschemeExpr(Expr):
         self.expr = expr
 
     def render(self):
-        return f"colorscehem {self.expr.render()}"
+        return f"colorscheme {self.expr.render()}"
 
 
 class IndentExpr(Expr):
@@ -437,7 +437,7 @@ class Render(Indentable):
             "vim-solarized8",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Color scheme"),
+                PluginClause.make_tripple_comment("---- Color scheme ----"),
             ],
             tag=PluginTag.COLORSCHEME,
         ),
@@ -491,7 +491,7 @@ class Render(Indentable):
             "vim-illuminate",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Highlight"),
+                PluginClause.make_tripple_comment("---- Highlight ----"),
             ],
             tag=PluginTag.HIGHLIGHT,
         ),
@@ -506,7 +506,7 @@ class Render(Indentable):
             "nvim-web-devicons",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("UI"),
+                PluginClause.make_tripple_comment("---- UI ----"),
                 PluginClause.make_single_comment("Icon"),
                 PluginClause.make_if_has("nvim"),
             ],
@@ -521,7 +521,7 @@ class Render(Indentable):
             "romgrk",
             "barbar.nvim",
             top_line=[
-                PluginClause.make_tripple_comment("Tabline"),
+                PluginClause.make_tripple_comment("---- Tabline ----"),
                 PluginClause.make_if_has("nvim-0.7"),
             ],
         ),
@@ -535,7 +535,7 @@ class Render(Indentable):
             "kyazdani42",
             "nvim-tree.lua",
             top_line=[
-                PluginClause.make_tripple_comment("Explorer"),
+                PluginClause.make_tripple_comment("---- Explorer ----"),
                 PluginClause.make_if_has("nvim-0.7"),
             ],
         ),
@@ -582,7 +582,7 @@ class Render(Indentable):
             "vim-gitgutter",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Git"),
+                PluginClause.make_tripple_comment("---- Git ----"),
             ],
         ),
         PluginContext("itchyny", "vim-gitbranch"),
@@ -598,7 +598,7 @@ class Render(Indentable):
             "vista.vim",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Tags"),
+                PluginClause.make_tripple_comment("---- Tags ----"),
             ],
         ),
         PluginContext("ludovicchabant", "vim-gutentags"),
@@ -608,7 +608,7 @@ class Render(Indentable):
             post="{'do': { -> fzf#install() }}",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Search"),
+                PluginClause.make_tripple_comment("---- Search ----"),
             ],
         ),
         PluginContext("junegunn", "fzf.vim"),
@@ -618,7 +618,7 @@ class Render(Indentable):
             "{'branch': 'release'}",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Language server"),
+                PluginClause.make_tripple_comment("---- Language server ----"),
             ],
         ),
         PluginContext("antoinemadec", "coc-fzf"),
@@ -628,7 +628,7 @@ class Render(Indentable):
             post="{ 'do': 'cd app && yarn install' }",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Language support"),
+                PluginClause.make_tripple_comment("---- Language support ----"),
             ],
             tag=PluginTag.LANGUAGE,
         ),
@@ -675,7 +675,7 @@ class Render(Indentable):
             "Comment.nvim",
             top_line=[
                 PluginClause.make_paragraph(),
-                PluginClause.make_tripple_comment("Editing enhancement"),
+                PluginClause.make_tripple_comment("---- Editing enhancement ----"),
                 PluginClause.make_single_comment("Comment"),
                 PluginClause.make_if_has("nvim"),
             ],

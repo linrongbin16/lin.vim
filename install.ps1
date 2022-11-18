@@ -153,62 +153,45 @@ function UnknownOptionError() {
 $argsLength = $args.Length
 $optStaticColor = $False
 $optDisableColor = $False
+
+function CheckConflictColorOptions() {
+    if ($optStaticColor -and $optDisableColor) {
+        CannotUseAlongStaticColorAndDisableColorError
+    }
+}
+
 for ($i = 0; $i -lt $argsLength; $i++) {
     $a = $args[ $i ];
-    if (($a -eq "-h") -or ($a -eq "--help")) {
+    if ($a.StartsWith("-h") -or $a.StartsWith("--help")) {
         ShowHelp
         exit 0
     }
-    elseif (($a -eq "-b") -or ($a -eq "--basic")) {
+    elseif ($a.StartsWith("-b") -or $a.StartsWith("--basic")) {
         $MODE_NAME = "basic"
         $OPT_BASIC = $True
     }
-    elseif (($a -eq "-l") -or ($a -eq "--basic")) {
+    elseif ($a.StartsWith("-l") -or $a.StartsWith("--limit")) {
         $MODE_NAME = "limit"
     }
-    elseif ($a -eq "--static-color") {
+    elseif ($a.StartsWith("--static-color")) {
         $optStaticColor = $True
-        $j = $i + 1
-        if ($j -ge $argsLength) {
-            RequiresAnArgumentError $a
-        }
-        $nextArg = $args[ $j ];
-        if ( "$nextArg".Substring(0, 1) -eq "-") {
-            RequiresAnArgumentError $a
-        }
-        if ($optStaticColor -and $optDisableColor) {
-            CannotUseAlongStaticColorAndDisableColorError
-        }
+        CheckConflictColorOptions
     }
-    elseif ($a -eq "--disable-color") {
+    elseif ($a.StartsWith("--disable-color")) {
         $optDisableColor = $True
-        if ($optStaticColor -and $optDisableColor) {
-            CannotUseAlongStaticColorAndDisableColorError
-        }
+        CheckConflictColorOptions
     }
-    elseif ($a -eq "--disable-plugin") {
-        $j = $i + 1
-        if ($j -ge $argsLength) {
-            RequiresAnArgumentError $a
-        }
-        $nextArg = $args[ $j ];
-        if ( "$nextArg".Substring(0, 1) -eq "-") {
-            RequiresAnArgumentError $a
-        }
-    }
-    elseif (($a -eq "--disable-highlight") -or ($a -eq "--disable-language") -or ($a -eq "--disable-editing") -or ($a -eq "--disable-ctrl-keys")) {
+    elseif ($a.StartsWith("--disable-highlight") -or $a.StartsWith("--disable-language") -or $a.StartsWith("--disable-editing") -or $a.StartsWith("--disable-ctrl-keys") -or $a.StartsWith("--disable-plugin")) {
         # Nothing here
     }
-    elseif (($a -eq "--disable-vim")) {
+    elseif ($a.StartsWith("--disable-vim")) {
         $OPT_DISABLE_VIM = $True
     }
-    elseif (($a -eq "--disable-neovim")) {
+    elseif ($a.StartsWith("--disable-neovim")) {
         $OPT_DISABLE_NEOVIM = $True
     }
     else {
-        if (($a -ne "--disable-highlight") -and ($a -ne "--disable-language") -and ($a -ne "--disable-editing") -and ($a -ne "--disable-ctrl-keys")) {
-            UnknownOptionError
-        }
+        UnknownOptionError
     }
 }
 
