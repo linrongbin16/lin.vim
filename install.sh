@@ -140,15 +140,18 @@ show_help() {
 # parse options
 
 requires_an_argument_error() {
-
+    error_message "option '$a' requires an argument."
+    exit 1
 }
 
 cannot_use_along_static_color_and_disable_color_error() {
-
+    error_message "cannot use '-s' or '--static-color' along with '--disable-color'."
+    exit 1
 }
 
 unknown_option_error() {
-
+    error_message "unknown option, please try --help for more information."
+    exit 1
 }
 
 opt_static_color=0
@@ -174,37 +177,31 @@ for ((i=0; i < args_length; i++)); do
         j=$(($i+1))
         # if no next arg
         if [ $j -ge $args_length ]; then
-            error_message "option '$a' requires an argument."
-            exit 1
+            requires_an_argument_error "$a"
         fi
         next_a="${args[j]}"
         if [ "${next_a:0:1}" == "-" ]; then
-            error_message "option '$a' requires an argument."
-            exit 1
+            requires_an_argument_error "$a"
         fi
         if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
-            error_message "cannot use '-s' or '--static-color' along with '--disable-color'."
-            exit 1
+            cannot_use_along_static_color_and_disable_color_error
         fi
         ;;
     --disable-plugin)
         j=$(($i+1))
         # if no next arg
         if [ $j -ge $args_length ]; then
-            error_message "option '$a' requires an argument."
-            exit 1
+            requires_an_argument_error "$a"
         fi
         next_a="${args[j]}"
         if [ "${next_a:0:1}" == "-" ]; then
-            error_message "option '$a' requires an argument."
-            exit 1
+            requires_an_argument_error "$a"
         fi
         ;;
     --disable-color)
         opt_disable_color=1
         if [ $opt_static_color -ne 0 ] && [ $opt_disable_color -ne 0 ]; then
-            error_message "cannot use '-s' or '--static-color' along with '--disable-color'."
-            exit 1
+            cannot_use_along_static_color_and_disable_color_error
         fi
         ;;
     --disable-highlight|--disable-language|--disable-editing|--disable-ctrl-keys)
@@ -216,8 +213,7 @@ for ((i=0; i < args_length; i++)); do
         OPT_DISABLE_NEOVIM=1
         ;;
     *)
-        error_message "unknown option, please try --help for help message."
-        exit 1
+        unknown_option_error
     esac
 done
 
