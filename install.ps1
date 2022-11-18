@@ -202,7 +202,7 @@ else {
     InstallDependency
     Message "install configurations for vim"
 
-    python3 $VIM_HOME\generator.py "$args"
+    python3 $VIM_HOME\generator.py $args
     if ($LastExitCode -ne 0) {
         exit 1
     }
