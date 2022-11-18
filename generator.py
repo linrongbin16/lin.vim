@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
 import click
 import enum
 import abc
@@ -66,7 +65,7 @@ class IfExpr(Expr):
         self.expr = expr
 
     def render(self):
-        return f"if ({self.expr.render()})"
+        return f"if {self.expr.render()}"
 
 
 class ElseExpr(Expr):
@@ -80,7 +79,7 @@ class ElseifExpr(Expr):
         self.expr = expr
 
     def render(self):
-        return f"elseif ({self.expr.render()})"
+        return f"elseif {self.expr.render()}"
 
 
 class EndifExpr(Expr):
@@ -365,13 +364,13 @@ class PluginTag(enum.Enum):
 class PluginClauseKind(enum.Enum):
     PARAGRAPH = 1
     SINGLE_COMMENT = 2
-    TRIPPLE_COMMENT = 2
-    IF_HAS = 3
-    IF_NOT_HAS = 4
-    ELSEIF_HAS = 5
-    ELSEIF_NOT_HAS = 6
-    ELSE = 7
-    ENDIF = 8
+    TRIPPLE_COMMENT = 3
+    IF_HAS = 4
+    IF_NOT_HAS = 5
+    ELSEIF_HAS = 6
+    ELSEIF_NOT_HAS = 7
+    ELSE = 8
+    ENDIF = 9
 
 
 class PluginClause:
@@ -380,6 +379,9 @@ class PluginClause:
         assert isinstance(value, str) or value is None
         self.kind = kind
         self.value = value
+
+    def __str__(self):
+        return f"PluginClause(kind:{self.kind}, value:{self.value})"
 
     @staticmethod
     def make_paragraph():
@@ -424,7 +426,7 @@ class PluginContext:
         self.top_line = top_line  # more things above this line
         self.bottom_line = bottom_line  # more things below this line
 
-    def to_str(self):
+    def __str__(self):
         return f"{self.org}/{self.repo}"
 
 
@@ -849,7 +851,7 @@ class Render(Indentable):
         for ctx in Render.PLUGIN_CONTEXT:
             assert isinstance(ctx, PluginContext)
             # skip disabled
-            if self.disable_plugins and ctx.to_str() in self.disable_plugins:
+            if self.disable_plugins and str(ctx) in self.disable_plugins:
                 continue
             if self.disable_color and ctx.tag == PluginTag.COLORSCHEME:
                 continue
@@ -935,7 +937,7 @@ class Render(Indentable):
                     IndentExpr(self.indent),
                 )
             )
-            setting_file = f"repository/{ctx.to_str()}.vim"
+            setting_file = f"repository/{ctx}.vim"
             if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
                 vimrc_states.append(
                     VimrcSourceStmt(setting_file, IndentExpr(self.indent))
