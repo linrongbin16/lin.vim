@@ -18,9 +18,13 @@ function! s:fern_settings() abort
   " fern key mapping
 
   " navigation
+  " expand folder or open file
   nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
+  " collapse folder
   nmap <buffer><nowait> h <Plug>(fern-action-collapse)
+  " cd into folder
   nmap <buffer><nowait> <CR> <Plug>(fern-action-enter)
+  " goto upper folder and leave current folder
   nmap <buffer><nowait> <BS> <Plug>(fern-action-leave)
 
   " split
@@ -32,19 +36,17 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> R <Plug>(fern-action-reload)
 
   " create/rename/delete
-  nmap <buffer><nowait> a <Plug>(fern-action-new-file)
-  nmap <buffer><nowait> N <Plug>(fern-action-new-file)
+  nmap <buffer><nowait> n <Plug>(fern-action-new-file)
   nmap <buffer><nowait> A <Plug>(fern-action-new-dir)
-  nmap <buffer><nowait> K <Plug>(fern-action-new-dir)
   nmap <buffer><nowait> r <Plug>(fern-action-move)
   nmap <buffer><nowait> m <Plug>(fern-action-move)
   nmap <buffer><nowait> d <Plug>(fern-action-trash)
   nmap <buffer><nowait> D <Plug>(fern-action-remove)
 
   " copy/paste/cut
-  nmap <buffer><nowait> <C-c> <Plug>(fern-action-clipboard-copy)
-  nmap <buffer><nowait> <C-x> <Plug>(fern-action-clipboard-move)
-  nmap <buffer><nowait> <C-v> <Plug>(fern-action-clipboard-pate)
+  nmap <buffer><nowait> C <Plug>(fern-action-clipboard-copy)
+  nmap <buffer><nowait> X <Plug>(fern-action-clipboard-move)
+  nmap <buffer><nowait> V <Plug>(fern-action-clipboard-paste)
 
   " open in system
   nmap <buffer><nowait> s <Plug>(fern-action-open:system)

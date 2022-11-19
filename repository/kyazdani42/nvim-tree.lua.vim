@@ -1,10 +1,10 @@
 lua<<EOF
-local compatible_keymap = {
+local lin_vim_keymap = {
   -- navigation
-  { key = {"l", "o", "<2-LeftMouse>", "l"}, action = "edit" },
-  { key = "h",              action = "close_node" },
-  { key = "<CR>",           action = "cd" },
-  { key = "<BS>",           action = "dir_up" },
+  { key = {"l", "o", "<2-LeftMouse>"}, action = "edit" },   -- open folder or edit file
+  { key = "h",              action = "close_node" },        -- close folder
+  { key = "<CR>",           action = "cd" },                -- cd into folder
+  { key = "<BS>",           action = "dir_up" },            -- cd upper folder
 
   -- split
   { key = "e",              action = "split" },
@@ -15,17 +15,15 @@ local compatible_keymap = {
   { key = "R",              action = "refresh" },
 
   -- create/rename/delete
-  { key = {"a", "A", "N", "K"},       action = "create" },
+  { key = {"n", "a", "A"},  action = "create" },
   { key = {"r", "m"},       action = "rename" },
   { key = "d",              action = "trash" },
   { key = "D",              action = "remove" },
 
   -- copy/paste/cut
-  { key = "<C-x>",          action = "cut" },
-  { key = "<C-c>",          action = "copy" },
-  { key = "<C-v>",          action = "paste" },
-  { key = "y",              action = "copy_name" },
-  { key = "Y",              action = "copy_absolute_path" },
+  { key = "X",              action = "cut" },
+  { key = "C",              action = "copy" },
+  { key = "V",              action = "paste" },
 
   -- open in system
   { key = "s",              action = "system_open" },
@@ -33,41 +31,42 @@ local compatible_keymap = {
   -- help
   { key = "?",              action = "toggle_help" },
 
-  -- git chunk
-  { key = "[c",             action = "prev_git_item" },
-  { key = "]c",             action = "next_git_item" },
-
-  -- preview
-  { key = "P",              action = "preview" },
+  -- file info
   { key = "I",              action = "toggle_file_info" },
 
-  -- toggle dotfiles
+  -- hidden files
   { key = {"H"},           action = "toggle_dotfiles" },
 
-  -- nvim-tree.lua specific funtions
+  -- nvim-tree.lua specifics
   { key = "<",              action = "prev_sibling" },
   { key = ">",              action = "next_sibling" },
-  { key = "gp",             action = "parent_node" },
-  { key = "<C-k>",          action = "first_sibling" },
-  { key = "<C-j>",          action = "last_sibling" },
+  { key = "K",              action = "first_sibling" },
+  { key = "J",              action = "last_sibling" },
+  { key = "P",              action = "parent_node" },
+  { key = "y",              action = "copy_name" },
+  { key = "Y",              action = "copy_absolute_path" },
+  -- git chunk
+  { key = "]c",             action = "next_git_item" },
+  { key = "[c",             action = "prev_git_item" },
 }
 
 require'nvim-tree'.setup {
   open_on_setup = true,
   open_on_setup_file = false,
-  open_on_tab = false,
-  sort_by = "name",
   view = {
     width = 40,
     side = "left",
     signcolumn = "yes",
     mappings = {
       custom_only = true,
-      list = compatible_keymap,
+      list = lin_vim_keymap,
     },
   },
   renderer = {
     highlight_git = true,
+    indent_markers = {
+      enable = true,
+    },
     icons = {
       webdev_colors = true,
       git_placement = "signcolumn",
@@ -75,9 +74,6 @@ require'nvim-tree'.setup {
         default = "",
         symlink = "",
       },
-    },
-    indent_markers = {
-      enable = true,
     },
   },
   update_focused_file = {

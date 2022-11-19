@@ -256,19 +256,16 @@ In this section, vim editing mode are specified with:
 - 🅅 - Visual Mode
 - 🄸 - Insert Mode
 
-Vim key are specified with:
-
-- `D` - Meta-Key (Command-Key on macOS, Alt-Key on other os).
-
 ## Hot Key
 
-- `F1` 🄽 - toggle(open/close) file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
-- `F2` 🄽 - toggle(open/close) undo tree.
-- `F3` 🄽 - toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
-- `F4` 🄽 - switch between C/C++ header and source files.
-- `F8` 🄽 - open markdown preview.
-- `F9` 🄽 - change color theme randomly, see [Screenshots](#screenshots).
-- `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
+- `F1` 🄽 - Toggle(open/close) file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
+- `F2` 🄽 - Toggle(open/close) undo tree.
+- `F3` 🄽 - Toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
+- `F4` 🄽 - Switch between C/C++ header and source files.
+- `F8` 🄽 - Open markdown preview.
+- `F9` 🄽 - Change color theme randomly, see [Screenshots](#screenshots).
+- `F10` 🄽 - Open buffers explorer.
+- `SHIFT-F10` 🄽 - Toggle(close) opened buffers explorer.
 
 You could configure these keys in **_~/.vim/settings.vim_**.
 
@@ -278,43 +275,53 @@ You could configure these keys in **_~/.vim/settings.vim_**.
 
 Navigation:
 
-- `h` 🄽 - collapse directory.
-- `l` 🄽 - open or expand directory.
-- `<CR>` 🄽 - open file or cd into directory.
-- `<BS>` 🄽 - leave directory and goto upper directory.
-- `e` 🄽 - open file in `split`.
-- `E` 🄽 - open file in `vsplit`.
-- `t` 🄽 - open file in new tab.
+- `h` 🄽 - Collapse directory.
+- `l` 🄽 - Expand directory or open file.
+- `<CR>` 🄽 - Cd into directory.
+- `<BS>` 🄽 - Goto upper directory and leave directory.
+- `e` 🄽 - Open file in `split`.
+- `E` 🄽 - Open file in `vsplit`.
+- `t` 🄽 - Open file in new tab.
 
-Create/Delete/Copy/Paste/Cut:
+Create/Rename/Delete:
 
-- `a`/`N` 🄽 - create new file.
-- `A`/`K` 🄽 - create new directory (Notice: [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) plugin on neovim need to add a slash `\` after folder name to create a new directory, [fern.vim](https://github.com/lambdalisue/fern.vim) on vim just need folder name itself, see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)).
-- `m`/`r` 🄽 - move/rename file/directory.
-- `<C-c>` 🄽 - copy file/directory into internal clipboard just like in Windows.
-- `<C-x>` 🄽 - cut file/directory into internal clipboard just like in Windows.
-- `<C-v>` 🄽 - paste internal clipboard file/directory to current directory just like in Windows.
-- `d` 🄽 - trash file/directory to system trash-bin, only works on Windows/macOS.
-- `D` 🄽 - force delete file/directory, possiblely implemented with `rm`.
+- `n` 🄽 - Create new file.
+- `A` 🄽 - Create new directory. Notice [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) on neovim 0.7+ need additional slash `\` after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while [fern.vim](https://github.com/lambdalisue/fern.vim) on others just need directory name itself.
+- `m`/`r` 🄽 - Move or rename file/directory.
+- `d` 🄽 - Trash file/directory to system trash-bin, only for windows/macOS.
+- `D` 🄽 - Delete file/directory, usually `rm`.
+
+Copy/Paste/Cut:
+
+- `C` 🄽 - Copy file/directory into an internal clipboard, just like in Windows ctrl-c.
+- `X` 🄽 - Cut file/directory into an internal clipboard, just like in Windows ctrl-x.
+- `V` 🄽 - Paste file/directory from an internal clipboard to current directory, just like in Windows ctrl-v.
+
+Alt-. and Alt-Right (on macOS it's Cmd-. and Cmd-Right) are mapped to make explorer bigger size.
+And Alt-, and Alt-Left (on macOS it's Cmd-, and Cmd-Left) to make explorer smaller size.
+
+- `<A-.>`/`<D-.>`/`<A-Right>`/`<D-Right>` 🄽 - Make explorer bigger.
+- `<A-,>`/`<D-,>`/`<A-Left>`/`<D-Left>` 🄽 - Make explorer smaller.
+
+Other:
+
 - `R` 🄽 - refresh file explorer.
-
-Resize Width:
-
-- `<D-Right>`/`<D-.>` 🄽 - make explorer bigger.
-- `<D-Left>`/`<D-,>` 🄽 - make explorer smaller.
-
-Others:
-
 - `s` 🄽 - open file in system file manager(such as Finder in macOS).
 - `?` 🄽 - open/close(toggle) help.
 
 _For neovim 0.7+ only_:
 
-- `P` 🄽 - preview file content.
-- `I` 🄽 - preview file info.
-- `H` 🄽 - toggle dotfiles hidden.
-- `y` 🄽 - copy file name string.
-- `Y` 🄽 - copy absolute file path string.
+- `I` 🄽 - Toggle file info.
+- `H` 🄽 - Toggle hidden dot files.
+- `<` 🄽 - Goto previous(up) sibling.
+- `>` 🄽 - Goto next(down) sibling.
+- `K` 🄽 - Goto first(top) sibling.
+- `J` 🄽 - Goto last(bottom) sibling.
+- `P` 🄽 - Goto parent(upper) directory.
+- `y` 🄽 - Copy file name as literal.
+- `Y` 🄽 - Copy absolute file path as literal.
+- `]c` 🄽 - Goto next(down) git chunk.
+- `[c` 🄽 - Goto previous(up) git chunk.
 
 Support by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+), you could use key mappings on the file explorer left side:
 
