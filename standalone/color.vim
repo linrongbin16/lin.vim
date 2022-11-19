@@ -1,15 +1,31 @@
 """ ---- Color schemes ----
 
-let s:mycolors=['darkblue', 'solarized8', 'base16-default-dark', 'monokai', 'dracula', 'neodark', 'srcery', 'palenight', 'onedark', 'rigel', 'sonokai', 'everforest', 'gruvbox-material', 'edge', 'material']
-
-if has('nvim-0.6')
-    call add(s:mycolors, 'kanagawa')
-endif
+let lin_vim_colorschemes=[
+            \ 'darkblue',
+            \ 'solarized8',
+            \ 'monokai', 
+            \ 'dracula', 
+            \ 'neodark', 
+            \ 'srcery', 
+            \ 'palenight', 
+            \ 'onedark', 
+            \ 'rigel', 
+            \ 'base16-default-dark',
+            \ 'edge', 
+            \ 'gruvbox-material', 
+            \ 'everforest', 
+            \ 'sonokai', 
+            \ 'material'
+            \ ]
 
 if has('nvim-0.5')
-    call add(s:mycolors, 'nightfox')
-    call add(s:mycolors, 'tokyonight')
-    call add(s:mycolors, 'github_dark')
+    call add(lin_vim_colorschemes, 'nightfox')
+    call add(lin_vim_colorschemes, 'tokyonight')
+    call add(lin_vim_colorschemes, 'github_dark')
+endif
+
+if has('nvim-0.6')
+    call add(lin_vim_colorschemes, 'kanagawa')
 endif
 
 " for material
@@ -17,12 +33,12 @@ let g:material_terminal_italics = 1
 let g:material_theme_style = 'default'
 
 function NextRandomColorScheme()
-    let idx = localtime() % len(s:mycolors)
-    execute 'colorscheme ' . s:mycolors[idx]
+    let idx = localtime() % len(lin_vim_colorschemes)
+    execute 'colorscheme ' . lin_vim_colorschemes[idx]
 endfunction
 
 function NextRandomColorSchemeSync()
-    let idx = localtime() % len(s:mycolors)
-    execute 'colorscheme ' . s:mycolors[idx]
+    let idx = localtime() % len(lin_vim_colorschemes)
+    execute 'colorscheme ' . lin_vim_colorschemes[idx]
     execute 'syntax sync fromstart'
 endfunction
