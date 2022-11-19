@@ -269,8 +269,7 @@ Meta-key(`M`, or alt-key `A`) on windows/linux and command-key(`D`) on macOS are
 - `F7` **\[N\]** - Toggle git blame info on current line.
 - `F8` **\[N\]** - Open markdown preview.
 - `F9` **\[N\]** - Random select next colorscheme, see [Screenshots](#screenshots).
-- `F10` **\[N\]** - Open buffers explorer.
-- `SHIFT-F10` **\[N\]** - Toggle(close) opened buffers explorer.
+- `F10` **\[N\]** - Toggle buffers explorer.
 
 You could configure these keys in **_~/.vim/settings.vim_**.
 

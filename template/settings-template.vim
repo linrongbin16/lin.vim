@@ -30,10 +30,8 @@ nnoremap <F7> :<C-u>GitBlameToggle<CR>
 nnoremap <F8> :<C-u>MarkdownPreview<CR>
 " Next random color scheme
 nnoremap <F9> :<C-u>call NextRandomColorSchemeSync()<CR>
-" Open bufexplorer
-nnoremap <F10> :<C-u>BufExplorer<CR>
-" Toggle(close) bufexplorer
-nnoremap <S-F10> :<C-u>ToggleBufExplorer<CR>
+" Toggle bufexplorer
+nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
 
 """ ---- Python3 host ----
 " let g:python3_host_prog='python3'
