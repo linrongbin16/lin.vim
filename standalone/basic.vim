@@ -99,7 +99,6 @@ set nocursorcolumn
 set norelativenumber
 set number
 set hidden
-set termguicolors
 set cmdheight=2
 set laststatus=2
 set updatetime=300
@@ -108,6 +107,15 @@ set updatetime=300
 " else
 set signcolumn=yes
 " endif
+
+
+" true colors
+if has("nvim")
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if has("termguicolors")
+    set termguicolors
+endif
 
 " render optimization
 set lazyredraw
