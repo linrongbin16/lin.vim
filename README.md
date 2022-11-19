@@ -36,7 +36,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Cursor Motion](#cursor-motion)
     - [Word Movement](#word-movement)
     - [Better Repeat](#better-repeat)
-    - [Better Surrounding(Quotes) Editing](#better-surrounding-quotes-editing)
+    - [Better Surrounding(Quotes) Editing](#better-surroundingquotes-editing)
     - [Better Pair and HTML Tag Matching](#better-pair-and-html-tag-matching)
     - [Auto Pair and Close HTML Tag](#auto-pair-and-close-html-tag)
     - [Easy Comment](#easy-comment)
@@ -507,7 +507,7 @@ Auto pair and close html tags, support by [auto-pairs](https://github.com/jiangm
 
 - `gcc` **\[N\]** - toggle current line using linewise comment.
 - `gc{motion}` **\[N\]** - toggle from current line with motion (jkhl) using linewise comment.
-- `gc<Count>{motion}` **\[N\]** - toggle from current line with motion repeat _<Count>_ times using linewise comment.
+- `gc<count>{motion}` **\[N\]** - toggle from current line with motion repeat _<count>_ times using linewise comment.
 - `gc` **\[V\]** - toggle visual selected code using linewise comment.
 
 Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [Comment.nvim](https://github.com/numToStr/Comment.nvim) on neovim).
