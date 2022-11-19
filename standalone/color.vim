@@ -28,10 +28,6 @@ if has('nvim-0.6')
     call add(lin_vim_colorschemes, 'kanagawa')
 endif
 
-" for material
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'default'
-
 function NextRandomColorScheme()
     let idx = localtime() % len(lin_vim_colorschemes)
     execute 'colorscheme ' . lin_vim_colorschemes[idx]
