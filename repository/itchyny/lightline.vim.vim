@@ -77,7 +77,7 @@ function! LinVimLightLineGitStatus() abort
     if empty(branch)
         return ''
     endif
-    if !exists("*GitGutterGetHunkSummary")
+    if get(g:,'gitgutter_enabled',0) != 1
         return printf(' %s', branch)
     endif
     let [a,m,r] = GitGutterGetHunkSummary()

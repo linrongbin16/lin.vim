@@ -1,4 +1,5 @@
-let g:gitgutter_map_keys = 0
+" Disable default key mappings
+let g:gitgutter_map_keys=0
 
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
