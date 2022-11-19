@@ -340,7 +340,7 @@ class SettingsRandomColorStmt(Expr):
             LiteralExpr("Random color scheme on startup")
         )
         self.call_expr = CallExpr(
-            FuncCallExpr(LiteralExpr("NextRandomColorSchemeSync"))
+            FuncCallExpr(LiteralExpr("NextRandomColorScheme"))
         )
 
     def render(self):
@@ -472,22 +472,22 @@ class Render(Indentable):
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
-            "folke",
-            "tokyonight.nvim",
-            post="{'branch': 'main'}",
-            tag=PluginTag.COLORSCHEME,
-        ),
-        PluginContext(
             "projekt0n",
             "github-nvim-theme",
             bottom_clause=[PluginClause.make_endif()],
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
+            "folke",
+            "tokyonight.nvim",
+            post="{'branch': 'main'}",
+            top_clause=PluginClause.make_if_has("nvim-0.6"),
+            tag=PluginTag.COLORSCHEME,
+        ),
+        PluginContext(
             "rebelot",
             "kanagawa.nvim",
-            top_clause=PluginClause.make_if_has("nvim-0.6"),
-            bottom_clause=[PluginClause.make_endif()],
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.COLORSCHEME,
         ),
         PluginContext(
