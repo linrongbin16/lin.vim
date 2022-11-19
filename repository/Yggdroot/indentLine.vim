@@ -1,12 +1,10 @@
 " Better icon
 let g:indentLine_char='│'
+" let g:indentLine_char_list = ['│', '|', '¦', '┆', '┊']
 
-" fix quotes error for json,markdown files
-let g:vim_json_syntax_conceal = 0
-autocmd FileType json,jsonc setlocal conceallevel=0
-autocmd Filetype json,jsonc let g:indentLine_enabled=0
-autocmd FileType markdown setlocal conceallevel=0
-autocmd Filetype markdown let g:indentLine_enabled=0
+" Fix quotes error for json,markdown files
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
 
-" disable indentline for coc-explorer
-let g:indentLine_fileTypeExclude = ['json', 'jsonc', 'markdown', 'coc-explorer', 'fern', 'NvimTree']
+" Disable indentline for some filetypes
+let g:indentLine_fileTypeExclude = ['markdown', 'fern', 'NvimTree']
