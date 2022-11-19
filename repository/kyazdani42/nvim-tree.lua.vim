@@ -15,7 +15,7 @@ local lin_vim_keymap = {
   { key = "R",              action = "refresh" },
 
   -- create/rename/delete
-  { key = {"n", "a", "A"},  action = "create" },
+  { key = {"N", "a", "A"},  action = "create" },
   { key = {"r", "m"},       action = "rename" },
   { key = "d",              action = "trash" },
   { key = "D",              action = "remove" },

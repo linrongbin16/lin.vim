@@ -36,7 +36,7 @@ function! s:fern_settings() abort
   nmap <buffer><nowait> R <Plug>(fern-action-reload)
 
   " create/rename/delete
-  nmap <buffer><nowait> n <Plug>(fern-action-new-file)
+  nmap <buffer><nowait> N <Plug>(fern-action-new-file)
   nmap <buffer><nowait> A <Plug>(fern-action-new-dir)
   nmap <buffer><nowait> r <Plug>(fern-action-move)
   nmap <buffer><nowait> m <Plug>(fern-action-move)

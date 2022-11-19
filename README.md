@@ -289,8 +289,8 @@ Navigation:
 
 Create/rename/delete:
 
-- `n` **\[N\]** - Create new file.
-- `A` **\[N\]** - Create new directory. Notice [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) on neovim 0.7+ need additional slash `\` after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while [fern.vim](https://github.com/lambdalisue/fern.vim) on others just need directory name itself.
+- `N`/`a` **\[N\]** - Create new file. Notice `a` is not working on plugin [fern.vim](https://github.com/lambdalisue/fern.vim) on non-neovim 0.7+.
+- `A` **\[N\]** - Create new directory. Notice [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) on neovim 0.7+ need additional slash `\` after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
 - `m`/`r` **\[N\]** - Move or rename file/directory.
 - `d` **\[N\]** - Trash file/directory to system trash-bin, only for windows/macOS.
 - `D` **\[N\]** - Delete file/directory, usually `rm`.
