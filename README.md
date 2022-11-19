@@ -258,12 +258,13 @@ In this section, vim editing mode are specified with:
 
 ## Hot Key
 
-- `F1` 🄽 - Toggle(open/close) file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
-- `F2` 🄽 - Toggle(open/close) undo tree.
-- `F3` 🄽 - Toggle(open/close) vista outline/tags, see [Code complete for C++](#code-complete-for-c).
+- `F1` 🄽 - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
+- `F2` 🄽 - Toggle undo tree.
+- `F3` 🄽 - Toggle vista outline/tags, see [Code complete for C++](#code-complete-for-c).
 - `F4` 🄽 - Switch between C/C++ header and source files.
+- `F7` 🄽 - Toggle git blame.
 - `F8` 🄽 - Open markdown preview.
-- `F9` 🄽 - Change color theme randomly, see [Screenshots](#screenshots).
+- `F9` 🄽 - Random select next colorscheme, see [Screenshots](#screenshots).
 - `F10` 🄽 - Open buffers explorer.
 - `SHIFT-F10` 🄽 - Toggle(close) opened buffers explorer.
 
@@ -297,17 +298,17 @@ Copy/Paste/Cut:
 - `X` 🄽 - Cut file/directory into an internal clipboard, just like in Windows ctrl-x.
 - `V` 🄽 - Paste file/directory from an internal clipboard to current directory, just like in Windows ctrl-v.
 
-Alt-. and Alt-Right (on macOS it's Cmd-. and Cmd-Right) are mapped to make explorer bigger size.
-And Alt-, and Alt-Left (on macOS it's Cmd-, and Cmd-Left) to make explorer smaller size.
+Alt+. and Alt+Right (on macOS it's Cmd+. and Cmd+Right) are mapped to make explorer bigger size.
+And Alt+, and Alt+Left (on macOS it's Cmd+, and Cmd+Left) to make explorer smaller size.
 
 - `<A-.>`/`<D-.>`/`<A-Right>`/`<D-Right>` 🄽 - Make explorer bigger.
 - `<A-,>`/`<D-,>`/`<A-Left>`/`<D-Left>` 🄽 - Make explorer smaller.
 
 Other:
 
-- `R` 🄽 - refresh file explorer.
-- `s` 🄽 - open file in system file manager(such as Finder in macOS).
-- `?` 🄽 - open/close(toggle) help.
+- `R` 🄽 - Refresh file explorer.
+- `s` 🄽 - Open file in system file manager(such as Finder in macOS).
+- `?` 🄽 - Toggle help.
 
 _For neovim 0.7+ only_:
 
@@ -330,23 +331,22 @@ Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern
 
 #### Tabline
 
-- `<leader>bn`/`<D-Right>`/`<D-.>` 🄽 - go to next buffer on the right.
-- `<leader>bp`/`<D-Left>`/`<D-,>` 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat _Alt+,_ _Alt+._ and _Command+,_ _Command+._).
-- `<leader>bd` 🄽 - close current buffer (and go to a nearest buffer) without closing vim window.
-- `F10`/`SHIFT-F10` 🄽 - toggle opened buffers explorer.
+- `<leader>bn`/`<D-Right>`/`<D-.>` 🄽 - Go to next(right) buffer.
+- `<leader>bp`/`<D-Left>`/`<D-,>` 🄽 - Go to previous(left) buffer.
+- `<leader>bd` 🄽 - Close current buffer without closing vim window.
 
-Alt-{1~9} (on macOS it's Cmd-{1~9}) are mapped to 1~9 buffers, Alt-0(Cmd-0) are mapped to 10 buffer (navigate to the last buffer on neovim 0.7+).
+Alt+{1~9} (on macOS it's Cmd+{1~9}) are mapped to 1~9 buffers, Alt+0 (Cmd+0) are mapped to 10 buffer (or navigate to the last buffer on neovim 0.7+).
 
-- `<A-1>`/`<D-1>` 🄽 - go to buffer-1.
-- `<A-2>`/`<D-2>` 🄽 - go to buffer-2.
-- `<A-3>`/`<D-3>` 🄽 - go to buffer-3.
-- `<A-4>`/`<D-4>` 🄽 - go to buffer-4.
-- `<A-5>`/`<D-5>` 🄽 - go to buffer-5.
-- `<A-6>`/`<D-6>` 🄽 - go to buffer-6.
-- `<A-7>`/`<D-7>` 🄽 - go to buffer-7.
-- `<A-8>`/`<D-8>` 🄽 - go to buffer-8.
-- `<A-9>`/`<D-9>` 🄽 - go to buffer-9.
-- `<A-0>`/`<D-0>` 🄽 - go to the last buffer.
+- `<A-1>`/`<D-1>` 🄽 - Go to buffer-1.
+- `<A-2>`/`<D-2>` 🄽 - Go to buffer-2.
+- `<A-3>`/`<D-3>` 🄽 - Go to buffer-3.
+- `<A-4>`/`<D-4>` 🄽 - Go to buffer-4.
+- `<A-5>`/`<D-5>` 🄽 - Go to buffer-5.
+- `<A-6>`/`<D-6>` 🄽 - Go to buffer-6.
+- `<A-7>`/`<D-7>` 🄽 - Go to buffer-7.
+- `<A-8>`/`<D-8>` 🄽 - Go to buffer-8.
+- `<A-9>`/`<D-9>` 🄽 - Go to buffer-9.
+- `<A-0>`/`<D-0>` 🄽 - Go to buffer-10 (or the last buffer on neovim 0.7+).
 
 _For neovim 0.7+ only_:
 
