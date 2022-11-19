@@ -1,5 +1,5 @@
 " Bigger highlight delay for better performance
-let g:Illuminate_delay = 1000
+let g:Illuminate_delay = 800
 
 " Highlight color
 augroup lin_vim_illuminate_group
