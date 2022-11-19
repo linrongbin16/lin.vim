@@ -15,7 +15,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
   - [Hot Key](#hot-key)
   - [UI](#ui)
     - [File Explorer](#file-explorer)
-    - [Buffers/Tabs](#bufferstabs)
+    - [Tabline](#tabline)
     - [Font](#font)
   - [IDE-like Editing Features](#ide-like-editing-features)
     - [Code Complete](#code-complete)
@@ -321,27 +321,27 @@ Support by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvi
 You could editing **_~/.vim/repository/lambdalisue/fern.vim/value.vim_** (or **_~/.vim/repository/kyazdani42/nvim-tree.lua/value.vim_**) to customize key mappings.
 Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [nvim-tree.lua - README](https://github.com/kyazdani42/nvim-tree.lua)) for more key mappings.
 
-#### Buffers/Tabs
+#### Tabline
 
-- `<leader><tab>`/`<D-Right>`/`<D-.>` 🄽 - go to next buffer on the right.
-- `<leader><s-tab>`/`<D-Left>`/`<D-,>` 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat _Alt+,_ _Alt+._ and _Command+,_ _Command+._).
+- `<leader>bn`/`<D-Right>`/`<D-.>` 🄽 - go to next buffer on the right.
+- `<leader>bp`/`<D-Left>`/`<D-,>` 🄽 - go to previous buffer on the left(Notice some terminal/GUI could eat _Alt+,_ _Alt+._ and _Command+,_ _Command+._).
 - `<leader>bd` 🄽 - close current buffer (and go to a nearest buffer) without closing vim window.
-- `F10`/`SHIFT-F10` 🄽 - open/close(toggle) opened buffers explorer.
+- `F10`/`SHIFT-F10` 🄽 - toggle opened buffers explorer.
 
-Meta-1 ~ Meta-9 (on macOS it's Command-Key, on others it's Alt-Key) are mapped to 1~9 buffers, Meta-0 are mapped to navigate to the last buffer.
+Alt-{1~9} (on macOS it's Cmd-{1~9}) are mapped to 1~9 buffers, Alt-0(Cmd-0) are mapped to 10 buffer (navigate to the last buffer on neovim 0.7+).
 
-- `<D-1>` 🄽 - go to buffer-1.
-- `<D-2>` 🄽 - go to buffer-2.
-- `<D-3>` 🄽 - go to buffer-3.
-- `<D-4>` 🄽 - go to buffer-4.
-- `<D-5>` 🄽 - go to buffer-5.
-- `<D-6>` 🄽 - go to buffer-6.
-- `<D-7>` 🄽 - go to buffer-7.
-- `<D-8>` 🄽 - go to buffer-8.
-- `<D-9>` 🄽 - go to buffer-9.
-- `<D-0>` 🄽 - go to the last buffer.
+- `<A-1>`/`<D-1>` 🄽 - go to buffer-1.
+- `<A-2>`/`<D-2>` 🄽 - go to buffer-2.
+- `<A-3>`/`<D-3>` 🄽 - go to buffer-3.
+- `<A-4>`/`<D-4>` 🄽 - go to buffer-4.
+- `<A-5>`/`<D-5>` 🄽 - go to buffer-5.
+- `<A-6>`/`<D-6>` 🄽 - go to buffer-6.
+- `<A-7>`/`<D-7>` 🄽 - go to buffer-7.
+- `<A-8>`/`<D-8>` 🄽 - go to buffer-8.
+- `<A-9>`/`<D-9>` 🄽 - go to buffer-9.
+- `<A-0>`/`<D-0>` 🄽 - go to the last buffer.
 
-_For neovim 0.5+ only_:
+_For neovim 0.7+ only_:
 
 - `<D-S-Right>` 🄽 - move current buffer to next position(right side).
 - `<D-S-Left>` 🄽 - move current buffer to previous position(left side).
