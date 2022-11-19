@@ -25,7 +25,7 @@ set shortmess+=c
 set backspace=indent,eol,start
 set whichwrap+=b,s,<,>,[,]
 set clipboard^=unnamed,unnamedplus
-set listchars=tab:>·,trail:~,extends:>,precedes:<
+set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
 " set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
@@ -107,12 +107,6 @@ set updatetime=300
 " else
 set signcolumn=yes
 " endif
-
-
-" true colors
-if has("nvim")
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
 if has("termguicolors")
     set termguicolors
 endif
