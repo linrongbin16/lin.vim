@@ -1,10 +1,7 @@
-" Only enable statusline, disable tabline
+" Only enable statusline, no tabline
 
 lua << END
-local function trim6(s)
-    return s:match'^()%s*$' and '' or s:match'^%s*(.*%S)'
-end
-local function LuaLineGitStatus()
+local function LinVimLuaLineGitStatus()
     -- coc-git
     -- local branch = vim.g.coc_git_status
     -- if branch == nil or branch == '' then
@@ -48,14 +45,14 @@ local function LuaLineGitStatus()
         return string.format(' %s %s', branch, table.concat(changes, ' '))
     end
 end
--- local function LuaLineCurrentFunction()
+-- local function LinVimLuaLineCurrentFunction()
 --     local function_name = vim.b.coc_current_function
 --     if function_name == nil or function_name == '' then
 --         return ''
 --     end
 --     return string.format(' %s', function_name)
 -- end
-local function LuaLineCocStatus()
+local function LinVimLuaLineCocStatus()
     if not vim.fn.exists('*coc#status') then
         return ''
     end
@@ -66,13 +63,13 @@ local function LuaLineCocStatus()
         return coc_status
     end
 end
-local function LuaLineCursorPosition()
+local function LinVimLuaLineCursorPosition()
     return ' %3l:%-2v'
 end
-local function LuaLineCursorHexValue()
+local function LinVimLuaLineCursorHexValue()
     return '0x%B'
 end
-local function LuaLineGutentagsStatus()
+local function LinVimLuaLineGutentagsStatus()
     if not vim.fn.exists('*gutentags#statusline') then
         return ''
     end
@@ -85,22 +82,24 @@ end
 require('lualine').setup{
     options = {
         icons_enabled = false,
-        theme = 'auto',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        disabled_filetypes = {},
-        always_divide_middle = true,
+        -- theme = 'auto',
+        -- component_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
+        -- disabled_filetypes = {},
+        -- always_divide_middle = true,
     },
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename' },
-        lualine_c = { LuaLineGitStatus, LuaLineCocStatus, LuaLineGutentagsStatus },
-        lualine_x = { 'fileformat', 'encoding', 'filetype', LuaLineCursorHexValue },
+        lualine_c = { LinVimLuaLineGitStatus, LinVimLuaLineCocStatus, LinVimLuaLineGutentagsStatus },
+        lualine_x = { 'fileformat', 'encoding', 'filetype', LinVimLuaLineCursorHexValue },
         lualine_y = { 'progress' },
-        lualine_z = { LuaLineCursorPosition },
+        lualine_z = { LinVimLuaLineCursorPosition },
     },
-    inactive_secions = {},
-    tabline = {},
-    extensions = {}
+    inactive_secions = {}
+    -- tabline = {},
+    -- winbar = {},
+    -- inactive_winbar = {},
+    -- extensions = {}
 }
 END

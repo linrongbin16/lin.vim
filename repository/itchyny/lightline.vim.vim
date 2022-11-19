@@ -3,8 +3,8 @@
 let g:lightline = {
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
-  \             ['MyLightLineFileName' ],
-  \             ['MyLightLineGitStatus', 'MyLightLineCocStatus', 'MyLightLineGutentagsStatus'] ],
+  \             ['LinVimLightLineFileName' ],
+  \             ['LinVimLightLineGitStatus', 'LinVimLightLineCocStatus', 'LinVimLightLineGutentagsStatus'] ],
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
@@ -14,10 +14,10 @@ let g:lightline = {
   \   'lineinfo': ' %3l:%-2v',
   \ },
   \ 'component_function': {
-  \   'MyLightLineFileName'         : 'MyLightLineFileName',
-  \   'MyLightLineGitStatus'        : 'MyLightLineGitStatus',
-  \   'MyLightLineCocStatus'        : 'MyLightLineCocStatus',
-  \   'MyLightLineGutentagsStatus'  : 'MyLightLineGutentagsStatus',
+  \   'LinVimLightLineFileName'         : 'LinVimLightLineFileName',
+  \   'LinVimLightLineGitStatus'        : 'LinVimLightLineGitStatus',
+  \   'LinVimLightLineCocStatus'        : 'LinVimLightLineCocStatus',
+  \   'LinVimLightLineGutentagsStatus'  : 'LinVimLightLineGutentagsStatus',
   \ },
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' },
@@ -28,7 +28,7 @@ let g:lightline = {
   \ }
 
 
-function! MyLightLineFileName() abort
+function! LinVimLightLineFileName() abort
     let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
     if &modified
         let filename = filename . '[+]'
@@ -39,7 +39,7 @@ function! MyLightLineFileName() abort
     return filename
 endfunction
 
-" function! MyLightLineCurrentFunction() abort
+" function! LinVimLightLineCurrentFunction() abort
 "     let function_name = get(b:, 'coc_current_function', '')
 "     if empty(function_name)
 "         return ''
@@ -47,7 +47,7 @@ endfunction
 "     return printf(' %s', function_name)
 " endfunction
 
-function! MyLightLineCocStatus() abort
+function! LinVimLightLineCocStatus() abort
     if !exists("*coc#status")
         return ''
     endif
@@ -60,7 +60,7 @@ function! MyLightLineCocStatus() abort
     endif
 endfunction
 
-function! MyLightLineGitStatus() abort
+function! LinVimLightLineGitStatus() abort
     """ coc-git
     " let branch = get(g:,'coc_git_status','')
     " if empty(branch)
@@ -98,7 +98,7 @@ function! MyLightLineGitStatus() abort
     endif
 endfunction
 
-function! MyLightLineGutentagsStatus() abort
+function! LinVimLightLineGutentagsStatus() abort
     if !exists("*gutentags#statusline")
         return ''
     endif
