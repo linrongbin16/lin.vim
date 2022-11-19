@@ -256,6 +256,10 @@ In this section, vim editing mode are specified with:
 - 🅅 - Visual Mode
 - 🄸 - Insert Mode
 
+- **[N]** - Bold N
+- **\[V\]** - Bold V
+- **_\[I\]_** - Bold I
+
 ## Hot Key
 
 - `F1` 🄽 - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
