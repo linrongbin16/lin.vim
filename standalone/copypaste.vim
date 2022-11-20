@@ -1,6 +1,6 @@
 """ ---- Enhanced copypaste ----
 
-" copy visual selection to cache
+" Copy selected code to cache in virual mode 
 vnoremap <Leader>y :w! ~/.vim/.copypaste<CR>
-" paste cache to cursor position
+" Paste cache under cursor
 nnoremap <Leader>p :r ~/.vim/.copypaste<CR>

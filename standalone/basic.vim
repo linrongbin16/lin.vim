@@ -1,27 +1,21 @@
 """ ---- Basic settings ----
 
-set runtimepath+=$HOME/.vim
-set nocompatible
+set rtp+=$HOME/.vim
+
+""" VI compatible
+set nocp
 
 """ bell
-set noerrorbells
-set visualbell t_vb=
+set noeb vb t_vb=
 
 """ file
-set autoread
-autocmd FocusGained,BufEnter * checktime
-set autowrite
-set noundofile
-set nobackup
-set noswapfile
-set nowritebackup
-set modifiable
-set hidden
+set ar aw nobk noswf nowb ma hid
+au FocusGained,BufEnter * checktime
 
 """ editing
-set backspace=indent,eol,start
-set whichwrap+=b,s,<,>,[,]
-set clipboard^=unnamed,unnamedplus
+set bs=indent,eol,start
+set ww+=b,s,<,>,[,]
+set cb^=unnamed,unnamedplus
 
 """ language
 language messages en_US.UTF-8
@@ -29,21 +23,19 @@ language messages en_US.UTF-8
 """ encoding
 " set fileformat=unix
 " set fileformats=unix,dos,mac
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,gbk,big5,euc-jp,euc-kr,default,latin1
-set encoding=utf-8
-set termencoding=utf-8
+set fenc=utf-8
+set fencs=ucs-bom,utf-8,cp936,gb18030,gbk,big5,euc-jp,euc-kr,default,latin1
+set enc=utf-8
+set tenc=utf-8
 
 " mouse
 set mouse=a
-set selection=exclusive
-set selectmode=mouse,key
+set sel=exclusive
+set slm=mouse,key
 
 " indent
-set cindent
-set smartindent
-set autoindent
-set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4
+set cin si ai
+set et sta ts=4 sts=4 sw=4
 
 " plugin
 filetype on
@@ -51,70 +43,50 @@ filetype plugin on
 filetype indent on
 
 " syntax
-syntax on
-syntax enable
+syn on
 
-" menu window
-set completeopt=menu
+" complete
+set cot=menu,menuone,preview
 
 " folding
-set foldenable
-set foldmethod=indent
-set foldnestmax=100
-set foldlevel=100
+set fen fdm=indent fdn=100 fdl=100
 nnoremap zz @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 
 " search
-set magic
-set noignorecase
-set hlsearch
+set magic noic hls
 if has('patch-8.0.1238')
-    set incsearch
+    set is
 endif
 
 """ whitespace
-set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
-" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set lcs=tab:>·,trail:~,extends:>,precedes:<,space:·
+" set lcs=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
 """ color
-set background=dark
+set bg=dark
 if has("termguicolors")
     set termguicolors
 endif
-set nocursorcolumn
-" set colorcolumn=120
-set cursorline
+set nocuc cul
+" set cc=120
 
 """ ui
-set number
-set norelativenumber
+set nu nornu ru sc sm smd wrap
 set signcolumn=yes
-set ruler
-set showcmd
-set showmatch
-set wrap
 
 """ scroll
-set scrolloff=1
+set so=1
 
 """ notification
-set shortmess+=c
-set cmdheight=2
-set laststatus=2
+set shm+=c ch=2 ls=2
 
 """ update
-set updatetime=300
+set ut=300
 
 " render
-set lazyredraw
-set redrawtime=1000
-set ttyfast
-" set regexpengine=1
-" set re=0
-
-""" memory allocate
-set maxmempattern=102400
+set lz tf rdt=1000 mmp=102400
+" set re=1
 
 """ tags
 set tags+=./tags,tags
@@ -123,4 +95,4 @@ set tags+=./tags,tags
 let macvim_skip_cmd_opt_movement=1
 
 " disable syntax highlighting sync on big file for better lantency
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syn sync clear | endif
+" autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syn sync clear | endif
