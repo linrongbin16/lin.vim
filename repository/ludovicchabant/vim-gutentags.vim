@@ -1,4 +1,3 @@
-set tags=./tags,tags;
 let g:gutentags_project_root = ['.svn', '.git', '.hg', 'package.json', 'CMakeLists.txt', 'pom.xml', '.idea', '.vscode']
 if executable('rg')
     let g:gutentags_file_list_command = 'rg --files'

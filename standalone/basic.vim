@@ -31,8 +31,8 @@ language messages en_US.UTF-8
 " set fileformats=unix,dos,mac
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gbk,big5,euc-jp,euc-kr,default,latin1
-set termencoding=utf-8
 set encoding=utf-8
+set termencoding=utf-8
 
 " mouse
 set mouse=a
@@ -91,8 +91,8 @@ set number
 set norelativenumber
 set signcolumn=yes
 set ruler
-set showmatch
 set showcmd
+set showmatch
 set wrap
 
 """ scroll
@@ -115,6 +115,9 @@ set ttyfast
 
 """ memory allocate
 set maxmempattern=102400
+
+""" tags
+set tags+=./tags,tags
 
 " disable macvim GUI key mappings
 let macvim_skip_cmd_opt_movement=1
