@@ -277,6 +277,8 @@ You could configure these keys in **_~/.vim/settings.vim_**.
 
 #### File Explorer
 
+File explorer is support by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+).
+
 Navigation:
 
 - `h` **\[N\]** - Collapse directory.
@@ -289,8 +291,8 @@ Navigation:
 
 Create/rename/delete:
 
-- `N`/`a` **\[N\]** - Create new file. Notice `a` is not working on plugin [fern.vim](https://github.com/lambdalisue/fern.vim) on non-neovim 0.7+.
-- `A` **\[N\]** - Create new directory. Notice [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) on neovim 0.7+ need additional slash `\` after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
+- `N`/`a` **\[N\]** - Create new file. Notice `a` is not working on fern.vim, since it's forcely mapped to '<Plug>(fern-action-choice)' instead of '<Plug>(fern-action-new-file)'.
+- `A` **\[N\]** - Create new directory. Notice nvim-tree.lua need an additional slash `/`(or `\`) after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
 - `m`/`r` **\[N\]** - Move or rename file/directory.
 - `d` **\[N\]** - Trash file/directory to system trash-bin, only for windows/macOS.
 - `D` **\[N\]** - Delete file/directory, usually `rm`.
@@ -326,8 +328,7 @@ _For neovim 0.7+ only_:
 - `]c` **\[N\]** - Goto next(down) git chunk.
 - `[c` **\[N\]** - Goto previous(up) git chunk.
 
-Support by [fern.vim](https://github.com/lambdalisue/fern.vim) (switched to [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) on neovim 0.7+). You could editing **_~/.vim/repository/lambdalisue/fern.vim.vim_** (or **_~/.vim/repository/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings.
-Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [:help nvim-tree-mappings](https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt)) for more information.
+You could editing **_~/.vim/repository/lambdalisue/fern.vim.vim_** (or **_~/.vim/repository/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings. Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [:help nvim-tree-mappings](https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt)) for more information.
 
 #### Tabline
 
@@ -366,30 +367,31 @@ By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/release
 #### Code Complete
 
 - `<C-n>`/`<Down>` **\[I\]** - Navigate to next suggestion.
-- `<c-p>`/`<Up>` **\[I\]** - Navigate to previous suggestion.
-- `<TAB>`/`<CR>` **\[I\]** - Confirm current suggestion or snippet.
+- `<C-p>`/`<Up>` **\[I\]** - Navigate to previous suggestion.
+- `<TAB>`/`<CR>` **\[I\]** - Confirm current suggestion.
 - `<ESC>`/`<C-[>` **\[I\]** - Close suggestion.
-- `<C-f>` **\[I\]** - Jump to next snippet position.
-- `<C-b>` **\[I\]** - Jump to previous snippet position.
-- `<C-k>` **\[I\]** - Force trigger suggestion.
+- `<C-f>` **\[I\]** - Navigate to next(right) snippet placeholder.
+- `<C-b>` **\[I\]** - Navigate to previous(left) snippet placeholder.
 
 #### Jumps
 
-- `[d` **\[N\]** - Go to previous diagnostic location.
-- `]d` **\[N\]** - Go to next diagnostic location.
+- `[d` **\[N\]** - Go to previous(up) diagnostic location.
+- `]d` **\[N\]** - Go to next(down) diagnostic location.
 - `gd` **\[N\]** - Go to definition.
-- `gy` **\[N\]** - Go to type definition.
+- `gl` **\[N\]** - Go to declaration.
+- `gy`/`gt` **\[N\]** - Go to type definition.
 - `gi` **\[N\]** - Go to implemention.
 - `gr` **\[N\]** - Go to references.
 
 #### Symbols
 
-- `K` **\[N\]** - Show hover(symbol definition).
+- `K` **\[N\]** - Show hover information.
 - `<Leader>rs` **\[N\]** - Rename symbol.
 
 #### Code Format
 
-- `<Leader>cf` **\[N\]** **\[V\]** - Format code on current buffer or visual selected code.
+- `<Leader>cf` **\[N\]** - Format code on whole buffer in normal mode.
+- `<Leader>cf` **\[V\]** - Format selected code in visual mode.
 
 #### Code Actions
 

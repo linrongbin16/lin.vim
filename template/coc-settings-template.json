@@ -1,4 +1,5 @@
 {
+  "codeLens.enable": true,
   "coc.preferences.formatOnSave": true,
   "inlayHint.enable": false,
   "suggest.minTriggerInputLength": 1,
