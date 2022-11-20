@@ -422,7 +422,7 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 - `<Space>l` [**N**] - Search lines on opened buffers by `:FzfLines`.
 - `<Space>t` [**N**] - Search tags by `:FzfTags`.
 - `<Space>y` [**N**] - Search yank history by `:CocFzfList yank`.
-- `<Space>sh` [**N**] - Search search history by `:FzfHistory/`.
+- `<Space>sh` [**N**] - Search searched history by `:FzfHistory/`.
 - `<Space>ch` [**N**] - Search vim command history by `:FzfHistory:`.
 
 #### File Search
@@ -435,7 +435,7 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 - `<Space>gc` [**N**] - Search git commits by `:FzfCommits`.
 - `<Space>gf` [**N**] - Search git files rby `:FzfGFile`.
-- `<Space>gs` [**N**] - Search git status(also diff files by preview) by `:FzfGFiles?`.
+- `<Space>gs` [**N**] - Search git status (also diff files by preview) by `:FzfGFiles?`.
 
 #### Other Search
 
@@ -448,11 +448,11 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 Key mappings are configured with prefix char `c` after `<Space>`.
 
-- `<Space>cs` [**N**] - Search symbols by `:CocFzfList symbols`.
-- `<Space>cd` [**N**] - Search diagnostics by `:CocFzfList diagnostics`.
-- `<Space>co` [**N**] - Search outline/tags by `:CocFzfList outline`.
-- `<Space>cc` [**N**] - Search commands by `:CocFzfList commands`.
-- `<Space>cl` [**N**] - Search location by `:CocFzfList location`.
+- `<Space>cs` [**N**] - Search coc symbols by `:CocFzfList symbols`.
+- `<Space>cd` [**N**] - Search coc diagnostics by `:CocFzfList diagnostics`.
+- `<Space>co` [**N**] - Search coc outlines(tags) by `:CocFzfList outline`.
+- `<Space>cc` [**N**] - Search coc commands by `:CocFzfList commands`.
+- `<Space>cl` [**N**] - Search coc location by `:CocFzfList location`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 

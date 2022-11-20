@@ -622,7 +622,7 @@ class Render(Indentable):
         PluginContext(
             "neoclide",
             "coc.nvim",
-            "{'branch': 'release'}",
+            post="{'branch': 'release'}",
             top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Language server ----"),
@@ -632,6 +632,7 @@ class Render(Indentable):
         PluginContext(
             "antoinemadec",
             "coc-fzf",
+            post="{'branch': 'release'}",
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
