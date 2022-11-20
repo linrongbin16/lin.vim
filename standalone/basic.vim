@@ -1,6 +1,6 @@
 """ ---- Basic settings ----
 
-set runtimepath+=$HOME/.vim
+set runtimepath^=$HOME/.vim
 
 """ VI compatible
 set nocompatible
