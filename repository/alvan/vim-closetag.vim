@@ -12,7 +12,7 @@ let g:closetag_filetypes = 'html,xhtml,phtml,xml,javascript,javascriptreact,js,j
 
 " filetypes like xml, xhtml, ...
 " This will make the list of non-closing tags self-closing in the specified files.
-let g:closetag_xhtml_filetypes = 'xhtml,jsx,xml,javascript,javascriptreact,js,jsx,typescript,typescriptreact,ts,tsx'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,xml,javascript,javascriptreact,js,typescript,typescriptreact,ts,tsx'
 
 " integer value [0|1]
 " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
