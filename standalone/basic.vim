@@ -6,7 +6,8 @@ set rtp+=$HOME/.vim
 set nocp
 
 """ bell
-set noeb vb t_vb=
+set noeb novb
+au GUIEnter * set vb t_vb=
 
 """ file
 set ar aw nobk noswf nowb ma hid
