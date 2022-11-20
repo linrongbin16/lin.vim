@@ -1,10 +1,8 @@
 """ ---- GUI settings ----
 
 " disable GUI menu
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=m
-endif
+set guioptions-=T
+set guioptions-=m
 
 " maximize GUI window
 if has("gui_running")
