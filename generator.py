@@ -339,9 +339,7 @@ class SettingsRandomColorStmt(Expr):
         self.comment_expr = TrippleQuotesCommentExpr(
             LiteralExpr("Random color scheme on startup")
         )
-        self.call_expr = CallExpr(
-            FuncCallExpr(LiteralExpr("NextRandomColorScheme"))
-        )
+        self.call_expr = CallExpr(FuncCallExpr(LiteralExpr("NextRandomColorScheme")))
 
     def render(self):
         return f"""
@@ -503,6 +501,11 @@ class Render(Indentable):
             "RRethy",
             "vim-hexokinase",
             post="{'do': 'make hexokinase'}",
+            tag=PluginTag.HIGHLIGHT,
+        ),
+        PluginContext(
+            "andymass",
+            "vim-matchup",
             tag=PluginTag.HIGHLIGHT,
         ),
         PluginContext(
@@ -677,8 +680,8 @@ class Render(Indentable):
             tag=PluginTag.LANGUAGE,
         ),
         PluginContext(
-            "andymass",
-            "vim-matchup",
+            "alvan",
+            "vim-closetag",
             top_clause=[
                 PluginClause.make_paragraph(),
                 PluginClause.make_tripple_comment("---- Editing enhancement ----"),
@@ -686,7 +689,6 @@ class Render(Indentable):
             ],
             tag=PluginTag.EDITING,
         ),
-        PluginContext("alvan", "vim-closetag", tag=PluginTag.EDITING),
         PluginContext(
             "numToStr",
             "Comment.nvim",

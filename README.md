@@ -37,7 +37,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Word Movement](#word-movement)
     - [Better Repeat](#better-repeat)
     - [Better Surrounding(Quotes) Editing](#better-surroundingquotes-editing)
-    - [Better Pair and HTML Tag Matching](#better-pair-and-html-tag-matching)
+    - [Better Matching](#better-matching)
     - [Auto Pair and Close HTML Tag](#auto-pair-and-close-html-tag)
     - [Easy Comment](#easy-comment)
   - [Customization](#customization)
@@ -497,9 +497,9 @@ Better repeat(`.`) operation, support by [vim-repeat](https://github.com/tpope/v
 
 Better surrounding(quotes) editing, support by [vim-surround](https://github.com/tpope/vim-surround).
 
-#### Better Pair and HTML Tag Matching
+#### Better Matching
 
-Better brackets(HTML tag) matching, support by [vim-matchup](https://github.com/andymass/vim-matchup).
+Better matching include HTML tags, if-endif, and other things, support by [vim-matchup](https://github.com/andymass/vim-matchup).
 
 #### Auto Pair and Close HTML Tag
 
