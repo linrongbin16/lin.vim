@@ -1,5 +1,3 @@
 lua<<EOF
-require('nvim-autopairs').setup{
-  map_cr=false,
-}
+require('nvim-autopairs').setup{}
 EOF
