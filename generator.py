@@ -835,7 +835,6 @@ class Render(Indentable):
         )
         vimrc_stmts.append(VimrcStmt("plugins.vim"))
         vimrc_stmts.append(VimrcStmt("standalone/basic.vim"))
-        vimrc_stmts.append(VimrcStmt("standalone/gui.vim"))
         vimrc_stmts.append(VimrcStmt("standalone/filetype.vim"))
         vimrc_stmts.append(VimrcStmt("standalone/color.vim"))
         vimrc_stmts.append(VimrcStmt("standalone/copypaste.vim"))

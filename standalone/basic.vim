@@ -82,8 +82,21 @@ set lazyredraw ttyfast redrawtime=1000 maxmempattern=102400
 """ tags
 set tags+=./tags,tags
 
+""" disable GUI menu
+set guioptions-=T
+set guioptions-=m
+
+""" maximize GUI window
+if has("gui_running")
+    set lines=9999
+    set columns=9999
+endif
+if has('win32') || has('win64')
+    autocmd GUIEnter * simalt ~x
+endif
+
 """ disable macvim GUI key mappings
-let macvim_skip_cmd_opt_movement=1
+" let macvim_skip_cmd_opt_movement=1
 
 """ disable syntax highlighting sync on big file for better lantency
 " autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syn sync clear | endif
