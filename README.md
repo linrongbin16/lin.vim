@@ -395,12 +395,13 @@ By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/release
 
 #### Code Actions
 
-- `<Leader>ca` [**N**] [**V**] - Run code actions under cursor or visual selected code.
-- `<Leader>qf` [**N**] - Apply quick fix on current line.
+- `<Leader>ca` [**N**] - Run code actions under cursor in normal mode.
+- `<Leader>ca` [**V**] - Run code actions on selected code in visual mode.
+- `<Leader>qf` [**N**] - Apply quick fix for diagnostics on current line.
 
-#### Code Lens
+#### CodeLens
 
-- `<Leader>cl` [**N**] - Run code lens on current line.
+- `<Leader>cl` [**N**] - Run the CodeLens on current line.
 
 #### Git
 
@@ -409,7 +410,7 @@ By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/release
 
 _For neovim 0.5+ only_:
 
-- `<Leader>gb` [**N**] - Toggle git blame info on current line.
+- `<Leader>gb` [**N**] - Toggle git blame info for current line.
 
 ### Search
 
