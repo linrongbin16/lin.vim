@@ -1,9 +1,11 @@
 {
   "codeLens.enable": true,
-  "coc.preferences.formatOnSave": true,
+  "diagnostic.level": "warning",
   "inlayHint.enable": false,
   "suggest.minTriggerInputLength": 1,
-  "suggest.languageSourcePriority": 99,
+  "suggest.maxCompleteItemCount": 50,
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.formatOnSave": true,
   "snippets.extends": {
     "lex": ["c", "cpp"],
     "flex": ["c", "cpp"],
