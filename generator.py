@@ -1080,13 +1080,17 @@ class FileDumper:
         if self.disable_vim:
             return
         if IS_WINDOWS:
-            message(f"install {HOME_DIR}\\_vimrc for vim on windows")
+            message(f"install {HOME_DIR}\\_(g)vimrc for vim on windows")
             vimrc_path = pathlib.Path(f"{HOME_DIR}\\_vimrc")
+            gvimrc_path = pathlib.Path(f"{HOME_DIR}\\_gvimrc")
         else:
-            message(f"install ~/.vimrc for vim")
+            message(f"install ~/.(g)vimrc for vim")
             vimrc_path = pathlib.Path(f"{HOME_DIR}/.vimrc")
+            gvimrc_path = pathlib.Path(f"{HOME_DIR}/.gvimrc")
         try_backup(vimrc_path)
+        try_backup(gvimrc_path)
         vimrc_path.symlink_to(VIMRC_FILE)
+        gvimrc_path.symlink_to(VIMRC_FILE)
 
     def neovim_init_vim_entry(self):
         if self.disable_neovim:

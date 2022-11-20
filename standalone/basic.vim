@@ -3,54 +3,33 @@
 set runtimepath+=$HOME/.vim
 set nocompatible
 
-" bell
+""" bell
 set noerrorbells
-set novisualbell
-if has("gui_running")
-    " gui bell
-    autocmd GUIEnter * set vb t_vb=
-endif
+set visualbell t_vb=
 
-" editing
+""" file
 set autoread
-autocmd FocusGained * checktime
+autocmd FocusGained,BufEnter * checktime
 set autowrite
 set noundofile
 set nobackup
 set noswapfile
 set nowritebackup
-set noignorecase
 set modifiable
+
+""" editing
 set shortmess+=c
 set backspace=indent,eol,start
 set whichwrap+=b,s,<,>,[,]
 set clipboard^=unnamed,unnamedplus
-set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
-" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set list
 
-" persisted undo
-" if has('persistent_undo')
-"   if has('nvim')
-"     let undo_dir = expand('~/.cache/nvim-undo')
-"   else
-"     let undo_dir = expand('~/.cache/vim-undo')
-"   endif
-"   if !isdirectory(undo_dir)
-"      silent! call mkdir(undo_dir, "p", 0700)
-"   endif
-"   let &undodir = undo_dir
-"   set undofile
-" endif
-
-" file encoding
+""" encoding
 " set fileformat=unix
 " set fileformats=unix,dos,mac
 set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,gbk,big5,euc-jp,euc-kr,default,latin1
 set termencoding=utf-8
 set encoding=utf-8
-language messages en_US.UTF-8
 
 " mouse
 set mouse=a
@@ -84,12 +63,21 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 
 " search
 set magic
+set noignorecase
 set hlsearch
 if has('patch-8.0.1238')
     set incsearch
 endif
 
-" display
+""" display
+
+""" language
+language messages en_US.UTF-8
+""" whitespace
+set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set list
+
 set background=dark
 set ruler
 " set colorcolumn=120
