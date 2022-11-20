@@ -1,12 +1,16 @@
 """ ---- GUI settings ----
 
 " disable GUI menu
-set guioptions-=T
-set guioptions-=m
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=m
+endif
 
 " maximize GUI window
-set lines=9999
-set columns=9999
+if has("gui_running")
+    set lines=9999
+    set columns=9999
+endif
 if has('win32') || has('win64')
     autocmd GUIEnter * simalt ~x
 endif
