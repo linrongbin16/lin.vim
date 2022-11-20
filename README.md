@@ -33,13 +33,13 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Coc.nvim Search](#cocnvim-search)
   - [Editing Enhancement](#editing-enhancement)
     - [Enhanced Copy Paste](#enhanced-copy-paste)
+    - [Easy Comment](#easy-comment)
     - [Cursor Motion](#cursor-motion)
     - [Word Movement](#word-movement)
     - [Better Repeat](#better-repeat)
     - [Better Surrounding(Quotes) Editing](#better-surroundingquotes-editing)
     - [Better Matching](#better-matching)
     - [Auto Pair and Close HTML Tag](#auto-pair-and-close-html-tag)
-    - [Easy Comment](#easy-comment)
   - [Customization](#customization)
 - [Appendix](#appendix)
   - [Embeded Language Servers](#embeded-language-servers)
@@ -467,6 +467,26 @@ When copy/paste without system clipboard support, you could first write content 
 
 You could configure these key mappings in **_~/.vim/standalone/copypaste.vim_**.
 
+#### Easy Comment
+
+Linewise comment:
+
+- `gcc` [**N**] - Toggle current line.
+- `[count]gcc` [**N**] - Toggle _[count]_ number of lines.
+- `gc{motion}` [**N**] - Toggle two lines with motion(jk).
+- `gc[count]{motion}` [**N**] - Toggle region with _[count]_(optional) times motion.
+- `gc` [**V**] - Toggle selected region in virual mode.
+
+_Blockwise comment (for neovim only)_:
+
+- `gbc` [**N**] - Toggle current line.
+- `[count]gbc` [**N**] - Toggle _[count]_ number of lines.
+- `gb{motion}` [**N**] - Toggle two lines with motion.
+- `gb[count]{motion}` [**N**] - Toggle region with _[count]_(optional) times motion.
+- `gb` [**V**] - Toggle selected region in virual mode.
+
+Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [Comment.nvim](https://github.com/numToStr/Comment.nvim) on neovim).
+
 #### Cursor Motion
 
 See [Cursor movement](#cursor-movement).
@@ -504,15 +524,6 @@ Better matching include HTML tags, if-endif, and other things, support by [vim-m
 #### Auto Pair and Close HTML Tag
 
 Auto pair and close html tags, support by [auto-pairs](https://github.com/jiangmiao/auto-pairs) (switched to [nvim-autopairs](https://github.com/windwp/nvim-autopairs) on neovim 0.5+) and [vim-closetag](https://github.com/alvan/vim-closetag).
-
-#### Easy Comment
-
-- `gcc` [**N**] - toggle current line using linewise comment.
-- `gc{motion}` [**N**] - toggle from current line with motion (jkhl) using linewise comment.
-- `gc<count>{motion}` [**N**] - toggle from current line with motion repeat _<count>_ times using linewise comment.
-- `gc` [**V**] - toggle visual selected code using linewise comment.
-
-Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [Comment.nvim](https://github.com/numToStr/Comment.nvim) on neovim).
 
 ## Customization
 

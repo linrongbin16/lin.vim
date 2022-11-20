@@ -708,6 +708,7 @@ class Render(Indentable):
         PluginContext(
             "phaazon",
             "hop.nvim",
+            post="{'branch': 'v2'}",
             top_clause=[
                 PluginClause.make_single_comment("Cursor motion"),
                 PluginClause.make_if_has("nvim-0.5"),
