@@ -1065,16 +1065,11 @@ class FileDumper:
 
     def coc_settings(self):
         coc_dirs = [VIM_DIR]
-        if IS_WINDOWS:
-            coc_dirs.append(pathlib.Path(f"{HOME_DIR}/vimfiles"))
-        for d in coc_dirs:
-            if not d.exists():
-                d.mkdir(parents=True)
-            coc_settings_file = f"{d}/coc-settings.json"
-            try_backup(pathlib.Path(coc_settings_file))
-            shutil.copy(
-                f"{VIM_DIR}/template/coc-settings-template.json", coc_settings_file
-            )
+        coc_settings_file = f"{coc_dirs}/coc-settings.json"
+        try_backup(pathlib.Path(coc_settings_file))
+        shutil.copy(
+            f"{VIM_DIR}/template/coc-settings-template.json", coc_settings_file
+        )
 
     def vimrc_entry(self):
         if self.disable_vim:

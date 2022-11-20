@@ -87,13 +87,13 @@ set nocursorcolumn
 set cursorline
 
 """ ui
+set number
+set norelativenumber
+set signcolumn=yes
 set ruler
 set showmatch
 set showcmd
 set wrap
-set number
-set norelativenumber
-set signcolumn=yes
 
 """ scroll
 set scrolloff=1
@@ -106,14 +106,15 @@ set laststatus=2
 """ update
 set updatetime=300
 
-" render optimization
+" render
 set lazyredraw
+set redrawtime=1000
 set ttyfast
 " set regexpengine=1
 " set re=0
 
-" fix maxmatchparen memory issue
-set mmp=10000
+""" memory allocate
+set maxmempattern=102400
 
 " disable macvim GUI key mappings
 let macvim_skip_cmd_opt_movement=1
