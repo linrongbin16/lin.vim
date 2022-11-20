@@ -764,8 +764,15 @@ class Render(Indentable):
         ),
         PluginContext(
             "haya14busa",
+            "is.vim",
+            top_clause=[PluginClause.make_single_comment("Incremental search"), PluginClause.make_if_has("patch-8.0.1238")],
+            tag=PluginTag.EDITING,
+        ),
+        PluginContext(
+            "haya14busa",
             "incsearch.vim",
-            top_clause=PluginClause.make_single_comment("Incremental search"),
+            top_clause=PluginClause.make_else(),
+            bottom_clause=PluginClause.make_endif(),
             tag=PluginTag.EDITING,
         ),
         PluginContext(

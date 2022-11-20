@@ -85,6 +85,9 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 " search
 set magic
 set hlsearch
+if has('patch-8.0.1238')
+    set incsearch
+endif
 
 " display
 set background=dark
