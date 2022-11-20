@@ -23,7 +23,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Symbols](#symbols)
     - [Code Format](#code-format)
     - [Code Actions](#code-actions)
-    - [Code Lens](#code-lens)
+    - [CodeLens](#codelens)
     - [Git](#git)
   - [Search](#search)
     - [Text Search](#text-search)
