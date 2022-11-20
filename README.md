@@ -498,14 +498,19 @@ See [Cursor movement](#cursor-movement).
 
 Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion) (switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
 
-#### Word Motion
+#### Word Movement
 
-`w`/`b` will not recognize a real literal word on (neo)vim, so introduce `W`/`B`/`E`/`gE` to do this:
+(Neo)vim word movement cannot recognize real literal word, such as camel case, mixed digits, characters, punctuations, etc.
+So introduce better word motions:
 
-- `W` [**N**] - Move forward(right) to a single literal word.
-- `B` [**N**] - Move backward(left) to a single literal word.
-- `E` [**N**] - Move forward to the end of a single literal word.
-- `gE` [**N**] - Move backward to the end of a single literal word.
+- `<Leader>w`/`<Leader>W` [**N**] - word/WORD forward(right), exclusive.
+- `[count]<Leader>w`/`[count]<Leader>W` [**N**] - _[count]_ words/WORDS forward, exclusive.
+- `<Leader>e`/`<Leader>E` [**N**] - Forward to the end of word/WORD, inclusive.
+- `[count]<Leader>e`/`[count]<Leader>E` [**N**] - Forward to the end of _[count]_ words/WORDS, inclusive.
+- `<Leader>b`/`<Leader>B` [**N**] - word/WORD backward(left), exclusive.
+- `[count]<Leader>b`/`[count]<Leader>B` [**N**] - _[count]_ words/WORDS backward.
+- `<Leader>ge`/`<Leader>gE` [**N**] - Backward to the end of word/WORD, inclusive.
+- `[count]<Leader>ge`/`[count]<Leader>gE` [**N**] - Backward to the end of _[count]_ words/WORDS, inclusive.
 
 Support by [vim-wordmotion](https://github.com/chaoren/vim-wordmotion).
 
