@@ -765,7 +765,10 @@ class Render(Indentable):
         PluginContext(
             "haya14busa",
             "is.vim",
-            top_clause=[PluginClause.make_single_comment("Incremental search"), PluginClause.make_if_has("patch-8.0.1238")],
+            top_clause=[
+                PluginClause.make_single_comment("Incremental search"),
+                PluginClause.make_if_has("patch-8.0.1238"),
+            ],
             tag=PluginTag.EDITING,
         ),
         PluginContext(
@@ -1067,9 +1070,7 @@ class FileDumper:
         coc_dirs = [VIM_DIR]
         coc_settings_file = f"{coc_dirs}/coc-settings.json"
         try_backup(pathlib.Path(coc_settings_file))
-        shutil.copy(
-            f"{VIM_DIR}/template/coc-settings-template.json", coc_settings_file
-        )
+        shutil.copy(f"{VIM_DIR}/template/coc-settings-template.json", coc_settings_file)
 
     def vimrc_entry(self):
         if self.disable_vim:
