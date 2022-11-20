@@ -110,7 +110,7 @@ function! LinVimLightLineGutentagsStatus() abort
 endfunction
 
 " update lightline
-augroup my_lightline_group
+augroup lin_vim_lightline_group
     autocmd!
     autocmd User GutentagsUpdating call lightline#update()
     autocmd User GutentagsUpdated call lightline#update()

@@ -5,7 +5,9 @@ if executable('rg')
 endif
 
 let g:gutentags_ctags_exclude = [
-      \ '*.git', '*.svg', '*.hg',
+      \ '*.git', 
+      \ '*.svg', 
+      \ '*.hg',
       \ '*/tests/*',
       \ 'build',
       \ 'dist',
