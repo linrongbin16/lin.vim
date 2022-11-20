@@ -1066,7 +1066,7 @@ class FileDumper:
         self.coc_settings()
 
     def coc_settings(self):
-        coc_dirs = [VIM_DIR]
+        coc_dirs = VIM_DIR
         coc_settings_file = f"{coc_dirs}/coc-settings.json"
         try_backup(pathlib.Path(coc_settings_file))
         shutil.copy(f"{VIM_DIR}/template/coc-settings-template.json", coc_settings_file)
@@ -1077,15 +1077,11 @@ class FileDumper:
         if IS_WINDOWS:
             message(f"install {HOME_DIR}\\_(g)vimrc for vim on windows")
             vimrc_path = pathlib.Path(f"{HOME_DIR}\\_vimrc")
-            gvimrc_path = pathlib.Path(f"{HOME_DIR}\\_gvimrc")
         else:
             message(f"install ~/.(g)vimrc for vim")
             vimrc_path = pathlib.Path(f"{HOME_DIR}/.vimrc")
-            gvimrc_path = pathlib.Path(f"{HOME_DIR}/.gvimrc")
         try_backup(vimrc_path)
-        try_backup(gvimrc_path)
         vimrc_path.symlink_to(VIMRC_FILE)
-        gvimrc_path.symlink_to(VIMRC_FILE)
 
     def neovim_init_vim_entry(self):
         if self.disable_neovim:

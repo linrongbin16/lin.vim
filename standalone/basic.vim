@@ -7,11 +7,11 @@ set nocompatible
 
 """ bell
 set noerrorbells novisualbell
-au GUIEnter * set visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 """ file
 set autoread autowrite nobackup noswapfile nowritebackup modifiable hidden
-au FocusGained,BufEnter * checktime
+autocmd FocusGained,BufEnter * checktime
 
 """ editing
 set backspace=indent,eol,start
