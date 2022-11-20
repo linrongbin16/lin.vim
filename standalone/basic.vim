@@ -18,7 +18,6 @@ set nowritebackup
 set modifiable
 
 """ editing
-set shortmess+=c
 set backspace=indent,eol,start
 set whichwrap+=b,s,<,>,[,]
 set clipboard^=unnamed,unnamedplus
@@ -101,6 +100,9 @@ set signcolumn=yes
 if has("termguicolors")
     set termguicolors
 endif
+
+""" notification
+set shortmess+=c
 
 " render optimization
 set lazyredraw
