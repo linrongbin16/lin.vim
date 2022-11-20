@@ -16,11 +16,15 @@ set nobackup
 set noswapfile
 set nowritebackup
 set modifiable
+set hidden
 
 """ editing
 set backspace=indent,eol,start
 set whichwrap+=b,s,<,>,[,]
 set clipboard^=unnamed,unnamedplus
+
+""" language
+language messages en_US.UTF-8
 
 """ encoding
 " set fileformat=unix
@@ -34,6 +38,12 @@ set encoding=utf-8
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
+
+" indent
+set cindent
+set smartindent
+set autoindent
+set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4
 
 " plugin
 filetype on
@@ -50,15 +60,9 @@ set completeopt=menu
 " folding
 set foldenable
 set foldmethod=indent
-set foldnestmax=99
-set foldlevel=99
+set foldnestmax=100
+set foldlevel=100
 nnoremap zz @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
-
-" indent
-set cindent
-set smartindent
-set autoindent
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 
 " search
 set magic
@@ -68,41 +72,39 @@ if has('patch-8.0.1238')
     set incsearch
 endif
 
-""" display
-
-""" language
-language messages en_US.UTF-8
 """ whitespace
 set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
 " set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
+""" color
 set background=dark
-set ruler
-" set colorcolumn=120
-set showmatch
-set showcmd
-set wrap
-set cursorline
-set scrolloff=1
-set nocursorcolumn
-set norelativenumber
-set number
-set hidden
-set cmdheight=2
-set laststatus=2
-set updatetime=300
-" if has("nvim-0.5.0") || has("patch-8.1.1564")
-"   set signcolumn=number
-" else
-set signcolumn=yes
-" endif
 if has("termguicolors")
     set termguicolors
 endif
+set nocursorcolumn
+" set colorcolumn=120
+set cursorline
+
+""" ui
+set ruler
+set showmatch
+set showcmd
+set wrap
+set number
+set norelativenumber
+set signcolumn=yes
+
+""" scroll
+set scrolloff=1
 
 """ notification
 set shortmess+=c
+set cmdheight=2
+set laststatus=2
+
+""" update
+set updatetime=300
 
 " render optimization
 set lazyredraw

@@ -1,18 +1,12 @@
 """ ---- GUI settings ----
 
-" disable menu
-if has("gui_running")
-    " gvim toolbox
-    set guioptions-=T
-    " gvim menu
-    set guioptions-=m
-endif
+" disable GUI menu
+set guioptions-=T
+set guioptions-=m
 
-" maximize
-if has("gui_running")
-    set lines=999
-    set columns=999
-    if has('win32') || has('win64')
-        au GUIEnter * simalt ~x
-    endif
+" maximize GUI window
+set lines=9999
+set columns=9999
+if has('win32') || has('win64')
+    autocmd GUIEnter * simalt ~x
 endif
