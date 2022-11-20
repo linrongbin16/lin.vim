@@ -5,9 +5,9 @@ let g:fzf_command_prefix = 'Fzf'
 let g:coc_fzf_preview = ''
 let g:coc_fzf_opts = []
 
-let LIN_VIM_COC_EXPLORER='coc-explorer'
-
 """ Key mappings
+
+let LIN_VIM_COC_EXPLORER='coc-explorer'
 
 """ 1. text search
 
