@@ -526,6 +526,26 @@ class PluginContext:
 
 PLUGIN_CONTEXTS = [
     PluginContext(
+        "nathom",
+        "filetype.nvim",
+        top_clause=[
+            PluginClause.make_paragraph(),
+            PluginClause.make_tripple_comment("---- Performance ----"),
+            PluginClause.make_if_has("nvim"),
+        ],
+        bottom_clause=[PluginClause.make_endif()],
+        tag=PluginTag.OPTIMIZATION
+    ),
+    PluginContext(
+        "lewis6991",
+        "impatient.nvim",
+        top_clause=[
+            PluginClause.make_if_has("nvim-0.7"),
+        ],
+        bottom_clause=[PluginClause.make_endif()],
+        tag=PluginTag.OPTIMIZATION
+    ),
+    PluginContext(
         "lifepillar",
         "vim-solarized8",
         color="solarized8",
@@ -912,26 +932,6 @@ PLUGIN_CONTEXTS = [
         top_clause=PluginClause.make_single_comment("Other"),
     ),
     PluginContext("tpope", "vim-surround", tag=PluginTag.EDITING),
-    PluginContext(
-        "nathom",
-        "filetype.nvim",
-        top_clause=[
-            PluginClause.make_paragraph(),
-            PluginClause.make_tripple_comment("---- Performance ----"),
-            PluginClause.make_if_has("nvim"),
-        ],
-        bottom_clause=[PluginClause.make_endif()],
-        tag=PluginTag.OPTIMIZATION
-    ),
-    PluginContext(
-        "lewis6991",
-        "impatient.nvim",
-        top_clause=[
-            PluginClause.make_if_has("nvim-0.7"),
-        ],
-        bottom_clause=[PluginClause.make_endif()],
-        tag=PluginTag.OPTIMIZATION
-    ),
 ]
 
 
