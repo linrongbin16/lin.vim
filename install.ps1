@@ -65,12 +65,11 @@ function GithubLatestReleaseTag([string]$org, [string]$repo) {
 
 function GithubInstaller([string]$org, [string]$repo, [string]$tag, [string]$target) {
     $tempFile = "$env:TEMP\$target"
-    Message "download '$target' from github.com"
+    Message "install $tempFile from github"
     Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$target" -OutFile $tempFile
     Message "download '$target' from github.com - done"
-    Message "install '$tempFile'"
     Start-Process -wait $tempFile
-    Message "install '$tempFile' - done"
+    Message "install $tempFile from github - done"
 }
 
 function PlatformDependency() {
@@ -138,6 +137,30 @@ function Pip3Dependency() {
 function NpmDependency() {
     Message "install node packages with npm"
     npm install -g yarn prettier neovim
+}
+
+function GuifontDependency() {
+    $org = "ryanoasis"
+    $repo = "nerd-fonts"
+    $tag = "v2.2.2"
+    $target = "Hack.zip"
+    message "install hack nerd font from github"
+    Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$target" -OutFile $target
+
+    # Extract Hack.zip and copy to C:\Windows\Fonts folder
+    $tempFolder = "$VIM_HOME\Hack"
+    TryBackup $tempFolder
+    New-Item -Path $tempFolder -ItemType "directory"
+    Set-Location $tempFolder
+    &"$env:windir\System32\tar.exe" -xf "$VIM_HOME\$target"
+    Get-ChildItem -Filter "Hack*" | ForEach-Object { Start-Process -wait $_ }
+    Set-Location $VIM_HOME
+
+    # Remove Hack.zip and temp folder
+    Remove-Item -LiteralPath $tempFolder -Force -Recurse
+    Remove-Item -LiteralPath "$VIM_HOME\$target" -Force -Recurse
+
+    message "install hack nerd font from github - done"
 }
 
 function InstallDependency() {

@@ -158,10 +158,25 @@ Before installation, please make sure access of below sites are available:
 
 ## Windows
 
-> The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
+> The goal of installation on windows is to install native x64 executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
 >
 > - Native executable file has better performance, WSL (actually a virtual machine) is quite slow and heavy.
 > - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, we could leverage that.
+>
+> Below dependencies will automatically download and install (if not found in `$env:PATH`):
+>
+> - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
+> - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` to `$env:Path`
+> - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
+> - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
+>
+> While still not fully automated (maybe later), please manually install them:
+>
+> - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
+> - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
+> - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
+> - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
+> - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
 
 1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components checked:
 
@@ -183,17 +198,13 @@ Before installation, please make sure access of below sites are available:
 
 This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe`, etc) in `$env:Path`, turn command prompt and powershell to a linux-like shell, thus help (neo)vim plugins running correctly.
 
-3. Install other dependencies (x64 is preferred):
+3. Install other x64 dependencies:
 
-   - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
-   - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` to `$env:Path`
-   - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
    - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
    - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
    - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
    - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
    - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
-   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
 
 Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
