@@ -52,7 +52,7 @@ class Indentable:
     def decrement_indent(self):
         self.indent = max(self.indent - INDENT_SIZE, 0)
 
-    def to_left_indent(self):
+    def to_decrement_indent(self):
         return max(self.indent - INDENT_SIZE, 0)
 
 
@@ -1053,7 +1053,7 @@ class Render(Indentable):
                     elif clause.kind == PluginClauseKind.ELSEIF_HAS:
                         eh = Stmt(
                             ElseifExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
-                            IndentExpr(self.to_left_indent()),
+                            IndentExpr(self.to_decrement_indent()),
                         )
                         plugin_stmts.append(eh)
                         vimrc_stmts.append(eh)
@@ -1062,12 +1062,12 @@ class Render(Indentable):
                             ElseifExpr(
                                 NotExpr(HasExpr(SingleQuoteStringExpr(clause.value)))
                             ),
-                            IndentExpr(self.to_left_indent()),
+                            IndentExpr(self.to_decrement_indent()),
                         )
                         plugin_stmts.append(enh)
                         vimrc_stmts.append(enh)
                     elif clause.kind == PluginClauseKind.ELSE:
-                        e = Stmt(ElseExpr(), IndentExpr(self.to_left_indent()))
+                        e = Stmt(ElseExpr(), IndentExpr(self.to_decrement_indent()))
                         plugin_stmts.append(e)
                         vimrc_stmts.append(e)
                     else:
