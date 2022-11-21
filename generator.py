@@ -39,6 +39,7 @@ def try_backup(src):
 #         message(f"delete '{src}'")
 
 INDENT_SIZE = 4
+LIN_VIM_COLORSCHEMES = "s:lin_vim_colorschemes"
 
 
 class Indentable:
@@ -129,7 +130,13 @@ class LogicOrExpr(Expr):
         return f"({self.left_expr.render()}) || ({self.right_expr.render()})"
 
 
-class SingleQuoteStringExpr(Expr):
+class StringExpr(Expr):
+    @abc.abstractmethod
+    def render(self):
+        pass
+
+
+class SingleQuoteStringExpr(StringExpr):
     def __init__(self, value):
         self.value = value
 
@@ -137,7 +144,7 @@ class SingleQuoteStringExpr(Expr):
         return f"'{str(self.value)}'"
 
 
-class DoubleQuotesStringExpr(Expr):
+class DoubleQuotesStringExpr(StringExpr):
     def __init__(self, value):
         self.value = value
 
@@ -162,7 +169,13 @@ class SourceExpr(Expr):
         return f"source {self.expr.render()}"
 
 
-class SingleQuoteCommentExpr(Expr):
+class CommentExpr(Expr):
+    @abc.abstractmethod
+    def render(self):
+        pass
+
+
+class SingleQuoteCommentExpr(CommentExpr):
     def __init__(self, expr):
         assert isinstance(expr, Expr)
         self.expr = expr
@@ -171,7 +184,7 @@ class SingleQuoteCommentExpr(Expr):
         return f'" {self.expr.render()}'
 
 
-class TrippleQuotesCommentExpr(Expr):
+class TrippleQuotesCommentExpr(CommentExpr):
     def __init__(self, expr):
         assert isinstance(expr, Expr)
         self.expr = expr
@@ -202,6 +215,17 @@ class CallExpr(Expr):
         return f"call {self.expr.render()}"
 
 
+class AddExpr(Expr):
+    def __init__(self, *args_exprs) -> None:
+        assert args_exprs
+        for a in args_exprs:
+            assert isinstance(a, Expr)
+        self.args_exprs = args_exprs
+
+    def render(self):
+        return f"add({', '.join([a.render() for a in self.args_exprs])})"
+
+
 class ColorschemeExpr(Expr):
     def __init__(self, expr):
         assert isinstance(expr, LiteralExpr)
@@ -218,6 +242,15 @@ class IndentExpr(Expr):
 
     def render(self):
         return " " * self.value
+
+
+class LineContinuationExpr(Expr):
+    def __init__(self, expr):
+        assert isinstance(expr, Expr)
+        self.expr = expr
+
+    def render(self):
+        return f"    \\ {self.expr.render()}"
 
 
 class Stmt(Expr):
@@ -321,6 +354,42 @@ let g:coc_global_extensions = [{', '.join([e.render() for e in self.extensions_e
 """
 
 
+class DefineColorsForSettingsStmt(Expr):
+    def __init__(self) -> None:
+        self.comment = TrippleQuotesCommentExpr(LiteralExpr("Color schemes"))
+
+    def render(self):
+        return f"""
+{self.comment.render()}
+let {LIN_VIM_COLORSCHEMES}=[]
+"""
+
+
+class DefineRandomColorFunctionsForSettingsStmt(Expr):
+    def render(self):
+        return f"""
+function NextRandomColorScheme()
+    let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
+    execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
+endfunction
+
+function NextRandomColorSchemeSync()
+    let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
+    execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
+    execute 'syntax sync fromstart'
+endfunction
+"""
+
+
+class AddColorForSettingsExpr(Expr):
+    def __init__(self, expr) -> None:
+        assert isinstance(expr, StringExpr)
+        self.add_expr = CallExpr(AddExpr(LiteralExpr(LIN_VIM_COLORSCHEMES), expr))
+
+    def render(self):
+        return self.add_expr.render()
+
+
 class StaticColorForSettingsStmt(Expr):
     def __init__(self, expr):
         assert isinstance(expr, LiteralExpr)
@@ -419,6 +488,7 @@ class PluginContext:
         org,
         repo,
         post=None,
+        color=None,
         top_clause=None,
         bottom_clause=None,
         tag=None,
@@ -426,9 +496,10 @@ class PluginContext:
         self.org = org
         self.repo = repo
         self.post = post
-        self.tag = tag
+        self.color = color
         self.top_clause = top_clause  # more clauses above this line
         self.bottom_clause = bottom_clause  # more clauses below this line
+        self.tag = tag
 
     def __str__(self):
         return f"{self.org}/{self.repo}"
@@ -438,41 +509,71 @@ PLUGIN_CONTEXTS = [
     PluginContext(
         "lifepillar",
         "vim-solarized8",
+        color="solarized8",
         top_clause=[
             PluginClause.make_paragraph(),
             PluginClause.make_tripple_comment("---- Color scheme ----"),
         ],
         tag=PluginTag.COLORSCHEME,
     ),
-    PluginContext("crusoexia", "vim-monokai", tag=PluginTag.COLORSCHEME),
     PluginContext(
-        "dracula", "vim", post="{'as': 'dracula'}", tag=PluginTag.COLORSCHEME
+        "crusoexia", "vim-monokai", color="monokai", tag=PluginTag.COLORSCHEME
     ),
-    PluginContext("KeitaNakamura", "neodark.vim", tag=PluginTag.COLORSCHEME),
-    PluginContext("srcery-colors", "srcery-vim", tag=PluginTag.COLORSCHEME),
-    PluginContext("drewtempelmeyer", "palenight.vim", tag=PluginTag.COLORSCHEME),
-    PluginContext("joshdick", "onedark.vim", tag=PluginTag.COLORSCHEME),
-    PluginContext("Rigellute", "rigel", tag=PluginTag.COLORSCHEME),
-    PluginContext("chriskempson", "base16-vim", tag=PluginTag.COLORSCHEME),
-    PluginContext("sainnhe", "edge", tag=PluginTag.COLORSCHEME),
-    PluginContext("sainnhe", "gruvbox-material", tag=PluginTag.COLORSCHEME),
-    PluginContext("sainnhe", "everforest", tag=PluginTag.COLORSCHEME),
-    PluginContext("sainnhe", "sonokai", tag=PluginTag.COLORSCHEME),
+    PluginContext(
+        "dracula",
+        "vim",
+        post="{'as': 'dracula'}",
+        color="dracula",
+        tag=PluginTag.COLORSCHEME,
+    ),
+    PluginContext(
+        "KeitaNakamura", "neodark.vim", color="neodark", tag=PluginTag.COLORSCHEME
+    ),
+    PluginContext(
+        "srcery-colors", "srcery-vim", color="srcery", tag=PluginTag.COLORSCHEME
+    ),
+    PluginContext(
+        "drewtempelmeyer", "palenight.vim", color="palenight", tag=PluginTag.COLORSCHEME
+    ),
+    PluginContext(
+        "joshdick", "onedark.vim", color="onedark", tag=PluginTag.COLORSCHEME
+    ),
+    PluginContext("Rigellute", "rigel", color="rigel", tag=PluginTag.COLORSCHEME),
+    PluginContext(
+        "chriskempson",
+        "base16-vim",
+        color="base16-default-dark",
+        tag=PluginTag.COLORSCHEME,
+    ),
+    PluginContext("sainnhe", "edge", color="edge", tag=PluginTag.COLORSCHEME),
+    PluginContext(
+        "sainnhe",
+        "gruvbox-material",
+        color="gruvbox-material",
+        tag=PluginTag.COLORSCHEME,
+    ),
+    PluginContext(
+        "sainnhe", "everforest", color="everforest", tag=PluginTag.COLORSCHEME
+    ),
+    PluginContext("sainnhe", "sonokai", color="sonokai", tag=PluginTag.COLORSCHEME),
     PluginContext(
         "kaicataldo",
         "material.vim",
         post="{'branch': 'main'}",
+        color="material",
         tag=PluginTag.COLORSCHEME,
     ),
     PluginContext(
         "EdenEast",
         "nightfox.nvim",
+        color="nightfox",
         top_clause=PluginClause.make_if_has("nvim-0.5"),
         tag=PluginTag.COLORSCHEME,
     ),
     PluginContext(
         "projekt0n",
         "github-nvim-theme",
+        color="github_dark",
         bottom_clause=[PluginClause.make_endif()],
         tag=PluginTag.COLORSCHEME,
     ),
@@ -480,12 +581,14 @@ PLUGIN_CONTEXTS = [
         "folke",
         "tokyonight.nvim",
         post="{'branch': 'main'}",
+        color="tokyonight",
         top_clause=PluginClause.make_if_has("nvim-0.6"),
         tag=PluginTag.COLORSCHEME,
     ),
     PluginContext(
         "rebelot",
         "kanagawa.nvim",
+        color="kanagawa",
         bottom_clause=PluginClause.make_endif(),
         tag=PluginTag.COLORSCHEME,
     ),
@@ -789,27 +892,6 @@ PLUGIN_CONTEXTS = [
 ]
 
 
-class ConditionBranchRender(Indentable):
-    def __init__(
-        self,
-        static_color=None,
-        disable_color=False,
-        disable_highlight=False,
-        disable_language=False,
-        disable_editing=False,
-        disable_ctrl_keys=False,
-        disable_plugins=None,
-    ):
-        Indentable.__init__(self)
-        self.static_color = static_color
-        self.disable_color = disable_color
-        self.disable_highlight = disable_highlight
-        self.disable_language = disable_language
-        self.disable_editing = disable_editing
-        self.disable_ctrl_keys = disable_ctrl_keys
-        self.disable_plugins = disable_plugins
-
-
 class Render(Indentable):
     def __init__(
         self,
@@ -831,14 +913,17 @@ class Render(Indentable):
         self.disable_plugins = disable_plugins
 
     def render(self):
-        core_plugins, core_vimrcs = self.render_core()
+        core_plugins, core_vimrcs, core_color_settings = self.render_core()
         plugin_stmts = self.render_plugin_stmts(core_plugins)
-        setting_stmts = self.render_setting_stmts()
+        setting_stmts, color_setting_stmts = self.render_setting_stmts(
+            core_color_settings
+        )
         vimrc_stmts = self.render_vimrc_stmts(core_vimrcs)
         plugins_content = "".join([s.render() for s in plugin_stmts])
         settings_content = "".join([s.render() for s in setting_stmts])
+        color_settings_content = "".join([s.render() for s in color_setting_stmts])
         vimrc_content = "".join([s.render() for s in vimrc_stmts])
-        return plugins_content, settings_content, vimrc_content
+        return plugins_content, settings_content, color_settings_content, vimrc_content
 
     # plugins.vim
     def render_plugin_stmts(self, core_plugins):
@@ -865,7 +950,7 @@ class Render(Indentable):
             vimrc_stmts.append(
                 Stmt(
                     SingleQuoteCommentExpr(
-                        LiteralExpr("Windows ctrl+{a,s,x,c,v} keys disabled")
+                        LiteralExpr("Windows CTRL+{a,s,x,c,v} keys disabled")
                     ),
                     IndentExpr(self.indent),
                 )
@@ -886,8 +971,8 @@ class Render(Indentable):
         vimrc_stmts.append(SourceForVimrcStmt("settings.vim"))
         return vimrc_stmts
 
-    # settings.vim
-    def render_setting_stmts(self):
+    # settings.vim and color-settings.vim
+    def render_setting_stmts(self, core_color_settings):
         setting_stmts = []
         setting_stmts.append(
             CocGlobalExtensionForSettingsStmt(
@@ -896,6 +981,7 @@ class Render(Indentable):
                 disable_powershell=not IS_WINDOWS or self.disable_language,
             )
         )
+        setting_stmts.append(SourceForVimrcStmt("color-settings.vim"))
         if self.static_color:
             setting_stmts.append(
                 StaticColorForSettingsStmt(LiteralExpr(self.static_color))
@@ -903,11 +989,18 @@ class Render(Indentable):
         elif not self.disable_color:
             setting_stmts.append(RandomColorForSettingsStmt())
         setting_stmts.append(CommonSettingsStmt())
-        return setting_stmts
+
+        color_setting_stmts = []
+        color_setting_stmts.append(DefineColorsForSettingsStmt())
+        color_setting_stmts.extend(core_color_settings)
+        color_setting_stmts.append(DefineRandomColorFunctionsForSettingsStmt())
+
+        return setting_stmts, color_setting_stmts
 
     def render_core(self):
         plugin_stmts = []
         vimrc_stmts = []
+        color_setting_stmts = []
         for ctx in PLUGIN_CONTEXTS:
             assert isinstance(ctx, PluginContext)
             # top
@@ -924,19 +1017,19 @@ class Render(Indentable):
                         plugin_stmts.append(p)
                         vimrc_stmts.append(p)
                     elif clause.kind == PluginClauseKind.SINGLE_COMMENT:
-                        c = Stmt(
+                        sc = Stmt(
                             SingleQuoteCommentExpr(LiteralExpr(clause.value)),
                             IndentExpr(self.indent),
                         )
-                        plugin_stmts.append(c)
-                        vimrc_stmts.append(c)
+                        plugin_stmts.append(sc)
+                        vimrc_stmts.append(sc)
                     elif clause.kind == PluginClauseKind.TRIPPLE_COMMENT:
-                        c = Stmt(
+                        tc = Stmt(
                             TrippleQuotesCommentExpr(LiteralExpr(clause.value)),
                             IndentExpr(self.indent),
                         )
-                        plugin_stmts.append(c)
-                        vimrc_stmts.append(c)
+                        plugin_stmts.append(tc)
+                        vimrc_stmts.append(tc)
                     elif clause.kind == PluginClauseKind.IF_HAS:
                         ih = Stmt(
                             IfExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
@@ -944,6 +1037,8 @@ class Render(Indentable):
                         )
                         plugin_stmts.append(ih)
                         vimrc_stmts.append(ih)
+                        if ctx.tag == PluginTag.COLORSCHEME:
+                            color_setting_stmts.append(ih)
                         self.increment_indent()
                     elif clause.kind == PluginClauseKind.IF_NOT_HAS:
                         inh = Stmt(
@@ -992,12 +1087,13 @@ class Render(Indentable):
                         IndentExpr(self.indent),
                     )
                 )
-                vimrc_stmts.append(
-                    Stmt(
-                        SingleQuoteCommentExpr(LiteralExpr("Empty")),
-                        IndentExpr(self.indent),
-                    )
+                ec = Stmt(
+                    SingleQuoteCommentExpr(LiteralExpr("Empty")),
+                    IndentExpr(self.indent),
                 )
+                vimrc_stmts.append(ec)
+                if ctx.tag == PluginTag.COLORSCHEME:
+                    color_setting_stmts.append(ec)
             else:
                 # plugins
                 plugin_stmts.append(
@@ -1023,6 +1119,14 @@ class Render(Indentable):
                             IndentExpr(self.indent),
                         )
                     )
+                # color settings
+                if ctx.tag == PluginTag.COLORSCHEME:
+                    color_setting_stmts.append(
+                        Stmt(
+                            AddColorForSettingsExpr(SingleQuoteStringExpr(ctx.color)),
+                            IndentExpr(self.indent),
+                        )
+                    )
             # bottom
             if ctx.bottom_clause:
                 bclauses = (
@@ -1034,13 +1138,15 @@ class Render(Indentable):
                     assert isinstance(clause, PluginClause)
                     if clause.kind == PluginClauseKind.ENDIF:
                         self.decrement_indent()
-                        e = Stmt(EndifExpr(), IndentExpr(self.indent))
-                        plugin_stmts.append(e)
-                        vimrc_stmts.append(e)
+                        ei = Stmt(EndifExpr(), IndentExpr(self.indent))
+                        plugin_stmts.append(ei)
+                        vimrc_stmts.append(ei)
+                        if ctx.tag == PluginTag.COLORSCHEME:
+                            color_setting_stmts.append(ei)
                     else:
                         assert False
 
-        return plugin_stmts, vimrc_stmts
+        return plugin_stmts, vimrc_stmts, color_setting_stmts
 
     def skip_disabled(self, ctx):
         if self.disable_plugins and str(ctx) in self.disable_plugins:
@@ -1061,12 +1167,14 @@ class FileDumper:
         self,
         plugin_content,
         setting_content,
+        color_setting_content,
         vimrc_content,
         disable_vim=False,
         disable_neovim=False,
     ) -> None:
         self.plugin_content = plugin_content
         self.setting_content = setting_content
+        self.color_setting_content = color_setting_content
         self.vimrc_content = vimrc_content
         self.disable_vim = disable_vim
         self.disable_neovim = disable_neovim
@@ -1079,12 +1187,16 @@ class FileDumper:
     def config(self):
         plugins_file = f"{VIM_DIR}/plugins.vim"
         settings_file = f"{VIM_DIR}/settings.vim"
+        color_settings_file = f"{VIM_DIR}/color-settings.vim"
         try_backup(pathlib.Path(plugins_file))
         with open(plugins_file, "w") as fp:
             fp.write(self.plugin_content)
         try_backup(pathlib.Path(settings_file))
         with open(settings_file, "w") as fp:
             fp.write(self.setting_content)
+        try_backup(pathlib.Path(color_settings_file))
+        with open(color_settings_file, "w") as fp:
+            fp.write(self.color_setting_content)
         try_backup(pathlib.Path(VIMRC_FILE))
         with open(VIMRC_FILE, "w") as fp:
             fp.write(self.vimrc_content)
@@ -1222,10 +1334,16 @@ def generator(
         disable_ctrl_keys_opt,
         disable_plugin_opt,
     )
-    plugins_content, settings_content, vimrc_content = render.render()
+    (
+        plugins_content,
+        settings_content,
+        color_settings_content,
+        vimrc_content,
+    ) = render.render()
     dumper = FileDumper(
         plugins_content,
         settings_content,
+        color_settings_content,
         vimrc_content,
         disable_vim_opt,
         disable_neovim_opt,

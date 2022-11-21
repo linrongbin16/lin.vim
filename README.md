@@ -554,8 +554,8 @@ Please edit plugins in `~/.vim/plugins.vim`, settings in `~/.vim/settings.vim` a
 - [sonokai](https://github.com/sainnhe/sonokai)
 - [material](https://github.com/kaicataldo/material.vim)
 - [nightfox](https://github.com/EdenEast/nightfox.nvim) (for neovim 0.5+)
-- [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.5+)
 - [github](https://github.com/projekt0n/github-nvim-theme) (for neovim 0.5+)
+- [tokyonight](https://github.com/folke/tokyonight.nvim) (for neovim 0.6+)
 - [kanagawa](https://github.com/rebelot/kanagawa.nvim) (for neovim 0.6+)
 
 # Contribute
