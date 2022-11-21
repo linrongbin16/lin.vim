@@ -764,7 +764,7 @@ PLUGIN_CONTEXTS = [
     PluginContext(
         "iamcco",
         "markdown-preview.nvim",
-        post="{ 'do': 'cd app && yarn install' }",
+        post="{ 'do': 'cd app && yarn install', 'for': ['markdown'] }",
         top_clause=[
             PluginClause.make_paragraph(),
             PluginClause.make_tripple_comment("---- Language support ----"),
@@ -781,24 +781,28 @@ PLUGIN_CONTEXTS = [
     PluginContext(
         "rhysd",
         "vim-llvm",
+        post="{ 'for': ['llvm', 'mir', 'mlir', 'tablegen'] }",
         top_clause=PluginClause.make_single_comment("LLVM"),
         tag=PluginTag.LANGUAGE,
     ),
     PluginContext(
         "uarun",
         "vim-protobuf",
+        post="{ 'for': ['proto'] }",
         top_clause=PluginClause.make_single_comment("Protobuf"),
         tag=PluginTag.LANGUAGE,
     ),
     PluginContext(
         "zebradil",
         "hive.vim",
+        post="{ 'for': ['hive']  }",
         top_clause=PluginClause.make_single_comment("Hive"),
         tag=PluginTag.LANGUAGE,
     ),
     PluginContext(
         "neovimhaskell",
         "haskell-vim",
+        post="{ 'for': ['haskell'] }",
         top_clause=PluginClause.make_single_comment("Haskell"),
         tag=PluginTag.LANGUAGE,
     ),
