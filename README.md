@@ -53,7 +53,7 @@ Solve below issues:
 
 - Time-costing vim configurations - All behaviors follow community's best practice and most popular editors(just like [vscode](https://code.visualstudio.com/)).
 - Lack of IDE-like editing features - [Coc.nvim](https://github.com/neoclide/coc.nvim) and a bunch of language servers and extensions are embeded.
-- Don't know how to choose/configure/manage vim plugins: All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
+- Don't know how to choose/configure/manage vim plugins - All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
 - Duplicate installation on different OS and machines - All done by one-line command(not on Windows for now), all installations behave the same(the only difference is use Command-Key on macOS instead of Alt-Key on Windows/Linux).
 - Naive UI - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
 
@@ -162,23 +162,8 @@ Before installation, please make sure access of below sites are available:
 >
 > - Native executable file has better performance, WSL (actually a virtual machine) is quite slow and heavy.
 > - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, we could leverage that.
->
-> Below dependencies will automatically download and install (if not found in `$env:PATH`):
->
-> - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
-> - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` to `$env:Path`
-> - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
-> - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
->
-> While still not fully automated (maybe later), please manually install them:
->
-> - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
-> - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
-> - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
-> - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
-> - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
 
-1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components checked:
+1. Install [Visual Studio](https://www.visualstudio.com/), select below 3 components:
 
    - .NET Desktop Development
    - Visual C++ Desktop Development (Desktop development with C++)
@@ -186,30 +171,22 @@ Before installation, please make sure access of below sites are available:
 
 ![install-windows-visual-studio.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-visual-studio.png)
 
-2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with especially below 3 options checked:
+2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads), select below 3 options (This will add `git.exe` and linux builtin commands such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe` to `$env:Path`, turn cmd/powershell to a linux-like shell):
 
-   1. In the **Select Components** step, check **Associate .sh files to be run with Bash**.
-   2. In the **Adjusting your PATH environment** step, choose **Use Git and optional Unix tools from the Command Prompt**.
-   3. In the **Configuring the terminal emulator to use with Git Bash** step, choose **Use Windows's default console window**.
+   1. In the **Select Components** step, select **Associate .sh files to be run with Bash**.
+   2. In the **Adjusting your PATH environment** step, select **Use Git and optional Unix tools from the Command Prompt**.
+   3. In the **Configuring the terminal emulator to use with Git Bash** step, select **Use Windows's default console window**.
 
 ![install-windows-git-step1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step1.png)
 ![install-windows-git-step2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step2.png)
 ![install-windows-git-step3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step3.png)
 
-This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe`, etc) in `$env:Path`, turn command prompt and powershell to a linux-like shell, thus help (neo)vim plugins running correctly.
+3. Install other dependencies:
 
-3. Install other x64 dependencies:
+   - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): Add `make.exe` to `$env:Path`
+   - [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 
-   - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
-   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
-   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
-   - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
-   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
-
-Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
-
-4. Install [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
-5. Finally run below commands as administrator in powershell:
+4. Finally run below commands as administrator in powershell:
 
 ```powershell
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
@@ -217,9 +194,22 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
     $ .\install.ps1
 ```
 
+It will automatically download and install below softwares (if not found in `$env:PATH`):
+
+- [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
+- [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` to `$env:Path`
+- [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
+- [python3](https://www.python.org/downloads/): copy `python.exe` to `python3.exe`, copy `pip.exe` to `pip3.exe`, then add them to `$env:Path` (Python3 installer don't provide `python3.exe` and `pip3.exe`).
+- [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
+- [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
+- [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
+- [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
+
+Use other package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
+
 #### Notice
 
-1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by [Git for Windows](https://git-scm.com/). Make sure git environment path is ahead of `C:\Windows\System32` (`wsl.exe` could connect to WSL as well, so no need to worry about losing `bash.exe`), so git bash will be first detected on `$env:Path`.
+1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by [Git for Windows](https://git-scm.com/). Make sure `git.exe` is ahead of `C:\Windows\System32` (`wsl.exe` could connect to WSL as well, so no need to worry about losing `bash.exe`) in environment path, so git bash will be first detected on `$env:Path`.
 
 ![install-windows-notice-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-git-path.png)
 
@@ -227,7 +217,7 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
 
 ![install-windows-notice-python3-version-compatible.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-python3-version-compatible.png)
 
-3. Don't use old-version `vim.exe` provided by [Git for Windows](https://git-scm.com/), use `gvim.exe` provided by [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases). Or you could move `gvim.exe` environment path ahead of [Git for Windows](https://git-scm.com/), this could make sure `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) be first detected on `$env:Path`.
+3. Don't use old-version `vim.exe` provided by [Git for Windows](https://git-scm.com/), use `gvim.exe` provided by [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases). Or make sure `gvim.exe` is ahead of [Git for Windows](https://git-scm.com/) in environment path, so `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) will be first detected on `$env:Path`.
 
 ![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
 

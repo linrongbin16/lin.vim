@@ -67,7 +67,6 @@ function GithubInstaller([string]$org, [string]$repo, [string]$tag, [string]$tar
     $tempFile = "$env:TEMP\$target"
     Message "install $tempFile from github"
     Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$target" -OutFile $tempFile
-    Message "download '$target' from github.com - done"
     Start-Process -wait $tempFile
     Message "install $tempFile from github - done"
 }
@@ -107,6 +106,73 @@ function PlatformDependency() {
         $version = $tag.Split("v")[1]
         $target = "cmake-${version}-windows-x86_64.msi"
         GithubInstaller -org $org -repo $repo -tag $tag -target $target
+    }
+    # python3
+    if (Get-Command -Name python3 -ErrorAction SilentlyContinue) {
+        Message "'python3' already exist, skip..."
+    }
+    else {
+        $pythonUrl1 = "https://www.python.org/downloads/windows/"
+        $pythonResponse1 = Invoke-WebRequest -Uri $pythonUrl1 -Method 'GET'
+        $pythonUrl2 = $pythonResponse1.Links | where { $_.outerHTML -like "*Latest Python 3 Release*" } | Select-Object -first 1
+        $pythonUrl3 = $pythonUrl2.href
+        $pythonResponse2 = Invoke-WebRequest -Uri "https://www.python.org$pythonUrl3" -Method 'GET'
+        $pythonUrl4 = $pythonResponse2.Links | where { $_.outerHTML -like "*Windows installer*" -and $_.outerHTML -like "*64-bit*" }
+        $pythonDownloadUrl = $pythonUrl4.href
+        $parts = $pythonDownloadUrl.Split("/")
+        $target = $parts[ $parts.Length - 1 ]
+        $tempFile = "$env:TEMP\$target"
+        Message "install python3 from python.org"
+        Invoke-WebRequest -Uri $pythonDownloadUrl -OutFile $tempFile
+        Start-Process -wait $tempFile
+        Message "install python3 from python.org - done"
+    }
+    # rust
+    if (Get-Command -Name rustc -ErrorAction SilentlyContinue) {
+        Message "'rustc' already exist, skip..."
+    }
+    else {
+        $target = "rustup-init.exe"
+        $tempFile = "$env:TEMP\$target"
+        $rustInitUrl = "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/$target"
+        Message "install rustc from rust-lang.org"
+        Invoke-WebRequest -Uri $rustInitUrl -OutFile $tempFile
+        Start-Process -wait $tempFile
+        Message "install rustc from rust-lang.org - done"
+    }
+    # golang
+    if (Get-Command -Name go -ErrorAction SilentlyContinue) {
+        Message "'go' already exist, skip..."
+    }
+    else {
+        $goUrl1 = "https://go.dev/dl/"
+        $goResponse1 = Invoke-WebRequest -Uri $goUrl1 -Method 'GET'
+        $goUrl2 = $goResponse1.Links | where { $_.outerHTML -like "*windows-amd64.msi*" } | Select-Object -first 1
+        $goDownloadUrl = $goUrl2.href
+        $parts = $goDownloadUrl.Split("/")
+        $target = $parts[ $parts.Length - 1 ]
+        $tempFile = "$env:TEMP\$target"
+        Message "install go from go.dev"
+        Invoke-WebRequest -Uri "https://go.dev$goDownloadUrl" -OutFile $tempFile
+        Start-Process -wait $tempFile
+        Message "install go from go.dev - done"
+    }
+    # nodejs
+    if (Get-Command -Name node -ErrorAction SilentlyContinue) {
+        Message "'node' already exist, skip..."
+    }
+    else {
+        $nodeUrl1 = "https://nodejs.org/en/download/"
+        $nodeResponse1 = Invoke-WebRequest -Uri $nodeUrl1 -Method 'GET'
+        $nodeUrl2 = $nodeResponse1.Links | where { $_.outerHTML -like "*node*" -and $_.outerHTML -like "*x64.msi*" } | Select-Object -first 1
+        $nodeDownloadUrl = $nodeUrl2.href
+        $parts = $goDownloadUrl.Split("/")
+        $target = $parts[ $parts.Length - 1 ]
+        $tempFile = "$env:TEMP\$target"
+        Message "install node from nodejs.org"
+        Invoke-WebRequest -Uri $target -OutFile $tempFile
+        Start-Process -wait $tempFile
+        Message "install node from nodejs.org - done"
     }
     # universal-ctags
     if (Get-Command -Name ctags -ErrorAction SilentlyContinue) {
