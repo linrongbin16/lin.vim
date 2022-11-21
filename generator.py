@@ -317,7 +317,9 @@ class CocGlobalExtensionForSettingsStmt(Expr):
         disable_sh=IS_WINDOWS,
         disable_powershell=not IS_WINDOWS,
     ) -> None:
-        self.comment = TrippleQuotesCommentExpr(LiteralExpr("---- Coc global extensions ----"))
+        self.comment = TrippleQuotesCommentExpr(
+            LiteralExpr("---- Coc global extensions ----")
+        )
         extensions = [
             "coc-yank",
             "coc-lists",
@@ -449,6 +451,7 @@ class PluginTag(enum.Enum):
     HIGHLIGHT = 2
     LANGUAGE = 3
     EDITING = 4
+    OPTIMIZATION=5
 
 
 class PluginClauseKind(enum.Enum):
@@ -905,6 +908,17 @@ PLUGIN_CONTEXTS = [
         top_clause=PluginClause.make_single_comment("Other"),
     ),
     PluginContext("tpope", "vim-surround", tag=PluginTag.EDITING),
+    PluginContext(
+        "nathom",
+        "filetype.nvim",
+        top_clause=[
+            PluginClause.make_paragraph(),
+            PluginClause.make_tripple_comment("---- Optimization ----"),
+            PluginClause.make_if_has("nvim"),
+        ],
+        bottom_clause=[PluginClause.make_endif()],
+        tag=PluginTag.OPTIMIZATION
+    ),
 ]
 
 
