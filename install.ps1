@@ -60,7 +60,17 @@ function TryBackup([string]$src) {
 function GithubLatestReleaseTag([string]$org, [string]$repo) {
     $uri = "https://github.com/$org/$repo/releases/latest"
     $response = Invoke-WebRequest -Uri $uri -Method 'GET'
-    return $response.Links.Href | where { $_ -Match "https://github.com/$org/$repo/releases/tag" } | ForEach-Object { $parts = $_.Split("/"); $parts[$parts.Length - 1] }
+    return $response.Links.Href | where { $_ -like "*$org/$repo/releases/tag*" } | ForEach-Object { $parts = $_.Split("/"); $parts[$parts.Length - 1] } | Select-Object -first 1
+}
+
+function GithubInstaller([string]$org, [string]$repo, [string]$tag, [string]$target) {
+    $tempFile = "$env:TEMP\$target"
+    Message "download '$target' from github.com"
+    Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$target" -OutFile $tempFile
+    Message "download '$target' from github.com - done"
+    Message "install '$tempFile'"
+    Start-Process -wait $tempFile
+    Message "install '$tempFile' - done"
 }
 
 function PlatformDependency() {
@@ -73,14 +83,42 @@ function PlatformDependency() {
         $repo = "vim-win32-installer"
         $tag = GithubLatestReleaseTag -org $org -repo $repo
         $version = $tag.Split("v")[1]
-        $source = "gvim_${version}_x64.exe"
-        $target = "$env:TEMP\$source"
-        Message "download '$source' from github.com"
-        Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$source" -OutFile $target
-        Message "download '$source' from github.com - done"
-        Message "install '$target'"
-        Invoke-Item $target
-        Message "install '$target' - done"
+        $target = "gvim_${version}_x64.exe"
+        GithubInstaller -org $org -repo $repo -tag $tag -target $target
+    }
+    # neovim
+    if (Get-Command -Name nvim -ErrorAction SilentlyContinue) {
+        Message "'nvim' already exist, skip..."
+    }
+    else {
+        $org = "neovim"
+        $repo = "neovim"
+        $tag = GithubLatestReleaseTag -org $org -repo $repo
+        $target = "nvim-win64.msi"
+        GithubInstaller -org $org -repo $repo -tag $tag -target $target
+    }
+    # cmake
+    if (Get-Command -Name cmake -ErrorAction SilentlyContinue) {
+        Message "'cmake' already exist, skip..."
+    }
+    else {
+        $org = "Kitware"
+        $repo = "CMake"
+        $tag = GithubLatestReleaseTag -org $org -repo $repo
+        $version = $tag.Split("v")[1]
+        $target = "cmake-${version}-windows-x86_64.msi"
+        GithubInstaller -org $org -repo $repo -tag $tag -target $target
+    }
+    # universal-ctags
+    if (Get-Command -Name ctags -ErrorAction SilentlyContinue) {
+        Message "'ctags' already exist, skip..."
+    }
+    else {
+        $org = "universal-ctags"
+        $repo = "ctags-win32"
+        $tag = GithubLatestReleaseTag -org $org -repo $repo
+        $target = "ctags-${tag}-x64.zip"
+        GithubInstaller -org $org -repo $repo -tag $tag -target $target
     }
 }
 
@@ -104,6 +142,7 @@ function NpmDependency() {
 
 function InstallDependency() {
     Message "install dependencies for windows"
+    PlatformDependency
     RustDependency
     Pip3Dependency
     NpmDependency
@@ -201,27 +240,25 @@ for ($i = 0; $i -lt $argsLength; $i++) {
     }
 }
 
-# Message "install with $MODE_NAME mode"
-#
-# if ($OPT_BASIC) {
-#     InstallBasic
-# }
-# else {
-#     InstallDependency
-#     Message "install configurations for vim"
-#
-#     python3 $VIM_HOME\generator.py $args
-#     if ($LastExitCode -ne 0) {
-#         exit 1
-#     }
-#     if (-not $OPT_DISABLE_VIM) {
-#         cmd /c gvim -E -c "PlugInstall" -c "qall" /wait
-#     }
-#     if (-not $OPT_DISABLE_NEOVIM) {
-#         cmd /c nvim -E -c "PlugInstall" -c "qall" /wait
-#     }
-# }
-#
-# Message "install with $MODE_NAME mode - done"
+Message "install with $MODE_NAME mode"
 
-PlatformDependency
+if ($OPT_BASIC) {
+    InstallBasic
+}
+else {
+    InstallDependency
+    Message "install configurations for vim"
+
+    python3 $VIM_HOME\generator.py $args
+    if ($LastExitCode -ne 0) {
+        exit 1
+    }
+    if (-not $OPT_DISABLE_VIM) {
+        cmd /c gvim -E -c "PlugInstall" -c "qall" /wait
+    }
+    if (-not $OPT_DISABLE_NEOVIM) {
+        cmd /c nvim -E -c "PlugInstall" -c "qall" /wait
+    }
+}
+
+Message "install with $MODE_NAME mode - done"
