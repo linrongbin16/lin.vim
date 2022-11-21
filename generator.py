@@ -913,7 +913,7 @@ PLUGIN_CONTEXTS = [
         "filetype.nvim",
         top_clause=[
             PluginClause.make_paragraph(),
-            PluginClause.make_tripple_comment("---- Optimization ----"),
+            PluginClause.make_tripple_comment("---- Performance ----"),
             PluginClause.make_if_has("nvim"),
         ],
         bottom_clause=[PluginClause.make_endif()],
