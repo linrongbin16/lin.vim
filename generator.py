@@ -317,7 +317,7 @@ class CocGlobalExtensionForSettingsStmt(Expr):
         disable_sh=IS_WINDOWS,
         disable_powershell=not IS_WINDOWS,
     ) -> None:
-        self.comment = TrippleQuotesCommentExpr(LiteralExpr("Coc global extensions"))
+        self.comment = TrippleQuotesCommentExpr(LiteralExpr("---- Coc global extensions ----"))
         extensions = [
             "coc-yank",
             "coc-lists",
@@ -356,7 +356,7 @@ let g:coc_global_extensions = [{', '.join([e.render() for e in self.extensions_e
 
 class DefineColorsForSettingsStmt(Expr):
     def __init__(self) -> None:
-        self.comment = TrippleQuotesCommentExpr(LiteralExpr("Color schemes"))
+        self.comment = TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))
 
     def render(self):
         return f"""
@@ -397,7 +397,7 @@ class AddColorForSettingsExpr(Expr):
 
 class SourceColorSettingsForSettingsStmt(Expr):
     def __init__(self) -> None:
-        self.comment = TrippleQuotesCommentExpr(LiteralExpr("Color schemes"))
+        self.comment = TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))
 
     def render(self):
         return f"""
@@ -422,7 +422,7 @@ class StaticColorForSettingsStmt(Expr):
 class RandomColorForSettingsStmt(Expr):
     def __init__(self):
         self.comment_expr = TrippleQuotesCommentExpr(
-            LiteralExpr("Random color scheme on startup")
+            LiteralExpr("---- Random color scheme on startup ----")
         )
         self.call_expr = CallExpr(
             FunctionInvokeExpr(LiteralExpr("NextRandomColorScheme"))
