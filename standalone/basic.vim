@@ -40,8 +40,7 @@ set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4
 
 " plugin
 filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " syntax
 syntax on
