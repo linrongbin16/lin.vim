@@ -945,7 +945,6 @@ class Render(Indentable):
         vimrc_stmts.append(SourceForVimrcStmt("plugins.vim"))
         vimrc_stmts.append(SourceForVimrcStmt("standalone/basic.vim"))
         vimrc_stmts.append(SourceForVimrcStmt("standalone/filetype.vim"))
-        vimrc_stmts.append(SourceForVimrcStmt("standalone/color.vim"))
         if self.disable_ctrl_keys:
             vimrc_stmts.append(
                 Stmt(
