@@ -55,7 +55,34 @@ function TryBackup([string]$src) {
 #     }
 # }
 
-# third party dependency
+# dependency
+
+function GithubLatestReleaseTag([string]$org, [string]$repo) {
+    $uri = "https://github.com/$org/$repo/releases/latest"
+    $response = Invoke-WebRequest -Uri $uri -Method 'GET'
+    return $response.Links.Href | where { $_ -Match "https://github.com/$org/$repo/releases/tag" } | ForEach-Object { $parts = $_.Split("/"); $parts[$parts.Length - 1] }
+}
+
+function PlatformDependency() {
+    # vim
+    if (Get-Command -Name gvim -ErrorAction SilentlyContinue) {
+        Message "'gvim' already exist, skip..."
+    }
+    else {
+        $org = "vim"
+        $repo = "vim-win32-installer"
+        $tag = GithubLatestReleaseTag -org $org -repo $repo
+        $version = $tag.Split("v")[1]
+        $source = "gvim_${version}_x64.exe"
+        $target = "$env:TEMP\$source"
+        Message "download '$source' from github.com"
+        Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$source" -OutFile $target
+        Message "download '$source' from github.com - done"
+        Message "install '$target'"
+        Invoke-Item $target
+        Message "install '$target' - done"
+    }
+}
 
 function RustDependency() {
     Message "install modern rust commands with cargo"
@@ -174,25 +201,27 @@ for ($i = 0; $i -lt $argsLength; $i++) {
     }
 }
 
-Message "install with $MODE_NAME mode"
+# Message "install with $MODE_NAME mode"
+#
+# if ($OPT_BASIC) {
+#     InstallBasic
+# }
+# else {
+#     InstallDependency
+#     Message "install configurations for vim"
+#
+#     python3 $VIM_HOME\generator.py $args
+#     if ($LastExitCode -ne 0) {
+#         exit 1
+#     }
+#     if (-not $OPT_DISABLE_VIM) {
+#         cmd /c gvim -E -c "PlugInstall" -c "qall" /wait
+#     }
+#     if (-not $OPT_DISABLE_NEOVIM) {
+#         cmd /c nvim -E -c "PlugInstall" -c "qall" /wait
+#     }
+# }
+#
+# Message "install with $MODE_NAME mode - done"
 
-if ($OPT_BASIC) {
-    InstallBasic
-}
-else {
-    InstallDependency
-    Message "install configurations for vim"
-
-    python3 $VIM_HOME\generator.py $args
-    if ($LastExitCode -ne 0) {
-        exit 1
-    }
-    if (-not $OPT_DISABLE_VIM) {
-        cmd /c gvim -E -c "PlugInstall" -c "qall" /wait
-    }
-    if (-not $OPT_DISABLE_NEOVIM) {
-        cmd /c nvim -E -c "PlugInstall" -c "qall" /wait
-    }
-}
-
-Message "install with $MODE_NAME mode - done"
+PlatformDependency
