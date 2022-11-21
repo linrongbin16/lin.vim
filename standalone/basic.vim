@@ -45,6 +45,7 @@ filetype indent on
 
 " syntax
 syntax on
+syntax enable
 
 " complete
 set completeopt=menu,menuone,preview
