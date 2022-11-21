@@ -370,14 +370,18 @@ class DefineRandomColorFunctionsForSettingsStmt(Expr):
     def render(self):
         return f"""
 function NextRandomColorScheme()
-    let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
-    execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
+    if len({LIN_VIM_COLORSCHEMES}) > 0
+        let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
+        execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
+    endif
 endfunction
 
 function NextRandomColorSchemeSync()
-    let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
-    execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
-    execute 'syntax sync fromstart'
+    if len({LIN_VIM_COLORSCHEMES}) > 0
+        let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
+        execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
+        execute 'syntax sync fromstart'
+    endif
 endfunction
 """
 
