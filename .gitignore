@@ -10,6 +10,7 @@ plugged
 # user settings
 plugins.vim
 settings.vim
+color-settings.vim
 coc-settings.json
 vimrc.vim
 

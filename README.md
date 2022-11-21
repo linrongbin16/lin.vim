@@ -32,7 +32,6 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
     - [Other Search](#other-search)
     - [Coc.nvim Search](#cocnvim-search)
   - [Editing Enhancement](#editing-enhancement)
-    - [Enhanced Copy Paste](#enhanced-copy-paste)
     - [Easy Comment](#easy-comment)
     - [Cursor Motion](#cursor-motion)
     - [Word Movement](#word-movement)
@@ -457,15 +456,6 @@ Key mappings are configured with prefix char `c` after `<Space>`.
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
 ## Editing Enhancement
-
-#### Enhanced Copy Paste
-
-When copy/paste without system clipboard support, you could first write content to a cache, then paste cache to another vim instance:
-
-- `<Leader>y` [**V**] - Copy visual selected text to `~/.vim/.copypaste`.
-- `<Leader>p` [**N**] - Paste text saved from `~/.vim/.copypaste`.
-
-You could configure these key mappings in **_~/.vim/standalone/copypaste.vim_**.
 
 #### Easy Comment
 
