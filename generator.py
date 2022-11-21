@@ -919,6 +919,15 @@ PLUGIN_CONTEXTS = [
         bottom_clause=[PluginClause.make_endif()],
         tag=PluginTag.OPTIMIZATION
     ),
+    PluginContext(
+        "lewis6991",
+        "impatient.nvim",
+        top_clause=[
+            PluginClause.make_if_has("nvim-0.7"),
+        ],
+        bottom_clause=[PluginClause.make_endif()],
+        tag=PluginTag.OPTIMIZATION
+    ),
 ]
 
 
