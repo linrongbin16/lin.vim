@@ -361,6 +361,7 @@ class DefineColorsForSettingsStmt(Expr):
     def render(self):
         return f"""
 {self.comment.render()}
+
 let {LIN_VIM_COLORSCHEMES}=[]
 """
 
@@ -388,6 +389,17 @@ class AddColorForSettingsExpr(Expr):
 
     def render(self):
         return self.add_expr.render()
+
+
+class SourceColorSettingsForSettingsStmt(Expr):
+    def __init__(self) -> None:
+        self.comment = TrippleQuotesCommentExpr(LiteralExpr("Color schemes"))
+
+    def render(self):
+        return f"""
+{self.comment.render()}
+source $HOME/.vim/color-settings.vim
+"""
 
 
 class StaticColorForSettingsStmt(Expr):
@@ -937,10 +949,7 @@ class Render(Indentable):
     def render_vimrc_stmts(self, core_vimrcs):
         vimrc_stmts = []
         vimrc_stmts.append(
-            Stmt(
-                TrippleQuotesCommentExpr(LiteralExpr("---- Vimrc ----")),
-                IndentExpr(self.indent),
-            )
+            Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Vimrc ----")))
         )
         vimrc_stmts.append(SourceForVimrcStmt("plugins.vim"))
         vimrc_stmts.append(SourceForVimrcStmt("standalone/basic.vim"))
@@ -950,8 +959,7 @@ class Render(Indentable):
                 Stmt(
                     SingleQuoteCommentExpr(
                         LiteralExpr("Windows CTRL+{a,s,x,c,v} keys disabled")
-                    ),
-                    IndentExpr(self.indent),
+                    )
                 )
             )
         else:
@@ -962,10 +970,7 @@ class Render(Indentable):
 
         vimrc_stmts.append(EmptyStmt())
         vimrc_stmts.append(
-            Stmt(
-                TrippleQuotesCommentExpr(LiteralExpr("---- Custom settings ----")),
-                IndentExpr(self.indent),
-            )
+            Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Custom settings ----")))
         )
         vimrc_stmts.append(SourceForVimrcStmt("settings.vim"))
         return vimrc_stmts
@@ -980,7 +985,7 @@ class Render(Indentable):
                 disable_powershell=not IS_WINDOWS or self.disable_language,
             )
         )
-        setting_stmts.append(SourceForVimrcStmt("color-settings.vim"))
+        setting_stmts.append(SourceColorSettingsForSettingsStmt())
         if self.static_color:
             setting_stmts.append(
                 StaticColorForSettingsStmt(LiteralExpr(self.static_color))
