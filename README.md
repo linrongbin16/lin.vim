@@ -420,7 +420,7 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 #### Text Search
 
-- `<Space>gr` **🇳** - Search text by `:FzfRg`.
+- `<Space>gr` **🇳** - Search text by self-defined command `:LinVimFzfRg`.
 - `<Space>gw` **🇳** - Search word text under cursor by self-defined command `:LinVimFzfRgCWord`.
 - `<Space>l` **🇳** - Search lines on opened buffers by `:FzfLines`.
 - `<Space>t` **🇳** - Search tags by `:FzfTags`.
