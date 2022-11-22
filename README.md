@@ -53,7 +53,7 @@ Solve below issues:
 
 - Time-costing vim configurations - All behaviors follow community's best practice and most popular editors(just like [vscode](https://code.visualstudio.com/)).
 - Lack of IDE-like editing features - [Coc.nvim](https://github.com/neoclide/coc.nvim) and a bunch of language servers and extensions are embeded.
-- Don't know how to choose/configure/manage vim plugins: All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
+- Don't know how to choose/configure/manage vim plugins - All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
 - Duplicate installation on different OS and machines - All done by one-line command(not on Windows for now), all installations behave the same(the only difference is use Command-Key on macOS instead of Alt-Key on Windows/Linux).
 - Naive UI - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
 
@@ -128,77 +128,68 @@ Before installation, please make sure access of below sites are available:
 
 ## UNIX/Linux/MacOS
 
-> `install.sh` will automatically install below softwares with system package managers:
->
-> - [git](https://git-scm.com/).
-> - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
-> - [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
-> - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
-> - [node.js](https://nodejs.org/) and some npm packages.
-> - [golang](https://go.dev/).
-> - [rust](https://www.rust-lang.org/) and some modern commands.
-> - [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
-> - [universal-ctags](https://github.com/universal-ctags/ctags).
-> - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
->
-> For now supported platforms are:
->
-> - Debian/ubuntu based linux: use `apt` as software installer.
-> - Fedora/centos based linux: use `dnf` as software installer.
-> - Archlinux based linux: use `pacman` as software installer.
-> - MacOS: use `brew` as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
->
-> Other \*NIX systems such as gentoo, bsd are not supported yet.
-
 ```bash
     $ git clone https://github.com/linrongbin16/lin.vim ~/.vim
     $ cd ~/.vim
     $ ./install.sh
 ```
 
+`install.sh` will automatically install below dependencies with system package manager:
+
+- [git](https://git-scm.com/).
+- [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
+- [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
+- [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
+- [node.js](https://nodejs.org/) and some npm packages.
+- [golang](https://go.dev/).
+- [rust](https://www.rust-lang.org/) and some modern commands.
+- [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
+- [universal-ctags](https://github.com/universal-ctags/ctags).
+- [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
+
+For now supported platforms are:
+
+- Debian/ubuntu based linux: use `apt` as software installer.
+- Fedora/centos based linux: use `dnf` as software installer.
+- Archlinux based linux: use `pacman` as software installer.
+- MacOS: use `brew` as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
+
+Other \*NIX systems such as gentoo, bsd are not supported yet.
+
 ## Windows
 
-> The goal of installation on windows is to install native executable file, no [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) nor [MYSY2](https://www.msys2.org/) for below reasons:
->
-> - Native executable file has better performance, WSL (actually a virtual machine) is quite slow and heavy.
-> - [Git for Windows](https://git-scm.com) already contains MYSY2 and provide Unix/Linux builtin commands, we could leverage that.
-
-1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components checked:
+1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components:
 
    - .NET Desktop Development
-   - Visual C++ Desktop Development (Desktop development with C++)
-   - Common Windows Platform Development (Universal Windows Platform development)
+   - Desktop development with C++
+   - Universal Windows Platform development
 
 ![install-windows-visual-studio.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-visual-studio.png)
 
-2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with especially below 3 options checked:
+2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with below 3 options:
 
-   1. In the **Select Components** step, check **Associate .sh files to be run with Bash**.
-   2. In the **Adjusting your PATH environment** step, choose **Use Git and optional Unix tools from the Command Prompt**.
-   3. In the **Configuring the terminal emulator to use with Git Bash** step, choose **Use Windows's default console window**.
+   - In the **Select Components** step, select **Associate .sh files to be run with Bash**.
+   - In the **Adjusting your PATH environment** step, select **Use Git and optional Unix tools from the Command Prompt**.
+   - In the **Configuring the terminal emulator to use with Git Bash** step, select **Use Windows's default console window**. This will add `git.exe` and linux builtin commands (such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe`, etc) to `$env:Path`, provide MSYS linux environment.
 
 ![install-windows-git-step1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step1.png)
 ![install-windows-git-step2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step2.png)
 ![install-windows-git-step3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step3.png)
 
-This will add both `git.exe` and linux builtin commands (such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe`, etc) in `$env:Path`, turn command prompt and powershell to a linux-like shell, thus help (neo)vim plugins running correctly.
+3. Install other 64-bit dependencies:
 
-3. Install other dependencies (x64 is preferred):
-
-   - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases): add `gvim.exe` to `$env:Path`
-   - [neovim](https://github.com/neovim/neovim/releases): add `nvim.exe` to `$env:Path`
-   - [cmake](https://cmake.org/download/): add `cmake.exe` to `$env:Path`
-   - [make-for-win32](http://gnuwin32.sourceforge.net/packages/make.htm): add `make.exe` to `$env:Path`
-   - [python3](https://www.python.org/downloads/): since python3 installer don't provide `python3.exe` and `pip3.exe`, manually copy `python.exe` as `python3.exe`, copy `pip.exe` as `pip3.exe`, then add to `$env:Path`.
-   - [rust](https://www.rust-lang.org/tools/install): add `rustc.exe`, `cargo.exe` to `$env:Path`
-   - [golang](https://go.dev/dl/): add `go.exe` to `$env:Path`
-   - [nodejs](https://nodejs.org/en/download/): add `node.exe`, `npm.exe` to `$env:Path`
-   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases): add `ctags.exe`, `readtags.exe` to `$env:Path`
-
-Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
+   - [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases/latest) (`gvim_{x.y.z}_x64.exe`): add `gvim.exe` to `$env:Path`
+   - [neovim](https://github.com/neovim/neovim/releases/latest) (`nvim-win64.msi`): add `nvim.exe` to `$env:Path`
+   - [cmake](https://github.com/Kitware/CMake/releases/latest) (`cmake-{x.y.z}-windows-x86_64.msi`): add `cmake.exe` to `$env:Path`
+   - [make-for-win32](https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download) (`make-{x.y}-bin.zip`): add `make.exe`to`$env:Path`
+   - [python3](https://www.python.org/downloads/windows/) (`python-{x.y.z}-amd64.exe`): manually copy `python.exe` to `python3.exe`, then add `python3.exe` to `$env:Path` (Since windows python3 installer only provide `python.exe`).
+   - [rust](https://www.rust-lang.org/tools/install) (`rustup-init.exe (64-bit)`): add `rustc.exe`, `cargo.exe` to `$env:Path`
+   - [golang](https://go.dev/dl/) (`go{x.y.z}.windows-amd64.msi`): add `go.exe` to `$env:Path`
+   - [nodejs](https://nodejs.org/en/download/) (`node-v{x.y.z}-x64.msi`): add `node.exe`, `npm.exe` to `$env:Path`
+   - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases) (`ctags-p{x.y.d.z}-x64.zip`): add `ctags.exe`, `readtags.exe` to `$env:Path`
 
 4. Install [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
-5. Finally run below commands as administrator in powershell:
+5. Run powershell commands as administrator:
 
 ```powershell
     $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
@@ -206,21 +197,21 @@ Use package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](h
     $ .\install.ps1
 ```
 
-#### Notice
+Notice:
 
-1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` provided by [Git for Windows](https://git-scm.com/). Make sure git environment path is ahead of `C:\Windows\System32` (`wsl.exe` could connect to WSL as well, so no need to worry about losing `bash.exe`), so git bash will be first detected on `$env:Path`.
+1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` from [Git for Windows](https://git-scm.com/). Make sure git path is ahead of `C:\Windows\System32`, so git bash will be first detected (`wsl.exe` could connect to WSL as well so no need to worry about losing `C:\Windows\System32\bash.exe`).
 
 ![install-windows-notice-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-git-path.png)
 
-2. Python3 version must be compatible with gvim's libpython3.so version, or it will not been loaded. Please use `gvim --version` to find its libpython3.so version.
-
-![install-windows-notice-python3-version-compatible.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-python3-version-compatible.png)
-
-3. Don't use old-version `vim.exe` provided by [Git for Windows](https://git-scm.com/), use `gvim.exe` provided by [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases). Or you could move `gvim.exe` environment path ahead of [Git for Windows](https://git-scm.com/), this could make sure `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) be first detected on `$env:Path`.
+2. [Git for Windows](https://git-scm.com/) provide an old-version `vim.exe`, make sure `gvim.exe` (from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases)) path is ahead of git, so `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) will be first detected. You could also only use `gvim.exe` to avoid the old-version vim.
 
 ![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
 
-4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python provide by windows application store. Please see: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
+3. Python3 version must be compatible with gvim's libpython3.lib, or python3 will not be loaded correctly. Please use `gvim --version` to find its libpython3.lib version.
+
+![install-windows-notice-python3-version-compatible.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-python3-version-compatible.png)
+
+4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python from windows store. See: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
 
 ## More Options
 
@@ -230,17 +221,24 @@ The `install.sh` (and `install.ps1`) provide 3 installation modes:
 - Limit mode: for low performance devices (such as old PC). With `./install.sh --limit`, it disable extra highlights, colorschemes, language support and editing enhancements.
 - Basic mode: for extremely restricted environment (such as production environment), which has limited network access or user authentication. With `./install.sh --basic`, it only install pure vim configurations, without any third party softwares or vim plugins.
 
-And many options:
+And more options:
 
-- Static colorscheme: `--static-color=TEXT` make colorscheme static, instead of random selection on startup. For example: `--static-color=darkblue`.
-- Disable colors: `--disable-color` disable colorscheme, and random selection on startup.
-- Disable highlights: `--disable-highlight` disable extra highlights. Such as RGB and same word mark under cursor, etc.
-- Disable language support: `--disable-language` disable language support. Such as auto complete and language servers, etc.
-- Disable editing enhancement: `--disable-editing` disable editing enhancements. Such as easy comment, cursor motion, etc.
-- Disable windows ctrl keys: `--disable-ctrl-keys` disable windows behaviour. Such as ctrl+{a,s,x,c,v} keys, etc.
-- Disable vim plugins: `--disable-plugin=TEXT` disable vim plugins from github specified as 'organization/repository', this ption could be used multiple times. For example: `--disable-plugin=RRethy/vim-hexokinase --disable-plugin=alvan/vim-closetag`.
-- No .vimrc for vim: `--disable-vim` don't install .vimrc file for vim, use neovim only.
-- No nvim/init.vim for neovim: `--disable-neovim` don't install nvim folder and nvim/init.vim file for neovim, use vim only.
+- `--static-color=TEXT`: make colorscheme static, instead of random selection on startup. For example: `--static-color=darkblue`.
+- `--disable-color`: disable extra colorschemes, and random selection on startup.
+- `--disable-highlight`: disable extra highlights. Such as RGB and same word mark under cursor, etc.
+- `--disable-language`: disable language support. Such as auto complete and language servers, etc.
+- `--disable-editing`: disable editing enhancements. Such as easy comment, cursor motion, etc.
+- `--disable-ctrl-keys`: disable windows behaviour, such as ctrl+{a,s,x,c,v} keys, etc.
+- `--disable-plugin=TEXT`: disable specific vim plugin in format 'organization/repository', this is a multiple option. For example: `--disable-plugin=RRethy/vim-hexokinase --disable-plugin=alvan/vim-closetag`.
+- `--disable-vim`: don't install .vimrc file for vim, could use neovim only.
+- `--disable-neovim`: don't install nvim/init.vim file for neovim, could use vim only.
+
+Windows `install.ps1` especially provide two more options:
+
+- `--depends=TEXT`: download and install the specific third party dependency in 3rd step of [windows installation](#windows) (if not found). Use `--depends=all` will run for all these dependencies. For example: `--depends=vim-win32-installer`, `--depends=universal-ctags`.
+- `--nerdfont=TEXT`: download and install the specific [nerd font](https://github.com/ryanoasis/nerd-fonts/releases/latest). For example: `--nerdfont=Hack`, `--nerdfont=SourceCodePro`.
+
+> Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
 Notice:
 
@@ -255,7 +253,7 @@ In this section, vim editing mode are specified with:
 - [**V**] - Visual mode.
 - [**I**] - Insert mode.
 
-Meta-key(`M`, or alt-key `A`) on windows/linux and command-key(`D`) on macOS are collectively refered to meta-key, specified with:
+Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively refered as:
 
 - `M`
 
@@ -298,9 +296,9 @@ Create/rename/delete:
 
 Copy/paste/cut:
 
-- `C` [**N**] - Copy file/directory into an internal clipboard, just like in Windows ctrl-c.
-- `X` [**N**] - Cut file/directory into an internal clipboard, just like in Windows ctrl-x.
-- `V` [**N**] - Paste file/directory from an internal clipboard to current directory, just like in Windows ctrl-v.
+- `C` [**N**] - Copy file/directory into an internal clipboard, just like in Windows ctrl+c.
+- `X` [**N**] - Cut file/directory into an internal clipboard, just like in Windows ctrl+x.
+- `V` [**N**] - Paste file/directory from an internal clipboard to current directory, just like in Windows ctrl+v.
 
 Adjust explorer width:
 
