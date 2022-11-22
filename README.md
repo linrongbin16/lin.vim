@@ -117,15 +117,6 @@ Solve below issues:
 
 # Installation
 
-Before installation, please make sure access of below sites are available:
-
-- [github.com](https://github.com/).
-- [raw.githubusercontent.com](https://raw.githubusercontent.com/).
-- [www.rust-lang.org](https://www.rust-lang.org/).
-- [crates.io](https://crates.io/).
-- [go.dev](https://go.dev/).
-- [storage.googleapis.com](https://storage.googleapis.com).
-
 ## UNIX/Linux/MacOS
 
 ```bash
