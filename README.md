@@ -64,9 +64,9 @@ Solve below issues:
 
 ![edit-markdown.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/edit-markdown.png)
 
-#### Code complete for C++
+#### Code complete for Python3
 
-![cplusplus-code-complete.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/cplusplus-code-complete.png)
+![python3-complete.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/python-complete.png)
 
 #### Cursor movement
 
@@ -269,8 +269,8 @@ Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively
 
 - `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
 - `F2` **🇳** - Toggle undo tree.
-- `F3` **🇳** - Toggle vista outline/tags, see [Code complete for C++](#code-complete-for-c).
-- `F4` **🇳** - Switch between C/C++ header and source files.
+- `F3` **🇳** - Toggle vista outline/tags, see [Code complete for Python3](#code-complete-for-python).
+- `F4` **🇳** - Switch between C/C++ headers and sources.
 - `F7` **🇳** - Toggle git blame info on current line.
 - `F8` **🇳** - Open markdown preview.
 - `F9` **🇳** - Random select next colorscheme, see [Screenshots](#screenshots).
@@ -412,10 +412,7 @@ By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/release
 
 - `]c` **🇳** - Go to next(down) git chunk in current buffer.
 - `[c` **🇳** - Go to previous(up) git chunk in current buffer.
-
-_For neovim 0.5+ only_:
-
-- `<Leader>gb` **🇳** - Toggle git blame info for current line.
+- `<Leader>gb` **🇳** - Toggle git blame info for current line (for neovim 0.5+).
 
 ### Search
 
