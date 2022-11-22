@@ -265,6 +265,8 @@ Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively
 
 - `M`
 
+try emoji :N: :V: :I:.
+
 ## Hot Key
 
 - `F1` [**N**] - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
