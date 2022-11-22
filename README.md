@@ -265,7 +265,7 @@ Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively
 
 - `M`
 
-try emoji :N: :V: :I:.
+try emoji :n: :v: :i: :a: :b:
 
 ## Hot Key
 
