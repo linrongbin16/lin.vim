@@ -134,7 +134,7 @@ Solve below issues:
 - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
 - [node.js](https://nodejs.org/) and some npm packages.
 - [golang](https://go.dev/).
-- [rust](https://www.rust-lang.org/) and some modern commands.
+- [rust](https://www.rust-lang.org/) and some modern commands: [fd](https://github.com/sharkdp/fd), [rg](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat), etc.
 - [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
 - [universal-ctags](https://github.com/universal-ctags/ctags).
 - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
