@@ -226,8 +226,8 @@ And more options:
 
 Windows `install.ps1` especially provide two more options:
 
-- `--depends=TEXT`: download and install the specific third party dependency in 3rd step of [windows installation](#windows) (if not found). Use `--depends=all` will run for all these dependencies. For example: `--depends=vim-win32-installer`, `--depends=universal-ctags`.
-- `--nerdfont=TEXT`: download and install the specific [nerd font](https://github.com/ryanoasis/nerd-fonts/releases/latest). For example: `--nerdfont=Hack`, `--nerdfont=SourceCodePro`.
+- `--depends=TEXT`: download and install the specific third party dependency in 3rd step of [windows installation](#windows). Use `--depends=all` will run for all these dependencies. For example: `--depends=vim`, `--depends=universal-ctags`.
+- `--nerdfont=TEXT`: download the specific [nerd font](https://github.com/ryanoasis/nerd-fonts/releases/latest) for you. For example: `--nerdfont=Hack`, `--nerdfont=SourceCodePro`.
 
 > Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 

@@ -1,5 +1,5 @@
 {
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "diagnostic.level": "warning",
   "inlayHint.enable": false,
   "suggest.minTriggerInputLength": 1,

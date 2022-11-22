@@ -5,13 +5,12 @@ function! s:CheckBackspace() abort
 endfunction
 
 " Use <CR> and <TAB> to confirm suggestion
-inoremap <expr> <CR>
-            \ coc#pum#visible() ? coc#_select_confirm():
-            \ "\<CR>"
+inoremap <silent> <expr> <CR>
+            \ coc#pum#visible() ? coc#_select_confirm(): "\<CR>"
 
 inoremap <silent> <expr> <TAB>
             \ coc#pum#visible() ? coc#_select_confirm():
-            \ <SID>CheckBackspace() ? "\<TAB>" : "\<CR>"
+            \ <SID>CheckBackspace() ? "\<TAB>" : coc#refresh()
 
 " Use <C-f> and <C-b> to navigate snippet position in insert mode
 let g:coc_snippet_next = '<C-f>'
