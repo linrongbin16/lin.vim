@@ -1,6 +1,8 @@
 """ Use fd for fzf file finding, instead of default find
-" let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --exclude ".git" --ignore-file ~/.gitignore'
-let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --no-ignore --exclude ".git"'
+if executable('fd')
+    " let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --exclude ".git" --ignore-file ~/.gitignore'
+    let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --no-ignore --exclude ".git"'
+endif
 
 """ Fzf command prefix
 let g:fzf_command_prefix = 'Fzf'
