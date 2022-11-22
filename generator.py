@@ -193,6 +193,11 @@ class TrippleQuotesCommentExpr(CommentExpr):
         return f'""" {self.expr.render()}'
 
 
+class EmptyCommentExpr(SingleQuoteCommentExpr):
+    def __init__(self):
+        SingleQuoteCommentExpr.__init__(self, LiteralExpr("Empty"))
+
+
 class FunctionInvokeExpr(Expr):
     def __init__(self, func_expr, *arg_exprs) -> None:
         assert isinstance(func_expr, LiteralExpr)
@@ -451,7 +456,7 @@ class PluginTag(enum.Enum):
     HIGHLIGHT = 2
     LANGUAGE = 3
     EDITING = 4
-    OPTIMIZATION=5
+    OPTIMIZATION = 5
 
 
 class PluginClauseKind(enum.Enum):
@@ -534,7 +539,7 @@ PLUGIN_CONTEXTS = [
             PluginClause.make_if_has("nvim"),
         ],
         bottom_clause=[PluginClause.make_endif()],
-        tag=PluginTag.OPTIMIZATION
+        tag=PluginTag.OPTIMIZATION,
     ),
     PluginContext(
         "lewis6991",
@@ -543,7 +548,7 @@ PLUGIN_CONTEXTS = [
             PluginClause.make_if_has("nvim-0.7"),
         ],
         bottom_clause=[PluginClause.make_endif()],
-        tag=PluginTag.OPTIMIZATION
+        tag=PluginTag.OPTIMIZATION,
     ),
     PluginContext(
         "lifepillar",
@@ -962,11 +967,39 @@ class Render(Indentable):
             core_color_settings
         )
         vimrc_stmts = self.render_vimrc_stmts(core_vimrcs)
+
+        # merge empty comment statements
+        plugin_stmts = self.merge_empty_comments(plugin_stmts)
+        setting_stmts = self.merge_empty_comments(setting_stmts)
+        color_setting_stmts = self.merge_empty_comments(color_setting_stmts)
+        vimrc_stmts = self.merge_empty_comments(vimrc_stmts)
+
         plugins_content = "".join([s.render() for s in plugin_stmts])
         settings_content = "".join([s.render() for s in setting_stmts])
         color_settings_content = "".join([s.render() for s in color_setting_stmts])
         vimrc_content = "".join([s.render() for s in vimrc_stmts])
         return plugins_content, settings_content, color_settings_content, vimrc_content
+
+    def merge_empty_comments(self, statements):
+        assert isinstance(statements, list)
+        new_statements = []
+        i = 0
+        while i < len(statements):
+            s = statements[i]
+            new_statements.append(s)
+            i += 1
+            if self.is_empty_comment(s):
+                j = i
+                while j < len(statements):
+                    s2 = statements[j]
+                    if not self.is_empty_comment(s2):
+                        break
+                    j += 1
+                i = j
+        return new_statements
+
+    def is_empty_comment(self, s):
+        return isinstance(s, Stmt) and isinstance(s.expr, EmptyCommentExpr)
 
     # plugins.vim
     def render_plugin_stmts(self, core_plugins):
@@ -1122,10 +1155,7 @@ class Render(Indentable):
                         IndentExpr(self.indent),
                     )
                 )
-                ec = Stmt(
-                    SingleQuoteCommentExpr(LiteralExpr("Empty")),
-                    IndentExpr(self.indent),
-                )
+                ec = Stmt(EmptyCommentExpr(), IndentExpr(self.indent))
                 vimrc_stmts.append(ec)
                 if ctx.tag == PluginTag.COLORSCHEME:
                     color_setting_stmts.append(ec)
@@ -1149,10 +1179,7 @@ class Render(Indentable):
                     )
                 else:
                     vimrc_stmts.append(
-                        Stmt(
-                            SingleQuoteCommentExpr(LiteralExpr("Empty")),
-                            IndentExpr(self.indent),
-                        )
+                        Stmt(EmptyCommentExpr(), IndentExpr(self.indent))
                     )
                 # color settings
                 if ctx.tag == PluginTag.COLORSCHEME:
