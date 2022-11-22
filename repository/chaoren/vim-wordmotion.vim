@@ -1,5 +1,5 @@
 " Disable default key mappings
-g:wordmotion_nomap=1
+let g:wordmotion_nomap=1
 
 " <Leader>w
 nmap <Leader>w <Plug>WordMotion_w
