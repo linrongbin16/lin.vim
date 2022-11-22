@@ -296,7 +296,7 @@ Navigation:
 
 Create/rename/delete:
 
-- `N`/`a` **🇳** - Create new file. Notice `a` is not working on fern.vim, since it's forcely mapped to '<Plug>(fern-action-choice)' instead of '<Plug>(fern-action-new-file)'.
+- `N`/`a` **🇳** - Create new file. Notice `a` is not working on fern.vim, since it's forcely mapped to `<Plug>(fern-action-choice)` instead of `<Plug>(fern-action-new-file)`.
 - `A` **🇳** - Create new directory. Notice nvim-tree.lua need an additional slash `/` (or `\`) after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
 - `m`/`r` **🇳** - Move or rename file/directory.
 - `d` **🇳** - Trash file/directory to system trash-bin, only for windows/macOS.
