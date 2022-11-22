@@ -52,10 +52,10 @@ Aim to be out of box, IDE-like editing experience, high performance, light weigh
 
 Solve below issues:
 
-- Time-costing vim configurations - All behaviors follow community's best practice and most popular editors(just like [vscode](https://code.visualstudio.com/)).
+- Time-costing vim configurations - All behaviors follow community's best practice and most popular editors (just like [vscode](https://code.visualstudio.com/)).
 - Lack of IDE-like editing features - [Coc.nvim](https://github.com/neoclide/coc.nvim) and a bunch of language servers and extensions are embeded.
-- Don't know how to choose/configure/manage vim plugins - All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features(again, just like vscode).
-- Duplicate installation on different OS and machines - All done by one-line command(not on Windows for now), all installations behave the same(the only difference is use Command-Key on macOS instead of Alt-Key on Windows/Linux).
+- Don't know how to choose/configure/manage vim plugins - All plugins are carefully selected and well cooperated for best performance and user experience, cover most modern editor features (again, just like vscode).
+- Duplicate installation on different OS and machines - All done by one-line command (not on Windows for now), all installations behave the same (the only difference is use command-key on macOS instead of alt-key on Windows/Linux).
 - Naive UI - Pretty colorschemes, icons, opened tabs, file explorer, file status integrated.
 
 ## Screenshots
@@ -90,7 +90,7 @@ Solve below issues:
 - Work on multiple OS platforms:
   - Windows.
   - macOS.
-  - Linux(Ubuntu/Debian/Fedora/Manjaro).
+  - Linux (Ubuntu/Debian/Fedora/Manjaro).
 - Support both [vim](https://www.vim.org/) and [neovim](https://neovim.io/), neovim 0.7+ is strongly recommended for best performance and experience.
 - Modern editor UI:
   - File explorer.
@@ -130,7 +130,7 @@ Solve below issues:
 
 - [git](https://git-scm.com/).
 - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
-- [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
+- [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for Linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), Linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
 - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
 - [node.js](https://nodejs.org/) and some npm packages.
 - [golang](https://go.dev/).
@@ -261,7 +261,7 @@ In this section, vim editing mode are specified with:
 - **🇻** - Visual mode.
 - **🇮** - Insert mode.
 
-Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively refered as:
+Meta-key (or alt-key on Windows/Linux) and command-key (on macOS) are collectively refered as:
 
 - `M`
 
@@ -297,7 +297,7 @@ Navigation:
 Create/rename/delete:
 
 - `N`/`a` **🇳** - Create new file. Notice `a` is not working on fern.vim, since it's forcely mapped to '<Plug>(fern-action-choice)' instead of '<Plug>(fern-action-new-file)'.
-- `A` **🇳** - Create new directory. Notice nvim-tree.lua need an additional slash `/`(or `\`) after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
+- `A` **🇳** - Create new directory. Notice nvim-tree.lua need an additional slash `/` (or `\`) after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
 - `m`/`r` **🇳** - Move or rename file/directory.
 - `d` **🇳** - Trash file/directory to system trash-bin, only for windows/macOS.
 - `D` **🇳** - Delete file/directory, usually `rm`.
