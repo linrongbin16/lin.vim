@@ -21,7 +21,7 @@ local function LinVimLuaLineGitStatus()
     if branch == nil or branch == '' then
         return ''
     end
-    if vim.g.gitgutter_enabled == nil or vim.g.gitgutter_enabled ~= 1 then
+    if not vim.fn.exists('*GitGutterGetHunkSummary') then
         return string.format(' %s', branch)
     end
     -- summary = [a, m, r]
