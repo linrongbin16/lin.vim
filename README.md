@@ -500,13 +500,9 @@ Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion) (switc
 So introduce better word motions:
 
 - `<Leader>w`/`<Leader>W` **🇳** - word/WORD forward(right), exclusive.
-- `[count]<Leader>w`/`[count]<Leader>W` **🇳** - _[count]_ words/WORDS forward, exclusive.
+- `<Leader>bb`/`<Leader>B` **🇳** - word/WORD backward(left), exclusive.
 - `<Leader>e`/`<Leader>E` **🇳** - Forward to the end of word/WORD, inclusive.
-- `[count]<Leader>e`/`[count]<Leader>E` **🇳** - Forward to the end of _[count]_ words/WORDS, inclusive.
-- `<Leader>b`/`<Leader>B` **🇳** - word/WORD backward(left), exclusive.
-- `[count]<Leader>b`/`[count]<Leader>B` **🇳** - _[count]_ words/WORDS backward.
 - `<Leader>ge`/`<Leader>gE` **🇳** - Backward to the end of word/WORD, inclusive.
-- `[count]<Leader>ge`/`[count]<Leader>gE` **🇳** - Backward to the end of _[count]_ words/WORDS, inclusive.
 
 Support by [vim-wordmotion](https://github.com/chaoren/vim-wordmotion).
 
