@@ -11,6 +11,7 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
   - [UNIX/Linux/MacOS](#unixlinuxmacos)
   - [Windows](#windows)
   - [More Options](#more-options)
+  - [Upgrade](#upgrade)
 - [User Guide](#user-guide)
   - [Hot Key](#hot-key)
   - [UI](#ui)
@@ -235,6 +236,22 @@ Notice:
 
 - In full mode, you could use '--disable-xxx' options to disable some specific features.
 - Option '--disable-highlight --disable-color --disable-language --disable-editing' is equivalent to '--limit'.
+
+## Upgrade
+
+For this distribution, please re-install by:
+
+```bash
+    $ cd ~/.vim
+    $ git pull origin master
+    $ ./install.sh
+```
+
+For vim plugins, please open (neo)vim and update by:
+
+```vim
+    :PlugUpdate!
+```
 
 # User Guide
 
