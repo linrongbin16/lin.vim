@@ -239,7 +239,7 @@ Notice:
 
 ## Upgrade
 
-For this distribution, please re-install by:
+For distribution, please re-install by:
 
 ```bash
     $ cd ~/.vim
