@@ -257,9 +257,9 @@ For vim plugins, please open (neo)vim and update by:
 
 In this section, vim editing mode are specified with:
 
-- [**N**] - Normal mode.
-- [**V**] - Visual mode.
-- [**I**] - Insert mode.
+- **🇳** - Normal mode.
+- **🇻** - Visual mode.
+- **🇮** - Insert mode.
 
 Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively refered as:
 
@@ -267,14 +267,14 @@ Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively
 
 ## Hot Key
 
-- `F1` [**N**] - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
-- `F2` [**N**] - Toggle undo tree.
-- `F3` [**N**] - Toggle vista outline/tags, see [Code complete for C++](#code-complete-for-c).
-- `F4` [**N**] - Switch between C/C++ header and source files.
-- `F7` [**N**] - Toggle git blame info on current line.
-- `F8` [**N**] - Open markdown preview.
-- `F9` [**N**] - Random select next colorscheme, see [Screenshots](#screenshots).
-- `F10` [**N**] - Toggle buffers explorer.
+- `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
+- `F2` **🇳** - Toggle undo tree.
+- `F3` **🇳** - Toggle vista outline/tags, see [Code complete for C++](#code-complete-for-c).
+- `F4` **🇳** - Switch between C/C++ header and source files.
+- `F7` **🇳** - Toggle git blame info on current line.
+- `F8` **🇳** - Open markdown preview.
+- `F9` **🇳** - Random select next colorscheme, see [Screenshots](#screenshots).
+- `F10` **🇳** - Toggle buffers explorer.
 
 You could configure these keys in **_~/.vim/settings.vim_**.
 
@@ -286,80 +286,80 @@ File explorer is support by [fern.vim](https://github.com/lambdalisue/fern.vim) 
 
 Navigation:
 
-- `h` [**N**] - Collapse directory.
-- `l` [**N**] - Expand directory or open file.
-- `<CR>` [**N**] - Cd into directory.
-- `<BS>` [**N**] - Go to upper directory and leave directory.
-- `e` [**N**] - Open file in `split`.
-- `E` [**N**] - Open file in `vsplit`.
-- `t` [**N**] - Open file in new tab.
+- `h` **🇳** - Collapse directory.
+- `l` **🇳** - Expand directory or open file.
+- `<CR>` **🇳** - Cd into directory.
+- `<BS>` **🇳** - Go to upper directory and leave directory.
+- `e` **🇳** - Open file in `split`.
+- `E` **🇳** - Open file in `vsplit`.
+- `t` **🇳** - Open file in new tab.
 
 Create/rename/delete:
 
-- `N`/`a` [**N**] - Create new file. Notice `a` is not working on fern.vim, since it's forcely mapped to '<Plug>(fern-action-choice)' instead of '<Plug>(fern-action-new-file)'.
-- `A` [**N**] - Create new directory. Notice nvim-tree.lua need an additional slash `/`(or `\`) after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
-- `m`/`r` [**N**] - Move or rename file/directory.
-- `d` [**N**] - Trash file/directory to system trash-bin, only for windows/macOS.
-- `D` [**N**] - Delete file/directory, usually `rm`.
+- `N`/`a` **🇳** - Create new file. Notice `a` is not working on fern.vim, since it's forcely mapped to '<Plug>(fern-action-choice)' instead of '<Plug>(fern-action-new-file)'.
+- `A` **🇳** - Create new directory. Notice nvim-tree.lua need an additional slash `/`(or `\`) after directory name (see: [nvim-tree.lua - Tips & tricks](https://github.com/nvim-tree/nvim-tree.lua#tips--tricks)), while fern.vim just need directory name itself.
+- `m`/`r` **🇳** - Move or rename file/directory.
+- `d` **🇳** - Trash file/directory to system trash-bin, only for windows/macOS.
+- `D` **🇳** - Delete file/directory, usually `rm`.
 
 Copy/paste/cut:
 
-- `C` [**N**] - Copy file/directory into an internal clipboard, just like in Windows ctrl+c.
-- `X` [**N**] - Cut file/directory into an internal clipboard, just like in Windows ctrl+x.
-- `V` [**N**] - Paste file/directory from an internal clipboard to current directory, just like in Windows ctrl+v.
+- `C` **🇳** - Copy file/directory into an internal clipboard, just like in Windows ctrl+c.
+- `X` **🇳** - Cut file/directory into an internal clipboard, just like in Windows ctrl+x.
+- `V` **🇳** - Paste file/directory from an internal clipboard to current directory, just like in Windows ctrl+v.
 
 Adjust explorer width:
 
-- `<M-.>`/`<M-Right>` [**N**] - Make explorer bigger size.
-- `<M-,>`/`<M-Left>` [**N**] - Make explorer smaller size.
+- `<M-.>`/`<M-Right>` **🇳** - Make explorer bigger size.
+- `<M-,>`/`<M-Left>` **🇳** - Make explorer smaller size.
 
 Other:
 
-- `R` [**N**] - Refresh file explorer.
-- `s` [**N**] - Open file in system file manager(such as Finder in macOS).
-- `?` [**N**] - Toggle help.
+- `R` **🇳** - Refresh file explorer.
+- `s` **🇳** - Open file in system file manager(such as Finder in macOS).
+- `?` **🇳** - Toggle help.
 
 _For neovim 0.7+ only_:
 
-- `I` [**N**] - Toggle file info.
-- `H` [**N**] - Toggle hidden dot files.
-- `<` [**N**] - Goto previous(up) sibling.
-- `>` [**N**] - Goto next(down) sibling.
-- `K` [**N**] - Goto first(top) sibling.
-- `J` [**N**] - Goto last(bottom) sibling.
-- `P` [**N**] - Goto parent(upper) directory.
-- `y` [**N**] - Copy file name as literal.
-- `Y` [**N**] - Copy absolute file path as literal.
-- `]c` [**N**] - Goto next(down) git chunk.
-- `[c` [**N**] - Goto previous(up) git chunk.
+- `I` **🇳** - Toggle file info.
+- `H` **🇳** - Toggle hidden dot files.
+- `<` **🇳** - Goto previous(up) sibling.
+- `>` **🇳** - Goto next(down) sibling.
+- `K` **🇳** - Goto first(top) sibling.
+- `J` **🇳** - Goto last(bottom) sibling.
+- `P` **🇳** - Goto parent(upper) directory.
+- `y` **🇳** - Copy file name as literal.
+- `Y` **🇳** - Copy absolute file path as literal.
+- `]c` **🇳** - Goto next(down) git chunk.
+- `[c` **🇳** - Goto previous(up) git chunk.
 
 You could editing **_~/.vim/repository/lambdalisue/fern.vim.vim_** (or **_~/.vim/repository/kyazdani42/nvim-tree.lua.vim_**) to customize key mappings. Please refer to [fern.vim - wiki - Mappings](https://github.com/lambdalisue/fern.vim/wiki/Mappings) (or [:help nvim-tree-mappings](https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt)) for more information.
 
 #### Tabline
 
-- `<Leader>bn`/`<M-Right>`/`<M-.>` [**N**] - Go to next(right) buffer.
-- `<Leader>bp`/`<M-Left>`/`<M-,>` [**N**] - Go to previous(left) buffer.
-- `<Leader>bd` [**N**] - Close current buffer without closing vim window.
+- `<Leader>bn`/`<M-Right>`/`<M-.>` **🇳** - Go to next(right) buffer.
+- `<Leader>bp`/`<M-Left>`/`<M-,>` **🇳** - Go to previous(left) buffer.
+- `<Leader>bd` **🇳** - Close current buffer without closing vim window.
 
 Navigation:
 
-- `<M-1>` [**N**] - Go to buffer-1.
-- `<M-2>` [**N**] - Go to buffer-2.
-- `<M-3>` [**N**] - Go to buffer-3.
-- `<M-4>` [**N**] - Go to buffer-4.
-- `<M-5>` [**N**] - Go to buffer-5.
-- `<M-6>` [**N**] - Go to buffer-6.
-- `<M-7>` [**N**] - Go to buffer-7.
-- `<M-8>` [**N**] - Go to buffer-8.
-- `<M-9>` [**N**] - Go to buffer-9.
-- `<M-0>` [**N**] - Go to buffer-10 (or the last buffer on neovim 0.7+).
+- `<M-1>` **🇳** - Go to buffer-1.
+- `<M-2>` **🇳** - Go to buffer-2.
+- `<M-3>` **🇳** - Go to buffer-3.
+- `<M-4>` **🇳** - Go to buffer-4.
+- `<M-5>` **🇳** - Go to buffer-5.
+- `<M-6>` **🇳** - Go to buffer-6.
+- `<M-7>` **🇳** - Go to buffer-7.
+- `<M-8>` **🇳** - Go to buffer-8.
+- `<M-9>` **🇳** - Go to buffer-9.
+- `<M-0>` **🇳** - Go to buffer-10 (or the last buffer on neovim 0.7+).
 
 _For neovim 0.7+ only_:
 
-- `<M-S-Right>` [**N**] - Re-order(move) current buffer to next(right) position.
-- `<M-S-Left>` [**N**] - Re-order(move) current buffer to previous(left) position.
-- `<LeftMouse>` [**N**] - Go to target buffer.
-- `<MiddleMouse>` [**N**] - Close target buffer.
+- `<M-S-Right>` **🇳** - Re-order(move) current buffer to next(right) position.
+- `<M-S-Left>` **🇳** - Re-order(move) current buffer to previous(left) position.
+- `<LeftMouse>` **🇳** - Go to target buffer.
+- `<MiddleMouse>` **🇳** - Close target buffer.
 
 Support by [vim-buffet](https://github.com/bagrat/vim-buffet) (switched to [barbar.nvim](https://github.com/romgrk/barbar.nvim) on neovim 0.5+).
 
@@ -371,51 +371,51 @@ By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/release
 
 #### Code Complete
 
-- `<C-n>`/`<Down>` [**I**] - Navigate to next suggestion.
-- `<C-p>`/`<Up>` [**I**] - Navigate to previous suggestion.
-- `<TAB>`/`<CR>` [**I**] - Confirm current suggestion.
-- `<ESC>`/`<C-[>` [**I**] - Close suggestion.
-- `<C-f>` [**I**] - Navigate to next(right) snippet placeholder.
-- `<C-b>` [**I**] - Navigate to previous(left) snippet placeholder.
+- `<C-n>`/`<Down>` **🇮** - Navigate to next suggestion.
+- `<C-p>`/`<Up>` **🇮** - Navigate to previous suggestion.
+- `<TAB>`/`<CR>` **🇮** - Confirm current suggestion.
+- `<ESC>`/`<C-[>` **🇮** - Close suggestion.
+- `<C-f>` **🇮** - Navigate to next(right) snippet placeholder.
+- `<C-b>` **🇮** - Navigate to previous(left) snippet placeholder.
 
 #### Jumps
 
-- `[d` [**N**] - Go to previous(up) diagnostic location.
-- `]d` [**N**] - Go to next(down) diagnostic location.
-- `gd` [**N**] - Go to definition.
-- `gl` [**N**] - Go to declaration.
-- `gy`/`gt` [**N**] - Go to type definition.
-- `gi` [**N**] - Go to implemention.
-- `gr` [**N**] - Go to references.
+- `[d` **🇳** - Go to previous(up) diagnostic location.
+- `]d` **🇳** - Go to next(down) diagnostic location.
+- `gd` **🇳** - Go to definition.
+- `gl` **🇳** - Go to declaration.
+- `gy`/`gt` **🇳** - Go to type definition.
+- `gi` **🇳** - Go to implemention.
+- `gr` **🇳** - Go to references.
 
 #### Symbols
 
-- `K` [**N**] - Show hover information.
-- `<Leader>rs` [**N**] - Rename symbol.
+- `K` **🇳** - Show hover information.
+- `<Leader>rs` **🇳** - Rename symbol.
 
 #### Code Format
 
-- `<Leader>cf` [**N**] - Format code on whole buffer in normal mode.
-- `<Leader>cf` [**V**] - Format selected code in visual mode.
+- `<Leader>cf` **🇳** - Format code on whole buffer in normal mode.
+- `<Leader>cf` **🇻** - Format selected code in visual mode.
 
 #### Code Actions
 
-- `<Leader>ca` [**N**] - Run code actions under cursor in normal mode.
-- `<Leader>ca` [**V**] - Run code actions on selected code in visual mode.
-- `<Leader>qf` [**N**] - Apply quick fix for diagnostics on current line.
+- `<Leader>ca` **🇳** - Run code actions under cursor in normal mode.
+- `<Leader>ca` **🇻** - Run code actions on selected code in visual mode.
+- `<Leader>qf` **🇳** - Apply quick fix for diagnostics on current line.
 
 #### CodeLens
 
-- `<Leader>cl` [**N**] - Run the CodeLens on current line.
+- `<Leader>cl` **🇳** - Run the CodeLens on current line.
 
 #### Git
 
-- `]c` [**N**] - Go to next(down) git chunk in current buffer.
-- `[c` [**N**] - Go to previous(up) git chunk in current buffer.
+- `]c` **🇳** - Go to next(down) git chunk in current buffer.
+- `[c` **🇳** - Go to previous(up) git chunk in current buffer.
 
 _For neovim 0.5+ only_:
 
-- `<Leader>gb` [**N**] - Toggle git blame info for current line.
+- `<Leader>gb` **🇳** - Toggle git blame info for current line.
 
 ### Search
 
@@ -423,41 +423,41 @@ Search engine use fzf.vim and integrated with coc.nvim with [coc-fzf](https://gi
 
 #### Text Search
 
-- `<Space>gr` [**N**] - Search text by `:FzfRg`.
-- `<Space>l` [**N**] - Search lines on opened buffers by `:FzfLines`.
-- `<Space>t` [**N**] - Search tags by `:FzfTags`.
-- `<Space>y` [**N**] - Search yank history by `:CocFzfList yank`.
-- `<Space>sh` [**N**] - Search searched history by `:FzfHistory/`.
-- `<Space>ch` [**N**] - Search vim command history by `:FzfHistory:`.
+- `<Space>gr` **🇳** - Search text by `:FzfRg`.
+- `<Space>l` **🇳** - Search lines on opened buffers by `:FzfLines`.
+- `<Space>t` **🇳** - Search tags by `:FzfTags`.
+- `<Space>y` **🇳** - Search yank history by `:CocFzfList yank`.
+- `<Space>sh` **🇳** - Search searched history by `:FzfHistory/`.
+- `<Space>ch` **🇳** - Search vim command history by `:FzfHistory:`.
 
 #### File Search
 
-- `<Space>f`/`<C-p>` [**N**] - Search files by `:FzfFiles`.
-- `<Space>b` [**N**] - Search opened buffers by `:FzfBuffers`.
-- `<Space>hf` [**N**] - Search history files (v:oldfiles) and opened buffers by `:FzfHistory`.
+- `<Space>f`/`<C-p>` **🇳** - Search files by `:FzfFiles`.
+- `<Space>b` **🇳** - Search opened buffers by `:FzfBuffers`.
+- `<Space>hf` **🇳** - Search history files (v:oldfiles) and opened buffers by `:FzfHistory`.
 
 #### Git Search
 
-- `<Space>gc` [**N**] - Search git commits by `:FzfCommits`.
-- `<Space>gf` [**N**] - Search git files rby `:FzfGFile`.
-- `<Space>gs` [**N**] - Search git status (also diff files by preview) by `:FzfGFiles?`.
+- `<Space>gc` **🇳** - Search git commits by `:FzfCommits`.
+- `<Space>gf` **🇳** - Search git files rby `:FzfGFile`.
+- `<Space>gs` **🇳** - Search git status (also diff files by preview) by `:FzfGFiles?`.
 
 #### Other Search
 
-- `<Space>mk` [**N**] - Search marks by `:FzfMarks`.
-- `<Space>mp` [**N**] - Search normal mode vim key mappings by `:FzfMaps`.
-- `<Space>vc` [**N**] - Search vim commands by `:FzfCommands`.
-- `<Space>ht` [**N**] - Search help tags by `:FzfHelptags`.
+- `<Space>mk` **🇳** - Search marks by `:FzfMarks`.
+- `<Space>mp` **🇳** - Search normal mode vim key mappings by `:FzfMaps`.
+- `<Space>vc` **🇳** - Search vim commands by `:FzfCommands`.
+- `<Space>ht` **🇳** - Search help tags by `:FzfHelptags`.
 
 #### Coc.nvim Search
 
 Key mappings are configured with prefix char `c` after `<Space>`.
 
-- `<Space>cs` [**N**] - Search coc symbols by `:CocFzfList symbols`.
-- `<Space>cd` [**N**] - Search coc diagnostics by `:CocFzfList diagnostics`.
-- `<Space>co` [**N**] - Search coc outlines(tags) by `:CocFzfList outline`.
-- `<Space>cc` [**N**] - Search coc commands by `:CocFzfList commands`.
-- `<Space>cl` [**N**] - Search coc location by `:CocFzfList location`.
+- `<Space>cs` **🇳** - Search coc symbols by `:CocFzfList symbols`.
+- `<Space>cd` **🇳** - Search coc diagnostics by `:CocFzfList diagnostics`.
+- `<Space>co` **🇳** - Search coc outlines(tags) by `:CocFzfList outline`.
+- `<Space>cc` **🇳** - Search coc commands by `:CocFzfList commands`.
+- `<Space>cl` **🇳** - Search coc location by `:CocFzfList location`.
 
 Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https://github.com/antoinemadec/coc-fzf) for more information.
 
@@ -467,19 +467,19 @@ Please visit [fzf.vim](https://github.com/junegunn/fzf.vim) and [coc-fzf](https:
 
 Linewise comment:
 
-- `gcc` [**N**] - Toggle current line.
-- `[count]gcc` [**N**] - Toggle _[count]_ number of lines.
-- `gc{motion}` [**N**] - Toggle two lines with motion(jk).
-- `gc[count]{motion}` [**N**] - Toggle region with _[count]_(optional) times motion.
-- `gc` [**V**] - Toggle selected region in virual mode.
+- `gcc` **🇳** - Toggle current line.
+- `[count]gcc` **🇳** - Toggle _[count]_ number of lines.
+- `gc{motion}` **🇳** - Toggle two lines with motion(jk).
+- `gc[count]{motion}` **🇳** - Toggle region with _[count]_(optional) times motion.
+- `gc` **🇻** - Toggle selected region in virual mode.
 
 _Blockwise comment (for neovim only)_:
 
-- `gbc` [**N**] - Toggle current line.
-- `[count]gbc` [**N**] - Toggle _[count]_ number of lines.
-- `gb{motion}` [**N**] - Toggle two lines with motion.
-- `gb[count]{motion}` [**N**] - Toggle region with _[count]_(optional) times motion.
-- `gb` [**V**] - Toggle selected region in virual mode.
+- `gbc` **🇳** - Toggle current line.
+- `[count]gbc` **🇳** - Toggle _[count]_ number of lines.
+- `gb{motion}` **🇳** - Toggle two lines with motion.
+- `gb[count]{motion}` **🇳** - Toggle region with _[count]_(optional) times motion.
+- `gb` **🇻** - Toggle selected region in virual mode.
 
 Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [Comment.nvim](https://github.com/numToStr/Comment.nvim) on neovim).
 
@@ -487,10 +487,10 @@ Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [
 
 See [Cursor movement](#cursor-movement).
 
-- `<Leader>f{char}` [**N**] - Move by a single {char}.
-- `<Leader>s{char}{char}` [**N**] - Move by two consequent {char}{char}.
-- `<Leader>w` [**N**] - Move by word.
-- `<Leader>l` [**N**] - Move by line.
+- `<Leader>f{char}` **🇳** - Move by a single {char}.
+- `<Leader>s{char}{char}` **🇳** - Move by two consequent {char}{char}.
+- `<Leader>w` **🇳** - Move by word.
+- `<Leader>l` **🇳** - Move by line.
 
 Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion) (switched to [hop.nvim](https://github.com/phaazon/hop.nvim) on neovim 0.5+).
 
@@ -499,14 +499,10 @@ Support by [vim-easymotion](https://github.com/easymotion/vim-easymotion) (switc
 (Neo)vim word movement cannot recognize real literal word, such as camel case, mixed digits, characters, punctuations, etc.
 So introduce better word motions:
 
-- `<Leader>w`/`<Leader>W` [**N**] - word/WORD forward(right), exclusive.
-- `[count]<Leader>w`/`[count]<Leader>W` [**N**] - _[count]_ words/WORDS forward, exclusive.
-- `<Leader>e`/`<Leader>E` [**N**] - Forward to the end of word/WORD, inclusive.
-- `[count]<Leader>e`/`[count]<Leader>E` [**N**] - Forward to the end of _[count]_ words/WORDS, inclusive.
-- `<Leader>b`/`<Leader>B` [**N**] - word/WORD backward(left), exclusive.
-- `[count]<Leader>b`/`[count]<Leader>B` [**N**] - _[count]_ words/WORDS backward.
-- `<Leader>ge`/`<Leader>gE` [**N**] - Backward to the end of word/WORD, inclusive.
-- `[count]<Leader>ge`/`[count]<Leader>gE` [**N**] - Backward to the end of _[count]_ words/WORDS, inclusive.
+- `<Leader>w`/`<Leader>W` **🇳** - word/WORD forward(right), exclusive.
+- `<Leader>bb`/`<Leader>B` **🇳** - word/WORD backward(left), exclusive.
+- `<Leader>e`/`<Leader>E` **🇳** - Forward to the end of word/WORD, inclusive.
+- `<Leader>ge`/`<Leader>gE` **🇳** - Backward to the end of word/WORD, inclusive.
 
 Support by [vim-wordmotion](https://github.com/chaoren/vim-wordmotion).
 
