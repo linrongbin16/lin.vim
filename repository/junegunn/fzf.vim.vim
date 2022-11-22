@@ -1,7 +1,6 @@
 """ Use fd for fzf file finding, instead of default find
 if executable('fd')
-    " let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --exclude ".git" --ignore-file ~/.gitignore'
-    let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --no-ignore --exclude ".git"'
+    let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --no-ignore-parent --hidden --exclude ".git"'
 endif
 
 """ Fzf command prefix
@@ -13,13 +12,18 @@ let LIN_VIM_COC_EXPLORER='coc-explorer'
 
 """ Text search
 
+command! -bang -nargs=* LinVimFzfRg
+            \ call fzf#vim#grep(
+            \ "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-global --no-ignore-parent --hidden --glob=!.git/ -- ".shellescape(<q-args>), 1,
+            \ fzf#vim#with_preview(), <bang>0)
+
 command! -bang -nargs=0 LinVimFzfRgCWord
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(expand('<cword>')), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+            \ call fzf#vim#grep(
+            \ "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-global --no-ignore-parent --hidden --glob=!.git/ ".shellescape(expand('<cword>')), 1,
+            \ fzf#vim#with_preview(), <bang>0)
 
 " search text
-nnoremap <silent> <expr> <space>gr (&filetype == LIN_VIM_COC_EXPLORER ? "\<c-w>\<c-w>" : '').":<C-u>FzfRg<CR>"
+nnoremap <silent> <expr> <space>gr (&filetype == LIN_VIM_COC_EXPLORER ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRg<CR>"
 " search word text under cursor
 nnoremap <silent> <expr> <space>gw (&filetype == LIN_VIM_COC_EXPLORER ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRgCWord<CR>"
 " search lines on opened buffers
