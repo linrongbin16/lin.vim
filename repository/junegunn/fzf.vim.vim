@@ -7,8 +7,15 @@ let LIN_VIM_COC_EXPLORER='coc-explorer'
 
 """ Text search
 
+command! -bang -nargs=0 LinVimFzfRgCWord
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(expand('<cword>')), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 " search text
 nnoremap <silent> <expr> <space>gr (&filetype == LIN_VIM_COC_EXPLORER ? "\<c-w>\<c-w>" : '').":<C-u>FzfRg<CR>"
+" search word text under cursor
+nnoremap <silent> <expr> <space>gw (&filetype == LIN_VIM_COC_EXPLORER ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRgCWord<CR>"
 " search lines on opened buffers
 nnoremap <silent> <expr> <space>l (&filetype == LIN_VIM_COC_EXPLORER ? "\<c-w>\<c-w>" : '').":<C-u>FzfLines<CR>"
 " search text on tags

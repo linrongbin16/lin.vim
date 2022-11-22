@@ -95,6 +95,10 @@ if has('win32') || has('win64')
     autocmd GUIEnter * simalt ~x
 endif
 
+""" shorter timeout for better response
+set timeout timeoutlen=3000 ttimeoutlen=100
+
+
 """ disable macvim GUI key mappings
 " let macvim_skip_cmd_opt_movement=1
 
