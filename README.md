@@ -267,6 +267,8 @@ Meta-key(or alt-key on windows/linux) and command-key(on macOS) are collectively
 
 try emoji :n: :v: :i: :a: :b: <span>&#65;</span> <span>&#78;</span> <span>&#86;</span> <span>&#108;</span>
 
+:regional_indicator_n: 🇳
+
 ## Hot Key
 
 - `F1` [**N**] - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
