@@ -192,15 +192,15 @@ Notice:
 
 1. If you are using WSL, `C:\Windows\System32\bash.exe` could lead you to WSL instead of the `bash.exe` from [Git for Windows](https://git-scm.com/). Make sure git path is ahead of `C:\Windows\System32`, so git bash will be first detected (`wsl.exe` could connect to WSL as well so no need to worry about losing `C:\Windows\System32\bash.exe`).
 
-![install-windows-notice-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-git-path.png)
+![install-windows-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-path.png)
 
 2. [Git for Windows](https://git-scm.com/) provide an old-version `vim.exe`, make sure `gvim.exe` (from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases)) path is ahead of git, so `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) will be first detected. You could also only use `gvim.exe` to avoid the old-version vim.
 
-![install-windows-notice-vim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-vim-path.png)
+![install-windows-gvim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-gvim-path.png)
 
 3. Python3 version must be compatible with gvim's libpython3.lib, or python3 will not be loaded correctly. Please use `gvim --version` to find its libpython3.lib version.
 
-![install-windows-notice-python3-version-compatible.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-notice-python3-version-compatible.png)
+![install-windows-gvim-libpython3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-gvim-libpython3.png)
 
 4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python from windows store. See: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
 
