@@ -1,7 +1,5 @@
 """ Use fd for fzf file finding, instead of default find
-if executable('fd')
-    let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --no-ignore-parent --hidden --exclude ".git"'
-endif
+let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --ignore-case --no-ignore-parent --hidden --exclude ".git"'
 
 """ Fzf command prefix
 let g:fzf_command_prefix = 'Fzf'
