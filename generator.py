@@ -39,21 +39,24 @@ def try_backup(src):
 #         message(f"delete '{src}'")
 
 INDENT_SIZE = 4
-LIN_VIM_COLORSCHEMES = "s:lin_vim_colorschemes"
 
 
-class Indentable:
+class IndentLevel:
     def __init__(self):
-        self.indent = 0
+        self._value = 0
 
-    def increment_indent(self):
-        self.indent += INDENT_SIZE
+    @property
+    def indentlevel(self):
+        return self._value
 
-    def decrement_indent(self):
-        self.indent = max(self.indent - INDENT_SIZE, 0)
+    def inc_indentlevel(self):
+        self._value += 1
 
-    def to_decrement_indent(self):
-        return max(self.indent - INDENT_SIZE, 0)
+    def dec_indentlevel(self):
+        self._value = max(self._value - 1, 0)
+
+    def get_dec_indentlevel(self):
+        return max(self._value - 1, 0)
 
 
 class Expr(abc.ABC):
@@ -199,16 +202,16 @@ class EmptyCommentExpr(SingleQuoteCommentExpr):
 
 
 class FunctionInvokeExpr(Expr):
-    def __init__(self, func_expr, *arg_exprs) -> None:
-        assert isinstance(func_expr, LiteralExpr)
-        if arg_exprs:
-            for a in arg_exprs:
+    def __init__(self, func, *args) -> None:
+        assert isinstance(func, LiteralExpr)
+        if args:
+            for a in args:
                 assert isinstance(a, LiteralExpr)
-        self.func_expr = func_expr
-        self.arg_exprs = arg_exprs if arg_exprs else []
+        self.func = func
+        self.args = args if args else []
 
     def render(self):
-        return f"{self.func_expr.render()}({','.join([e.render() for e in self.arg_exprs])})"
+        return f"{self.func.render()}({','.join([e.render() for e in self.args])})"
 
 
 class CallExpr(Expr):
@@ -221,14 +224,14 @@ class CallExpr(Expr):
 
 
 class AddExpr(Expr):
-    def __init__(self, *args_exprs) -> None:
-        assert args_exprs
-        for a in args_exprs:
+    def __init__(self, *args) -> None:
+        assert args
+        for a in args:
             assert isinstance(a, Expr)
-        self.args_exprs = args_exprs
+        self.args = args
 
     def render(self):
-        return f"add({', '.join([a.render() for a in self.args_exprs])})"
+        return f"add({', '.join([a.render() for a in self.args])})"
 
 
 class ColorschemeExpr(Expr):
@@ -241,12 +244,14 @@ class ColorschemeExpr(Expr):
 
 
 class IndentExpr(Expr):
-    def __init__(self, value=0):
-        assert isinstance(value, int) and value >= 0
-        self.value = value
+    def __init__(self, expr, count=0):
+        assert isinstance(expr, Expr)
+        assert isinstance(count, int) and count >= 0
+        self.expr = expr
+        self.count = count
 
     def render(self):
-        return " " * self.value
+        return f"{' ' * self.count * INDENT_SIZE}{self.expr.render()}"
 
 
 class LineContinuationExpr(Expr):
@@ -259,63 +264,54 @@ class LineContinuationExpr(Expr):
 
 
 class Stmt(Expr):
-    def __init__(self, expr, indent=None):
-        assert isinstance(expr, Expr)
-        assert isinstance(indent, IndentExpr) or indent is None
+    def __init__(self, expr=None):
+        assert isinstance(expr, Expr) or expr is None
         self.expr = expr
-        self.indent = indent
 
     def render(self):
-        return f"{self.indent.render() if self.indent else ''}{self.expr.render()}\n"
+        return f"{self.expr.render() if self.expr else ''}\n"
 
 
-class EmptyStmt(Expr):
-    def render(self):
-        return "\n"
-
-
-class PluginsHeaderStmt(LiteralExpr):
+class EmptyStmt(Stmt):
     def __init__(self):
-        with open(f"{TEMPLATE_DIR}/plugins-header-template.vim", "r") as fp:
-            self.content = fp.read()
-
-    def render(self):
-        return self.content
-
-
-class PluginsFooterStmt(LiteralExpr):
-    def __init__(self):
-        with open(f"{TEMPLATE_DIR}/plugins-footer-template.vim", "r") as fp:
-            self.content = fp.read()
-
-    def render(self):
-        return self.content
+        Stmt.__init__(self, None)
 
 
 class PlugExpr(Expr):
-    def __init__(self, org_expr, repo_expr, post_expr=None):
-        assert isinstance(org_expr, LiteralExpr)
-        assert isinstance(repo_expr, LiteralExpr)
-        assert isinstance(post_expr, LiteralExpr) or post_expr is None
-        self.org_expr = org_expr
-        self.repo_expr = repo_expr
-        self.post_expr = post_expr
+    def __init__(self, org, repo, post=None):
+        assert isinstance(org, LiteralExpr)
+        assert isinstance(repo, LiteralExpr)
+        assert isinstance(post, LiteralExpr) or post is None
+        self.org = org
+        self.repo = repo
+        self.post = post
 
     def render(self):
-        body = f"Plug '{self.org_expr.render()}/{self.repo_expr.render()}'"
-        post = f", {self.post_expr.render()}" if self.post_expr else ""
-        return f"{body}{post}"
+        return f"Plug '{self.org.render()}/{self.repo.render()}'{(', ' + self.post.render()) if self.post else ''}"
 
 
-class SourceForVimrcStmt(Expr):
-    def __init__(self, value, indent=None):
-        self.stmt = Stmt(SourceExpr(LiteralExpr(f"$HOME/.vim/{value}")), indent)
+class TemplateContent(Expr):
+    def __init__(self, path):
+        assert isinstance(path, pathlib.Path)
+        assert path.exists()
+        with open(path, "r") as fp:
+            self.content = fp.read()
+
+    def render(self):
+        return self.content
+
+
+class SourceVimDirStmt(Expr):
+    def __init__(self, value, indent_count=0):
+        self.stmt = Stmt(
+            IndentExpr(SourceExpr(LiteralExpr(f"$HOME/.vim/{value}")), indent_count)
+        )
 
     def render(self):
         return self.stmt.render()
 
 
-class CocGlobalExtensionForSettingsStmt(Expr):
+class CocExtensionContent(Expr):
     def __init__(
         self,
         disable_language=False,
@@ -352,103 +348,13 @@ class CocGlobalExtensionForSettingsStmt(Expr):
             extensions.append("coc-sh")
         if not disable_powershell:
             extensions.append("coc-powershell")
-        self.extensions_expr = [SingleQuoteStringExpr(e) for e in extensions]
+        self.exprs = [SingleQuoteStringExpr(e) for e in extensions]
 
     def render(self):
         return f"""
 {self.comment.render()}
-let g:coc_global_extensions = [{', '.join([e.render() for e in self.extensions_expr])}]
+let g:coc_global_extensions = [{', '.join([e.render() for e in self.exprs])}]
 """
-
-
-class DefineColorsForSettingsStmt(Expr):
-    def __init__(self) -> None:
-        self.comment = TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))
-
-    def render(self):
-        return f"""
-{self.comment.render()}
-
-let {LIN_VIM_COLORSCHEMES}=[]
-"""
-
-
-class DefineRandomColorFunctionsForSettingsStmt(Expr):
-    def render(self):
-        return f"""
-function NextRandomColorScheme()
-    if len({LIN_VIM_COLORSCHEMES}) > 0
-        let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
-        execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
-    endif
-endfunction
-
-function NextRandomColorSchemeSync()
-    if len({LIN_VIM_COLORSCHEMES}) > 0
-        let idx = localtime() % len({LIN_VIM_COLORSCHEMES})
-        execute 'colorscheme ' . {LIN_VIM_COLORSCHEMES}[idx]
-        execute 'syntax sync fromstart'
-    endif
-endfunction
-"""
-
-
-class AddColorForSettingsExpr(Expr):
-    def __init__(self, expr) -> None:
-        assert isinstance(expr, StringExpr)
-        self.add_expr = CallExpr(AddExpr(LiteralExpr(LIN_VIM_COLORSCHEMES), expr))
-
-    def render(self):
-        return self.add_expr.render()
-
-
-class SourceColorSettingsForSettingsStmt(Expr):
-    def __init__(self) -> None:
-        self.comment = TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))
-
-    def render(self):
-        return f"""
-{self.comment.render()}
-source $HOME/.vim/color-settings.vim
-"""
-
-
-class StaticColorForSettingsStmt(Expr):
-    def __init__(self, expr):
-        assert isinstance(expr, LiteralExpr)
-        self.comment_expr = TrippleQuotesCommentExpr(LiteralExpr("Static color scheme"))
-        self.color_expr = ColorschemeExpr(expr)
-
-    def render(self):
-        return f"""
-{self.comment_expr.render()}
-{self.color_expr.render()}
-"""
-
-
-class RandomColorForSettingsStmt(Expr):
-    def __init__(self):
-        self.comment_expr = TrippleQuotesCommentExpr(
-            LiteralExpr("---- Random color scheme on startup ----")
-        )
-        self.call_expr = CallExpr(
-            FunctionInvokeExpr(LiteralExpr("NextRandomColorScheme"))
-        )
-
-    def render(self):
-        return f"""
-{self.comment_expr.render()}
-{self.call_expr.render()}
-"""
-
-
-class CommonSettingsStmt(Expr):
-    def __init__(self):
-        with open(f"{TEMPLATE_DIR}/settings-template.vim", "r") as fp:
-            self.content = fp.read()
-
-    def render(self):
-        return self.content
 
 
 class PluginTag(enum.Enum):
@@ -940,7 +846,7 @@ PLUGIN_CONTEXTS = [
 ]
 
 
-class Render(Indentable):
+class Render(IndentLevel):
     def __init__(
         self,
         static_color=None,
@@ -951,7 +857,7 @@ class Render(Indentable):
         disable_ctrl_keys=False,
         disable_plugins=None,
     ):
-        Indentable.__init__(self)
+        IndentLevel.__init__(self)
         self.static_color = static_color
         self.disable_color = disable_color
         self.disable_highlight = disable_highlight
@@ -1004,9 +910,13 @@ class Render(Indentable):
     # plugins.vim
     def render_plugin_stmts(self, core_plugins):
         plugin_stmts = []
-        plugin_stmts.append(PluginsHeaderStmt())
+        plugin_stmts.append(
+            TemplateContent(pathlib.Path(f"{TEMPLATE_DIR}/plugins-header-template.vim"))
+        )
         plugin_stmts.extend(core_plugins)
-        plugin_stmts.append(PluginsFooterStmt())
+        plugin_stmts.append(
+            TemplateContent(pathlib.Path(f"{TEMPLATE_DIR}/plugins-footer-template.vim"))
+        )
         return plugin_stmts
 
     # vimrc.vim
@@ -1015,9 +925,9 @@ class Render(Indentable):
         vimrc_stmts.append(
             Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Vimrc ----")))
         )
-        vimrc_stmts.append(SourceForVimrcStmt("plugins.vim"))
-        vimrc_stmts.append(SourceForVimrcStmt("standalone/basic.vim"))
-        vimrc_stmts.append(SourceForVimrcStmt("standalone/filetype.vim"))
+        vimrc_stmts.append(SourceVimDirStmt("plugins.vim"))
+        vimrc_stmts.append(SourceVimDirStmt("standalone/basic.vim"))
+        vimrc_stmts.append(SourceVimDirStmt("standalone/filetype.vim"))
         if self.disable_ctrl_keys:
             vimrc_stmts.append(
                 Stmt(
@@ -1027,7 +937,7 @@ class Render(Indentable):
                 )
             )
         else:
-            vimrc_stmts.append(SourceForVimrcStmt("standalone/ctrlkeys.vim"))
+            vimrc_stmts.append(SourceVimDirStmt("standalone/ctrlkeys.vim"))
 
         # insert core vimrc statements
         vimrc_stmts.extend(core_vimrcs)
@@ -1036,32 +946,72 @@ class Render(Indentable):
         vimrc_stmts.append(
             Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Custom settings ----")))
         )
-        vimrc_stmts.append(SourceForVimrcStmt("settings.vim"))
+        vimrc_stmts.append(SourceVimDirStmt("settings.vim"))
         return vimrc_stmts
 
     # settings.vim and color-settings.vim
     def render_setting_stmts(self, core_color_settings):
         setting_stmts = []
         setting_stmts.append(
-            CocGlobalExtensionForSettingsStmt(
+            CocExtensionContent(
                 self.disable_language,
                 disable_sh=IS_WINDOWS or self.disable_language,
                 disable_powershell=not IS_WINDOWS or self.disable_language,
             )
         )
-        setting_stmts.append(SourceColorSettingsForSettingsStmt())
+        setting_stmts.extend(
+            [
+                EmptyStmt(),
+                Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))),
+                SourceVimDirStmt(LiteralExpr("color-settings.vim")),
+            ]
+        )
         if self.static_color:
-            setting_stmts.append(
-                StaticColorForSettingsStmt(LiteralExpr(self.static_color))
+            setting_stmts.extend(
+                [
+                    EmptyStmt(),
+                    Stmt(
+                        TrippleQuotesCommentExpr(
+                            LiteralExpr("---- Static colorscheme ----")
+                        )
+                    ),
+                    Stmt(IndentExpr(ColorschemeExpr(LiteralExpr(self.static_color)))),
+                ]
             )
         elif not self.disable_color:
-            setting_stmts.append(RandomColorForSettingsStmt())
-        setting_stmts.append(CommonSettingsStmt())
+            setting_stmts.extend(
+                [
+                    EmptyStmt(),
+                    Stmt(
+                        TrippleQuotesCommentExpr(
+                            LiteralExpr("---- Random colorscheme on startup ----")
+                        )
+                    ),
+                    Stmt(
+                        IndentExpr(
+                            CallExpr(
+                                FunctionInvokeExpr(LiteralExpr("NextRandomColorScheme"))
+                            )
+                        )
+                    ),
+                ]
+            )
+        setting_stmts.append(
+            TemplateContent(pathlib.Path(f"{TEMPLATE_DIR}/settings-template.vim"))
+        )
 
         color_setting_stmts = []
-        color_setting_stmts.append(DefineColorsForSettingsStmt())
+        color_setting_stmts.append(
+            TemplateContent(
+                pathlib.Path(f"{TEMPLATE_DIR}/settings-color-array-template.vim")
+            )
+        )
         color_setting_stmts.extend(core_color_settings)
-        color_setting_stmts.append(DefineRandomColorFunctionsForSettingsStmt())
+        color_setting_stmts.append(
+            TemplateContent(
+                pathlib.Path(f"{TEMPLATE_DIR}/settings-color-function-template.vim")
+            )
+        )
 
         return setting_stmts, color_setting_stmts
 
@@ -1081,61 +1031,78 @@ class Render(Indentable):
                 for clause in tclauses:
                     assert isinstance(clause, PluginClause)
                     if clause.kind == PluginClauseKind.PARAGRAPH:
-                        p = EmptyStmt()
-                        plugin_stmts.append(p)
-                        vimrc_stmts.append(p)
+                        plugin_stmts.append(EmptyStmt())
+                        vimrc_stmts.append(EmptyStmt())
                     elif clause.kind == PluginClauseKind.SINGLE_COMMENT:
                         sc = Stmt(
-                            SingleQuoteCommentExpr(LiteralExpr(clause.value)),
-                            IndentExpr(self.indent),
+                            IndentExpr(
+                                SingleQuoteCommentExpr(LiteralExpr(clause.value)),
+                                self.indentlevel,
+                            )
                         )
                         plugin_stmts.append(sc)
                         vimrc_stmts.append(sc)
                     elif clause.kind == PluginClauseKind.TRIPPLE_COMMENT:
                         tc = Stmt(
-                            TrippleQuotesCommentExpr(LiteralExpr(clause.value)),
-                            IndentExpr(self.indent),
+                            IndentExpr(
+                                TrippleQuotesCommentExpr(LiteralExpr(clause.value)),
+                                self.indentlevel,
+                            ),
                         )
                         plugin_stmts.append(tc)
                         vimrc_stmts.append(tc)
                     elif clause.kind == PluginClauseKind.IF_HAS:
                         ih = Stmt(
-                            IfExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
-                            IndentExpr(self.indent),
+                            IndentExpr(
+                                IfExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
+                                self.indentlevel,
+                            ),
                         )
                         plugin_stmts.append(ih)
                         vimrc_stmts.append(ih)
                         if ctx.tag == PluginTag.COLORSCHEME:
                             color_setting_stmts.append(ih)
-                        self.increment_indent()
+                        self.inc_indentlevel()
                     elif clause.kind == PluginClauseKind.IF_NOT_HAS:
                         inh = Stmt(
-                            IfExpr(
-                                NotExpr(HasExpr(SingleQuoteStringExpr(clause.value)))
+                            IndentExpr(
+                                IfExpr(
+                                    NotExpr(
+                                        HasExpr(SingleQuoteStringExpr(clause.value))
+                                    )
+                                ),
+                                self.indentlevel,
                             ),
-                            IndentExpr(self.indent),
                         )
                         plugin_stmts.append(inh)
                         vimrc_stmts.append(inh)
-                        self.increment_indent()
+                        self.inc_indentlevel()
                     elif clause.kind == PluginClauseKind.ELSEIF_HAS:
-                        eh = Stmt(
-                            ElseifExpr(HasExpr(SingleQuoteStringExpr(clause.value))),
-                            IndentExpr(self.to_decrement_indent()),
-                        )
-                        plugin_stmts.append(eh)
-                        vimrc_stmts.append(eh)
-                    elif clause.kind == PluginClauseKind.ELSEIF_NOT_HAS:
-                        enh = Stmt(
-                            ElseifExpr(
-                                NotExpr(HasExpr(SingleQuoteStringExpr(clause.value)))
+                        eih = Stmt(
+                            IndentExpr(
+                                ElseifExpr(
+                                    HasExpr(SingleQuoteStringExpr(clause.value))
+                                ),
+                                self.get_dec_indentlevel(),
                             ),
-                            IndentExpr(self.to_decrement_indent()),
                         )
-                        plugin_stmts.append(enh)
-                        vimrc_stmts.append(enh)
+                        plugin_stmts.append(eih)
+                        vimrc_stmts.append(eih)
+                    elif clause.kind == PluginClauseKind.ELSEIF_NOT_HAS:
+                        einh = Stmt(
+                            IndentExpr(
+                                ElseifExpr(
+                                    NotExpr(
+                                        HasExpr(SingleQuoteStringExpr(clause.value))
+                                    )
+                                ),
+                                self.get_dec_indentlevel(),
+                            ),
+                        )
+                        plugin_stmts.append(einh)
+                        vimrc_stmts.append(einh)
                     elif clause.kind == PluginClauseKind.ELSE:
-                        e = Stmt(ElseExpr(), IndentExpr(self.to_decrement_indent()))
+                        e = Stmt(IndentExpr(ElseExpr(), self.get_dec_indentlevel()))
                         plugin_stmts.append(e)
                         vimrc_stmts.append(e)
                     else:
@@ -1143,19 +1110,8 @@ class Render(Indentable):
             # body
             if self.skip_disabled(ctx):
                 # skip disabled plugins
-                plugin_stmts.append(
-                    Stmt(
-                        SingleQuoteCommentExpr(
-                            PlugExpr(
-                                LiteralExpr(ctx.org),
-                                LiteralExpr(ctx.repo),
-                                LiteralExpr(ctx.post) if ctx.post else None,
-                            ),
-                        ),
-                        IndentExpr(self.indent),
-                    )
-                )
-                ec = Stmt(EmptyCommentExpr(), IndentExpr(self.indent))
+                ec = Stmt(IndentExpr(EmptyCommentExpr(), self.indentlevel))
+                plugin_stmts.append(ec)
                 vimrc_stmts.append(ec)
                 if ctx.tag == PluginTag.COLORSCHEME:
                     color_setting_stmts.append(ec)
@@ -1163,30 +1119,37 @@ class Render(Indentable):
                 # plugins
                 plugin_stmts.append(
                     Stmt(
-                        PlugExpr(
-                            LiteralExpr(ctx.org),
-                            LiteralExpr(ctx.repo),
-                            LiteralExpr(ctx.post) if ctx.post else None,
-                        ),
-                        IndentExpr(self.indent),
+                        IndentExpr(
+                            PlugExpr(
+                                LiteralExpr(ctx.org),
+                                LiteralExpr(ctx.repo),
+                                LiteralExpr(ctx.post) if ctx.post else None,
+                            ),
+                            self.indentlevel,
+                        )
                     )
                 )
                 # vimrc
                 setting_file = f"repository/{ctx}.vim"
                 if pathlib.Path(f"{HOME_DIR}/.vim/{setting_file}").exists():
-                    vimrc_stmts.append(
-                        SourceForVimrcStmt(setting_file, IndentExpr(self.indent))
-                    )
+                    vimrc_stmts.append(SourceVimDirStmt(setting_file, self.indentlevel))
                 else:
                     vimrc_stmts.append(
-                        Stmt(EmptyCommentExpr(), IndentExpr(self.indent))
+                        Stmt(IndentExpr(EmptyCommentExpr(), self.indentlevel))
                     )
                 # color settings
                 if ctx.tag == PluginTag.COLORSCHEME:
                     color_setting_stmts.append(
                         Stmt(
-                            AddColorForSettingsExpr(SingleQuoteStringExpr(ctx.color)),
-                            IndentExpr(self.indent),
+                            IndentExpr(
+                                CallExpr(
+                                    AddExpr(
+                                        LiteralExpr("s:lin_vim_colorschemes"),
+                                        SingleQuoteStringExpr(ctx.color),
+                                    )
+                                ),
+                                self.indentlevel,
+                            )
                         )
                     )
             # bottom
@@ -1199,8 +1162,8 @@ class Render(Indentable):
                 for clause in bclauses:
                     assert isinstance(clause, PluginClause)
                     if clause.kind == PluginClauseKind.ENDIF:
-                        self.decrement_indent()
-                        ei = Stmt(EndifExpr(), IndentExpr(self.indent))
+                        self.dec_indentlevel()
+                        ei = Stmt(IndentExpr(EndifExpr(), self.indentlevel))
                         plugin_stmts.append(ei)
                         vimrc_stmts.append(ei)
                         if ctx.tag == PluginTag.COLORSCHEME:
