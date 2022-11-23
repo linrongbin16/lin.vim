@@ -905,7 +905,10 @@ class Render(IndentLevel):
         return new_statements
 
     def is_empty_comment(self, s):
-        return isinstance(s, Stmt) and isinstance(s.expr, EmptyCommentExpr)
+        return (
+            isinstance(s, Stmt)
+            and s.render().strip() == EmptyCommentExpr().render().strip()
+        )
 
     # plugins.vim
     def render_plugin_stmts(self, core_plugins):
