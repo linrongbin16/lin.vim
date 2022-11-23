@@ -60,7 +60,7 @@ if has('patch-8.0.1238')
 endif
 
 """ whitespace
-set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
+set listchars=tab:>·,trail:~,extends:>,precedes:<
 " set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
