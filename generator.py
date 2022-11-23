@@ -971,7 +971,7 @@ class Render(IndentLevel):
                     Stmt(
                         IndentExpr(
                             CallExpr(
-                                FunctionInvokeExpr(LiteralExpr("NextRandomColorScheme"))
+                                FunctionInvokeExpr(LiteralExpr("LinVimNextRandomColorScheme"))
                             )
                         )
                     ),
