@@ -150,23 +150,22 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
 
 ## Windows
 
-1. Install [Visual Studio](https://www.visualstudio.com/) with below 3 components:
+1. Install [Visual Studio](https://www.visualstudio.com/) with below 2 components:
 
    - .NET Desktop Development
    - Desktop development with C++
-   - Universal Windows Platform development
 
-![install-windows-visual-studio.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-visual-studio.png)
+![install-windows-visual-studio2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-visual-studio2.png)
 
 2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with below 3 options:
 
-   - In the **Select Components** step, select **Associate .sh files to be run with Bash**.
-   - In the **Adjusting your PATH environment** step, select **Use Git and optional Unix tools from the Command Prompt**.
-   - In the **Configuring the terminal emulator to use with Git Bash** step, select **Use Windows's default console window**. This will add `git.exe` and linux builtin commands (such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe`, etc) to `$env:Path`, provide MSYS linux environment.
+   - In the _**Select Components**_ step, select _**Associate .sh files to be run with Bash**_.
+   - In the _**Adjusting your PATH environment**_ step, select _**Use Git and optional Unix tools from the Command Prompt**_.
+   - In the _**Configuring the terminal emulator to use with Git Bash**_ step, select _**Use Windows's default console window**_. This will add `git.exe` and linux builtin commands (such as `bash.exe`, `cp.exe`, `mv.exe`, `cd.exe`, `ls.exe`, etc) to `$env:Path`.
 
-![install-windows-git-step1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step1.png)
-![install-windows-git-step2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step2.png)
-![install-windows-git-step3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-step3.png)
+![install-windows-git1.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git1.png)
+![install-windows-git2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git2.png)
+![install-windows-git3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git3.png)
 
 3. Install other 64-bit dependencies:
 
