@@ -158,7 +158,7 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
 <!-- ![install-windows-visual-studio2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-visual-studio2.png) -->
 <p align="center">
   <img alt="install-windows-visual-studio2.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-visual-studio2.png" width="100%">
-  <em>Select .NET and C++ components</em>
+  <em style="fontsize:50%">Select .NET and C++ components</em>
 </p>
 
 2. Install [64-bit Git for Windows Setup](https://git-scm.com/downloads) with below 3 options:
@@ -173,17 +173,17 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
 <p align="center">
   <img alt="install-windows-git1.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git1.png" width="65%">
   </br>
-  <em style="fontsize:60%">Associate .sh files to be run with Bash</em>
+  <em style="fontsize:50%">Associate .sh files to be run with Bash</em>
 </p>
 <p align="center">
   <img alt="install-windows-git2.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git2.png" width="65%">
   </br>
-  <em style="fontsize:60%">Use Git and optional Unix tools from the Command Prompt</em>
+  <em style="fontsize:50%">Use Git and optional Unix tools from the Command Prompt</em>
 </p>
 <p align="center">
   <img alt="install-windows-git3.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git3.png" width="65%">
   </br>
-  <em style="fontsize:60%">Use Windows's default console window</em>
+  <em style="fontsize:50%">Use Windows's default console window</em>
 </p>
 
 3. Install other 64-bit dependencies:
@@ -214,7 +214,8 @@ Notice:
 <!-- ![install-windows-git-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-path.png) -->
 <p align="center">
   <img alt="install-windows-git-path.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git-path.png" width="65%">
-  <em>Move git path ahead of C:\Windows\System32</em>
+  </br>
+  <em style="fontsize:50%">Move git path ahead of C:\Windows\System32</em>
 </p>
 
 2. [Git for Windows](https://git-scm.com/) provide an old-version `vim.exe`, make sure `gvim.exe` (from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases)) path is ahead of git, so `vim.exe` from [vim-win32-installer](https://github.com/vim/vim-win32-installer/releases) will be first detected. You could also only use `gvim.exe` to avoid the old-version vim.
@@ -222,7 +223,8 @@ Notice:
 <!-- ![install-windows-gvim-path.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-gvim-path.png) -->
 <p align="center">
   <img alt="install-windows-gvim-path.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-gvim-path.png" width="65%">
-  <em>Move gvim path ahead of git</em>
+  </br>
+  <em style="fontsize:50%">Move gvim path ahead of git</em>
 </p>
 
 3. Python3 version must be compatible with gvim's libpython3.lib, or python3 will not be loaded correctly. Please use `gvim --version` to find its libpython3.lib version.
@@ -230,7 +232,8 @@ Notice:
 <!-- ![install-windows-gvim-libpython3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-gvim-libpython3.png) -->
 <p align="center">
   <img alt="install-windows-gvim-libpython3.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-gvim-libpython3.png" width="65%">
-  <em>Find libpython3.lib version at bottom</em>
+  </br>
+  <em style="fontsize:50%">Find libpython3.lib version at bottom</em>
 </p>
 
 4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python from windows store. See: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
