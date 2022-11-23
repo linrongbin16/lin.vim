@@ -491,6 +491,13 @@ PLUGIN_CONTEXTS = [
         "chriskempson",
         "base16-vim",
         color="base16-default-dark",
+        top_clause=[
+            SingleQuoteCommentExpr(
+                LiteralExpr("Colorscheme base16-default-dark is not working with lualine")
+            ),
+            IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr("nvim-0.5")))),
+        ],
+        bottom_clause=EndifExpr(),
         tag=PluginTag.COLORSCHEME,
     ),
     PluginContext("sainnhe", "edge", color="edge", tag=PluginTag.COLORSCHEME),
@@ -848,7 +855,7 @@ class Render(IndentLevel):
         core_plugins, core_vimrcs, core_color_settings = self.render_core()
 
         plugin_stmts = self.render_plugin_stmts(core_plugins)
-        color_setting_stmts = self.render_color_setting_stmts( core_color_settings)
+        color_setting_stmts = self.render_color_setting_stmts(core_color_settings)
         setting_stmts = self.render_setting_stmts()
         vimrc_stmts = self.render_vimrc_stmts(core_vimrcs)
 
@@ -947,7 +954,6 @@ class Render(IndentLevel):
         )
         return color_setting_stmts
 
-
     # settings.vim
     def render_setting_stmts(self):
         setting_stmts = []
@@ -982,7 +988,9 @@ class Render(IndentLevel):
                     Stmt(
                         IndentExpr(
                             CallExpr(
-                                FunctionInvokeExpr(LiteralExpr("LinVimNextRandomColorScheme"))
+                                FunctionInvokeExpr(
+                                    LiteralExpr("LinVimNextRandomColorScheme")
+                                )
                             )
                         )
                     ),
@@ -1011,10 +1019,14 @@ class Render(IndentLevel):
                     if isinstance(top, EmptyStmt):
                         plugin_stmts.append(top)
                         vimrc_stmts.append(top)
+                        if ctx.tag == PluginTag.COLORSCHEME:
+                            color_setting_stmts.append(top)
                     elif isinstance(top, CommentExpr):
                         cs = Stmt(IndentExpr(top, self.indentlevel))
                         plugin_stmts.append(cs)
                         vimrc_stmts.append(cs)
+                        if ctx.tag == PluginTag.COLORSCHEME:
+                            color_setting_stmts.append(cs)
                     elif isinstance(top, IfExpr):
                         ifs = Stmt(IndentExpr(top, self.indentlevel))
                         plugin_stmts.append(ifs)
@@ -1026,6 +1038,8 @@ class Render(IndentLevel):
                         elifs = Stmt(IndentExpr(top, self.get_dec_indentlevel()))
                         plugin_stmts.append(elifs)
                         vimrc_stmts.append(elifs)
+                        if ctx.tag == PluginTag.COLORSCHEME:
+                            color_setting_stmts.append(elifs)
                     else:
                         assert False
             ecs = Stmt(IndentExpr(EmptyCommentExpr(), self.indentlevel))
