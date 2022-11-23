@@ -34,8 +34,8 @@ nnoremap <F9> :<C-u>call LinVimNextRandomColorSchemeSync()<CR>
 nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
 
 """ ---- Disable syntax highlight for super big file ----
-" filesize=1000000
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+""" filesize=1000000
+" autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 
 """ ---- Python3 host ----
 " let g:python3_host_prog='python3'
