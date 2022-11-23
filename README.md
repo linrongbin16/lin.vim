@@ -170,11 +170,13 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
 <!-- ![install-windows-git2.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git2.png) -->
 <!-- ![install-windows-git3.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git3.png) -->
 <p align="center">
-  <img alt="install-windows-git1.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git1.png" width="33%">
-  &nbsp;
-  <img alt="install-windows-git2.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git2.png" width="33%">
-  &nbsp;
-  <img alt="install-windows-git3.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git3.png" width="33%">
+  <img alt="install-windows-git1.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git1.png" width="65%">
+</p>
+<p align="center">
+  <img alt="install-windows-git2.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git2.png" width="65%">
+</p>
+<p align="center">
+  <img alt="install-windows-git3.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git3.png" width="65%">
 </p>
 
 3. Install other 64-bit dependencies:
