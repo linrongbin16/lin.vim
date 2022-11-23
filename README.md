@@ -173,17 +173,17 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
 <p align="center">
   <img alt="install-windows-git1.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git1.png" width="65%">
   </br>
-  <em style="fontsize:50%">Associate .sh files to be run with Bash</em>
+  <em style="fontsize:50%">Treat .sh files as bash script</em>
 </p>
 <p align="center">
   <img alt="install-windows-git2.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git2.png" width="65%">
   </br>
-  <em style="fontsize:50%">Use Git and optional Unix tools from the Command Prompt</em>
+  <em style="fontsize:50%">Enable both git and linux builtin commands</em>
 </p>
 <p align="center">
   <img alt="install-windows-git3.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-git3.png" width="65%">
   </br>
-  <em style="fontsize:50%">Use Windows's default console window</em>
+  <em style="fontsize:50%">Add git and linux commands to environment path</em>
 </p>
 
 3. Install other 64-bit dependencies:
