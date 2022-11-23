@@ -846,10 +846,10 @@ class Render(IndentLevel):
 
     def render(self):
         core_plugins, core_vimrcs, core_color_settings = self.render_core()
+
         plugin_stmts = self.render_plugin_stmts(core_plugins)
-        setting_stmts, color_setting_stmts = self.render_setting_stmts(
-            core_color_settings
-        )
+        color_setting_stmts = self.render_color_setting_stmts( core_color_settings)
+        setting_stmts = self.render_setting_stmts()
         vimrc_stmts = self.render_vimrc_stmts(core_vimrcs)
 
         # merge empty comment statements
@@ -927,11 +927,29 @@ class Render(IndentLevel):
         vimrc_stmts.append(
             Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Custom settings ----")))
         )
+        vimrc_stmts.append(SourceVimDirStmt("color-settings.vim"))
         vimrc_stmts.append(SourceVimDirStmt("settings.vim"))
         return vimrc_stmts
 
-    # settings.vim and color-settings.vim
-    def render_setting_stmts(self, core_color_settings):
+    # color-settings.vim
+    def render_color_setting_stmts(self, core_color_settings):
+        color_setting_stmts = []
+        color_setting_stmts.append(
+            TemplateContent(
+                pathlib.Path(f"{TEMPLATE_DIR}/settings-color-array-template.vim")
+            )
+        )
+        color_setting_stmts.extend(core_color_settings)
+        color_setting_stmts.append(
+            TemplateContent(
+                pathlib.Path(f"{TEMPLATE_DIR}/settings-color-function-template.vim")
+            )
+        )
+        return color_setting_stmts
+
+
+    # settings.vim
+    def render_setting_stmts(self):
         setting_stmts = []
         setting_stmts.append(
             CocExtensionContent(
@@ -939,13 +957,6 @@ class Render(IndentLevel):
                 disable_sh=IS_WINDOWS or self.disable_language,
                 disable_powershell=not IS_WINDOWS or self.disable_language,
             )
-        )
-        setting_stmts.extend(
-            [
-                EmptyStmt(),
-                Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))),
-                SourceVimDirStmt("color-settings.vim"),
-            ]
         )
         if self.static_color:
             setting_stmts.extend(
@@ -980,21 +991,7 @@ class Render(IndentLevel):
         setting_stmts.append(
             TemplateContent(pathlib.Path(f"{TEMPLATE_DIR}/settings-template.vim"))
         )
-
-        color_setting_stmts = []
-        color_setting_stmts.append(
-            TemplateContent(
-                pathlib.Path(f"{TEMPLATE_DIR}/settings-color-array-template.vim")
-            )
-        )
-        color_setting_stmts.extend(core_color_settings)
-        color_setting_stmts.append(
-            TemplateContent(
-                pathlib.Path(f"{TEMPLATE_DIR}/settings-color-function-template.vim")
-            )
-        )
-
-        return setting_stmts, color_setting_stmts
+        return setting_stmts
 
     def render_core(self):
         plugin_stmts = []
