@@ -966,7 +966,7 @@ class Render(IndentLevel):
             [
                 EmptyStmt(),
                 Stmt(TrippleQuotesCommentExpr(LiteralExpr("---- Color schemes ----"))),
-                SourceVimDirStmt(LiteralExpr("color-settings.vim")),
+                SourceVimDirStmt("color-settings.vim"),
             ]
         )
         if self.static_color:
