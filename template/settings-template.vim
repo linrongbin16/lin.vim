@@ -29,7 +29,7 @@ nnoremap <F7> :<C-u>GitBlameToggle<CR>
 " Markdown preview
 nnoremap <F8> :<C-u>MarkdownPreview<CR>
 " Next random color scheme
-nnoremap <F9> :<C-u>call NextRandomColorSchemeSync()<CR>
+nnoremap <F9> :<C-u>call LinVimNextRandomColorSchemeSync()<CR>
 " Toggle bufexplorer
 nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
 
