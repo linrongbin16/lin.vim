@@ -12,6 +12,12 @@ let g:buffet_left_trunc_icon = ""
 let g:buffet_right_trunc_icon = ""
 let g:buffet_modified_icon = " ●"
 
+" Adjust tab color
+function! g:BuffetSetCustomColors()
+    hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#0066CC guifg=#000000
+    hi! BuffetActiveBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#999999 guifg=#0066CC
+endfunction
+
 let LIN_VIM_NVIM_TREE='NvimTree'
 let LIN_VIM_FERN='fern'
 
