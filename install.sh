@@ -89,9 +89,11 @@ guifont_dependency() {
         brew install --cask font-hack-nerd-font
     else
         mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+        local org="ryanoasis"
+        local repo="nerd-fonts"
         local font_file=Hack.zip
-        local font_version=$(nerdfont_latest_release_tag)
-        local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file"
+        local font_version=$(nerdfont_latest_release_tag $org $repo)
+        local font_url="https://github.com/$org/$repo/releases/download/$font_version/$font_file"
         message "install hack($font_version) nerd font from github"
         if [ -f $font_file ]; then
             rm $font_file
