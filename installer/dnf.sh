@@ -10,9 +10,9 @@ sudo dnf check-update
 # vim and neovim
 install_or_skip "sudo dnf install -y vim" "vim"
 install_or_skip "sudo dnf install -y gvim" "gvim"
+install_or_skip "sudo dnf install -y neovim" "nvim"
 install_or_skip "sudo dnf group install -y \"Development Tools\"" "gcc"
 install_or_skip "sudo dnf group install -y \"Development Tools\"" "make"
-install_or_skip "sudo dnf install -y neovim" "nvim"
 install_or_skip "sudo dnf install -y curl" "curl"
 install_or_skip "sudo dnf install -y wget" "wget"
 install_or_skip "sudo dnf install -y autoconf" "autoconf"

@@ -10,9 +10,9 @@ sudo pacman -Syy
 # vim and neovim
 install_or_skip "yes | sudo pacman -Rs vim" "vim"
 install_or_skip "yes | sudo pacman -S gvim" "gvim"
+install_or_skip "yes | sudo pacman -S neovim" "nvim"
 install_or_skip "yes | sudo pacman -S base-devel" "gcc"
 install_or_skip "yes | sudo pacman -S base-devel" "make"
-install_or_skip "yes | sudo pacman -S neovim" "nvim"
 install_or_skip "yes | sudo pacman -S curl" "curl"
 install_or_skip "yes | sudo pacman -S wget" "wget"
 install_or_skip "yes | sudo pacman -S autoconf" "autoconf"
