@@ -75,10 +75,10 @@ function GithubLatestReleaseTag([string]$org, [string]$repo) {
 
 function GithubInstaller([string]$org, [string]$repo, [string]$tag, [string]$target) {
     $tempFile = "$env:TEMP\$target"
-    Message "install $tempFile from github"
+    Message "install $tempFile($tag) from github"
     Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$target" -OutFile $tempFile
     Start-Process -wait $tempFile
-    Message "install $tempFile from github - done"
+    Message "install $tempFile($tag) from github - done"
 }
 
 function VimDependency() {
@@ -256,11 +256,11 @@ function DownloadGuifontDependency([string]$option) {
 
     $org = "ryanoasis"
     $repo = "nerd-fonts"
-    $tag = "v2.2.2"
     $target = "$name.zip"
-    message "download $name nerd font from github"
+    $tag = GithubLatestReleaseTag -org $org -repo $repo
+    message "download $name($tag) nerd font from github"
     Invoke-WebRequest -Uri "https://github.com/$org/$repo/releases/download/$tag/$target" -OutFile $target
-    message "download $name nerd font from github: $VIM_HOME\$target - done"
+    message "download $name($tag) nerd font from github: $VIM_HOME\$target - done"
 }
 
 function CargoDependency() {

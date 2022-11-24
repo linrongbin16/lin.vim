@@ -75,17 +75,24 @@ npm_dependency() {
     sudo npm install -g yarn prettier neovim
 }
 
+nerdfont_latest_release_tag() {
+    local org="$1"
+    local repo="$2"
+    local uri="https://github.com/$org/$repo/releases/latest"
+    curl -f -L $uri | grep "href=\"/$org/$repo/releases/tag" | grep -Eo 'href="/[a-zA-Z0-9#~.*,/!?=+&_%:-]*"' | head -n 1 | cut -d '"' -f2 | cut -d "/" -f6
+}
+
 guifont_dependency() {
     if [ "$OS" == "Darwin" ]; then
         message "install hack nerd font with brew"
         brew tap homebrew/cask-fonts
         brew install --cask font-hack-nerd-font
     else
-        message "install hack nerd font from github"
         mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
         local font_file=Hack.zip
-        local font_version=v2.2.2
+        local font_version=$(nerdfont_latest_release_tag)
         local font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/$font_version/$font_file"
+        message "install hack($font_version) nerd font from github"
         if [ -f $font_file ]; then
             rm $font_file
         fi
@@ -94,7 +101,7 @@ guifont_dependency() {
             message "failed to download $font_file, skip..."
         else
             unzip -o $font_file
-            message "install hack nerd font from github - done"
+            message "install hack($font_version) nerd font from github - done"
         fi
     fi
 }
