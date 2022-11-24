@@ -126,7 +126,7 @@ Solve below issues:
     $ ./install.sh
 ```
 
-`install.sh` will automatically install below dependencies with system package manager:
+The `install.sh` will automatically install below dependencies with system package manager:
 
 - [git](https://git-scm.com/).
 - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
@@ -236,7 +236,13 @@ Notice:
   <em style="fontsize:50%">Find libpython3.lib version at bottom</em>
 </p>
 
-4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python from windows store. See: [Manage App Execution Aliases on Windows10](https://www.thewindowsclub.com/manage-app-execution-aliases-on-windows-10) and [Default app aliases in windows](https://github.com/0install/0install-dotnet/issues/69).
+4. Disable Windows App alias `python.exe` or `python3.exe`, this could lead you to the wrong python from windows store.
+
+<p align="center">
+  <img alt="install-windows-app-alias.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/install-windows-app-alias.png" width="65%">
+  </br>
+  <em style="fontsize:50%">Disable python.exe and python3.exe</em>
+</p>
 
 ## More Options
 
