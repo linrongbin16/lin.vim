@@ -198,8 +198,6 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
    - [nodejs](https://nodejs.org/en/download/) (`node-v{x.y.z}-x64.msi`): add `node.exe`, `npm.exe` to `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases) (`ctags-p{x.y.d.z}-x64.zip`): add `ctags.exe`, `readtags.exe` to `$env:Path`
 
-> Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
-
 4. Install [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 5. Run powershell commands as administrator:
 
@@ -264,6 +262,13 @@ Notice:
 
 - In full mode, you could use '--disable-xxx' options to disable some specific features.
 - Option '--disable-highlight --disable-color --disable-language --disable-editing' is equivalent to '--limit'.
+
+`install.ps1` especially provide two more options for Windows:
+
+- `--depends=TEXT`: download and install specific dependency in 3rd step of [Windows installation](#windows). Use `--depends=all` to run for all dependencies. For example: `--depends=vim`, `--depends=universal-ctags`.
+- `--nerdfont=TEXT`: download specific [nerd font](https://github.com/ryanoasis/nerd-fonts/releases/latest). For example: `--nerdfont=Hack`, `--nerdfont=SourceCodePro`.
+
+> Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
 ## Upgrade
 
