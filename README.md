@@ -198,6 +198,8 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
    - [nodejs](https://nodejs.org/en/download/) (`node-v{x.y.z}-x64.msi`): add `node.exe`, `npm.exe` to `$env:Path`
    - [universal-ctags](https://github.com/universal-ctags/ctags-win32/releases) (`ctags-p{x.y.d.z}-x64.zip`): add `ctags.exe`, `readtags.exe` to `$env:Path`
 
+> Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
+
 4. Install [Hack NFM](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 5. Run powershell commands as administrator:
 
@@ -257,13 +259,6 @@ And more options:
 - `--disable-plugin=TEXT`: disable specific vim plugin in format 'organization/repository', this is a multiple option. For example: `--disable-plugin=RRethy/vim-hexokinase --disable-plugin=alvan/vim-closetag`.
 - `--disable-vim`: don't install .vimrc file for vim, could use neovim only.
 - `--disable-neovim`: don't install nvim/init.vim file for neovim, could use vim only.
-
-Windows `install.ps1` especially provide two more options:
-
-- `--depends=TEXT`: download and install the specific third party dependency in 3rd step of [windows installation](#windows). Use `--depends=all` will run for all these dependencies. For example: `--depends=vim`, `--depends=universal-ctags`.
-- `--nerdfont=TEXT`: download the specific [nerd font](https://github.com/ryanoasis/nerd-fonts/releases/latest) for you. For example: `--nerdfont=Hack`, `--nerdfont=SourceCodePro`.
-
-> Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
 
 Notice:
 

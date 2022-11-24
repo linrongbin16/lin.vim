@@ -349,14 +349,14 @@ for ($i = 0; $i -lt $argsLength; $i++) {
         ShowHelp
         exit 0
     }
-    elseif ($a.StartsWith("--depends=")) {
-        DownloadAndInstallDependency $a
-        exit 0
-    }
-    elseif ($a.StartsWith("--nerdfont=")) {
-        DownloadGuifontDependency $a
-        exit 0
-    }
+    # elseif ($a.StartsWith("--depends=")) {
+    #     DownloadAndInstallDependency $a
+    #     exit 0
+    # }
+    # elseif ($a.StartsWith("--nerdfont=")) {
+    #     DownloadGuifontDependency $a
+    #     exit 0
+    # }
     elseif ($a.StartsWith("-b") -or $a.StartsWith("--basic")) {
         $MODE_NAME = "basic"
         $OPT_BASIC = $True
