@@ -130,7 +130,7 @@ Solve below issues:
 
 - [git](https://git-scm.com/).
 - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
-- [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for Linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), Linux also need [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
+- [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for Linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
 - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
 - [node.js](https://nodejs.org/) and some npm packages.
 - [golang](https://go.dev/).
