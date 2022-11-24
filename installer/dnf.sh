@@ -1,16 +1,22 @@
 #!/bin/bash
 
 INSTALL_HOME=~/.vim/installer
+OPT_DISABLE_VIM=$1
+OPT_DISABLE_NEOVIM=$2
 source $INSTALL_HOME/util.sh
 
 message "install dependencies with dnf"
-
 sudo dnf check-update
 
-# vim and neovim
-install_or_skip "sudo dnf install -y vim" "vim"
-install_or_skip "sudo dnf install -y gvim" "gvim"
-install_or_skip "sudo dnf install -y neovim" "nvim"
+# vim
+if [ $OPT_DISABLE_VIM -ne 1 ]; then
+    install_or_skip "sudo dnf install -y vim" "vim"
+    install_or_skip "sudo dnf install -y gvim" "gvim"
+fi
+# neovim
+if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
+    install_or_skip "sudo dnf install -y neovim" "nvim"
+fi
 install_or_skip "sudo dnf group install -y \"Development Tools\"" "gcc"
 install_or_skip "sudo dnf group install -y \"Development Tools\"" "make"
 install_or_skip "sudo dnf install -y curl" "curl"

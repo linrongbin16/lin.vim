@@ -1,15 +1,21 @@
 #!/bin/bash
 
 INSTALL_HOME=~/.vim/installer
+OPT_DISABLE_VIM=$1
+OPT_DISABLE_NEOVIM=$2
 source $INSTALL_HOME/util.sh
 
 message "install dependencies with brew"
-
 brew update
 
-# vim and neovim
-install_or_skip "brew install macvim" "gvim"
-install_or_skip "brew install neovim" "nvim"
+# vim
+if [ $OPT_DISABLE_VIM -ne 1 ]; then
+    install_or_skip "brew install macvim" "gvim"
+fi
+# neovim
+if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
+    install_or_skip "brew install neovim" "nvim"
+fi
 install_or_skip "brew install curl-openssl" "curl"
 install_or_skip "brew install wget" "wget"
 install_or_skip "brew install cmake" "cmake"
