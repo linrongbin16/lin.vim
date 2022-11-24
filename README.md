@@ -308,7 +308,7 @@ Meta-key (or alt-key on Windows/Linux) and command-key (on macOS) are collective
 
 - `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
 - `F2` **🇳** - Toggle undo tree.
-- `F3` **🇳** - Toggle vista outline/tags, see [Code complete for Python3](#code-complete-for-python).
+- `F3` **🇳** - Toggle outline/tags, see [Code complete for Python3](#code-complete-for-python).
 - `F4` **🇳** - Switch between C/C++ headers and sources.
 - `F7` **🇳** - Toggle git blame info on current line.
 - `F8` **🇳** - Open markdown preview.
