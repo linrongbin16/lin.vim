@@ -16,39 +16,6 @@ OPT_DISABLE_NEOVIM=0
 source $INSTALL_HOME/util.sh
 
 # dependency
-platform_dependency() {
-    case "$OS" in
-        Linux)
-            if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
-                $INSTALL_HOME/pacman.sh
-            elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
-                $INSTALL_HOME/dnf.sh
-            elif [ -f "/etc/gentoo-release" ]; then
-                $INSTALL_HOME/emerge.sh
-            else
-                # assume apt
-                $INSTALL_HOME/apt.sh
-            fi
-            ;;
-        FreeBSD)
-            $INSTALL_HOME/pkg.sh
-            ;;
-        NetBSD)
-            $INSTALL_HOME/pkgin.sh
-            ;;
-        OpenBSD)
-            $INSTALL_HOME/pkg_add.sh
-            ;;
-        Darwin)
-            $INSTALL_HOME/brew.sh
-            ;;
-        *)
-            message "$OS is not supported, exit..."
-            exit 1
-            ;;
-    esac
-}
-
 rust_dependency() {
     install_or_skip "curl https://sh.rustup.rs -sSf | sh -s -- -y" "rustc"
     source $HOME/.cargo/env
@@ -106,15 +73,6 @@ guifont_dependency() {
             message "install hack($font_version) nerd font from github - done"
         fi
     fi
-}
-
-install_dependency() {
-    platform_dependency
-    rust_dependency
-    golang_dependency
-    pip3_dependency
-    npm_dependency
-    guifont_dependency
 }
 
 # basic
@@ -192,8 +150,45 @@ message "install with $MODE_NAME mode"
 if [ $OPT_BASIC -gt 0 ]; then
     install_basic
 else
-    install_dependency
-    message "install configurations for vim"
+    # dependency
+    case "$OS" in
+        Linux)
+            if [ -f "/etc/arch-release" ] || [ -f "/etc/artix-release" ]; then
+                $INSTALL_HOME/pacman.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            elif [ -f "/etc/fedora-release" ] || [ -f "/etc/redhat-release" ]; then
+                $INSTALL_HOME/dnf.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            elif [ -f "/etc/gentoo-release" ]; then
+                $INSTALL_HOME/emerge.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            else
+                # assume apt
+                $INSTALL_HOME/apt.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            fi
+            ;;
+        FreeBSD)
+            $INSTALL_HOME/pkg.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            ;;
+        NetBSD)
+            $INSTALL_HOME/pkgin.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            ;;
+        OpenBSD)
+            $INSTALL_HOME/pkg_add.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            ;;
+        Darwin)
+            $INSTALL_HOME/brew.sh $OPT_DISABLE_VIM $OPT_DISABLE_NEOVIM
+            ;;
+        *)
+            message "$OS is not supported, exit..."
+            exit 1
+            ;;
+    esac
+    rust_dependency
+    golang_dependency
+    pip3_dependency
+    npm_dependency
+    guifont_dependency
+
+    # vim settings
+    message "install settings for vim"
     python3 $VIM_HOME/generator.py "$@"
     if [ $? -ne 0 ]; then
         exit 1

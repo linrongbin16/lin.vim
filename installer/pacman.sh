@@ -1,16 +1,22 @@
 #!/bin/bash
 
 INSTALL_HOME=$HOME/.vim/installer
+OPT_DISABLE_VIM=$1
+OPT_DISABLE_NEOVIM=$2
 source $INSTALL_HOME/util.sh
 
 message "install dependencies with pacman"
-
 sudo pacman -Syy
 
-# vim and neovim
-install_or_skip "yes | sudo pacman -Rs vim" "vim"
-install_or_skip "yes | sudo pacman -S gvim" "gvim"
-install_or_skip "yes | sudo pacman -S neovim" "nvim"
+# vim
+if [ $OPT_DISABLE_VIM -ne 1 ]; then
+    install_or_skip "yes | sudo pacman -Rs vim" "vim"
+    install_or_skip "yes | sudo pacman -S gvim" "gvim"
+fi
+# neovim
+if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
+    install_or_skip "yes | sudo pacman -S neovim" "nvim"
+fi
 install_or_skip "yes | sudo pacman -S base-devel" "gcc"
 install_or_skip "yes | sudo pacman -S base-devel" "make"
 install_or_skip "yes | sudo pacman -S curl" "curl"

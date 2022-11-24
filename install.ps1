@@ -282,10 +282,6 @@ function NpmDependency() {
 }
 
 function InstallDependency() {
-    Message "install dependencies for windows"
-    CargoDependency
-    Pip3Dependency
-    NpmDependency
 }
 
 # basic
@@ -384,9 +380,14 @@ if ($OPT_BASIC) {
     InstallBasic
 }
 else {
-    InstallDependency
-    Message "install configurations for vim"
+    # dependency
+    Message "install dependencies for windows"
+    CargoDependency
+    Pip3Dependency
+    NpmDependency
 
+    # vim settings
+    Message "install settings for vim"
     python3 $VIM_HOME\generator.py $args
     if ($LastExitCode -ne 0) {
         exit 1
