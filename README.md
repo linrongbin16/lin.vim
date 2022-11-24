@@ -60,29 +60,59 @@ Solve below issues:
 
 ## Screenshots
 
-#### Simple but pretty UI
+<!-- #### Simple but pretty UI -->
+<!-- ![edit-markdown.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/edit-markdown.png) -->
 
-![edit-markdown.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/edit-markdown.png)
+<p align="center">
+  <img alt="edit-markdown.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/edit-markdown.png" width="100%">
+  </br>
+  <em style="fontsize:50%">Simple but pretty UI</em>
+</p>
 
-#### Code complete for Python3
+<!-- #### Code complete for Python3 -->
+<!-- ![python3-complete.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/python-complete.png) -->
 
-![python3-complete.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/python-complete.png)
+<p align="center">
+  <img alt="python3-complete.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/python-complete.png" width="100%">
+  </br>
+  <em style="fontsize:50%">Code complete for python3</em>
+</p>
 
-#### Cursor movement
+<!-- #### Cursor movement -->
+<!-- ![fast-cursor-movement.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/fast-cursor-movement1.png) -->
 
-![fast-cursor-movement.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/fast-cursor-movement1.png)
+<p align="center">
+  <img alt="fast-cursor-movement.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/fast-cursor-movement1.png" width="100%">
+  </br>
+  <em style="fontsize:50%">Fast cursor movement</em>
+</p>
 
-#### Search text
+<!-- #### Search text -->
+<!-- ![search-text.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-text.png) -->
 
-![search-text.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-text.png)
+<p align="center">
+  <img alt="search-text.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-text.png" width="100%">
+  </br>
+  <em style="fontsize:50%">Search text</em>
+</p>
 
-#### Search files
+<!-- #### Search files -->
+<!-- ![search-files.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-files.png) -->
 
-![search-files.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-files.png)
+<p align="center">
+  <img alt="search-files.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/search-files.png" width="100%">
+  </br>
+  <em style="fontsize:50%">Search files</em>
+</p>
 
-#### Markdown preview
+<!-- #### Markdown preview -->
+<!-- ![markdown-preview.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/markdown-preview1.png) -->
 
-![markdown-preview.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/markdown-preview1.png)
+<p align="center">
+  <img alt="markdown-preview.png" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/markdown-preview1.png" width="100%">
+  </br>
+  <em style="fontsize:50%">Markdown preview</em>
+</p>
 
 ### Feature
 
@@ -306,9 +336,9 @@ Meta-key (or alt-key on Windows/Linux) and command-key (on macOS) are collective
 
 ## Hot Key
 
-- `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#simple-but-pretty-ui).
+- `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#screenshots).
 - `F2` **🇳** - Toggle undo tree.
-- `F3` **🇳** - Toggle outline/tags, see [Code complete for Python3](#code-complete-for-python).
+- `F3` **🇳** - Toggle outline/tags, see [Code complete for python3](#screenshots).
 - `F4` **🇳** - Switch between C/C++ headers and sources.
 - `F7` **🇳** - Toggle git blame info on current line.
 - `F8` **🇳** - Open markdown preview.
@@ -522,7 +552,7 @@ Support by [tcomment_vim](https://github.com/tomtom/tcomment_vim) (switched to [
 
 #### Cursor Motion
 
-See [Cursor movement](#cursor-movement).
+See [Fast cursor movement](#screenshots).
 
 - `<Leader>f{char}` **🇳** - Move by a single {char}.
 - `<Leader>s{char}{char}` **🇳** - Move by two consequent {char}{char}.
