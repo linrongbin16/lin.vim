@@ -25,8 +25,8 @@ rust_dependency() {
 }
 
 golang_dependency() {
-    # see https://github.com/canha/golang-tools-install-script
-    install_or_skip "wget -q -O - https://raw.githubusercontent.com/canha/golang-tools-install-script/master/goinstall.sh | bash" "go"
+    # https://github.com/kerolloz/go-installer
+    install_or_skip "bash <(curl -sL https://git.io/go-installer)" "go"
     if [ -d $HOME/.go/bin ]; then
         export PATH=$HOME/.go/bin:$PATH
     fi

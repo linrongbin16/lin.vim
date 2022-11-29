@@ -7,6 +7,7 @@ source $INSTALL_HOME/util.sh
 
 message "install dependencies with brew"
 brew update
+brew install openssh
 
 # vim
 if [ $OPT_DISABLE_VIM -ne 1 ]; then
@@ -16,7 +17,7 @@ fi
 if [ $OPT_DISABLE_NEOVIM -ne 1 ]; then
     install_or_skip "brew install neovim" "nvim"
 fi
-install_or_skip "brew install curl-openssl" "curl"
+install_or_skip "brew install curl" "curl"
 install_or_skip "brew install wget" "wget"
 install_or_skip "brew install cmake" "cmake"
 install_or_skip "brew install pkg-config" "pkg-config"
@@ -28,4 +29,4 @@ install_or_skip "brew install python3" "python3"
 install_or_skip "brew install node" "node"
 
 # ctags
-install_or_skip "brew install --HEAD universal-ctags/universal-ctags/universal-ctags" "ctags"
+install_or_skip "brew install universal-ctags" "ctags"
