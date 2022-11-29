@@ -7,7 +7,6 @@ source $INSTALL_HOME/util.sh
 
 message "install dependencies with brew"
 brew update
-brew install openssh
 
 # vim
 if [ $OPT_DISABLE_VIM -ne 1 ]; then
