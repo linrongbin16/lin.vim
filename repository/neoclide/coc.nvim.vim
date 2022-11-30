@@ -26,6 +26,7 @@ nmap <silent> ]d <Plug>(coc-diagnostic-next)
 " Go to definition
 nmap <silent> gd <Plug>(coc-definition)
 " Go to declaration
+nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gl <Plug>(coc-declaration)
 " Go to type definition
 nmap <silent> gy <Plug>(coc-type-definition)

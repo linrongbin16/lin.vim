@@ -452,7 +452,7 @@ By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/release
 - `[d` **🇳** - Go to previous(up) diagnostic location.
 - `]d` **🇳** - Go to next(down) diagnostic location.
 - `gd` **🇳** - Go to definition.
-- `gl` **🇳** - Go to declaration.
+- `gD`/`gl` **🇳** - Go to declaration.
 - `gy`/`gt` **🇳** - Go to type definition.
 - `gi` **🇳** - Go to implemention.
 - `gr` **🇳** - Go to references.
