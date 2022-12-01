@@ -102,7 +102,7 @@ class HasExpr(Expr):
         return f"has({self.expr.render()})"
 
 
-class NotExpr(Expr):
+class LogicNotExpr(Expr):
     def __init__(self, expr):
         assert isinstance(expr, Expr)
         self.expr = expr
@@ -112,14 +112,14 @@ class NotExpr(Expr):
 
 
 class LogicAndExpr(Expr):
-    def __init__(self, left_expr, right_expr):
-        assert isinstance(left_expr, Expr)
-        assert isinstance(right_expr, Expr)
-        self.left_expr = left_expr
-        self.right_expr = right_expr
+    def __init__(self, *args):
+        assert args is not None
+        for a in args:
+            assert isinstance(a, Expr)
+        self.args = args
 
     def render(self):
-        return f"({self.left_expr.render()}) && ({self.right_expr.render()})"
+        return " && ".join([f"({a.render()})" for a in self.args])
 
 
 class LogicOrExpr(Expr):
@@ -497,7 +497,7 @@ PLUGIN_CONTEXTS = [
                     "Colorscheme base16-default-dark is not working with lualine"
                 )
             ),
-            IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr("nvim-0.5")))),
+            IfExpr(LogicNotExpr(HasExpr(SingleQuoteStringExpr("nvim-0.5")))),
         ],
         bottom_clause=EndifExpr(),
         tag=PluginTag.COLORSCHEME,
@@ -658,12 +658,25 @@ PLUGIN_CONTEXTS = [
         bottom_clause=EndifExpr(),
     ),
     PluginContext(
-        "airblade",
-        "vim-gitgutter",
+        "lewis6991",
+        "gitsigns.nvim",
         top_clause=[
             EmptyStmt(),
             TrippleQuotesCommentExpr(LiteralExpr("---- Git ----")),
+            IfExpr(
+                LogicAndExpr(
+                    HasExpr(SingleQuoteStringExpr("nvim-0.7")),
+                    LogicNotExpr(HasExpr(SingleQuoteStringExpr("win32"))),
+                    LogicNotExpr(HasExpr(SingleQuoteStringExpr("win64"))),
+                )
+            ),
         ],
+        tag=PluginTag.HIGHLIGHT,
+    ),
+    PluginContext(
+        "airblade",
+        "vim-gitgutter",
+        top_clause=ElseExpr(),
         tag=PluginTag.EDITING,
     ),
     PluginContext("itchyny", "vim-gitbranch", tag=PluginTag.EDITING),
@@ -671,7 +684,7 @@ PLUGIN_CONTEXTS = [
         "f-person",
         "git-blame.nvim",
         top_clause=IfExpr(HasExpr(SingleQuoteStringExpr("nvim-0.5"))),
-        bottom_clause=EndifExpr(),
+        bottom_clause=[EndifExpr(), EndifExpr()],
         tag=PluginTag.HIGHLIGHT,
     ),
     PluginContext(
