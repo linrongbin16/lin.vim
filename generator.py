@@ -123,14 +123,14 @@ class LogicAndExpr(Expr):
 
 
 class LogicOrExpr(Expr):
-    def __init__(self, left_expr, right_expr):
-        assert isinstance(left_expr, Expr)
-        assert isinstance(right_expr, Expr)
-        self.left_expr = left_expr
-        self.right_expr = right_expr
+    def __init__(self, *args):
+        assert args is not None
+        for a in args:
+            assert isinstance(a, Expr)
+        self.args = args
 
     def render(self):
-        return f"({self.left_expr.render()}) || ({self.right_expr.render()})"
+        return " || ".join([f"({a.render()})" for a in self.args])
 
 
 class StringExpr(Expr):
