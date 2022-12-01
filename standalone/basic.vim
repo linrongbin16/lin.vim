@@ -98,9 +98,7 @@ endif
 """ shorter timeout for better response
 set timeout timeoutlen=3000 ttimeoutlen=100
 
-
 """ disable macvim GUI key mappings
-" let macvim_skip_cmd_opt_movement=1
-
-""" disable syntax highlighting sync on big file for better lantency
-" autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syn sync clear | endif
+if has("gui_macvim")
+    let macvim_skip_cmd_opt_movement = 1
+endif
