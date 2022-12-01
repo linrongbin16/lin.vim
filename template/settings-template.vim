@@ -24,6 +24,10 @@ nnoremap <F2> :<C-u>UndotreeToggle<CR>
 nnoremap <F3> :<C-u>Vista!!<CR>
 " Switch between C/C++ headers and sources
 nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
+" Toggle marks
+nmap <F6> <Plug>MarkToggle
+" Clear marks
+nmap <S-F6> <Plug>MarkAllClear
 " Toggle git blame
 nnoremap <F7> :<C-u>GitBlameToggle<CR>
 " Markdown preview

@@ -493,7 +493,9 @@ PLUGIN_CONTEXTS = [
         color="base16-default-dark",
         top_clause=[
             SingleQuoteCommentExpr(
-                LiteralExpr("Colorscheme base16-default-dark is not working with lualine")
+                LiteralExpr(
+                    "Colorscheme base16-default-dark is not working with lualine"
+                )
             ),
             IfExpr(NotExpr(HasExpr(SingleQuoteStringExpr("nvim-0.5")))),
         ],
@@ -565,6 +567,16 @@ PLUGIN_CONTEXTS = [
     PluginContext(
         "andymass",
         "vim-matchup",
+        tag=PluginTag.HIGHLIGHT,
+    ),
+    PluginContext(
+        "inkarkat",
+        "vim-ingo-library",
+        tag=PluginTag.HIGHLIGHT,
+    ),
+    PluginContext(
+        "inkarkat",
+        "vim-mark",
         tag=PluginTag.HIGHLIGHT,
     ),
     PluginContext(
