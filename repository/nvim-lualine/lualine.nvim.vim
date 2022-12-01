@@ -13,36 +13,50 @@ local function LinVimLuaLineGitStatus()
     -- end
     -- return string.format('%s%s', branch, changes)
 
-    -- vim-gitbranch + vim-gitgutter
-    if not vim.fn.exists('*gitbranch#name') then
-        return ''
-    end
-    local branch = vim.fn['gitbranch#name']()
-    if branch == nil or branch == '' then
-        return ''
-    end
-    if not vim.fn.exists('*GitGutterGetHunkSummary') then
-        return string.format(' %s', branch)
-    end
-    -- summary = [a, m, r]
-    local summary = vim.fn['GitGutterGetHunkSummary']()
-    if summary == nil then
-        return string.format(' %s', branch)
-    end
-    local changes = {}
-    if summary[1] > 0 then
-        changes[#changes+1]=string.format('+%d', summary[1])
-    end
-    if summary[2] > 0 then
-        changes[#changes+1]=string.format('~%d', summary[2])
-    end
-    if summary[3] > 0 then
-        changes[#changes+1]=string.format('-%d', summary[3])
-    end
-    if next(changes) == nil then
-        return string.format(' %s', branch)
+    if vim.fn.has('nvim-0.7') == 1 and vim.fn.has('win32') ~= 1 and vim.fn.has('win64') ~= 1 then
+        -- gitsigns.nvim
+        local branch=vim.b.gitsigns_head
+        if branch == nil or branch == '' then
+            return ''
+        end
+        local changes=vim.b.gitsigns_status
+        if changes == nil or changes == '' then
+            return string.format(' %s', branch)
+        else
+            return string.format(' %s %s', branch, changes)
+        end
     else
-        return string.format(' %s %s', branch, table.concat(changes, ' '))
+        -- vim-gitbranch + vim-gitgutter
+        if not vim.fn.exists('*gitbranch#name') then
+            return ''
+        end
+        local branch = vim.fn['gitbranch#name']()
+        if branch == nil or branch == '' then
+            return ''
+        end
+        if not vim.fn.exists('*GitGutterGetHunkSummary') then
+            return string.format(' %s', branch)
+        end
+        -- summary = [a, m, r]
+        local summary = vim.fn['GitGutterGetHunkSummary']()
+        if summary == nil then
+            return string.format(' %s', branch)
+        end
+        local changes = {}
+        if summary[1] > 0 then
+            changes[#changes+1]=string.format('+%d', summary[1])
+        end
+        if summary[2] > 0 then
+            changes[#changes+1]=string.format('~%d', summary[2])
+        end
+        if summary[3] > 0 then
+            changes[#changes+1]=string.format('-%d', summary[3])
+        end
+        if next(changes) == nil then
+            return string.format(' %s', branch)
+        else
+            return string.format(' %s %s', branch, table.concat(changes, ' '))
+        end
     end
 end
 -- local function LinVimLuaLineCurrentFunction()

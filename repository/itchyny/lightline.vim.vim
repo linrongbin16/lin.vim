@@ -69,32 +69,46 @@ function! LinVimLightLineGitStatus() abort
     " let changes = get(b:,'coc_git_status','')
     " return printf('%s%s', branch, changes)
 
-    """ vim-gitbranch + vim-gitgutter
-    if !exists("*gitbranch#name")
-        return ''
-    endif
-    let branch = gitbranch#name()
-    if empty(branch)
-        return ''
-    endif
-    if !exists("*GitGutterGetHunkSummary")
-        return printf(' %s', branch)
-    endif
-    let [a,m,r] = GitGutterGetHunkSummary()
-    let changes = []
-    if a > 0
-        call add(changes, printf('+%d', a))
-    endif
-    if m > 0
-        call add(changes, printf('~%d', m))
-    endif
-    if r > 0
-        call add(changes, printf('-%d', r))
-    endif
-    if empty(changes)
-        return printf(' %s', branch)
+    if has('nvim-0.7') && (!has('win32')) && (!has('win64'))
+        """ gitsigns.nvim
+        let branch = get(b:,'gitsigns_head','')
+        if empty(branch)
+            return ''
+        endif
+        let changes = get(b:,'gitsigns_status','')
+        if empty(changes)
+            return printf(' %s', branch)
+        else
+            return printf(' %s %s', branch, changes)
+        endif
     else
-        return printf(' %s %s', branch, join(changes, ' '))
+        """ vim-gitbranch + vim-gitgutter
+        if !exists("*gitbranch#name")
+            return ''
+        endif
+        let branch = gitbranch#name()
+        if empty(branch)
+            return ''
+        endif
+        if !exists("*GitGutterGetHunkSummary")
+            return printf(' %s', branch)
+        endif
+        let [a,m,r] = GitGutterGetHunkSummary()
+        let changes = []
+        if a > 0
+            call add(changes, printf('+%d', a))
+        endif
+        if m > 0
+            call add(changes, printf('~%d', m))
+        endif
+        if r > 0
+            call add(changes, printf('-%d', r))
+        endif
+        if empty(changes)
+            return printf(' %s', branch)
+        else
+            return printf(' %s %s', branch, join(changes, ' '))
+        endif
     endif
 endfunction
 
