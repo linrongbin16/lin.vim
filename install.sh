@@ -34,12 +34,19 @@ golang_dependency() {
 
 pip3_dependency() {
     message "install python packages with pip3"
-    sudo pip3 install pyOpenSSL neovim pynvim pep8 flake8 pylint black yapf chardet cmakelang cmake-language-server click
+    install_or_skip "sudo pip3 install pep8" "pep8"
+    install_or_skip "sudo pip3 install flake8" "flake8"
+    install_or_skip "sudo pip3 install pylint" "pylint"
+    install_or_skip "sudo pip3 install black" "black"
+    install_or_skip "sudo pip3 install yapf" "yapf"
+    sudo pip3 install pyOpenSSL neovim pynvim chardet cmakelang cmake-language-server click
 }
 
 npm_dependency() {
     message "install node packages with npm"
-    sudo npm install -g yarn prettier neovim
+    install_or_skip "sudo npm install -g yarn" "yarn"
+    install_or_skip "sudo npm install -g prettier" "prettier"
+    sudo npm install -g neovim
 }
 
 nerdfont_latest_release_tag() {

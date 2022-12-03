@@ -281,9 +281,6 @@ function NpmDependency() {
     npm install -g yarn prettier neovim
 }
 
-function InstallDependency() {
-}
-
 # basic
 
 function InstallBasicVimrc() {
