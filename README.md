@@ -13,7 +13,9 @@ lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neov
   - [More Options](#more-options)
   - [Upgrade](#upgrade)
 - [User Guide](#user-guide)
-  - [Hot Key](#hot-key)
+  - [Global Key Mappings](#global-key-mappings)
+    - [Hot Keys](#hot-keys)
+    - [Control/Command+? Keys](#controlcommand-keys)
   - [UI](#ui)
     - [File Explorer](#file-explorer)
     - [Tabline](#tabline)
@@ -329,11 +331,13 @@ In this section, vim editing mode are specified with:
 - **🇻** - Visual mode.
 - **🇮** - Insert mode.
 
-Meta-key (or alt-key on Windows/Linux) and command-key (on macOS) are collectively refered as:
+Meta-key (`M`), alt-key (`A`) on Windows/Linux, and command-key (`D`) on macOS are collectively refered as:
 
 - `M`
 
-## Hot Key
+## Global Key Mappings
+
+#### Hot Keys
 
 - `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#screenshots).
 - `F2` **🇳** - Toggle undo tree.
@@ -344,7 +348,30 @@ Meta-key (or alt-key on Windows/Linux) and command-key (on macOS) are collective
 - `F9` **🇳** - Random select next colorscheme, see [Screenshots](#screenshots).
 - `F10` **🇳** - Toggle buffers explorer.
 
-You could configure these keys in **_~/.vim/settings.vim_**.
+#### Control/Command+? Keys
+
+Control+? keys are configured following most editors' behaviour under windows:
+
+- `<C-a>` **🇳** **🇻** **🇮** - Select all.
+- `<C-c>` **🇳** **🇻** **🇮** - Copy to clipboard.
+- `<C-x>` **🇳** **🇻** **🇮** - Cut to clipboard.
+- `<C-v>` **🇳** **🇻** **🇮** - Paste from clipboard.
+- `<C-s>` **🇳** **🇻** **🇮** - Save file.
+- `<C-y>` **🇳** **🇻** **🇮** - Redo.
+- `<C-z>` **🇳** **🇻** **🇮** - Undo.
+- `<C-q>` **🇳** - Turn into visual block mode, same as vim's original _ctrl+v_ (since we remapped it to paste).
+
+Additionally for macOS, command+? keys are configured following the same behaviour (control+? keys are also enabled):
+
+- `<D-a>` **🇳** **🇻** **🇮** - Same as `<C-a>`.
+- `<D-c>` **🇳** **🇻** **🇮** - Same as `<C-c>`.
+- `<D-x>` **🇳** **🇻** **🇮** - Same as `<C-x>`.
+- `<D-v>` **🇳** **🇻** **🇮** - Same as `<C-v>`.
+- `<D-s>` **🇳** **🇻** **🇮** - Same as `<C-s>`.
+- `<D-y>` **🇳** **🇻** **🇮** - Same as `<C-y>`.
+- `<D-z>` **🇳** **🇻** **🇮** - Same as `<C-z>`.
+
+You could configure all global key mappings in **_~/.vim/settings.vim_**.
 
 ## UI
 
@@ -405,27 +432,27 @@ You could editing **_~/.vim/repository/lambdalisue/fern.vim.vim_** (or **_~/.vim
 
 #### Tabline
 
-- `<Leader>bn`/`<M-Right>`/`<M-.>` **🇳** - Go to next(right) buffer.
-- `<Leader>bp`/`<M-Left>`/`<M-,>` **🇳** - Go to previous(left) buffer.
+- `<Leader>bn`/`<M-.>`/`<C-.>`/`<M-Right>`/`<C-Right>` **🇳** - Go to next(right) buffer.
+- `<Leader>bp`/`<M-,>`/`<C-,>`/`<M-Left>`/`<C-Left>` **🇳** - Go to previous(left) buffer.
 - `<Leader>bd` **🇳** - Close current buffer without closing vim window.
 
 Navigation:
 
-- `<M-1>` **🇳** - Go to buffer-1.
-- `<M-2>` **🇳** - Go to buffer-2.
-- `<M-3>` **🇳** - Go to buffer-3.
-- `<M-4>` **🇳** - Go to buffer-4.
-- `<M-5>` **🇳** - Go to buffer-5.
-- `<M-6>` **🇳** - Go to buffer-6.
-- `<M-7>` **🇳** - Go to buffer-7.
-- `<M-8>` **🇳** - Go to buffer-8.
-- `<M-9>` **🇳** - Go to buffer-9.
-- `<M-0>` **🇳** - Go to buffer-10 (or the last buffer on neovim 0.7+).
+- `<M-1>`/`<C-1>` **🇳** - Go to buffer-1.
+- `<M-2>`/`<C-2>` **🇳** - Go to buffer-2.
+- `<M-3>`/`<C-3>` **🇳** - Go to buffer-3.
+- `<M-4>`/`<C-4>` **🇳** - Go to buffer-4.
+- `<M-5>`/`<C-5>` **🇳** - Go to buffer-5.
+- `<M-6>`/`<C-6>` **🇳** - Go to buffer-6.
+- `<M-7>`/`<C-7>` **🇳** - Go to buffer-7.
+- `<M-8>`/`<C-8>` **🇳** - Go to buffer-8.
+- `<M-9>`/`<C-9>` **🇳** - Go to buffer-9.
+- `<M-0>`/`<C-0>` **🇳** - Go to buffer-10 (or the last buffer on neovim 0.7+).
 
 _For neovim 0.7+ only_:
 
-- `<M-S-Right>` **🇳** - Re-order(move) current buffer to next(right) position.
-- `<M-S-Left>` **🇳** - Re-order(move) current buffer to previous(left) position.
+- `<M-S-Right>`/`<C-S-Right>` **🇳** - Re-order(move) current buffer to next(right) position.
+- `<M-S-Left>`/`<C-S-Left>` **🇳** - Re-order(move) current buffer to previous(left) position.
 - `<LeftMouse>` **🇳** - Go to target buffer.
 - `<MiddleMouse>` **🇳** - Close target buffer.
 

@@ -37,7 +37,7 @@ nnoremap <F9> :<C-u>call LinVimNextRandomColorSchemeSync()<CR>
 " Toggle bufexplorer
 nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
 
-""" ---- Ctrl keys ----
+""" ---- Ctrl/cmd keys ----
 if exists('$VIMRUNTIME/mswin.vim')
     source $VIMRUNTIME/mswin.vim
 endif
