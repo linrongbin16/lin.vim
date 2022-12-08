@@ -8,7 +8,6 @@ Options:
   --disable-highlight       Disable extra highlights
   --disable-language        Disable language support
   --disable-editing         Disable editing enhancement
-  --disable-ctrl-keys       Disable windows ctrl keys
   --disable-plugin=TEXT     Disable specific vim plugin
   --disable-vim             No .vimrc file for vim
   --disable-neovim          No init.vim file neovim

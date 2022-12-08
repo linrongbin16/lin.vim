@@ -289,7 +289,6 @@ And more options:
 - `--disable-highlight`: disable extra highlights. Such as RGB and same word mark under cursor, etc.
 - `--disable-language`: disable language support. Such as auto complete and language servers, etc.
 - `--disable-editing`: disable editing enhancements. Such as easy comment, cursor motion, etc.
-- `--disable-ctrl-keys`: disable windows behaviour, such as ctrl+{a,s,x,c,v} keys, etc.
 - `--disable-plugin=TEXT`: disable specific vim plugin in format 'organization/repository', this is a multiple option. For example: `--disable-plugin=RRethy/vim-hexokinase --disable-plugin=alvan/vim-closetag`.
 - `--disable-vim`: don't install .vimrc file for vim, could use neovim only.
 - `--disable-neovim`: don't install nvim/init.vim file for neovim, could use vim only.

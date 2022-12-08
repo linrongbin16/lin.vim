@@ -864,7 +864,6 @@ class Render(IndentLevel):
         disable_highlight=False,
         disable_language=False,
         disable_editing=False,
-        disable_ctrl_keys=False,
         disable_plugins=None,
     ):
         IndentLevel.__init__(self)
@@ -873,7 +872,6 @@ class Render(IndentLevel):
         self.disable_highlight = disable_highlight
         self.disable_language = disable_language
         self.disable_editing = disable_editing
-        self.disable_ctrl_keys = disable_ctrl_keys
         self.disable_plugins = disable_plugins
 
     def render(self):
@@ -941,16 +939,6 @@ class Render(IndentLevel):
         vimrc_stmts.append(SourceVimDirStmt("plugins.vim"))
         vimrc_stmts.append(SourceVimDirStmt("standalone/basic.vim"))
         vimrc_stmts.append(SourceVimDirStmt("standalone/filetype.vim"))
-        if self.disable_ctrl_keys:
-            vimrc_stmts.append(
-                Stmt(
-                    SingleQuoteCommentExpr(
-                        LiteralExpr("Windows CTRL+{a,s,x,c,v} keys disabled")
-                    )
-                )
-            )
-        else:
-            vimrc_stmts.append(SourceVimDirStmt("standalone/ctrlkeys.vim"))
 
         # insert core vimrc statements
         vimrc_stmts.extend(core_vimrcs)
@@ -1267,12 +1255,6 @@ class CommandHelp(click.Command):
     help="Disable editing enhancement",
 )
 @click.option(
-    "--disable-ctrl-keys",
-    "disable_ctrl_keys_opt",
-    is_flag=True,
-    help="Disable windows ctrl keys",
-)
-@click.option(
     "--disable-plugin",
     "disable_plugin_opt",
     multiple=True,
@@ -1298,7 +1280,6 @@ def generator(
     disable_highlight_opt,
     disable_language_opt,
     disable_editing_opt,
-    disable_ctrl_keys_opt,
     disable_plugin_opt,
     disable_vim_opt,
     disable_neovim_opt,
@@ -1314,7 +1295,6 @@ def generator(
         disable_highlight_opt,
         disable_language_opt,
         disable_editing_opt,
-        disable_ctrl_keys_opt,
         disable_plugin_opt,
     )
     (
