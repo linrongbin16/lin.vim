@@ -5,7 +5,7 @@ if has("win32") || has("win64")
     set guifont=Hack\ NFM:h10
 elseif has("mac")
     " for macOS
-    set guifont=Hack\ Nerd\ Font\ Mono:h12
+    set guifont=Hack\ Nerd\ Font\ Mono:h13
 else
     " for other *NIX
     set guifont=Hack\ Nerd\ Font\ Mono:h10
@@ -36,6 +36,15 @@ nnoremap <F8> :<C-u>MarkdownPreview<CR>
 nnoremap <F9> :<C-u>call LinVimNextRandomColorSchemeSync()<CR>
 " Toggle bufexplorer
 nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
+
+""" ---- Ctrl/cmd keys ----
+if exists('$VIMRUNTIME/mswin.vim')
+    source $VIMRUNTIME/mswin.vim
+endif
+if has('mac') && exists('$VIMRUNTIME/macmap.vim')
+    source $VIMRUNTIME/macmap.vim
+endif
+
 
 """ ---- Disable syntax highlight for super big file ----
 """ filesize=1000000
