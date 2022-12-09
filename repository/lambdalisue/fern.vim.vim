@@ -56,13 +56,17 @@ function! s:fern_settings() abort
 
   " resize explorer width
   nmap <buffer><nowait> <D-,> <Plug>(fern-action-zoom:reset)
-  nmap <buffer><nowait> <A-,> <Plug>(fern-action-zoom:reset)
-  nmap <buffer><nowait> <D-.> <Plug>(fern-action-zoom:half)
-  nmap <buffer><nowait> <A-.> <Plug>(fern-action-zoom:half)
   nmap <buffer><nowait> <D-Left> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <A-,> <Plug>(fern-action-zoom:reset)
   nmap <buffer><nowait> <A-Left> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <C-,> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <C-Left> <Plug>(fern-action-zoom:reset)
+  nmap <buffer><nowait> <D-.> <Plug>(fern-action-zoom:half)
   nmap <buffer><nowait> <D-Right> <Plug>(fern-action-zoom:half)
+  nmap <buffer><nowait> <A-.> <Plug>(fern-action-zoom:half)
   nmap <buffer><nowait> <A-Right> <Plug>(fern-action-zoom:half)
+  nmap <buffer><nowait> <C-.> <Plug>(fern-action-zoom:half)
+  nmap <buffer><nowait> <C-Right> <Plug>(fern-action-zoom:half)
 endfunction
 
 augroup my_fern_group
