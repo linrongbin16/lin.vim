@@ -405,8 +405,8 @@ Copy/paste/cut:
 
 Adjust explorer width:
 
-- `<M-.>`/`<M-Right>` **🇳** - Make explorer bigger size.
-- `<M-,>`/`<M-Left>` **🇳** - Make explorer smaller size.
+- `<M-.>`/`<M-Right>`/`<C-.>`/`<C-Right>` **🇳** - Make explorer bigger size.
+- `<M-,>`/`<M-Left>`/`<C-,>`/`<C-Left>` **🇳** - Make explorer smaller size.
 
 Other:
 
