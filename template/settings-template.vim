@@ -40,10 +40,17 @@ nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
 """ ---- Ctrl/cmd keys ----
 if exists('$VIMRUNTIME/mswin.vim')
     source $VIMRUNTIME/mswin.vim
+else
+    source $HOME/.vim/standalone/mswin-macvim-9.0.vim
 endif
-if has('mac') && exists('$VIMRUNTIME/macmap.vim')
-    source $VIMRUNTIME/macmap.vim
+if has('mac')
+    if exists('$VIMRUNTIME/macmap.vim')
+        source $VIMRUNTIME/macmap.vim
+    else
+        source $HOME/.vim/template/macmap-macvim-9.0.vim
+    endif
 endif
+
 
 
 """ ---- Disable syntax highlight for super big file ----

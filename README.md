@@ -302,7 +302,7 @@ Notice:
 
 The `install.ps1` especially provide two more options for Windows:
 
-- `--depends=TEXT`: download and install specific dependency in 3rd step of [Windows installation](#windows). Use `--depends=all` to run for all dependencies. For example: `--depends=vim`, `--depends=universal-ctags`.
+- `--depends=TEXT`: download and install specific dependency in 3rd step of [windows installation](#windows). Use `--depends=all` to run for all dependencies. For example: `--depends=vim`, `--depends=universal-ctags`.
 - `--nerdfont=TEXT`: download specific [nerd font](https://github.com/ryanoasis/nerd-fonts/releases/latest). For example: `--nerdfont=Hack`, `--nerdfont=SourceCodePro`.
 
 > Use a package manager (such as [chocolatey](https://chocolatey.org/) and [scoop](https://scoop.sh/)) could be a better choice, just make sure they're available in `$env:Path`.
@@ -371,7 +371,7 @@ Additionally for macOS, command+? keys are configured following the same behavio
 - `<D-y>` **🇳** **🇻** **🇮** - Same as `<C-y>`.
 - `<D-z>` **🇳** **🇻** **🇮** - Same as `<C-z>`.
 
-You could configure all global key mappings in **_~/.vim/settings.vim_**.
+You could configure all global key mappings in _~/.vim/settings.vim_.
 
 ## UI
 
@@ -460,7 +460,7 @@ Support by [vim-buffet](https://github.com/bagrat/vim-buffet) (switched to [barb
 
 #### Font
 
-By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) is enabled. Please install other nerd fonts and edit **_~/.vim/settings.vim_** to customize fonts.
+By default [Hack Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases) is enabled. Please install other nerd fonts and edit _~/.vim/settings.vim_ to customize fonts.
 
 ## IDE-like Editing
 
@@ -617,7 +617,16 @@ Auto pair and close html tags, support by [auto-pairs](https://github.com/jiangm
 
 ## Customization
 
-Please edit plugins in `~/.vim/plugins.vim`, settings in `~/.vim/settings.vim` and coc settings in `~/.vim/coc-settings.json`.
+Please check vim entry _~/.vimrc_ (_~/\_vimrc_ on windows), and neovim entry _~/.config/nvim/init.vim_ (_~/AppData/Local/nvim/init.vim_ on windows).
+They load below vim files:
+
+- Plugins (_~/.vim/plugins.vim_) - Vim plugins managed by [vim-plug](https://github.com/junegunn/vim-plug).
+- Standalones (_~/.vim/standalone/\*.vim_) - Standalone vim settings.
+- Repositories (_~/.vim/repository/{org}/{repo}.vim_) - Vim settings for each plugin.
+- Colors (_~/.vim/color-settings.vim_) - Colorscheme settings.
+- Other settings (_~/.vim/settings.vim_) - Other settings include coc extensions, gui font, global key mappings, etc.
+
+For basic install mode, there's only standalone vim settings, see [More Options](#more-options).
 
 # Appendix
 
