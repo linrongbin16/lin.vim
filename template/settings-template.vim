@@ -29,7 +29,11 @@ nmap <F6> <Plug>MarkToggle
 " Clear marks
 nmap <S-F6> <Plug>MarkAllClear
 " Toggle git blame
-nnoremap <F7> :<C-u>GitBlameToggle<CR>
+if has('nvim-0.7')
+    nnoremap <F7> :<C-u>Gitsigns toggle_current_line_blame<CR>
+else
+    nnoremap <F7> :<C-u>GitBlameToggle<CR>
+endif
 " Markdown preview
 nnoremap <F8> :<C-u>MarkdownPreview<CR>
 " Next random color scheme
