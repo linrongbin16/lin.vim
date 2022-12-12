@@ -432,7 +432,7 @@ You could editing **_~/.vim/repository/lambdalisue/fern.vim.vim_** (or **_~/.vim
 
 #### Tabline
 
-Notice that on different platforms,terminals and GUI clients, some ctrl/alt/cmd/meta+keys could been overwritten. So introduced several ways of mappings to make sure for the availibility.
+Notice that on different platforms,terminals and GUI clients, some ctrl/meta+keys could been overwritten. So introduced several ways of mappings to make sure for the availibility.
 
 - `<Leader>bn`/`<M-.>`/`<C-.>`/`<M-Right>`/`<C-Right>` **🇳** - Go to next(right) buffer.
 - `<Leader>bp`/`<M-,>`/`<C-,>`/`<M-Left>`/`<C-Left>` **🇳** - Go to previous(left) buffer.
