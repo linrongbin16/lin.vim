@@ -63,7 +63,12 @@ endif
 " let g:neovide_transparency=1.0
 " let g:neovide_scroll_animation_length=0.0
 " let g:neovide_remember_window_size=v:true
-" let g:neovide_input_use_logo=v:false  " v:true on macOS
+" if has('mac')
+"     " v:true on macOS
+"     let g:neovide_input_use_logo=v:true
+" else
+"     let g:neovide_input_use_logo=v:false
+" endif
 " let g:neovide_cursor_animation_length=0.0
 " let g:neovide_cursor_trail_length=0.0
 " let g:neovide_cursor_antialiasing=v:true
