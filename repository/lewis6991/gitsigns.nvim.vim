@@ -1,6 +1,3 @@
-" Toggle git blame info
-nnoremap <Leader>gb :<C-u>Gitsigns toggle_current_line_blame<CR>
-
 lua<<EOF
 require('gitsigns').setup{
     signs = {
@@ -35,3 +32,7 @@ require('gitsigns').setup{
     end
 }
 EOF
+
+" Toggle git blame info
+nnoremap <Leader>gb :<C-u>Gitsigns toggle_current_line_blame<CR>
+

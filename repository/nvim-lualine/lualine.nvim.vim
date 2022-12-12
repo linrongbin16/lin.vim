@@ -1,7 +1,7 @@
 " Only enable statusline, no tabline
 
 lua << END
-local LinVimLuaLineGitStatus = (vim.fn.has('nvim-0.7') == 1 and vim.fn.has('win32') ~= 1 and vim.fn.has('win64') ~= 1) and (function()
+local LinVimLuaLineGitStatus = (vim.fn.has('nvim-0.7') == 1) and (function()
     -- coc-git
     -- local branch = vim.g.coc_git_status
     -- if branch == nil or branch == '' then

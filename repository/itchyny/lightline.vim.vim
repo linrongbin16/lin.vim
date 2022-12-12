@@ -60,7 +60,7 @@ function! LinVimLightLineCocStatus() abort
     endif
 endfunction
 
-if has('nvim-0.7') && (!has('win32')) && (!has('win64'))
+if has('nvim-0.7')
 function! LinVimLightLineGitStatus() abort
     """ gitsigns.nvim
     let branch = get(b:,'gitsigns_head','')

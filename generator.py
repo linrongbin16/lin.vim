@@ -663,13 +663,7 @@ PLUGIN_CONTEXTS = [
         top_clause=[
             EmptyStmt(),
             TrippleQuotesCommentExpr(LiteralExpr("---- Git ----")),
-            IfExpr(
-                LogicAndExpr(
-                    HasExpr(SingleQuoteStringExpr("nvim-0.7")),
-                    LogicNotExpr(HasExpr(SingleQuoteStringExpr("win32"))),
-                    LogicNotExpr(HasExpr(SingleQuoteStringExpr("win64"))),
-                )
-            ),
+            IfExpr(HasExpr(SingleQuoteStringExpr("nvim-0.7"))),
         ],
         tag=PluginTag.HIGHLIGHT,
     ),
