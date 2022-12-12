@@ -4,135 +4,45 @@ let bufferline.icons = 'both'
 let bufferline.no_name_title = '[No Name]'
 let bufferline.maximum_length = 80
 
-let LIN_VIM_NVIM_TREE='NvimTree'
-let LIN_VIM_FERN='fern'
+function! s:lin_vim_barbar_keys(k) abort
+    " go to buffer-1~9, or the last buffer
+    " <D-?>/<A-?>/<M-?>/<C-?>
+    " ?: 0-9
+    execute printf('nnoremap <silent> <expr> <%s-1> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 1\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-2> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 2\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-3> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 3\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-4> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 4\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-5> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 5\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-6> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 6\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-7> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 7\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-8> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 8\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-9> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferGoto 9\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-0> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferLast\<CR>"', a:k)
 
-if has('nvim-0.7')
-    " ctrl/alt/cmd + 1~9, ctrl/alt/cmd + 0
-    nnoremap <silent> <expr> <D-1> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 1<CR>"
-    nnoremap <silent> <expr> <D-2> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 2<CR>"
-    nnoremap <silent> <expr> <D-3> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 3<CR>"
-    nnoremap <silent> <expr> <D-4> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 4<CR>"
-    nnoremap <silent> <expr> <D-5> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 5<CR>"
-    nnoremap <silent> <expr> <D-6> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 6<CR>"
-    nnoremap <silent> <expr> <D-7> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 7<CR>"
-    nnoremap <silent> <expr> <D-8> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 8<CR>"
-    nnoremap <silent> <expr> <D-9> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 9<CR>"
-    nnoremap <silent> <expr> <D-0> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferLast<CR>"
-    nnoremap <silent> <expr> <A-1> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 1<CR>"
-    nnoremap <silent> <expr> <A-2> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 2<CR>"
-    nnoremap <silent> <expr> <A-3> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 3<CR>"
-    nnoremap <silent> <expr> <A-4> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 4<CR>"
-    nnoremap <silent> <expr> <A-5> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 5<CR>"
-    nnoremap <silent> <expr> <A-6> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 6<CR>"
-    nnoremap <silent> <expr> <A-7> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 7<CR>"
-    nnoremap <silent> <expr> <A-8> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 8<CR>"
-    nnoremap <silent> <expr> <A-9> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 9<CR>"
-    nnoremap <silent> <expr> <A-0> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferLast<CR>"
-    nnoremap <silent> <expr> <C-1> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 1<CR>"
-    nnoremap <silent> <expr> <C-2> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 2<CR>"
-    nnoremap <silent> <expr> <C-3> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 3<CR>"
-    nnoremap <silent> <expr> <C-4> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 4<CR>"
-    nnoremap <silent> <expr> <C-5> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 5<CR>"
-    nnoremap <silent> <expr> <C-6> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 6<CR>"
-    nnoremap <silent> <expr> <C-7> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 7<CR>"
-    nnoremap <silent> <expr> <C-8> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 8<CR>"
-    nnoremap <silent> <expr> <C-9> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferGoto 9<CR>"
-    nnoremap <silent> <expr> <C-0> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferLast<CR>"
+    " go to next/previous buffer
+    " <D-?>/<A-?>/<M-?>/<C-?>
+    " ?: ,/Left/./Right
+    execute printf('nnoremap <silent> <expr> <%s-.> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferNext\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-Right> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferNext\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-,> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferPrevious\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-Left> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferPrevious\<CR>"', a:k)
 
-    " go to next(right) buffer
-    nnoremap <silent> <expr> <Leader>bn (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <A-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <D-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <C-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <A-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <D-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <C-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    " go to previous(left) buffer
-    nnoremap <silent> <expr> <Leader>bp (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <A-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <D-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <C-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <A-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <D-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <C-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
+    " re-order current buffer to next/previous position
+    " <D-S-?>/<A-S-?>/<M-S-?>/<C-S-?>
+    " ?: ,/Left/./Right
+    execute printf('nnoremap <silent> <expr> <%s-S-,> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferMovePrevious\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-S-Left> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferMovePrevious\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-S-.> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferMoveNext\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-S-Right> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>BufferMoveNext\<CR>"', a:k)
+endfunction
 
-    " close current buffer without closing vim window
-    nnoremap <silent> <expr> <Leader>bd (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferClose<CR>"
 
-    " re-order current buffer to previous(left)
-    nnoremap <silent> <expr> <A-S-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <D-S-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <C-S-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <A-S-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <D-S-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <C-S-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    " re-order current buffer to next(right)
-    nnoremap <silent> <expr> <A-S-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <D-S-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <C-S-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <A-S-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <D-S-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <C-S-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-else
-    " ctrl/alt/cmd + 1~9, ctrl/alt/cmd + 0
-    nnoremap <silent> <expr> <D-1> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 1<CR>"
-    nnoremap <silent> <expr> <D-2> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 2<CR>"
-    nnoremap <silent> <expr> <D-3> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 3<CR>"
-    nnoremap <silent> <expr> <D-4> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 4<CR>"
-    nnoremap <silent> <expr> <D-5> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 5<CR>"
-    nnoremap <silent> <expr> <D-6> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 6<CR>"
-    nnoremap <silent> <expr> <D-7> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 7<CR>"
-    nnoremap <silent> <expr> <D-8> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 8<CR>"
-    nnoremap <silent> <expr> <D-9> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 9<CR>"
-    nnoremap <silent> <expr> <D-0> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferLast<CR>"
-    nnoremap <silent> <expr> <A-1> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 1<CR>"
-    nnoremap <silent> <expr> <A-2> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 2<CR>"
-    nnoremap <silent> <expr> <A-3> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 3<CR>"
-    nnoremap <silent> <expr> <A-4> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 4<CR>"
-    nnoremap <silent> <expr> <A-5> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 5<CR>"
-    nnoremap <silent> <expr> <A-6> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 6<CR>"
-    nnoremap <silent> <expr> <A-7> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 7<CR>"
-    nnoremap <silent> <expr> <A-8> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 8<CR>"
-    nnoremap <silent> <expr> <A-9> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 9<CR>"
-    nnoremap <silent> <expr> <A-0> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferLast<CR>"
-    nnoremap <silent> <expr> <C-1> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 1<CR>"
-    nnoremap <silent> <expr> <C-2> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 2<CR>"
-    nnoremap <silent> <expr> <C-3> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 3<CR>"
-    nnoremap <silent> <expr> <C-4> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 4<CR>"
-    nnoremap <silent> <expr> <C-5> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 5<CR>"
-    nnoremap <silent> <expr> <C-6> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 6<CR>"
-    nnoremap <silent> <expr> <C-7> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 7<CR>"
-    nnoremap <silent> <expr> <C-8> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 8<CR>"
-    nnoremap <silent> <expr> <C-9> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferGoto 9<CR>"
-    nnoremap <silent> <expr> <C-0> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferLast<CR>"
+call s:lin_vim_barbar_keys('D')
+call s:lin_vim_barbar_keys('A')
+call s:lin_vim_barbar_keys('M')
+call s:lin_vim_barbar_keys('C')
 
-    " go to next(right) buffer
-    nnoremap <silent> <expr> <Leader>bn (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <D-.> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <D-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <A-.> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <A-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <C-.> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    nnoremap <silent> <expr> <C-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
-    " go to previous(left) buffer
-    nnoremap <silent> <expr> <Leader>bp (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <D-,> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <D-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <A-,> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <A-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <C-,> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-    nnoremap <silent> <expr> <C-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
-
-    " close current buffer without closing vim window
-    nnoremap <silent> <expr> <Leader>bd (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferClose<CR>"
-
-    " re-order current buffer to previous(left)
-    nnoremap <silent> <expr> <D-S-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <A-S-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    nnoremap <silent> <expr> <C-S-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferMovePrevious<CR>"
-    " re-order current buffer to next(right)
-    nnoremap <silent> <expr> <D-S-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <A-S-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-    nnoremap <silent> <expr> <C-S-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":BufferMoveNext<CR>"
-endif
+" go to next/previous buffer, close buffer
+nnoremap <silent> <expr> <Leader>bn (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern "? "\<c-w>\<c-w>" : '').":BufferNext<CR>"
+nnoremap <silent> <expr> <Leader>bp (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<c-w>\<c-w>" : '').":BufferPrevious<CR>"
+nnoremap <silent> <expr> <Leader>bd (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<c-w>\<c-w>" : '').":BufferClose<CR>"

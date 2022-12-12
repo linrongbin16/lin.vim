@@ -18,110 +18,36 @@ function! g:BuffetSetCustomColors()
     hi! BuffetActiveBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#999999 guifg=#0066CC
 endfunction
 
-let LIN_VIM_NVIM_TREE='NvimTree'
-let LIN_VIM_FERN='fern'
+function! s:lin_vim_vim_buffet_keys(k) abort
+    " go to buffer-1~10
+    " <D-?>/<A-?>/<M-?>/<C-?>
+    " ?: 0-9
+    execute printf('nnoremap <silent> <expr> <%s-1> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(1)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-2> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(2)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-3> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(3)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-4> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(4)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-5> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(5)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-6> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(6)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-7> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(7)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-8> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(8)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-9> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(9)"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-0> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>\<Plug>BuffetSwitch(10)"', a:k)
 
-if has('nvim-0.7')
-    " ctrl/alt/cmd + 1~9, ctrl/alt/cmd + 0
-    nmap <silent> <expr> <D-1> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
-    nmap <silent> <expr> <D-2> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
-    nmap <silent> <expr> <D-3> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(3)"
-    nmap <silent> <expr> <D-4> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(4)"
-    nmap <silent> <expr> <D-5> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(5)"
-    nmap <silent> <expr> <D-6> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(6)"
-    nmap <silent> <expr> <D-7> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(7)"
-    nmap <silent> <expr> <D-8> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(8)"
-    nmap <silent> <expr> <D-9> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(9)"
-    nmap <silent> <expr> <D-0> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
-    nmap <silent> <expr> <A-1> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
-    nmap <silent> <expr> <A-2> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
-    nmap <silent> <expr> <A-3> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(3)"
-    nmap <silent> <expr> <A-4> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(4)"
-    nmap <silent> <expr> <A-5> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(5)"
-    nmap <silent> <expr> <A-6> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(6)"
-    nmap <silent> <expr> <A-7> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(7)"
-    nmap <silent> <expr> <A-8> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(8)"
-    nmap <silent> <expr> <A-9> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(9)"
-    nmap <silent> <expr> <A-0> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
-    nmap <silent> <expr> <C-1> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
-    nmap <silent> <expr> <C-2> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
-    nmap <silent> <expr> <C-3> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(3)"
-    nmap <silent> <expr> <C-4> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(4)"
-    nmap <silent> <expr> <C-5> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(5)"
-    nmap <silent> <expr> <C-6> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(6)"
-    nmap <silent> <expr> <C-7> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(7)"
-    nmap <silent> <expr> <C-8> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(8)"
-    nmap <silent> <expr> <C-9> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(9)"
-    nmap <silent> <expr> <C-0> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
+    " go to next/previous buffer
+    " <D-?>/<A-?>/<M-?>/<C-?>
+    " ?: ,/Left/./Right
+    execute printf('nnoremap <silent> <expr> <%s-.> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bn\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-Right> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bn\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-,> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bp\<CR>"', a:k)
+    execute printf('nnoremap <silent> <expr> <%s-Left> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bp\<CR>"', a:k)
+endfunction
 
-    " go to next(right) buffer
-    nnoremap <silent> <expr> <Leader>bn (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <D-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <D-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <A-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <A-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <C-.> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <C-Right> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    " go to previous(left) buffer
-    nnoremap <silent> <expr> <Leader>bp (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <D-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <D-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <A-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <A-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <C-,> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <C-Left> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":bp<CR>"
+call s:lin_vim_vim_buffet_keys('D')
+call s:lin_vim_vim_buffet_keys('A')
+call s:lin_vim_vim_buffet_keys('M')
+call s:lin_vim_vim_buffet_keys('C')
 
-    " close current buffer without closing vim window
-    nnoremap <silent> <expr> <Leader>bd (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":Bw<CR>"
-else
-    nmap <silent> <expr> <D-1> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
-    nmap <silent> <expr> <D-2> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
-    nmap <silent> <expr> <D-3> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(3)"
-    nmap <silent> <expr> <D-4> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(4)"
-    nmap <silent> <expr> <D-5> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(5)"
-    nmap <silent> <expr> <D-6> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(6)"
-    nmap <silent> <expr> <D-7> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(7)"
-    nmap <silent> <expr> <D-8> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(8)"
-    nmap <silent> <expr> <D-9> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(9)"
-    nmap <silent> <expr> <D-0> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
-    nmap <silent> <expr> <A-1> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
-    nmap <silent> <expr> <A-2> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
-    nmap <silent> <expr> <A-3> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(3)"
-    nmap <silent> <expr> <A-4> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(4)"
-    nmap <silent> <expr> <A-5> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(5)"
-    nmap <silent> <expr> <A-6> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(6)"
-    nmap <silent> <expr> <A-7> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(7)"
-    nmap <silent> <expr> <A-8> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(8)"
-    nmap <silent> <expr> <A-9> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(9)"
-    nmap <silent> <expr> <A-0> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
-    nmap <silent> <expr> <C-1> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(1)"
-    nmap <silent> <expr> <C-2> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(2)"
-    nmap <silent> <expr> <C-3> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(3)"
-    nmap <silent> <expr> <C-4> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(4)"
-    nmap <silent> <expr> <C-5> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(5)"
-    nmap <silent> <expr> <C-6> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(6)"
-    nmap <silent> <expr> <C-7> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(7)"
-    nmap <silent> <expr> <C-8> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(8)"
-    nmap <silent> <expr> <C-9> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(9)"
-    nmap <silent> <expr> <C-0> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '')."\<Plug>BuffetSwitch(10)"
-
-    " go to next buffer
-    nnoremap <silent> <expr> <Leader>bn (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <D-.> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <D-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <A-.> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <A-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <C-.> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    nnoremap <silent> <expr> <C-Right> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bn<CR>"
-    " go to previous buffer
-    nnoremap <silent> <expr> <Leader>bp (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <D-,> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <D-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <A-,> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <A-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <C-,> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-    nnoremap <silent> <expr> <C-Left> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":bp<CR>"
-
-    " close current buffer without closing vim window
-    nnoremap <silent> <expr> <Leader>bd (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":Bw<CR>"
-endif
+" go to next/previous buffer, close buffer
+nnoremap <silent> <expr> <Leader>bn (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bn\<CR>"
+nnoremap <silent> <expr> <Leader>bp (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bp\<CR>"
+nnoremap <silent> <expr> <Leader>bd (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>Bw\<CR>"
