@@ -15,12 +15,12 @@ $OPT_DISABLE_NEOVIM = $False
 
 # utils
 
-function Message([string]$message) {
-    Write-Host "[lin.vim] - $message"
+function Message([string]$content) {
+    Write-Host "[lin.vim] - $content"
 }
 
-function ErrorMessage([string] $message) {
-    Message "error! $message"
+function ErrorMessage([string] $content) {
+    Message "error! $content"
 }
 
 function InstallOrSkip([string]$command, [string]$target) {

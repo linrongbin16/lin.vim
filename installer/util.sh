@@ -1,22 +1,22 @@
 #!/bin/bash
 
-function message() {
+message() {
     local content="$*"
     printf "[lin.vim] - %s\n" "$content"
 }
 
 
-function skip_message() {
+skip_message() {
     local target="$1"
     message "'$target' already exist, skip..."
 }
 
-function error_message() {
+error_message() {
     local content="$*"
     message "error! $content"
 }
 
-function try_backup() {
+try_backup() {
     local src=$1
     if [[ -f "$src" || -d "$src" ]]; then
         local target=$src.$(date +"%Y-%m-%d.%H-%M-%S.%6N")
@@ -25,7 +25,7 @@ function try_backup() {
     fi
 }
 
-# function try_delete() {
+# try_delete() {
 #     local src=$1
 #     if [[ -f "$src" || -d "$src" ]]; then
 #         message "delete '$src'"
@@ -33,7 +33,7 @@ function try_backup() {
 #     fi
 # }
 
-function install_or_skip() {
+install_or_skip() {
     local command="$1"
     local target="$2"
     if ! type "$target" >/dev/null 2>&1; then
@@ -44,7 +44,7 @@ function install_or_skip() {
     fi
 }
 
-function install_universal_ctags() {
+install_universal_ctags() {
     local VIM_HOME=$HOME/.vim
     local CTAGS_HOME=$VIM_HOME/universal-ctags
 
