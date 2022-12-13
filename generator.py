@@ -661,8 +661,7 @@ PLUGIN_CONTEXTS = [
         "lewis6991",
         "gitsigns.nvim",
         top_clause=[
-            EmptyStmt(),
-            TrippleQuotesCommentExpr(LiteralExpr("---- Git ----")),
+            SingleQuoteCommentExpr(LiteralExpr("Git")),
             IfExpr(HasExpr(SingleQuoteStringExpr("nvim-0.7"))),
         ],
         tag=PluginTag.HIGHLIGHT,
