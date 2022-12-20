@@ -36,8 +36,8 @@ else
 endif
 " Markdown preview
 nnoremap <F8> :<C-u>MarkdownPreview<CR>
-" Next random color scheme
-nnoremap <F9> :<C-u>call LinVimNextRandomColorSchemeSync()<CR>
+" Toggle terminal
+nnoremap <F9> :<C-u>FloatermToggle<CR>
 " Toggle bufexplorer
 nnoremap <F10> :<C-u>ToggleBufExplorer<CR>
 

@@ -681,6 +681,12 @@ PLUGIN_CONTEXTS = [
         tag=PluginTag.HIGHLIGHT,
     ),
     PluginContext(
+        "voldikss",
+        "vim-floaterm",
+        top_clause=SingleQuoteCommentExpr(LiteralExpr("Terminal")),
+        tag=PluginTag.EDITING,
+    ),
+    PluginContext(
         "liuchengxu",
         "vista.vim",
         top_clause=[

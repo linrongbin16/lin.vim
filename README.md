@@ -80,6 +80,12 @@ Solve below issues:
   <em style="fontsize:50%">Code complete for python3</em>
 </p>
 
+<p align="center">
+  <img alt="outline-terminal.jpg" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/outline-terminal.jpg" width="100%">
+  </br>
+  <em style="fontsize:50%">Outlines and Terminal</em>
+</p>
+
 <!-- #### Cursor movement -->
 <!-- ![fast-cursor-movement.png](https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/fast-cursor-movement1.png) -->
 
@@ -341,11 +347,11 @@ Meta-key (`M`), alt-key (`A`) on Windows/Linux, and command-key (`D`) on macOS a
 
 - `F1` **🇳** - Toggle file explorer, see [Simple but pretty UI](#screenshots).
 - `F2` **🇳** - Toggle undo tree.
-- `F3` **🇳** - Toggle outline/tags, see [Code complete for python3](#screenshots).
+- `F3` **🇳** - Toggle outline/tags, see [Outlines and Terminal](#screenshots).
 - `F4` **🇳** - Switch between C/C++ headers and sources.
 - `F7` **🇳** - Toggle git blame info on current line.
 - `F8` **🇳** - Open markdown preview.
-- `F9` **🇳** - Random select next colorscheme, see [Screenshots](#screenshots).
+- `F9` **🇳** - Toggle terminal.
 - `F10` **🇳** - Toggle buffers explorer.
 
 #### Control/Command+? Keys
