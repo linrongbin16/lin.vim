@@ -159,9 +159,7 @@ Solve below issues:
 ## UNIX/Linux/MacOS
 
 ```bash
-    git clone https://github.com/linrongbin16/lin.vim ~/.vim
-    cd ~/.vim
-    ./install.sh
+    git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
 The `install.sh` will automatically install below dependencies with system package manager:
@@ -240,9 +238,7 @@ Other \*NIX systems such as gentoo, bsd are not supported yet.
 5. Run powershell commands as administrator:
 
 ```powershell
-    $ git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim
-    $ cd $env:UserProfile\.vim
-    $ .\install.ps1
+    git clone https://github.com/linrongbin16/lin.vim $env:UserProfile\.vim && cd $env:UserProfile\.vim && .\install.ps1
 ```
 
 Notice:
