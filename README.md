@@ -166,24 +166,23 @@ Notice:
 
 1. The `install.sh` will automatically install below dependencies with system package manager:
 
-- [git](https://git-scm.com/).
-- [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
-- [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for Linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
-- [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
-- [node.js](https://nodejs.org/) and some npm packages.
-- [golang](https://go.dev/).
-- [rust](https://www.rust-lang.org/) and some modern commands: [fd](https://github.com/sharkdp/fd), [rg](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat), etc.
-- [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
-- [universal-ctags](https://github.com/universal-ctags/ctags).
-- [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
+   - [git](https://git-scm.com/).
+   - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
+   - [clang](https://clang.llvm.org/)(for macOS) or [gcc](https://gcc.gnu.org/)(for Linux), [make](https://www.gnu.org/software/make/), [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/), [cmake](https://cmake.org/), [autoconf](https://www.gnu.org/software/autoconf/) and [automake](https://www.gnu.org/software/automake/).
+   - [python3](https://www.python.org/) (python 2.x is not support) and some pip packages.
+   - [node.js](https://nodejs.org/) and some npm packages.
+   - [golang](https://go.dev/).
+   - [rust](https://www.rust-lang.org/) and some modern commands: [fd](https://github.com/sharkdp/fd), [rg](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat), etc.
+   - [curl](https://curl.se/) and [wget](https://www.gnu.org/software/wget/).
+   - [universal-ctags](https://github.com/universal-ctags/ctags).
+   - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 
 2. For now supported platforms are:
-
-- Debian/ubuntu based linux: use `apt` as software installer.
-- Fedora/centos based linux: use `dnf` as software installer.
-- Archlinux based linux: use `pacman` as software installer.
-- MacOS: use `brew` as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
-- Other \*NIX systems such as gentoo, bsd are not supported yet.
+   - Debian/ubuntu based linux: use `apt` as software installer.
+   - Fedora/centos based linux: use `dnf` as software installer.
+   - Archlinux based linux: use `pacman` as software installer.
+   - MacOS: use `brew` as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
+   - Other \*NIX systems such as gentoo, bsd are not supported yet.
 
 ## Windows
 
