@@ -162,7 +162,9 @@ Solve below issues:
     git clone https://github.com/linrongbin16/lin.vim ~/.vim && cd ~/.vim && ./install.sh
 ```
 
-The `install.sh` will automatically install below dependencies with system package manager:
+Notice:
+
+1. The `install.sh` will automatically install below dependencies with system package manager:
 
 - [git](https://git-scm.com/).
 - [vim](https://github.com/vim/vim) and [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim).
@@ -175,14 +177,13 @@ The `install.sh` will automatically install below dependencies with system packa
 - [universal-ctags](https://github.com/universal-ctags/ctags).
 - [hack nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip).
 
-For now supported platforms are:
+2. For now supported platforms are:
 
 - Debian/ubuntu based linux: use `apt` as software installer.
 - Fedora/centos based linux: use `dnf` as software installer.
 - Archlinux based linux: use `pacman` as software installer.
 - MacOS: use `brew` as software installer, please install [Xcode](https://guide.macports.org/chunked/installing.html) and [homebrew](https://brew.sh/) as pre-requirements.
-
-Other \*NIX systems such as gentoo, bsd are not supported yet.
+- Other \*NIX systems such as gentoo, bsd are not supported yet.
 
 ## Windows
 
