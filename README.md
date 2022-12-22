@@ -159,9 +159,9 @@ Solve below issues:
 ## UNIX/Linux/MacOS
 
 ```bash
-    $ git clone https://github.com/linrongbin16/lin.vim ~/.vim
-    $ cd ~/.vim
-    $ ./install.sh
+    git clone https://github.com/linrongbin16/lin.vim ~/.vim
+    cd ~/.vim
+    ./install.sh
 ```
 
 The `install.sh` will automatically install below dependencies with system package manager:
