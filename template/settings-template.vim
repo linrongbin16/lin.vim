@@ -55,6 +55,12 @@ if has('mac')
     endif
 endif
 
+""" ---- Enhanced copy-paste ----
+" Copy visual selected text to cache
+vnoremap <Leader>y :w! ~/.vim/.copypaste<CR>
+" Paste from cache to current cursor
+nnoremap <Leader>p :r ~/.vim/.copypaste<CR>
+
 """ ---- Disable syntax highlight for super big file ----
 """ filesize=1000000
 " autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif

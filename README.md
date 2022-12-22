@@ -373,6 +373,11 @@ Additionally for macOS, command+? keys are configured following the same behavio
 - `<D-y>` **🇳** **🇻** **🇮** - Same as `<C-y>`.
 - `<D-z>` **🇳** **🇻** **🇮** - Same as `<C-z>`.
 
+Copy/paste across different vim instances through remote ssh could be difficult, so introduce two shortcuts using local cache:
+
+- `<Leader>y` **🇻** - Copy visual selected text to cache.
+- `<Leader>p` **🇳** - Paste from cache to current cursor.
+
 You could configure all global key mappings in _~/.vim/settings.vim_.
 
 ## UI
