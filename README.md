@@ -314,9 +314,9 @@ The `install.ps1` especially provide two more options for Windows:
 For distribution, please re-install by:
 
 ```bash
-    $ cd ~/.vim
-    $ git pull origin master
-    $ ./install.sh
+    cd ~/.vim
+    git pull origin master
+    ./install.sh
 ```
 
 For vim plugins, please open (neo)vim and update by:
