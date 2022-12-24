@@ -55,7 +55,7 @@ install_or_skip "sudo apt-get install -y python3 python3-dev python3-venv python
 # nodejs
 if ! type "node" > /dev/null; then
     message "install nodejs from deb.nodesource.com"
-    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
     skip_message 'node'
