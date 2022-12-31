@@ -830,7 +830,7 @@ PLUGIN_CONTEXTS = [
         "nvim-autopairs",
         top_clause=[
             SingleQuoteCommentExpr(LiteralExpr("Autopair")),
-            IfExpr(HasExpr(SingleQuoteStringExpr("nvim-0.5"))),
+            IfExpr(HasExpr(SingleQuoteStringExpr("nvim-0.7"))),
         ],
         tag=PluginTag.EDITING,
     ),
