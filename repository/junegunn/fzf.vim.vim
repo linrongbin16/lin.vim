@@ -4,11 +4,6 @@ let $FZF_DEFAULT_COMMAND = 'fd --type f --type symlink --color=never --ignore-ca
 """ Fzf command prefix
 let g:fzf_command_prefix = 'Fzf'
 
-""" Key mappings
-
-let LIN_VIM_NVIM_TREE='NvimTree'
-let LIN_VIM_FERN='fern'
-
 """ Text search
 
 command! -bang -nargs=* LinVimFzfRg
@@ -21,96 +16,53 @@ command! -bang -nargs=0 LinVimFzfRgCWord
             \ "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-global --no-ignore-parent --hidden --glob=!.git/ ".shellescape(expand('<cword>')), 1,
             \ fzf#vim#with_preview(), <bang>0)
 
-if has('nvim-0.7')
-    " search text
-    nnoremap <silent> <expr> <space>gr (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRg<CR>"
-    " search word text under cursor
-    nnoremap <silent> <expr> <space>gw (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRgCWord<CR>"
-    " search lines on opened buffers
-    nnoremap <silent> <expr> <space>l (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfLines<CR>"
-    " search text on tags
-    nnoremap <silent> <expr> <space>t (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfTags<CR>"
-    " search search history
-    nnoremap <silent> <expr> <space>sh (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfHistory/<CR>"
-    " search command history
-    nnoremap <silent> <expr> <space>ch (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfHistory:<CR>"
-    " search yank history
-    nnoremap <silent> <expr> <space>y (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>CocFzfList yank<CR>"
+function! s:lin_vim_fzf_keys(k, v) abort
+    execute printf('nnoremap <silent> <expr> %s (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>%s\<CR>"', a:k, a:v)
+endfunction
 
-    """ File search
+" search text
 
-    " search files
-    nnoremap <silent> <expr> <space>f (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfFiles<CR>"
-    nnoremap <silent> <expr> <C-p> (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfFiles<CR>"
-    " search opened buffers
-    nnoremap <silent> <expr> <space>b (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfBuffers<CR>"
-    " search history files(v:oldfiles) and opened buffers
-    nnoremap <silent> <expr> <space>hf (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfHistory<CR>"
+" search text
+call s:lin_vim_fzf_keys('<space>gr', 'LinVimFzfRg')
+" search word under cursor
+call s:lin_vim_fzf_keys('<space>gw', 'LinVimFzfRgCWord')
+" search lines on opened buffers
+call s:lin_vim_fzf_keys('<space>l', 'FzfLines')
+" search text on tags
+call s:lin_vim_fzf_keys('<space>t', 'FzfTags')
+" search searched history
+call s:lin_vim_fzf_keys('<space>sh', 'FzfHistory/')
+" search command history
+call s:lin_vim_fzf_keys('<space>ch', 'FzfHistory:')
+" search yank history
+call s:lin_vim_fzf_keys('<space>y', 'CocFzfList yank')
 
-    """ Git search
+" search files
 
-    " search git commits
-    nnoremap <silent> <expr> <space>gc (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfCommits<CR>"
-    " search git files
-    nnoremap <silent> <expr> <space>gf (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfGFile<CR>"
-    " search git status
-    nnoremap <silent> <expr> <space>gs (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfGFiles?<CR>"
+" search files
+call s:lin_vim_fzf_keys('<space>f', 'FzfFiles')
+call s:lin_vim_fzf_keys('<C-p>', 'FzfFiles')
+" search opened buffers
+call s:lin_vim_fzf_keys('<space>b', 'FzfBuffers')
+" search history files(v:oldfiles) and opened buffers
+call s:lin_vim_fzf_keys('<space>hf', 'FzfHistory')
 
+" search git
 
-    """ Other search
+" search git commits
+call s:lin_vim_fzf_keys('<space>gc', 'FzfCommits')
+" search git files
+call s:lin_vim_fzf_keys('<space>gf', 'FzfGFile')
+" search git status
+call s:lin_vim_fzf_keys('<space>gs', 'FzfGFiles?')
 
-    " search marks
-    nnoremap <silent> <expr> <space>mk (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfMarks<CR>"
-    " search maps
-    nnoremap <silent> <expr> <space>mp (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfMaps<CR>"
-    " search vim commands
-    nnoremap <silent> <expr> <space>vc (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfCommands<CR>"
-    " search help tags
-    nnoremap <silent> <expr> <space>ht (&filetype == LIN_VIM_NVIM_TREE ? "\<c-w>\<c-w>" : '').":<C-u>FzfHelptags<CR>"
-else
-    " search text
-    nnoremap <silent> <expr> <space>gr (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRg<CR>"
-    " search word text under cursor
-    nnoremap <silent> <expr> <space>gw (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>LinVimFzfRgCWord<CR>"
-    " search lines on opened buffers
-    nnoremap <silent> <expr> <space>l (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfLines<CR>"
-    " search text on tags
-    nnoremap <silent> <expr> <space>t (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfTags<CR>"
-    " search search history
-    nnoremap <silent> <expr> <space>sh (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfHistory/<CR>"
-    " search command history
-    nnoremap <silent> <expr> <space>ch (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfHistory:<CR>"
-    " search yank history
-    nnoremap <silent> <expr> <space>y (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>CocFzfList yank<CR>"
+" other search
 
-    """ File search
-
-    " search files
-    nnoremap <silent> <expr> <space>f (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfFiles<CR>"
-    nnoremap <silent> <expr> <C-p> (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfFiles<CR>"
-    " search opened buffers
-    nnoremap <silent> <expr> <space>b (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfBuffers<CR>"
-    " search history files(v:oldfiles) and opened buffers
-    nnoremap <silent> <expr> <space>hf (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfHistory<CR>"
-
-    """ Git search
-
-    " search git commits
-    nnoremap <silent> <expr> <space>gc (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfCommits<CR>"
-    " search git files
-    nnoremap <silent> <expr> <space>gf (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfGFile<CR>"
-    " search git status
-    nnoremap <silent> <expr> <space>gs (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfGFiles?<CR>"
-
-
-    """ Other search
-
-    " search marks
-    nnoremap <silent> <expr> <space>mk (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfMarks<CR>"
-    " search maps
-    nnoremap <silent> <expr> <space>mp (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfMaps<CR>"
-    " search vim commands
-    nnoremap <silent> <expr> <space>vc (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfCommands<CR>"
-    " search help tags
-    nnoremap <silent> <expr> <space>ht (&filetype == LIN_VIM_FERN ? "\<c-w>\<c-w>" : '').":<C-u>FzfHelptags<CR>"
-endif
+" search marks
+call s:lin_vim_fzf_keys('<space>mk', 'FzfMarks')
+" search maps
+call s:lin_vim_fzf_keys('<space>mp', 'FzfMaps')
+" search vim commands
+call s:lin_vim_fzf_keys('<space>vc', 'FzfCommands')
+" search help tags
+call s:lin_vim_fzf_keys('<space>ht', 'FzfHelptags')
