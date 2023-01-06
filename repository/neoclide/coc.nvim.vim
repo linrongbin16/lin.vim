@@ -36,7 +36,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 " Go to references
 nmap <silent> gr <Plug>(coc-references)
 
-function! s:ShowDocumentation()
+function! LinVimShowDocumentation()
     if CocAction('hasProvider', 'hover')
         call CocActionAsync('definitionHover')
     else
@@ -45,7 +45,7 @@ function! s:ShowDocumentation()
 endfunction
 
 " Show hover information
-nnoremap <silent> K :call ShowDocumentation()<CR>
+nnoremap <silent> K :call LinVimShowDocumentation()<CR>
 
 augroup lin_vim_coc_group
     autocmd!
