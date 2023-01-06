@@ -4,7 +4,7 @@ let bufferline.icons = 'both'
 let bufferline.no_name_title = '[No Name]'
 let bufferline.maximum_length = 80
 
-function! s:lin_vim_barbar_keys(k) abort
+function! s:LinVimDefineBarbarKeys(k) abort
     " go to buffer-1~9, or the last buffer
     " <D-?>/<A-?>/<M-?>/<C-?>
     " ?: 0-9
@@ -37,10 +37,10 @@ function! s:lin_vim_barbar_keys(k) abort
 endfunction
 
 
-call s:lin_vim_barbar_keys('D')
-call s:lin_vim_barbar_keys('A')
-call s:lin_vim_barbar_keys('M')
-call s:lin_vim_barbar_keys('C')
+call s:LinVimDefineBarbarKeys('D')
+call s:LinVimDefineBarbarKeys('A')
+call s:LinVimDefineBarbarKeys('M')
+call s:LinVimDefineBarbarKeys('C')
 
 " go to next/previous buffer, close buffer
 nnoremap <silent> <expr> <Leader>bn (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern "? "\<c-w>\<c-w>" : '').":BufferNext<CR>"

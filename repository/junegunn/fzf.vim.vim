@@ -16,53 +16,53 @@ command! -bang -nargs=0 LinVimFzfRgCWord
             \ "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-global --no-ignore-parent --hidden --glob=!.git/ ".shellescape(expand('<cword>')), 1,
             \ fzf#vim#with_preview(), <bang>0)
 
-function! s:lin_vim_fzf_keys(k, v) abort
+function! s:LinVimDefineFzfKeys(k, v) abort
     execute printf('nnoremap <silent> <expr> %s (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>%s\<CR>"', a:k, a:v)
 endfunction
 
 " search text
 
 " search text
-call s:lin_vim_fzf_keys('<space>gr', 'LinVimFzfRg')
+call s:LinVimDefineFzfKeys('<space>gr', 'LinVimFzfRg')
 " search word under cursor
-call s:lin_vim_fzf_keys('<space>gw', 'LinVimFzfRgCWord')
+call s:LinVimDefineFzfKeys('<space>gw', 'LinVimFzfRgCWord')
 " search lines on opened buffers
-call s:lin_vim_fzf_keys('<space>l', 'FzfLines')
+call s:LinVimDefineFzfKeys('<space>l', 'FzfLines')
 " search text on tags
-call s:lin_vim_fzf_keys('<space>t', 'FzfTags')
+call s:LinVimDefineFzfKeys('<space>t', 'FzfTags')
 " search searched history
-call s:lin_vim_fzf_keys('<space>sh', 'FzfHistory/')
+call s:LinVimDefineFzfKeys('<space>sh', 'FzfHistory/')
 " search command history
-call s:lin_vim_fzf_keys('<space>ch', 'FzfHistory:')
+call s:LinVimDefineFzfKeys('<space>ch', 'FzfHistory:')
 " search yank history
-call s:lin_vim_fzf_keys('<space>y', 'CocFzfList yank')
+call s:LinVimDefineFzfKeys('<space>y', 'CocFzfList yank')
 
 " search files
 
 " search files
-call s:lin_vim_fzf_keys('<space>f', 'FzfFiles')
-call s:lin_vim_fzf_keys('<C-p>', 'FzfFiles')
+call s:LinVimDefineFzfKeys('<space>f', 'FzfFiles')
+call s:LinVimDefineFzfKeys('<C-p>', 'FzfFiles')
 " search opened buffers
-call s:lin_vim_fzf_keys('<space>b', 'FzfBuffers')
+call s:LinVimDefineFzfKeys('<space>b', 'FzfBuffers')
 " search history files(v:oldfiles) and opened buffers
-call s:lin_vim_fzf_keys('<space>hf', 'FzfHistory')
+call s:LinVimDefineFzfKeys('<space>hf', 'FzfHistory')
 
 " search git
 
 " search git commits
-call s:lin_vim_fzf_keys('<space>gc', 'FzfCommits')
+call s:LinVimDefineFzfKeys('<space>gc', 'FzfCommits')
 " search git files
-call s:lin_vim_fzf_keys('<space>gf', 'FzfGFile')
+call s:LinVimDefineFzfKeys('<space>gf', 'FzfGFile')
 " search git status
-call s:lin_vim_fzf_keys('<space>gs', 'FzfGFiles?')
+call s:LinVimDefineFzfKeys('<space>gs', 'FzfGFiles?')
 
 " other search
 
 " search marks
-call s:lin_vim_fzf_keys('<space>mk', 'FzfMarks')
+call s:LinVimDefineFzfKeys('<space>mk', 'FzfMarks')
 " search maps
-call s:lin_vim_fzf_keys('<space>mp', 'FzfMaps')
+call s:LinVimDefineFzfKeys('<space>mp', 'FzfMaps')
 " search vim commands
-call s:lin_vim_fzf_keys('<space>vc', 'FzfCommands')
+call s:LinVimDefineFzfKeys('<space>vc', 'FzfCommands')
 " search help tags
-call s:lin_vim_fzf_keys('<space>ht', 'FzfHelptags')
+call s:LinVimDefineFzfKeys('<space>ht', 'FzfHelptags')

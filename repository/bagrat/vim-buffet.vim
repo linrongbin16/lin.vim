@@ -18,7 +18,7 @@ function! g:BuffetSetCustomColors()
     hi! BuffetActiveBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#999999 guifg=#0066CC
 endfunction
 
-function! s:lin_vim_vim_buffet_keys(k) abort
+function! s:LinVimDefineBuffetKeys(k) abort
     " go to buffer-1~10
     " <D-?>/<A-?>/<M-?>/<C-?>
     " ?: 0-9
@@ -42,10 +42,10 @@ function! s:lin_vim_vim_buffet_keys(k) abort
     execute printf('nnoremap <silent> <expr> <%s-Left> (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bp\<CR>"', a:k)
 endfunction
 
-call s:lin_vim_vim_buffet_keys('D')
-call s:lin_vim_vim_buffet_keys('A')
-call s:lin_vim_vim_buffet_keys('M')
-call s:lin_vim_vim_buffet_keys('C')
+call s:LinVimDefineBuffetKeys('D')
+call s:LinVimDefineBuffetKeys('A')
+call s:LinVimDefineBuffetKeys('M')
+call s:LinVimDefineBuffetKeys('C')
 
 " go to next/previous buffer, close buffer
 nnoremap <silent> <expr> <Leader>bn (&filetype ==# "NvimTree" <Bar><Bar> &filetype ==# "fern" ? "\<C-w>\<C-w>" : "").":\<C-u>bn\<CR>"
