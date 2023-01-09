@@ -13,8 +13,15 @@ let g:fern#disable_default_mappings=1
 " Better indent
 let g:fern#renderer#nerdfont#leading=" │ "
 
+function! s:LinVimDefineFernKeys(k) abort
+    execute printf('nmap <silent> <buffer><nowait> <%s-,> <Plug>(fern-action-zoom:reset)', a:k)
+    execute printf('nmap <silent> <buffer><nowait> <%s-Left> <Plug>(fern-action-zoom:reset)', a:k)
+    execute printf('nmap <silent> <buffer><nowait> <%s-.> <Plug>(fern-action-zoom:half)', a:k)
+    execute printf('nmap <silent> <buffer><nowait> <%s-Right> <Plug>(fern-action-zoom:half)', a:k)
+endfunction
+
 " Key mappings for fern explorer
-function! s:fern_settings() abort
+function! s:LinVimFernSettings() abort
   " fern key mapping
 
   " navigation
@@ -55,28 +62,15 @@ function! s:fern_settings() abort
   nmap <silent> <buffer><nowait> ? <Plug>(fern-action-help)
 
   " resize explorer width
-  nmap <silent> <buffer><nowait> <D-,> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <D-Left> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <A-,> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <A-Left> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <M-,> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <M-Left> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <C-,> <Plug>(fern-action-zoom:reset)
-  nmap <silent> <buffer><nowait> <C-Left> <Plug>(fern-action-zoom:reset)
-
-  nmap <silent> <buffer><nowait> <D-.> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <D-Right> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <A-.> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <A-Right> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <M-.> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <M-Right> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <C-.> <Plug>(fern-action-zoom:half)
-  nmap <silent> <buffer><nowait> <C-Right> <Plug>(fern-action-zoom:half)
+  call s:LinVimDefineFernKeys('D')
+  call s:LinVimDefineFernKeys('A')
+  call s:LinVimDefineFernKeys('M')
+  call s:LinVimDefineFernKeys('C')
 endfunction
 
 augroup my_fern_group
   autocmd!
-  autocmd FileType fern call s:fern_settings()
+  autocmd FileType fern call s:LinVimFernSettings()
   autocmd FileType fern call glyph_palette#apply()
   autocmd FileType fern setl nonumber
   autocmd FileType fern setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab

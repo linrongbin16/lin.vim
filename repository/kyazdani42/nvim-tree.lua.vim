@@ -90,30 +90,24 @@ require'nvim-tree'.setup {
 }
 EOF
 
-function! s:nvim_tree_settings() abort
+function! s:LinVimDefineNvimTreeKeys(k) abort
+    execute printf('nnoremap <silent> <buffer> <%s-,> :<C-u>NvimTreeResize -10<CR>', a:k)
+    execute printf('nnoremap <silent> <buffer> <%s-Left> :<C-u>NvimTreeResize -10<CR>', a:k)
+    execute printf('nnoremap <silent> <buffer> <%s-.> :<C-u>NvimTreeResize +10<CR>', a:k)
+    execute printf('nnoremap <silent> <buffer> <%s-Right> :<C-u>NvimTreeResize +10<CR>', a:k)
+endfunction
+
+function! s:LinVimNvimTreeSettings() abort
   " key mapping
 
   " resize explorer width
-  nnoremap <silent> <buffer> <D-,> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <D-Left> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <A-,> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <A-Left> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <M-,> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <M-Left> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <C-,> :<C-u>NvimTreeResize -10<CR>
-  nnoremap <silent> <buffer> <C-Left> :<C-u>NvimTreeResize -10<CR>
-
-  nnoremap <silent> <buffer> <D-.> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <D-Right> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <A-.> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <A-Right> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <M-.> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <M-Right> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <C-.> :<C-u>NvimTreeResize +10<CR>
-  nnoremap <silent> <buffer> <C-Right> :<C-u>NvimTreeResize +10<CR>
+  call s:LinVimDefineNvimTreeKeys('D')
+  call s:LinVimDefineNvimTreeKeys('A')
+  call s:LinVimDefineNvimTreeKeys('M')
+  call s:LinVimDefineNvimTreeKeys('C')
 endfunction
 
 augroup my_nvim_tree_group
   autocmd!
-  autocmd FileType NvimTree call s:nvim_tree_settings()
+  autocmd FileType NvimTree call s:LinVimNvimTreeSettings()
 augroup END
