@@ -1072,7 +1072,7 @@ class Render(Indentable):
                         assert False
             ecs = Stmt(IndentExpr(EmptyCommentExpr(), self.indentlevel))
             # body
-            if self.skip_disabled(ctx):
+            if self.is_disabled_plugin(ctx):
                 # skip disabled plugins
                 plugin_stmts.append(ecs)
                 vimrc_stmts.append(ecs)
@@ -1134,7 +1134,7 @@ class Render(Indentable):
 
         return plugin_stmts, vimrc_stmts, color_setting_stmts
 
-    def skip_disabled(self, ctx):
+    def is_disabled_plugin(self, ctx):
         if self.disable_plugins and str(ctx) in self.disable_plugins:
             return True
         if self.disable_color and ctx.tag == PluginTag.COLORSCHEME:
