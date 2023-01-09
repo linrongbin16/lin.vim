@@ -1,8 +1,6 @@
 # lin.vim : Lin Rongbin's (Neo)vim Distribution
 
-**Deprecated:**
-
-**Leave vim behind, switch to neovim only for its best performance, editing experience and powerful community. Please use [lin.nvim](https://github.com/linrongbin16/lin.nvim) for neovim, it's the next generation of my neovim distribution. This project is no long actively developed, while PR and bug fix is still welcomed.**
+_**Deprecated: Leave vim behind, switch to neovim only for its best performance, editing experience and powerful community. Please use [lin.nvim](https://github.com/linrongbin16/lin.nvim) for neovim, it's the next generation of my neovim distribution. This project is no long actively developed, while PR and bug fix is still welcomed.**_
 
 lin.vim is a highly configured [vim](https://www.vim.org/)/[neovim](https://neovim.io/) distribution integrated tons of utilities for development, inspired by [spf13-vim](https://github.com/spf13/spf13-vim).
 
