@@ -41,7 +41,7 @@ def try_backup(src):
 INDENT_SIZE = 4
 
 
-class IndentLevel:
+class Indentable:
     def __init__(self):
         self._value = 0
 
@@ -871,7 +871,7 @@ PLUGIN_CONTEXTS = [
 ]
 
 
-class Render(IndentLevel):
+class Render(Indentable):
     def __init__(
         self,
         static_color=None,
@@ -881,7 +881,7 @@ class Render(IndentLevel):
         disable_editing=False,
         disable_plugins=None,
     ):
-        IndentLevel.__init__(self)
+        Indentable.__init__(self)
         self.static_color = static_color
         self.disable_color = disable_color
         self.disable_highlight = disable_highlight
