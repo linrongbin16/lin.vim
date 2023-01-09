@@ -98,16 +98,16 @@ function! s:LinVimDefineNvimTreeKeys(k) abort
 endfunction
 
 function! s:LinVimNvimTreeSettings() abort
-  " key mapping
+    " key mapping
 
-  " resize explorer width
-  call s:LinVimDefineNvimTreeKeys('D')
-  call s:LinVimDefineNvimTreeKeys('A')
-  call s:LinVimDefineNvimTreeKeys('M')
-  call s:LinVimDefineNvimTreeKeys('C')
+    " resize explorer width
+    call s:LinVimDefineNvimTreeKeys('D')
+    call s:LinVimDefineNvimTreeKeys('A')
+    call s:LinVimDefineNvimTreeKeys('M')
+    call s:LinVimDefineNvimTreeKeys('C')
 endfunction
 
 augroup my_nvim_tree_group
-  autocmd!
-  autocmd FileType NvimTree call s:LinVimNvimTreeSettings()
+    autocmd!
+    autocmd FileType NvimTree call s:LinVimNvimTreeSettings()
 augroup END
