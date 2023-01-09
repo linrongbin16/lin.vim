@@ -273,12 +273,10 @@ function CargoDependency() {
 
 function Pip3Dependency() {
     Message "install python packages with pip3"
-    InstallOrSkip -command "pip3 install pep8" -target "pep8"
     InstallOrSkip -command "pip3 install flake8" -target "flake8"
     InstallOrSkip -command "pip3 install pylint" -target "pylint"
     InstallOrSkip -command "pip3 install black" -target "black"
-    InstallOrSkip -command "pip3 install yapf" -target "yapf"
-    pip3 install pyOpenSSL neovim pynvim chardet cmakelang cmake-language-server click
+    pip3 install neovim pynvim cmakelang click
 }
 
 function NpmDependency() {

@@ -34,12 +34,10 @@ golang_dependency() {
 
 pip3_dependency() {
     message "install python packages with pip3"
-    install_or_skip "sudo pip3 install pep8" "pep8"
     install_or_skip "sudo pip3 install flake8" "flake8"
     install_or_skip "sudo pip3 install pylint" "pylint"
     install_or_skip "sudo pip3 install black" "black"
-    install_or_skip "sudo pip3 install yapf" "yapf"
-    sudo pip3 install pyOpenSSL neovim pynvim chardet cmakelang cmake-language-server click
+    sudo pip3 install neovim pynvim cmakelang click
 }
 
 npm_dependency() {
