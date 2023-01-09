@@ -13,7 +13,7 @@ endif
 
 """ ---- Hot keys ----
 " Toggle file explorer
-if has('nvim-0.7')
+if has('nvim-0.8')
     nnoremap <F1> :<C-u>NvimTreeToggle<CR>
 else
     nnoremap <F1> :<C-u>Fern -keep -toggle . -drawer<CR>
@@ -31,7 +31,7 @@ nmap <S-F6> <Plug>MarkAllClear
 " Toggle git blame
 if has('nvim-0.7')
     nnoremap <F7> :<C-u>Gitsigns toggle_current_line_blame<CR>
-else
+elseif has('nvim-0.5')
     nnoremap <F7> :<C-u>GitBlameToggle<CR>
 endif
 " Markdown preview
