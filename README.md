@@ -676,15 +676,3 @@ For basic install mode, there's only standalone vim settings, see [More Options]
 # Contribute
 
 Please open issue/PR for anything about lin.vim.
-
-Like lin.vim? Consider
-
-<a href="https://www.buymeacoffee.com/linrongbin16" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-Or
-
-<p align="center">
-  <img alt="wechat-pay.jpeg" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/wechat-pay.jpeg" width="45%">
-&nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="alipay.jpeg" src="https://raw.githubusercontent.com/linrongbin16/lin.vim.github.io/main/screen-snapshots/alipay.jpeg" width="45%">
-</p>
